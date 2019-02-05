@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="../css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/icon-32.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../images/icon-32.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="../images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="$\rm{0x01}$ 闲话 · $LCT$的用途以及具体思路咳，其实在我最近只是浅浅地学了一部分的基础上，窝觉得$LCT$其实就是一个用来维护森林连通性的。 嗯……因为其独特的性质所以也可以顺便维护好多东西，什么链上的最大值啊，链上的权值和啊……都可以维护——或者说，LCT是更加全能的树剖。 但其实吧……$LCT$打板子是很简单的，但是真正理解却一点儿也不简单。因为本身$splay$就很麻烦了，">
+<meta name="keywords" content="LCT-Link Cut Tree">
+<meta property="og:type" content="article">
+<meta property="og:title" content="$LCT&#39;s ~Junior ~Intro$">
+<meta property="og:url" content="http://yoursite.com/2019/02/04/LCT-s-Junior-Intro/index.html">
+<meta property="og:site_name" content="Orchidany&#39;w blog">
+<meta property="og:description" content="$\rm{0x01}$ 闲话 · $LCT$的用途以及具体思路咳，其实在我最近只是浅浅地学了一部分的基础上，窝觉得$LCT$其实就是一个用来维护森林连通性的。 嗯……因为其独特的性质所以也可以顺便维护好多东西，什么链上的最大值啊，链上的权值和啊……都可以维护——或者说，LCT是更加全能的树剖。 但其实吧……$LCT$打板子是很简单的，但是真正理解却一点儿也不简单。因为本身$splay$就很麻烦了，">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2019/02/04/LCT-s-Junior-Intro/t1.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/02/04/LCT-s-Junior-Intro/t2.png">
+<meta property="og:updated_time" content="2019-02-05T12:41:25.214Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="$LCT&#39;s ~Junior ~Intro$">
+<meta name="twitter:description" content="$\rm{0x01}$ 闲话 · $LCT$的用途以及具体思路咳，其实在我最近只是浅浅地学了一部分的基础上，窝觉得$LCT$其实就是一个用来维护森林连通性的。 嗯……因为其独特的性质所以也可以顺便维护好多东西，什么链上的最大值啊，链上的权值和啊……都可以维护——或者说，LCT是更加全能的树剖。 但其实吧……$LCT$打板子是很简单的，但是真正理解却一点儿也不简单。因为本身$splay$就很麻烦了，">
+<meta name="twitter:image" content="http://yoursite.com/2019/02/04/LCT-s-Junior-Intro/t1.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/02/04/LCT-s-Junior-Intro/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>$LCT's ~Junior ~Intro$ | Orchidany'w blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Orchidany'w blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Love is a touch but yet not a touch</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>站点地图</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Orchidany">
+      <meta itemprop="description" content="For code, science, tech. any more">
+      <meta itemprop="image" content="../../../../images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Orchidany'w blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">$LCT's ~Junior ~Intro$
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-04 23:18:58" itemprop="dateCreated datePublished" datetime="2019-02-04T23:18:58+08:00">2019-02-04</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-02-05 20:41:25" itemprop="dateModified" datetime="2019-02-05T20:41:25+08:00">2019-02-05</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="rm-0x01-闲话-·-LCT-的用途以及具体思路"><a href="#rm-0x01-闲话-·-LCT-的用途以及具体思路" class="headerlink" title="$\rm{0x01}$ 闲话 · $LCT$的用途以及具体思路"></a>$\rm{0x01}$ 闲话 · $LCT$的用途以及具体思路</h1><p>咳，其实在我最近只是浅浅地学了一部分的基础上，窝觉得$LCT$其实就是一个用来维护<strong>森林连通性</strong>的。</p>
+<p>嗯……因为其独特的性质所以也可以顺便维护好多东西，什么链上的最大值啊，链上的权值和啊……都可以维护——或者说，LCT是更加全能的树剖。</p>
+<p>但其实吧……$LCT$打板子是很简单的，但是真正理解却一点儿也不简单。因为本身$splay$就很麻烦了，况且$splay$之前一直用于维护数列。要知道，此处的$splay$可是作为<strong>辅助树</strong>，维护一整个森林，并且可以支持序列中几乎全部操作——这就大大增高了理解难度。举个例子，你曾经认为已经难以理解、或者说不可以做的、比较复杂的区间翻转<a href="https://www.luogu.org/problemnew/show/P3391" target="_blank" rel="noopener">$Luogu3391$</a>，在$LCT$里面有十分全面的涉及，但是被精简到了只有两行是用来描述这个内容的。显而易见的是，$LCT$虽然常数十分的大，但代码十分的短，比一棵完整的平衡树短了不少（实测50+行），与$FFT$一样具有着华丽的可观赏性，但是隐藏在之后的思维难度同样不可小觑。</p>
+<p>也就是说我们是不是学的太草率、太浮躁了呢？快餐式地学完$LCT$，网上的每一篇博客都包教包会。但是我今天要整理的，是对于$LCT$真正的理解。希望各位看到这篇拙作的人可以获得一些什么。</p>
+<h1 id="rm-0x02-闲话-·-关于-rm-splay"><a href="#rm-0x02-闲话-·-关于-rm-splay" class="headerlink" title="$\rm{0x02}$ 闲话 · 关于$\rm{splay}$"></a>$\rm{0x02}$ 闲话 · 关于$\rm{splay}$</h1><p>道理我都懂，要想动态拆删一些东西，辅助树的形态可以改变是先决条件。看上去平衡树好像是个不错的选择，但是，选哪个作为辅助树呢？<del>后宫佳丽三千我该翻谁的牌子呢</del></p>
+<p>历史的重任最后落到了$\rm{splay}​$的身上。然后$\rm{splay}​$他居然：</p>
+<p><img src="t1.jpg" alt=""></p>
+<p>他甚至还：</p>
+<p><img src="t2.png" alt=""></p>
+<p>……</p>
+<p>好吧，由于某些<del>rqy也不知道的</del>原因，如果不用$\rm{splay}$的话，复杂度是均摊$\Theta(\rm{nlog^2n})$, 而用$\rm{splay}$就可以做到均摊$\Theta(\rm{nlogn})$ ……但事实上，splay确实有他独特的性质，比如旋转到根啊之类的，比起其他种类的平衡树而言，更加适合$LCT$</p>
+<h1 id="rm-0x03-LCT-的思路和基础操作"><a href="#rm-0x03-LCT-的思路和基础操作" class="headerlink" title="$\rm{0x03}$   $LCT$的思路和基础操作"></a>$\rm{0x03}$   $LCT$的思路和基础操作</h1><h2 id="一-主要思路"><a href="#一-主要思路" class="headerlink" title="一 主要思路"></a>一 主要思路</h2><p>主要思路嘛……大概是基于<strong>实链剖分</strong>的操作。</p>
+<p><strong>朴素的树剖是重链剖分</strong>，大体上就是将整棵树的链划分为轻边和重链，运用巧妙的性质做到$log$级别。而遗憾的是$LCT$维护的是森林的连通性，所以只能采用实链剖分。</p>
+<p>而实链剖分大体上就是把边分为<strong>虚边</strong>和<strong>实边</strong>。其中实边串联起一个联通块，同一组实边存在、且仅存在于一棵$\rm{splay}$中。$\rm{splay}$和$\rm{splay}$之间由虚边相连。</p>
+<p>实链剖分的好处呢？在于<strong>实链剖分是一种动态剖分</strong>，他可以<strong>随意改变边的虚实属性</strong>。而显然，重链剖分由于有着足够的理论依据和逻辑推演，所以轻重链是难以更改，或者说，不可更改的。So，实链剖分为动态树的动态打下了基础。</p>
+<p>那么接下来我们来看一个$LCT​$是如何定义的:</p>
+<ul>
+<li>首先，一棵$LCT​$管控的是一对分散的点，点以几棵分散的$splay​$的形式聚集。起初整棵$LCT​$是没有任何联系的，各自为战，各自为根。我们接下来会看到的$access​$、$makeroot​$等操作，都是在自己的联通块儿内部进行的操作。换句话讲，$LCT​$维护的是有根森林，即组成森林的每个联通块都有其唯一的根。</li>
+<li>实边串联起一个联通块，同一组实边存在、且仅存在于一棵$\rm{splay}$中。$\rm{splay}$和$\rm{splay}$之间由虚边相连。只有实边是有效的，虚边可以被认为不存在。<strong>但是两种边都没有用到显式存储</strong>，都是通过splay中的$Son$数组和$Fa$数组访问的。但虚边和实边的存储有区别：</li>
+<li>虚边是认父不认子，即如果$Fa[x]==y$，那么$y$不存$x$这个儿子，但是$x$存$y$这个父亲。这样做是为了可以$Access$——因为其实在$Access$的子函数$splay$里，发挥作用的实际上是$Fa$指针。</li>
+<li>实边是完整的双向存储。</li>
+<li>$\rm{splay}$中维护的是一条从存储上到下按在原树中深度严格递增的路径，且中序遍历$\rm{splay}$得到的每个点的深度序列严格递增。换句话讲，一个$\rm{splay}$里面不会出现在原联通块儿（树）中深度相同的两个点。在一棵$\rm{splay}$中，键值就是原树中的深度。</li>
+<li>如果$x$是它所在$splay$的最左边的点，那么它在原森林里的父亲是$x$所在$splay$的根的$fa$, 否则就是$x$在$splay$上的前驱.</li>
+</ul>
+<h2 id="二-基础操作"><a href="#二-基础操作" class="headerlink" title="二 基础操作"></a>二 基础操作</h2><p>$emm$所谓基础操作大概就是每个用到$LCT$的题几乎都要用到的操作，我们这个地方先把点$n$所在联通块儿内的树的根记作$root(n) $，把与$n$以实边相连的儿子记作实儿子。</p>
+<ul>
+<li><h2 id="rm-1-Access"><a href="#rm-1-Access" class="headerlink" title="$\rm{1}$  $Access$"></a>$\rm{1}$  $Access$</h2></li>
+</ul>
+<p>这个操作有着很迷的性质，其时间复杂度是均摊$\log n$的。而这个操作的目的是<strong>$Access(n)$表示从$root(n)$向$n$打通一条实链，并以$n$点为最深度最大的点、$root(n)$为深度最小的点形成一棵$\rm{splay}$</strong>。</p>
+<p>不难看出，这个操作其实跟是一种<strong>逻辑层面的自我调控，没有改变原树的结构。</strong></p>
+<p>我们思考，如果此时我们$Access​$完点$n​$之后，理论上来讲，$n​$点应该不再有实儿子了——显然，如果有实儿子的话，$splay​$中是应该包含这个实儿子的——而这就不符合$n​$是$\rm{splay}​$中深度最大的点的性质了。而因为在splay中，点是以深度为键值的，所以我们要每次砍掉$\rm{splay}​$中的右儿子——即砍掉原来的实儿子，并把刚刚诞生的$\rm{splay}​$连上。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Access</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; </span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> qwq = <span class="number">0</span> ; x ; x = T[qwq = x].F) </span><br><span class="line">splay(x), rc = qwq, update(x) ; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后这就是$Access​$了。</p>
+<ul>
+<li><h2 id="2-Make-Root"><a href="#2-Make-Root" class="headerlink" title="$2 ~~Make~ Root~$"></a>$2 ~~Make~ Root~$</h2></li>
+</ul>
+<p>$make_root​$先从原来的根向$n​$打通一条路径，然后$splay​$上去，最后$reverse​$一下。此处由于一开始$n​$的深度最大，$splay​$之后深度依旧最大，但此时$n​$是$splay​$的根，所以$reverse(n)​$就相当于翻转了整条树上的链，那么翻转之后，$n​$的深度就变成了最小，于是就是这个联通块儿的根节点了。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lc T[x].Son[0]</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rc T[x].Son[1]</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">LCT</span>&#123;</span></span><br><span class="line"><span class="keyword">int</span> F, Son[<span class="number">2</span>], R, S ;</span><br><span class="line">&#125;T[MAXN] ; </span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">int</span> x)</span> </span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; lc ^= rc ^= lc ^= rc, T[x].R ^= <span class="number">1</span> ;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">push_down</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; <span class="keyword">if</span> (!T[x].R) <span class="keyword">return</span> ; T[x].R = <span class="number">0</span> ; <span class="keyword">if</span> (lc) reverse(lc) ; <span class="keyword">if</span> (rc) reverse(rc) ; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Rooten</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; Access(x), splay(x), reverse(x) ; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> qwq = x ; stk.push(qwq) ;</span><br><span class="line"><span class="keyword">while</span>(check(qwq)) qwq = T[qwq].F, stk.push(qwq) ;</span><br><span class="line"><span class="keyword">while</span>(!stk.empty()) push_down(stk.top()), stk.pop() ;</span><br><span class="line"><span class="keyword">while</span>(check(x))&#123;</span><br><span class="line"><span class="keyword">int</span> fa = T[x].F, g_fa = T[fa].F ;</span><br><span class="line"><span class="keyword">if</span> (check(fa)) rotate((T[g_fa].Son[<span class="number">1</span>] == fa) == (T[fa].Son[<span class="number">1</span>] == x) ? fa : x) ; rotate(x) ;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此处$splay$中由于要下放标记，保证树的形态是正确的，所以我们用一个$stack$存一下，顺序下放标记。</p>
+<ul>
+<li><h2 id="3-Merge"><a href="#3-Merge" class="headerlink" title="$3 ~Merge~$"></a>$3 ~Merge~$</h2></li>
+</ul>
+<p>此处的$Merge(x, y)$的意义是，拉起$x,y$中间的链，形成一个$splay$。这里就直接$Mkroot$一遍，然后$Access$即可。让哪个点当根应该都可以，只不过多$splay$几次可以保证优（毒）秀（瘤）的复（大）杂（常）度（数）。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Merge</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123; Rooten(x), Access(y), splay(y) ; &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><h2 id="4-Link-amp-Cut"><a href="#4-Link-amp-Cut" class="headerlink" title="$4~~Link~\&amp;~Cut$"></a>$4~~Link~\&amp;~Cut$</h2></li>
+</ul>
+<p>如果保证$Link$和$Cut$都是合法的操作的话，$Link$直接连，$Cut$直接删即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Link</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123; Rooten(x) ;  T[x].F = y ;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Cut</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123; Merge(x, y) ; T[x].F = T[y].Son[<span class="number">0</span>] = <span class="number">0</span> ;&#125;</span><br></pre></td></tr></table></figure>
+<p>此处$Link$必须先$Mkroot$一下，否则树链就断了。连的是虚边（因为连实边就会改变原来$splay$的割据）；$Cut$必须先$split$一下，保证两个点之间在同一棵$splay$中，加之我们的$Merge$操作中，一开始把$x$给$mkroot$了，再把$y$点$splay$上去，直接导致了现在$x$应该是$y$的孩子——于是就很开心的，可以直接$cut$了。        </p>
+<p>但事实上，天不遂人意……有时候这条边并不存在，盲目删除的话会导致$GG$，盲目连边的话也会导致树的形态爆炸，所以我们要进行一波操作……</p>
+<ul>
+<li>$New-Link$ </li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Link</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123; Rooten(x) ; <span class="keyword">if</span>(Find(y) != x) T[x].F = y ;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123; Access(x), splay(x) ; <span class="keyword">while</span>(lc) push_down(x), x = lc ; splay(x) ; <span class="keyword">return</span> x ;&#125;</span><br></pre></td></tr></table></figure>
+<p>此处的意义在于，如果我们发现两个点在一个子树里面，连接它们就破坏了树的性质。$Find$就是无比普通的$Find$。。。。233</p>
+<p>但要注意啊，$Find$找的是原树中的根，不是$splay$。由于原树中根的深度一定最小，所以应该是$splay$中最靠左的点……所以不断找左儿子。</p>
+<p>多$BB$一句，这个地方一定注意啊！$Find$只改变了$splay$的形态，$mkroot$改变的是原树中的根</p>
+<ul>
+<li>$New-Cut$</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Cut</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123; </span><br><span class="line">Rooten(x) ; </span><br><span class="line"><span class="keyword">if</span> (Find(y) != x || T[y].Son[<span class="number">0</span>] || T[y].F != x) <span class="keyword">return</span> ; </span><br><span class="line">T[y].F = T[x].Son[<span class="number">1</span>] = <span class="number">0</span>, update(x) ; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此处首先我们要判一下这两个点是不是直接相连。是否直接相连……在一棵$splay$中的体现，要克服两个问题，第一是要判断是否连通，还是$Find$操作。</p>
+<p>之后我们需要判断是否满足恰好相隔一条边——注意，首先因为代码中的$x$比$y$在原树位置靠上（$Rooten$了$x$），在$splay$中靠左，那么如果$y$有左儿子的话，说明一定有$Depth(x) &lt; Depth(y\text{的左儿子们})  &lt; Depth(y)$，其中$Depth$表示原树深度。那么此时原树中$x$和$y$之间，一定隔着一些节点。考虑树的性质，两点之间有且仅有一条简单路径——所以当$T[y].Son[0]$不指向$Null$时，$x$和$y$之间没有一条边，不能直接$Cut$。</p>
+<p>剩下的就很简单了，$T[y].F$应该是$x$，否则也不是直接相连。</p>
+<ul>
+<li><h2 id="5-Rotate-中的坑点"><a href="#5-Rotate-中的坑点" class="headerlink" title="5 $~Rotate$中的坑点"></a>5 $~Rotate$中的坑点</h2></li>
+</ul>
+<p>呃……其实就一处而已。就是：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123; <span class="keyword">return</span> T[T[x].F].Son[<span class="number">0</span>] == x || T[T[x].F].Son[<span class="number">1</span>] == x ;  &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> fa = T[x].F, g_fa = T[fa].F, W = x == T[fa].Son[<span class="number">1</span>] ;</span><br><span class="line">	<span class="keyword">if</span> (check(fa)) T[g_fa].Son[T[g_fa].Son[<span class="number">1</span>] == fa] = x ; T[x].F = g_fa ;</span><br><span class="line">	T[fa].Son[W] = T[x].Son[W ^ <span class="number">1</span>], T[T[x].Son[W ^ <span class="number">1</span>]].F = fa, T[fa].F = x, T[x].Son[W ^ <span class="number">1</span>] = fa, update(fa), update(x) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个地方$splay$双旋判断祖父的时候，不再用$\rm{if(g_fa)}$，而是用$\rm{if(check(fa))}$。原因很简单，我们的虚边也是有指向父亲的指针的，但是连接两个不同的$splay$</p>
+<p>剩下的……大概就没了吧……</p>
+<p>于是——</p>
+<h1 id="color-red-C-color-cyan-o-color-gold-d-color-green-e"><a href="#color-red-C-color-cyan-o-color-gold-d-color-green-e" class="headerlink" title="$\color{red}{C}\color{cyan}{o}\color{gold}{d}\color{green}{e}$"></a>$\color{red}{C}\color{cyan}{o}\color{gold}{d}\color{green}{e}$</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 300233</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lc T[x].Son[0]</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rc T[x].Son[1]</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(a, b, c) for(a = b ; a &lt;= c ; ++ a)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">LCT</span>&#123;</span></span><br><span class="line"><span class="keyword">int</span> F, Son[<span class="number">2</span>], R, S ;</span><br><span class="line">&#125;T[MAXN] ; <span class="built_in">stack</span> &lt;<span class="keyword">int</span>&gt; stk ;</span><br><span class="line"><span class="keyword">int</span> base[MAXN], N, M, A, B, C, i ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> x)</span> </span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">int</span> x)</span> </span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">push_down</span><span class="params">(<span class="keyword">int</span> x)</span> </span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; T[x].S = T[lc].S ^ T[rc].S ^ base[x] ;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; lc ^= rc ^= lc ^= rc, T[x].R ^= <span class="number">1</span> ;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123; <span class="keyword">return</span> T[T[x].F].Son[<span class="number">0</span>] == x || T[T[x].F].Son[<span class="number">1</span>] == x ;  &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Access</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; <span class="keyword">for</span> (<span class="keyword">int</span> qwq = <span class="number">0</span> ; x ; x = T[qwq = x].F) splay(x), rc = qwq, update(x) ; &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line"><span class="keyword">int</span> fa = T[x].F, g_fa = T[fa].F, W = x == T[fa].Son[<span class="number">1</span>] ;</span><br><span class="line">	<span class="keyword">if</span> (check(fa)) T[g_fa].Son[T[g_fa].Son[<span class="number">1</span>] == fa] = x ; T[x].F = g_fa ;</span><br><span class="line">	T[fa].Son[W] = T[x].Son[W ^ <span class="number">1</span>], T[T[x].Son[W ^ <span class="number">1</span>]].F = fa, T[fa].F = x, T[x].Son[W ^ <span class="number">1</span>] = fa, update(fa), update(x) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> qwq = x ; stk.push(qwq) ;</span><br><span class="line">	<span class="keyword">while</span>(check(qwq)) qwq = T[qwq].F, stk.push(qwq) ;</span><br><span class="line">	<span class="keyword">while</span>(!stk.empty()) push_down(stk.top()), stk.pop() ;</span><br><span class="line">	<span class="keyword">while</span>(check(x))&#123;</span><br><span class="line">	<span class="keyword">int</span> fa = T[x].F, g_fa = T[fa].F ;</span><br><span class="line">	<span class="keyword">if</span> (check(fa)) &#123;</span><br><span class="line">        rotate((T[g_fa].Son[<span class="number">1</span>] == fa) == (T[fa].Son[<span class="number">1</span>] == x) ? fa : x) ; 						rotate(x) ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Rooten</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; Access(x), splay(x), reverse(x) ; &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">split</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123; Rooten(x), Access(y), splay(y) ; &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Link</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123; Rooten(x) ; <span class="keyword">if</span>(Find(y) != x) T[x].F = y ;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123; Access(x), splay(x) ; <span class="keyword">while</span>(lc) push_down(x), x = lc ; splay(x) ; <span class="keyword">return</span> x ;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">push_down</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; <span class="keyword">if</span> (!T[x].R) <span class="keyword">return</span> ; T[x].R = <span class="number">0</span> ; <span class="keyword">if</span> (lc) reverse(lc) ; <span class="keyword">if</span> (rc) reverse(rc) ; &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Cut</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123; Rooten(x) ; <span class="keyword">if</span> (Find(y) != x || T[y].Son[<span class="number">0</span>] || T[y].F != x) <span class="keyword">return</span> ; T[y].F = T[x].Son[<span class="number">1</span>] = <span class="number">0</span>, update(x) ; &#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; N &gt;&gt; M ;</span><br><span class="line">	rep(i, <span class="number">1</span>, N) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;base[i]) ;</span><br><span class="line">	rep(i, <span class="number">1</span>, M)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;A, &amp;B, &amp;C) ;</span><br><span class="line">		<span class="keyword">if</span> (A == <span class="number">0</span>) split(B, C), <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, T[C].S) ;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (A == <span class="number">1</span>) Link(B, C) ; <span class="keyword">else</span> <span class="keyword">if</span> (A == <span class="number">2</span>) Cut(B, C) ; <span class="keyword">else</span> splay(B), base[B] = C 		;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="rm-0x00-后记和参考"><a href="#rm-0x00-后记和参考" class="headerlink" title="$\rm{0x00}$   后记和参考"></a>$\rm{0x00}$   后记和参考</h1><p>可写完了……嗝……<del>打个肥宅嗝犒劳犒劳自己</del></p>
+<p>怎么说呢，自从我开始学$LCT$到我写完这篇$blog$为止，是我十分难熬的时间，总时长接近一周。一开始看别人写的$LCT$，想当然地、草率地理解了理解，就开始打板子，对$LCT$一直是极为肤浅的认识。直到开始写，才发现自己哪个地方都不会，理解的半生不熟，总之很惨……</p>
+<p>写博客真是一个陶冶情操的过程啊……<del>包括做表情包</del></p>
+<p>加油吧，$pks$！</p>
+<h2 id="rm-Reference"><a href="#rm-Reference" class="headerlink" title="$\rm{Reference}$"></a>$\rm{Reference}$</h2><ul>
+<li>$[1]$ :$Flash_Hu$的$blog$ <a href="http://www.cnblogs.com/flashhu/p/8324551.html" target="_blank" rel="noopener">$^{^{[\nearrow ]}}$</a></li>
+<li>$[2]$ :某篇论文，结合食用效果显著 <a href="https://wenku.baidu.com/view/75906f160b4e767f5acfcedb.html" target="_blank" rel="noopener">$^{^{[\nearrow]}}$</a></li>
+</ul>
+<h2 id="mathfrak-writter-pks"><a href="#mathfrak-writter-pks" class="headerlink" title="$\mathfrak{writter:pks}$"></a>$\mathfrak{writter:pks}$</h2>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="../../../../tags/LCT-Link-Cut-Tree/" rel="tag"># LCT-Link Cut Tree</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="../Intro-1/" rel="next" title="$Intro$">
+                <i class="fa fa-chevron-left"></i> $Intro$
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="../../../../images/avatar.png" alt="Orchidany">
+            
+              <p class="site-author-name" itemprop="name">Orchidany</p>
+              <p class="site-description motion-element" itemprop="description">For code, science, tech. any more</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="../../../../archives/">
+                
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="../../../../tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/Flower233pks" title="GitHub &rarr; https://github.com/Flower233pks" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://rqy.moe" title="https://rqy.moe" rel="noopener" target="_blank">_rqy</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#rm-0x01-闲话-·-LCT-的用途以及具体思路"><span class="nav-number">1.</span> <span class="nav-text">$\rm{0x01}$ 闲话 · $LCT$的用途以及具体思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rm-0x02-闲话-·-关于-rm-splay"><span class="nav-number">2.</span> <span class="nav-text">$\rm{0x02}$ 闲话 · 关于$\rm{splay}$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rm-0x03-LCT-的思路和基础操作"><span class="nav-number">3.</span> <span class="nav-text">$\rm{0x03}$   $LCT$的思路和基础操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-主要思路"><span class="nav-number">3.1.</span> <span class="nav-text">一 主要思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-基础操作"><span class="nav-number">3.2.</span> <span class="nav-text">二 基础操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm-1-Access"><span class="nav-number">3.3.</span> <span class="nav-text">$\rm{1}$  $Access$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Make-Root"><span class="nav-number">3.4.</span> <span class="nav-text">$2 ~~Make~ Root~$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Merge"><span class="nav-number">3.5.</span> <span class="nav-text">$3 ~Merge~$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Link-amp-Cut"><span class="nav-number">3.6.</span> <span class="nav-text">$4~~Link~\&amp;~Cut$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Rotate-中的坑点"><span class="nav-number">3.7.</span> <span class="nav-text">5 $~Rotate$中的坑点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#color-red-C-color-cyan-o-color-gold-d-color-green-e"><span class="nav-number">4.</span> <span class="nav-text">$\color{red}{C}\color{cyan}{o}\color{gold}{d}\color{green}{e}$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rm-0x00-后记和参考"><span class="nav-number">5.</span> <span class="nav-text">$\rm{0x00}$   后记和参考</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#rm-Reference"><span class="nav-number">5.1.</span> <span class="nav-text">$\rm{Reference}$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mathfrak-writter-pks"><span class="nav-number">5.2.</span> <span class="nav-text">$\mathfrak{writter:pks}$</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Orchidany</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.0.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="../../../../lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="../../../../lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="../../../../lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="../../../../js/src/utils.js?v=7.0.0"></script>
+
+  <script src="../../../../js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="../../../../js/src/affix.js?v=7.0.0"></script>
+
+  <script src="../../../../js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="../../../../js/src/scrollspy.js?v=7.0.0"></script>
+<script src="../../../../js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="../../../../js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '',
+    clientSecret: '',
+    repo: 'Orchidany.github.io',
+    owner: 'Flower233pks',
+    admin: ['Flower233pks'],
+    id: md5(location.pathname),
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+</body>
+</html>
