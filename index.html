@@ -744,13 +744,26 @@ Algorithms, astrophysics, technology, that
   </div>
 
   <aside id="sidebar" class="sidebar">
+
+    <div class="sidebar-inner">
+      <div>
+        <div style="display: table-cell;vertical-align: top; color:#B2B7F2;font-size:24px;font-family:'Times New Roman',serif;font-weight:bold;text-align:left;">“</div>
+        <div style="display: table-cell;text-align: left; vertical-align: middle; text-indent: 2em; padding: 0.8em 0.2em 1em 0.2em"><b><span style="color:burlywood;"><span id="hitokoto-content"></span></span></b></div>
+        <div style="display: table-cell; vertical-align: bottom; color:#B2B7F2;font-size:24px;font-family:'Times New Roman',serif;font-weight:bold;text-align:left;">”</div>
+      </div>
+      <div style="text-align: right; font-size: 0.8em; color: black;" id="hitokoto-from"></div>
+      <div style="margin-top: 15px; font-size: 0.8em; color: black;"><a href="https://hitokoto.cn/">Hitokoto</a></div>
+    </div>
+    
+    <div style="height: 15px"></div>
+    
     
     <div class="sidebar-inner">
-
+    
       
-
+    
       
-
+    
       <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -760,7 +773,7 @@ Algorithms, astrophysics, technology, that
               <p class="site-author-name" itemprop="name">Orchidany</p>
               <p class="site-description motion-element" itemprop="description">For code, science, tech. any more</p>
           </div>
-
+    
           
             <nav class="site-state motion-element">
               
@@ -773,9 +786,9 @@ Algorithms, astrophysics, technology, that
                   </a>
                 </div>
               
-
+    
               
-
+    
               
                 
                 
@@ -794,9 +807,9 @@ Algorithms, astrophysics, technology, that
               
             </nav>
           
-
+    
           
-
+    
           
             <div class="links-of-author motion-element">
               
@@ -813,9 +826,9 @@ Algorithms, astrophysics, technology, that
               
             </div>
           
-
+    
           
-
+    
           
           
             <div class="links-of-blogroll motion-element links-of-blogroll-inline">
@@ -832,7 +845,7 @@ Algorithms, astrophysics, technology, that
               </ul>
             </div>
           
-
+    
           
             
           
@@ -840,9 +853,9 @@ Algorithms, astrophysics, technology, that
 
         </div>
       </div>
-
+    
       
-
+    
       
         <div class="back-to-top">
           <i class="fa fa-arrow-up"></i>
@@ -851,7 +864,7 @@ Algorithms, astrophysics, technology, that
           
         </div>
       
-
+    
     </div>
   </aside>
 
@@ -953,7 +966,12 @@ Algorithms, astrophysics, technology, that
 
 
   
-
+<script type="text/javascript">
+	$.get('https://v1.hitokoto.cn/?c=a', function (data) {
+		$('#hitokoto-content').css('display', '').text(data.hitokoto);
+		$('#hitokoto-from').css('display', '').text('——' + data.from);
+	});
+</script>
 
   <script src="js/src/utils.js?v=7.0.0"></script>
 
