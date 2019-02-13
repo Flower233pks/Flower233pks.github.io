@@ -94,16 +94,18 @@
 
 
 </script>
-  <meta name="description" content="For code, science, tech. any more">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Orchidany&#39;w blog">
-<meta property="og:url" content="http://yoursite.com/tags/线性代数-矩阵/index.html">
+  <meta name="description" content="$\mathfrak{HLPP}$嗯，我也不知道我在月考即将爆炸 + $NOIp$即将爆炸之际，学$HLPP$的目的何在$\rm{TAT}$。  #define $u$的伴点集合     与$u$相隔一条边的且$u$能达到的点的集合   $0x00~ {}~Preface$ $HLPP(Highest~Label~Preflow~Push)​$最高标签预流推进算法是处理网络最大流里两种常用方法——">
+<meta name="keywords" content="学习笔记,网络流-最大流,目测用不到的算法之HLPP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络流2·最大流的HLPP法">
+<meta property="og:url" content="http://yoursite.com/2019/01/11/HLPP/index.html">
 <meta property="og:site_name" content="Orchidany&#39;w blog">
-<meta property="og:description" content="For code, science, tech. any more">
+<meta property="og:description" content="$\mathfrak{HLPP}$嗯，我也不知道我在月考即将爆炸 + $NOIp$即将爆炸之际，学$HLPP$的目的何在$\rm{TAT}$。  #define $u$的伴点集合     与$u$相隔一条边的且$u$能达到的点的集合   $0x00~ {}~Preface$ $HLPP(Highest~Label~Preflow~Push)​$最高标签预流推进算法是处理网络最大流里两种常用方法——">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-10T18:14:04.485Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Orchidany&#39;w blog">
-<meta name="twitter:description" content="For code, science, tech. any more">
+<meta name="twitter:title" content="网络流2·最大流的HLPP法">
+<meta name="twitter:description" content="$\mathfrak{HLPP}$嗯，我也不知道我在月考即将爆炸 + $NOIp$即将爆炸之际，学$HLPP$的目的何在$\rm{TAT}$。  #define $u$的伴点集合     与$u$相隔一条边的且$u$能达到的点的集合   $0x00~ {}~Preface$ $HLPP(Highest~Label~Preflow~Push)​$最高标签预流推进算法是处理网络最大流里两种常用方法——">
 
 
 
@@ -112,7 +114,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/线性代数-矩阵/">
+  <link rel="canonical" href="http://yoursite.com/2019/01/11/HLPP/">
 
 
 
@@ -122,7 +124,7 @@
   };
 </script>
 
-  <title>标签: 线性代数-矩阵 | Orchidany'w blog</title>
+  <title>网络流2·最大流的HLPP法 | Orchidany'w blog</title>
   
 
 
@@ -170,7 +172,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 	<a href="https://github.com/Flower233pks" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -250,7 +252,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -355,82 +357,253 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>线性代数-矩阵<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/11/HLPP/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Orchidany">
+      <meta itemprop="description" content="For code, science, tech. any more">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+    
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Orchidany'w blog">
+    </span>
+    
+    
+      <header class="post-header">
+    
         
-          <a class="post-title-link" href="/2019/02/08/CF-536Div2の题解-E-F/" itemprop="url">
-            
-              <span itemprop="name">$CF\#536Div2$の题解($E\&F$)</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">网络流2·最大流的HLPP法
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-08T00:11:14+08:00" content="2019-02-08">
-          02-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+              
+            
+          </h1>
+        
+    
+        <div class="post-meta">
+          <span class="post-time">
+    
+            
+            
+            
+    
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+    
+              
+                
+              
+    
+              <time title="创建时间：2019-01-11 01:06:32" itemprop="dateCreated datePublished" datetime="2019-01-11T01:06:32+08:00">2019-01-11</time>
+            
+    
+            
+              
+    
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+    
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-02-11 02:14:04" itemprop="dateModified" datetime="2019-02-11T02:14:04+08:00">2019-02-11</time>
+              
+            
+          </span>
+    
+          
+    
+          
+            
+            
+          
+    
+          
+          
+    
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+    
+          
+    
+          
+    
+        </div>
+      </header>
+    
+    
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+    
+      
+      
+    
+      
+        <h1 id="mathfrak-HLPP"><a href="#mathfrak-HLPP" class="headerlink" title="$\mathfrak{HLPP}$"></a>$\mathfrak{HLPP}$</h1><p>嗯，我也不知道我在月考即将爆炸 + $NOIp$即将爆炸之际，学$HLPP$的目的何在$\rm{TAT}$。</p>
+<blockquote>
+<p>#define $u$的伴点集合     与$u$相隔一条边的且$u$能达到的点的集合 </p>
+</blockquote>
+<h2 id="0x00-Preface"><a href="#0x00-Preface" class="headerlink" title="$0x00~ {}~Preface$"></a>$0x00~ {}~Preface$</h2><blockquote>
+<p><strong>$HLPP(Highest~Label~Preflow~Push)​$最高标签预流推进算法</strong>是处理网络最大流里两种常用方法——<strong>增广路</strong>&amp;<strong>预流推进</strong>中，预流推进算法的一种。据传由$tarjan​$发明<del>怎么又是他</del> ，并被其他科学家证明了其复杂度是<strong>紧却的$O(n^2\sqrt m)​$</strong>。在随机数据中不逊色于普通的增广路算法，而在精心构造的数据中无法被卡，所以是一种可以替代$Dinic​$的方法（随我怎么说，代码又长又难调，所以还是$Dinic​$好啊$\rm{TAT}​$）</p>
+<p>但无论怎样，$wiki$里面已经承认$HLPP$是现在最优秀的网络流算法了。</p>
+</blockquote>
+<p>那么<strong>预流推进</strong>这个大门类里面，思想都差不多。大抵上就是我们对每个点记录<strong>超额流($Extra~Flow$)</strong> ，即<strong>允许流在非源点暂时存储</strong>，并<strong>伺机将超额流推送出去</strong>。不可推送的，就会流回源点。那么最终答案显然存储在$Extra[T]$里面。</p>
+<p>但同时这也有一个问题，就是会出现两个点相互推送不停的情况。为了防止这样，我们采用<strong>最高标号</strong>的策略，给每个点一个高度，对于一个点$u​$以及它的伴点集合${v}​$，当且仅当$h_u = h_v + 1​$ 时才可以推送流。并且我们对于源点$S​$，设置$h_S = N​$，并对于$S​$实行<strong>无限制推送</strong>。那么最后的答案就保存在$Extra[T]​$里面 。</p>
+<p>但有时，我们发现有个点是”谷“，即周围点的高度都比它高，但是它有超额流。那么我们此时考虑<strong>拔高它的高度</strong>，即<strong>重贴标签($relabel​$)</strong>操作。</p>
+<h2 id="0x01-初步的算法流程"><a href="#0x01-初步的算法流程" class="headerlink" title="$0x01$   初步的算法流程"></a>$0x01$   初步的算法流程</h2><p>以下我们用$Extra_u$表示$u$的超额流，$h_u$表示$u$的高度，用$f_k$表示边$k$的容量。</p>
+<ul>
+<li><p>首先把所有的$h_i$都置为零，并把$h_s$置为$N$（点数）。</p>
+</li>
+<li><p>将$S$的流推送到每个与$S$相邻的点，同时把他们加入一个以高度为键值得大根堆，所以每次取出的应该是高度最高的、且超额流不为零的点，并执行推送操作。</p>
+</li>
+<li><p>对于点$u$推送过程中，如果$Extra_u$减到了$0$，就立即退出<strong>（优化一）</strong></p>
+</li>
+<li><p>对于每条出边$k$，推送的流量$F = min(f_k,Extra_u)$并执行两个点（$u,v$）的超额流增减。<strong>如果$v$不在堆里面</strong>，要把$v$放到堆里面。</p>
+</li>
+<li><p>如果推送完毕$Extra[u]$不为零，那么从他的伴点集合选取一个高度最小的点并记录它的高度$h_{min}$，则新的$h_u = h_{min}+1$，并把$u​$入堆。</p>
+</li>
+</ul>
+<p>好的，然后就可以撒花了……可是等等，他怎么这么慢$qaq$</p>
+<p>接下来我们发现，重贴标签的过程似乎与$ISAP$有点点像……所以我们不妨通过一个$Gap$数组来记录”断层情况“：即如果对于一个点$u$来说，他的伴点集${v}$已经不存在$h_u = h_v + 1$的点了，并且也不存在一个点$j$使得$h_j = h_u$那么这个地方就是一个<strong>断层$(Gap)$</strong> ，那么也就是说，对于所有$h_i&gt; h_u$的点来说，它们把流推送到$h_u$的高度就不能继续推送了，所以我们直接$h_i = N + 1$，让他们回流到源点。<strong>（优化二）</strong></p>
+<p>接下来这个优化，亲测可以<strong>提速$4000ms​$</strong>，平均每个测试点提速$700​$ ~ $800ms​$，去掉数据最小的点，每个点平均提速$1000ms​$。这就是——$BFS​$!</p>
+<p>我们不妨一开始就倒着$BFS$一遍，搜出每个点离汇点的最短距离作为初始高度而不是把零作为初始高度（源点高度还是$N$。嗯，$Mr_Spade$大佬实在太强了$qwq$</p>
+<p>对了，代码实现方面，需要好多判断不是源点和汇点的小细节……无路赛无路赛无路赛$&gt;_&lt;$！</p>
+<h3 id="color-red-C-color-cyan-o-color-gold-d-color-green-e-·1"><a href="#color-red-C-color-cyan-o-color-gold-d-color-green-e-·1" class="headerlink" title="$\color{red}{C}\color{cyan}{o}\color{gold}{d}\color{green}{e}·1$"></a>$\color{red}{C}\color{cyan}{o}\color{gold}{d}\color{green}{e}·1$</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="comment">//省略某些部分</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Inf, MAXN, MAXM, to(k)</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">state</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> num, h ;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &lt;(<span class="keyword">const</span> state &amp; now) </span><br><span class="line">    <span class="keyword">const</span>&#123;  <span class="keyword">return</span> h &lt; now.h ; &#125;</span><br><span class="line">&#125; ; priority_queue &lt;state&gt; heap ; </span><br><span class="line">BFS init ;</span><br><span class="line"><span class="keyword">int</span> N, M, S, T, cnt = <span class="number">-1</span>, A, B, C, D, t, min_h ;</span><br><span class="line"><span class="keyword">int</span> head[MAXN], Extra[MAXN], H[MAXN], Gap[MAXN], node ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Preflow_Push</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">int</span> i, k ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i) </span><br><span class="line">        <span class="keyword">if</span>(H[i] &lt; Inf) ++ Gap[H[i]] ;</span><br><span class="line">    <span class="keyword">for</span>(k = head[S]; k != <span class="number">-1</span> ; k = E[k].next)</span><br><span class="line">        <span class="keyword">if</span>((t = E[k].f))&#123;</span><br><span class="line">            E[k].f -= t, E[k ^ <span class="number">1</span>].f += t, Extra[S] -= t, Extra[to(k)] += t ;</span><br><span class="line">            <span class="keyword">if</span>(to(k) != T &amp;&amp; !vis[to(k)])</span><br><span class="line">                heap.push((state)&#123;to(k), H[to(k)]&#125;), vis[to(k)] = <span class="number">1</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">while</span>(!heap.empty())&#123;</span><br><span class="line">        vis[node = heap.top().num] = <span class="number">0</span>, min_h = Inf, heap.pop() ;</span><br><span class="line">        <span class="keyword">for</span>(k = head[node] ; k != <span class="number">-1</span> ; k = E[k].next)&#123;</span><br><span class="line">            <span class="keyword">if</span>(E[k].f &amp;&amp; H[node] == H[to(k)] + <span class="number">1</span>)&#123;</span><br><span class="line">                t = min(Extra[node], E[k].f) ;</span><br><span class="line">                E[k].f -= t, E[k ^ <span class="number">1</span>].f += t, Extra[node] -= t, Extra[to(k)] += t ;</span><br><span class="line">                <span class="keyword">if</span>(!vis[to(k)] &amp;&amp; to(k) != S &amp;&amp; to(k) != T)</span><br><span class="line">                    heap.push((state)&#123;to(k), H[to(k)]&#125;), vis[to(k)] = <span class="number">1</span> ;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (E[k].f) min_h = min(min_h, H[to(k)]) ;</span><br><span class="line">            <span class="keyword">if</span> (!Extra[node]) <span class="keyword">break</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(Extra[node]) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!--Gap[H[node]])    </span><br><span class="line">                <span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= N ; ++ i)</span><br><span class="line">                    <span class="keyword">if</span>(i != S &amp;&amp; i != T &amp;&amp; H[i] &gt; H[node] &amp;&amp; H[i] &lt; N + <span class="number">1</span>) H[i] = N + <span class="number">1</span> ;</span><br><span class="line">            H[node] = Inf; H[node] = min_h + <span class="number">1</span> ; </span><br><span class="line">            heap.push((state)&#123;node, H[node]&#125;), vis[node] = <span class="number">1</span>, ++ Gap[H[node]] ;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;fast;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Input() ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i) </span><br><span class="line">        head[i] = <span class="number">-1</span>, H[i] = Inf ;</span><br><span class="line">    <span class="keyword">while</span>(M --)&#123;Add; &#125;</span><br><span class="line">    q.push(T), H[T] = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">        <span class="keyword">int</span> now = q.front() ; q.pop() ;</span><br><span class="line">        <span class="keyword">for</span>(k = head[now] ; k != <span class="number">-1</span> ; k = E[k].next)</span><br><span class="line">            <span class="keyword">if</span> (H[to(k)] &gt; H[now] + <span class="number">1</span>)</span><br><span class="line">                H[E[k].to] = H[now] + <span class="number">1</span>, q.push(E[k].to) ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (H[S] == <span class="number">0</span>) &#123;<span class="built_in">cout</span> &lt;&lt; <span class="number">0</span> &lt;&lt; <span class="built_in">endl</span> ; <span class="keyword">return</span> <span class="number">0</span> ;&#125; </span><br><span class="line">    H[S] = N, Preflow_Push() ; <span class="built_in">cout</span> &lt;&lt; Extra[T] &lt;&lt; <span class="built_in">endl</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看起来我们加上下面这一句话的毒瘤卡常就可以有4000ms左右的好成绩，但事实上，这个速度依旧慢的要死。</p>
 
       
     </div>
+    
+    
+      
 
+
+    
+    
+    
+    
+    
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+  
+</div>
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/学习笔记/" rel="tag"><i class="fa fa-tag"></i> 学习笔记</a>
+          
+            <a href="/tags/网络流-最大流/" rel="tag"><i class="fa fa-tag"></i> 网络流-最大流</a>
+          
+            <a href="/tags/目测用不到的算法之HLPP/" rel="tag"><i class="fa fa-tag"></i> 目测用不到的算法之HLPP</a>
+          
+        </div>
+      
+    
+      
+      
+      
+    
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/20/net-work-flow初步/" rel="next" title="网络流1·$Dinic\&$费用流">
+                <i class="fa fa-chevron-left"></i> 网络流1·$Dinic\&$费用流
+              </a>
+            
+          </div>
+    
+          <span class="post-nav-divider"></span>
+    
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/04/Intro-1/" rel="prev" title="$Intro$">
+                $Intro$ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -464,8 +637,17 @@
       
     
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
     
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -603,6 +785,23 @@
         </div>
       </div>
     
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+    
+            
+            
+            
+            
+    
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#mathfrak-HLPP"><span class="nav-number">1.</span> <span class="nav-text">$\mathfrak{HLPP}$</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00-Preface"><span class="nav-number">1.1.</span> <span class="nav-text">$0x00~ {}~Preface$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-初步的算法流程"><span class="nav-number">1.2.</span> <span class="nav-text">$0x01$   初步的算法流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#color-red-C-color-cyan-o-color-gold-d-color-green-e-·1"><span class="nav-number">1.2.1.</span> <span class="nav-text">$\color{red}{C}\color{cyan}{o}\color{gold}{d}\color{green}{e}·1$</span></a></li></ol></li></ol></li></ol></div>
+            
+    
+          </div>
+        </div>
+      <!--/noindex-->
       
     
       
@@ -770,6 +969,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
 
   
 
@@ -780,6 +983,34 @@
 
   
 
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '68416b88a786dda48abc',
+    clientSecret: '84370285d60ee366809888cecf1fcb6bdcddadaf',
+    repo: 'Orchidany.github.io',
+    owner: 'Flower233pks',
+    admin: ['Flower233pks'],
+    id: md5(location.pathname),
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
 
 
   
@@ -1118,6 +1349,43 @@
   
 
   
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
+  
 
 
   
@@ -1149,7 +1417,7 @@
   <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
   <script>
   
-    bookmark.loadBookmark();
+    bookmark.scrollToMark('auto', "#更多");
   
   </script>
 
