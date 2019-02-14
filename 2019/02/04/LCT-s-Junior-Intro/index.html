@@ -94,20 +94,20 @@
 
 
 </script>
-  <meta name="description" content="$\rm{0x01}$ 闲话 · $LCT$的用途以及具体思路咳，其实在我最近只是浅浅地学了一部分的基础上，窝觉得$LCT$其实就是一个用来维护森林连通性的。 嗯……因为其独特的性质所以也可以顺便维护好多东西，什么链上的最大值啊，链上的权值和啊……都可以维护——或者说，LCT是更加全能的树剖。 但其实吧……$LCT$打板子是很简单的，但是真正理解却一点儿也不简单。因为本身$splay$就很麻烦了，">
+  <meta name="description" content="$\rm{0x01}$ 闲话 · $LCT$的用途以及具体思路咳，其实在我最近只是浅浅地学了一部分的基础上，窝觉得$LCT$其实就是一个用来维护森林连通性的。 嗯……因为其独特的性质所以也可以顺便维护好多东西，什么链上的最大值啊，链上的权值和啊……都可以维护——或者说，LCT是更加全能的树剖。 但其实吧……$LCT$打板子是很简单的，但是真正理解却一点儿也不简单。因为本身$splay$就很麻烦了">
 <meta name="keywords" content="学习笔记,LCT-Link Cut Tree">
 <meta property="og:type" content="article">
 <meta property="og:title" content="$LCT&#39;s ~Junior ~Intro·$LCT入门">
 <meta property="og:url" content="http://yoursite.com/2019/02/04/LCT-s-Junior-Intro/index.html">
 <meta property="og:site_name" content="Orchidany&#39;w blog">
-<meta property="og:description" content="$\rm{0x01}$ 闲话 · $LCT$的用途以及具体思路咳，其实在我最近只是浅浅地学了一部分的基础上，窝觉得$LCT$其实就是一个用来维护森林连通性的。 嗯……因为其独特的性质所以也可以顺便维护好多东西，什么链上的最大值啊，链上的权值和啊……都可以维护——或者说，LCT是更加全能的树剖。 但其实吧……$LCT$打板子是很简单的，但是真正理解却一点儿也不简单。因为本身$splay$就很麻烦了，">
+<meta property="og:description" content="$\rm{0x01}$ 闲话 · $LCT$的用途以及具体思路咳，其实在我最近只是浅浅地学了一部分的基础上，窝觉得$LCT$其实就是一个用来维护森林连通性的。 嗯……因为其独特的性质所以也可以顺便维护好多东西，什么链上的最大值啊，链上的权值和啊……都可以维护——或者说，LCT是更加全能的树剖。 但其实吧……$LCT$打板子是很简单的，但是真正理解却一点儿也不简单。因为本身$splay$就很麻烦了">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2019/02/04/LCT-s-Junior-Intro/t1.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/02/04/LCT-s-Junior-Intro/t2.png">
 <meta property="og:updated_time" content="2019-02-12T15:33:04.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="$LCT&#39;s ~Junior ~Intro·$LCT入门">
-<meta name="twitter:description" content="$\rm{0x01}$ 闲话 · $LCT$的用途以及具体思路咳，其实在我最近只是浅浅地学了一部分的基础上，窝觉得$LCT$其实就是一个用来维护森林连通性的。 嗯……因为其独特的性质所以也可以顺便维护好多东西，什么链上的最大值啊，链上的权值和啊……都可以维护——或者说，LCT是更加全能的树剖。 但其实吧……$LCT$打板子是很简单的，但是真正理解却一点儿也不简单。因为本身$splay$就很麻烦了，">
+<meta name="twitter:description" content="$\rm{0x01}$ 闲话 · $LCT$的用途以及具体思路咳，其实在我最近只是浅浅地学了一部分的基础上，窝觉得$LCT$其实就是一个用来维护森林连通性的。 嗯……因为其独特的性质所以也可以顺便维护好多东西，什么链上的最大值啊，链上的权值和啊……都可以维护——或者说，LCT是更加全能的树剖。 但其实吧……$LCT$打板子是很简单的，但是真正理解却一点儿也不简单。因为本身$splay$就很麻烦了">
 <meta name="twitter:image" content="http://yoursite.com/2019/02/04/LCT-s-Junior-Intro/t1.jpg">
 
 
@@ -481,7 +481,7 @@
       
     
       
-        <h1 id="rm-0x01-闲话-·-LCT-的用途以及具体思路"><a href="#rm-0x01-闲话-·-LCT-的用途以及具体思路" class="headerlink" title="$\rm{0x01}$ 闲话 · $LCT$的用途以及具体思路"></a>$\rm{0x01}$ 闲话 · $LCT$的用途以及具体思路</h1><p>咳，其实在我最近只是浅浅地学了一部分的基础上，窝觉得$LCT$其实就是一个用来维护<strong>森林连通性</strong>的。</p>
+        <script src="/assets/js/APlayer.min.js"> </script><h1 id="rm-0x01-闲话-·-LCT-的用途以及具体思路"><a href="#rm-0x01-闲话-·-LCT-的用途以及具体思路" class="headerlink" title="$\rm{0x01}$ 闲话 · $LCT$的用途以及具体思路"></a>$\rm{0x01}$ 闲话 · $LCT$的用途以及具体思路</h1><p>咳，其实在我最近只是浅浅地学了一部分的基础上，窝觉得$LCT$其实就是一个用来维护<strong>森林连通性</strong>的。</p>
 <p>嗯……因为其独特的性质所以也可以顺便维护好多东西，什么链上的最大值啊，链上的权值和啊……都可以维护——或者说，LCT是更加全能的树剖。</p>
 <p>但其实吧……$LCT$打板子是很简单的，但是真正理解却一点儿也不简单。因为本身$splay$就很麻烦了，况且$splay$之前一直用于维护数列。要知道，此处的$splay$可是作为<strong>辅助树</strong>，维护一整个森林，并且可以支持序列中几乎全部操作——这就大大增高了理解难度。举个例子，你曾经认为已经难以理解、或者说不可以做的、比较复杂的区间翻转<a href="https://www.luogu.org/problemnew/show/P3391" target="_blank" rel="noopener">$Luogu3391$</a>，在$LCT$里面有十分全面的涉及，但是被精简到了只有两行是用来描述这个内容的。显而易见的是，$LCT$虽然常数十分的大，但代码十分的短，比一棵完整的平衡树短了不少（实测50+行），与$FFT$一样具有着华丽的可观赏性，但是隐藏在之后的思维难度同样不可小觑。</p>
 <p>也就是说我们是不是学的太草率、太浮躁了呢？快餐式地学完$LCT$，网上的每一篇博客都包教包会。但是我今天要整理的，是对于$LCT$真正的理解。希望各位看到这篇拙作的人可以获得一些什么。</p>
@@ -902,7 +902,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共16.2k字</span>
+  <span class="post-count">博客全站共16.3k字</span>
 </div>
         
 <div class="busuanzi-count">

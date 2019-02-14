@@ -94,18 +94,18 @@
 
 
 </script>
-  <meta name="description" content="网络流1·$Dinic\&amp;amp;$费用流$0x00~ {}~Preface$$2333$这是好久之前学的了，不过一直在咕咕咕咕。 一般来讲，正常的网络流笔记一开始都是要给网络流图下定义的。那么我们不妨也来先进行一波这种操作。 那么网络流图，类似于有向图，边上带权，但是这个权值变成了“容量”。那么，我们定义容量为$c(u,v) \in E ? c(u,v) : 0​$。在整张图中有一个源点和一个汇">
+  <meta name="description" content="网络流1·$Dinic\&amp;amp;$费用流$0x00~ {}~Preface$$2333$这是好久之前学的了，不过一直在咕咕咕咕。 一般来讲，正常的网络流笔记一开始都是要给网络流图下定义的。那么我们不妨也来先进行一波这种操作。 那么网络流图，类似于有向图，边上带权，但是这个权值变成了“容量”。那么，我们定义容量为$c(u,v) \in E ? c(u,v) : 0​$。在整张图中有一个源点和一个">
 <meta name="keywords" content="学习笔记,网络流-最大流,网络流-费用流">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网络流1·$Dinic\&amp;$费用流">
 <meta property="og:url" content="http://yoursite.com/2018/08/20/net-work-flow初步/index.html">
 <meta property="og:site_name" content="Orchidany&#39;w blog">
-<meta property="og:description" content="网络流1·$Dinic\&amp;amp;$费用流$0x00~ {}~Preface$$2333$这是好久之前学的了，不过一直在咕咕咕咕。 一般来讲，正常的网络流笔记一开始都是要给网络流图下定义的。那么我们不妨也来先进行一波这种操作。 那么网络流图，类似于有向图，边上带权，但是这个权值变成了“容量”。那么，我们定义容量为$c(u,v) \in E ? c(u,v) : 0​$。在整张图中有一个源点和一个汇">
+<meta property="og:description" content="网络流1·$Dinic\&amp;amp;$费用流$0x00~ {}~Preface$$2333$这是好久之前学的了，不过一直在咕咕咕咕。 一般来讲，正常的网络流笔记一开始都是要给网络流图下定义的。那么我们不妨也来先进行一波这种操作。 那么网络流图，类似于有向图，边上带权，但是这个权值变成了“容量”。那么，我们定义容量为$c(u,v) \in E ? c(u,v) : 0​$。在整张图中有一个源点和一个">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-02-10T17:17:40.907Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络流1·$Dinic\&amp;$费用流">
-<meta name="twitter:description" content="网络流1·$Dinic\&amp;amp;$费用流$0x00~ {}~Preface$$2333$这是好久之前学的了，不过一直在咕咕咕咕。 一般来讲，正常的网络流笔记一开始都是要给网络流图下定义的。那么我们不妨也来先进行一波这种操作。 那么网络流图，类似于有向图，边上带权，但是这个权值变成了“容量”。那么，我们定义容量为$c(u,v) \in E ? c(u,v) : 0​$。在整张图中有一个源点和一个汇">
+<meta name="twitter:description" content="网络流1·$Dinic\&amp;amp;$费用流$0x00~ {}~Preface$$2333$这是好久之前学的了，不过一直在咕咕咕咕。 一般来讲，正常的网络流笔记一开始都是要给网络流图下定义的。那么我们不妨也来先进行一波这种操作。 那么网络流图，类似于有向图，边上带权，但是这个权值变成了“容量”。那么，我们定义容量为$c(u,v) \in E ? c(u,v) : 0​$。在整张图中有一个源点和一个">
 
 
 
@@ -478,7 +478,7 @@
       
     
       
-        <h1 id="网络流1·-Dinic-amp-费用流"><a href="#网络流1·-Dinic-amp-费用流" class="headerlink" title="网络流1·$Dinic\&amp;$费用流"></a>网络流1·$Dinic\&amp;$费用流</h1><h2 id="0x00-Preface"><a href="#0x00-Preface" class="headerlink" title="$0x00~ {}~Preface$"></a>$0x00~ {}~Preface$</h2><p>$2333$这是好久之前学的了，不过一直在咕咕咕咕。</p>
+        <script src="/assets/js/APlayer.min.js"> </script><h1 id="网络流1·-Dinic-amp-费用流"><a href="#网络流1·-Dinic-amp-费用流" class="headerlink" title="网络流1·$Dinic\&amp;$费用流"></a>网络流1·$Dinic\&amp;$费用流</h1><h2 id="0x00-Preface"><a href="#0x00-Preface" class="headerlink" title="$0x00~ {}~Preface$"></a>$0x00~ {}~Preface$</h2><p>$2333$这是好久之前学的了，不过一直在咕咕咕咕。</p>
 <p>一般来讲，正常的网络流笔记一开始都是要给网络流图下定义的。那么我们不妨也来先进行一波这种操作。</p>
 <p>那么网络流图，类似于有向图，边上带权，但是这个权值变成了“容量”。那么，我们定义容量为$c(u,v) \in E ? c(u,v) : 0​$。在整张图中有一个源点和一个汇点，且对于每个点来说有$$\sum F_{in} = \sum F_{out}​$$并且我们人为的将$S​$的$F_{in}​$设置为$0​$，$F_{out}​$设置为$+\infty​$。$T​$正好相反。当然，如果非说不合适的话，可以将源点和汇点看做同一个点233.</p>
 <p>通过线性规划我们可以证明的是<strong>最大流等价于最小割</strong>，而博主现在对线性规划还只是一知半解，等什么时候“贯通了”再整理博客吧233</p>
@@ -868,7 +868,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共16.2k字</span>
+  <span class="post-count">博客全站共16.3k字</span>
 </div>
         
 <div class="busuanzi-count">

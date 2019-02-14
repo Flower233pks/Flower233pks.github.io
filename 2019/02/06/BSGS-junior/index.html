@@ -94,18 +94,18 @@
 
 
 </script>
-  <meta name="description" content="$BSGS$$\rm{0x01}$  $\mathcal{Preface}$$\rm{BSGS}(Baby~Step~Giant~Step)$, 大步小步法。当然也会被叫做拔山盖世、北上广深算法……咳，这并不重要。形式化地讲， $\rm{BSGS}$算法主要用来解决以下问题 :  给定质数$p$, 整数$a, b$, $(a, p)=1$.求最小的非负整数$x​$, 使得$a^x≡ b~(\mod">
+  <meta name="description" content="$BSGS$$\rm{0x01}$  $\mathcal{Preface}$$\rm{BSGS}(Baby~Step~Giant~Step)$, 大步小步法。当然也会被叫做拔山盖世、北上广深算法……咳，这并不重要。形式化地讲， $\rm{BSGS}$算法主要用来解决以下问题 :  给定质数$p$, 整数$a, b$, $(a, p)=1$.求最小的非负整数$x​$, 使得$a^x≡ b~(\mo">
 <meta name="keywords" content="BSGS,学习笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="$\rm{BSGS-Junior}·$BSGS算法初探">
 <meta property="og:url" content="http://yoursite.com/2019/02/06/BSGS-junior/index.html">
 <meta property="og:site_name" content="Orchidany&#39;w blog">
-<meta property="og:description" content="$BSGS$$\rm{0x01}$  $\mathcal{Preface}$$\rm{BSGS}(Baby~Step~Giant~Step)$, 大步小步法。当然也会被叫做拔山盖世、北上广深算法……咳，这并不重要。形式化地讲， $\rm{BSGS}$算法主要用来解决以下问题 :  给定质数$p$, 整数$a, b$, $(a, p)=1$.求最小的非负整数$x​$, 使得$a^x≡ b~(\mod">
+<meta property="og:description" content="$BSGS$$\rm{0x01}$  $\mathcal{Preface}$$\rm{BSGS}(Baby~Step~Giant~Step)$, 大步小步法。当然也会被叫做拔山盖世、北上广深算法……咳，这并不重要。形式化地讲， $\rm{BSGS}$算法主要用来解决以下问题 :  给定质数$p$, 整数$a, b$, $(a, p)=1$.求最小的非负整数$x​$, 使得$a^x≡ b~(\mo">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-02-13T02:54:33.936Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="$\rm{BSGS-Junior}·$BSGS算法初探">
-<meta name="twitter:description" content="$BSGS$$\rm{0x01}$  $\mathcal{Preface}$$\rm{BSGS}(Baby~Step~Giant~Step)$, 大步小步法。当然也会被叫做拔山盖世、北上广深算法……咳，这并不重要。形式化地讲， $\rm{BSGS}$算法主要用来解决以下问题 :  给定质数$p$, 整数$a, b$, $(a, p)=1$.求最小的非负整数$x​$, 使得$a^x≡ b~(\mod">
+<meta name="twitter:description" content="$BSGS$$\rm{0x01}$  $\mathcal{Preface}$$\rm{BSGS}(Baby~Step~Giant~Step)$, 大步小步法。当然也会被叫做拔山盖世、北上广深算法……咳，这并不重要。形式化地讲， $\rm{BSGS}$算法主要用来解决以下问题 :  给定质数$p$, 整数$a, b$, $(a, p)=1$.求最小的非负整数$x​$, 使得$a^x≡ b~(\mo">
 
 
 
@@ -478,7 +478,7 @@
       
     
       
-        <h1 id="BSGS"><a href="#BSGS" class="headerlink" title="$BSGS$"></a>$BSGS$</h1><h2 id="rm-0x01-mathcal-Preface"><a href="#rm-0x01-mathcal-Preface" class="headerlink" title="$\rm{0x01}$  $\mathcal{Preface}$"></a>$\rm{0x01}$  $\mathcal{Preface}$</h2><p><strong>$\rm{BSGS}(Baby~Step~Giant~Step)$, 大步小步法</strong>。当然也会被叫做<strong>拔山盖世</strong>、<strong>北上广深</strong>算法……咳，这并不重要。形式化地讲， $\rm{BSGS}$算法主要用来解决以下问题 : </p>
+        <script src="/assets/js/APlayer.min.js"> </script><h1 id="BSGS"><a href="#BSGS" class="headerlink" title="$BSGS$"></a>$BSGS$</h1><h2 id="rm-0x01-mathcal-Preface"><a href="#rm-0x01-mathcal-Preface" class="headerlink" title="$\rm{0x01}$  $\mathcal{Preface}$"></a>$\rm{0x01}$  $\mathcal{Preface}$</h2><p><strong>$\rm{BSGS}(Baby~Step~Giant~Step)$, 大步小步法</strong>。当然也会被叫做<strong>拔山盖世</strong>、<strong>北上广深</strong>算法……咳，这并不重要。形式化地讲， $\rm{BSGS}$算法主要用来解决以下问题 : </p>
 <h4 id="给定质数-p-整数-a-b-a-p-1-求最小的非负整数-x​-使得-a-x≡-b-mod-p-​"><a href="#给定质数-p-整数-a-b-a-p-1-求最小的非负整数-x​-使得-a-x≡-b-mod-p-​" class="headerlink" title="给定质数$p$, 整数$a, b$, $(a, p)=1$.求最小的非负整数$x​$, 使得$a^x≡ b~(\mod p)​$"></a>给定质数$p$, 整数$a, b$, $(a, p)=1$.求最小的非负整数$x​$, 使得$a^x≡ b~(\mod p)​$</h4><p>而首先我们知道的，是由欧拉定理$a ^{\varphi(p)} ≡ 1 ~(\mod p)​$，并且我们还知道$a^0=1≡1  ~(\mod p)​$，所以我们可以得出一个断言：</p>
 <p><strong>如果方程$a^x≡ b~(\mod p)​$有最小非负整数解，那么最小非负整数解一定在$[0, \varphi(p))​$中</strong> $\qquad \qquad(1) ​$</p>
 <p>此处肉眼可以看出其循环节为$\varphi(p)$，不再证明。</p>
@@ -839,7 +839,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共16.2k字</span>
+  <span class="post-count">博客全站共16.3k字</span>
 </div>
         
 <div class="busuanzi-count">
