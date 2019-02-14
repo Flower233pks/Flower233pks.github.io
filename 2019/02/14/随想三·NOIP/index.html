@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="true">
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="1lvvgt4Q8a">
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icon-32.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+
+  
+
+
+
+
+</script>
+  <meta name="description" content="他看着眼前的屏幕，静静地发呆。 他不知道迎接他的将会是什么，后天的$\rm{NOIp}$终究是个谜。 刚刚给机房里其他人讲完期望的他，打心底觉得自己没有讲好，但效果似乎还可以。 “希望别考期望吧，嘿嘿……”他心里这么想着。 晚上，他一直在补他出的题的锅。鸽了这么久，也该写一写题解了啊。 他不知道是否该向身旁的同僚们一样继续打板子——上午打的板子让他很满意，虽然都是很简单的东西，但是他却觉得自己写的">
+<meta name="keywords" content="随想·下下笔">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2018-2019赛季最后的随想&#x2F; $\rm{NOIP2018}$游记·启示录">
+<meta property="og:url" content="http://www.orchidany.cf/2019/02/14/随想三·NOIP/index.html">
+<meta property="og:site_name" content="Orchidany&#39;w blog">
+<meta property="og:description" content="他看着眼前的屏幕，静静地发呆。 他不知道迎接他的将会是什么，后天的$\rm{NOIp}$终究是个谜。 刚刚给机房里其他人讲完期望的他，打心底觉得自己没有讲好，但效果似乎还可以。 “希望别考期望吧，嘿嘿……”他心里这么想着。 晚上，他一直在补他出的题的锅。鸽了这么久，也该写一写题解了啊。 他不知道是否该向身旁的同僚们一样继续打板子——上午打的板子让他很满意，虽然都是很简单的东西，但是他却觉得自己写的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-14T14:21:11.649Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2018-2019赛季最后的随想&#x2F; $\rm{NOIP2018}$游记·启示录">
+<meta name="twitter:description" content="他看着眼前的屏幕，静静地发呆。 他不知道迎接他的将会是什么，后天的$\rm{NOIp}$终究是个谜。 刚刚给机房里其他人讲完期望的他，打心底觉得自己没有讲好，但效果似乎还可以。 “希望别考期望吧，嘿嘿……”他心里这么想着。 晚上，他一直在补他出的题的锅。鸽了这么久，也该写一写题解了啊。 他不知道是否该向身旁的同僚们一样继续打板子——上午打的板子让他很满意，虽然都是很简单的东西，但是他却觉得自己写的">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Orchidany'w blog" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://www.orchidany.cf/2019/02/14/随想三·NOIP/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>2018-2019赛季最后的随想/ $\rm{NOIP2018}$游记·启示录 | Orchidany'w blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/Flower233pks" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Orchidany'w blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Love is a touch but yet not a touch</p>
+      
+    
+    
+      <a>
+        <img class="custom-logo-image" src="/images/qwq.png" alt="Orchidany'w blog">
+      </a>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>站点地图</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+    
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.orchidany.cf/2019/02/14/随想三·NOIP/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Orchidany">
+      <meta itemprop="description" content="For code, science, tech. any more">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+    
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Orchidany'w blog">
+    </span>
+    
+    
+      <header class="post-header">
+    
+        
+        
+          <h1 class="post-title" itemprop="name headline">2018-2019赛季最后的随想/ $\rm{NOIP2018}$游记·启示录
+
+              
+            
+          </h1>
+        
+    
+        <div class="post-meta">
+          <span class="post-time">
+    
+            
+            
+            
+    
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+    
+              
+                
+              
+    
+              <time title="创建时间：2019-02-14 22:11:50 / 修改时间：22:21:11" itemprop="dateCreated datePublished" datetime="2019-02-14T22:11:50+08:00">2019-02-14</time>
+            
+    
+            
+              
+    
+              
+            
+          </span>
+    
+          
+    
+          
+            
+            
+          
+    
+          
+          
+    
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+    
+          
+    
+          
+    
+        </div>
+      </header>
+    
+    
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+    
+      
+      
+    
+      
+        <p>他看着眼前的屏幕，静静地发呆。</p>
+<p>他不知道迎接他的将会是什么，后天的$\rm{NOIp}$终究是个谜。</p>
+<p>刚刚给机房里其他人讲完期望的他，打心底觉得自己没有讲好，但效果似乎还可以。</p>
+<p>“希望别考期望吧，嘿嘿……”他心里这么想着。</p>
+<p>晚上，他一直在补他出的题的锅。鸽了这么久，也该写一写题解了啊。</p>
+<p>他不知道是否该向身旁的同僚们一样继续打板子——上午打的板子让他很满意，虽然都是很简单的东西，但是他却觉得自己写的很精彩，都是一遍$AC$。大概这样，他觉得似乎没什么问题。</p>
+<p>从下午就开始有空调暖风了，这倒是让他十分欣喜。前几天，或者说昨天，在机房穿着厚厚的羽绒服，手颤抖着，脑袋十分昏沉地打代码，他不愿意再回想起这些。</p>
+<hr>
+<p>早上十分着急地买了早饭，之前吃学校里的羊汤都吃的是羊杂汤，今天决定尝试一下贵三块钱的羊肉汤的他感到很失望——羊肉又肥又腻又膻腥。他一点没吃，买了一块脆香米就走出了食堂。去奥赛室收拾了一下东西，本来还想离线下来几集最近在追的番剧，才发现原来$\rm{Bilibili}$没有$Mac$版，连硕鼠也不能用了，便只得作罢。</p>
+<p>终于要走了。踏上去昌邑一中的车的前一刻，他回头看了一眼学校。他记得那个开朗的、但是实际上并不是很熟的女孩在听课之前为他助威的场景；他记得他自己计划的是，$NOIP$好好考，参加完冬令营，签一个清北约，带着还算不错的成绩迎接寒假，然后在寒假里去找他的女神——高中新认识的、一个爱笑的、努力的、可爱的女生，撩她出去玩儿，最好是能在一起吧——但是学校规则是不会允许的吧。不过他认为，只要彼此都在学校里数一数二，只要彼此都能比较轻松地上清北，学校或许会睁一只眼闭一只眼。他似乎对将来他们一起努力的场景充满了信心。</p>
+<p>“大概只需要400分，或者以上？总之不是特别难吧。”他这么想着，眼里发出晶蓝色的光，或许是反射的太阳光吧。</p>
+<p>看了看天空，他上了大巴车。</p>
+<hr>
+<p>”昌邑一中真大啊“这是他到这儿后的第一想法。</p>
+<p>到达昌邑一中已经是中午。饭菜比较可口，在他心里大概比日照一中的饭菜$better$几倍。下午原本想出去找同僚们蹭一下网，把板子打完，但谁知道一睡就睡到了四点。匆匆忙忙地看完考场位置，在路上遇到了同僚和前同僚。瞎侃了几句之后发现到饭点儿了，于是就只能选择去吃晚饭了。晚饭给他的感觉似乎没有午饭那么惊艳，“或许是太累了吧”，他这么想。吃饭的时候和$rqy$瞎侃，感觉海星。</p>
+<p>宿管说$6$点以后来电，结果咕咕咕。我们于是就用空调插头接上插排凑活了一晚上。</p>
+<p>他十二点左右才睡下——虽然他知道这么晚睡不行，但是没有办法，板子没打完的话，心中像是有什么负担一样——当初他执着于补一晚上自己的锅而不是去打板子大概也是这个缘由。他想放心地进入考场，这是他考试的习惯。</p>
+<hr>
+<h2 id="rm-Day-1"><a href="#rm-Day-1" class="headerlink" title="$\rm{Day~1}$"></a>$\rm{Day~1}$</h2><p>突然不让坐电梯，六楼让他气喘吁吁。“该减肥了……不过现在或许不是想这个的时候”。</p>
+<p>考场在六楼，昨晚试机的时候，他写了一个$dijkstra$，写了个$ST$表又写了个暴力$n^2 ~\rm{RMQ}$ ，并写了个对拍。都是一次成功。让他感觉很好。</p>
+<p>入场了，他带了两块橡皮糖，两小块脆香米，都是早先从学校买好的。</p>
+<p>$T1$他觉得似曾相识，大概是什么积木大赛还是积木大会啥的，他记不清了。考场的时候他一走神就会不自觉地去想最后一个字到底是什么，但就是想不起来。最后他写了一个复杂度$n\log^2n$的线段树和一个$n\log n$的$ST$表，又写了个对拍啥的让他俩拍，此时已经$9:15$了。</p>
+<p>$T2$他从第一眼开始就已经输了。他觉得应该是什么数学题或者结论题，花了$10min$写了个暴力，过不了大样例的最后一个点，又想了$10min$他才发现原来不止可以由两个推出新的，可能是三个或者更多。$DP$这个想法在他脑子里一闪而过，他没有选择捕捉。最终他居然只写了一个暴力+骗分。</p>
+<p>$T3$大概只会求直径——但是他只记得是什么两遍$dfs$或者$bfs$，因为他从没做过求直径的题。考试之前$qbxt$的时候，他甚至让别人给他推荐几道直径的题，但终究是没来得及做。他很后悔。最终写了一个暴力骗分。</p>
+<p>期望得分$100pts + random(0,100)+random(10,20) $</p>
+<p>$Luogu$数据$100pts + 65pts + 15pts = 180pts$</p>
+<p>听说今天三道题都是原题，他很愤懑，希望没准可以让$CCF$重考一下之类的。但是这根本是无稽之谈。</p>
+<p>下午他和同僚去逛了逛昌邑一中，并且买了三本东野圭吾的书，店主对他不错，给他打了七折。</p>
+<p>考挂了，他想到。</p>
+<p>这世界上似乎就他一个不会$T2$的人。</p>
+<p>他对好多人的言行感到厌烦：有人说“完了，大众分160”，接着便有人回驳他“明明大众分220”，但接着又有人大声地说“大众分明明255好吧”。</p>
+<p>虽然大家平常都互%，但是总感觉那些弱小的人是多么的无助啊——他们只会感到虚伪、无助、绝望。像我一样。</p>
+<p>或许他期望着明天能翻盘？</p>
+<p>晚上他彻底颓废了，要求熄灯后，他用同学的热点看了《青春期猪头少年XXXX》的最新三集，感到海星。依旧睡得不早。$11：30$左右吧。</p>
+<hr>
+<h2 id="rm-Day-2"><a href="#rm-Day-2" class="headerlink" title="$\rm{Day~2}$"></a>$\rm{Day~2}$</h2><p>今天他没有带什么吃的。</p>
+<p>$T1$只会$60$分，转眼去看$T2$</p>
+<p>写了好长时间的暴力并且调了好久，在考试结束前$30min$他写好了爆搜，找出了规律，$65pts$左右。</p>
+<p>$T3$连想的时间都没有。</p>
+<p>退役了。</p>
+<hr>
+<p>他很伤心。</p>
+<p>回家之后他和其他省市的$Oier$交流之后发现大概都挂了。无奈的世界。</p>
+<p>他本来不想期中考试，但是却又想不出什么理由来不去考试。毕竟刚考完$NOIp$的其他人都照常期中考试。</p>
+<p>他觉得自己语文发挥的一般，物理发挥的正常，除了物理的某个傻狗填空题让保留一位小数自己眼瞎了而已。</p>
+<p>其余的都考炸了。</p>
+<p>初回文化课，班里的人并不陌生。语文老师似乎对他的这个语文课代表的回归感到很高兴。</p>
+<p>他一开始也并不怎样，没啥感觉。</p>
+<p>直到那天下午。</p>
+<hr>
+<p>他兴高采烈地去奥赛室看民间测试数据的成绩。中午高二的某个学长告诉他的，他考了全校第四，接近$400$分。虽然可信度不高，毕竟自己什么逼数他自己心里清楚。不过还是期待了一下午。</p>
+<p>兴奋的他去奥赛室看成绩。</p>
+<p>学长看错了。</p>
+<p>他的两个同僚都是$370/380+$的样子。</p>
+<p>只有他不到.</p>
+<p>其他人的分数也比他高。</p>
+<p>他大概全校第十几吧。</p>
+<p>他感到了绝望。</p>
+<p>本来以为的三人行（三个人一起参加过两届省队集训），其实是不包括他的两人行。</p>
+<p>他注定是失败者。</p>
+<p>他伤心极了。</p>
+<hr>
+<p>他开始愈发消沉，晚自习看了一晚上的文学素材荟萃那种东西，都是些鸡汤之类的蠢文章。但他什么都不想干。他想在学校读那几本从昌邑买回来的书，但是怕被抓只好作罢。</p>
+<p>他觉得一年来，他一事无成。</p>
+<p>或许进实验部只是个错误。但他是不会退出的。即使是为了面子也不会。</p>
+<p>他原本计划好的一切都没有成功。现在最后一次机会，他依旧失败了。人生输家，大抵就是这样。他不愿意去面对他的奥赛同僚们。他大概就像是$EDG$——国内赛如同战神一般，一到国际比赛就死。</p>
+<p>他的女神越开心，他越寒心。倒不是因为别的，只是他的女神越可爱，他越觉得曾经做白日梦的自己是个不曾认清现实的傻$B$，他越发感到落差的不可逾越。他绝望了。</p>
+<p>期中考试成绩发下来了，他从停课之前的班里第五，年级第二十滑到了班里第四十，年级第$289$。这次他们班考得很好。年级前四，他的班里有三个；年级前20有10个，年级前400有46个。年级共有1640左右的人。</p>
+<p>这似乎是实验部该有的成绩。可是跟他没有关系。</p>
+<p>特别的，他的女神考了年级28，班里第13。他比她差十倍。虽然停课了一段时间没上好像是个不错的理由，但他依旧觉得，自己太失败了。</p>
+<p>太失败了。</p>
+<p>太失败了。</p>
+<hr>
+<p>大休回家，现在是$11.17$晚，我用第三人称说完了这个故事，感觉……并没有什么感觉。</p>
+<p>我发现我现在心情虽然很沉重，但是同样很放松。我大概不会再参加什么$OI$了吧——这让我感到轻松无比。不需要面对其他很强的人而有心理负担，不必面对教练主任去承受他们的“高目标”，不必每次fake时还会纠结我自己到底强不强，不必再去争强好胜。虽然最终免不了被当做反面教材说个$OI$的学弟们，虽然免不了是要主任被批一顿并且让你总结个什么傻逼错因或者感悟并让你声泪俱下地去反省并且保证以后好好学$OI$，但，我轻松的很。</p>
+<p>这真是从未有过的轻松的感觉。</p>
+<p>或许我本来没有什么天赋，只是在靠个人素质硬刚而已。也许信竞给我的终究是除了成功之外的一切，比如毅力，比如做人。</p>
+<p>我感到无比的轻松。</p>
+<p>以后大概不会学信竞了吧。毕竟压根没有什么转机。路的话，边走边想吧。</p>
+<p>我现在十分地想学$CNAO$，之前由于要准备$NOIp$，从图书馆借来的书没来得及看。现在终于有时间了。</p>
+<p>嗯，大概天文才是我真正喜欢的吧。以前每次为了$OI$奋斗的时候总要想想自己到底是不是真正喜欢$OI$，其实说不上喜欢吧，毕竟没有真的从骨子里喜欢这东西。</p>
+<p>但是其实山东没有开展$AO$的，不过我想当这个第一人。</p>
+<p>我突然很感激这一切，感激曾经的失败与成功、收获与感动。君与我之恩，毕生难忘。</p>
+<p>到了说再见的时候了，哈，我的作业还没写呢。我可要学好文化课，做的滴水不漏才能去学$AO$啊，虽然这是一段未知的旅程，但是我乐意去闯。</p>
+<hr>
+<p>在成绩单上看到了好多山东的巨佬……曾经在我看来与我水平差不多的人，大概都以压倒性的优势击败了我吧。</p>
+<p>没准学$OI$的时候，如果我一直是为了功名利禄而学，为了获得进入某两所大学的机会而学，终究是肯定不会成功的吧——到不是说一定要去喜欢这门奥赛，只是在奋斗的时候，还是只为了奋斗而奋斗比较好吧。</p>
+<p>我该说什么？强大的理解能力或者推理能力，终是不是OI的核心素养——创造力才是。当然啦，数学有够好的话+强大的理解能力=rqy这个等式也是成立的。</p>
+<p>当然，不属于我啦。</p>
+<p>虽然现在很不甘……但是没有办法，大概这就是人生吧。</p>
+<p>如果说……退役后的几天感觉怎么样……还好吧，没我想象的痛苦。只不过之前一直憧憬的所谓“妹子”也好，“女神”也好，原来一直有男朋友只不过我不知道；只不过干起什么事情来都力不从心而已；只不过重新燃起的希望之火又被浇灭了而已吧，也没有什么必要去为之伤心——这才是人生吧。</p>
+<p>听说你谷有个OIer自杀了……不知道这个传闻是真是假，毕竟也没法去确认。我只是为此感到伤心而已——无论到底有没有自杀，我只想用那句话来评论“实力如果强到独步天下，想怎么学就怎么学；否则只能毫无保留地、纯粹地去努力，而不是为了去获得功名、封佛封神 —— 不忘初心在什么时候都是最重要的。”所以，心无旁骛，什么时候都是最重要的。</p>
+<p>总之呢，我把这篇文章称之为“启示录”，只是希望后来的Oier或可以从我的这一些杂悟里获得些什么：</p>
+<h2 id="做什么事情，都要先从自己的灵魂出发，而不是从利益出发。"><a href="#做什么事情，都要先从自己的灵魂出发，而不是从利益出发。" class="headerlink" title="做什么事情，都要先从自己的灵魂出发，而不是从利益出发。"></a>做什么事情，都要先从自己的灵魂出发，而不是从利益出发。</h2><p>之类的吧。</p>
+<p>我想引用一句（段）话，来自《本杰明巴顿奇事》：</p>
+<blockquote>
+<p>有些人，注定可以于河边闲坐。<br>有些人被闪电击中过七次。<br>有些人对音乐有着非凡的天赋。<br>有些人是艺术家。<br>有些人是游泳健将。<br>有些人懂得制作纽扣。<br>有些人懂莎士比亚。<br>有些人是妈妈。<br>还有些人，是舞者。<br>我们注定要失去我们所爱的人，<br>要不然我们怎么知道他们对我们有多么的重要。</p>
+</blockquote>
+<p>后会有期。</p>
+<h1 id="mathscr-THE-END"><a href="#mathscr-THE-END" class="headerlink" title="$\mathscr{THE~~~END}$"></a>$\mathscr{THE~~~END}$</h1>
+      
+    </div>
+    
+    
+      
+
+
+    
+    
+    
+    
+    
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+  
+</div>
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/随想·下下笔/" rel="tag"><i class="fa fa-tag"></i> 随想·下下笔</a>
+          
+        </div>
+      
+    
+      
+      
+      
+    
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/14/笙上月/" rel="next" title="笙上月$Project$">
+                <i class="fa fa-chevron-left"></i> 笙上月$Project$
+              </a>
+            
+          </div>
+    
+          <span class="post-nav-divider"></span>
+    
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/14/随想五·情人节/" rel="prev" title="随想五·情人节">
+                随想五·情人节 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+
+    <div class="sidebar-inner">
+      <div>
+        <div style="display: table-cell;vertical-align: top; color:#B2B7F2;font-size:24px;font-family:'Times New Roman',serif;font-weight:bold;text-align:left;">“</div>
+        <div style="display: table-cell;text-align: left; vertical-align: middle; text-indent: 2em; padding: 0.8em 0.2em 1em 0.2em"><b><span style="color:burlywood;"><span id="hitokoto-content"></span></span></b></div>
+        <div style="display: table-cell; vertical-align: bottom; color:#B2B7F2;font-size:24px;font-family:'Times New Roman',serif;font-weight:bold;text-align:left;">”</div>
+      </div>
+      <div style="text-align: right; font-size: 0.8em; color: black;" id="hitokoto-from"></div>
+      <div style="margin-top: 15px; font-size: 0.8em; color: black;"><a href="https://hitokoto.cn/">Hitokoto</a></div>
+    </div>
+    
+    <div style="height: 15px"></div>
+    
+    
+    <div class="sidebar-inner">
+    
+      
+    
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+    
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Orchidany">
+            
+              <p class="site-author-name" itemprop="name">Orchidany</p>
+              <p class="site-description motion-element" itemprop="description">For code, science, tech. any more</p>
+          </div>
+    
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+    
+              
+    
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+    
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+    
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/Flower233pks" title="GitHub &rarr; https://github.com/Flower233pks" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.luogu.org/space/show?uid=28313" title="Luogu &rarr; https://www.luogu.org/space/show?uid=28313" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>Luogu</a>
+                </span>
+              
+            </div>
+          
+    
+          
+    
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://rqy.moe" title="http://rqy.moe" rel="noopener" target="_blank">_rqy</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://yeasion.github.io" title="http://yeasion.github.io" rel="noopener" target="_blank">Sue</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://chicago01.top" title="http://chicago01.top" rel="noopener" target="_blank">CHI</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+    
+          
+            
+          
+          
+
+        </div>
+      </div>
+    
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+    
+            
+            
+            
+            
+    
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#rm-Day-1"><span class="nav-number">1.</span> <span class="nav-text">$\rm{Day~1}$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm-Day-2"><span class="nav-number">2.</span> <span class="nav-text">$\rm{Day~2}$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#做什么事情，都要先从自己的灵魂出发，而不是从利益出发。"><span class="nav-number">3.</span> <span class="nav-text">做什么事情，都要先从自己的灵魂出发，而不是从利益出发。</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#mathscr-THE-END"><span class="nav-number"></span> <span class="nav-text">$\mathscr{THE~~~END}$</span></a></li></div>
+            
+    
+          </div>
+        </div>
+      <!--/noindex-->
+      
+    
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+    
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+    
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Orchidany</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.0.0</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共23.9k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+<script type="text/javascript">
+	$.get('https://v1.hitokoto.cn/?c=a', function (data) {
+		$('#hitokoto-content').css('display', '').text(data.hitokoto);
+		$('#hitokoto-from').css('display', '').text('——' + data.from);
+	});
+</script>
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '68416b88a786dda48abc',
+    clientSecret: '84370285d60ee366809888cecf1fcb6bdcddadaf',
+    repo: 'Orchidany.github.io',
+    owner: 'Flower233pks',
+    admin: ['Flower233pks'],
+    id: md5(location.pathname),
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'; 
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+</body>
+</html>
