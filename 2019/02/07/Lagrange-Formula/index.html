@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="Orchidany&#39;w blog">
 <meta property="og:description" content="拉格朗日插值公式 $\rm{Lagrange~Interpolation~Formula}$$\rm{0x01~~} Preface$插值($Interpolaton$) 在多项式域中可以看做是求值$(Evaluation)$的逆运算，即给定$n$组确定的本质不同的二元组$(x_i, y_i)$，满足$F(x_i) = y_i$，可以逆向求出原$n$次多项式。 而其实，拉格朗日插值公式本身是标准的">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-12T15:32:46.272Z">
+<meta property="og:updated_time" content="2019-02-14T17:11:35.367Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="$Lagrange ~Formula·$拉格朗日插值法">
 <meta name="twitter:description" content="拉格朗日插值公式 $\rm{Lagrange~Interpolation~Formula}$$\rm{0x01~~} Preface$插值($Interpolaton$) 在多项式域中可以看做是求值$(Evaluation)$的逆运算，即给定$n$组确定的本质不同的二元组$(x_i, y_i)$，满足$F(x_i) = y_i$，可以逆向求出原$n$次多项式。 而其实，拉格朗日插值公式本身是标准的">
@@ -476,7 +476,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-12 23:32:46" itemprop="dateModified" datetime="2019-02-12T23:32:46+08:00">2019-02-12</time>
+                <time title="修改时间：2019-02-15 01:11:35" itemprop="dateModified" datetime="2019-02-15T01:11:35+08:00">2019-02-15</time>
               
             
           </span>
@@ -520,9 +520,9 @@
         <h1 id="拉格朗日插值公式-rm-Lagrange-Interpolation-Formula"><a href="#拉格朗日插值公式-rm-Lagrange-Interpolation-Formula" class="headerlink" title="拉格朗日插值公式 $\rm{Lagrange~Interpolation~Formula}$"></a>拉格朗日插值公式 $\rm{Lagrange~Interpolation~Formula}$</h1><h2 id="rm-0x01-Preface"><a href="#rm-0x01-Preface" class="headerlink" title="$\rm{0x01~~} Preface$"></a>$\rm{0x01~~} Preface$</h2><p><strong>插值($Interpolaton$)</strong> 在多项式域中可以看做是<strong>求值$(Evaluation)$</strong>的逆运算，即给定$n$组确定的本质不同的二元组$(x_i, y_i)$，满足$F(x_i) = y_i$，可以逆向求出原$n$次多项式。</p>
 <p>而其实，拉格朗日插值公式本身是标准的$\Theta(n^2)$算法——或者不能称其为算法，运算过程$\Theta(n^2)$或许会更准确一些。$Indeed$，该公式是构造出来的，所以没有多么繁琐的证明——</p>
 <h2 id="rm-0x02-rm-Proof"><a href="#rm-0x02-rm-Proof" class="headerlink" title="$\rm{0x02}~~\rm{Proof}$"></a>$\rm{0x02}~~\rm{Proof}$</h2><h4 id="Proof-of-Existence"><a href="#Proof-of-Existence" class="headerlink" title="$Proof ~of~Existence$"></a>$Proof ~of~Existence$</h4><p>​    我们定义$F(x)$为一在实数域上的平凡$n-1$次多项式。</p>
-<p>​    首先我们需要构造一个对于第$i​$个二元组的特殊多项式$L_i(x)​$，满足$$L_i(x_j) = \begin{cases}1, &amp;\rm{i=j} \ 0, &amp; \rm{i \neq j}\end{cases}​$$</p>
+<p>​    首先我们需要构造一个对于第$i$个二元组的特殊多项式$L_i(x)$，满足$$L_i(x_j) = \begin{cases}1, &amp;\rm{i=j} \newline 0, &amp; \rm{i \neq j}\end{cases}$$</p>
 <p>那么我们所求的多项式$F(x)​$就可以写作$$F(x)  = \sum L_i(x_i)\cdot y_i​$$这个式子保证了我们对应的$n​$个二元组，$F(x)=y​$恒成立。</p>
-<p>​    那么对于$L_i(x)​$，我们考虑由我们对$L_i(x)​$的定义可以得出$$L_i(x) = k_i(x-x_1)(x-x_2)\cdots(x-x_n)​$$其中不包含$x-x_i​$这一因式。而由$L_i(x_i)=1​$可知我们的比例系数$$k_i=\frac{1}{(x_i-x_1)(x_i-x_2)\cdots(x_i - x_{i-1})(x_i - x_{i+1})\cdots(x_i-x_n)}​$$那么$$L_i(x) = \prod\limits_{i=1, i \neq j}^{n}\frac{x - x_j}{x_i-x_j}​$$从而$$F(x)=\sum L_i(x)\cdot y_i(x) = y_i \cdot \prod\limits_{i=1, i \neq j}^{n}\frac{x - x_j}{x_i-x_j}​$$</p>
+<p>​    那么对于$L_i(x)$，我们考虑由我们对$L_i(x)$的定义可以得出$$L_i(x) = k_i(x-x_1)(x-x_2)\cdots(x-x_n)$$其中不包含$x-x_i$这一因式。而由$L_i(x_i)=1$可知我们的比例系数$$k_i=\frac{1}{(x_i-x_1)(x_i-x_2)\cdots(x_i - x_{i-1})(x_i - x_{i+1})\cdots(x_i-x_n)}$$那么$$L_i(x) = \prod\limits_{i=1, i \neq j}^{n}\frac{x - x_j}{x_i-x_j}$$从而$$F(x)=\sum L_i(x)\cdot y_i(x) = \sum y_i \cdot \prod\limits_{i=1, i \neq j}^{n}\frac{x - x_j}{x_i-x_j}$$</p>
 <h4 id="mathcal-Q-E-D"><a href="#mathcal-Q-E-D" class="headerlink" title="$\mathcal{Q.E.D.}$"></a>$\mathcal{Q.E.D.}$</h4><hr>
 <h4 id="Proof-of-Uniqueness-1"><a href="#Proof-of-Uniqueness-1" class="headerlink" title="$Proof~of~Uniqueness^{[1]}$"></a>$Proof~of~Uniqueness^{[1]}$</h4><p>​    我们接下来要证明的是多项式$L_i(x)​$的唯一性</p>
 <p>​    我们假设同时有两个实数域上的$n-1​$次多项式$L_1(x),L_2(x)​$满足$L_i(x_j) = \begin{cases}1, &amp;\rm{i=j} \ 0, &amp; \rm{i \neq j}\end{cases}​$，那么我们由作差法可以得出多项式$L_{\Delta} = L_1 - L_2​$在取所有的$x_i​$时，其值均为$0​$。那么一定会有多项式$$L’(x) = \prod\limits_{i=1}^{n}(x - x_i)​$$满足$$L’|L_{\Delta}​$$ 其中$|​$表示多项式整除。但是我们知道，对于$L’​$这个多项式，其次数为$n-1​$；而对于我们所定义的$L_i(x)​$，均为$(n-2)​$次的，从而$L_{\Delta}​$也是$n-2​$次多项式。所以我们可以得出$$L_{\Delta} = 0​$$从而有$$L_1=L_2​$$</p>
@@ -875,7 +875,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共28k字</span>
+  <span class="post-count">博客全站共29.9k字</span>
 </div>
         
 <div class="busuanzi-count">
