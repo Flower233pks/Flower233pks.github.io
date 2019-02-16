@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="Orchidany&#39;w blog">
 <meta property="og:description" content="$\mathfrak{HLPP}$嗯，我也不知道我在月考即将爆炸 + $NOIp$即将爆炸之际，学$HLPP$的目的何在$\rm{TAT}$。  #define $u$的伴点集合     与$u$相隔一条边的且$u$能达到的点的集合   $0x00~ {}~Preface$ $HLPP(Highest~Label~Preflow~Push)​$最高标签预流推进算法是处理网络最大流里两种常用方法——">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-14T14:20:51.479Z">
+<meta property="og:updated_time" content="2019-02-15T13:54:35.723Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络流$2$·$HLPP$+丧心病狂的优化">
 <meta name="twitter:description" content="$\mathfrak{HLPP}$嗯，我也不知道我在月考即将爆炸 + $NOIp$即将爆炸之际，学$HLPP$的目的何在$\rm{TAT}$。  #define $u$的伴点集合     与$u$相隔一条边的且$u$能达到的点的集合   $0x00~ {}~Preface$ $HLPP(Highest~Label~Preflow~Push)​$最高标签预流推进算法是处理网络最大流里两种常用方法——">
@@ -476,7 +476,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-14 22:20:51" itemprop="dateModified" datetime="2019-02-14T22:20:51+08:00">2019-02-14</time>
+                <time title="修改时间：2019-02-15 21:54:35" itemprop="dateModified" datetime="2019-02-15T21:54:35+08:00">2019-02-15</time>
               
             
           </span>
@@ -485,6 +485,19 @@
     
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/01/11/HLPP/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/11/HLPP/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
     
@@ -668,7 +681,7 @@
           
 
   
-    <div class="comments" id="gitalk-container">
+    <div class="comments" id="comments">
     </div>
 
   
@@ -1058,33 +1071,36 @@
 
 
   
-
-
   
-    
 
-<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-
-
-
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
 
 
 
-<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 
 <script>
-  var gitalk = new Gitalk({
-    clientID: '68416b88a786dda48abc',
-    clientSecret: '84370285d60ee366809888cecf1fcb6bdcddadaf',
-    repo: 'Orchidany.github.io',
-    owner: 'Flower233pks',
-    admin: ['Flower233pks'],
-    id: md5(location.pathname),
-    distractionFreeMode: 'true'
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
   });
-  gitalk.render('gitalk-container');
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'V95HMkHzC6J9NvdCNbpg3A3E-gzGzoHsz',
+    appKey: 'gyf1NbCMlYbPnqykkSe7KuYC',
+    placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false
+  });
 </script>
+
+
+
 
   
 

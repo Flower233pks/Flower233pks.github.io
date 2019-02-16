@@ -109,7 +109,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.orchidany.cf/2019/02/04/LCT-s-Junior-Intro/t1.jpg">
 <meta property="og:image" content="http://www.orchidany.cf/2019/02/04/LCT-s-Junior-Intro/t2.png">
-<meta property="og:updated_time" content="2019-02-12T15:33:04.527Z">
+<meta property="og:updated_time" content="2019-02-15T13:54:50.628Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="$LCT&#39;s ~Junior ~Intro·$LCT入门">
 <meta name="twitter:description" content="$\rm{0x01}$ 闲话 · $LCT$的用途以及具体思路咳，其实在我最近只是浅浅地学了一部分的基础上，窝觉得$LCT$其实就是一个用来维护森林连通性的。 嗯……因为其独特的性质所以也可以顺便维护好多东西，什么链上的最大值啊，链上的权值和啊……都可以维护——或者说，LCT是更加全能的树剖。 但其实吧……$LCT$打板子是很简单的，但是真正理解却一点儿也不简单。因为本身$splay$就很麻烦了，">
@@ -479,7 +479,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-12 23:33:04" itemprop="dateModified" datetime="2019-02-12T23:33:04+08:00">2019-02-12</time>
+                <time title="修改时间：2019-02-15 21:54:50" itemprop="dateModified" datetime="2019-02-15T21:54:50+08:00">2019-02-15</time>
               
             
           </span>
@@ -488,6 +488,19 @@
     
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/02/04/LCT-s-Junior-Intro/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/04/LCT-s-Junior-Intro/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
     
@@ -689,7 +702,7 @@
           
 
   
-    <div class="comments" id="gitalk-container">
+    <div class="comments" id="comments">
     </div>
 
   
@@ -1079,33 +1092,36 @@
 
 
   
-
-
   
-    
 
-<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-
-
-
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
 
 
 
-<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 
 <script>
-  var gitalk = new Gitalk({
-    clientID: '68416b88a786dda48abc',
-    clientSecret: '84370285d60ee366809888cecf1fcb6bdcddadaf',
-    repo: 'Orchidany.github.io',
-    owner: 'Flower233pks',
-    admin: ['Flower233pks'],
-    id: md5(location.pathname),
-    distractionFreeMode: 'true'
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
   });
-  gitalk.render('gitalk-container');
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'V95HMkHzC6J9NvdCNbpg3A3E-gzGzoHsz',
+    appKey: 'gyf1NbCMlYbPnqykkSe7KuYC',
+    placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false
+  });
 </script>
+
+
+
 
   
 
