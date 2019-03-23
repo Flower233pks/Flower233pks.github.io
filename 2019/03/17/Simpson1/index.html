@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="true">
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="1lvvgt4Q8a">
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Comic Sans MS:300,300italic,400,400italic,700,700italic|Comic Sans MS:300,300italic,400,400italic,700,700italic|Georgia:300,300italic,400,400italic,700,700italic|Courier New:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icon-32.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+
+  
+
+
+
+
+</script>
+  <meta name="description" content="一种很可爱的积分近似法，学的时候顺便看了好多论文qaq">
+<meta name="keywords" content="积分&#x2F;积分近似,计算几何-Simpson积分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自适应Simpson法入门">
+<meta property="og:url" content="http://www.orchidany.cf/2019/03/17/Simpson1/index.html">
+<meta property="og:site_name" content="Orchidany&#39;w blog">
+<meta property="og:description" content="一种很可爱的积分近似法，学的时候顺便看了好多论文qaq">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E6%8F%90%E9%AB%98%2B-blue.svg">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1337159/201901/1337159-20190116165543353-1446042218.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1337159/201901/1337159-20190116165550075-1102374096.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1337159/201901/1337159-20190116165650450-478131070.png">
+<meta property="og:image" content="http://www.orchidany.cf/2019/03/17/Simpson1/nky.jpg">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1337159/201901/1337159-20190116165630989-1211570362.png">
+<meta property="og:updated_time" content="2019-03-17T10:18:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="自适应Simpson法入门">
+<meta name="twitter:description" content="一种很可爱的积分近似法，学的时候顺便看了好多论文qaq">
+<meta name="twitter:image" content="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E6%8F%90%E9%AB%98%2B-blue.svg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Orchidany'w blog" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://www.orchidany.cf/2019/03/17/Simpson1/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>自适应Simpson法入门 | Orchidany'w blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/Flower233pks" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Orchidany'w blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Love is a touch but yet not a touch</p>
+      
+    
+    
+      <a>
+        <img class="custom-logo-image" src="/images/qwq.png" alt="Orchidany'w blog">
+      </a>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>站点地图</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+    
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.orchidany.cf/2019/03/17/Simpson1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Orchidany">
+      <meta itemprop="description" content="For code, science, tech. and more">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+    
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Orchidany'w blog">
+    </span>
+    
+    
+      <header class="post-header">
+    
+        
+        
+          <h1 class="post-title" itemprop="name headline">自适应Simpson法入门
+
+              
+            
+          </h1>
+        
+    
+        <div class="post-meta">
+          <span class="post-time">
+    
+            
+            
+            
+    
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+    
+              
+                
+              
+    
+              <time title="创建时间：2019-03-17 16:39:35 / 修改时间：18:18:14" itemprop="dateCreated datePublished" datetime="2019-03-17T16:39:35+08:00">2019-03-17</time>
+            
+    
+            
+              
+    
+              
+            
+          </span>
+    
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+    
+                
+                
+              
+            </span>
+          
+    
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/03/17/Simpson1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/17/Simpson1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+    
+          
+          
+    
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+    
+          
+    
+          
+            <div class="post-description">一种很可爱的积分近似法，学的时候顺便看了好多论文qaq</div>
+          
+    
+        </div>
+      </header>
+    
+    
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+    
+      
+      
+    
+      
+        <p><img src="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E6%8F%90%E9%AB%98%2B-blue.svg" alt=""></p>
+<h1 id="rm-0x01-前言"><a href="#rm-0x01-前言" class="headerlink" title="$\rm{0x01}$  前言"></a>$\rm{0x01}$  前言</h1><p>首先阐明一点，<strong>自适应辛普森算法($\rm{Adaptive ~Simpson’s~ rule}$ )</strong>是一类<strong>近似算法($\rm{Approximation ~algorithm}$)</strong>，主要用于求较难反导的函数的积分。大概在信息计算的时候中很常用？</p>
+<p>其思想是利用二次函数来不断<strong>拟合($\rm{Overfitting}$)</strong>所求曲线，而所谓的<strong>$Adapative$（自适应）</strong>则是用于优化时间复杂度的方法。</p>
+<p>嗝…总之…比较简单？</p>
+<p>表示看了两篇外国学者的论文，感觉好像思路已经比较清晰的样子。</p>
+<h1 id="rm-0x02-mathcal-Simpson-Formula-辛普森公式"><a href="#rm-0x02-mathcal-Simpson-Formula-辛普森公式" class="headerlink" title="$\rm{0x02}$  $\mathcal{Simpson~Formula}$ 辛普森公式"></a>$\rm{0x02}$  $\mathcal{Simpson~Formula}$ 辛普森公式</h1><p>稍等，这个跟算法的关系不大，主要是公式：$$\rm{\int _{l}^{r} f(x) \rm{dx}\approx \frac{f(r) +f(l)+ 4 \cdot f(m)}{6}} \,$$</p>
+<p>事实上吧，求积分的话，大多数都是直接套辛普森公式的。并且这个公式是广泛适用的……只不过误差有点儿人大$233​$</p>
+<p>这其实是我们用二次函数不断拟合的结果，推导过程大致如下$^{[1]}$：</p>
+<blockquote>
+<p>因为 $g(x)$ 是用来拟合 $f(x)$ 的，所以有：<br>$$\int\limits_L^Rf(x)dx\approx \int\limits_L^Rax^2+bx+c\space dx$$<br>求 $g(x)​$ 的不定积分为：<br>$$\int g(x)dx=\frac13ax^3+\frac12bx^2+cx+C$$<br>然后再带入 RR 和 LL ：<br>$$\int\limits_L^Rf(x)dx=\frac13a(R^3-L^3)+\frac12b(R^2-L^2)+c(R-L)$$<br>然后提公因式，原式为：<br>$$\frac{R-L}{6}(2a(R^2+LR+L^2)+3b(R+L)+6c)6R−L(2a(R2+LR+L2)+3b(R+L)+6c)$$<br>把里面展开来：<br>$$\frac{R-L}{6}(2aR^2+2aLR+2aL^2+3bR+3bL+6c)$$<br>重新整理一下式子：<br>$$\frac{R-L}{6}((aR^2+bR+c)+(aL^2+bL+c)+aR^2+aL^2+2aLR+2bR+2bL+4c)$$<br>再整理：<br>$$\frac{R-L}{6}((aR^2+bR+c)+(aL^2+bL+c)+4(a(\frac{R+L}{2})^2+b(\frac{R+L}{2})+c))$$<br>代换可得：<br>$$aR^2+bR+c\approx f(R)$$<br>$$aL^2+bL+c\approx f(L)$$<br>$$4(a(\frac{R+L}{2})^2+b(\frac{R+L}{2})+c)\approx 4f(\frac{R+L}{2})$$<br>把这三个式子带回去， 最后我们就得到了$\rm{Simpson}$ 积分公式：<br>$\int\limits_L^Rf(x)dx \approx \frac{R-L}{6}(f(L)+4f(\frac{L+R}{2})+f(R)))$</p>
+</blockquote>
+<p>于是我们就得到了所谓的$\rm{Simpson~Fomula}$。但事实上，对于一段“跌宕起伏”的函数，我们还是无法准确地去用一个二次函数的拟合来刻画。于是——</p>
+<h1 id="rm-0x03-mathcal-Adaptive-Simpson-Rule-自适应辛普森法"><a href="#rm-0x03-mathcal-Adaptive-Simpson-Rule-自适应辛普森法" class="headerlink" title="$\rm{0x03}$  $\mathcal{Adaptive~Simpson~Rule}$ 自适应辛普森法"></a>$\rm{0x03}$  $\mathcal{Adaptive~Simpson~Rule}$ 自适应辛普森法</h1><p>我们考虑，如果把区间们稍微划分地更细一点，那是不是会好呢？答案是一定的。那么我们可以考虑<strong>定向二分</strong>。但是……定向二分始终存在一个问题，就是它太笨了，笨到如果$[l_1,r_1]$已经满足精度要求了，我们却还要一直分；笨到$[l_2,r_2]$分的次数根本不够用——但我们并不可以得到反馈。</p>
+<p>于是考虑<strong>自适应</strong>。</p>
+<p>所谓<strong>自适应</strong>，说的直白点，无非就是<strong>需要多分治几次的地方，多分治几次；不需要的则可以少分治几次</strong></p>
+<p>你会发现，其实他节约的就是一个点——<strong>时间效率</strong>。</p>
+<p>举个栗子$^{[2]}$：</p>
+<p>比如有这么个函数$\rm{f (x) = 13(x − x^2)e^{\frac{−3x}{2}} }$，我们要求$\int_{0}^{4}f(x) \rm{~dx}$ 并要求精度误差在$1e-5$ 以内。而我们有两种方法去解决：</p>
+<ul>
+<li>以固定的比例以及约束二分。</li>
+<li>运用自适应策略分配</li>
+</ul>
+<p>那么我们首先要知道他真正的$value:$</p>
+<p><img src="https://img2018.cnblogs.com/blog/1337159/201901/1337159-20190116165543353-1446042218.png" alt=""></p>
+<p>看起来好像海星？然后我们用两种方法都试一试：</p>
+<p>首先是自适应法，我们发现最后只需要求$20$段区间。表中的$a_k \&amp; b_k$表示左右区间，$S(l,r)$表示$[l,r]$内、运用$0x01$中的公式计算的，$\rm{Error~Bound}$表示误差界，$\rm{Tolerance}$表示计算时<strong>需要的误差</strong>(程序设计时会讲)。</p>
+<p><img src="https://img2018.cnblogs.com/blog/1337159/201901/1337159-20190116165550075-1102374096.png" alt=""></p>
+<p>那么最后算出来的值是$ −1.54878823413$ ，与真实值误差为$0.00000013840 $，一共调用了$79$次<strong>函数估值</strong>（留个坑，后文会讲）。</p>
+<p>那么绘制出来的函数图像大概长这样：<img src="https://img2018.cnblogs.com/blog/1337159/201901/1337159-20190116165650450-478131070.png" alt=""></p>
+<p>好像很流畅？$233$</p>
+<p>那么第二种方法是定值分段。我们考虑分成区间$[0,4]$分为长度为$0.03125$的$128$段，并运用$0x01$的$Formula$，最后得出的结果为$−1.54878844029$，误差为$0.00000006776$……</p>
+<p>好像是第一个误差的二分之一？听起来好像误差小了，但是却需要$257$次函数估值的调用……相比之下，我们可以获得更优越的性能，而那误差也是不需要考虑的啦的啦～</p>
+<p>但是比起$1e-5$精度来说……这波稳赚啊$233$</p>
+<h1 id="rm-0x04-mathcal-About-Code-代码实现"><a href="#rm-0x04-mathcal-About-Code-代码实现" class="headerlink" title="$\rm{0x04}$  $\mathcal{About~Code~}$ 代码实现"></a>$\rm{0x04}$  $\mathcal{About~Code~}$ 代码实现</h1><p>首先是<a href="https://www.luogu.org/problemnew/show/P4525" target="_blank" rel="noopener">$LuoguP4525$</a>的暴力解法：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mid (l + r) / 2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> Eps = <span class="number">5e-8</span> ;</span><br><span class="line"><span class="keyword">double</span> Ans, A, B, C, D, L, R ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">F</span><span class="params">(<span class="keyword">double</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (C * x + D) / (A * x + B) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">Simp_calc</span><span class="params">(<span class="keyword">double</span> l, <span class="keyword">double</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (r - l) / <span class="number">6</span> * (F(l) + F(r) + <span class="number">4</span> * F(mid)) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">do_divide</span><span class="params">(<span class="keyword">double</span> l, <span class="keyword">double</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> Lv, Rv, v, t ;</span><br><span class="line">    Lv = Simp_calc(l, mid), Rv = Simp_calc(mid, r), v = Simp_calc(l, r) ;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">fabs</span>(t = (Lv + Rv - v)) &lt;= Eps) <span class="keyword">return</span> Lv + Rv ; <span class="keyword">return</span> do_divide(l, mid) + do_divide(mid, r) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lf%lf%lf%lf%lf%lf"</span>, &amp;A, &amp;B, &amp;C, &amp;D, &amp;L, &amp;R) ;</span><br><span class="line">    Ans = do_divide(L, R) ; <span class="built_in">printf</span>(<span class="string">"%.6lf"</span>, Ans) ; <span class="keyword">return</span> <span class="number">0</span> ; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这…严格意义上讲，不能算是自适应辛普森法——更准确地说，四不像，或者“东施效颦”之类的，都挺合适。这是我在初学这一块儿内容时的写法，他不严格正确，但是……他对的很？</p>
+<p>至于进化版<a href="https://www.luogu.org/problemnew/show/P4526" target="_blank" rel="noopener">$LuoguP4526$</a>，也是完全可以violently艹过去的：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mid (l + r) / 2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> Eps = <span class="number">5e-8</span> ;</span><br><span class="line"><span class="keyword">double</span> Ans, A, B, C, D, L, R ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">F</span><span class="params">(<span class="keyword">double</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">pow</span>(x, A / x - x) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">Simp_calc</span><span class="params">(<span class="keyword">double</span> l, <span class="keyword">double</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (r - l) / <span class="number">6</span> * (F(l) + F(r) + <span class="number">4</span> * F(mid)) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">do_divide</span><span class="params">(<span class="keyword">double</span> l, <span class="keyword">double</span> r, <span class="keyword">double</span> Lans)</span></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> Lv, Rv, v, t ; Lv = Simp_calc(l, mid), Rv = Simp_calc(mid, r), v = Lans ;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">fabs</span>(t = (Lv + Rv - v)) &lt;= Eps) <span class="keyword">return</span> Lv + Rv ; <span class="keyword">return</span> do_divide(l, mid, Lv) + do_divide(mid, r, Rv) ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lf"</span>, &amp;A) ; L = Eps, R = <span class="number">23.3</span> ;</span><br><span class="line">    <span class="keyword">if</span> (A &lt; <span class="number">0</span>) &#123; <span class="built_in">puts</span>(<span class="string">"orz"</span>), <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span> ; <span class="keyword">return</span> <span class="number">0</span> ;&#125;</span><br><span class="line">    Ans = do_divide(L, R, Simp_calc(L, R)) ; <span class="built_in">printf</span>(<span class="string">"%.5lf"</span>, Ans) ; <span class="keyword">return</span> <span class="number">0</span> ; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>但是，其真正的实现应该是这样：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> v Lans</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> hps eps * 0.5</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mid (l + r) * 0.5</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ;</span><br><span class="line"><span class="keyword">double</span> Ans, A, L, R ;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> Eps = <span class="number">1e-7</span> ;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> Liu = <span class="number">1.0</span> / <span class="number">6</span> ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">F</span><span class="params">(<span class="keyword">double</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">pow</span>(x, A / x - x) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">Simp_calc</span><span class="params">(<span class="keyword">double</span> l, <span class="keyword">double</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (r - l) * Liu * (F(l) + F(r) + <span class="number">4.0</span> * F(mid)) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">do_divide</span><span class="params">(<span class="keyword">double</span> l, <span class="keyword">double</span> r, <span class="keyword">double</span> Lans, <span class="keyword">double</span> eps)</span></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> Lv, Rv, t ; </span><br><span class="line">    Lv = Simp_calc(l, mid), Rv = Simp_calc(mid, r) ;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">fabs</span>(t = (Lv + Rv - v)) &lt;= eps * <span class="number">15</span>) <span class="keyword">return</span> Lv + Rv + t / <span class="number">15</span> ; </span><br><span class="line">    <span class="keyword">return</span> do_divide(l, mid, Lv, hps) + do_divide(mid, r, Rv, hps) ; <span class="comment">//据说eps×15来自于Wiki……</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lf"</span>, &amp;A) ; L = Eps, R = <span class="number">30</span> ; </span><br><span class="line">    <span class="keyword">if</span> (A &lt; <span class="number">0</span>) &#123; <span class="built_in">puts</span>(<span class="string">"orz"</span>), <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span> ; <span class="keyword">return</span> <span class="number">0</span> ;&#125;</span><br><span class="line">    Ans = do_divide(L, R, Simp_calc(L, R), Eps) ; <span class="built_in">printf</span>(<span class="string">"%.5lf"</span>, Ans) ; <span class="keyword">return</span> <span class="number">0</span> ; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后我们发现这就可以跟文章上面$0x03$中的例子呼应了：每次分治时计算两次，总共分治了$39$次，最终一共计算了$78+1=79$次，而二分则是一棵有$128$个叶子节点的递归树，总共计算了$256 +1=257$次。    </p>
+<p>好的，终于要扯正题了。算法的实现其实简单，我们用拟合性算法不断$check\&amp;calc$, 而$check$的方式也很简单，只需要判断一下两段子区间的函数值之和与整个区间的函数值之和的差值是否在精度要求范围之内，之后如果满足精度误差就直接$return$，否则对于这段区间继续递归下去。</p>
+<p>而这个地方有个要求，就是对于$eps$，你需要不断$half$他，原因很简单，对于一整段区间$U$，要求他的返回值的$|eps(U)| \leq k$的话，那么对于其作为子集两个连续区间$A,B$，当$A \bigcup B = U$时，必须要满足$|eps(A)| \leq \frac{k}{2}, |eps(B)| \leq  \frac{k}{2}$，才能保证$|eps(U) = eps(A) + eps(B)| \leq k$，所以要：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> hps eps * 0.5</span></span><br><span class="line">....................</span><br><span class="line"><span class="keyword">return</span> do_divide(l, mid, Lv, hps) + do_divide(mid, r, Rv, hps) ;</span><br></pre></td></tr></table></figure>
+<p>好了，唯一的问题在于有句话迷的很：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="built_in">fabs</span>(t = (Lv + Rv - v)) &lt;= eps * <span class="number">15</span>) <span class="keyword">return</span> Lv + Rv + t / <span class="number">15</span> ;</span><br></pre></td></tr></table></figure>
+<p><img src="nky.jpg" alt=""></p>
+<p>这个$\leq 15 \cdot eps$是什么意思？</p>
+<p>好吧，笔者也不清楚，但是有个结论是长这样的：<img src="https://img2018.cnblogs.com/blog/1337159/201901/1337159-20190116165630989-1211570362.png" alt=""></p>
+<p>什么？你说推什么倒？小小年纪整天想着推倒<del>学姐</del>可不好啊$233$</p>
+<p>什么？你还想看推倒的过程？啧啧啧，左转知乎感情专区蟹蟹～</p>
+<p>好的，以上两段是瞎扯的，推导过程十分诡异，大家自己食用好了……</p>
+<p>于是结束，撒花花…（不是撒博主x）</p>
+<h1 id="rm-Referance"><a href="#rm-Referance" class="headerlink" title="$\rm{Referance}$"></a>$\rm{Referance}$</h1><ul>
+<li><p>$[1]$ :$NaCly_Fish$的$blog$ <a href="https://www.luogu.org/blog/NaCly-Fish-blog/SimpsonIntegral" target="_blank" rel="noopener">$^{^{[\nearrow]}}$</a></p>
+</li>
+<li><p>$[2]$ :某篇论文 <a href="https://files.cnblogs.com/files/pks-t/AdaptiveQuadProof.pdf" target="_blank" rel="noopener">$^{^{[\nearrow]}}$</a></p>
+</li>
+</ul>
+<p>对于第二篇$refer$，借鉴的比较多（读书人的事……咳咳……），但是改了一个数据，就是$81 \to 79$，因为代码需要$233$</p>
+<p>$Ps:$史上最不正经的$reference$诞生了……</p>
+
+      
+    </div>
+    
+    
+      
+
+
+    
+    
+    
+    
+    
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+  
+</div>
+
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/积分-积分近似/" rel="tag"><i class="fa fa-tag"></i> 积分/积分近似</a>
+          
+            <a href="/tags/计算几何-Simpson积分/" rel="tag"><i class="fa fa-tag"></i> 计算几何-Simpson积分</a>
+          
+        </div>
+      
+    
+      
+      
+      
+    
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/16/Cal-on-Tree1/" rel="next" title="Calc on Trees (1)">
+                <i class="fa fa-chevron-left"></i> Calc on Trees (1)
+              </a>
+            
+          </div>
+    
+          <span class="post-nav-divider"></span>
+    
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/17/Segment-Tree1/" rel="prev" title="奇奇怪怪的线段树1（子段和+最长连续）">
+                奇奇怪怪的线段树1（子段和+最长连续） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+
+    <div class="sidebar-inner">
+      <div>
+        <div style="display: table-cell;vertical-align: top; color:#B2B7F2;font-size:24px;font-family:'Times New Roman',serif;font-weight:bold;text-align:left;">“</div>
+        <div style="display: table-cell;text-align: left; vertical-align: middle; text-indent: 2em; padding: 0.8em 0.2em 1em 0.2em"><b><span style="color:burlywood;"><span id="hitokoto-content"></span></span></b></div>
+        <div style="display: table-cell; vertical-align: bottom; color:#B2B7F2;font-size:24px;font-family:'Times New Roman',serif;font-weight:bold;text-align:left;">”</div>
+      </div>
+      <div style="text-align: right; font-size: 0.8em; color: black;" id="hitokoto-from"></div>
+      <div style="margin-top: 15px; font-size: 0.8em; color: black;"><a href="https://hitokoto.cn/">Hitokoto</a></div>
+    </div>
+    
+    <div style="height: 15px"></div>
+    
+    
+    <div class="sidebar-inner">
+    
+      
+    
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+    
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Orchidany">
+            
+              <p class="site-author-name" itemprop="name">Orchidany</p>
+              <p class="site-description motion-element" itemprop="description">For code, science, tech. and more</p>
+          </div>
+    
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+    
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+    
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+    
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+    
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/Flower233pks" title="GitHub &rarr; https://github.com/Flower233pks" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.luogu.org/space/show?uid=28313" title="Luogu &rarr; https://www.luogu.org/space/show?uid=28313" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>Luogu</a>
+                </span>
+              
+            </div>
+          
+    
+          
+    
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://rqy.moe" title="http://rqy.moe" rel="noopener" target="_blank">_rqy</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://yeasion.github.io" title="http://yeasion.github.io" rel="noopener" target="_blank">Sue</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://chicago01.top" title="http://chicago01.top" rel="noopener" target="_blank">CHI</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://cmxrynp.github.io/" title="https://cmxrynp.github.io/" rel="noopener" target="_blank">CMXRYNP</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+    
+          
+            
+          
+          
+
+        </div>
+      </div>
+    
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+    
+            
+            
+            
+            
+    
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#rm-0x01-前言"><span class="nav-number">1.</span> <span class="nav-text">$\rm{0x01}$  前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rm-0x02-mathcal-Simpson-Formula-辛普森公式"><span class="nav-number">2.</span> <span class="nav-text">$\rm{0x02}$  $\mathcal{Simpson~Formula}$ 辛普森公式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rm-0x03-mathcal-Adaptive-Simpson-Rule-自适应辛普森法"><span class="nav-number">3.</span> <span class="nav-text">$\rm{0x03}$  $\mathcal{Adaptive~Simpson~Rule}$ 自适应辛普森法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rm-0x04-mathcal-About-Code-代码实现"><span class="nav-number">4.</span> <span class="nav-text">$\rm{0x04}$  $\mathcal{About~Code~}$ 代码实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rm-Referance"><span class="nav-number">5.</span> <span class="nav-text">$\rm{Referance}$</span></a></li></ol></div>
+            
+    
+          </div>
+        </div>
+      <!--/noindex-->
+      
+    
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+    
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+    
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Orchidany</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.0.0</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共58.2k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+<script type="text/javascript">
+	$.get('https://v1.hitokoto.cn/?c=a', function (data) {
+		$('#hitokoto-content').css('display', '').text(data.hitokoto);
+		$('#hitokoto-from').css('display', '').text('——' + data.from);
+	});
+</script>
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'V95HMkHzC6J9NvdCNbpg3A3E-gzGzoHsz',
+    appKey: 'gyf1NbCMlYbPnqykkSe7KuYC',
+    placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'; 
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+</body>
+</html>

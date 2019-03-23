@@ -143,22 +143,23 @@
 
 
 </script>
-  <meta name="description" content="$\rm{0x01\quad Preface}$这篇文章初写于$7/1/2018$，是在陪同好友$yjk$与$wx$以及学长$rqy$一起去参加省队集训时写的。今天突然来了兴致，打算重新复习一遍$FFT$并且写$MTT$，于是便有了这篇文章。 其实一开始我是不情愿把这篇文章搬到这儿来的——这好像是一个时代的缩影，那个时代的orchidany特别喜欢扮演老师，每天仿佛来到奥赛室只是为了“为人师”的：">
+  <meta name="description" content="一类在$\Theta(nlogn)$时间复杂度内解决平凡卷积的算法，相对来说比较入门。">
 <meta name="keywords" content="学习笔记,多项式-FFT">
 <meta property="og:type" content="article">
 <meta property="og:title" content="多项式1·普通的FFT">
 <meta property="og:url" content="http://www.orchidany.cf/2019/02/19/FFT1/index.html">
 <meta property="og:site_name" content="Orchidany&#39;w blog">
-<meta property="og:description" content="$\rm{0x01\quad Preface}$这篇文章初写于$7/1/2018$，是在陪同好友$yjk$与$wx$以及学长$rqy$一起去参加省队集训时写的。今天突然来了兴致，打算重新复习一遍$FFT$并且写$MTT$，于是便有了这篇文章。 其实一开始我是不情愿把这篇文章搬到这儿来的——这好像是一个时代的缩影，那个时代的orchidany特别喜欢扮演老师，每天仿佛来到奥赛室只是为了“为人师”的：">
+<meta property="og:description" content="一类在$\Theta(nlogn)$时间复杂度内解决平凡卷积的算法，相对来说比较入门。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89---purple.svg">
 <meta property="og:image" content="http://www.orchidany.cf/2019/02/19/FFT1/1.png">
 <meta property="og:image" content="http://www.orchidany.cf/2019/02/19/FFT1/2.png">
 <meta property="og:image" content="http://www.orchidany.cf/2019/02/19/FFT1/3.png">
-<meta property="og:updated_time" content="2019-02-19T15:36:57.836Z">
+<meta property="og:updated_time" content="2019-03-18T08:51:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多项式1·普通的FFT">
-<meta name="twitter:description" content="$\rm{0x01\quad Preface}$这篇文章初写于$7/1/2018$，是在陪同好友$yjk$与$wx$以及学长$rqy$一起去参加省队集训时写的。今天突然来了兴致，打算重新复习一遍$FFT$并且写$MTT$，于是便有了这篇文章。 其实一开始我是不情愿把这篇文章搬到这儿来的——这好像是一个时代的缩影，那个时代的orchidany特别喜欢扮演老师，每天仿佛来到奥赛室只是为了“为人师”的：">
-<meta name="twitter:image" content="http://www.orchidany.cf/2019/02/19/FFT1/1.png">
+<meta name="twitter:description" content="一类在$\Theta(nlogn)$时间复杂度内解决平凡卷积的算法，相对来说比较入门。">
+<meta name="twitter:image" content="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89---purple.svg">
 
 
 
@@ -507,16 +508,53 @@
                 
               
     
-              <time title="创建时间：2019-02-19 11:26:08 / 修改时间：23:36:57" itemprop="dateCreated datePublished" datetime="2019-02-19T11:26:08+08:00">2019-02-19</time>
+              <time title="创建时间：2019-02-19 11:26:08" itemprop="dateCreated datePublished" datetime="2019-02-19T11:26:08+08:00">2019-02-19</time>
             
     
             
               
     
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+    
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-18 16:51:56" itemprop="dateModified" datetime="2019-03-18T16:51:56+08:00">2019-03-18</time>
               
             
           </span>
     
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+    
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/多项式/" itemprop="url" rel="index"><span itemprop="name">多项式</span></a></span>
+    
+                
+                
+              
+            </span>
           
     
           
@@ -552,6 +590,8 @@
           
     
           
+            <div class="post-description">一类在$\Theta(nlogn)$时间复杂度内解决平凡卷积的算法，相对来说比较入门。</div>
+          
     
         </div>
       </header>
@@ -566,7 +606,8 @@
       
     
       
-        <h1 id="rm-0x01-quad-Preface"><a href="#rm-0x01-quad-Preface" class="headerlink" title="$\rm{0x01\quad Preface}$"></a>$\rm{0x01\quad Preface}$</h1><p>这篇文章初写于$7/1/2018$，是在陪同好友$yjk$与$wx$以及学长$rqy$一起去参加省队集训时写的。今天突然来了兴致，打算重新复习一遍$FFT$并且写$MTT$，于是便有了这篇文章。</p>
+        <p><img src="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89---purple.svg" alt=""></p>
+<h1 id="rm-0x01-quad-Preface"><a href="#rm-0x01-quad-Preface" class="headerlink" title="$\rm{0x01\quad Preface}$"></a>$\rm{0x01\quad Preface}$</h1><p>这篇文章初写于$7/1/2018$，是在陪同好友$yjk$与$wx$以及学长$rqy$一起去参加省队集训时写的。今天突然来了兴致，打算重新复习一遍$FFT$并且写$MTT$，于是便有了这篇文章。</p>
 <p>其实一开始我是不情愿把这篇文章搬到这儿来的——这好像是一个时代的缩影，那个时代的<code>orchidany</code>特别喜欢扮演老师，每天仿佛来到奥赛室只是为了“为人师”的：心性浮躁，学习功利。但现在我则是想沉下心来，认真做学问。</p>
 <p>但无论如何，我希望这篇原本冗杂繁长的文章可以更短、更新颖、从更高的角度审视一些问题。</p>
 <h1 id="rm-0x02-quad-Convolution"><a href="#rm-0x02-quad-Convolution" class="headerlink" title="$\rm{0x02\quad Convolution}$"></a>$\rm{0x02\quad Convolution}$</h1><p><strong>卷积$\boldsymbol{(Convolution)}$</strong>，准确来说是一种<strong>通过两个函数$\boldsymbol f$ 和$\boldsymbol g​$ 生成第三个函数的一种数学算子.</strong></p>
@@ -592,7 +633,7 @@
 <ul>
 <li><h2 id="rm-Advanced-Trick-Point-color-red-2-rm-Unit-Complex-Root"><a href="#rm-Advanced-Trick-Point-color-red-2-rm-Unit-Complex-Root" class="headerlink" title="$\rm{Advanced~Trick~Point}$ $\color{red}{2}$ $\rm{Unit ~Complex ~Root}$"></a>$\rm{Advanced~Trick~Point}$ $\color{red}{2}$ $\rm{Unit ~Complex ~Root}$</h2></li>
 </ul>
-<p>$n$次单位复根是满足$\omega^n = 1$ 的复数$\omega$，其中我们可以由复数的运算法则（辐角相乘，模相加）很简单地得出<strong>$n$次单位根有$n$个</strong>这个结论——亦或者是用代数基本定理证，都可以。而又因为复数$\omega^n$在复数平面上的模都是一，所以相乘之后还会是一，那么所有的$\omega_i,1 \leq i \leq n$就会均匀分布在单位圆上，类似当$n = 8$时它是这样的：</p>
+<p>$n$次单位复根是满足$\omega^n = 1$ 的复数$\omega$，其中我们可以由复数的运算法则（辐角相加，模相乘）很简单地得出<strong>$n$次单位根有$n$个</strong>这个结论——亦或者是用代数基本定理证，都可以。而又因为复数$\omega^n$在复数平面上的模都是一，所以相乘之后还会是一，那么所有的$\omega_i,1 \leq i \leq n$就会均匀分布在单位圆上，类似当$n = 8​$时它是这样的：</p>
 <p><img src="1.png" alt=""></p>
 <p>我们考虑欧拉公式：</p>
 <p>$$e^{ix} = cosx + isinx$$</p>
@@ -881,12 +922,37 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
               
     
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
               
     
               
@@ -926,7 +992,31 @@
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">27</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1075,7 +1165,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共35.9k字</span>
+  <span class="post-count">博客全站共58.2k字</span>
 </div>
         
 <div class="busuanzi-count">
