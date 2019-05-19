@@ -151,10 +151,12 @@
 <meta property="og:site_name" content="Orchidany&#39;w blog">
 <meta property="og:description" content="通常的线性规划用于求解一类满足正向约束的最大值问题，但是通过对偶可以将其转化成一类求解满足逆向约束的最小值问题。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-18T06:59:31.060Z">
+<meta property="og:image" content="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89---purple.svg">
+<meta property="og:updated_time" content="2019-05-18T10:14:53.966Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性规划入门·对偶定理">
 <meta name="twitter:description" content="通常的线性规划用于求解一类满足正向约束的最大值问题，但是通过对偶可以将其转化成一类求解满足逆向约束的最小值问题。">
+<meta name="twitter:image" content="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89---purple.svg">
 
 
 
@@ -520,7 +522,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-18 14:59:31" itemprop="dateModified" datetime="2019-05-18T14:59:31+08:00">2019-05-18</time>
+                <time title="修改时间：2019-05-18 18:14:53" itemprop="dateModified" datetime="2019-05-18T18:14:53+08:00">2019-05-18</time>
               
             
           </span>
@@ -594,7 +596,8 @@
       
     
       
-        <h1 id="rm-Preface-About-Duality-Theorm"><a href="#rm-Preface-About-Duality-Theorm" class="headerlink" title="$\rm{Preface:} About~Duality~Theorm$"></a>$\rm{Preface:} About~Duality~Theorm$</h1><p>首先要说的是<strong>线性规划对偶定理</strong>。我们朴素的线性规划大致如下：<br>$$<br>\text{最大化}\quad \sum c_ix_i \quad(i = 1, 2,3 \cdots n) \\<br>\text{满足约束} \quad \sum \limits_{j=1}^{n} a_{i,j}x_{j} \leq b_i\quad (i = 1,2,3\cdots m) \\ \qquad \qquad \qquad \quad x_j \geq 0\quad (j=1,2,3\cdots n)<br>$$<br>那么我们称它的<strong>对偶</strong>为形如下的线性规划：<br>$$<br>\text{最小化}\quad \sum b_iy_i \quad(i = 1, 2,3 \cdots m) \\<br>\text{满足约束} \quad \sum \limits_{j=1}^{m} a_{i,j}y_{j} \geq c_i\quad (i = 1,2,3\cdots n) \\ \qquad \qquad \qquad \quad y_j \geq 0\quad (j=1,2,3\cdots m)<br>$$<br>换做矩阵表示就会是这样：<br>$$<br>\text{最小化}\quad \boldsymbol{b^Ty} \\<br>\text{满足约束} \quad A^T\boldsymbol{y\geq c} \\\<br>\it{\qquad \qquad \quad} \boldsymbol {y} \geq 0<br>$$<br>那其实比较显然的是，我们原来线性规划中的约束向量与目标函数里的系数向量交换，目标函数的最大化变成了最小化。现在我们思考对偶的意义。</p>
+        <p><img src="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89---purple.svg" alt=""></p>
+<h1 id="rm-Preface-About-Duality-Theorm"><a href="#rm-Preface-About-Duality-Theorm" class="headerlink" title="$\rm{Preface:} About~Duality~Theorm$"></a>$\rm{Preface:} About~Duality~Theorm$</h1><p>首先要说的是<strong>线性规划对偶定理</strong>。我们朴素的线性规划大致如下：<br>$$<br>\text{最大化}\quad \sum c_ix_i \quad(i = 1, 2,3 \cdots n) \\<br>\text{满足约束} \quad \sum \limits_{j=1}^{n} a_{i,j}x_{j} \leq b_i\quad (i = 1,2,3\cdots m) \\ \qquad \qquad \qquad \quad x_j \geq 0\quad (j=1,2,3\cdots n)<br>$$<br>那么我们称它的<strong>对偶</strong>为形如下的线性规划：<br>$$<br>\text{最小化}\quad \sum b_iy_i \quad(i = 1, 2,3 \cdots m) \\<br>\text{满足约束} \quad \sum \limits_{j=1}^{m} a_{i,j}y_{j} \geq c_i\quad (i = 1,2,3\cdots n) \\ \qquad \qquad \qquad \quad y_j \geq 0\quad (j=1,2,3\cdots m)<br>$$<br>换做矩阵表示就会是这样：<br>$$<br>\text{最小化}\quad \boldsymbol{b^Ty} \\<br>\text{满足约束} \quad A^T\boldsymbol{y\geq c} \\\<br>\it{\qquad \qquad \quad} \boldsymbol {y} \geq 0<br>$$<br>那其实比较显然的是，我们原来线性规划中的约束向量与目标函数里的系数向量交换，目标函数的最大化变成了最小化。现在我们思考对偶的意义。</p>
 <p>首先假设我们有这么一个线性规划：<br>$$<br>\text{最小化}\quad \sum b_iy_i \quad(i = 1, 2,3 \cdots m) \\<br>\text{满足约束} \quad \sum \limits_{j=1}^{m} a_{i,j}y_{j} \geq c_i\quad (i = 1,2,3\cdots n) \\ \qquad \qquad \qquad \quad y_j \geq 0\quad (j=1,2,3\cdots m)<br>$$<br><del>其实就是上面那个</del></p>
 <p>我们的目的其实等价于确定目标函数的下界。我们观察每一组约束，假设有一组约束是<br>$$<br>\quad \sum \limits_{j=1}^{m} a_{p,j}y_{j} \geq c_p\quad (i = 1,2,3\cdots n)<br>$$<br>并且我们保证有：<br>$$<br>\forall a_{p,j} \in \boldsymbol{a_p},\forall b_i \in{\boldsymbol{b}},\quad i=j \Longrightarrow b_i\geq a_{p,j}<br>$$<br>好像写的很不规矩……意思就是对应项的系数，目标函数都比这个约束里的大。</p>
 <p>那么因为$\forall x\geq 0$，所以我们可以保证目标函数的最小值一定会是$c_p$。这个结论是显然的。</p>
@@ -871,7 +874,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">31</span>
+                      
+                    
+                    <span class="site-state-item-count">32</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1020,7 +1025,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共76.1k字</span>
+  <span class="post-count">博客全站共77k字</span>
 </div>
         
 <div class="busuanzi-count">

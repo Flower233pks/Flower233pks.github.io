@@ -144,7 +144,7 @@
 
 </script>
   <meta name="description" content="2019年2月7日举办的一场CF，$\text{div1+div2}$，题目质量较高。">
-<meta name="keywords" content="CodeForces">
+<meta name="keywords" content="动态规划-普通DP,CodeForces,树模型,题解,思维题&#x2F;构造">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CF#Global Round 1の题解(A $\to$ G)">
 <meta property="og:url" content="http://www.orchidany.cf/2019/05/10/Codeforces-1110/index.html">
@@ -158,7 +158,9 @@
 <meta property="og:image" content="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E6%8F%90%E9%AB%98%2B-blue.svg">
 <meta property="og:image" content="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89---purple.svg">
 <meta property="og:image" content="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89-darkviolet.svg">
-<meta property="og:updated_time" content="2019-05-18T06:58:47.447Z">
+<meta property="og:image" content="http://www.orchidany.cf/2019/05/10/Codeforces-1110/1.png">
+<meta property="og:image" content="http://www.orchidany.cf/2019/05/10/Codeforces-1110/2.png">
+<meta property="og:updated_time" content="2019-05-19T01:58:18.194Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CF#Global Round 1の题解(A $\to$ G)">
 <meta name="twitter:description" content="2019年2月7日举办的一场CF，$\text{div1+div2}$，题目质量较高。">
@@ -528,7 +530,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-18 14:58:47" itemprop="dateModified" datetime="2019-05-18T14:58:47+08:00">2019-05-18</time>
+                <time title="修改时间：2019-05-19 09:58:18" itemprop="dateModified" datetime="2019-05-19T09:58:18+08:00">2019-05-19</time>
               
             
           </span>
@@ -626,7 +628,7 @@
 <p>给出 $q$ 个询问，每个询问为一个整数$a_i$。你需要对于每个询问，求出$f(a_i)$的值。$q=O(10^3),a=O(2^{25}).$</p>
 <p>也算是比较巧妙的一道题，当然这个难度评级是给的分块打表的，毕竟思维难度摆在那里……首先我们考虑这个式子的结构，最大化一个gcd，那么我们不妨考虑如果$gcd(x,y)$,存在$x=0$或者$y=0$时，$gcd(x,y)=y$或者$gcd(x,y)=x$。</p>
 <p>所以我们考虑，对于任意的$a$，我们只需要去尝试构造一种方案 ，使得$a\oplus b$最大并且$a~\&amp; ~b$最小。那么不妨考虑直接选一个与$a$所有位上都相反的数$b$，就可以保证$a~\oplus~b$最大且$a~\&amp;~b=0$，最后的答案就是$2^{k-1}-1$，其中$k$是二进制下$a$的位数。其中合法性是不言而喻的，因为根据构造，$b$的第$k$位（二进制位下最大的那一位）上必定是$0$，所以似乎就做完了？</p>
-<p>然而并不是，因为$b\not =0$，所以当$~a=2^{w}-1，w\in \mathbb N~$时就会不合法。此处又有一个精妙的构造，我们发现当$a$的二进制位上都是$1$时，$\forall b&lt;a,\exist a  ~\&amp; ~b=b, a~\oplus~b=a-b$, 于是最后就相当于求$\max \gcd (a-b,b)$，运用辗转相除或者更相减损的思想可以立即看出是$\max \gcd(a,b)$，于是只需要找出$a$最大的因子就好了——此处暴力即可。</p>
+<p>然而并不是，因为$b\not =0$，所以当$~a=2^{w}-1，w\in \mathbb N~$时就会不合法。此处又有一个精妙的构造，我们发现当$a$的二进制位上都是$1$时，$\forall b&lt;a,\exists a  ~\&amp; ~b=b, a~\oplus~b=a-b$, 于是最后就相当于求$\max \gcd (a-b,b)$，运用辗转相除或者更相减损的思想可以立即看出是$\max \gcd(a,b)$，于是只需要找出$a$最大的因子就好了——此处暴力即可。</p>
 <p>于是最后的代码：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 34000000</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">bitset</span> &lt;MAXN&gt; check ; <span class="keyword">int</span> T, N, i, O ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">get_fac</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">3</span> ; i &lt;= x ; i += <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">if</span> (!(x % i)) <span class="keyword">return</span> (x /= i) ; </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123; </span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; T ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= <span class="number">25</span> ; ++ i) check[(<span class="number">1</span> &lt;&lt; i) - <span class="number">1</span>] = <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">while</span> (T --)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;N) ;</span><br><span class="line">        <span class="keyword">if</span> (check[N]) </span><br><span class="line">            O = get_fac(N), <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, O) ;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; i &lt;&lt;= <span class="number">1</span>, O = i) ; </span><br><span class="line">            O --, <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, O) ;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>不得不说是一道比较神的的题了，Brainstorm，Brainstorm…..</p>
@@ -662,6 +664,24 @@
 <h1 id="G"><a href="#G" class="headerlink" title="$G$"></a>$G$</h1><p><img src="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89-darkviolet.svg" alt=""></p>
 <p>题目大意：给出一棵N个点的树，初始时某些节点是白色，其他节点没有颜色，有两个人在树上博弈。每一回合，一方可以将一个没有颜色的点染成白色，然后另一方可以将一个没有颜色的点染成黑色。如果在某次染色后树上存在三个点ABC满足有边$(A,B)(B,C)$且ABC都有颜色且颜色相同，则该颜色对应的人获胜。假设两人绝顶聪明，问最后结果如何。$T\leq 5e5,\sum n\leq 5e5$</p>
 <p>emmmm一道我不会的题。其实总觉得这种博弈论有一种一脉相承的精妙之处，但是自己总是不能稔熟于心……GG</p>
+<p>然后我选择搬了<code>Itst</code>巨佬的思路过来</p>
+<h2 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h2><p>首先我们考虑，黑色是不可能获胜的，毕竟原来就已经有一堆白点了……</p>
+<p>其次我们考虑先忽略原树中的所有已经被染过色的点，然后用一种比较前卫的方式来分类讨论——<code>度数讨论法</code>。</p>
+<ul>
+<li>假设有一个点的度数$\geq 4$，换句话说这个联通块的点的个数要$\geq 5$，那么根据白色先手的原则，白色的一定可以取$3$个节点，并且一定可以取$3$个连续的节点。所以白色赢；</li>
+<li>如果存在一个点的度数$=3$，且它所连的$3$个点至少有$2$个点不是叶子节点，那么我们如果考虑讲树平展开之后，先选中间的点，就可以保证白色赢；</li>
+<li>其余的情况我们可以考虑大力分类讨论树的形态：<img src="1.png" alt=""></li>
+</ul>
+<p>我们发现，对于前两种情况都是draw的。而对于第三种情况，如果总点数是<strong>奇数个</strong>，那么<strong>白色必赢</strong>。我们考虑从左向右染色，白色第一次考虑染从左往右第二个非叶子节点，那么黑色只能染第一个；白色染第四个，黑色只能染第三个……以此类推。到最后一定会出现白色染了$2n$这个点，黑色去染$2n-1$这个点，那么白色接下来就可以染$2n+1$这个点，Winner！</p>
+<h2 id="0x02"><a href="#0x02" class="headerlink" title="0x02"></a>0x02</h2><p>接下来我们如果要算上原本就是白色的点呢？对于这种情况，一般都是转化回我们已经讨论完的<code>0x01</code>去。我们考虑把一个白色点拆成$4$个无色点。<img src="2.png" alt=""></p>
+<p>其中A就是原来的$1$号点，原图上哪些点跟$1$连了边，现在也和$A$连，换句话说就是$A$多了一棵三个节点的子树。那么接下来我们考虑其可行性。</p>
+<ul>
+<li>如果$A$被染成黑色，那么白色没有必要再染子树内的点，这种情况等价于不连子树。</li>
+<li>如果$A$被染成白色，那么黑色一定要染$B$点，那么此时这棵子树又没用了，所以也等价于不连子树。</li>
+</ul>
+<p>嗯，然后这个题就完了。我们可以发现就是一个大力分类讨论的过程——题还是挺好的。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 500020</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> to(k) E[k].to</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> Input[MAXN] ;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to, next ;</span><br><span class="line">&#125;E[MAXN &lt;&lt; <span class="number">1</span>] ; <span class="keyword">int</span> In[MAXN], qaq ;</span><br><span class="line"><span class="keyword">int</span> T, N, head[MAXN], A, qwq, B, i, j, ans, cnt ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Add</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">	E[++ cnt].to = v, In[v] ++ ;</span><br><span class="line">	E[cnt].next = head[u], head[u] = cnt ;</span><br><span class="line">	E[++ cnt].to = u, In[u] ++ ; </span><br><span class="line">	E[cnt].next = head[v], head[v] = cnt ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; T ;</span><br><span class="line">	<span class="keyword">while</span> (T --)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;N), ++qwq ;</span><br><span class="line">		fill(In, In + N + <span class="number">4</span>, <span class="number">0</span>) ;</span><br><span class="line">		fill(head, head + N + <span class="number">4</span>, <span class="number">0</span>), ans = <span class="number">0</span>, qaq = <span class="number">0</span> ;</span><br><span class="line">		<span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt; N ; ++ i) <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;A, &amp;B), Add(A, B) ;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s"</span>, Input) ; <span class="keyword">if</span> (N &lt; <span class="number">3</span>) <span class="built_in">puts</span>(<span class="string">"Draw"</span>) ; </span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (N == <span class="number">3</span>)&#123;</span><br><span class="line">			<span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; N ; ++ i) ans += Input[i] == <span class="string">'W'</span> ;</span><br><span class="line">			<span class="built_in">puts</span>(ans &gt;= <span class="number">2</span> ? <span class="string">"White"</span> : <span class="string">"Draw"</span>) ;</span><br><span class="line">		&#125; </span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">int</span> Linshi = <span class="number">0</span> ;</span><br><span class="line">			<span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; N ; ++ i)</span><br><span class="line">				<span class="keyword">if</span> (Input[i] == <span class="string">'W'</span>)&#123;</span><br><span class="line">					head[++ N] = <span class="number">0</span>, Add(i + <span class="number">1</span>, N), In[N] = <span class="number">3</span> ;</span><br><span class="line">				&#125;</span><br><span class="line">			<span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N &amp;&amp; ans &lt;= <span class="number">0</span>; ++ i)&#123;</span><br><span class="line">				<span class="keyword">if</span> (In[i] &gt; <span class="number">3</span>) ans ++ ;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span> (In[i] == <span class="number">3</span>)&#123; Linshi = <span class="number">0</span> ;</span><br><span class="line">					<span class="keyword">for</span> (j = head[i] ; j ; j = E[j].next) Linshi += (In[to(j)] &gt;= <span class="number">2</span>) ;</span><br><span class="line">					ans += Linshi &gt; <span class="number">1</span>, qaq ++ ;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (qaq == <span class="number">2</span> &amp;&amp; (N % <span class="number">2</span>)) ans ++ ; <span class="built_in">puts</span>(ans ? <span class="string">"White"</span> : <span class="string">"Draw"</span>) ;</span><br><span class="line">		&#125;</span><br><span class="line"><span class="comment">// 		if (qwq == 20) return 0 ;</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>Global Round的题目质量不低蛤。</p>
 
       
     </div>
@@ -699,7 +719,15 @@
       
         <div class="post-tags">
           
+            <a href="/tags/动态规划-普通DP/" rel="tag"><i class="fa fa-tag"></i> 动态规划-普通DP</a>
+          
             <a href="/tags/CodeForces/" rel="tag"><i class="fa fa-tag"></i> CodeForces</a>
+          
+            <a href="/tags/树模型/" rel="tag"><i class="fa fa-tag"></i> 树模型</a>
+          
+            <a href="/tags/题解/" rel="tag"><i class="fa fa-tag"></i> 题解</a>
+          
+            <a href="/tags/思维题-构造/" rel="tag"><i class="fa fa-tag"></i> 思维题/构造</a>
           
         </div>
       
@@ -921,7 +949,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">31</span>
+                      
+                    
+                    <span class="site-state-item-count">32</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1016,7 +1046,7 @@
             
     
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#A"><span class="nav-number">1.</span> <span class="nav-text">$A$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#B"><span class="nav-number">2.</span> <span class="nav-text">$B$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C"><span class="nav-number">3.</span> <span class="nav-text">$C$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#D"><span class="nav-number">4.</span> <span class="nav-text">$D$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#E"><span class="nav-number">5.</span> <span class="nav-text">$E$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#F"><span class="nav-number">6.</span> <span class="nav-text">$F$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#G"><span class="nav-number">7.</span> <span class="nav-text">$G$</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#A"><span class="nav-number">1.</span> <span class="nav-text">$A$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#B"><span class="nav-number">2.</span> <span class="nav-text">$B$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C"><span class="nav-number">3.</span> <span class="nav-text">$C$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#D"><span class="nav-number">4.</span> <span class="nav-text">$D$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#E"><span class="nav-number">5.</span> <span class="nav-text">$E$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#F"><span class="nav-number">6.</span> <span class="nav-text">$F$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#G"><span class="nav-number">7.</span> <span class="nav-text">$G$</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01"><span class="nav-number">7.1.</span> <span class="nav-text">0x01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02"><span class="nav-number">7.2.</span> <span class="nav-text">0x02</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
     
           </div>
@@ -1070,7 +1100,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共76.1k字</span>
+  <span class="post-count">博客全站共77k字</span>
 </div>
         
 <div class="busuanzi-count">
