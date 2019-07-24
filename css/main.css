@@ -154,7 +154,7 @@ template {
 body {
   position: relative;
   font-family: 'Comic Sans MS', "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 2;
   color: #555;
   background-image: url("/images/background.png");
@@ -169,7 +169,7 @@ body {
 }
 @media (min-width: 1200px) {
   body {
-    font-size: 16px;
+    font-size: 17px;
   }
 }
 h1,
@@ -342,6 +342,16 @@ kbd {
   padding: 25px;
   -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
   -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
+}
+.sidebar {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.sidebar p,
+.sidebar span,
+.sidebar a {
+  color: #ee82ee;
 }
 .text-left {
   text-align: left;
@@ -559,7 +569,7 @@ body {
 pre,
 .highlight {
   margin: 20px 0;
-  font-size: 14px;
+  font-size: 15px;
   color: #4d4d4c;
   background: #f7f7f7;
   line-height: 1.6;
@@ -575,7 +585,7 @@ code {
   color: #555;
   background: #eee;
   border-radius: 3px;
-  font-size: 14px;
+  font-size: 15px;
 }
 pre {
   overflow: auto;
@@ -1291,7 +1301,7 @@ pre .javascript .function {
 .post-body .figure .caption {
   margin: -20px auto 15px;
   text-align: center;
-  font-size: 14px;
+  font-size: 15px;
   color: #999;
   font-weight: bold;
   line-height: 1;
@@ -1776,7 +1786,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff990a;
+  background: #aaf0be;
 }
 .feed-link,
 .chat {
@@ -2400,7 +2410,7 @@ ul.breadcrumb {
   margin: 1em 0;
   padding: 0 2em;
   text-align: center;
-  font-size: 12px;
+  font-size: 13px;
 }
 ul.breadcrumb li {
   display: inline;
