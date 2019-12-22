@@ -153,7 +153,7 @@
 <meta property="og:description" content="众所周知，朴素的$BSGS$并不可以解决$p$不为素数的问题。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89---purple.svg">
-<meta property="og:updated_time" content="2019-12-15T06:38:51.000Z">
+<meta property="og:updated_time" content="2019-12-15T13:01:37.606Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【学习笔记】扩展的BSGS">
 <meta name="twitter:description" content="众所周知，朴素的$BSGS$并不可以解决$p$不为素数的问题。">
@@ -492,7 +492,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-15 14:38:51" itemprop="dateModified" datetime="2019-12-15T14:38:51+08:00">2019-12-15</time>
+                <time title="Modified: 2019-12-15 21:01:37" itemprop="dateModified" datetime="2019-12-15T21:01:37+08:00">2019-12-15</time>
               </span>
             
           
@@ -581,8 +581,8 @@
 <h1 id="rm-0x02-quad-Algorithm-Process"><a href="#rm-0x02-quad-Algorithm-Process" class="headerlink" title="$\rm{0x02\quad Algorithm~Process}$"></a>$\rm{0x02\quad Algorithm~Process}$</h1><p>今天才发现原来$\rm{BSGS}$有两种写法……并且觉得剩下的题解讲的都讲的不是很全的样子233。</p>
 <p>其实本质上，当$p$不为素数时，我们无法进行朴素$\rm{BSGS}$的原因是我们的欧拉定理$a^{\varphi(p)} \equiv b(\bmod p)$ 只能处理$(a,p)=1$的情况。那么我们知道，朴素的$\rm{BSGS}$的关键在于，可以保证最小解是有界的——$x$一定在$[1,\varphi(p)]$中。所以最后$BSGS$的复杂度才会是$\Theta(\sqrt{\varphi(p)})$ 的——比如说比较常见的$p$是素数的情况下，时间复杂度为$\Theta(p)$。</p>
 <p>那么也就是说，我们只需要进行一些操作，保证$(a,p)=1 $即可$^{[1]}$。</p>
-<p>我们思考，对于同余式$a^x\equiv b~(\bmod p)$而言，我们先假定$(a,p)&gt;1 $。而此时如果有$((a,p), b)=1$，那么说明此式只有可能在$x=0,b=1 $的时候有解——这个结论是平凡的。因为假设我们把它展开成$a\cdot a^{x-1} +kp=b $的形式，必须要有$(a,p)  ~|~ b$的情况下，才能保证$a^{x-1}$和$k $都是整数。</p>
-<p>那么对于$(a,p)&gt;1$且$(a,p)~|~b $，我们令原式变成</p>
+<p>我们思考，对于同余式$a^x\equiv b (\bmod p)$而言，我们先假定$(a,p)&gt;1 $。而此时如果有$((a,p), b)=1$，那么说明此式只有可能在$x=0,b=1 $的时候有解——这个结论是平凡的。因为假设我们把它展开成$a\cdot a^{x-1} +kp=b $的形式，必须要有$(a,p)  |  b$的情况下，才能保证$a^{x-1}$和$k $都是整数。</p>
+<p>那么对于$(a,p)&gt;1$且$(a,p)  |  b $，我们令原式变成</p>
 <p>$$<br>a^{x-1}\cdot \frac{a}{(a,p)} \equiv \frac{b}{(a,p)} (\bmod \frac{p}{(a,p)})<br>$$<br>的样子，如果此时$(a^{x-1},\frac{p}{(a,p)})=1$ 的话，我们就直接解</p>
 <p>$$<br>a^{x-1}\equiv \frac{\frac{b}{(a,p)}} {\frac{a}{(a,p)} }(\bmod \frac{p}{(a,p)})<br>$$<br>这个方程即可。否则我们继续分解直至$(p’,a)=1$。</p>
 <p>那么此时有个问题需要注意，就是如果们在解这个方程时，出现了</p>
@@ -727,7 +727,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-count">68</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1045,7 +1045,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共154.9k字</span>
+  <span class="post-count">博客全站共154.8k字</span>
 </div>
 
         

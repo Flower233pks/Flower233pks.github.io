@@ -144,18 +144,18 @@
   };
 </script>
 
-  <meta name="description" content="其实这两个东西只是一个拓展，思想也是简单的思想，只不过由于$\ln$运算的乘方转乘法很好用，所以大部分套路都是先多项式$\ln$乱搞一通再多项式$\exp$回去。 形式化地讲，我们就是要解决以下两个问题：$$\begin{aligned}1)\quad G&amp;amp;= \ln F ~(\bmod~p)\\\2)\quad G&amp;amp;= e^{F} ~(\bmod~p)\end{aligned}$">
+  <meta name="description" content="其实这两个东西只是一个拓展，思想也是简单的思想，只不过由于$\ln$运算的乘方转乘法很好用，所以大部分套路都是先多项式$\ln$乱搞一通再多项式$\exp$回去。 形式化地讲，我们就是要解决以下两个问题：$$\begin{aligned}1)\quad G&amp;amp;= \ln F  (\bmod  p)\\\2)\quad G&amp;amp;= e^{F}  (\bmod  p)\end{aligned">
 <meta name="keywords" content="多项式基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【学习笔记】多项式ln&#x2F;exp">
 <meta property="og:url" content="http://www.orchidany.cf/2019/08/07/lnexp/index.html">
 <meta property="og:site_name" content="Orchidany&#39;w blog">
-<meta property="og:description" content="其实这两个东西只是一个拓展，思想也是简单的思想，只不过由于$\ln$运算的乘方转乘法很好用，所以大部分套路都是先多项式$\ln$乱搞一通再多项式$\exp$回去。 形式化地讲，我们就是要解决以下两个问题：$$\begin{aligned}1)\quad G&amp;amp;= \ln F ~(\bmod~p)\\\2)\quad G&amp;amp;= e^{F} ~(\bmod~p)\end{aligned}$">
+<meta property="og:description" content="其实这两个东西只是一个拓展，思想也是简单的思想，只不过由于$\ln$运算的乘方转乘法很好用，所以大部分套路都是先多项式$\ln$乱搞一通再多项式$\exp$回去。 形式化地讲，我们就是要解决以下两个问题：$$\begin{aligned}1)\quad G&amp;amp;= \ln F  (\bmod  p)\\\2)\quad G&amp;amp;= e^{F}  (\bmod  p)\end{aligned">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-15T06:36:07.000Z">
+<meta property="og:updated_time" content="2019-12-16T00:14:24.436Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【学习笔记】多项式ln&#x2F;exp">
-<meta name="twitter:description" content="其实这两个东西只是一个拓展，思想也是简单的思想，只不过由于$\ln$运算的乘方转乘法很好用，所以大部分套路都是先多项式$\ln$乱搞一通再多项式$\exp$回去。 形式化地讲，我们就是要解决以下两个问题：$$\begin{aligned}1)\quad G&amp;amp;= \ln F ~(\bmod~p)\\\2)\quad G&amp;amp;= e^{F} ~(\bmod~p)\end{aligned}$">
+<meta name="twitter:description" content="其实这两个东西只是一个拓展，思想也是简单的思想，只不过由于$\ln$运算的乘方转乘法很好用，所以大部分套路都是先多项式$\ln$乱搞一通再多项式$\exp$回去。 形式化地讲，我们就是要解决以下两个问题：$$\begin{aligned}1)\quad G&amp;amp;= \ln F  (\bmod  p)\\\2)\quad G&amp;amp;= e^{F}  (\bmod  p)\end{aligned">
 
 
 
@@ -490,7 +490,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-15 14:36:07" itemprop="dateModified" datetime="2019-12-15T14:36:07+08:00">2019-12-15</time>
+                <time title="Modified: 2019-12-16 08:14:24" itemprop="dateModified" datetime="2019-12-16T08:14:24+08:00">2019-12-16</time>
               </span>
             
           
@@ -572,7 +572,7 @@
 
       
         <p>其实这两个东西只是一个拓展，思想也是简单的思想，只不过由于$\ln$运算的乘方转乘法很好用，所以大部分套路都是<strong>先多项式$\ln$乱搞一通再多项式$\exp$回去</strong>。</p>
-<p>形式化地讲，我们就是要解决以下两个问题：<br>$$<br>\begin{aligned}<br>1)\quad G&amp;= \ln F ~(\bmod~p)\\\<br>2)\quad G&amp;= e^{F} ~(\bmod~p)<br>\end{aligned}<br>$$</p>
+<p>形式化地讲，我们就是要解决以下两个问题：<br>$$<br>\begin{aligned}<br>1)\quad G&amp;= \ln F  (\bmod  p)\\\<br>2)\quad G&amp;= e^{F}  (\bmod  p)<br>\end{aligned}<br>$$</p>
 <a id="more"></a>
 <h1 id="1-ln"><a href="#1-ln" class="headerlink" title="$1~\ln$"></a>$1~\ln$</h1><p>其实就是瞎jb记一下式子啦<br>$$<br>G’= F’\cdot \frac{1}{F}=\frac{F’}{F}<br>$$<br>……然后就先对F求个导+求个逆然后再不定积分回去就好。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> A[MAXN], B[MAXN] ;</span><br><span class="line"><span class="keyword">void</span> _Dev(<span class="keyword">int</span> *f, <span class="keyword">int</span> *g, <span class="keyword">int</span> len)&#123;</span><br><span class="line">    <span class="keyword">int</span> i ; g[len - <span class="number">1</span>] = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">1</span> ; i &lt; len ; ++ i) g[i - <span class="number">1</span>] = i * f[i] % P ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> _Invdev(<span class="keyword">int</span> *f, <span class="keyword">int</span> *g, <span class="keyword">int</span> len)&#123;</span><br><span class="line">    g[<span class="number">0</span>] = <span class="number">0</span> ; <span class="keyword">int</span> i ;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">1</span> ; i &lt; len ; ++ i) g[i] = f[i - <span class="number">1</span>] * expow(i, P - <span class="number">2</span>) % P ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> _Ln(<span class="keyword">int</span> *f, <span class="keyword">int</span> *g, <span class="keyword">int</span> len)&#123;</span><br><span class="line">    _Dev(f, A, len), _Inv(f, B, len) ; <span class="keyword">int</span> i ;</span><br><span class="line">    <span class="keyword">int</span> Len = <span class="number">1</span>, l = <span class="number">0</span> ; <span class="keyword">while</span> (Len &lt; (len &lt;&lt; <span class="number">1</span>)) Len &lt;&lt;= <span class="number">1</span>, ++ l ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; Len ; ++ i) R[i] = (R[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; (l - <span class="number">1</span>)) ;</span><br><span class="line">    NTT(A, Len, <span class="number">1</span>), NTT(B, Len, <span class="number">1</span>) ; <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; Len ; ++ i) A[i] = <span class="number">1l</span>l * A[i] * B[i] % P ;</span><br><span class="line">    NTT(A, Len, <span class="number">-1</span>), _Invdev(A, g, len) ; <span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -712,7 +712,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-count">68</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1030,7 +1030,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共154.9k字</span>
+  <span class="post-count">博客全站共154.8k字</span>
 </div>
 
         

@@ -153,7 +153,7 @@
 <meta property="og:description" content="春节前的一场$CF$～名字很$nice$的说～ ⑧说别的啦，新年好那个新年好qwq!">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89--%2F%E7%9C%81%E9%80%89-blueviolet.svg">
-<meta property="og:updated_time" content="2019-12-15T06:43:11.000Z">
+<meta property="og:updated_time" content="2019-12-15T12:46:41.518Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【赛题整理】CF#536Div2の题解(E&amp;F)">
 <meta name="twitter:description" content="春节前的一场$CF$～名字很$nice$的说～ ⑧说别的啦，新年好那个新年好qwq!">
@@ -492,7 +492,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-15 14:43:11" itemprop="dateModified" datetime="2019-12-15T14:43:11+08:00">2019-12-15</time>
+                <time title="Modified: 2019-12-15 20:46:41" itemprop="dateModified" datetime="2019-12-15T20:46:41+08:00">2019-12-15</time>
               </span>
             
           
@@ -598,7 +598,8 @@
 <h2 id="0x03-F-cdot-text-Lunar-New-Year-and-a-Recursive-Sequence"><a href="#0x03-F-cdot-text-Lunar-New-Year-and-a-Recursive-Sequence" class="headerlink" title="$0x03~~F\cdot \text{Lunar New Year and a Recursive Sequence}$"></a>$0x03~~F\cdot \text{Lunar New Year and a Recursive Sequence}$</h2><p><a href="http://codeforces.com/contest/1106/problem/E" target="_blank" rel="noopener">$Link$</a></p>
 <p>简单来说就是给你一个序列$F_x$的$k$项的递推法则（幂次积式递推），在认定前$k-1$项都满足$F_x=1$的基础上给定$F_n$，让你倒推出$F_k$来。</p>
 <h3 id="mathfrak-Solution-1"><a href="#mathfrak-Solution-1" class="headerlink" title="$\mathfrak {Solution}$"></a>$\mathfrak {Solution}$</h3><p>恕我直言…这道题我考场上是不可能会的…（已扑街</p>
-<p>首先我们观察一般形式：$$F_x = \begin{cases}1~, &amp;\rm{x&lt;k} \newline ?~, &amp; \rm{x = k} \newline \prod\limits_{j=1}^kF_{x-j}^{b_j}  ,  &amp; \rm{x&gt;k}\end{cases}~ (\mod 998,244,353)$$</p>
+<p>首先我们观察一般形式：</p>
+<p>$$<br>F_x = \begin{cases}1  , &amp;\rm{x&lt;k} \newline ?  , &amp; \rm{x = k} \newline \prod\limits_{j=1}^kF_{x-j}^{b_j}  ,  &amp; \rm{x&gt;k}\end{cases}   (\mod 998,244,353)<br>$$</p>
 <p>大体上这个式子是没法做的，因为毕竟是乘积+幂次方递推的形式。但是这个地方有个<del>我没想出来、想出来也不会用的</del>$Idea$，就是我们既然要把乘积转化成求和的形式，那就只能在指数上乱搞。换句话说，我们可以考虑把它的每一项都写成同一个数的幂次，那么递推的时候只需要做加法就可以了。</p>
 <p>次我们选择$998,244,353$的<strong>原根</strong>作为底数。因为原根有一个很优美的性质，就是<strong>$p$的原根的幂次可以遍历$p$的简化剩余系。</strong>而由$NTT$里得到的经验，这个模数的最小原根是$3$。</p>
 <hr>
@@ -751,7 +752,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-count">68</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1069,7 +1070,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共154.9k字</span>
+  <span class="post-count">博客全站共154.8k字</span>
 </div>
 
         

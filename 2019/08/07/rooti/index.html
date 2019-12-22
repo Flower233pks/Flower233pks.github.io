@@ -144,18 +144,18 @@
   };
 </script>
 
-  <meta name="description" content="形式化来讲，我们要解决这两个问题：$$\begin{aligned}G &amp;amp;= F^k~(\bmod ~x^n)\\\G^k &amp;amp;= F~(\bmod ~x^n)\end{aligned}$$然而实际上后一个咕了，我曾把这玩意儿当作多项式牛顿迭代的课后题来着……并且更重要的原因没人出这玩意儿的题，所以直接简化成$G^2\equiv F$好了。。。">
+  <meta name="description" content="形式化来讲，我们要解决这两个问题：$$\begin{aligned}G &amp;amp;= F^k  (\bmod  x^n)\\\G^k &amp;amp;= F  (\bmod  x^n)\end{aligned}$$然而实际上后一个咕了，我曾把这玩意儿当作多项式牛顿迭代的课后题来着……并且更重要的原因没人出这玩意儿的题，所以直接简化成$G^2\equiv F$好了。。。">
 <meta name="keywords" content="多项式基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【学习笔记】多项式求幂&#x2F;开根">
 <meta property="og:url" content="http://www.orchidany.cf/2019/08/07/rooti/index.html">
 <meta property="og:site_name" content="Orchidany&#39;w blog">
-<meta property="og:description" content="形式化来讲，我们要解决这两个问题：$$\begin{aligned}G &amp;amp;= F^k~(\bmod ~x^n)\\\G^k &amp;amp;= F~(\bmod ~x^n)\end{aligned}$$然而实际上后一个咕了，我曾把这玩意儿当作多项式牛顿迭代的课后题来着……并且更重要的原因没人出这玩意儿的题，所以直接简化成$G^2\equiv F$好了。。。">
+<meta property="og:description" content="形式化来讲，我们要解决这两个问题：$$\begin{aligned}G &amp;amp;= F^k  (\bmod  x^n)\\\G^k &amp;amp;= F  (\bmod  x^n)\end{aligned}$$然而实际上后一个咕了，我曾把这玩意儿当作多项式牛顿迭代的课后题来着……并且更重要的原因没人出这玩意儿的题，所以直接简化成$G^2\equiv F$好了。。。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-15T06:35:55.000Z">
+<meta property="og:updated_time" content="2019-12-17T01:33:59.956Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【学习笔记】多项式求幂&#x2F;开根">
-<meta name="twitter:description" content="形式化来讲，我们要解决这两个问题：$$\begin{aligned}G &amp;amp;= F^k~(\bmod ~x^n)\\\G^k &amp;amp;= F~(\bmod ~x^n)\end{aligned}$$然而实际上后一个咕了，我曾把这玩意儿当作多项式牛顿迭代的课后题来着……并且更重要的原因没人出这玩意儿的题，所以直接简化成$G^2\equiv F$好了。。。">
+<meta name="twitter:description" content="形式化来讲，我们要解决这两个问题：$$\begin{aligned}G &amp;amp;= F^k  (\bmod  x^n)\\\G^k &amp;amp;= F  (\bmod  x^n)\end{aligned}$$然而实际上后一个咕了，我曾把这玩意儿当作多项式牛顿迭代的课后题来着……并且更重要的原因没人出这玩意儿的题，所以直接简化成$G^2\equiv F$好了。。。">
 
 
 
@@ -490,7 +490,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-15 14:35:55" itemprop="dateModified" datetime="2019-12-15T14:35:55+08:00">2019-12-15</time>
+                <time title="Modified: 2019-12-17 09:33:59" itemprop="dateModified" datetime="2019-12-17T09:33:59+08:00">2019-12-17</time>
               </span>
             
           
@@ -571,7 +571,7 @@
       
 
       
-        <p>形式化来讲，我们要解决这两个问题：<br>$$<br>\begin{aligned}<br>G &amp;= F^k~(\bmod ~x^n)\\\<br>G^k &amp;= F~(\bmod ~x^n)<br>\end{aligned}<br>$$<br>然而实际上后一个咕了，我曾把这玩意儿当作<code>多项式牛顿迭代</code>的课后题来着……并且更重要的原因没人出这玩意儿的题，所以直接简化成$G^2\equiv F$好了。。。</p>
+        <p>形式化来讲，我们要解决这两个问题：<br>$$<br>\begin{aligned}<br>G &amp;= F^k  (\bmod  x^n)\\\<br>G^k &amp;= F  (\bmod  x^n)<br>\end{aligned}<br>$$<br>然而实际上后一个咕了，我曾把这玩意儿当作<code>多项式牛顿迭代</code>的课后题来着……并且更重要的原因没人出这玩意儿的题，所以直接简化成$G^2\equiv F$好了。。。</p>
 <a id="more"></a>
 <h1 id="1-求幂"><a href="#1-求幂" class="headerlink" title="$1$ 求幂"></a>$1$ 求幂</h1><p>首先思考式子<br>$$<br>G=F^k(~\bmod~x^n)<br>$$<br>怎么化开。那么喜闻乐见的就是一步求对数然后exp回去：<br>$$<br>\ln G = k \ln F~(\bmod~x^n)\\\<br>\exp(k\ln F)=G~(\bmod ~x^n)<br>$$<br>对应的是<code>Luogu</code>的<a href="https://www.luogu.org/problem/P5245" target="_blank" rel="noopener"><code>P5245</code></a>:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, y ;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; N, M = <span class="number">1</span> ;</span><br><span class="line">    Gi = expow(Gp, P - <span class="number">2</span>) ;</span><br><span class="line">    <span class="keyword">while</span> (M &lt;= N) M &lt;&lt;= <span class="number">1</span> ;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; In ; y = <span class="built_in">strlen</span>(In) ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; N ; ++ i) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;F[i]) ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; y ; ++ i) K = (K * <span class="number">10</span> + In[i] - <span class="string">'0'</span>) % P ;</span><br><span class="line">    _Ln(F, L, M) ; <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; N ; ++ i) L[i] = <span class="number">1l</span>l * L[i] * K % P ;</span><br><span class="line">    _Exp(L, G, M) ; <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; N ; ++ i) <span class="built_in">printf</span>(<span class="string">"%lld "</span>, G[i]) ; <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -580,18 +580,18 @@
 <blockquote>
 <p>似乎大家都是诡异的写法，没有人用$O(n\log^2 n)$去暴力艹这道题。</p>
 <p>然而事实上是完全可以卡过去的。我的提交虽然加了<code>-O2</code>和<code>#pragma</code><del>显得十分弟弟</del>，但是其实去掉之后也是很快的。不吹，绝对比大部分的普通$O(n\log^2n)$的NTT跑得快。</p>
-<p>那么以下是几个优化的措施：<br>$#1$</p>
+<p>那么以下是几个优化的措施：<br>$\#1$</p>
 <p>预处理原根的次幂——卡常利器。</p>
 </blockquote>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; <span class="number">19</span>  ;++ i)&#123;</span><br><span class="line">        rr <span class="keyword">int</span> *rua = gg[i] ; rua[<span class="number">0</span>] = <span class="number">1</span> ;</span><br><span class="line">        rr <span class="keyword">int</span> gi = rua[<span class="number">1</span>] = expow(<span class="number">3</span>, <span class="number">998244352</span>/(<span class="number">1</span> &lt;&lt; (i + <span class="number">1</span>))) ;</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">2</span> ; j &lt; (<span class="number">1</span> &lt;&lt; i) ; ++ j) rua[j] = <span class="number">1l</span>l * rua[j - <span class="number">1</span>] * gi % P ;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>然后每次NTT就不需要重新再计算了。</p>
-<p>$#2$</p>
+<p>$\#2$</p>
 <p>做快速幂的时候注意可以少几次<code>NTT</code>。这点常数优化也是需要的。</p>
 </blockquote>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (K)&#123;</span><br><span class="line">        NTT(F, M, <span class="number">1</span>) ;</span><br><span class="line">        <span class="keyword">if</span> (K &amp; <span class="number">1</span>)&#123;</span><br><span class="line">            NTT(A, M, <span class="number">1</span>) ;</span><br><span class="line">            <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; M ; ++ i) A[i] = <span class="number">1l</span>l * A[i] * F[i] % P ;</span><br><span class="line">            NTT(A, M, <span class="number">-1</span>) ; <span class="keyword">for</span> (i = N ; i &lt; M ; ++ i) A[i] = <span class="number">0</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; M ; ++ i)</span><br><span class="line">            F[i] = <span class="number">1l</span>l * F[i] * F[i] % P ; NTT(F, M, <span class="number">-1</span>) ;</span><br><span class="line">        <span class="keyword">for</span> (i = N ; i &lt; M ; ++ i) F[i] = <span class="number">0</span> ; K &gt;&gt;= <span class="number">1</span> ;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>$#3$</p>
+<p>$\#3$</p>
 <p>不用<code>long long</code>.</p>
 <p>这其实一个通用的技巧，因为long long一般都比int多好多常数。同时不要强制类型转换而选择<code>1ll*</code>这种形式。实测可以快许多。</p>
 </blockquote>
@@ -732,7 +732,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-count">68</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1050,7 +1050,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共154.9k字</span>
+  <span class="post-count">博客全站共154.8k字</span>
 </div>
 
         

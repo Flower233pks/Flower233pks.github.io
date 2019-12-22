@@ -144,21 +144,21 @@
   };
 </script>
 
-  <meta name="description" content="一种以$Splay$作为辅助树的、动态维护连通性的算法。">
+  <meta name="description" content="一种以$\rm Splay$作为辅助树的、动态维护连通性的算法。">
 <meta name="keywords" content="LCT">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LCT&#39;s Junior Intro">
+<meta property="og:title" content="【学习笔记】LCT初步">
 <meta property="og:url" content="http://www.orchidany.cf/2019/02/04/LCT-s-Junior-Intro/index.html">
 <meta property="og:site_name" content="Orchidany&#39;w blog">
-<meta property="og:description" content="一种以$Splay$作为辅助树的、动态维护连通性的算法。">
+<meta property="og:description" content="一种以$\rm Splay$作为辅助树的、动态维护连通性的算法。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89---purple.svg">
 <meta property="og:image" content="http://www.orchidany.cf/2019/02/04/LCT-s-Junior-Intro/t1.jpg">
 <meta property="og:image" content="http://www.orchidany.cf/2019/02/04/LCT-s-Junior-Intro/t2.png">
-<meta property="og:updated_time" content="2019-08-17T15:35:05.000Z">
+<meta property="og:updated_time" content="2019-12-22T10:01:55.130Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LCT&#39;s Junior Intro">
-<meta name="twitter:description" content="一种以$Splay$作为辅助树的、动态维护连通性的算法。">
+<meta name="twitter:title" content="【学习笔记】LCT初步">
+<meta name="twitter:description" content="一种以$\rm Splay$作为辅助树的、动态维护连通性的算法。">
 <meta name="twitter:image" content="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89---purple.svg">
 
 
@@ -180,7 +180,7 @@
 </script>
 
   
-  <title>LCT's Junior Intro | Orchidany'w blog</title>
+  <title>【学习笔记】LCT初步 | Orchidany'w blog</title>
   
 
 
@@ -453,7 +453,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LCT's Junior Intro
+          <h1 class="post-title" itemprop="name headline">【学习笔记】LCT初步
 
               
             
@@ -494,7 +494,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-08-17 23:35:05" itemprop="dateModified" datetime="2019-08-17T23:35:05+08:00">2019-08-17</time>
+                <time title="Modified: 2019-12-22 18:01:55" itemprop="dateModified" datetime="2019-12-22T18:01:55+08:00">2019-12-22</time>
               </span>
             
           
@@ -554,8 +554,6 @@
           
 
           
-            <div class="post-description">一种以$Splay$作为辅助树的、动态维护连通性的算法。</div>
-          
 
         </div>
       </header>
@@ -570,7 +568,9 @@
       
 
       
-        <p><img src="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89---purple.svg" alt></p>
+        <p>一种以$\rm Splay$作为辅助树的、动态维护连通性的算法。</p>
+<a id="more"></a>
+<p><img src="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89---purple.svg" alt></p>
 <h1 id="rm-0x01-闲话-·-LCT-的用途以及具体思路"><a href="#rm-0x01-闲话-·-LCT-的用途以及具体思路" class="headerlink" title="$\rm{0x01}$ 闲话 · $LCT$的用途以及具体思路"></a>$\rm{0x01}$ 闲话 · $LCT$的用途以及具体思路</h1><p>咳，其实在我最近只是浅浅地学了一部分的基础上，窝觉得$LCT$其实就是一个用来维护<strong>森林连通性</strong>的。</p>
 <p>嗯……因为其独特的性质所以也可以顺便维护好多东西，什么链上的最大值啊，链上的权值和啊……都可以维护——或者说，LCT是更加全能的树剖。</p>
 <p>但其实吧……$LCT$打板子是很简单的，但是真正理解却一点儿也不简单。因为本身$splay$就很麻烦了，况且$splay$之前一直用于维护数列。要知道，此处的$splay$可是作为<strong>辅助树</strong>，维护一整个森林，并且可以支持序列中几乎全部操作——这就大大增高了理解难度。举个例子，你曾经认为已经难以理解、或者说不可以做的、比较复杂的区间翻转<a href="https://www.luogu.org/problemnew/show/P3391" target="_blank" rel="noopener">$Luogu3391$</a>，在$LCT$里面有十分全面的涉及，但是被精简到了只有两行是用来描述这个内容的。显而易见的是，$LCT$虽然常数十分的大，但代码十分的短，比一棵完整的平衡树短了不少（实测50+行），与$FFT$一样具有着华丽的可观赏性，但是隐藏在之后的思维难度同样不可小觑。</p>
@@ -703,8 +703,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/04/Intro-1/" rel="next" title="【置顶】Intro">
-                <i class="fa fa-chevron-left"></i> 【置顶】Intro
+              <a href="/2019/01/27/左偏树/" rel="next" title="【学习笔记】左偏树">
+                <i class="fa fa-chevron-left"></i> 【学习笔记】左偏树
               </a>
             
           </div>
@@ -713,8 +713,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/02/06/BSGS-junior/" rel="prev" title="BSGS-Junior·BSGS算法初探">
-                BSGS-Junior·BSGS算法初探 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/02/06/BSGS-junior/" rel="prev" title="【学习笔记】BSGS算法初探">
+                【学习笔记】BSGS算法初探 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -791,7 +791,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-count">68</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1109,7 +1109,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共154.9k字</span>
+  <span class="post-count">博客全站共154.8k字</span>
 </div>
 
         

@@ -144,18 +144,18 @@
   };
 </script>
 
-  <meta name="description" content="$NOIP2016$以及之前年份$NOIP$中不是那么水的题目的泛做。">
+  <meta name="description" content="事实上我不久前才发现原来NOIP里面的一些题是很好的…… 然后大概接下来整理的都是些我认为挺有难度的吧qwq 但是感觉似乎这么好的题放在一块有点憋屈……于是就缩短了篇幅增多了篇目">
 <meta name="keywords" content="动态规划-普通DP,奇怪的技巧,贪心,NOIP系列,搜索-剪枝">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【泛做】Old-NOIP 泛做二">
 <meta property="og:url" content="http://www.orchidany.cf/2019/07/11/Old-NOIP2/index.html">
 <meta property="og:site_name" content="Orchidany&#39;w blog">
-<meta property="og:description" content="$NOIP2016$以及之前年份$NOIP$中不是那么水的题目的泛做。">
+<meta property="og:description" content="事实上我不久前才发现原来NOIP里面的一些题是很好的…… 然后大概接下来整理的都是些我认为挺有难度的吧qwq 但是感觉似乎这么好的题放在一块有点憋屈……于是就缩短了篇幅增多了篇目">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-15T07:06:14.000Z">
+<meta property="og:updated_time" content="2019-12-16T00:03:58.958Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【泛做】Old-NOIP 泛做二">
-<meta name="twitter:description" content="$NOIP2016$以及之前年份$NOIP$中不是那么水的题目的泛做。">
+<meta name="twitter:description" content="事实上我不久前才发现原来NOIP里面的一些题是很好的…… 然后大概接下来整理的都是些我认为挺有难度的吧qwq 但是感觉似乎这么好的题放在一块有点憋屈……于是就缩短了篇幅增多了篇目">
 
 
 
@@ -490,7 +490,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-15 15:06:14" itemprop="dateModified" datetime="2019-12-15T15:06:14+08:00">2019-12-15</time>
+                <time title="Modified: 2019-12-16 08:03:58" itemprop="dateModified" datetime="2019-12-16T08:03:58+08:00">2019-12-16</time>
               </span>
             
           
@@ -557,8 +557,6 @@
           
 
           
-            <div class="post-description">$NOIP2016$以及之前年份$NOIP$中不是那么水的题目的泛做。</div>
-          
 
         </div>
       </header>
@@ -576,7 +574,8 @@
         <p>事实上我不久前才发现原来NOIP里面的一些题是很好的……</p>
 <p>然后大概接下来整理的都是些我认为挺有难度的吧qwq</p>
 <p>但是感觉似乎这么好的题放在一块有点憋屈……于是就缩短了篇幅增多了篇目</p>
-<h1 id="1-2011F-观光公交"><a href="#1-2011F-观光公交" class="headerlink" title="$~1~2011F$ 观光公交"></a>$~1~2011F$ 观光公交</h1><p><a href="https://www.luogu.org/problem/P1315" target="_blank" rel="noopener">$Link$</a></p>
+<a id="more"></a>
+<h1 id="1-2011F-观光公交"><a href="#1-2011F-观光公交" class="headerlink" title="$1~2011F$ 观光公交"></a>$1~2011F$ 观光公交</h1><p><a href="https://www.luogu.org/problem/P1315" target="_blank" rel="noopener">$Link$</a></p>
 <p>这题我还是去年的3月19号做的，显然是抄的题解，于是现在又要重做一遍/sad</p>
 <p>那么其实贪心的思路很简单，找最多人经过的那条路。由于$n$是$1000$所以直接$O(nk)$的暴力就很稳了。然后注意消除后效性——大体上就是如果你这一站用了什么“氮气加速”，结果下一站还得在那等着，就没有任何作用了，这种情况就<code>gg[i]=i+1</code>，你只能拯救下一站下车的乘客；否则你也可以拯救更多的，就是<code>gg[i]=gg[i+1]</code>，也算是一种状态转移的思想吧。在我看来似乎这是本题唯一的难点了……</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">person</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> w,f,t;</span><br><span class="line">&#125;p[<span class="number">100001</span>];</span><br><span class="line"><span class="keyword">int</span> max_each[<span class="number">100001</span>],sum_max[<span class="number">100001</span>],get[<span class="number">100001</span>],time[<span class="number">100001</span>],gg[<span class="number">100001</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n,m,k,ans=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m&gt;&gt;k;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n<span class="number">-1</span>;i++)<span class="built_in">cin</span>&gt;&gt;time[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">    	<span class="built_in">cin</span>&gt;&gt;p[i].w&gt;&gt;p[i].f&gt;&gt;p[i].t;</span><br><span class="line">    	max_each[p[i].f] = max(p[i].w,max_each[p[i].f]);</span><br><span class="line">      sum_max[p[i].t]++ ;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">			sum_max[i]+=sum_max[i<span class="number">-1</span>];</span><br><span class="line">		get[<span class="number">1</span>]=max_each[<span class="number">1</span>];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">			get[i]=max(get[i<span class="number">-1</span>],max_each[i<span class="number">-1</span>])+time[i<span class="number">-1</span>];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">			ans+=(get[p[i].t]-p[i].w);</span><br><span class="line">		&#125;<span class="comment">//cout&lt;&lt;ans&lt;&lt;endl;</span></span><br><span class="line">		<span class="keyword">while</span>(k--)&#123;</span><br><span class="line">  	    gg[n]=gg[n<span class="number">-1</span>]=n;</span><br><span class="line">				<span class="keyword">int</span> maxn=<span class="number">0</span>,f;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=n<span class="number">-2</span>;i&gt;=<span class="number">1</span>;i--)</span><br><span class="line">      	  gg[i]=get[i+<span class="number">1</span>]&lt;=max_each[i+<span class="number">1</span>]?i+<span class="number">1</span>:gg[i+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">        	<span class="keyword">if</span>(sum_max[gg[i]]-sum_max[i]&gt;maxn&amp;&amp;time[i])&#123;</span><br><span class="line">            maxn=sum_max[gg[i]]-sum_max[i];f=i;</span><br><span class="line">        	&#125;</span><br><span class="line">        ans-=maxn;time[f]--;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)get[i]=max(get[i<span class="number">-1</span>],max_each[i<span class="number">-1</span>])+time[i<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -705,8 +704,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/11/NOIP2017/" rel="next" title="【赛题整理】NOIP2017泛做">
-                <i class="fa fa-chevron-left"></i> 【赛题整理】NOIP2017泛做
+              <a href="/2019/07/11/old-noip/" rel="next" title="【泛做】Old-NOIP 泛做一">
+                <i class="fa fa-chevron-left"></i> 【泛做】Old-NOIP 泛做一
               </a>
             
           </div>
@@ -715,8 +714,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/11/old-noip/" rel="prev" title="【泛做】Old-NOIP 泛做一">
-                【泛做】Old-NOIP 泛做一 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/18/Nine/" rel="prev" title="随想九 · 意义">
+                随想九 · 意义 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -793,7 +792,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-count">68</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1054,7 +1053,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-2011F-观光公交"><span class="nav-number">1.</span> <span class="nav-text">$~1~2011F$ 观光公交</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-2015C-斗地主"><span class="nav-number">2.</span> <span class="nav-text">$2~2015C$ 斗地主</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-2015-text-C-G-斗地主加强版"><span class="nav-number">3.</span> <span class="nav-text">$3~2015\text{C+/G}$  斗地主加强版</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-2015E-子串"><span class="nav-number">4.</span> <span class="nav-text">$4~2015E$ 子串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-2011C-Mayan游戏"><span class="nav-number">5.</span> <span class="nav-text">$5~2011C$ Mayan游戏</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#text-Afterwords"><span class="nav-number">6.</span> <span class="nav-text">$\text{Afterwords}$</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-2011F-观光公交"><span class="nav-number">1.</span> <span class="nav-text">$1~2011F$ 观光公交</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-2015C-斗地主"><span class="nav-number">2.</span> <span class="nav-text">$2~2015C$ 斗地主</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-2015-text-C-G-斗地主加强版"><span class="nav-number">3.</span> <span class="nav-text">$3~2015\text{C+/G}$  斗地主加强版</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-2015E-子串"><span class="nav-number">4.</span> <span class="nav-text">$4~2015E$ 子串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-2011C-Mayan游戏"><span class="nav-number">5.</span> <span class="nav-text">$5~2011C$ Mayan游戏</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#text-Afterwords"><span class="nav-number">6.</span> <span class="nav-text">$\text{Afterwords}$</span></a></li></ol></div>
             
 
           </div>
@@ -1111,7 +1110,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共154.9k字</span>
+  <span class="post-count">博客全站共154.8k字</span>
 </div>
 
         

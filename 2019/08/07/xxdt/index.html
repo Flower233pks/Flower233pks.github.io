@@ -152,7 +152,7 @@
 <meta property="og:site_name" content="Orchidany&#39;w blog">
 <meta property="og:description" content="$\boldsymbol{k}$阶常系数齐次线性递推指的是以下问题：  给出$k$阶线性递推式$\boldsymbol{f}$以及初始项$\boldsymbol{a_0,a_1…a_{k-1}}$，并满足：$$a_{n}=\sum_{i=1}^{k} f_{i} \times a_{n-i}$$对于某个$o$，求解$f_o$在某个固定模数下的值。  然后以下是shadowice1984的人话版本：">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-15T06:35:43.000Z">
+<meta property="og:updated_time" content="2019-12-16T00:15:49.746Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【学习笔记】常系数齐次线性递推">
 <meta name="twitter:description" content="$\boldsymbol{k}$阶常系数齐次线性递推指的是以下问题：  给出$k$阶线性递推式$\boldsymbol{f}$以及初始项$\boldsymbol{a_0,a_1…a_{k-1}}$，并满足：$$a_{n}=\sum_{i=1}^{k} f_{i} \times a_{n-i}$$对于某个$o$，求解$f_o$在某个固定模数下的值。  然后以下是shadowice1984的人话版本：">
@@ -490,7 +490,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-15 14:35:43" itemprop="dateModified" datetime="2019-12-15T14:35:43+08:00">2019-12-15</time>
+                <time title="Modified: 2019-12-16 08:15:49" itemprop="dateModified" datetime="2019-12-16T08:15:49+08:00">2019-12-16</time>
               </span>
             
           
@@ -585,9 +585,9 @@
 <p><del>于是这个世界上就再也没有矩阵快速幂了</del></p>
 <a id="more"></a>
 <h1 id="1-特征向量与特征多项式"><a href="#1-特征向量与特征多项式" class="headerlink" title="$1$  特征向量与特征多项式"></a>$1$  特征向量与特征多项式</h1><p>首先，给定$n$阶矩阵$\boldsymbol{A}$，若存在向量$\boldsymbol{x}$使得$\exists \lambda \in \mathbb {R}$ ，满足：<br>$$<br>\tag{1} \boldsymbol{A}\cdot \boldsymbol{x} = \lambda\boldsymbol{x}<br>$$<br>则称$\boldsymbol{x}$是$\boldsymbol{A}$的<strong>特征向量</strong>，$\lambda$称为$\boldsymbol{A}$的特征值，$(1)$式称之为<strong>特征方程</strong>。</p>
-<p>同时也可以写作<br>$$<br>(\boldsymbol{A}-\lambda\boldsymbol{I})\cdot \boldsymbol{x}= \boldsymbol{0}<br>$$<br>有解的条件是<br>$$<br>\tag{2} \det(\boldsymbol{A}-\lambda\boldsymbol{I})=0<br>$$<br>同时定义<strong>特征多项式</strong>为<strong>类形式幂级数</strong>，即不考虑未知数$x$的数学形态，$x$可以为矩阵、向量$~etc.$</p>
+<p>同时也可以写作<br>$$<br>(\boldsymbol{A}-\lambda\boldsymbol{I})\cdot \boldsymbol{x}= \boldsymbol{0}<br>$$<br>有解的条件是<br>$$<br>\tag{2} \det(\boldsymbol{A}-\lambda\boldsymbol{I})=0<br>$$<br>同时定义<strong>特征多项式</strong>为<strong>类形式幂级数</strong>，即不考虑未知数$x$的数学形态，$x$可以为矩阵、向量$  etc.$</p>
 <p>我们观察，$(2)$中右边的行列式计算的性质保证了行列式展开后每一项一定至多是$\lambda$的$n$次（主对角线相乘）、$n-1$次$\cdots$ $0$次，那么<strong>特征多项式即为关于$\lambda$的$\det(\boldsymbol{A}-\lambda\boldsymbol{I})$展开</strong>，记为$\boldsymbol{\phi(\lambda)}$.</p>
-<p>接着观察$\phi(\lambda)$:<br>$$<br>\begin{aligned}<br>\phi(\lambda)= |\boldsymbol{A}-\lambda \boldsymbol{I}| &amp; = \left[\begin{array}{ccccc}{~\lambda} &amp; {0} &amp; {\cdots} &amp; {0} &amp; {0} \\ {0} &amp; {\lambda} &amp; {\cdots} &amp; {0} &amp; {0} \\ {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots} \\ {0} &amp; {0} &amp; {\cdots} &amp; {\lambda} &amp; {0} \\ {0} &amp; {0} &amp; {\cdots} &amp; {0} &amp; {\lambda}\end{array}\right]-\left[\begin{array}{ccccc}{~0} &amp; {0} &amp; {\cdots} &amp; {0} &amp; {a_{k}} \\ {1} &amp; {0} &amp; {\cdots} &amp; {0} &amp; {a_{k-1}} \\ {0} &amp; {1} &amp; {\cdots} &amp; {0} &amp; {a_{k-2}} \\ {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots} \\ {0} &amp; {0} &amp; {\cdots} &amp; {0} &amp; {\lambda}\end{array}\right]\\ &amp; =\left[\begin{array}{ccccc}{\lambda} &amp; {0} &amp; {\cdots} &amp; {0} &amp; {-a_{k}} \\ {-1} &amp; {\lambda} &amp; {\cdots} &amp; {0} &amp; {-a_{k-1}} \\ {0} &amp; {-1} &amp; {\cdots} &amp; {0} &amp; {-a_{k-2}} \\ {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots} \\ {0} &amp; {0} &amp; {\cdots} &amp; {-1} &amp; {\lambda-a_{1}}\end{array}\right]<br>\end{aligned}<br>$$</p>
+<p>接着观察$\phi(\lambda)$:<br>$$<br>\begin{aligned}<br>\phi(\lambda)= |\boldsymbol{A}-\lambda \boldsymbol{I}| &amp; = \left[\begin{array}{ccccc}{ \lambda} &amp; {0} &amp; {\cdots} &amp; {0} &amp; {0} \\ {0} &amp; {\lambda} &amp; {\cdots} &amp; {0} &amp; {0} \\ {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots} \\ {0} &amp; {0} &amp; {\cdots} &amp; {\lambda} &amp; {0} \\ {0} &amp; {0} &amp; {\cdots} &amp; {0} &amp; {\lambda}\end{array}\right]-\left[\begin{array}{ccccc}{ 0} &amp; {0} &amp; {\cdots} &amp; {0} &amp; {a_{k}} \\ {1} &amp; {0} &amp; {\cdots} &amp; {0} &amp; {a_{k-1}} \\ {0} &amp; {1} &amp; {\cdots} &amp; {0} &amp; {a_{k-2}} \\ {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots} \\ {0} &amp; {0} &amp; {\cdots} &amp; {0} &amp; {\lambda}\end{array}\right]\\ &amp; =\left[\begin{array}{ccccc}{\lambda} &amp; {0} &amp; {\cdots} &amp; {0} &amp; {-a_{k}} \\ {-1} &amp; {\lambda} &amp; {\cdots} &amp; {0} &amp; {-a_{k-1}} \\ {0} &amp; {-1} &amp; {\cdots} &amp; {0} &amp; {-a_{k-2}} \\ {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots} \\ {0} &amp; {0} &amp; {\cdots} &amp; {-1} &amp; {\lambda-a_{1}}\end{array}\right]<br>\end{aligned}<br>$$</p>
 <p>然后对于这个我们可以进行<strong>拉普拉斯展开</strong>（就是用代数余子式展开一个行列式），我们选择最后一列：</p>
 <p>$$<br>\phi(\lambda)=\sum\limits_{i=1}^{k} a_{k-i+1}(-1)^{i+k}\phi(\lambda)_{i, k}<br>$$</p>
 <p>其中$\phi(\lambda)_{i,k}$表示丢掉$(i,k)$同行同列之后的代数余子式。</p>
@@ -737,7 +737,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-count">68</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1055,7 +1055,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共154.9k字</span>
+  <span class="post-count">博客全站共154.8k字</span>
 </div>
 
         
