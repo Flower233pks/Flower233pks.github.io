@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icon-32.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Comic Sans MS:300,300italic,400,400italic,700,700italic|Comic Sans MS:300,300italic,400,400italic,700,700italic|Comic Sans MS:300,300italic,400,400italic,700,700italic|Georgia:300,300italic,400,400italic,700,700italic|Courier New:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    }
+  };
+</script>
+
+  <meta name="description" content="校内模拟赛第二弹">
+<meta name="keywords" content="数学&#x2F;观察性质,结论与构造,动态规划-普通DP,动态规划-状压DP,数据结构&#x2F;线段树,数据结构&#x2F;数据结构方法&#x2F;莫队">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【赛题整理】校内模拟赛选整 · E2">
+<meta property="og:url" content="http://www.orchidany.cf/2019/11/14/xiaone-2/index.html">
+<meta property="og:site_name" content="Orchidany&#39;w blog">
+<meta property="og:description" content="校内模拟赛第二弹">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-12-15T06:33:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【赛题整理】校内模拟赛选整 · E2">
+<meta name="twitter:description" content="校内模拟赛第二弹">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Orchidany'w blog" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://www.orchidany.cf/2019/11/14/xiaone-2/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  
+  <title>【赛题整理】校内模拟赛选整 · E2 | Orchidany'w blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Orchidany'w blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">A Soul Tune against Fate Should Be Played, now.</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-friends">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/Friends/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>Friends</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.orchidany.cf/2019/11/14/xiaone-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Orchidany">
+      <meta itemprop="description" content="For code, science, tech. and more">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Orchidany'w blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【赛题整理】校内模拟赛选整 · E2
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-11-14 09:59:40" itemprop="dateCreated datePublished" datetime="2019-11-14T09:59:40+08:00">2019-11-14</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-12-15 14:33:45" itemprop="dateModified" datetime="2019-12-15T14:33:45+08:00">2019-12-15</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/题解/校内模拟赛/" itemprop="url" rel="index"><span itemprop="name">校内模拟赛</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/11/14/xiaone-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/11/14/xiaone-2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+                 Views:  
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>校内模拟赛第二弹</p>
+<a id="more"></a>
+<h1 id="A"><a href="#A" class="headerlink" title="$A$"></a>$A$</h1><blockquote>
+<p>$𝑁$座楼房，立于城中。第$𝑖$座楼，高度$ℎ_𝑖$。你需要一开始选择一座楼，开始跳楼。在第𝑖座楼准备跳楼需要$𝑐_𝑖$的花费。 每次可以跳到任何一个还没有跳过的楼上去。跳楼有代价，每次跳到另外一座楼的代价是两座楼高度的差的绝对值，最后一次从楼上跳到地面上不需要代价（只能跳到地上一次）。求在代价不超过𝑇的情况下，最多跳几次楼。 </p>
+</blockquote>
+<p>性质题，找不出来人似乎就没了233</p>
+<p>考虑最优情况下肯定会是<strong>单调地跳</strong>，即要么单增地跳，要么单减地跳。这样就可以设计状态了$f_{i,j}$为跳到$i$，跳了$j$栋楼最小代价，然后枚举一遍状态即可。</p>
+<h1 id="B"><a href="#B" class="headerlink" title="$B$"></a>$B$</h1><blockquote>
+<p>小$c$切LuoguP5487这题，但是菜如小$c$，他写挂了。</p>
+<p>小$c$开始了漫长的<code>debug</code>的阶段，2天过去了小$c$还是没有找到自己程序哪里写错了。于是他打印了自己所有函数的出入口的信息。对于小$c$写的第$i$个函数，他的入口会输出$+i$，他的出口会输出$-i$。</p>
+<p>等到他把所有的输出打出来时，发现由于字符集的问题前面的符号消失了。但是他隐约记得某几个函数的出口的输出位置。现在小$c$想知道一个可能的打印序列，如果不存在输出<code>NO</code></p>
+</blockquote>
+<p>题解里面写这题可以倒着做，即从后向前扫，如果这个括号没有指定成右括号而且他是左括号合法，则标记为左括号；否则为右括号。跑完之后看看是否合法。思想大概就是诡异的贪心，因为左括号只会被“安排”，为了保证左/右平衡，故选择对左括号贪心。</p>
+<p>我也是贪心做的，不过是正着做的。没有限制时，如果上一个是<code>(</code>，那我这一个就安排成<code>)</code>就好了，但算上限制时，出问题的就是会把一些左括号限制为右括号，即“强制嵌套”。那么如果原本是<code>()(</code>这样，第三个括号被强制为右括号，就顺便把前一个右括号改成<code>(</code>，即变为<code>(()</code>，留着去跟后面的匹配。合不合法最后再$check$一遍就好了。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cin</span> &gt;&gt; N ; <span class="keyword">int</span> i, j ;</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i) base[i] = qr() ; </span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">cin</span> &gt;&gt; M, i = <span class="number">1</span> ; i &lt;= M ; ++ i) ok[qr()] = <span class="number">1</span> ; </span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i)&#123;</span><br><span class="line">	<span class="keyword">if</span> (ok[i] &amp;&amp; !stk[base[i]].size())&#123;</span><br><span class="line">		ans[i] = <span class="number">1</span> ; </span><br><span class="line">		stk[base[i]].pb(mat[buc[base[i]]]) ;</span><br><span class="line">		ans[i] = <span class="number">1</span>, ans[mat[buc[base[i]]]] = ans[buc[base[i]]] = <span class="number">0</span> ;</span><br><span class="line">		mat[i] = buc[base[i]], mat[buc[base[i]]] = i ; buc[base[i]] = i ; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (!stk[base[i]].size()) stk[base[i]].pb(i), ans[i] = <span class="number">0</span> ;</span><br><span class="line">	<span class="keyword">else</span> mat[i] = stk[base[i]].back(), ans[i] = <span class="number">1</span>, </span><br><span class="line">		 mat[stk[base[i]].back()] = i, stk[base[i]].pop_back(), buc[base[i]] = i ; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i) </span><br><span class="line">		<span class="keyword">if</span> (!ans[i]) <span class="built_in">stack</span>[++ t] = i ; </span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (!t) <span class="keyword">return</span> <span class="built_in">puts</span>(<span class="string">"NO"</span>), <span class="number">0</span> ;</span><br><span class="line">		 <span class="keyword">else</span> <span class="built_in">stack</span>[t --] = <span class="number">0</span> ; </span><br><span class="line"><span class="keyword">if</span> (t) <span class="keyword">return</span> <span class="built_in">puts</span>(<span class="string">"NO"</span>), <span class="number">0</span> ;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%c%d "</span>, ans[i] ? <span class="string">'-'</span> : <span class="string">'+'</span>, base[i]) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="C"><a href="#C" class="headerlink" title="$C$"></a>$C$</h1><blockquote>
+<p>给定$n\leq 1,000$。求最少需要多少不同的$a_i\in[1,n]$，使得$\forall x, 1\leq x\leq n$，总可以选出某个${a}$的子集来凑出$x$。同时，求最小$|{a}|$下凑出所有$x$的方案总数。</p>
+</blockquote>
+<p>第一问是个贪心……贪心……就是二进制分解的思路，$n$的二进制位数就是答案。感觉如果要证明，证明起来其实是挺自然的。考虑首先二进制划分一定是合法的，同时如果将其中的$&gt;1$个换出去，那么一定凑不出$1$~$n$的所有数。</p>
+<p>第二问据说是一个经典的$dp$。考虑状态$f_{i,j,k}$表示带了$i$枚金币，和为$j$，最大值为$k$的方案数。然而对我来说状态并不是很容易定义……emmm。转移的话采用刷表法比较简单，考虑对于一个状态$f_{i,j,k}$，枚举比$k$大的$o$，那么就有$f_{i,j,k}\to f_{i+1,\min(j+o,n),l}$ .</p>
+<h1 id="D"><a href="#D" class="headerlink" title="$D$"></a>$D$</h1><blockquote>
+<p>已知C国有n个城市，城市间有m条双向道路，每条路有限重。JD公司想修建一些仓库来实现对C国所有城市的配送，仓库必须修建在某个城市。送达每个城市的货物可以由任意一个仓库发出，不过在运输途中必须满足限重的要求。</p>
+<p>JD公司想让你设计一个程序来帮助高管决策，q次询问，每次询问计算如果想配送重量为w的物品，至少需要建多少个仓库。</p>
+</blockquote>
+<p><del>质疑题面在恰饭</del></p>
+<p>一个比较显然的思想就是建出最大生成树来。然后比较常规的做法就是边建树边飞询问，考虑加完第一条载重为$val$边之前，现在的连通块个数就是重量为$val-1$的询问的答案，于是离线下来飞就可以了。</p>
+<p>然后这东西也可不离线下来再去飞询问。观察性质可以发现假设现在询问的重量为$w_q$，那么对于所有限重$w_o&lt;w_q$的边，一定会分成两个连通块。于是可以直接把最大生成树的边排一个序，然后二分出$&lt;w_q$的个数即为答案。</p>
+<h1 id="E"><a href="#E" class="headerlink" title="$E$"></a>$E$</h1><blockquote>
+<p>给定一个字符串，每次询问一个子串中$A$的个数和$B$的个数的比值为$x:y$的子串的最长长度。</p>
+<p>$n,q\leq 100,000$</p>
+</blockquote>
+<p>一开始我是真没想写这题……但是想了个线段树发现自己假了，然后就被迫入坑。。</p>
+<p>考虑推式子<br>$$<br>\frac{A_r-A_{l-1}}{B_r-B_{l-1}}=\frac{x}{y}\\<br>x\cdot (B_r-B_{l-1})=y\cdot (A_r-A_{l-1})\\<br>y \cdot A_r-x \cdot B_r=y \cdot A_{l-1}-x \cdot B_{l-1}<br>$$<br>然后如果我们令$val_i=y\cdot A_i-x \cdot  B_i$，那么求的就是区间内相同的数相隔的最长距离。天真的我以为这题可以线段树，然后就很开心地想做……去<code>uoj</code>群里问了一圈发现这个被<code>lxl</code>规约到了$n \sqrt n$的问题上面……</p>
+<p>然后就觉得，大概可以莫队吧。于是就想上莫队，结果发现这东西似乎并不是很好统计……于是写了半天之后毅然决然地写了一个线段树。最终在luogu上二分这个题的时限，卡到了<code>100ms~6500ms</code>这个范围……然后最终复杂度就应该是$n\sqrt q \log n$。</p>
+<p>然后莫队确实可以卡常，大概就是不要傻傻地真把$Q$分成$\sqrt Q$块，因为常数因子导致均值不等式搞出来的结果没有那么对；然后莫队的cmp可以这么写：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">il <span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(qrs a, qrs b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (blg[a.l] ^ blg[b.l]) ? </span><br><span class="line">      		  blg[a.l] &lt; blg[b.l] : ((blg[a.l] &amp; <span class="number">1</span>) ? a.r &lt; b.r : a.r &gt; b.r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>奇数块正着排，偶数块倒着排，就会快好多。</p>
+<p>然后最后：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//写了一下午QAQ</span></span><br><span class="line"><span class="keyword">char</span> s[MAXN] ;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">qrs</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> l, r, id ;</span><br><span class="line">&#125;q[MAXN] ; <span class="keyword">int</span> l, r, buc[MAXM], val[MAXN] ;</span><br><span class="line"><span class="keyword">int</span> blg[MAXN], T[MAXM &lt;&lt; <span class="number">2</span>], ans[MAXN], Pre[MAXN], Nxt[MAXN] ;</span><br><span class="line"><span class="keyword">int</span> N, X, Y, M, S, U, base[MAXN], cnt[<span class="number">2</span>][MAXM], pre[MAXN][<span class="number">2</span>], res, res2 ;</span><br><span class="line"></span><br><span class="line"><span class="function">il <span class="keyword">int</span> <span class="title">qr</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> c = getchar() ; <span class="keyword">int</span> res = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(c)) c = getchar() ;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">isdigit</span>(c)) res = (res &lt;&lt; <span class="number">1</span>) + (res &lt;&lt; <span class="number">3</span>) + c - <span class="number">48</span>, c = getchar() ;</span><br><span class="line">    <span class="keyword">return</span> res ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">il <span class="keyword">bool</span> <span class="title">comp</span><span class="params">(qrs a, qrs b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> blg[a.l] == blg[b.l] ? a.r &lt; b.r : blg[a.l] &lt; blg[b.l] ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">il <span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(qrs a, qrs b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (blg[a.l] ^ blg[b.l]) ? blg[a.l] &lt; blg[b.l] : ((blg[a.l] &amp; <span class="number">1</span>) ? a.r &lt; b.r : a.r &gt; b.r);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> rt, <span class="keyword">int</span> L, <span class="keyword">int</span> R, <span class="keyword">int</span> p, <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> mid = (L + R) &gt;&gt; <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">if</span> (L == R) <span class="keyword">return</span> T[rt] = v, <span class="keyword">void</span>() ;</span><br><span class="line">    <span class="keyword">if</span> (p &lt;= mid) update(rt &lt;&lt; <span class="number">1</span>, L, mid, p, v) ;</span><br><span class="line">    <span class="keyword">else</span> update(rt &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, mid + <span class="number">1</span>, R, p, v) ;</span><br><span class="line">    T[rt] = max(T[rt &lt;&lt; <span class="number">1</span>], T[rt &lt;&lt; <span class="number">1</span> | <span class="number">1</span>]) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line"><span class="comment">//    cout &lt;&lt; p &lt;&lt; " : " &lt;&lt; cnt[0][val[p]] &lt;&lt; " " &lt;&lt; cnt[1][val[p]] &lt;&lt; " " &lt;&lt; val[p] &lt;&lt; endl ;</span></span><br><span class="line">    <span class="keyword">if</span> (p == cnt[<span class="number">0</span>][val[p]]) cnt[<span class="number">0</span>][val[p]] = Nxt[p] ;</span><br><span class="line">    <span class="keyword">if</span> (p == cnt[<span class="number">1</span>][val[p]]) cnt[<span class="number">1</span>][val[p]] = Pre[p] ;</span><br><span class="line"><span class="comment">//    cout &lt;&lt; p &lt;&lt; " : " &lt;&lt; cnt[0][val[p]] &lt;&lt; " " &lt;&lt; cnt[1][val[p]] &lt;&lt; " " &lt;&lt; val[p] &lt;&lt; endl ;</span></span><br><span class="line">    update(<span class="number">1</span>, <span class="number">0</span>, MAXM, val[p], cnt[<span class="number">1</span>][val[p]] - cnt[<span class="number">0</span>][val[p]]) ;</span><br><span class="line">    res = T[<span class="number">1</span>] ;<span class="comment">// cout &lt;&lt; T[1] &lt;&lt; endl ;</span></span><br><span class="line"><span class="comment">//    cout &lt;&lt; p &lt;&lt; " : " &lt;&lt; cnt[0][val[p]] &lt;&lt; " " &lt;&lt; cnt[1][val[p]] &lt;&lt; " " &lt;&lt; val[p] &lt;&lt; endl ;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">upd</span><span class="params">(<span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">    cnt[<span class="number">0</span>][val[p]] = min(cnt[<span class="number">0</span>][val[p]], p) ;</span><br><span class="line">    cnt[<span class="number">1</span>][val[p]] = max(cnt[<span class="number">1</span>][val[p]], p) ;</span><br><span class="line">    update(<span class="number">1</span>, <span class="number">0</span>, MAXM, val[p], cnt[<span class="number">1</span>][val[p]] - cnt[<span class="number">0</span>][val[p]]) ;</span><br><span class="line">    res = T[<span class="number">1</span>] ;</span><br><span class="line"><span class="comment">//    cout &lt;&lt; p &lt;&lt; " : " &lt;&lt; cnt[0][val[p]] &lt;&lt; " " &lt;&lt; cnt[1][val[p]] &lt;&lt; " " &lt;&lt; val[p] &lt;&lt; endl ;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; N &gt;&gt; X &gt;&gt; Y ; <span class="keyword">int</span> i, j ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">scanf</span>(<span class="string">"%s"</span>, s + <span class="number">1</span>), i = <span class="number">1</span> ; i &lt;= N ; ++ i)</span><br><span class="line">        base[i] = s[i] - <span class="string">'A'</span>,</span><br><span class="line">        pre[i][base[i]] = pre[i - <span class="number">1</span>][base[i]] + <span class="number">1</span>,</span><br><span class="line">        pre[i][base[i] ^ <span class="number">1</span>] = pre[i - <span class="number">1</span>][base[i] ^ <span class="number">1</span>] ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt;= N ; ++ i) val[i] = MAXN + Y * pre[i][<span class="number">0</span>] - X * pre[i][<span class="number">1</span>] ;</span><br><span class="line">    <span class="built_in">memset</span>(buc, <span class="number">-1</span>, <span class="keyword">sizeof</span>(buc)) ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt;= N ; ++ i) Pre[i] = buc[val[i]], buc[val[i]] = i ;</span><br><span class="line">    <span class="built_in">memset</span>(buc, <span class="number">0</span>, <span class="keyword">sizeof</span>(buc)) ;</span><br><span class="line">    <span class="keyword">for</span> (i = N ; i &gt;= <span class="number">0</span> ; -- i) Nxt[i] = buc[val[i]] ? buc[val[i]] : N + <span class="number">1</span>, buc[val[i]] = i ;</span><br><span class="line">    M = qr() ; S = <span class="built_in">pow</span>(M, <span class="number">0.5832</span>) ; U = <span class="built_in">ceil</span>((<span class="keyword">double</span>)M / S) ;</span><br><span class="line">    <span class="built_in">memset</span>(cnt[<span class="number">0</span>], <span class="number">63</span>, <span class="keyword">sizeof</span>(cnt[<span class="number">0</span>])) ;</span><br><span class="line">    <span class="built_in">memset</span>(cnt[<span class="number">1</span>], <span class="number">-1</span>, <span class="keyword">sizeof</span>(cnt[<span class="number">1</span>])) ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= U ; ++ i)</span><br><span class="line">        <span class="keyword">for</span> (j = (i - <span class="number">1</span>) * S + <span class="number">1</span> ; j &lt;= i * S ; ++ j) blg[j] = i ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= M ; ++ i) q[i].l = qr() - <span class="number">1</span>, q[i].r = qr(), q[i].id = i ;</span><br><span class="line">    sort(q + <span class="number">1</span>, q + M + <span class="number">1</span>, comp) ; l = <span class="number">0</span>, r = <span class="number">-1</span> ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= M ; ++ i)&#123;</span><br><span class="line">        <span class="keyword">while</span> (r &lt; q[i].r) upd(++ r) ;</span><br><span class="line">        <span class="keyword">while</span> (l &lt; q[i].l) del(l ++) ;</span><br><span class="line">        <span class="keyword">while</span> (l &gt; q[i].l) upd(-- l) ;</span><br><span class="line">        <span class="keyword">while</span> (r &gt; q[i].r) del(r --) ;</span><br><span class="line">        ans[q[i].id] = res ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= M ; ++ i) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans[i]) ;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不知道为啥rqy写的莫队套线段树加了个看不太透的优化比我快了一倍，迷乱233</p>
+<h1 id="F"><a href="#F" class="headerlink" title="$F$"></a>$F$</h1><blockquote>
+<p>你的花田一共由$n-2$片花田组成，编号从$1$到$n-2$。</p>
+<p>算上你的家和花店，一共有$n$个地点，其中你的家编号为$0$，花店编号为$n-1$。即，家、花田、花店都属于地点，且它们都有一个唯一的$0$~$n-1$的编号。有$m$条双向道路连接这些地点。保证所有地点间都是直接或间接连通的。</p>
+<p>你需要从家里出发，经过所有的花田进行收获，再到达花店，再从花店出发经过所有花田进行播种，最后重新回到家中。当你经过一片花田的时候，你可以选择收获、播种或者什么事都不做，也就是说你经过一片未收割的花田时可以不立即收割它，播种亦然。然而，播种必须发生在你完成了所有收获并到花店交货之后。在完成最后一个花田的收获后，你必须在到达花店后才能开始播种。也就是说，在你没有收获完所有花田并到花店交货前，即使你已经经过了花店，你也不能进行播种。（啰嗦了这么多但愿讲明白了）</p>
+<p>然而还有一个问题。在收割完花朵后，花田会变得光秃秃的，此时土地里的水分会迅速蒸发。考虑到这个问题，更早被收割的花田也理应更早地被播种。具体来说，你必须保证前$\lfloor \frac{n-2}{2}\rfloor$个被收割的花田也是前$\lfloor \frac{n-2}{2}\rfloor$个被播种的，其中符号$\lfloor \rfloor$表示向下取整。你不需要保证这些花田收割和播种的顺序完全一致，而只需要保证前$\lfloor \frac{n-2}{2}\rfloor$名的集合不变即可。</p>
+<p>现在，你需要求出完成上述一系列动作走过的最短路程。</p>
+<p>$n \leq 20$</p>
+</blockquote>
+<p>一眼看出状压$dp$，第二眼看出应该从头和尾分别$dp$，然后没看第三眼就开始写……发现不太对？？有个限制，要求前$\lfloor \frac{n-2}{2}\rfloor$必须相同。然后我就寻思着要压一下顺序？有点难写；寻思着记录一下路径？但是发现变更不对了，因为可能最后的状态根本不重合，然后就没有然后了QAQ。</p>
+<p>然后瞅了一眼题解发现很妙。大概就是枚举$size$为$\frac{n}{2}$的状态，将整张地图分为两半。之前预处理一个<code>floyd</code>，然后每次的代价就是</p>
+<p>$$<br>\mathsf{\min _{x\in S,y\in T}(f_{S,x}+dis_{x,y}+g_{T,y})+\min _{x\in S,y\in T}(g_{S,x}+dis_{x,y}+f_{T,y}})<br>$$</p>
+<p>然后枚举$\mathsf {S,T,x,y}$就完了，复杂度$O(2^{n}+\binom{n}{\lfloor\frac{n}{2}\rfloor}\cdot n^2)$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> g[MAXS][MAXN], pre[MAXS][<span class="number">2</span>], sz[MAXS], ans ;</span><br><span class="line"><span class="keyword">int</span> A[MAXN][MAXN], dis[MAXN][MAXN], N, M, E, f[MAXS][MAXN], stk[MAXN], cnt ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; N &gt;&gt; E ;</span><br><span class="line">    <span class="keyword">int</span> i, j, k, o ;</span><br><span class="line">    M = (<span class="number">1</span> &lt;&lt; N) - <span class="number">1</span>, ans = Inf ;</span><br><span class="line">    <span class="built_in">memset</span>(dis, <span class="number">63</span>, <span class="keyword">sizeof</span>(dis)) ;</span><br><span class="line">    <span class="built_in">memset</span>(f, <span class="number">63</span>, <span class="keyword">sizeof</span> (f)) ; f[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i) dis[i][i] = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= E ; ++ i)</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; j &gt;&gt; k &gt;&gt; o,</span><br><span class="line">        A[j][k] = A[k][j] = o,</span><br><span class="line">        dis[j][k] = dis[k][j] = o ;</span><br><span class="line">    <span class="keyword">for</span> (k = <span class="number">0</span> ; k &lt; N ; ++ k)</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; N ; ++ i)</span><br><span class="line">            <span class="keyword">for</span> (j = <span class="number">0</span> ; j &lt; N ; ++ j)</span><br><span class="line">                dis[i][j] = min(dis[i][j], dis[i][k] + dis[k][j]) ;</span><br><span class="line">    <span class="keyword">if</span> (N == <span class="number">3</span>) <span class="keyword">return</span> <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, <span class="number">2</span> * (dis[<span class="number">0</span>][<span class="number">1</span>] + dis[<span class="number">1</span>][<span class="number">2</span>])), <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= M ; ++ i) sz[i] = sz[i - (i &amp; (-i))] + <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">2</span> ; i &lt;= M ; ++ i)&#123;</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">0</span> ; j &lt; N ; ++ j)</span><br><span class="line">            <span class="keyword">if</span> (<span class="number">1</span> &lt;&lt; j &amp; i) stk[++ cnt] = j ;</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">1</span> ; j &lt;= cnt ; ++ j)&#123;</span><br><span class="line">            <span class="keyword">int</span> now = stk[j] ;</span><br><span class="line">            <span class="keyword">for</span> (k = <span class="number">1</span> ; k &lt;= cnt ; ++ k)</span><br><span class="line">                <span class="keyword">if</span> (!(stk[k] ^ now)) <span class="keyword">continue</span> ;</span><br><span class="line">                <span class="keyword">else</span> f[i][now] = min(f[i][now], f[i ^ (<span class="number">1</span> &lt;&lt; now)][stk[k]] + dis[stk[k]][now]) ;</span><br><span class="line">        &#125;</span><br><span class="line">        cnt = <span class="number">0</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">memset</span>(g, <span class="number">63</span>, <span class="keyword">sizeof</span>(g)) ; g[<span class="number">1</span> &lt;&lt; (N - <span class="number">1</span>)][N - <span class="number">1</span>] = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">for</span> (i = (<span class="number">1</span> &lt;&lt; (N - <span class="number">1</span>)) + <span class="number">1</span> ; i &lt;= M ; ++ i)&#123;</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">0</span> ; j &lt; N ; ++ j)</span><br><span class="line">            <span class="keyword">if</span> (<span class="number">1</span> &lt;&lt; j &amp; i) stk[++ cnt] = j ;</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">1</span> ; j &lt;= cnt ; ++ j)&#123;</span><br><span class="line">            <span class="keyword">int</span> now = stk[j] ;</span><br><span class="line">            <span class="keyword">for</span> (k = <span class="number">1</span> ; k &lt;= cnt ; ++ k)</span><br><span class="line">                <span class="keyword">if</span> (!(stk[k] ^ now)) <span class="keyword">continue</span> ;</span><br><span class="line">                <span class="keyword">else</span> g[i][now] = min(g[i][now], g[i ^ (<span class="number">1</span> &lt;&lt; now)][stk[k]] + dis[stk[k]][now]) ;</span><br><span class="line">        &#125;</span><br><span class="line">        cnt = <span class="number">0</span> ;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//    cout &lt;&lt; g[M][1] &lt;&lt; endl ;</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= M ; ++ i)&#123;</span><br><span class="line">        <span class="keyword">if</span> (sz[i] != N / <span class="number">2</span>) <span class="keyword">continue</span> ;</span><br><span class="line">        <span class="keyword">int</span> stA = i, stB = (~i &amp; M), res = Inf, fg = <span class="number">0</span> ; </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span> ; j &lt; N ; ++ j)</span><br><span class="line">            <span class="keyword">if</span> (<span class="number">1</span> &lt;&lt; j &amp; stA)</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span> ; k &lt; N ; ++ k)</span><br><span class="line">                    <span class="keyword">if</span> (<span class="number">1</span> &lt;&lt; k &amp; stB) </span><br><span class="line">						res = min(res, f[stA][j] + dis[j][k] + g[stB][k]), fg = <span class="number">1</span> ; </span><br><span class="line"><span class="comment">//        if (!fg) res = 0 ;</span></span><br><span class="line">		stB ^= (<span class="number">1</span> &lt;&lt; N - <span class="number">1</span>), stB |= <span class="number">1</span> ;</span><br><span class="line">		stA ^= <span class="number">1</span>, stA |= (<span class="number">1</span> &lt;&lt; N - <span class="number">1</span>) ;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span> ; j &lt; N ; ++ j)</span><br><span class="line">            <span class="keyword">if</span> (<span class="number">1</span> &lt;&lt; j &amp; stB)</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span> ; k &lt; N ; ++ k)</span><br><span class="line">                    <span class="keyword">if</span> (<span class="number">1</span> &lt;&lt; k &amp; stA) ans = min(ans, res + f[stB][j] + dis[j][k] + g[stA][k]) ;</span><br><span class="line"><span class="comment">//		if (!fg) ans *= 2 ;</span></span><br><span class="line">	&#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/数学-观察性质-结论与构造/" rel="tag"><i class="fa fa-tag"></i> 数学/观察性质,结论与构造</a>
+          
+            <a href="/tags/动态规划-普通DP/" rel="tag"><i class="fa fa-tag"></i> 动态规划-普通DP</a>
+          
+            <a href="/tags/动态规划-状压DP/" rel="tag"><i class="fa fa-tag"></i> 动态规划-状压DP</a>
+          
+            <a href="/tags/数据结构-线段树/" rel="tag"><i class="fa fa-tag"></i> 数据结构/线段树</a>
+          
+            <a href="/tags/数据结构-数据结构方法-莫队/" rel="tag"><i class="fa fa-tag"></i> 数据结构/数据结构方法/莫队</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/13/dsu-on-tree-2/" rel="next" title="【学习笔记】树上启发式合并(dsu on tree) · 2">
+                <i class="fa fa-chevron-left"></i> 【学习笔记】树上启发式合并(dsu on tree) · 2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/14/Codeforces-711/" rel="prev" title="【题解】Codeforces Round-711 Virtual">
+                【题解】Codeforces Round-711 Virtual <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Orchidany">
+  
+  <p class="site-author-name" itemprop="name">Orchidany</p>
+  <div class="site-description motion-element" itemprop="description">For code, science, tech. and more</div>
+</div>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">categories</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-name">tags</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+
+
+  <div class="links-of-author motion-element">
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/Flower233pks" title="GitHub &rarr; https://github.com/Flower233pks" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://www.luogu.org/space/show?uid=28313" title="Luogu &rarr; https://www.luogu.org/space/show?uid=28313" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>Luogu</a>
+      </span>
+    
+  </div>
+
+
+
+
+
+
+
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#A"><span class="nav-number">1.</span> <span class="nav-text">$A$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#B"><span class="nav-number">2.</span> <span class="nav-text">$B$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C"><span class="nav-number">3.</span> <span class="nav-text">$C$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#D"><span class="nav-number">4.</span> <span class="nav-text">$D$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#E"><span class="nav-number">5.</span> <span class="nav-text">$E$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#F"><span class="nav-number">6.</span> <span class="nav-text">$F$</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Orchidany</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.2.0</div>
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共154.9k字</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="Total Visitors">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="Total Views">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+
+
+
+
+
+
+
+  
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'V95HMkHzC6J9NvdCNbpg3A3E-gzGzoHsz',
+    appKey: 'gyf1NbCMlYbPnqykkSe7KuYC',
+    placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
+
+window.addEventListener("message", function(e) {
+  var data = e.data;
+  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
+    var featureID = data.split(':')[1];
+    var height = data.split(':')[2];
+    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
+  }
+}, false);
+</script>
+
+
+
+
+
+
+
+
+  
+
+</body>
+</html>

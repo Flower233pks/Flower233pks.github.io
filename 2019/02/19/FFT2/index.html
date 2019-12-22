@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icon-32.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Comic Sans MS:300,300italic,400,400italic,700,700italic|Comic Sans MS:300,300italic,400,400italic,700,700italic|Comic Sans MS:300,300italic,400,400italic,700,700italic|Georgia:300,300italic,400,400italic,700,700italic|Courier New:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    }
+  };
+</script>
+
+  <meta name="description" content="拆系数FFT主要用于解决不可思议的任意模数$NTT/FFT$问题，主要针对的就是【$Luogu4245·$任意模数NTT】这道题。">
+<meta name="keywords" content="多项式基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【学习笔记】拆系数FFT">
+<meta property="og:url" content="http://www.orchidany.cf/2019/02/19/FFT2/index.html">
+<meta property="og:site_name" content="Orchidany&#39;w blog">
+<meta property="og:description" content="拆系数FFT主要用于解决不可思议的任意模数$NTT/FFT$问题，主要针对的就是【$Luogu4245·$任意模数NTT】这道题。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89-darkviolet.svg">
+<meta property="og:image" content="http://www.orchidany.cf/2019/02/19/FFT2/1.png">
+<meta property="og:image" content="http://www.orchidany.cf/2019/02/19/FFT2/2.png">
+<meta property="og:image" content="http://www.orchidany.cf/2019/02/19/FFT2/3.png">
+<meta property="og:image" content="http://www.orchidany.cf/2019/02/19/FFT2/4.png">
+<meta property="og:image" content="http://www.orchidany.cf/2019/02/19/FFT2/5.png">
+<meta property="og:image" content="http://www.orchidany.cf/2019/02/19/FFT2/6.png">
+<meta property="og:updated_time" content="2019-12-15T06:57:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【学习笔记】拆系数FFT">
+<meta name="twitter:description" content="拆系数FFT主要用于解决不可思议的任意模数$NTT/FFT$问题，主要针对的就是【$Luogu4245·$任意模数NTT】这道题。">
+<meta name="twitter:image" content="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89-darkviolet.svg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Orchidany'w blog" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://www.orchidany.cf/2019/02/19/FFT2/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  
+  <title>【学习笔记】拆系数FFT | Orchidany'w blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Orchidany'w blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">A Soul Tune against Fate Should Be Played, now.</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-friends">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/Friends/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>Friends</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.orchidany.cf/2019/02/19/FFT2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Orchidany">
+      <meta itemprop="description" content="For code, science, tech. and more">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Orchidany'w blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【学习笔记】拆系数FFT
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-02-19 22:00:05" itemprop="dateCreated datePublished" datetime="2019-02-19T22:00:05+08:00">2019-02-19</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-12-15 14:57:43" itemprop="dateModified" datetime="2019-12-15T14:57:43+08:00">2019-12-15</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/多项式/" itemprop="url" rel="index"><span itemprop="name">多项式</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/02/19/FFT2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/19/FFT2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+                 Views:  
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+            <div class="post-description">拆系数FFT主要用于解决不可思议的任意模数$NTT/FFT$问题，主要针对的就是【$Luogu4245·$任意模数NTT】这道题。</div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89-darkviolet.svg" alt></p>
+<p>上一篇多项式：<a href="http://www.orchidany.cf/2019/02/19/FFT1/">多项式1·普通的FFT</a></p>
+<hr>
+<h1 id="rm-0x01-quad-Preface"><a href="#rm-0x01-quad-Preface" class="headerlink" title="$\rm{0x01\quad Preface}$"></a>$\rm{0x01\quad Preface}$</h1><p>今天是$Feb.19^{th}$，开学前一天，现在是北京时间下午$10:05$，我还剩除了英语物理的所有作业没做 … 耶，真开心。</p>
+<p>由于特殊原因嘛，我暂时不会写的特别详细——毕竟还有作业没有做<del>抄</del>完，所以就先整理地仓促一点。</p>
+<p>首先，为什么要拆系数？这是一个问题——直接$FFT$之后判个精度再取模不就得了？很喜闻乐见的是，这个题中的$value_{max}$到达了$1e9\cdot1e9 \cdot 1e5 = 1e23$的级别，不可以直接<code>long long</code>爆艹。</p>
+<h1 id="rm-0x02-Normal-Coefficient-Spliting-FFT"><a href="#rm-0x02-Normal-Coefficient-Spliting-FFT" class="headerlink" title="$\rm{0x02~Normal-Coefficient-Spliting~FFT}$"></a>$\rm{0x02~Normal-Coefficient-Spliting~FFT}$</h1><p>首先是最朴素的拆系数法。其原理简单得很，就是选择一个$M$，把$A(x)$和$B(x)$的各项系数表示成<br>$$<br>A_i = a_iM+b_i~(0\leq b_i &lt;a_i) \\<br>B_i = c_iM+d_i~(0\leq d_i &lt;c_i)<br>$$<br>的形式。然后我们做乘法的话，会有<br>$$<br>A_i\cdot B_i = a_ic_iM^2+(a_id_i+c_ib_i)M+b_id_i<br>$$<br>那么我们考虑，对于第一部分$a_ic_iM^2$我们可以通过一次$DFT$、一次$IDFT$算出来，；对于第二部分$(a_id_i+c_ib_i)M$ 我们可以通过两次$DFT$分别算出$a_id_i$、$c_ib_i$然后合并，之后一次$IDFT$求出来；对于最后一部分则只需要一次$DFT$、一次$IDFT$求出。所以算法流程一共$7$次$FFT$。</p>
+<p>那我们考虑估计一下范围，此处不甚严谨地使用$\Theta$作为同阶的符号$^{[1]}$</p>
+<p>$$b_i\cdot d_i \approx \Theta(M^2)$$</p>
+<p>$$a_i\cdot c_i =\lfloor \frac{P}{M}\rfloor \cdot \lfloor \frac{P}{M}\rfloor = \Theta(\lfloor \frac{P^2}{M^2}\rfloor)$$</p>
+<p>$$(a_id_i + c_ib_i)\cdot M =\Theta( M \cdot \lfloor \frac{P}{M}\rfloor) $$</p>
+<p>那么我们取$M = \Theta(\sqrt P)$级别的，可以保证三个值的阶为$\Theta(P)$，大概是$1e9 \cdot 1e5 = 1e14$级别的。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 423333</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rr register </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i, a, b) for(i = a ; i &lt;= b ; ++ i)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">long</span> <span class="keyword">double</span> Pi = <span class="built_in">acos</span>(<span class="number">-1</span>) ;</span><br><span class="line"><span class="keyword">int</span> R[MAXN], L, x ; <span class="keyword">long</span> <span class="keyword">long</span> Ans[MAXN] ;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">double</span> x, y ;</span><br><span class="line">    node (<span class="keyword">long</span> <span class="keyword">double</span> xx = <span class="number">0</span>, <span class="keyword">long</span> <span class="keyword">double</span> yy = <span class="number">0</span>)&#123;</span><br><span class="line">        x = xx, y = yy ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;A[MAXN], B[MAXN], C[MAXN], D[MAXN], F[MAXN], G[MAXN] ;</span><br><span class="line">node H1[MAXN], H2[MAXN], H3[MAXN] ; <span class="keyword">int</span> L1, L2, P, N, M ;</span><br><span class="line">node <span class="keyword">operator</span> + (node J, node Q)&#123; <span class="keyword">return</span> node(J.x + Q.x , J.y + Q.y); &#125;</span><br><span class="line">node <span class="keyword">operator</span> - (node J, node Q)&#123; <span class="keyword">return</span> node(J.x - Q.x , J.y - Q.y); &#125;</span><br><span class="line">node <span class="keyword">operator</span> * (node J, node Q)&#123; <span class="keyword">return</span> node(J.x * Q.x - J.y * Q.y , J.x * Q.y + J.y * Q.x) ; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FFT</span><span class="params">(node *J, <span class="keyword">int</span> flag)</span></span>&#123;</span><br><span class="line">    rr <span class="keyword">int</span> i, j, k, l ; </span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; N; i ++)</span><br><span class="line">        <span class="keyword">if</span>(i &lt; R[i]) swap(J[i], J[R[i]]) ;</span><br><span class="line">    <span class="keyword">for</span>(j = <span class="number">1</span>; j &lt; N; j &lt;&lt;= <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="function">node <span class="title">T</span><span class="params">(<span class="built_in">cos</span>(Pi / j), flag * <span class="built_in">sin</span>(Pi / j))</span> </span>;</span><br><span class="line">        <span class="keyword">for</span>(k = <span class="number">0</span>; k &lt; N; k += (j &lt;&lt; <span class="number">1</span>) )&#123;</span><br><span class="line">            <span class="function">node <span class="title">t</span><span class="params">(<span class="number">1</span>, <span class="number">0</span>)</span> </span>;</span><br><span class="line">            <span class="keyword">for</span>(l = <span class="number">0</span> ; l &lt; j; l ++, t = t * T)&#123;</span><br><span class="line">                node Nx = J[k + l], Ny = t * J[k + j + l] ;</span><br><span class="line">                J[k + l] = Nx + Ny ;</span><br><span class="line">                J[k + j + l] = Nx - Ny ;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (flag &lt; <span class="number">0</span>) <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt;= N ; ++ i) J[i].x = J[i].x / N + <span class="number">0.5</span> ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">qr</span><span class="params">()</span></span>&#123; </span><br><span class="line">    rr <span class="keyword">int</span> k = <span class="number">0</span> ; <span class="keyword">char</span> c = getchar() ; </span><br><span class="line">    <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(c)) c = getchar() ;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">isdigit</span>(c)) k = (k &lt;&lt; <span class="number">1</span>) + (k &lt;&lt; <span class="number">3</span>) + c - <span class="number">48</span>, c = getchar() ; </span><br><span class="line">    <span class="keyword">return</span> k ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    rr <span class="keyword">int</span> i, t ; <span class="built_in">cin</span> &gt;&gt; L1 &gt;&gt; L2 &gt;&gt; P, M = <span class="number">32767</span> ; N = <span class="number">1</span>, t = L1 + L2 ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt;= L1 ; ++ i) x = qr(), A[i].x = x / M, B[i].x = x % M ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt;= L2 ; ++ i) x = qr(), C[i].x = x / M, D[i].x = x % M ; </span><br><span class="line">    <span class="keyword">while</span>(N &lt;= t) N &lt;&lt;= <span class="number">1</span>, ++ L ; rep(i, <span class="number">0</span>, N) R[i] = (R[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; (L - <span class="number">1</span>)) ;</span><br><span class="line">    FFT(A, <span class="number">1</span>), FFT(B, <span class="number">1</span>), FFT(C, <span class="number">1</span>), FFT(D, <span class="number">1</span>) ;</span><br><span class="line">    rep(i, <span class="number">0</span>, N) H1[i] = A[i] * C[i], H2[i] = B[i] * D[i], H3[i] = A[i] * D[i]+ C[i] * B[i] ; </span><br><span class="line">    FFT(H1, <span class="number">-1</span>), FFT(H2, <span class="number">-1</span>), FFT(H3, <span class="number">-1</span>) ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt;= N ; ++ i) </span><br><span class="line">        Ans[i] = ((<span class="keyword">long</span> <span class="keyword">long</span>)H1[i].x * M % P * M % P + (<span class="keyword">long</span> <span class="keyword">long</span>)H2[i].x % P + (<span class="keyword">long</span> <span class="keyword">long</span>)H3[i].x * M % P) % P ; </span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt;= L1 + L2 ; ++ i) <span class="built_in">printf</span>(<span class="string">"%lld "</span>, Ans[i]) ; <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所以最终的复杂度是$\boldsymbol{O(7\cdot P(n) \cdot n \log n)}$，其中$P(n)$是$FFT$自带的、大到不可忽略的常量因子。</p>
+<p>但是……好像这个常数有点大诶，算上常数的话已经是$O(n \log^2n)$的级别了，于是——</p>
+<h1 id="rm-0x03-Conjugate-Optimization"><a href="#rm-0x03-Conjugate-Optimization" class="headerlink" title="$\rm{0x03~Conjugate~Optimization}$"></a>$\rm{0x03~Conjugate~Optimization}$</h1><p>源自毛啸的《再探快速傅立叶变换》。</p>
+<p>我们思考这样两个多项式$\boldsymbol{P, Q} \in \mathbb{C}$<br>$$<br>\rm{P(x) = A(x) + iB(x)} \\<br>\rm{Q(x) = A(x) - iB(x)}<br>$$<br>我们不妨令$P’[k]$和$Q’[k]$为其$\text{DFT}$之后的序列，即$P’[k] =P(\omega_n^k),Q’[k] =Q(\omega_n^k) $。</p>
+<p>同时，令$\text{conj(x)}$表示对$x$取共轭。</p>
+<p>那么会有$^{[5]}$：<br>$$<br>\begin{align}<br>P’[k] &amp;= A(\omega_{n}^{k}) + i B(\omega_{n}^{k}) \\<br>&amp; = \sum_{j=0}^{n-1} A_{j} \omega_{n}^{jk} + i B_{j} \omega_{n}^{jk} \\<br>&amp; = \sum_{j=0}^{n-1} (A_{j} + i B_{j}) \left(\cos \left(\frac{2 \pi jk}{n}\right) + i \sin \left(\frac{2 \pi jk}{n}\right)\right) \\<br>&amp; =  \sum_{j=0}^{n-1} (A_{j} + i B_{j}) \omega_{n}^{kj}<br>\\<br>Q’[k] &amp;= A(\omega_{n}^{k}) - i B(\omega_{n}^{k}) \\<br>&amp; = \sum_{j=0}^{n-1} A_{j} \omega_{n}^{jk} - i B_{j} \omega_{n}^{jk} \\<br>&amp; = \sum_{j=0}^{n-1} (A_{j} - i B_{j}) \left(\cos \left(\frac{2 \pi jk}{n}\right) + i \sin \left(\frac{2 \pi jk}{n}\right)\right) \\<br>&amp; = \sum_{j=0}^{n-1} \left(A_{j} \cos \left(\frac{2 \pi jk}{n}\right) + B_{j} \sin \left(\frac{2 \pi jk}{n}\right)\right) + i \left(A_{j} \sin \left(\frac{2 \pi jk}{n}\right) - B_{j} \cos \left(\frac{2 \pi jk}{n}\right)\right) \\<br>&amp; = \text{conj} \left( \sum_{j=0}^{n-1} \left(A_{j} \cos \left(\frac{2 \pi jk}{n}\right) + B_{j} \sin \left(\frac{2 \pi jk}{n}\right)\right) - i \left(A_{j} \sin \left(\frac{2 \pi jk}{n}\right) - B_{j} \cos \left(\frac{2 \pi jk}{n}\right)\right) \right) \\<br>&amp; = \text{conj} \left( \sum_{j=0}^{n-1} \left(A_{j} \cos \left(\frac{-2 \pi jk}{n}\right) - B_{j} \sin \left(\frac{-2 \pi jk}{n}\right)\right) + i \left(A_{j} \sin \left(\frac{-2 \pi jk}{n}\right) + B_{j} \cos \left(\frac{-2 \pi jk}{n}\right)\right) \right) \\<br>&amp; = \text{conj} \left( \sum_{j=0}^{n-1} (A_{j} + i B_{j}) \left(\cos \left(\frac{-2 \pi jk}{n}\right) + i \sin \left(\frac{-2 \pi jk}{n}\right)\right)\right) \\<br>&amp; = \text{conj} \left( \sum_{j=0}^{n-1} (A_{j} + i B_{j}) \omega_{n}^{-jk} \right) \\<br>&amp; = \text{conj} \left( \sum_{j=0}^{n-1} (A_{j} + i B_{j}) \omega_{n}^{(n-k)j} \right) \\<br>&amp; = \text{conj} \left( P’[n-k] \right)<br>\end{align}<br>$$<br>好吧我承认这段推导过程的代码甚是壮观，于是并不是我自己写的qwq。</p>
+<p>那么我们发现其中$A(x)$和$B(x)$可以通过$P,Q$推出来：<br>$$<br>A’[k] = \frac{P’[k] + Q’[k]}{2} \\<br>B’[k] = \frac{P’[k] - Q’[k]}{2i}<br>$$<br>哦，对了，当$k=0$时，由于不存在这一项，所以我们需要特判一下。并且由于我们的$P(x)$和$Q(x)$的实部和虚部都可以利用，所以我们对于七次$DFT$可以优化到$4$次$DFT$.</p>
+<p>以下是共轭优化$FFT$的初号机：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 423333</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rr register </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i, a, b) for(i = a ; i &lt;= b ; ++ i)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ;</span><br><span class="line"><span class="keyword">int</span> f[MAXN], g[MAXN] ;</span><br><span class="line"><span class="keyword">int</span> R[MAXN], Len, x, Ans[MAXN] ;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">long</span> <span class="keyword">double</span> Pi = <span class="built_in">acos</span>(<span class="number">-1</span>) ;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">double</span> r, i ;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="title">node</span> <span class="params">(<span class="keyword">long</span> <span class="keyword">double</span> xx = <span class="number">0</span>, <span class="keyword">long</span> <span class="keyword">double</span> yy = <span class="number">0</span>)</span></span>&#123;</span><br><span class="line">        r = xx, i = yy ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> node <span class="title">Conj</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> node(r, -i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;A[MAXN], B[MAXN], w[MAXN], t1[MAXN], t2[MAXN] ;</span><br><span class="line">node H1[MAXN], H2[MAXN], H3[MAXN] ; <span class="keyword">int</span> L1, L2, P, N, M ;</span><br><span class="line">node <span class="keyword">operator</span> + (node J, node Q)&#123; <span class="keyword">return</span> node(J.r + Q.r , J.i + Q.i); &#125;</span><br><span class="line">node <span class="keyword">operator</span> - (node J, node Q)&#123; <span class="keyword">return</span> node(J.r - Q.r , J.i - Q.i); &#125;</span><br><span class="line">node <span class="keyword">operator</span> * (node J, node Q)&#123; <span class="keyword">return</span> node(J.r * Q.r - J.i * Q.i , J.r * Q.i + J.i * Q.r) ; &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">qr</span><span class="params">()</span></span>&#123; </span><br><span class="line">    rr <span class="keyword">int</span> k = <span class="number">0</span> ; <span class="keyword">char</span> c = getchar() ; <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(c)) c = getchar() ;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">isdigit</span>(c)) k = (k &lt;&lt; <span class="number">1</span>) + (k &lt;&lt; <span class="number">3</span>) + c - <span class="number">48</span>, c = getchar() ; <span class="keyword">return</span> k ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FFT</span><span class="params">(node *J, <span class="keyword">int</span> flag)</span></span>&#123;</span><br><span class="line">    rr <span class="keyword">int</span> i, j, k, l ; </span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; N; i ++)</span><br><span class="line">        <span class="keyword">if</span>(i &lt; R[i]) swap(J[i], J[R[i]]) ;</span><br><span class="line">    <span class="keyword">for</span>(j = <span class="number">1</span>; j &lt; N; j &lt;&lt;= <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span>(k = <span class="number">0</span>; k &lt; N; k += (j &lt;&lt; <span class="number">1</span>))</span><br><span class="line">            <span class="keyword">for</span>(l = <span class="number">0</span> ; l &lt; j; ++ l)&#123;</span><br><span class="line">                node T = w[N / j * l] ; T.i *= flag ;</span><br><span class="line">                node Nx = J[k + l], Ny = T * J[k + j + l] ;</span><br><span class="line">                J[k + l] = Nx + Ny, J[k + j + l] = Nx - Ny ;</span><br><span class="line">            &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Init</span><span class="params">(<span class="keyword">int</span> L)</span></span>&#123;</span><br><span class="line">    rr <span class="keyword">int</span> i ; <span class="keyword">while</span> (N &lt;= L) N &lt;&lt;= <span class="number">1</span>, ++ Len ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; N ; ++ i) A[i] = node(f[i] &amp; <span class="number">32767</span>, f[i] &gt;&gt; <span class="number">15</span>) ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; N ; ++ i) B[i] = node(g[i] &amp; <span class="number">32767</span>, g[i] &gt;&gt; <span class="number">15</span>) ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; N ; ++ i) w[i] = node(<span class="built_in">cos</span>(Pi * i / N), <span class="built_in">sin</span>(Pi * i / N)) ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; N ; ++ i) R[i] = (R[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; (Len - <span class="number">1</span>)) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MTT</span><span class="params">()</span></span>&#123;</span><br><span class="line">    node ia, ib, a1, a2, b1, b2 ;</span><br><span class="line">    rr <span class="keyword">int</span> i, k, t = L1 + L2, q1, q2, q3 ; Init(t) ;</span><br><span class="line">    <span class="comment">// for (i = 0 ; i &lt;= N ; ++ i) cout &lt;&lt; A[i].r &lt;&lt; " "; cout &lt;&lt; endl ;</span></span><br><span class="line">    <span class="comment">// for (i = 0 ; i &lt;= N ; ++ i) cout &lt;&lt; B[i].r &lt;&lt; " "; cout &lt;&lt; endl ;</span></span><br><span class="line">    FFT(A, <span class="number">1</span>), FFT(B, <span class="number">1</span>) ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; N ; ++ i)&#123;</span><br><span class="line">        k = (N - i) &amp; (N - <span class="number">1</span>), ia = A[k].Conj(), ib = B[k].Conj() ;<span class="comment">//(ia,ib) = Q</span></span><br><span class="line">        a1 = (ia + A[i]) * node(<span class="number">0.5</span>, <span class="number">0</span>), a2 = (A[i] - ia) * node(<span class="number">0</span>, <span class="number">-0.5</span>) ;</span><br><span class="line">        b1 = (ib + B[i]) * node(<span class="number">0.5</span>, <span class="number">0</span>), b2 = (B[i] - ib) * node(<span class="number">0</span>, <span class="number">-0.5</span>) ;</span><br><span class="line">        t1[i] = a1 * b1 + (a1 * b2 + b1 * a2) * node(<span class="number">0</span>, <span class="number">1</span>), t2[i] = a2 * b2 ;</span><br><span class="line">    &#125;  FFT(t1, <span class="number">-1</span>), FFT(t2, <span class="number">-1</span>) ;</span><br><span class="line">    <span class="comment">// for (i = 0 ; i &lt;= N ; ++ i) cout &lt;&lt; w[i].r &lt;&lt; " "; cout &lt;&lt; endl ;</span></span><br><span class="line">    <span class="comment">// for (i = 0 ; i &lt;= N ; ++ i) cout &lt;&lt; A[i].r &lt;&lt; " "; cout &lt;&lt; endl ;</span></span><br><span class="line">    <span class="comment">// for (i = 0 ; i &lt;= N ; ++ i) cout &lt;&lt; B[i].r &lt;&lt; " "; cout &lt;&lt; endl ;</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; N ; ++ i)&#123;</span><br><span class="line">        q1 = (<span class="keyword">long</span> <span class="keyword">long</span>)(t1[i].r / N + <span class="number">0.5</span>) % P, q2 = (<span class="keyword">long</span> <span class="keyword">long</span>)(t1[i].i / N + <span class="number">0.5</span>) % P ;</span><br><span class="line">        q3 = (<span class="keyword">long</span> <span class="keyword">long</span>)(t2[i].r / N + <span class="number">0.5</span>) % P, Ans[i] = ((((<span class="keyword">long</span> <span class="keyword">long</span>)q3 &lt;&lt; <span class="number">30</span>) % P + ((<span class="keyword">long</span> <span class="keyword">long</span>)q2 &lt;&lt; <span class="number">15</span>) % P + q1) % P + P) % P ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    rr <span class="keyword">int</span> i ; </span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; L1 &gt;&gt; L2 &gt;&gt; P ; N = <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt;= L1 ; ++ i) f[i] = qr() % P ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt;= L2 ; ++ i) g[i] = qr() % P ; MTT() ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt;= L1 + L2 ; ++ i) <span class="built_in">printf</span>(<span class="string">"%d "</span>, Ans[i]) ; <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="rm-0x04-quad-拼命卡常"><a href="#rm-0x04-quad-拼命卡常" class="headerlink" title="$\rm{0x04\quad}$拼命卡常"></a>$\rm{0x04\quad}$拼命卡常</h1><p>好的，首先我们可以欣赏一下最初的版本（用小号交的拆系数$FFT$ + $O2$）</p>
+<p><img src="1.png" alt></p>
+<p>然后是大号的共轭优化$FFT$（不加$O2$，即上方代码）：</p>
+<p><img src="2.png" alt></p>
+<p>特别的，以下是无共轭优化的拆系数$FFT$，不开$O2$:</p>
+<p><img src="3.png" alt></p>
+<p><img src="4.png" alt></p>
+<p>好吧，他看起来没有快多少。毕竟都是同阶的复杂度，好像后者的常数更大那么一点……</p>
+<p>于是考虑对共轭优化的进行大力卡常：</p>
+<ul>
+<li>多次使用的非全局变量。使用<code>register</code>修饰符。</li>
+<li>将$double$转换成为$long~double$ 。</li>
+<li>减少取模次数。</li>
+<li>从yjk那里偷来的$\rm{fread/fwrite}$</li>
+</ul>
+<p>一番操作之后，我们成功地卡到了第五页上……</p>
+<p><img src="5.png" alt></p>
+<p>最后奉上最快的代码qwq：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// luogu-judger-enable-o2</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> GCC optimize(3)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> GCC optimize(<span class="meta-string">"Ofast"</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 102333</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXM 272333</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rr register </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i, a, b) for(i = a ; i &lt;= b ; ++ i)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> IO&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> ch_top=<span class="number">4e7</span>+<span class="number">3</span>;</span><br><span class="line">    <span class="keyword">char</span> ch[ch_top],*now_r=ch<span class="number">-1</span>,*now_w=ch<span class="number">-1</span>;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">    	<span class="keyword">while</span>(*++now_r&lt;<span class="string">'0'</span>);</span><br><span class="line">    	<span class="keyword">register</span> <span class="keyword">int</span> x=*now_r-<span class="string">'0'</span>;</span><br><span class="line">    	<span class="keyword">while</span>(*++now_r&gt;=<span class="string">'0'</span>)x=x*<span class="number">10</span>+*now_r-<span class="string">'0'</span>;</span><br><span class="line">    	<span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">   		<span class="keyword">static</span> <span class="keyword">char</span> st[<span class="number">20</span>];<span class="keyword">static</span> <span class="keyword">int</span> top;</span><br><span class="line">    	<span class="keyword">while</span>(st[++top]=<span class="string">'0'</span>+x%<span class="number">10</span>,x/=<span class="number">10</span>);</span><br><span class="line">    	<span class="keyword">while</span>(*++now_w=st[top],--top);</span><br><span class="line">    	*++now_w=<span class="string">' '</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> R[MAXM], Len, x, Ans[MAXN &lt;&lt; <span class="number">1</span>] ;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> Pi = <span class="built_in">acos</span>(<span class="number">-1</span>) ;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="keyword">double</span> r, i ;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> node <span class="title">Conj</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> node(r, -i); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="title">node</span> <span class="params">(<span class="keyword">double</span> xx = <span class="number">0</span>, <span class="keyword">double</span> yy = <span class="number">0</span>)</span></span>&#123;</span><br><span class="line">        r = xx, i = yy ;</span><br><span class="line">    &#125;<span class="comment">//定义的Complex型是用来进行复数运算的 </span></span><br><span class="line">&#125;A[MAXM], B[MAXM], w[MAXM], t1[MAXM], t2[MAXM] ; <span class="keyword">int</span> L1, L2, P, N, M ;</span><br><span class="line"><span class="keyword">inline</span> node <span class="keyword">operator</span> + (<span class="keyword">const</span> node &amp;J, <span class="keyword">const</span> node &amp;Q) &#123; <span class="keyword">return</span> node(J.r + Q.r , J.i + Q.i); &#125;</span><br><span class="line"><span class="keyword">inline</span> node <span class="keyword">operator</span> - (<span class="keyword">const</span> node &amp;J, <span class="keyword">const</span> node &amp;Q) &#123; <span class="keyword">return</span> node(J.r - Q.r , J.i - Q.i); &#125;</span><br><span class="line"><span class="keyword">inline</span> node <span class="keyword">operator</span> * (<span class="keyword">const</span> node &amp;J, <span class="keyword">const</span> <span class="keyword">double</span> &amp;Q) &#123; <span class="keyword">return</span> (node) &#123;J.r * Q, J.i * Q&#125; ; &#125;</span><br><span class="line"><span class="keyword">inline</span> node <span class="keyword">operator</span> * (<span class="keyword">const</span> node &amp;J, <span class="keyword">const</span> node &amp;Q) &#123; <span class="keyword">return</span> node(J.r * Q.r - J.i * Q.i , J.r * Q.i + J.i * Q.r) ; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">FFT</span><span class="params">(node *J)</span></span>&#123;</span><br><span class="line">    rr node t ;</span><br><span class="line">    rr <span class="keyword">int</span> i, j, k, l ; </span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; N; i ++)</span><br><span class="line">        <span class="keyword">if</span>(i &lt; R[i]) t = J[i], J[i] = J[R[i]], J[R[i]] = t ;</span><br><span class="line">    <span class="keyword">for</span>(j = <span class="number">1</span>; j &lt; N; j &lt;&lt;= <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span>(k = <span class="number">0</span>; k &lt; N; k += (j &lt;&lt; <span class="number">1</span>))</span><br><span class="line">            <span class="keyword">for</span>(l = <span class="number">0</span> ; l &lt; j; ++ l)&#123;</span><br><span class="line">                rr node T = w[N / j * l] ;</span><br><span class="line">            	rr node Nx = J[k + l], Ny = T * J[k + j + l] ;</span><br><span class="line">                J[k + l] = Nx + Ny, J[k + j + l] = Nx - Ny ;</span><br><span class="line">            &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">IFFT</span><span class="params">(node *J)</span></span>&#123;</span><br><span class="line">    reverse(J + <span class="number">1</span>, J + N), FFT(J) ; </span><br><span class="line">    rr <span class="keyword">int</span> i ; rr <span class="keyword">double</span> qwq = <span class="number">1.0</span> / N ; </span><br><span class="line">    rep(i, <span class="number">0</span>, N - <span class="number">1</span>) J[i] = J[i] * qwq ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> IO ;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    fread(ch,<span class="number">1</span>,ch_top,<span class="built_in">stdin</span>); </span><br><span class="line">    rr <span class="keyword">int</span> i, k, t ; rr node ia, ib, a1, a2, b1, b2 ; </span><br><span class="line">    t = ((L1 = read()) + (L2 = read())), P = read(), N = <span class="number">1</span> ; </span><br><span class="line">    <span class="keyword">while</span> (N &lt;= t) N &lt;&lt;= <span class="number">1</span>, ++ Len ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt;= L1 ; ++ i) x = read(), A[i] = node(x &amp; <span class="number">32767</span>, x &gt;&gt; <span class="number">15</span>) ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt;= L2 ; ++ i) x = read(), B[i] = node(x &amp; <span class="number">32767</span>, x &gt;&gt; <span class="number">15</span>) ; </span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; N ; ++ i) w[i] = node(<span class="built_in">cos</span>(Pi * i / N), <span class="built_in">sin</span>(Pi * i / N)), R[i] = (R[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; (Len - <span class="number">1</span>)) ;</span><br><span class="line">    FFT(A), FFT(B) ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; N ; ++ i)&#123;</span><br><span class="line">        k = (N - i) &amp; (N - <span class="number">1</span>), ia = A[k].Conj(), ib = B[k].Conj() ;<span class="comment">//(ia,ib) = Q</span></span><br><span class="line">        a1 = (ia + A[i]) * node(<span class="number">0.5</span>, <span class="number">0</span>), a2 = (A[i] - ia) * node(<span class="number">0</span>, <span class="number">-0.5</span>) ;</span><br><span class="line">        b1 = (ib + B[i]) * node(<span class="number">0.5</span>, <span class="number">0</span>), b2 = (B[i] - ib) * node(<span class="number">0</span>, <span class="number">-0.5</span>) ;</span><br><span class="line">        t1[i] = a1 * b1 + (a1 * b2 + b1 * a2) * node(<span class="number">0</span>, <span class="number">1</span>), t2[i] = a2 * b2 ;</span><br><span class="line">    &#125;  </span><br><span class="line">    IFFT(t1), IFFT(t2) ; </span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt;= t ; ++ i)</span><br><span class="line">        write(((ll)(t1[i].r + <span class="number">0.5</span>) + ((ll)(t1[i].i + <span class="number">0.5</span>) % P &lt;&lt; <span class="number">15</span>) + ((ll)(t2[i].r + <span class="number">0.5</span>) % P &lt;&lt; <span class="number">30</span>)) % P) ;</span><br><span class="line">    fwrite(ch,<span class="number">1</span>,now_w-ch,<span class="built_in">stdout</span>); <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实践证明，以上代码不加任何优化（不开$\rm{O2/3/fast}$）甚至可以快$4ms$！<br><img src="6.png" alt></p>
+<h1 id="rm-0x00-quad-Afterword"><a href="#rm-0x00-quad-Afterword" class="headerlink" title="$\rm{0x00\quad Afterword}$"></a>$\rm{0x00\quad Afterword}$</h1><p>嗯，其实按道理来讲，不是特别难。但是这跟$HLPP$一样，都是打死都不会考的算法，所以学这些只是为了娱乐……听起来挺苍凉？</p>
+<p>但似乎，从一开始就不应该把应付考点作为OI的初衷吧，虽然如果没有获利，没有多少人会去学，但是不沾染功利的OI，似乎可爱了那么几分呢……</p>
+<p>并且在学的过程中顺便认识了一个巨佬<code>CMXRYNP</code>，嘿嘿，也算不亏啦。</p>
+<p>本篇文章真实完稿时间是$2019/3/17$，因为太懒+太忙，鸽了一个月$\rm{qaq}$.</p>
+<h2 id="rm-Reference"><a href="#rm-Reference" class="headerlink" title="$\rm{Reference}$"></a>$\rm{Reference}$</h2><ul>
+<li>$[1]$ :$lvzelong2014$的$blog$ <a href="https://blog.csdn.net/lvzelong2014/article/details/80156989" target="_blank" rel="noopener">$^{^{[\nearrow ]}}$</a></li>
+<li>$[2]$:<code>无梦之梦</code>的$blog$ <a href="https://www.cnblogs.com/DreamlessDreams/p/10241267.html" target="_blank" rel="noopener">$^{^{[\nearrow ]}}$</a></li>
+<li>$[3]$:$Cyhlnj$的$blog$ <a href="https://www.cnblogs.com/cjoieryl/p/10114614.html" target="_blank" rel="noopener">$^{^{[\nearrow ]}}$</a></li>
+<li>$[4]$:$litble$的$blog$ <a href="https://blog.csdn.net/litble/article/details/84864516" target="_blank" rel="noopener">$^{^{[\nearrow ]}}$</a></li>
+<li>$[5]$:$CMXRYNP$的$blog$ <a href="https://cmxrynp.github.io/2019/01/07/fft-optimization/" target="_blank" rel="noopener">$^{^{[\nearrow ]}}$</a></li>
+<li>$[6]$ :2016国家集训队论文《再探快速傅里叶变换》毛啸· <a href="https://pan.baidu.com/s/1aN2L7DAm_RY2GeN5Snxj1A" target="_blank" rel="noopener">$^{^{[\nearrow]}}$</a> 提取码：vua4</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/多项式基础/" rel="tag"><i class="fa fa-tag"></i> 多项式基础</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/19/FFT1/" rel="next" title="多项式1·普通的FFT">
+                <i class="fa fa-chevron-left"></i> 多项式1·普通的FFT
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/22/exBSGS/" rel="prev" title="【学习笔记】扩展的BSGS">
+                【学习笔记】扩展的BSGS <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Orchidany">
+  
+  <p class="site-author-name" itemprop="name">Orchidany</p>
+  <div class="site-description motion-element" itemprop="description">For code, science, tech. and more</div>
+</div>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">categories</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-name">tags</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+
+
+  <div class="links-of-author motion-element">
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/Flower233pks" title="GitHub &rarr; https://github.com/Flower233pks" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://www.luogu.org/space/show?uid=28313" title="Luogu &rarr; https://www.luogu.org/space/show?uid=28313" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>Luogu</a>
+      </span>
+    
+  </div>
+
+
+
+
+
+
+
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#rm-0x01-quad-Preface"><span class="nav-number">1.</span> <span class="nav-text">$\rm{0x01\quad Preface}$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rm-0x02-Normal-Coefficient-Spliting-FFT"><span class="nav-number">2.</span> <span class="nav-text">$\rm{0x02~Normal-Coefficient-Spliting~FFT}$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rm-0x03-Conjugate-Optimization"><span class="nav-number">3.</span> <span class="nav-text">$\rm{0x03~Conjugate~Optimization}$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rm-0x04-quad-拼命卡常"><span class="nav-number">4.</span> <span class="nav-text">$\rm{0x04\quad}$拼命卡常</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rm-0x00-quad-Afterword"><span class="nav-number">5.</span> <span class="nav-text">$\rm{0x00\quad Afterword}$</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#rm-Reference"><span class="nav-number">5.1.</span> <span class="nav-text">$\rm{Reference}$</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Orchidany</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.2.0</div>
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共154.9k字</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="Total Visitors">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="Total Views">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+
+
+
+
+
+
+
+  
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'V95HMkHzC6J9NvdCNbpg3A3E-gzGzoHsz',
+    appKey: 'gyf1NbCMlYbPnqykkSe7KuYC',
+    placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
+
+window.addEventListener("message", function(e) {
+  var data = e.data;
+  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
+    var featureID = data.split(':')[1];
+    var height = data.split(':')[2];
+    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
+  }
+}, false);
+</script>
+
+
+
+
+
+
+
+
+  
+
+</body>
+</html>
