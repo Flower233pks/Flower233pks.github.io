@@ -155,7 +155,7 @@
 <meta property="og:image" content="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89---purple.svg">
 <meta property="og:image" content="http://www.orchidany.cf/2019/02/04/LCT-s-Junior-Intro/t1.jpg">
 <meta property="og:image" content="http://www.orchidany.cf/2019/02/04/LCT-s-Junior-Intro/t2.png">
-<meta property="og:updated_time" content="2019-12-22T10:01:55.130Z">
+<meta property="og:updated_time" content="2019-12-22T11:42:47.235Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【学习笔记】LCT初步">
 <meta name="twitter:description" content="一种以$\rm Splay$作为辅助树的、动态维护连通性的算法。">
@@ -494,7 +494,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-22 18:01:55" itemprop="dateModified" datetime="2019-12-22T18:01:55+08:00">2019-12-22</time>
+                <time title="Modified: 2019-12-22 19:42:47" itemprop="dateModified" datetime="2019-12-22T19:42:47+08:00">2019-12-22</time>
               </span>
             
           
@@ -641,7 +641,7 @@
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Cut</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123; </span><br><span class="line">	Rooten(x) ; </span><br><span class="line">	<span class="keyword">if</span> (Find(y) != x || T[y].Son[<span class="number">0</span>] || T[y].F != x) <span class="keyword">return</span> ; </span><br><span class="line">	T[y].F = T[x].Son[<span class="number">1</span>] = <span class="number">0</span>, update(x) ; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>此处首先我们要判一下这两个点是不是直接相连。是否直接相连……在一棵$splay$中的体现，要克服两个问题，第一是要判断是否连通，还是$Find$操作。</p>
-<p>之后我们需要判断是否满足恰好相隔一条边——注意，首先因为代码中的$x$比$y$在原树位置靠上（$Rooten$了$x$），在$splay$中靠左，那么如果$y$有左儿子的话，说明一定有$Depth(x) &lt; Depth(y\text{的左儿子们})  &lt; Depth(y)$，其中$Depth$表示原树深度。那么此时原树中$x$和$y$之间，一定隔着一些节点。考虑树的性质，两点之间有且仅有一条简单路径——所以当$T[y].Son[0]$不指向$Null$时，$x$和$y$之间没有一条边，不能直接$Cut$。</p>
+<p>之后我们需要判断是否满足恰好相隔一条边——注意，首先因为代码中的$x$比$y$在原树位置靠上（$Rooten$了$x$），在$splay$中靠左，那么如果$y$有左儿子的话，说明一定有<br>$$<br>Depth(x) &lt; Depth(y\text{的左儿子们})  &lt; Depth(y)<br>$$<br>其中$Depth$表示原树深度。那么此时原树中$x$和$y$之间，一定隔着一些节点。考虑树的性质，两点之间有且仅有一条简单路径——所以当$T[y].Son[0]$不指向$Null$时，$x$和$y$之间没有一条边，不能直接$Cut$。</p>
 <p>剩下的就很简单了，$T[y].F$应该是$x$，否则也不是直接相连。</p>
 <ul>
 <li><h2 id="5-Rotate-中的坑点"><a href="#5-Rotate-中的坑点" class="headerlink" title="5 $~Rotate$中的坑点"></a>5 $~Rotate$中的坑点</h2></li>
@@ -791,7 +791,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">68</span>
+          <span class="site-state-item-count">69</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -985,7 +985,11 @@
         
           
         
-        <span class="site-state-item-count">56</span>
+          
+        
+          
+        
+        <span class="site-state-item-count">58</span>
         <span class="site-state-item-name">tags</span>
         </a>
       </div>
@@ -1109,7 +1113,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共154.8k字</span>
+  <span class="post-count">博客全站共155.2k字</span>
 </div>
 
         
