@@ -154,7 +154,7 @@ template {
 body {
   position: relative;
   font-family: 'Comic Sans MS', "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 2;
   color: #555;
   background-image: url("/images/background.png");
@@ -169,7 +169,7 @@ body {
 }
 @media (min-width: 1200px) {
   body {
-    font-size: 17px;
+    font-size: 16px;
   }
 }
 .hider_title {
@@ -579,7 +579,7 @@ body {
 pre,
 .highlight {
   margin: 20px 0;
-  font-size: 15px;
+  font-size: 14px;
   color: #4d4d4c;
   background: #f7f7f7;
   line-height: 1.6;
@@ -595,7 +595,7 @@ code {
   color: #555;
   background: #eee;
   border-radius: 3px;
-  font-size: 15px;
+  font-size: 14px;
 }
 pre {
   overflow: auto;
@@ -1019,6 +1019,12 @@ pre .javascript .function {
 .post-body .tabs .tab-content .tab-pane.active {
   display: block;
 }
+.pdfobject-container {
+  position: relative;
+  overflow: auto;
+  width: 100%;
+  height: 500px;
+}
 .btn {
   display: inline-block;
   padding: 0 20px;
@@ -1306,7 +1312,7 @@ pre .javascript .function {
 .post-body .figure .caption {
   margin: -20px auto 15px;
   text-align: center;
-  font-size: 15px;
+  font-size: 14px;
   color: #999;
   font-weight: bold;
   line-height: 1;
@@ -1791,7 +1797,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #0ec771;
+  background: #71d659;
 }
 .feed-link,
 .chat {
@@ -1969,7 +1975,7 @@ pre .javascript .function {
   line-height: 1.8;
 }
 .post-toc .nav .nav-child {
-  display: none;
+  display: block;
 }
 .post-toc .nav .active > .nav-child {
   display: block;
@@ -2415,7 +2421,7 @@ ul.breadcrumb {
   margin: 1em 0;
   padding: 0 2em;
   text-align: center;
-  font-size: 13px;
+  font-size: 12px;
 }
 ul.breadcrumb li {
   display: inline;
