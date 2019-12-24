@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.orchidany.cf/tags/index.html</loc>
+    
+    <lastmod>2019-12-24T09:28:22.622Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.orchidany.cf/2019/12/15/%E9%97%B2%E6%89%AF/</loc>
     
     <lastmod>2019-12-24T08:10:57.098Z</lastmod>
@@ -530,13 +537,6 @@
     <loc>http://www.orchidany.cf/archives/index.html</loc>
     
     <lastmod>2019-02-13T03:06:08.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.orchidany.cf/tags/index.html</loc>
-    
-    <lastmod>2019-02-13T02:56:56.000Z</lastmod>
     
   </url>
   
