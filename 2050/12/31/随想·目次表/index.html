@@ -379,23 +379,19 @@
   
     <div class="site-search">
       
-  <div class="algolia-popup popup search-popup">
-  <div class="algolia-search">
-    <div class="algolia-search-input-icon">
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
       <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
-    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-
-  <div class="algolia-results">
-    <div id="algolia-stats"></div>
-    <div id="algolia-hits"></div>
-    <div id="algolia-pagination" class="algolia-pagination"></div>
-  </div>
-
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
+  <div id="local-search-result"></div>
 </div>
 
 
@@ -577,12 +573,12 @@
 <p>在这些文章里，你会看到一个迷茫的青年如何满怀热血与绝望，眼里闪烁着沧桑与希望，怀里揣着坏掉的粮食和崭新的论文，脚下踏着崎岖不平的路，向明天走去。</p>
 <p>是的，我是花，来自山东，你直接叫我花这个ID或许我会很高兴，但是如果你认识我也可以不这么拘束。</p>
 
-        <div id="aplayer-AFVMUqcz" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-plZUWknH" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-AFVMUqcz"),
+            element: document.getElementById("aplayer-plZUWknH"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -1853,19 +1849,6 @@ if(canvas.getContext){
   </script>
 
 
-
-
-  
-  
-  
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-
-  
-  
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/algolia-search.js?v=7.2.0"></script>
 
 
 

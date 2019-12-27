@@ -377,23 +377,19 @@
   
     <div class="site-search">
       
-  <div class="algolia-popup popup search-popup">
-  <div class="algolia-search">
-    <div class="algolia-search-input-icon">
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
       <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
-    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-
-  <div class="algolia-results">
-    <div id="algolia-stats"></div>
-    <div id="algolia-hits"></div>
-    <div id="algolia-pagination" class="algolia-pagination"></div>
-  </div>
-
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
+  <div id="local-search-result"></div>
 </div>
 
 
@@ -665,8 +661,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/11/NOIP2017/" rel="next" title="【赛题整理】NOIP2017泛做">
-                <i class="fa fa-chevron-left"></i> 【赛题整理】NOIP2017泛做
+              <a href="/2019/07/11/Old-NOIP2/" rel="next" title="【泛做】Old-NOIP 泛做二">
+                <i class="fa fa-chevron-left"></i> 【泛做】Old-NOIP 泛做二
               </a>
             
           </div>
@@ -675,8 +671,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/11/Old-NOIP2/" rel="prev" title="【泛做】Old-NOIP 泛做二">
-                【泛做】Old-NOIP 泛做二 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/18/Nine/" rel="prev" title="随想九 · 意义">
+                随想九 · 意义 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1858,19 +1854,6 @@ if(canvas.getContext){
   </script>
 
 
-
-
-  
-  
-  
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-
-  
-  
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/algolia-search.js?v=7.2.0"></script>
 
 
 

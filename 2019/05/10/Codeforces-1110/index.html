@@ -145,7 +145,7 @@
 </script>
 
   <meta name="description" content="2019年2月7日举办的一场CF，$\text{div1+div2}$，题目质量较高。">
-<meta name="keywords" content="动态规划-普通DP,思维题&#x2F;构造,树模型">
+<meta name="keywords" content="思维题&#x2F;构造,动态规划-普通DP,树模型">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【赛题整理】CF#Global Round 1の题解(A $\to$ G)">
 <meta property="og:url" content="http://www.orchidany.cf/2019/05/10/Codeforces-1110/index.html">
@@ -387,23 +387,19 @@
   
     <div class="site-search">
       
-  <div class="algolia-popup popup search-popup">
-  <div class="algolia-search">
-    <div class="algolia-search-input-icon">
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
       <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
-    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-
-  <div class="algolia-results">
-    <div id="algolia-stats"></div>
-    <div id="algolia-hits"></div>
-    <div id="algolia-pagination" class="algolia-pagination"></div>
-  </div>
-
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
+  <div id="local-search-result"></div>
 </div>
 
 
@@ -695,9 +691,9 @@
         
         <div class="post-tags">
           
-            <a href="/tags/动态规划-普通DP/" rel="tag"><i class="fa fa-tag"></i> 动态规划-普通DP</a>
-          
             <a href="/tags/思维题-构造/" rel="tag"><i class="fa fa-tag"></i> 思维题/构造</a>
+          
+            <a href="/tags/动态规划-普通DP/" rel="tag"><i class="fa fa-tag"></i> 动态规划-普通DP</a>
           
             <a href="/tags/树模型/" rel="tag"><i class="fa fa-tag"></i> 树模型</a>
           
@@ -1905,19 +1901,6 @@ if(canvas.getContext){
   </script>
 
 
-
-
-  
-  
-  
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-
-  
-  
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/algolia-search.js?v=7.2.0"></script>
 
 
 

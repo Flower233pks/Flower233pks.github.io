@@ -377,23 +377,19 @@
   
     <div class="site-search">
       
-  <div class="algolia-popup popup search-popup">
-  <div class="algolia-search">
-    <div class="algolia-search-input-icon">
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
       <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
-    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-
-  <div class="algolia-results">
-    <div id="algolia-stats"></div>
-    <div id="algolia-hits"></div>
-    <div id="algolia-pagination" class="algolia-pagination"></div>
-  </div>
-
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
+  <div id="local-search-result"></div>
 </div>
 
 
@@ -657,8 +653,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/11/14/Codeforces-711/" rel="next" title="【题解】Codeforces Round-711 Virtual">
-                <i class="fa fa-chevron-left"></i> 【题解】Codeforces Round-711 Virtual
+              <a href="/2019/11/14/xiaone-2/" rel="next" title="【赛题整理】校内模拟赛选整 · E2">
+                <i class="fa fa-chevron-left"></i> 【赛题整理】校内模拟赛选整 · E2
               </a>
             
           </div>
@@ -667,8 +663,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/11/15/cf1-11/" rel="prev" title="【题解】Codeforces前11场泛做">
-                【题解】Codeforces前11场泛做 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/11/14/Codeforces-711/" rel="prev" title="【题解】Codeforces Round-711 Virtual">
+                【题解】Codeforces Round-711 Virtual <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1850,19 +1846,6 @@ if(canvas.getContext){
   </script>
 
 
-
-
-  
-  
-  
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-
-  
-  
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/algolia-search.js?v=7.2.0"></script>
 
 
 
