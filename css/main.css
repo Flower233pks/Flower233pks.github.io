@@ -482,7 +482,6 @@ body {
   margin: 0 auto;
   padding: 100px 0 70px;
   width: calc(100% - 20px);
-  opacity: 0.8;
 }
 @media (min-width: 1200px) {
   .container .header-inner {
@@ -1799,7 +1798,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #11ff08;
+  background: #46ffff;
 }
 .feed-link,
 .chat {
