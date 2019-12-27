@@ -376,19 +376,23 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+  <div class="algolia-popup popup search-popup">
+  <div class="algolia-search">
+    <div class="algolia-search-input-icon">
       <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
+    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-  <div id="local-search-result"></div>
+
+  <div class="algolia-results">
+    <div id="algolia-stats"></div>
+    <div id="algolia-hits"></div>
+    <div id="algolia-pagination" class="algolia-pagination"></div>
+  </div>
+
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
 </div>
 
 
@@ -765,7 +769,7 @@
 
       
         
-          <p>$\boldsymbol{dsu ~ on ~ tree}$，中文别称“树上启发式合并”（虽然我并不承认这种称谓），大概是一种优雅的暴力，并且跟$dsu$毫无关系。于是我打算叫他$\boldsymbol{Elegantly ~Direct~ Counting~ on~ Tree}$，“优雅的树上暴力统计”。</p>
+          <p>$\boldsymbol{dsu ~ on ~ tree}$，中文别称“树上启发式合并”（虽然我并不承认这种称谓），大概是一种优雅的暴力，并且跟$dsu$毫无关系。于是我打算叫他$\boldsymbol{Elegantly <del>Direct</del> Counting~ on~ Tree}$，“优雅的树上暴力统计”。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -2145,7 +2149,7 @@
 
       
         
-          <p><strong>快速莫比乌斯变换(FMT)</strong>可以方便地解决<strong>子集交卷积</strong>和<strong>子集并卷积</strong>，形式化地讲就是求一个$\rm C$：<br>$$<br>c_i=\sum_{k\cup j=i} a_kb_j\\\<br>c_i=\sum_{k\cap j=i} a_kb_j<br>$$<br>而<strong>快速子集变换(FST)</strong>则是在FMT基础上的扩展，解决的也是子集交卷积，但是限制了<strong>状态不重复</strong>，即<br>$$<br>c_i=\sum_{\substack{~k\cup j=i\\ k \cap j= \emptyset }}a_kb_j<br>$$<br>换个写法：<br>$$<br>c_s=\sum_{t\subseteq s}a_sb_{s-t}<br>$$<br>同时，以上两种变换所涉及的交集、并集和差集的对象都是集合（也就是$c_i$的下角标$i$指代的是集合），其二进制表示能更好地展示这一点。</p>
+          <p><strong>快速莫比乌斯变换(FMT)</strong>可以方便地解决<strong>子集交卷积</strong>和<strong>子集并卷积</strong>，形式化地讲就是求一个$\rm C$：<br>$$<br>c_i=\sum_{k\cup j=i} a_kb_j\<br>c_i=\sum_{k\cap j=i} a_kb_j<br>$$<br>而<strong>快速子集变换(FST)</strong>则是在FMT基础上的扩展，解决的也是子集交卷积，但是限制了<strong>状态不重复</strong>，即<br>$$<br>c_i=\sum_{\substack{~k\cup j=i\\ k \cap j= \emptyset }}a_kb_j<br>$$<br>换个写法：<br>$$<br>c_s=\sum_{t\subseteq s}a_sb_{s-t}<br>$$<br>同时，以上两种变换所涉及的交集、并集和差集的对象都是集合（也就是$c_i$的下角标$i$指代的是集合），其二进制表示能更好地展示这一点。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -2968,7 +2972,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共162.8k字</span>
+  <span class="post-count">博客全站共162.7k字</span>
 </div>
 
         
@@ -3528,6 +3532,19 @@ if(canvas.getContext){
   </script>
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/algolia-search.js?v=7.2.0"></script>
 
 
 

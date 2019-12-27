@@ -377,19 +377,23 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+  <div class="algolia-popup popup search-popup">
+  <div class="algolia-search">
+    <div class="algolia-search-input-icon">
       <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
+    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-  <div id="local-search-result"></div>
+
+  <div class="algolia-results">
+    <div id="algolia-stats"></div>
+    <div id="algolia-hits"></div>
+    <div id="algolia-pagination" class="algolia-pagination"></div>
+  </div>
+
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
 </div>
 
 
@@ -569,6 +573,7 @@
 <p>Σ( ° △ °|||)︴这东西是给大家留言的辣，挂友链/踩爆我/吐槽blog的设计都阔以的啊QAQ</p>
 <p>Upd on 12.26: 泥萌来都来了不留个言嘛qwq</p>
 <a id="more"></a>
+
 <p>以下是被教育做人的经历：</p>
 <blockquote>
 <p>人生有许多道：曾经踏足的是道，即将踏往的也是道，那什么才是道呢？唯有脚下走的才是道。一切精神或者物质都归于虚无，然后从混沌中衍生出三万道。在悲喜间涉足一条无数前人经历过，且将有无数后人奔赴的道，无论是否已经或者将要到达彼岸，然后便不再回头或是左顾右盼，即使有些道繁盛至极，夜灯如昼，无数人一浪又一浪的涌去，造就了世人皆知的辉煌；即使有些道草木凋敝，荒草丛生，只等勇敢的开拓者斩开荆棘，创造一片天地；这些都无所关，无所在意，彼岸何如、来日何方甚至过往旧事都化作一缕云烟，飘渺碧霄，我自撷高山之月色，独随足落处往行。</p>
@@ -1245,7 +1250,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共162.8k字</span>
+  <span class="post-count">博客全站共162.7k字</span>
 </div>
 
         
@@ -1789,6 +1794,19 @@ if(canvas.getContext){
   </script>
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/algolia-search.js?v=7.2.0"></script>
 
 
 

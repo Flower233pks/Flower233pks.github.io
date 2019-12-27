@@ -377,19 +377,23 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+  <div class="algolia-popup popup search-popup">
+  <div class="algolia-search">
+    <div class="algolia-search-input-icon">
       <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
+    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-  <div id="local-search-result"></div>
+
+  <div class="algolia-results">
+    <div id="algolia-stats"></div>
+    <div id="algolia-hits"></div>
+    <div id="algolia-pagination" class="algolia-pagination"></div>
+  </div>
+
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
 </div>
 
 
@@ -574,17 +578,18 @@
         <p>多项式的牛顿迭代，是借助泰勒展开进行的一种对于形式幂级数的常规操作，解决的主要问题是：<br>$$<br>G(F) \equiv 0~(\bmod x^n)<br>$$<br>给定形式幂级数$G$，求解$F$。</p>
 <p>而解决途径则是通过对降半次的$F_0$向上迭代解决的。</p>
 <a id="more"></a>
-<h1 id="1"><a href="#1" class="headerlink" title="$1$"></a>$1$</h1><p>假设我们现在已经求出了$G(F_0)\equiv 0~(\bmod~x^{\frac{n}{2}})$</p>
+
+<h1 id="1"><a href="#1" class="headerlink" title="$1$"></a>$1$</h1><p>假设我们现在已经求出了$G(F_0)\equiv 0<del>(\bmod</del>x^{\frac{n}{2}})$</p>
 <p>首先之前标准的式子左边在$F_0(x)$处进行泰勒展开，可以得到：<br>$$<br>\begin{aligned} G(F(x)) &amp;=G\left(F_{0}(x)\right) \\ &amp;+\frac{G^{\prime}\left(F_{0}(x)\right)}{1 !}\left(F(x)-F_{0}(x)\right) \\ &amp;+\frac{G^{\prime \prime}\left(F_{0}(x)\right)}{2 !}\left(F(x)-F_{0}(x)\right)^{2} \\ &amp;+\cdots (\mod ~x^n)\end{aligned}<br>$$</p>
-<p>但是我们考虑在$\mod ~x^n$意义下，$F$和$F_0$的最后$\frac{n}{2}$项相同，所以在上面的式子，$(F-F_0)^k,~k&gt;2$时，最低次项的次数一定会大于$2\cdot\lfloor \frac{n}{2}\rfloor$，也就是说在$\mod~x^n$意义下都是全0项。那么我们就可以得到：</p>
-<p>$$<br>G(F(x)) \equiv G\left(F_{0}(x)\right)+G^{\prime}\left(F_{0}(x)\right)\left(F(x)-F_{0}(x)\right) \quad\left(\bmod x^{n}\right)<br>$$<br>然后因为$G(F)=0~(\bmod~x^n)$，所以我们可以得到：<br>$$<br>F(x)\equiv F_0(x) - \frac{G(F_0(x))}{G^{\prime}\left(F_{0}(x)\right)} \quad\left(\bmod x^{n}\right)<br>$$<br>于是直接递推就好。</p>
+<p>但是我们考虑在$\mod <del>x^n$意义下，$F$和$F_0$的最后$\frac{n}{2}$项相同，所以在上面的式子，$(F-F_0)^k,</del>k&gt;2$时，最低次项的次数一定会大于$2\cdot\lfloor \frac{n}{2}\rfloor$，也就是说在$\mod~x^n$意义下都是全0项。那么我们就可以得到：</p>
+<p>$$<br>G(F(x)) \equiv G\left(F_{0}(x)\right)+G^{\prime}\left(F_{0}(x)\right)\left(F(x)-F_{0}(x)\right) \quad\left(\bmod x^{n}\right)<br>$$<br>然后因为$G(F)=0<del>(\bmod</del>x^n)$，所以我们可以得到：<br>$$<br>F(x)\equiv F_0(x) - \frac{G(F_0(x))}{G^{\prime}\left(F_{0}(x)\right)} \quad\left(\bmod x^{n}\right)<br>$$<br>于是直接递推就好。</p>
 <h1 id="2"><a href="#2" class="headerlink" title="$2$"></a>$2$</h1><p><del>接下来看几个课后练习</del></p>
-<h3 id="1-G-2-equiv-F-bmod-x-n"><a href="#1-G-2-equiv-F-bmod-x-n" class="headerlink" title="$(1)~G^2\equiv F~(\bmod~x^n)$"></a>$(1)~G^2\equiv F~(\bmod~x^n)$</h3><p>$$<br>\begin{aligned}<br>G^2&amp;=F\\\<br>G^2-F&amp;=0\\\<br>\end{aligned}<br>$$<br>令$T(G)=G^2-F$,<del>套用公式</del>可以得到：<br>$$<br>\begin{aligned}<br>T(G)&amp;=G^2-F,F\Longleftrightarrow \mathbb{C} \\\<br>G &amp;= G_h-\frac{T(G_h)}{T’(G_h)}\\\<br>\Longrightarrow G&amp;=G_h-\frac{G_h^2-F}{2G_h}\\\<br>\Longrightarrow G&amp;=\frac{G_h^2+F}{2G_h}<br>\end{aligned}<br>$$</p>
-<h3 id="2-G-equiv-e-F-bmod-x-n"><a href="#2-G-equiv-e-F-bmod-x-n" class="headerlink" title="$(2)~G\equiv e^{F}~(\bmod ~x^n)$"></a>$(2)~G\equiv e^{F}~(\bmod ~x^n)$</h3><p><del>按照套路应该</del>两边同时取$\ln$:<br>$$<br>\ln G=F~(\bmod~x^n)<br>$$<br>之后我们令$T(G)=\ln G-F$，<del>套用公式可以得到</del><br>$$<br>\begin{aligned}<br>G &amp;= G_h - \frac{T(G_h)}{T’(G_h)}\\\<br>\Longrightarrow G &amp;= G_h-\frac{\ln G_h -F}{\frac{1}{G_h}}\\\<br>\Longrightarrow G &amp;=G_h-G_h\ln G_h+G_hF\\\<br>\Longrightarrow G &amp;=G_h(1-\ln G_h+F)\\\<br>\end{aligned}<br>$$</p>
-<h3 id="3-G-k-equiv-F-bmod-x-n"><a href="#3-G-k-equiv-F-bmod-x-n" class="headerlink" title="$(3)~G^k\equiv F~(\bmod ~x^n)$"></a>$(3)~G^k\equiv F~(\bmod ~x^n)$</h3><p>$$<br>T(G) = G^k-F=0<br>$$</p>
-<p><del>套用公式可以得到</del><br>$$<br>\begin{aligned}<br>G &amp;= G_h - \frac{T(G_h)}{T’(G_h)}\\\<br>\Longrightarrow G &amp;= G_h-\frac{G_h^k-F}{kG_h^{k-1}}\\\<br>\Longrightarrow G &amp;=\frac{(k-1)G_h^k+F}{kG_h^{k-1}}<br>\end{aligned}<br>$$<br>然后就算这个东西就变成$\log^3~\text{or}~\log^2$可以算的东西了。</p>
-<h3 id="4-2G-ln-G-equiv-F-bmod-x-n"><a href="#4-2G-ln-G-equiv-F-bmod-x-n" class="headerlink" title="$(4)~2G \ln G\equiv F~(\bmod x^n)$"></a>$(4)~2G \ln G\equiv F~(\bmod x^n)$</h3><p>$$<br>T(G)\equiv 2G\ln G-F~(\bmod~x^n)<br>$$</p>
-<p>同样的台词……<br>$$<br>\begin{aligned}<br>G &amp;= G_h - \frac{T(G_h)}{T’(G_h)}\\\<br>\Longrightarrow G &amp;= G_h-\frac{2G_h\ln G_h-F}{2\ln G_h+2G_h\cdot \frac{1}{G_h}}\\\<br>\Longrightarrow G &amp;=\frac{2G_h\ln G_h-F}{(2\ln+1)G_h}<br>\end{aligned}<br>$$<br>然后这东西好像是可以$\log^2$做的……不过有些小朋友特别喜欢出无脑的多项式板子，像这种东西就很没有意思qaq。</p>
+<h3 id="1-G-2-equiv-F-bmod-x-n"><a href="#1-G-2-equiv-F-bmod-x-n" class="headerlink" title="$(1)G^2\equiv F(\bmod~x^n)$"></a>$(1)<del>G^2\equiv F</del>(\bmod~x^n)$</h3><p>$$<br>\begin{aligned}<br>G^2&amp;=F\<br>G^2-F&amp;=0\<br>\end{aligned}<br>$$<br>令$T(G)=G^2-F$,<del>套用公式</del>可以得到：<br>$$<br>\begin{aligned}<br>T(G)&amp;=G^2-F,F\Longleftrightarrow \mathbb{C} \<br>G &amp;= G_h-\frac{T(G_h)}{T’(G_h)}\<br>\Longrightarrow G&amp;=G_h-\frac{G_h^2-F}{2G_h}\<br>\Longrightarrow G&amp;=\frac{G_h^2+F}{2G_h}<br>\end{aligned}<br>$$</p>
+<h3 id="2-G-equiv-e-F-bmod-x-n"><a href="#2-G-equiv-e-F-bmod-x-n" class="headerlink" title="$(2)G\equiv e^{F}(\bmod ~x^n)$"></a>$(2)<del>G\equiv e^{F}</del>(\bmod ~x^n)$</h3><p><del>按照套路应该</del>两边同时取$\ln$:<br>$$<br>\ln G=F<del>(\bmod</del>x^n)<br>$$<br>之后我们令$T(G)=\ln G-F$，<del>套用公式可以得到</del><br>$$<br>\begin{aligned}<br>G &amp;= G_h - \frac{T(G_h)}{T’(G_h)}\<br>\Longrightarrow G &amp;= G_h-\frac{\ln G_h -F}{\frac{1}{G_h}}\<br>\Longrightarrow G &amp;=G_h-G_h\ln G_h+G_hF\<br>\Longrightarrow G &amp;=G_h(1-\ln G_h+F)\<br>\end{aligned}<br>$$</p>
+<h3 id="3-G-k-equiv-F-bmod-x-n"><a href="#3-G-k-equiv-F-bmod-x-n" class="headerlink" title="$(3)G^k\equiv F(\bmod ~x^n)$"></a>$(3)<del>G^k\equiv F</del>(\bmod ~x^n)$</h3><p>$$<br>T(G) = G^k-F=0<br>$$</p>
+<p><del>套用公式可以得到</del><br>$$<br>\begin{aligned}<br>G &amp;= G_h - \frac{T(G_h)}{T’(G_h)}\<br>\Longrightarrow G &amp;= G_h-\frac{G_h^k-F}{kG_h^{k-1}}\<br>\Longrightarrow G &amp;=\frac{(k-1)G_h^k+F}{kG_h^{k-1}}<br>\end{aligned}<br>$$<br>然后就算这个东西就变成$\log^3<del>\text{or}</del>\log^2$可以算的东西了。</p>
+<h3 id="4-2G-ln-G-equiv-F-bmod-x-n"><a href="#4-2G-ln-G-equiv-F-bmod-x-n" class="headerlink" title="$(4)2G \ln G\equiv F(\bmod x^n)$"></a>$(4)<del>2G \ln G\equiv F</del>(\bmod x^n)$</h3><p>$$<br>T(G)\equiv 2G\ln G-F<del>(\bmod</del>x^n)<br>$$</p>
+<p>同样的台词……<br>$$<br>\begin{aligned}<br>G &amp;= G_h - \frac{T(G_h)}{T’(G_h)}\<br>\Longrightarrow G &amp;= G_h-\frac{2G_h\ln G_h-F}{2\ln G_h+2G_h\cdot \frac{1}{G_h}}\<br>\Longrightarrow G &amp;=\frac{2G_h\ln G_h-F}{(2\ln+1)G_h}<br>\end{aligned}<br>$$<br>然后这东西好像是可以$\log^2$做的……不过有些小朋友特别喜欢出无脑的多项式板子，像这种东西就很没有意思qaq。</p>
 
       
     </div>
@@ -1221,7 +1226,7 @@ if(canvas.getContext){
             
     
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1"><span class="nav-number">1.</span> <span class="nav-text">$1$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2"><span class="nav-number">2.</span> <span class="nav-text">$2$</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-G-2-equiv-F-bmod-x-n"><span class="nav-number">2.0.1.</span> <span class="nav-text">$(1)~G^2\equiv F~(\bmod~x^n)$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-G-equiv-e-F-bmod-x-n"><span class="nav-number">2.0.2.</span> <span class="nav-text">$(2)~G\equiv e^{F}~(\bmod ~x^n)$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-G-k-equiv-F-bmod-x-n"><span class="nav-number">2.0.3.</span> <span class="nav-text">$(3)~G^k\equiv F~(\bmod ~x^n)$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2G-ln-G-equiv-F-bmod-x-n"><span class="nav-number">2.0.4.</span> <span class="nav-text">$(4)~2G \ln G\equiv F~(\bmod x^n)$</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1"><span class="nav-number">1.</span> <span class="nav-text">$1$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2"><span class="nav-number">2.</span> <span class="nav-text">$2$</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-G-2-equiv-F-bmod-x-n"><span class="nav-number">2.0.1.</span> <span class="nav-text">$(1)G^2\equiv F(\bmod~x^n)$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-G-equiv-e-F-bmod-x-n"><span class="nav-number">2.0.2.</span> <span class="nav-text">$(2)G\equiv e^{F}(\bmod ~x^n)$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-G-k-equiv-F-bmod-x-n"><span class="nav-number">2.0.3.</span> <span class="nav-text">$(3)G^k\equiv F(\bmod ~x^n)$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2G-ln-G-equiv-F-bmod-x-n"><span class="nav-number">2.0.4.</span> <span class="nav-text">$(4)2G \ln G\equiv F(\bmod x^n)$</span></a></li></ol></li></ol></div>
             
     
           </div>
@@ -1277,7 +1282,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共162.8k字</span>
+  <span class="post-count">博客全站共162.7k字</span>
 </div>
 
         
@@ -1821,6 +1826,19 @@ if(canvas.getContext){
   </script>
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/algolia-search.js?v=7.2.0"></script>
 
 
 

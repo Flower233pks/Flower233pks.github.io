@@ -144,19 +144,19 @@
   };
 </script>
 
-  <meta name="description" content="许久之前开始学的算法了…今天终于学完了。主要参考的材料是董克凡的$2016$集训队论文和$\rm{Candy?}$的代码整理，在此处致以敬意。  $\rm{0x01\quad Preface}$线性规划主要解决的问题是： $$\text{最大化}\quad \sum c_ix_i \quad(i = 1, 2,3 \cdots n) \\\text{满足约束} \quad \sum \limit">
+  <meta name="description" content="许久之前开始学的算法了…今天终于学完了。主要参考的材料是董克凡的$2016$集训队论文和$\rm{Candy?}$的代码整理，在此处致以敬意。  $\rm{0x01\quad Preface}$线性规划主要解决的问题是： $$\text{最大化}\quad \sum c_ix_i \quad(i = 1, 2,3 \cdots n) \\text{满足约束} \quad \sum \limits">
 <meta name="keywords" content="线性规划&#x2F;单纯形法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【学习笔记】线性规划入门">
 <meta property="og:url" content="http://www.orchidany.cf/2019/03/15/线性规划/index.html">
 <meta property="og:site_name" content="Orchidany&#39;w blog">
-<meta property="og:description" content="许久之前开始学的算法了…今天终于学完了。主要参考的材料是董克凡的$2016$集训队论文和$\rm{Candy?}$的代码整理，在此处致以敬意。  $\rm{0x01\quad Preface}$线性规划主要解决的问题是： $$\text{最大化}\quad \sum c_ix_i \quad(i = 1, 2,3 \cdots n) \\\text{满足约束} \quad \sum \limit">
+<meta property="og:description" content="许久之前开始学的算法了…今天终于学完了。主要参考的材料是董克凡的$2016$集训队论文和$\rm{Candy?}$的代码整理，在此处致以敬意。  $\rm{0x01\quad Preface}$线性规划主要解决的问题是： $$\text{最大化}\quad \sum c_ix_i \quad(i = 1, 2,3 \cdots n) \\text{满足约束} \quad \sum \limits">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89---purple.svg">
 <meta property="og:updated_time" content="2019-12-15T07:04:49.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【学习笔记】线性规划入门">
-<meta name="twitter:description" content="许久之前开始学的算法了…今天终于学完了。主要参考的材料是董克凡的$2016$集训队论文和$\rm{Candy?}$的代码整理，在此处致以敬意。  $\rm{0x01\quad Preface}$线性规划主要解决的问题是： $$\text{最大化}\quad \sum c_ix_i \quad(i = 1, 2,3 \cdots n) \\\text{满足约束} \quad \sum \limit">
+<meta name="twitter:description" content="许久之前开始学的算法了…今天终于学完了。主要参考的材料是董克凡的$2016$集训队论文和$\rm{Candy?}$的代码整理，在此处致以敬意。  $\rm{0x01\quad Preface}$线性规划主要解决的问题是： $$\text{最大化}\quad \sum c_ix_i \quad(i = 1, 2,3 \cdots n) \\text{满足约束} \quad \sum \limits">
 <meta name="twitter:image" content="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89---purple.svg">
 
 
@@ -379,19 +379,23 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+  <div class="algolia-popup popup search-popup">
+  <div class="algolia-search">
+    <div class="algolia-search-input-icon">
       <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
+    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-  <div id="local-search-result"></div>
+
+  <div class="algolia-results">
+    <div id="algolia-stats"></div>
+    <div id="algolia-hits"></div>
+    <div id="algolia-pagination" class="algolia-pagination"></div>
+  </div>
+
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
 </div>
 
 
@@ -577,18 +581,19 @@
 <p>许久之前开始学的算法了…今天终于学完了。主要参考的材料是董克凡的$2016$集训队论文和$\rm{Candy?}$的代码整理，在此处致以敬意。</p>
 <hr>
 <h1 id="rm-0x01-quad-Preface"><a href="#rm-0x01-quad-Preface" class="headerlink" title="$\rm{0x01\quad Preface}$"></a>$\rm{0x01\quad Preface}$</h1><p>线性规划主要解决的问题是：</p>
-<p>$$<br>\text{最大化}\quad \sum c_ix_i \quad(i = 1, 2,3 \cdots n) \\<br>\text{满足约束} \quad \sum \limits_{j=1}^{n} a_{i,j}x_{j} \leq b_i\quad (i = 1,2,3\cdots m) \\ \qquad \qquad \qquad \quad x_j \geq 0\quad (j=1,2,3\cdots n)<br>$$<br>不失一般性的，我们定义最大化的函数为<strong>目标函数($\rm{Aim-Func}$)</strong> ，定义约束函数的集合为<strong>约束函数集($\rm{Constraint-Set}$)</strong>。那么朴素的线性规划可以看求一组向量{$x_1,x_2\cdots x_n$}，使之既可以做约束函数的因变量，又满足其目标函数的值为$max$。</p>
+<p>$$<br>\text{最大化}\quad \sum c_ix_i \quad(i = 1, 2,3 \cdots n) \<br>\text{满足约束} \quad \sum \limits_{j=1}^{n} a_{i,j}x_{j} \leq b_i\quad (i = 1,2,3\cdots m) \\ \qquad \qquad \qquad \quad x_j \geq 0\quad (j=1,2,3\cdots n)<br>$$<br>不失一般性的，我们定义最大化的函数为<strong>目标函数($\rm{Aim-Func}$)</strong> ，定义约束函数的集合为<strong>约束函数集($\rm{Constraint-Set}$)</strong>。那么朴素的线性规划可以看求一组向量{$x_1,x_2\cdots x_n$}，使之既可以做约束函数的因变量，又满足其目标函数的值为$max$。</p>
 <p>同时，规定所有的$x$均满足$x&gt;0$。</p>
 <a id="more"></a>
-<p>当然，存在一种更加赏心悦目的矩阵表示方式：<br>$$<br>\text{最大化}\quad \boldsymbol{c^Tx} \\<br>\text{满足约束} \quad A\boldsymbol{x\leq b} \\\<br>\it{\qquad \qquad \quad} \boldsymbol {x} \geq 0<br>$$<br>其中$\boldsymbol{c,x,b}$均为一维向量，$A$为系数矩阵。</p>
+
+<p>当然，存在一种更加赏心悦目的矩阵表示方式：<br>$$<br>\text{最大化}\quad \boldsymbol{c^Tx} \<br>\text{满足约束} \quad A\boldsymbol{x\leq b} \<br>\it{\qquad \qquad \quad} \boldsymbol {x} \geq 0<br>$$<br>其中$\boldsymbol{c,x,b}$均为一维向量，$A$为系数矩阵。</p>
 <p>那么我们在高中数学必修五里面运用的智障做法是，通过每个约束确定一个凸包，再用目标函数不断平移以求得与凸包的切点/切线来达到最大值，但是这样的做法通常不具有一般性。所以需要引入一种更常用的方法来解决这类问题。</p>
-<h1 id="rm-0x02-quad-松弛型矩阵与-rm-Pivot-操作"><a href="#rm-0x02-quad-松弛型矩阵与-rm-Pivot-操作" class="headerlink" title="$\rm{0x02\quad}$ 松弛型矩阵与$\rm{Pivot}$操作"></a>$\rm{0x02\quad}$ 松弛型矩阵与$\rm{Pivot}$操作</h1><p>我们考虑一种更加友好的线性规划方式——<strong>松弛型矩阵</strong>，即将原来的矩阵添加几个无实际作用的新变量$x_i$，使之换一个样子：<br>$$<br>\text{最大化}\quad \sum c_ix_i \quad(i = 1, 2,3 \cdots n) \\<br>\text{满足约束} \quad x_{n+i} = b_i - \sum \limits_{j=1}^{n} a_{i,j}x_{j} \quad (i = 1,2,3\cdots m) \\ \qquad\quad  x_j \geq 0\quad (j=1,2,3\cdots n+m)<br>$$<br>两种表示是等价的，但是我们更倾向于松弛型这种简洁的表述方式。</p>
+<h1 id="rm-0x02-quad-松弛型矩阵与-rm-Pivot-操作"><a href="#rm-0x02-quad-松弛型矩阵与-rm-Pivot-操作" class="headerlink" title="$\rm{0x02\quad}$ 松弛型矩阵与$\rm{Pivot}$操作"></a>$\rm{0x02\quad}$ 松弛型矩阵与$\rm{Pivot}$操作</h1><p>我们考虑一种更加友好的线性规划方式——<strong>松弛型矩阵</strong>，即将原来的矩阵添加几个无实际作用的新变量$x_i$，使之换一个样子：<br>$$<br>\text{最大化}\quad \sum c_ix_i \quad(i = 1, 2,3 \cdots n) \<br>\text{满足约束} \quad x_{n+i} = b_i - \sum \limits_{j=1}^{n} a_{i,j}x_{j} \quad (i = 1,2,3\cdots m) \\ \qquad\quad  x_j \geq 0\quad (j=1,2,3\cdots n+m)<br>$$<br>两种表示是等价的，但是我们更倾向于松弛型这种简洁的表述方式。</p>
 <p>同时我们规定以下：</p>
 <p>$1.$基变量：在松弛型约束中，等式左边的变量。</p>
 <p>$2.$非基变量：在松弛型约束中，等式右边的变量。</p>
 <p>那我们定义一次<strong>转轴操作$(pivot)$</strong>为<strong>将一个基变量换进等式右边，换出一个非基变量的过程</strong>。</p>
-<p>假设我们在第$i$组约束中，有一个变量$x_k~(k&gt;n)$是基变量，我们要换出一个非基变量$x_p~(1\leq p\leq n)$，那么就会由：<br>$$<br>x_k= b_i -\sum \limits_{j=1}^{n} a_{i,j}x_{j}<br>$$<br>变成<br>$$<br>x_p = \frac{b_i - \sum \limits_{j\neq p}a_{i,j}x_j -x_k}{a_{i,p}}<br>$$<br>而单纯性做法的本质就是通过不断转轴，实现目标函数不断变大。</p>
-<p>看上去似乎比较抽象？我们考虑对一次转轴操作，我们需要在转轴之后将原来目标函数里的非基变量代入，即用$(b_i - \sum _{j\neq p}a_{i,j}x_j -x_k)/a_{i,p}$这个东西去替换掉$x_p$，那么其中的常数项$\frac{b_i}{a_{i,p}}$就可以作为目标函数中的一个常数值，当$x_i~(i=1,2,3\cdots n)$均为$0$时，目标函数的值即为此。那么转轴操作就是通过这样的操作使得目标函数里的常数值不断增大，达到最优解。</p>
+<p>假设我们在第$i$组约束中，有一个变量$x_k<del>(k&gt;n)$是基变量，我们要换出一个非基变量$x_p</del>(1\leq p\leq n)$，那么就会由：<br>$$<br>x_k= b_i -\sum \limits_{j=1}^{n} a_{i,j}x_{j}<br>$$<br>变成<br>$$<br>x_p = \frac{b_i - \sum \limits_{j\neq p}a_{i,j}x_j -x_k}{a_{i,p}}<br>$$<br>而单纯性做法的本质就是通过不断转轴，实现目标函数不断变大。</p>
+<p>看上去似乎比较抽象？我们考虑对一次转轴操作，我们需要在转轴之后将原来目标函数里的非基变量代入，即用$(b_i - \sum <em>{j\neq p}a</em>{i,j}x_j -x_k)/a_{i,p}$这个东西去替换掉$x_p$，那么其中的常数项$\frac{b_i}{a_{i,p}}$就可以作为目标函数中的一个常数值，当$x_i~(i=1,2,3\cdots n)$均为$0$时，目标函数的值即为此。那么转轴操作就是通过这样的操作使得目标函数里的常数值不断增大，达到最优解。</p>
 <p>注意，转轴之后的得到的$x_p$的表达式，不仅要代入目标函数，也要代入其余的约束。</p>
 <h1 id="rm-0x03-quad-rm-Simplex"><a href="#rm-0x03-quad-rm-Simplex" class="headerlink" title="$\rm{0x03}\quad \rm{Simplex}$"></a>$\rm{0x03}\quad \rm{Simplex}$</h1><p>那么接下来，我们考虑单纯性做法的完整过程。</p>
 <p>不失一般性的，我们假设所有$b_i\geq 0$</p>
@@ -600,11 +605,12 @@
 <hr>
 <p>值得注意的是，如果在寻找完最紧约束后，存在一个$A_{l,e} \leq 0$，那么我们在这组约束里无论怎么增大$x_e$都会使得目标函数增大，所以直接<code>return Unbounded</code>。</p>
 <p>此时我们还需要进行额外的操作，即初始化。因为我们转轴操作的目的是使目标函数增大，所以我们需要保证所有的$b_i\geq 0$，但一开始给定的$b_i$很可能不满足这一约束，所以我们需要进行一次初始化。那么对于初始化，我们的思想是做另一次线性规划。<del>鬼知道那些发明这玩意儿的神仙怎么构造出的这个线性规划。</del></p>
-<p>我们考虑一个这样的线性规划：<br>$$<br>\text{最大化}\quad -x_0 \\<br>\text{满足约束} \quad x_{n+i} = b_i - \sum \limits_{j=1}^{n} a_{i,j}x_{j} +x_0\quad (i = 1,2,3\cdots m)\\<br>\it{\qquad \qquad \qquad \quad x_j} \geq 0\quad (j=0,1,2,3\cdots n)<br>$$<br>首先，无论怎样，先思考他会不会对原来的线性规划产生什么影响——答案是：不会。因为我们考虑当$-x_0$最大时，一定是$x_0=0$的时候。所以对于约束中的$x_{n+i}$，大小不会变化。</p>
+<p>我们考虑一个这样的线性规划：<br>$$<br>\text{最大化}\quad -x_0 \<br>\text{满足约束} \quad x_{n+i} = b_i - \sum \limits_{j=1}^{n} a_{i,j}x_{j} +x_0\quad (i = 1,2,3\cdots m)\<br>\it{\qquad \qquad \qquad \quad x_j} \geq 0\quad (j=0,1,2,3\cdots n)<br>$$<br>首先，无论怎样，先思考他会不会对原来的线性规划产生什么影响——答案是：不会。因为我们考虑当$-x_0$最大时，一定是$x_0=0$的时候。所以对于约束中的$x_{n+i}$，大小不会变化。</p>
 <p>那么我们考虑这种初始化方式的正确性。我们考虑每次都将$x_0$作为换入变量(即我们一开始将$x_0$视作非基变量)，那么$pivot$之后就会有<br>$$<br>x_0 = -b_i+x_{i+n}+\sum\limits_{j=1}^{n}a_{i,j}x_j<br>$$<br>由于我们一定找的时限制最小的，那么$b_i&lt;0\Longrightarrow-b_i &gt;0$，这组约束合法。</p>
 <p>对于其余的约束，我们考虑代入之后，会有：<br>$$<br>x_{n+k}= b_k-b_i+\sum\limits_{j=1}^{n}(a_{k,j}-a_{i,j})x_j+x_{i+n}<br>$$<br>由于$b_i$最小，那么$b_k\geq b_i \Longrightarrow b_k-b_i\geq 0$。任务完成。</p>
 <p>那么就可以愉快地上代码辣(≧▽≦)/！题目来自于<a href="http://uoj.ac/problem/179" target="_blank" rel="noopener">$\rm{UOJ179}$</a></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 1010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps = <span class="number">1e-8</span>, INF = <span class="number">1e15</span> ;</span><br><span class="line"><span class="keyword">int</span> N, M, T, Id[MAXN], i, j ; <span class="keyword">double</span> A[MAXN][MAXN], Get[MAXN] ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Pivot</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> e)</span></span>&#123;</span><br><span class="line">    swap(Id[N + l], Id[e]) ;<span class="comment">//交换两个变量</span></span><br><span class="line">    <span class="keyword">double</span> t = A[l][e] ; A[l][e] = <span class="number">1.0</span> ;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span> ; i &lt;= N ; ++ i) A[l][i] /= t ;<span class="comment">//类似于高斯消元的第一步，把这一项挪到等式右边，所以要先都除以系数</span></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span> ; i &lt;= M ; ++ i) </span><br><span class="line">        <span class="keyword">if</span>(i != l &amp;&amp; <span class="built_in">fabs</span>(A[i][e]) &gt; eps)</span><br><span class="line">            <span class="keyword">for</span>(t = A[i][e], A[i][e] = j = <span class="number">0</span> ; j &lt;= N ; ++ j) </span><br><span class="line">              A[i][j] -= A[l][j] * t ;<span class="comment">//此处则是代换。而由于代数式中肯定不会出现我们的A_&#123;i,e&#125;(毕竟是换到了等式右边)，所以对于这一项的系数要特殊处理成0</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">int</span> e = <span class="number">0</span>, l = <span class="number">0</span> ; <span class="keyword">double</span> t = -eps ;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= M ; ++ i) <span class="keyword">if</span> (A[i][<span class="number">0</span>] &lt; t) l = i, t = A[i][<span class="number">0</span>] ; <span class="keyword">if</span>(!l) <span class="keyword">return</span> <span class="number">1</span> ;<span class="comment">//找系数最小的负值项</span></span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">1</span> ; j &lt;= N ; ++ j) <span class="keyword">if</span> (A[l][j] &lt; -eps &amp;&amp; (!e || (rand() &amp; <span class="number">1</span>))) e = j ;</span><br><span class="line">        <span class="keyword">if</span> (!e) <span class="keyword">return</span> <span class="built_in">puts</span>(<span class="string">"Infeasible"</span>), <span class="literal">false</span> ;  Pivot(l, e) ;</span><br><span class="line">    &#125;<span class="comment">//不合法的线性规划，因为我们假设全部的系数都为正，且我们前面已经假定了全部x_i为正，那么不可能满足标准型里面的小于b_l——此时b_l为负值。</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Simplex</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, e = <span class="number">0</span> ; <span class="keyword">double</span> MAX = INF ;</span><br><span class="line">        <span class="keyword">for</span>(j = <span class="number">1</span> ; j &lt;= N ; ++ j) <span class="keyword">if</span> (A[<span class="number">0</span>][j] &gt; eps) &#123; e = j ; <span class="keyword">break</span> ; &#125; <span class="keyword">if</span>(!e) <span class="keyword">break</span> ;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">1</span> ; i &lt;= M ; ++ i) <span class="keyword">if</span> (A[i][e] &gt; eps &amp;&amp; A[i][<span class="number">0</span>] / A[i][e] &lt; MAX) MAX = A[i][<span class="number">0</span>] / A[i][e], l = i ;<span class="comment">//选个最紧的约束</span></span><br><span class="line">        <span class="keyword">if</span> (!l) <span class="keyword">return</span> <span class="built_in">puts</span>(<span class="string">"Unbounded"</span>), <span class="literal">false</span> ; Pivot(l,e) ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; N &gt;&gt; M &gt;&gt; T ; srand(<span class="number">19260817</span>) ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i) Id[i] = i ; </span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i) <span class="built_in">cin</span> &gt;&gt; A[<span class="number">0</span>][i] ; </span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= M ; <span class="built_in">cin</span> &gt;&gt; A[i ++][<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">1</span> ; j &lt;= N ; ++ j) <span class="built_in">cin</span> &gt;&gt; A[i][j] ; </span><br><span class="line">    <span class="keyword">if</span> (!(Init() &amp;&amp; Simplex())) <span class="keyword">return</span> <span class="number">0</span> ; <span class="built_in">printf</span>(<span class="string">"%.8lf\n"</span>, -A[<span class="number">0</span>][<span class="number">0</span>]) ;</span><br><span class="line">    <span class="keyword">if</span>(T)&#123;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">1</span> ; i &lt;= M ; ++ i) Get[Id[N + i]] = A[i][<span class="number">0</span>] ; </span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">1</span> ; i &lt;= N ; ++ i) <span class="built_in">printf</span>(<span class="string">"%.8lf "</span>,Get[i]) ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p> 然鹅事实上这份代码只有$97pts$…好像剩下3分就几乎没有人得过，除了kcz和std……</p>
 <p>至于中间的<code>srand</code>，是由于我们随便$pivot$一个$e$就好，于是就<del>听长者的</del>。</p>
 <h1 id="rm-0x04-quad-Afterwords"><a href="#rm-0x04-quad-Afterwords" class="headerlink" title="$\rm{0x04}\quad Afterwords$"></a>$\rm{0x04}\quad Afterwords$</h1><p>一直想学，一直没有机会学。</p>
@@ -1305,7 +1311,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共162.8k字</span>
+  <span class="post-count">博客全站共162.7k字</span>
 </div>
 
         
@@ -1849,6 +1855,19 @@ if(canvas.getContext){
   </script>
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/algolia-search.js?v=7.2.0"></script>
 
 
 

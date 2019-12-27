@@ -145,7 +145,7 @@
 </script>
 
   <meta name="description" content="一场cn round，然后每次cn round的最后一题都会很奇怪……">
-<meta name="keywords" content="思维题&#x2F;构造,思维题&#x2F;计数,动态规划-普通DP,贪心">
+<meta name="keywords" content="动态规划-普通DP,思维题&#x2F;构造,思维题&#x2F;计数,贪心">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【题解】Codeforces Round-814 Virtual">
 <meta property="og:url" content="http://www.orchidany.cf/2019/11/13/codeforces-814/index.html">
@@ -377,19 +377,23 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+  <div class="algolia-popup popup search-popup">
+  <div class="algolia-search">
+    <div class="algolia-search-input-icon">
       <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
+    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-  <div id="local-search-result"></div>
+
+  <div class="algolia-results">
+    <div id="algolia-stats"></div>
+    <div id="algolia-hits"></div>
+    <div id="algolia-pagination" class="algolia-pagination"></div>
+  </div>
+
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
 </div>
 
 
@@ -573,6 +577,7 @@
       
         <p>一场<code>cn</code> round，然后每次<code>cn</code> round的最后一题都会很奇怪……</p>
 <a id="more"></a>
+
 <h1 id="Omega"><a href="#Omega" class="headerlink" title="$\Omega $"></a>$\Omega $</h1><p>$\rm virtual$了一场……说实话这种<code>div2 only</code>的场次最后一题就经常比较毒……</p>
 <p><del>老规矩，前面几题用来水字数</del></p>
 <h1 id="A"><a href="#A" class="headerlink" title="$A$"></a>$A$</h1><blockquote>
@@ -581,12 +586,14 @@
 </blockquote>
 <p>sb一眼题，显然如果递减放进去还是递增就无解。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">inline bool cmp(int a, int b)&#123; return a &gt; b ;&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	cin &gt;&gt; N &gt;&gt; K ; int j = 1 ;</span><br><span class="line">	for (i = 1 ; i &lt;= N ; ++ i) cin &gt;&gt; base[i] ;</span><br><span class="line">	for (i = 1 ; i &lt;= K ; ++ i) cin &gt;&gt; t[i] ; sort(t + 1, t + K + 1, cmp) ;</span><br><span class="line">	for (i = 1 ; i &lt;= N ; ++ i) if (!base[i]) base[i] = t[j ++] ;</span><br><span class="line">	for (i = 1 ; i &lt; N ; ++ i) if (base[i] &gt; base[i + 1]) return puts(&quot;Yes&quot;), 0 ;</span><br><span class="line">	return puts(&quot;No&quot;), 0 ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h1 id="B"><a href="#B" class="headerlink" title="$B$"></a>$B$</h1><blockquote>
 <p>给定两个长度为$n$的不相同序列$a$和$b$，这两个序列至少有一个位置不同</p>
 <p>现在需要构造一个长度为$n$的排列$p$，使得$p$与$a$只有一个地方不同，且$p$与$b$也只有一个地方不同</p>
 </blockquote>
 <p>一眼就可以看出最多有两个位置不同，否则一定不合法。考虑分类讨论，如果只有一个位置不同那就放上那个没出现过的数字；如果有两个位置不同，那就考虑是$A$中第一个位置放多了还是第二个位置放多了，放上$B$的就完了.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;A[i]), Ma[A[i]] ++ ;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;B[i]), Mb[B[i]] ++ ;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i) <span class="keyword">if</span> (A[i] != B[i]) pos[++ cnt] = i ; </span><br><span class="line">	<span class="keyword">if</span> (cnt == <span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i)</span><br><span class="line">			<span class="keyword">if</span> (!Ma.count(i) &amp;&amp; !Mb.count(i)) &#123; A[pos[<span class="number">1</span>]] = i ; <span class="keyword">break</span> ; &#125;</span><br><span class="line">		<span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i) <span class="built_in">cout</span> &lt;&lt; A[i] &lt;&lt; <span class="string">" "</span> ; <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (Ma[A[pos[<span class="number">1</span>]]] &gt; <span class="number">1</span> &amp;&amp; !Ma[B[pos[<span class="number">1</span>]]])&#123; </span><br><span class="line">		A[pos[<span class="number">1</span>]] = B[pos[<span class="number">1</span>]] ; </span><br><span class="line">		<span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i) <span class="built_in">cout</span> &lt;&lt; A[i] &lt;&lt; <span class="string">" "</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123; </span><br><span class="line">		A[pos[<span class="number">2</span>]] = B[pos[<span class="number">2</span>]] ; </span><br><span class="line">		<span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i) <span class="built_in">cout</span> &lt;&lt; A[i] &lt;&lt; <span class="string">" "</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>本来觉得是道构造题，后来发现是道细节模拟题。。。</p>
 <h1 id="C"><a href="#C" class="headerlink" title="$C$"></a>$C$</h1><blockquote>
 <p>给你一个由小写字母构成的字符串.<br>有$q$个询问，每个询问给出数字$m$和小写字母$c$，你可以任意地修改字符串中的$m$个字符，求最多能够使字符串中含有多少个连续相同的字母$c$.<br>每个询问各自独立.<br>$|\rm S|\leq 1,500$</p>
@@ -596,13 +603,16 @@
 <p>但是我们发现这玩意儿复杂度一点也不平衡，因为预处理贼慢但是回答贼快。于是考虑有哪些性质没用。我们考虑预处理出原串中对于一个字符$c$，最近的两个$c$之间的位置来，然后如果要修改就显然先修改跨度小的$c_i$和$c_{i+1}$中间的部分，因为这样肯定不会更劣。同时只有把中间的非$c$区域占满才能使之连通，故每次对于一个给定的$k$，二分查找一下可以占满的区间，剩下的随便铺，对于这些占满的区间提前预处理出贡献的前缀和就完了。复杂度大概是$q\log n+26n$</p>
 <p>然而升级版只是口胡，什么时候闲下来再写吧qwq</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; <span class="number">26</span> ; ++ i)</span><br><span class="line">	<span class="keyword">for</span> (j = <span class="number">1</span> ; j &lt;= N ; ++ j)</span><br><span class="line">		<span class="keyword">if</span> ((<span class="keyword">int</span>)S[j] == <span class="string">'a'</span> + i) dp[i][j][<span class="number">0</span>] = dp[i][j - <span class="number">1</span>][<span class="number">0</span>] + <span class="number">1</span> ; </span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; <span class="number">26</span> ; ++ i)&#123;</span><br><span class="line">	<span class="keyword">for</span> (j = <span class="number">1</span> ; j &lt;= N ; ++ j)</span><br><span class="line">		<span class="keyword">for</span> (k = <span class="number">1</span> ; k &lt;= N ; ++ k)&#123;</span><br><span class="line">			<span class="keyword">if</span> ((<span class="keyword">int</span>)S[j] - <span class="string">'a'</span> == i) dp[i][j][k] = dp[i][j - <span class="number">1</span>][k] + <span class="number">1</span> ;</span><br><span class="line">			<span class="keyword">else</span> dp[i][j][k] = max(dp[i][j][k], dp[i][j - <span class="number">1</span>][k - <span class="number">1</span>] + <span class="number">1</span>) ;</span><br><span class="line">			ans[i][k] = max(ans[i][k], dp[i][j][k]) ;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">cin</span> &gt;&gt; T ;</span><br><span class="line"><span class="keyword">while</span> (T --)&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d %c"</span>, &amp;k, &amp;In) ;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans[(<span class="keyword">int</span>)In - <span class="string">'a'</span>][k] &lt;&lt; <span class="built_in">endl</span> ; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h1 id="D"><a href="#D" class="headerlink" title="$D$"></a>$D$</h1><blockquote>
 <p> 有$n$个圆，将其分为两组。每组中，只有奇数个圆覆盖的区域的才会算入面积，求可能的最大面积。 </p>
 </blockquote>
 <p>首先考虑贪心。大概就是说原本的覆盖一定可以看做一团一团独立的子问题。将圆按照面积大小排序，之后考虑选每一堆最大的放到第一堆，然后把与之原本冲突的放到第二堆。这样可以发现最终减去的部分面积变成了之前产生贡献的部分面积……然而这不重要，重要的是这样保证了每次选的一定都是面积最大的圆的集合。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">Comp</span><span class="params">(C A, C B)</span></span>&#123; <span class="keyword">return</span> A.r &gt; B.r ; &#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve2</span><span class="params">()</span></span>&#123;</span><br><span class="line">	sort(base + <span class="number">1</span>, base + N + <span class="number">1</span>, Comp) ;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i) </span><br><span class="line">		<span class="keyword">for</span>(j = i + <span class="number">1</span> ; j &lt;= N ; ++ j)</span><br><span class="line">			<span class="keyword">if</span> (check_in(base[i], base[j])) ++ mark[j] ;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i) </span><br><span class="line">		<span class="keyword">if</span> (!mark[i] || (mark[i] &amp; <span class="number">1</span>)) Ans += get_S(base[i]) ; <span class="keyword">else</span> Ans -= get_S(base[i]) ;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%.8lf"</span>, Ans) ;  	 </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>然而这个贪心似乎不好想，于是考虑一种精妙的$\rm dp$<del>其实更不好想</del>。考虑按照圆从大到小枚举顺次连边，最后连出来的会是一个森林状物。然后对于这个东西， 定义$dp[u][0/1][0/1]$表示以点$u$为根的子树里面，除$u$之外分成两堆之后，两堆分别的高度为偶数/奇数时的最优值。这东西就可以直接分类讨论求和+转移。 </p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">dist</span><span class="params">(C A, C B)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">sqrt</span>((A.x - B.x) * (A.x - B.x) + (A.y - B.y) * (A.y - B.y)) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">get_S</span><span class="params">(C A)</span></span>&#123; <span class="keyword">return</span> Pi * A.r * A.r ; &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">check_in</span><span class="params">(C A, C B)</span></span>&#123; <span class="keyword">return</span> A.r + B.r &gt; dist(A, B) ; &#125;</span><br><span class="line"><span class="keyword">namespace</span> DP&#123;</span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> to(k) E[k].to</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">		<span class="keyword">int</span> next, to ;</span><br><span class="line">	&#125;E[MAXN &lt;&lt; <span class="number">1</span>] ;</span><br><span class="line">	<span class="keyword">int</span> head[MAXN], cnt ;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Add</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    	E[++ cnt].to = v, E[cnt].next = head[u], head[u] = cnt ;</span><br><span class="line">    	E[++ cnt].to = u, E[cnt].next = head[v], head[v] = cnt ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">do_dp</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> faa)</span></span>&#123;</span><br><span class="line">		<span class="keyword">long</span> <span class="keyword">long</span> f[<span class="number">2</span>][<span class="number">2</span>] ; <span class="built_in">memset</span>(f, <span class="number">0</span>, <span class="keyword">sizeof</span>(f)) ;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> k = head[u] ; k ; k = E[k].next)&#123;</span><br><span class="line">			<span class="keyword">if</span> (to(k) == faa) <span class="keyword">continue</span> ;</span><br><span class="line">			do_dp(to(k), u) ;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> ii = <span class="number">0</span> ; ii &lt;= <span class="number">1</span> ; ++ ii)</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> jj = <span class="number">0</span> ; jj &lt;= <span class="number">1</span> ; ++ jj)</span><br><span class="line">					f[ii][jj] += dp[to(k)][ii][jj] ; </span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> ii = <span class="number">0</span> ; ii &lt;= <span class="number">1</span> ; ++ ii)</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> jj = <span class="number">0</span> ; jj &lt;= <span class="number">1</span> ; ++ jj)</span><br><span class="line">				dp[u][ii][jj] = max(</span><br><span class="line">                	f[ii ^ <span class="number">1</span>][jj] + (<span class="number">1l</span>l * (ii ? <span class="number">-1</span> : <span class="number">1</span>) * base[u].r * base[u].r), </span><br><span class="line">					f[ii][jj ^ <span class="number">1</span>] + (<span class="number">1l</span>l * (jj ? <span class="number">-1</span> : <span class="number">1</span>) * base[u].r * base[u].r)) ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">Comp</span><span class="params">(C A, C B)</span></span>&#123; <span class="keyword">return</span> A.r &gt; B.r ; &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">solve1</span><span class="params">()</span></span>&#123;</span><br><span class="line">		sort(base + <span class="number">1</span>, base + N + <span class="number">1</span>, Comp) ;</span><br><span class="line">		<span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i) </span><br><span class="line">			<span class="keyword">for</span>(j = i + <span class="number">1</span> ; j &lt;= N ; ++ j)</span><br><span class="line">				<span class="keyword">if</span> (check_in(base[i], base[j])) </span><br><span class="line">					<span class="keyword">if</span> (!fa[j] || base[fa[j]].r &gt; base[i].r) fa[j] = i ;</span><br><span class="line">		<span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i) <span class="keyword">if</span> (fa[i]) Add(i, fa[i]) ;	</span><br><span class="line">		<span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i)	<span class="keyword">if</span> (!fa[i]) do_dp(i, <span class="number">0</span>), Ans += dp[i][<span class="number">0</span>][<span class="number">0</span>] ;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%.8lf"</span>, Ans * Pi) ;  	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h1 id="E"><a href="#E" class="headerlink" title="$E$"></a>$E$</h1><blockquote>
 <p>给出$n$个点和每个点的度让你构造出一张无向图满足以下两条性质：</p>
 <ul>
@@ -649,11 +659,11 @@
         
         <div class="post-tags">
           
+            <a href="/tags/动态规划-普通DP/" rel="tag"><i class="fa fa-tag"></i> 动态规划-普通DP</a>
+          
             <a href="/tags/思维题-构造/" rel="tag"><i class="fa fa-tag"></i> 思维题/构造</a>
           
             <a href="/tags/思维题-计数/" rel="tag"><i class="fa fa-tag"></i> 思维题/计数</a>
-          
-            <a href="/tags/动态规划-普通DP/" rel="tag"><i class="fa fa-tag"></i> 动态规划-普通DP</a>
           
             <a href="/tags/贪心/" rel="tag"><i class="fa fa-tag"></i> 贪心</a>
           
@@ -1317,7 +1327,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共162.8k字</span>
+  <span class="post-count">博客全站共162.7k字</span>
 </div>
 
         
@@ -1861,6 +1871,19 @@ if(canvas.getContext){
   </script>
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/algolia-search.js?v=7.2.0"></script>
 
 
 

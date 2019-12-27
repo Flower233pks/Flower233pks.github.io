@@ -379,19 +379,23 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+  <div class="algolia-popup popup search-popup">
+  <div class="algolia-search">
+    <div class="algolia-search-input-icon">
       <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
+    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-  <div id="local-search-result"></div>
+
+  <div class="algolia-results">
+    <div id="algolia-stats"></div>
+    <div id="algolia-hits"></div>
+    <div id="algolia-pagination" class="algolia-pagination"></div>
+  </div>
+
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
 </div>
 
 
@@ -577,6 +581,7 @@
 <p>Prufer数列是无根树的一种数列，常用来求解树的计数问题。</p>
 </blockquote>
 <a id="more"></a>
+
 <h1 id="Preface"><a href="#Preface" class="headerlink" title="$Preface$"></a>$Preface$</h1><p>嗯，最近学了学一个叫做<code>Prufer</code>序列的东西，然后主要是跟树的计数有关。</p>
 <h2 id="基本概念与基本操作"><a href="#基本概念与基本操作" class="headerlink" title="基本概念与基本操作"></a>基本概念与基本操作</h2><p>首先下定义：Prufer序列是一个长度为$n-2$的序列。</p>
 <p>我们考虑给定一棵带标号的无根树，找出编号最小的叶子节点，写下与它相邻的节点的编号，然后删掉这个叶子节点。反复执行这个操作直到只剩两个节点为止。由于节点数$n&gt;2$的树总存在叶子节点，因此一棵$n$个节点的无根树唯一地对应了一个长度为$n-2$的数列，数列中的每个数都在$1$到$n$的范围内。而这就是这棵树的$\boldsymbol{Prufer}$<strong>序列</strong>。</p>
@@ -595,7 +600,8 @@
 <li>$\rm{Proof}:$ 仔细想想…似乎Prufer序列一共$n-2$项，于是就乘法原理就好了……</li>
 </ul>
 </li>
-<li>接上一个，有根树的话因为对于每种方案里面的$n$个点都可以当作根，所以总数量是$n^{n-2}\cdot n=n^{n-1}$。</li>
+<li><p>接上一个，有根树的话因为对于每种方案里面的$n$个点都可以当作根，所以总数量是$n^{n-2}\cdot n=n^{n-1}$。</p>
+</li>
 </ul>
 <hr>
 <ul>
@@ -606,7 +612,7 @@
 </li>
 <li><p>接上一个, $n$ 个节点的度依次为 $d_1,d_2,…,d_{n-m}$，另外有 $m$ 个节点度数未知，求有多少种生成树？</p>
 <ul>
-<li>我们考虑首先计算一下$Prufer$序列该剩下多少未知项，设其数目为$\omega$，则$\omega=(n-2)-\sum_{d_i ~is~known} (d_i-1)$。那么本着瞎**去重的原则，我们考虑应该在分母上乘一个$\omega!$。而同时由于我们存在$m$个度数并未确定的点，在$Prufer$序列中占据了$\omega$个位置，所以我们分子上应该再乘上一个$m^{\omega}$。故总方案数就变成了：</li>
+<li>我们考虑首先计算一下$Prufer$序列该剩下多少未知项，设其数目为$\omega$，则$\omega=(n-2)-\sum_{d_i <del>is</del>known} (d_i-1)$。那么本着瞎**去重的原则，我们考虑应该在分母上乘一个$\omega!$。而同时由于我们存在$m$个度数并未确定的点，在$Prufer$序列中占据了$\omega$个位置，所以我们分子上应该再乘上一个$m^{\omega}$。故总方案数就变成了：</li>
 </ul>
 </li>
 </ul>
@@ -615,10 +621,12 @@
 <p>其实就是上面<code>扩展</code>里面的一个推论，然后我们就用<code>python</code>水过去就好了233</p>
 <p><del>然而BZOJ的Py只会一直Pending，所以还是什么时候再写一发高精度吧</del></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">N = input()</span><br><span class="line">Fac = [<span class="number">1</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, N - <span class="number">1</span>) :</span><br><span class="line">    Fac = Fac + [Fac[i - <span class="number">1</span>] * i]</span><br><span class="line">Ans = Fac[N - <span class="number">2</span>]</span><br><span class="line">cnt = <span class="number">0</span></span><br><span class="line">Sum = N - <span class="number">2</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, N) :</span><br><span class="line">    di = input()</span><br><span class="line">    <span class="keyword">if</span> di == <span class="number">-1</span> :</span><br><span class="line">    	cnt = cnt + <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span> : </span><br><span class="line">        Ans = Ans / Fac[di - <span class="number">1</span>]</span><br><span class="line">        Sum = Sum - (di - <span class="number">1</span>)</span><br><span class="line">Ans = Ans / Fac[Sum]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, Sum) :</span><br><span class="line">    Ans = Ans * cnt</span><br><span class="line"><span class="keyword">print</span> (Ans)</span><br></pre></td></tr></table></figure>
+
 <h1 id="B-小猴打架"><a href="#B-小猴打架" class="headerlink" title="$B$ 小猴打架"></a>$B$ 小猴打架</h1><p>由于在BZOJ上是权限题，所以不得已去Luogu做…<del>国内最大的盗版题市场</del></p>
 <p><a href="https://www.luogu.org/problemnew/show/P4430" target="_blank" rel="noopener">Luogu4430</a></p>
 <p> 我们发现这个题的Aim在于让我们求无根树有多少种不同的生成方式，比普通的Prufer序列多一个加边的顺序——毕竟Prufer只能处理树的形态不同&amp;标号不同，所以我们理所当然地乘上一个$(n-1)!$。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;<span class="comment">//用sb代码来填补博文太短的空白</span></span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; N ; Frac[<span class="number">0</span>] = <span class="number">1</span> ;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">2</span> ; i &lt; N ; ++ i) (Ans *= N) %= Mod ;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt; N ; ++ i) Frac[i] = Frac[i - <span class="number">1</span>] * i % Mod ;</span><br><span class="line">	(Ans *= Frac[N - <span class="number">1</span>]) %= Mod, <span class="built_in">cout</span> &lt;&lt; Ans &lt;&lt; <span class="built_in">endl</span> ; <span class="keyword">return</span> <span class="number">0</span> ; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -1311,7 +1319,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共162.8k字</span>
+  <span class="post-count">博客全站共162.7k字</span>
 </div>
 
         
@@ -1855,6 +1863,19 @@ if(canvas.getContext){
   </script>
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/algolia-search.js?v=7.2.0"></script>
 
 
 

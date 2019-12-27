@@ -376,19 +376,23 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+  <div class="algolia-popup popup search-popup">
+  <div class="algolia-search">
+    <div class="algolia-search-input-icon">
       <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
+    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-  <div id="local-search-result"></div>
+
+  <div class="algolia-results">
+    <div id="algolia-stats"></div>
+    <div id="algolia-hits"></div>
+    <div id="algolia-pagination" class="algolia-pagination"></div>
+  </div>
+
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
 </div>
 
 
@@ -1969,7 +1973,7 @@
 
       
         
-          <p><strong>Berlekamp-Massey</strong>算法用于在$O(n^2)$的时间内求解数列的递推式。形式化地讲，给定$a_i(i=0,1,2,3…n-1)$，求一组$b_j(j=0,1,2,3…m)$，满足：<br>$$<br>\forall i\geq m, a_i=\sum _{j=0}^{m} a_{i-j}b_i<br>$$<br>其中或许会有条件限制$m$最小。</p>
+          <p><strong>Berlekamp-Massey</strong>算法用于在$O(n^2)$的时间内求解数列的递推式。形式化地讲，给定$a_i(i=0,1,2,3…n-1)$，求一组$b_j(j=0,1,2,3…m)$，满足：<br>$$<br>\forall i\geq m, a_i=\sum <em>{j=0}^{m} a</em>{i-j}b_i<br>$$<br>其中或许会有条件限制$m$最小。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -2171,9 +2175,9 @@
         
           <p>给定$F(x)$，求$G(x)$满足$G(x)\cdot F(x) \equiv1~(\bmod x^n)$.</p>
 <p>不妨考虑$G’(x)\cdot F(x) =1~(\bmod x^{\frac{n}{2}})$</p>
-<p>则有如下：<br>$$<br>\because G’\cdot F =1~(\bmod x^{\frac{n}{2}})\\ ~G\cdot F \equiv1~(\bmod x^{\frac{n}{2}})\\\<br>\therefore G’ -G\equiv0~(\bmod x^{\frac{n}{2}})\\ <br>\Longrightarrow G’^2+G^2-2G’G\equiv0~(\bmod x^{n})<br>$$</p>
+<p>则有如下：<br>$$<br>\because G’\cdot F =1<del>(\bmod x^{\frac{n}{2}})\\ ~G\cdot F \equiv1</del>(\bmod x^{\frac{n}{2}})\<br>\therefore G’ -G\equiv0<del>(\bmod x^{\frac{n}{2}})\\<br>\Longrightarrow G’^2+G^2-2G’G\equiv0</del>(\bmod x^{n})<br>$$</p>
 <p>两端同时卷上一个$F(x)$则有：</p>
-<p>$$<br>\because F\cdot G\equiv1~(\bmod x^n)\\\<br>\therefore G\equiv 2G’-FG’^2~(\bmod x^n)<br>$$</p>
+<p>$$<br>\because F\cdot G\equiv1<del>(\bmod x^n)\<br>\therefore G\equiv 2G’-FG’^2</del>(\bmod x^n)<br>$$</p>
 <p>以此为递推式即可递推出$G(x)$的值，时间复杂度$O(n\log^2 n)$.</p>
           <!--noindex-->
           
@@ -3018,7 +3022,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共162.8k字</span>
+  <span class="post-count">博客全站共162.7k字</span>
 </div>
 
         
@@ -3578,6 +3582,19 @@ if(canvas.getContext){
   </script>
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/algolia-search.js?v=7.2.0"></script>
 
 
 

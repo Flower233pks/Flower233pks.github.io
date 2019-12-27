@@ -377,19 +377,23 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+  <div class="algolia-popup popup search-popup">
+  <div class="algolia-search">
+    <div class="algolia-search-input-icon">
       <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
+    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-  <div id="local-search-result"></div>
+
+  <div class="algolia-results">
+    <div id="algolia-stats"></div>
+    <div id="algolia-hits"></div>
+    <div id="algolia-pagination" class="algolia-pagination"></div>
+  </div>
+
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
 </div>
 
 
@@ -567,6 +571,9 @@
         <p><del>别名：一句话日记</del></p>
 <p>可能就是用来随时记录自己感悟的东西？</p>
 <a id="more"></a>
+
+
+
 <h3 id="12-26"><a href="#12-26" class="headerlink" title="12.26"></a>12.26</h3><p>上午下午一共做了三道题，从李煜东的蓝书上看来的。中途写挂了好几次，但是最终调出来还是挺有成就感的。</p>
 <p>饭卡丢了，有点郁闷。毕竟电话卡和饭卡是一张卡，电话卡丢了还要去电信营业厅补办。。。太麻烦了吧233</p>
 <p>……然后……然后就因为一些奇怪的事情陷入了奇怪的思考。感觉自己正在被拽进奇怪的漩涡中，感觉自己似乎如同「奇异人生」里面 <code>Max</code> 经常梦到的场景，在风暴之中，自己在被撕扯着想要登上灯塔。可惜只有我一个人。</p>
@@ -650,8 +657,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/12/20/CSP-S2019游记/" rel="prev" title="CSP-S2019游记">
-                CSP-S2019游记 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/12/20/CSP-S2019游记/" rel="prev" title="【游记】CSP-S2019游记">
+                【游记】CSP-S2019游记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1289,7 +1296,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共162.8k字</span>
+  <span class="post-count">博客全站共162.7k字</span>
 </div>
 
         
@@ -1833,6 +1840,19 @@ if(canvas.getContext){
   </script>
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/algolia-search.js?v=7.2.0"></script>
 
 
 

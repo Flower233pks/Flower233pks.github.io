@@ -144,18 +144,18 @@
   };
 </script>
 
-  <meta name="description" content="解决一类$$G=F\cdot P+R ~(\bmod~x^n)$$其中$F, G$给定，求解$P$和$R$ 然而最后变成了老年选手的多项式瞎吹？">
+  <meta name="description" content="解决一类$$G=F\cdot P+R (\bmodx^n)$$其中$F, G$给定，求解$P$和$R$ 然而最后变成了老年选手的多项式瞎吹？">
 <meta name="keywords" content="多项式基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【学习笔记】多项式带余除法">
 <meta property="og:url" content="http://www.orchidany.cf/2019/08/07/chumod/index.html">
 <meta property="og:site_name" content="Orchidany&#39;w blog">
-<meta property="og:description" content="解决一类$$G=F\cdot P+R ~(\bmod~x^n)$$其中$F, G$给定，求解$P$和$R$ 然而最后变成了老年选手的多项式瞎吹？">
+<meta property="og:description" content="解决一类$$G=F\cdot P+R (\bmodx^n)$$其中$F, G$给定，求解$P$和$R$ 然而最后变成了老年选手的多项式瞎吹？">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-12-15T06:36:33.252Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【学习笔记】多项式带余除法">
-<meta name="twitter:description" content="解决一类$$G=F\cdot P+R ~(\bmod~x^n)$$其中$F, G$给定，求解$P$和$R$ 然而最后变成了老年选手的多项式瞎吹？">
+<meta name="twitter:description" content="解决一类$$G=F\cdot P+R (\bmodx^n)$$其中$F, G$给定，求解$P$和$R$ 然而最后变成了老年选手的多项式瞎吹？">
 
 
 
@@ -377,19 +377,23 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+  <div class="algolia-popup popup search-popup">
+  <div class="algolia-search">
+    <div class="algolia-search-input-icon">
       <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
+    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-  <div id="local-search-result"></div>
+
+  <div class="algolia-results">
+    <div id="algolia-stats"></div>
+    <div id="algolia-hits"></div>
+    <div id="algolia-pagination" class="algolia-pagination"></div>
+  </div>
+
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
 </div>
 
 
@@ -571,20 +575,24 @@
       
 
       
-        <p>解决一类<br>$$<br>G=F\cdot P+R ~(\bmod~x^n)<br>$$<br>其中$F, G$给定，求解$P$和$R$</p>
+        <p>解决一类<br>$$<br>G=F\cdot P+R <del>(\bmod</del>x^n)<br>$$<br>其中$F, G$给定，求解$P$和$R$</p>
 <p><del>然而最后变成了老年选手的多项式瞎吹？</del></p>
 <a id="more"></a>
+
 <h1 id="1"><a href="#1" class="headerlink" title="$1$"></a>$1$</h1><p>这就很苟，最近要被多项式除法给整疯了，原因大概是我换一道模板就需要换一种写法……原来那种怎么改都不对就很智障……</p>
 <p>然后划式子过程就很苟，是一种诡异的构造方式，前置芝士大概是$F(\frac{1}{x})=F^T(x)$，其中$T$表示转置——当然是一个不严谨的记号，意思就是把这个形式幂级数的系数<code>reverse</code>掉。</p>
-<p>以下是过程：<br>$$<br>\begin{aligned}<br>G(x)&amp;=F(x)P(x)+R(x)\\\<br>G(\frac{1}{x})&amp;=F(\frac{1}{x})P(\frac{1}{x})+R(\frac{1}{x})\\\<br>\because A_r&amp;= x^nA(\frac{1}{x})\\\<br>\therefore x^nG(\frac{1}{x})&amp;=x^nF(\frac{1}{x})P(\frac{1}{x})+x^nR(\frac{1}{x})\\\<br>\Longrightarrow x^nG(\frac{1}{x})&amp;=x^mF(\frac{1}{x})\cdot x^{n-m}P(\frac{1}{x})+x^{m-1}\cdot x^{n-m+1}R(x)\\\<br>\Longrightarrow G_r(x)&amp;=F_r(x)\cdot P_r(x)+x^{n-m+1}R_r(x)\\\<br>\Longrightarrow G_r(x)&amp;=F_r(x)\cdot P_r(x)+x^{n-m+1}R_r(x) ~(\bmod x^{n-m+1})\\\<br>\Longrightarrow P_r(x)&amp;=F_r(x)\cdot G_r^{-1}(x)~(\bmod x^{n-m+1})\\\<br>\end{aligned}<br>$$<br>之后求出$P_r$之后就可以回代原式：<br>$$<br>\begin{aligned}<br>G=F\cdot P+R\\\<br>R = G - F\cdot P<br>\end{aligned}<br>$$<br>于是就完了</p>
+<p>以下是过程：<br>$$<br>\begin{aligned}<br>G(x)&amp;=F(x)P(x)+R(x)\<br>G(\frac{1}{x})&amp;=F(\frac{1}{x})P(\frac{1}{x})+R(\frac{1}{x})\<br>\because A_r&amp;= x^nA(\frac{1}{x})\<br>\therefore x^nG(\frac{1}{x})&amp;=x^nF(\frac{1}{x})P(\frac{1}{x})+x^nR(\frac{1}{x})\<br>\Longrightarrow x^nG(\frac{1}{x})&amp;=x^mF(\frac{1}{x})\cdot x^{n-m}P(\frac{1}{x})+x^{m-1}\cdot x^{n-m+1}R(x)\<br>\Longrightarrow G_r(x)&amp;=F_r(x)\cdot P_r(x)+x^{n-m+1}R_r(x)\<br>\Longrightarrow G_r(x)&amp;=F_r(x)\cdot P_r(x)+x^{n-m+1}R_r(x) <del>(\bmod x^{n-m+1})\<br>\Longrightarrow P_r(x)&amp;=F_r(x)\cdot G_r^{-1}(x)</del>(\bmod x^{n-m+1})\<br>\end{aligned}<br>$$<br>之后求出$P_r$之后就可以回代原式：<br>$$<br>\begin{aligned}<br>G=F\cdot P+R\<br>R = G - F\cdot P<br>\end{aligned}<br>$$<br>于是就完了</p>
 <h1 id="2"><a href="#2" class="headerlink" title="$2$"></a>$2$</h1><p>但是实际写法有些问题，比如板子<a href="https://www.luogu.org/problem/P4512" target="_blank" rel="noopener">P4512 【模板】多项式除法</a></p>
 <p>这其实就直接做就好，不是很需要考虑清零什么的。但是我总觉得在<code>Inv</code>之后是不是需要重新算一下<code>R</code>……不清楚诶。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">LL Ft[MAXN], Gt[MAXN], IG[MAXN] ;</span><br><span class="line"><span class="keyword">void</span> _Div()&#123;</span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">0</span>, O = N - M + <span class="number">1</span> ;</span><br><span class="line">    reverse(Ft, Ft + N), reverse(Gt, Gt + M) ;</span><br><span class="line">    l = <span class="number">0</span>, L = <span class="number">1</span> ; <span class="keyword">while</span> (L &lt; (O &lt;&lt; <span class="number">1</span>)) L &lt;&lt;= <span class="number">1</span>, ++ l ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = O ; i &lt; N ; ++ i) Ft[i] = Gt[i] = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; L ; ++ i) R[i] = (R[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; (l - <span class="number">1</span>)) ;</span><br><span class="line">    _Inv(Gt, IG, O), NTT(IG, L, <span class="number">1</span>), NTT(Ft, L, <span class="number">1</span>) ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; L ; ++ i) P[i] = Ft[i] * IG[i] % Mod ; NTT(P, L, - <span class="number">1</span>) ; reverse(P, P + O) ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; O ; ++ i) <span class="built_in">printf</span>(<span class="string">"%lld "</span>, P[i]) ; <span class="keyword">for</span> (<span class="keyword">int</span> i = O ; i &lt; N ; ++ i) P[i] = <span class="number">0</span> ;</span><br><span class="line">    O = N, L = <span class="number">1</span>, l = <span class="number">0</span> ; <span class="keyword">while</span> (L &lt; (O &lt;&lt; <span class="number">1</span>)) L &lt;&lt;= <span class="number">1</span>, ++ l ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; L ; ++ i) R[i] = (R[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; (l - <span class="number">1</span>)) ;</span><br><span class="line">    NTT(P, L, <span class="number">1</span>), NTT(G, L, <span class="number">1</span>) ; <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; L ; ++ i) Q[i] = (P[i] * G[i]) % Mod ; NTT(Q, L, <span class="number">-1</span>) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; N &gt;&gt; M, ++ N, ++ M ; <span class="keyword">int</span> i ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; N ; ++ i) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;F[i]), Ft[i] = F[i] ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; M ; ++ i) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;G[i]), Gt[i] = G[i] ; _Div() ;</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">""</span>) ; <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; M - <span class="number">1</span> ; ++ i) <span class="built_in">printf</span>(<span class="string">"%lld "</span>, (F[i] - Q[i] + Mod) % Mod) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>但是之后线性递推时需要进行的取模操作：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> _Div(LL *f, <span class="keyword">int</span> Len)&#123;</span><br><span class="line">    <span class="keyword">int</span> L1 = (K &lt;&lt; <span class="number">1</span>), D, i ;</span><br><span class="line">    <span class="keyword">while</span> (!f[-- L1]) ; <span class="keyword">if</span> (L1 &lt; K) <span class="keyword">return</span> ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; Len ; ++ i) Ft[i] = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt;= L1 ; ++ i) Ft[i] = f[i] ; reverse(Ft, Ft + L1 + <span class="number">1</span>) ;</span><br><span class="line">    <span class="keyword">for</span> (D = L1 - K + <span class="number">1</span>, i = D ; i &lt;= L1 ; ++ i) Ft[i] = <span class="number">0</span> ; NTT(Ft, Len, <span class="number">1</span>) ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; Len ; ++ i) P[i] = Ft[i] * IG[i] % Mod ; NTT(P, Len, - <span class="number">1</span>) ;</span><br><span class="line">    <span class="keyword">for</span> (i = D ; i &lt;= L1 ; ++ i) P[i] = <span class="number">0</span> ; reverse(P, P + D) ; NTT(P, Len, <span class="number">1</span>) ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; Len ; ++ i) Q[i] = (P[i] * G[i]) % Mod ; NTT(Q, Len, <span class="number">-1</span>) ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; K ; ++ i) f[i] = (f[i] - Q[i] + Mod) % Mod ; <span class="keyword">for</span> (i = K ; i &lt;= L1 ; ++ i) f[i] = <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//main_function</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= K ; ++ i) G[K - i] = Mod - p[i] ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt;= K ; ++ i) Gt[i] = G[i] ; reverse(Gt, Gt + K + <span class="number">1</span>) ;</span><br><span class="line">    NTT(G, Len, <span class="number">1</span>) ; _Inv(Gt, IG, Len &gt;&gt; <span class="number">1</span>), NTT(IG, Len, <span class="number">1</span>) ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; Len ; ++ i) R[i] = (R[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; (l - <span class="number">1</span>)) ;</span><br></pre></td></tr></table></figure>
+
 <p>看上去很正常，只是多了几个预处理而已。但是不知为何当时写的就很迷。。。并且从这个板子开始我明白了，<strong>多项式长度+是否清空</strong>这个组合绝对是多项式入门里面最难受的细节。</p>
 <p>之后就更迷了，多点求值这玩意儿实在毒瘤：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="keyword">void</span> _Mod(<span class="keyword">int</span> *f,  <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; g, <span class="keyword">int</span> n, <span class="keyword">int</span> m, <span class="keyword">int</span>* Rs)&#123;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">int</span> l = <span class="number">0</span>, O = n - m + <span class="number">1</span>, L , i ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt;= (n &lt;&lt; <span class="number">1</span>) ; ++ i) ig[i] = ft[i] = gt[i] = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt;= n ; ++ i) ft[i] = f[n - i] ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt;= m ; ++ i) gt[i] = g[m - i] ; l = <span class="number">0</span>, L = <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">for</span> (i = O ; i &lt; (n &lt;&lt; <span class="number">1</span>); ++ i) ft[i] = gt[i] = <span class="number">0</span> ;</span><br><span class="line">    Inv(gt, ig, O) ; <span class="keyword">while</span> (L &lt; (O &lt;&lt; <span class="number">1</span>)) L &lt;&lt;= <span class="number">1</span>,++ l ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt;= L ; ++ i) t[i] = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; L ; ++ i) R[i] = (R[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; (l - <span class="number">1</span>)) ;</span><br><span class="line">    NTT(ig, L, <span class="number">1</span>), NTT(ft, L, <span class="number">1</span>) ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; L ; ++ i) X[i] = <span class="number">1l</span>l * ft[i] * ig[i] % Mod ;</span><br><span class="line">    NTT(X, L, - <span class="number">1</span>) ; reverse(X, X + O) ; <span class="keyword">for</span> (i = O ; i &lt; L ; ++ i) X[i] = <span class="number">0</span> ;</span><br><span class="line">    O = n + <span class="number">1</span>, L = <span class="number">1</span>, l = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">while</span> (L &lt; (O &lt;&lt; <span class="number">1</span>)) L &lt;&lt;= <span class="number">1</span>, ++ l ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; L ; ++ i) G[i] = Y[i] = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt;= m ; ++ i) G[i] = g[i] ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; L ; ++ i) R[i] = (R[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; (l - <span class="number">1</span>))  ;</span><br><span class="line">    NTT(X, L, <span class="number">1</span>) ; NTT (G, L, <span class="number">1</span>)  ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; L ; ++ i) Y[i] = <span class="number">1l</span>l * G[i] * X[i] % Mod, X[i] = <span class="number">0</span> ;</span><br><span class="line">    NTT(Y, L, <span class="number">-1</span>) ; <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt;= m - <span class="number">1</span> ; ++ i) Rs[i] = ((<span class="number">1l</span>l * f[i] - Y[i]) + Mod) % Mod ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>这就很烦……鬼知道你tm什么时候忘清空或者忘开<code>long long</code>了就要调一年……艹</p>
 <h1 id="3"><a href="#3" class="headerlink" title="$3$"></a>$3$</h1><p>最后趁机说一下写多项式的心得<del>其实就是瞎吹</del>：</p>
 <ul>
@@ -1291,7 +1299,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共162.8k字</span>
+  <span class="post-count">博客全站共162.7k字</span>
 </div>
 
         
@@ -1835,6 +1843,19 @@ if(canvas.getContext){
   </script>
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/algolia-search.js?v=7.2.0"></script>
 
 
 

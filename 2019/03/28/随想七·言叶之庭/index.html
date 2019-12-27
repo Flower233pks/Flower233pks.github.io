@@ -377,19 +377,23 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+  <div class="algolia-popup popup search-popup">
+  <div class="algolia-search">
+    <div class="algolia-search-input-icon">
       <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
+    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-  <div id="local-search-result"></div>
+
+  <div class="algolia-results">
+    <div id="algolia-stats"></div>
+    <div id="algolia-hits"></div>
+    <div id="algolia-pagination" class="algolia-pagination"></div>
+  </div>
+
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
 </div>
 
 
@@ -568,7 +572,7 @@
       
         <blockquote>
 <p>​    Hello darkness my old friend. 黯淡如旧，今时重逢。<br>​    I’ve come to talk with you again. 阔别久日，可赴低叙？<br>​    Because a vision softly creeping. 如梦如幻，于我心萦。<br>​    Left its seeds while I was sleeping. 遗之入梦，齐我心同。<br>​    And the vision that was planted in my brain. 不知归处，不知归处。<br>​    Still remains with the sound of silence. 行舟如风，遣舟迟暮。<br>​    In restless dreams I walk alone. 吾心独行，兰皋止息。<br>​    Narrow streets of cobble stone. 越陌度阡，可有一醉？<br>​    Beneath the hallo of a street lamp’, 如光化影，于我心寂。<br>​    I turned my collar to the cold and damp. 浊寒入襟，刺我心底。<br>​    When my eyes were stabbled. 所见皆幻，所见皆明。<br>​    By the flash of a neon light. 万物皆虚，万物皆允。<br>​    That split the night. 不知归处，不知归处。<br>​    And touched the sound of silence 星瀚灿漫，行人慢走。</p>
-<p>​    ——『$\rm{The ~Sound~of~Silence}$』寂静之声</p>
+<p>​    ——『$\rm{The <del>Sound</del>of~Silence}$』寂静之声</p>
 </blockquote>
 <p>随想系列目次表：<a href="http://www.orchidany.cf/2050/12/31/%E9%9A%8F%E6%83%B3%C2%B7%E7%9B%AE%E6%AC%A1%E8%A1%A8/">戳我</a></p>
 <p>这次大概会写的时间线很跳跃，但我真的是被这个故事叩击了心脏最深处的地方。</p>
@@ -1338,7 +1342,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共162.8k字</span>
+  <span class="post-count">博客全站共162.7k字</span>
 </div>
 
         
@@ -1882,6 +1886,19 @@ if(canvas.getContext){
   </script>
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/algolia-search.js?v=7.2.0"></script>
 
 
 

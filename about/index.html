@@ -144,18 +144,18 @@
   };
 </script>
 
-  <meta name="description" content="General PrefaceHola！After a long and dark exploration (actually just a few days -_-\\\), this blog FINALLY CAME OUT !!!!! As sitting in front of the dim screen, my heart is like taking the fastest roc">
+  <meta name="description" content="General PrefaceHola！After a long and dark exploration (actually just a few days -_-\\), this blog FINALLY CAME OUT !!!!! As sitting in front of the dim screen, my heart is like taking the fastest rock">
 <meta property="og:type" content="website">
 <meta property="og:title" content="About">
 <meta property="og:url" content="http://www.orchidany.cf/about/index.html">
 <meta property="og:site_name" content="Orchidany&#39;w blog">
-<meta property="og:description" content="General PrefaceHola！After a long and dark exploration (actually just a few days -_-\\\), this blog FINALLY CAME OUT !!!!! As sitting in front of the dim screen, my heart is like taking the fastest roc">
+<meta property="og:description" content="General PrefaceHola！After a long and dark exploration (actually just a few days -_-\\), this blog FINALLY CAME OUT !!!!! As sitting in front of the dim screen, my heart is like taking the fastest rock">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://www.orchidany.cf/about/qwq.png">
 <meta property="og:updated_time" content="2019-03-16T13:28:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="About">
-<meta name="twitter:description" content="General PrefaceHola！After a long and dark exploration (actually just a few days -_-\\\), this blog FINALLY CAME OUT !!!!! As sitting in front of the dim screen, my heart is like taking the fastest roc">
+<meta name="twitter:description" content="General PrefaceHola！After a long and dark exploration (actually just a few days -_-\\), this blog FINALLY CAME OUT !!!!! As sitting in front of the dim screen, my heart is like taking the fastest rock">
 <meta name="twitter:image" content="http://www.orchidany.cf/about/qwq.png">
 
 
@@ -378,19 +378,23 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+  <div class="algolia-popup popup search-popup">
+  <div class="algolia-search">
+    <div class="algolia-search-input-icon">
       <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
+    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-  <div id="local-search-result"></div>
+
+  <div class="algolia-results">
+    <div id="algolia-stats"></div>
+    <div id="algolia-hits"></div>
+    <div id="algolia-pagination" class="algolia-pagination"></div>
+  </div>
+
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
 </div>
 
 
@@ -469,7 +473,7 @@
       <div class="post-body">
         
         
-          <h1 id="General-Preface"><a href="#General-Preface" class="headerlink" title="General Preface"></a>General Preface</h1><p>Hola！After a long and dark exploration (actually just a few days -_-\\\), this blog <strong>FINALLY CAME OUT</strong> !!!!!</p>
+          <h1 id="General-Preface"><a href="#General-Preface" class="headerlink" title="General Preface"></a>General Preface</h1><p>Hola！After a long and dark exploration (actually just a few days -_-\\), this blog <strong>FINALLY CAME OUT</strong> !!!!!</p>
 <p>As sitting in front of the dim screen, my heart is like taking the fastest rocket touching the edge of the galaxy. And I am sure that I shall make great feats here!</p>
 <p>About the problems during my experience, there is some valuable referance i am grateful to:</p>
 <ul>
@@ -487,7 +491,8 @@
 <li>Problem：Discussion-button doesn’t work….Need more exploration ha…</li>
 </ul>
 </li>
-<li>Feb. $6 ^{th}​$, 2019, Optimization .<ul>
+<li><p>Feb. $6 ^{th}​$, 2019, Optimization .</p>
+<ul>
 <li>List :<ul>
 <li>Add $\rm{RSS}$</li>
 <li>Github Logo</li>
@@ -501,12 +506,14 @@
 <li>Helpful Link from CSDN : <a href="https://blog.csdn.net/qq_33699981/article/details/72716951" target="_blank" rel="noopener">$\color{red}{Link}$</a></li>
 </ul>
 </li>
-<li>Feb.$14^{th}​$, 2019, Optimization<ul>
+<li><p>Feb.$14^{th}​$, 2019, Optimization</p>
+<ul>
 <li>Add the program $\rm{Aplyer}$ to play the songs I love~</li>
 <li>Optimize the Catalog.</li>
 </ul>
 </li>
-<li>Feb.$16^{th}$, 2019, Bug fixed<ul>
+<li><p>Feb.$16^{th}$, 2019, Bug fixed</p>
+<ul>
 <li>Remove the “Git talk”，so perhaps who had comments before won’t be seen from now .</li>
 <li>Use “Valine” as the comment-server, and it is still in testing these days:)</li>
 </ul>
@@ -516,7 +523,8 @@
 <li>Solve the Conflict between  <code>Markdown</code>  and $L_{A}T^E_{~~X}$，main Pro. is about the <code>\</code> <code>\\</code>and <code>_</code> in the $Mathjax$ would display error before. </li>
 </ul>
 </li>
-<li>Mar.$16^{th}​$, 2019, Something New<ul>
+<li><p>Mar.$16^{th}​$, 2019, Something New</p>
+<ul>
 <li>Add the tags of the <em>degree of difficulty</em>, by <code>https://img.shields.io</code> .And by now here are six tags with different colors about it:<br><img src="qwq.png" alt></li>
 </ul>
 </li>
@@ -1156,7 +1164,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共162.8k字</span>
+  <span class="post-count">博客全站共162.7k字</span>
 </div>
 
         
@@ -1700,6 +1708,19 @@ if(canvas.getContext){
   </script>
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/algolia-search.js?v=7.2.0"></script>
 
 
 

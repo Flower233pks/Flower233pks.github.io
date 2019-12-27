@@ -144,18 +144,18 @@
   };
 </script>
 
-  <meta name="description" content="$\boldsymbol{dsu ~ on ~ tree}$，中文别称“树上启发式合并”（虽然我并不承认这种称谓），大概是一种优雅的暴力，并且跟$dsu$毫无关系。于是我打算叫他$\boldsymbol{Elegantly ~Direct~ Counting~ on~ Tree}$，“优雅的树上暴力统计”。">
+  <meta name="description" content="$\boldsymbol{dsu ~ on ~ tree}$，中文别称“树上启发式合并”（虽然我并不承认这种称谓），大概是一种优雅的暴力，并且跟$dsu$毫无关系。于是我打算叫他$\boldsymbol{Elegantly Direct Counting~ on~ Tree}$，“优雅的树上暴力统计”。">
 <meta name="keywords" content="树上技巧&#x2F;dsu on tree">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【学习笔记】树上启发式合并(dsu on tree) · 1">
 <meta property="og:url" content="http://www.orchidany.cf/2019/11/13/dsu-on-tree-1/index.html">
 <meta property="og:site_name" content="Orchidany&#39;w blog">
-<meta property="og:description" content="$\boldsymbol{dsu ~ on ~ tree}$，中文别称“树上启发式合并”（虽然我并不承认这种称谓），大概是一种优雅的暴力，并且跟$dsu$毫无关系。于是我打算叫他$\boldsymbol{Elegantly ~Direct~ Counting~ on~ Tree}$，“优雅的树上暴力统计”。">
+<meta property="og:description" content="$\boldsymbol{dsu ~ on ~ tree}$，中文别称“树上启发式合并”（虽然我并不承认这种称谓），大概是一种优雅的暴力，并且跟$dsu$毫无关系。于是我打算叫他$\boldsymbol{Elegantly Direct Counting~ on~ Tree}$，“优雅的树上暴力统计”。">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-12-17T01:32:32.976Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【学习笔记】树上启发式合并(dsu on tree) · 1">
-<meta name="twitter:description" content="$\boldsymbol{dsu ~ on ~ tree}$，中文别称“树上启发式合并”（虽然我并不承认这种称谓），大概是一种优雅的暴力，并且跟$dsu$毫无关系。于是我打算叫他$\boldsymbol{Elegantly ~Direct~ Counting~ on~ Tree}$，“优雅的树上暴力统计”。">
+<meta name="twitter:description" content="$\boldsymbol{dsu ~ on ~ tree}$，中文别称“树上启发式合并”（虽然我并不承认这种称谓），大概是一种优雅的暴力，并且跟$dsu$毫无关系。于是我打算叫他$\boldsymbol{Elegantly Direct Counting~ on~ Tree}$，“优雅的树上暴力统计”。">
 
 
 
@@ -377,19 +377,23 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+  <div class="algolia-popup popup search-popup">
+  <div class="algolia-search">
+    <div class="algolia-search-input-icon">
       <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
+    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-  <div id="local-search-result"></div>
+
+  <div class="algolia-results">
+    <div id="algolia-stats"></div>
+    <div id="algolia-hits"></div>
+    <div id="algolia-pagination" class="algolia-pagination"></div>
+  </div>
+
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
 </div>
 
 
@@ -571,9 +575,10 @@
       
 
       
-        <p>$\boldsymbol{dsu ~ on ~ tree}$，中文别称“树上启发式合并”（虽然我并不承认这种称谓），大概是一种优雅的暴力，并且跟$dsu$毫无关系。于是我打算叫他$\boldsymbol{Elegantly ~Direct~ Counting~ on~ Tree}$，“优雅的树上暴力统计”。</p>
+        <p>$\boldsymbol{dsu ~ on ~ tree}$，中文别称“树上启发式合并”（虽然我并不承认这种称谓），大概是一种优雅的暴力，并且跟$dsu$毫无关系。于是我打算叫他$\boldsymbol{Elegantly <del>Direct</del> Counting~ on~ Tree}$，“优雅的树上暴力统计”。</p>
 <a id="more"></a>
-<h1 id="rm-0x01-前言-amp-技术分析"><a href="#rm-0x01-前言-amp-技术分析" class="headerlink" title="$\rm 0x01$ 前言$\&amp;$技术分析"></a>$\rm 0x01$ 前言$\&amp;$技术分析</h1><p>严格来说，$\boldsymbol{EDCT}$解决的问题范围并不广泛：</p>
+
+<h1 id="rm-0x01-前言-amp-技术分析"><a href="#rm-0x01-前言-amp-技术分析" class="headerlink" title="$\rm 0x01$ 前言$&amp;$技术分析"></a>$\rm 0x01$ 前言$&amp;$技术分析</h1><p>严格来说，$\boldsymbol{EDCT}$解决的问题范围并不广泛：</p>
 <blockquote>
 <p>1、维护子树信息；</p>
 <p>2、不能带修改操作。</p>
@@ -597,8 +602,10 @@
 </blockquote>
 <p>考虑套$\rm EDCT$的板子：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">	sz[u] = <span class="number">1</span> ;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> k = head[u] ; k ; k = E[k].next)&#123;</span><br><span class="line">		<span class="keyword">if</span> (to(k) == fa) <span class="keyword">continue</span> ;</span><br><span class="line">		dfs(to(k), u), sz[u] += sz[to(k)] ;</span><br><span class="line">		<span class="keyword">if</span> (sz[to(k)] &gt; sz[son[u]]) son[u] = to(k) ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> fa, <span class="keyword">int</span> mk)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> k = head[u] ; k ; k = E[k].next)&#123;</span><br><span class="line">		<span class="keyword">if</span> (to(k) == fa || to(k) == son[u]) <span class="keyword">continue</span> ; </span><br><span class="line">		dfs(to(k), u, <span class="number">0</span>) ; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (son[u]) dfs(son[u], u, <span class="number">1</span>), vis[son[u]] = <span class="number">1</span> ;</span><br><span class="line">	calc(u, fa, <span class="number">1</span>) ; ans[u] = res ; <span class="keyword">if</span> (son[u]) vis[son[u]] = <span class="number">0</span> ;</span><br><span class="line">	<span class="keyword">if</span> (!mk) calc(u, fa, <span class="number">-1</span>), res = <span class="number">0</span>, max_cnt = <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>然后就是最后的<code>calc</code>函数怎么写了。考虑我们最暴力的做法是什么？就是把每个颜色统计一遍。所以这么写就OK了：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">calc</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> fa, <span class="keyword">int</span> mk)</span></span>&#123;</span><br><span class="line">	buc[clr[u]] += mk ; </span><br><span class="line">	<span class="keyword">if</span> (mk &gt; <span class="number">0</span> &amp;&amp; buc[clr[u]] &gt;= max_cnt)&#123;</span><br><span class="line">		<span class="keyword">if</span> (buc[clr[u]] &gt; max_cnt) </span><br><span class="line">		    res = <span class="number">0</span>, max_cnt = <span class="number">1l</span>l * buc[clr[u]] ;</span><br><span class="line">		res += <span class="number">1l</span>l * clr[u] ; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> k = head[u] ; k ; k = E[k].next)&#123;</span><br><span class="line">		<span class="keyword">if</span> (to(k) == fa || vis[to(k)]) <span class="keyword">continue</span> ; </span><br><span class="line">		calc(to(k), u, mk) ; </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="rm-Task2-Cf570D-Tree-Requests"><a href="#rm-Task2-Cf570D-Tree-Requests" class="headerlink" title="$\rm Task2 ~Cf570D$ Tree Requests"></a>$\rm Task2 ~Cf570D$ Tree Requests</h2><p>一句话题意：</p>
 <blockquote>
 <p>给定一个以1为根的n个节点的树，每个点上有一个字母$(a-z)$，每个点的深度定义为该节点到1号节点路径上的点数.每次询问$(a,b)$查询以$a$为根的子树内深度为$b$的节点上的字母重新排列之后是否能构成回文串. </p>
@@ -1240,7 +1247,7 @@ if(canvas.getContext){
             
     
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#rm-0x01-前言-amp-技术分析"><span class="nav-number">1.</span> <span class="nav-text">$\rm 0x01$ 前言$\&amp;$技术分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x02-入门题目选整"><span class="nav-number">2.</span> <span class="nav-text">$0x02$ 入门题目选整</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#rm-Task1-rm-Cf600E-Lomsat-gelral"><span class="nav-number">2.1.</span> <span class="nav-text">$\rm Task1$ $\rm Cf600E$ Lomsat gelral</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm-Task2-Cf570D-Tree-Requests"><span class="nav-number">2.2.</span> <span class="nav-text">$\rm Task2 ~Cf570D$ Tree Requests</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#rm-0x01-前言-amp-技术分析"><span class="nav-number">1.</span> <span class="nav-text">$\rm 0x01$ 前言$&amp;$技术分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x02-入门题目选整"><span class="nav-number">2.</span> <span class="nav-text">$0x02$ 入门题目选整</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#rm-Task1-rm-Cf600E-Lomsat-gelral"><span class="nav-number">2.1.</span> <span class="nav-text">$\rm Task1$ $\rm Cf600E$ Lomsat gelral</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm-Task2-Cf570D-Tree-Requests"><span class="nav-number">2.2.</span> <span class="nav-text">$\rm Task2 ~Cf570D$ Tree Requests</span></a></li></ol></li></ol></div>
             
     
           </div>
@@ -1296,7 +1303,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共162.8k字</span>
+  <span class="post-count">博客全站共162.7k字</span>
 </div>
 
         
@@ -1840,6 +1847,19 @@ if(canvas.getContext){
   </script>
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/algolia-search.js?v=7.2.0"></script>
 
 
 

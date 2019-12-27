@@ -375,19 +375,23 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+  <div class="algolia-popup popup search-popup">
+  <div class="algolia-search">
+    <div class="algolia-search-input-icon">
       <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
+    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-  <div id="local-search-result"></div>
+
+  <div class="algolia-results">
+    <div id="algolia-stats"></div>
+    <div id="algolia-hits"></div>
+    <div id="algolia-pagination" class="algolia-pagination"></div>
+  </div>
+
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
 </div>
 
 
@@ -582,9 +586,9 @@
 
       <h2 class="post-title">
         
-          <a class="post-title-link" href="/2019/07/11/Old-NOIP2/" itemprop="url">
+          <a class="post-title-link" href="/2019/07/11/old-NOIP-0/" itemprop="url">
             
-              <span itemprop="name">【泛做】Old-NOIP 泛做二</span>
+              <span itemprop="name">【泛做】Old-NOIP 泛做三</span>
             
           </a>
         
@@ -652,9 +656,9 @@
 
       <h2 class="post-title">
         
-          <a class="post-title-link" href="/2019/07/11/old-NOIP-0/" itemprop="url">
+          <a class="post-title-link" href="/2019/07/11/Old-NOIP2/" itemprop="url">
             
-              <span itemprop="name">【泛做】Old-NOIP 泛做三</span>
+              <span itemprop="name">【泛做】Old-NOIP 泛做二</span>
             
           </a>
         
@@ -722,9 +726,9 @@
 
       <h2 class="post-title">
         
-          <a class="post-title-link" href="/2019/07/11/dlx/" itemprop="url">
+          <a class="post-title-link" href="/2019/07/11/dlx2/" itemprop="url">
             
-              <span itemprop="name">【学习笔记】舞蹈链(DLX)入门</span>
+              <span itemprop="name">【学习笔记】用舞蹈链(DLX)解决一类数独问题</span>
             
           </a>
         
@@ -757,9 +761,9 @@
 
       <h2 class="post-title">
         
-          <a class="post-title-link" href="/2019/07/11/dlx2/" itemprop="url">
+          <a class="post-title-link" href="/2019/07/11/dlx/" itemprop="url">
             
-              <span itemprop="name">【学习笔记】用舞蹈链(DLX)解决一类数独问题</span>
+              <span itemprop="name">【学习笔记】舞蹈链(DLX)入门</span>
             
           </a>
         
@@ -1411,7 +1415,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共162.8k字</span>
+  <span class="post-count">博客全站共162.7k字</span>
 </div>
 
         
@@ -1949,6 +1953,19 @@ if(canvas.getContext){
   </script>
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/algolia-search.js?v=7.2.0"></script>
 
 
 

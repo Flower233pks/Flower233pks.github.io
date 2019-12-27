@@ -377,19 +377,23 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+  <div class="algolia-popup popup search-popup">
+  <div class="algolia-search">
+    <div class="algolia-search-input-icon">
       <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
+    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-  <div id="local-search-result"></div>
+
+  <div class="algolia-results">
+    <div id="algolia-stats"></div>
+    <div id="algolia-hits"></div>
+    <div id="algolia-pagination" class="algolia-pagination"></div>
+  </div>
+
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
 </div>
 
 
@@ -566,6 +570,7 @@
       
         <p>最近心绪颇不宁静。</p>
 <a id="more"></a>
+
 <p>《随想》系列目次表：<a href="http://www.orchidany.cf/2050/12/31/%E9%9A%8F%E6%83%B3%C2%B7%E7%9B%AE%E6%AC%A1%E8%A1%A8/">$Link$</a></p>
 <h2 id="text-Part0"><a href="#text-Part0" class="headerlink" title="$\text{Part0}$"></a>$\text{Part0}$</h2><p>不知道为什么，最近的心绪颇不宁静。</p>
 <p>那是一种说不出来的痛苦与寂寞，或许夹杂着一些爽快。省选将近，我不知道自己会有什么样的下场。我只知道自己码力依旧很弱、脑子依旧很笨。比起几个月之前退役之后萎靡不振的自己，没有什么长进。</p>
@@ -1307,7 +1312,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共162.8k字</span>
+  <span class="post-count">博客全站共162.7k字</span>
 </div>
 
         
@@ -1851,6 +1856,19 @@ if(canvas.getContext){
   </script>
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/algolia-search.js?v=7.2.0"></script>
 
 
 

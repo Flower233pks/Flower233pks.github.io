@@ -378,19 +378,23 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+  <div class="algolia-popup popup search-popup">
+  <div class="algolia-search">
+    <div class="algolia-search-input-icon">
       <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
+    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-  <div id="local-search-result"></div>
+
+  <div class="algolia-results">
+    <div id="algolia-stats"></div>
+    <div id="algolia-hits"></div>
+    <div id="algolia-pagination" class="algolia-pagination"></div>
+  </div>
+
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
 </div>
 
 
@@ -1182,7 +1186,7 @@
 
       
         
-          <p>形式化来讲，我们要解决这两个问题：<br>$$<br>\begin{aligned}<br>G &amp;= F^k  (\bmod  x^n)\\\<br>G^k &amp;= F  (\bmod  x^n)<br>\end{aligned}<br>$$<br>然而实际上后一个咕了，我曾把这玩意儿当作<code>多项式牛顿迭代</code>的课后题来着……并且更重要的原因没人出这玩意儿的题，所以直接简化成$G^2\equiv F$好了。。。</p>
+          <p>形式化来讲，我们要解决这两个问题：<br>$$<br>\begin{aligned}<br>G &amp;= F^k \ (\bmod \ x^n)\<br>G^k &amp;= F \ (\bmod \ x^n)<br>\end{aligned}<br>$$<br>然而实际上后一个咕了，我曾把这玩意儿当作<code>多项式牛顿迭代</code>的课后题来着……并且更重要的原因没人出这玩意儿的题，所以直接简化成$G^2\equiv F$好了。。。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1383,7 +1387,7 @@
       
         
           <p>其实这两个东西只是一个拓展，思想也是简单的思想，只不过由于$\ln$运算的乘方转乘法很好用，所以大部分套路都是<strong>先多项式$\ln$乱搞一通再多项式$\exp$回去</strong>。</p>
-<p>形式化地讲，我们就是要解决以下两个问题：<br>$$<br>\begin{aligned}<br>1)\quad G&amp;= \ln F  (\bmod  p)\\\<br>2)\quad G&amp;= e^{F}  (\bmod  p)<br>\end{aligned}<br>$$</p>
+<p>形式化地讲，我们就是要解决以下两个问题：<br>$$<br>\begin{aligned}<br>1)\quad G&amp;= \ln F \ (\bmod \ p)\<br>2)\quad G&amp;= e^{F} \ (\bmod \ p)<br>\end{aligned}<br>$$</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1583,7 +1587,7 @@
 
       
         
-          <p>解决一类<br>$$<br>G=F\cdot P+R ~(\bmod~x^n)<br>$$<br>其中$F, G$给定，求解$P$和$R$</p>
+          <p>解决一类<br>$$<br>G=F\cdot P+R <del>(\bmod</del>x^n)<br>$$<br>其中$F, G$给定，求解$P$和$R$</p>
 <p><del>然而最后变成了老年选手的多项式瞎吹？</del></p>
           <!--noindex-->
           
@@ -2390,12 +2394,12 @@
 <p>Let’s say sunshine for everyone 人们说生活总是充满阳光<br>But as far as I can remember 但在我的记忆中<br>We’ve been migratory animals 我们一直只是如野兽般流浪<br>Living under changing weather 四季变换，我们如常<br>Someday we will foresee obstacles 总有一天，我们会看见那些困难阻碍<br>Through the blizzard through the blizzard 在那片风雪之中，在那片风雪之后<br>Today we will sell our uniform 如今我们将曾经的校服变卖<br>Live together live together 一同离去，一同启程</p>
 </blockquote>
 
-        <div id="aplayer-dXWlKqZr" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-qRvVrfks" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-dXWlKqZr"),
+            element: document.getElementById("aplayer-qRvVrfks"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -3053,7 +3057,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共162.8k字</span>
+  <span class="post-count">博客全站共162.7k字</span>
 </div>
 
         
@@ -3613,6 +3617,19 @@ if(canvas.getContext){
   </script>
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/algolia-search.js?v=7.2.0"></script>
 
 
 

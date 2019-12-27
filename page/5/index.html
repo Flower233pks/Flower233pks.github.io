@@ -376,19 +376,23 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+  <div class="algolia-popup popup search-popup">
+  <div class="algolia-search">
+    <div class="algolia-search-input-icon">
       <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
+    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-  <div id="local-search-result"></div>
+
+  <div class="algolia-results">
+    <div id="algolia-stats"></div>
+    <div id="algolia-hits"></div>
+    <div id="algolia-pagination" class="algolia-pagination"></div>
+  </div>
+
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
 </div>
 
 
@@ -1550,7 +1554,7 @@
 <p>许久之前开始学的算法了…今天终于学完了。主要参考的材料是董克凡的$2016$集训队论文和$\rm{Candy?}$的代码整理，在此处致以敬意。</p>
 <hr>
 <h1 id="rm-0x01-quad-Preface"><a href="#rm-0x01-quad-Preface" class="headerlink" title="$\rm{0x01\quad Preface}$"></a>$\rm{0x01\quad Preface}$</h1><p>线性规划主要解决的问题是：</p>
-<p>$$<br>\text{最大化}\quad \sum c_ix_i \quad(i = 1, 2,3 \cdots n) \\<br>\text{满足约束} \quad \sum \limits_{j=1}^{n} a_{i,j}x_{j} \leq b_i\quad (i = 1,2,3\cdots m) \\ \qquad \qquad \qquad \quad x_j \geq 0\quad (j=1,2,3\cdots n)<br>$$<br>不失一般性的，我们定义最大化的函数为<strong>目标函数($\rm{Aim-Func}$)</strong> ，定义约束函数的集合为<strong>约束函数集($\rm{Constraint-Set}$)</strong>。那么朴素的线性规划可以看求一组向量{$x_1,x_2\cdots x_n$}，使之既可以做约束函数的因变量，又满足其目标函数的值为$max$。</p>
+<p>$$<br>\text{最大化}\quad \sum c_ix_i \quad(i = 1, 2,3 \cdots n) \<br>\text{满足约束} \quad \sum \limits_{j=1}^{n} a_{i,j}x_{j} \leq b_i\quad (i = 1,2,3\cdots m) \\ \qquad \qquad \qquad \quad x_j \geq 0\quad (j=1,2,3\cdots n)<br>$$<br>不失一般性的，我们定义最大化的函数为<strong>目标函数($\rm{Aim-Func}$)</strong> ，定义约束函数的集合为<strong>约束函数集($\rm{Constraint-Set}$)</strong>。那么朴素的线性规划可以看求一组向量{$x_1,x_2\cdots x_n$}，使之既可以做约束函数的因变量，又满足其目标函数的值为$max$。</p>
 <p>同时，规定所有的$x$均满足$x&gt;0$。</p>
           <!--noindex-->
           
@@ -2981,7 +2985,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共162.8k字</span>
+  <span class="post-count">博客全站共162.7k字</span>
 </div>
 
         
@@ -3541,6 +3545,19 @@ if(canvas.getContext){
   </script>
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/algolia-search.js?v=7.2.0"></script>
 
 
 

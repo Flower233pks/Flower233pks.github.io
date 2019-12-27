@@ -382,19 +382,23 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+  <div class="algolia-popup popup search-popup">
+  <div class="algolia-search">
+    <div class="algolia-search-input-icon">
       <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
+    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-  <div id="local-search-result"></div>
+
+  <div class="algolia-results">
+    <div id="algolia-stats"></div>
+    <div id="algolia-hits"></div>
+    <div id="algolia-pagination" class="algolia-pagination"></div>
+  </div>
+
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
 </div>
 
 
@@ -573,12 +577,12 @@
 <p>Let’s say sunshine for everyone 人们说生活总是充满阳光<br>But as far as I can remember 但在我的记忆中<br>We’ve been migratory animals 我们一直只是如野兽般流浪<br>Living under changing weather 四季变换，我们如常<br>Someday we will foresee obstacles 总有一天，我们会看见那些困难阻碍<br>Through the blizzard through the blizzard 在那片风雪之中，在那片风雪之后<br>Today we will sell our uniform 如今我们将曾经的校服变卖<br>Live together live together 一同离去，一同启程</p>
 </blockquote>
 
-        <div id="aplayer-dXWlKqZr" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-qRvVrfks" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-dXWlKqZr"),
+            element: document.getElementById("aplayer-qRvVrfks"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -593,7 +597,10 @@
           window.aplayers || (window.aplayers = []);
           window.aplayers.push(ap);
         </script>
+
 <a id="more"></a>
+
+
 <h1 id="1"><a href="#1" class="headerlink" title="$1$"></a>$1$</h1><p>最近暑假了，一直颓的很。并不想说太多，每天晚上昏睡之际眼前的火苗会在第二天早上太阳升起时熄灭，似乎也不再是什么稀罕事。不过倒是也有所收获。先是去B站看<code>C菌</code>的《奇异人生二·实况》，才知道有《Life is Strange》这么一款游戏，于是索性只看了《二》，自己从steam上买了第一部，津津有味地玩了起来。奈何CPU是1.8GHz的，仅达到了最低配的要求，故画面体验有些差，但倒也无妨。但或许游戏时长有点多？别人都说“15小时通关”，似乎我也是在拽平均分了。</p>
 <p><img src="1.png" alt></p>
 <p>奇怪的是一直没有官方的的汉化包（但是2和续作都有汉化包，只有1官方没发布），于是只能凭很渣的英语阅读能力来玩，中间自然也是和看《哈利波特》一样，有许多细节是看不懂的，但是95%+还是没有问题。可惜玩完之后，毕竟是12 P.M.了，不知是真的出于困倦，亦或是别的原因，我并没有什么特别的感觉，大概就是“啊，结束了”便没了后文。</p>
@@ -676,8 +683,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/11/Old-NOIP2/" rel="next" title="【泛做】Old-NOIP 泛做二">
-                <i class="fa fa-chevron-left"></i> 【泛做】Old-NOIP 泛做二
+              <a href="/2019/07/11/old-NOIP-0/" rel="next" title="【泛做】Old-NOIP 泛做三">
+                <i class="fa fa-chevron-left"></i> 【泛做】Old-NOIP 泛做三
               </a>
             
           </div>
@@ -1325,7 +1332,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共162.8k字</span>
+  <span class="post-count">博客全站共162.7k字</span>
 </div>
 
         
@@ -1869,6 +1876,19 @@ if(canvas.getContext){
   </script>
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/algolia-search.js?v=7.2.0"></script>
 
 
 

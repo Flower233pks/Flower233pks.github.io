@@ -376,19 +376,23 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+  <div class="algolia-popup popup search-popup">
+  <div class="algolia-search">
+    <div class="algolia-search-input-icon">
       <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
+    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-  <div id="local-search-result"></div>
+
+  <div class="algolia-results">
+    <div id="algolia-stats"></div>
+    <div id="algolia-hits"></div>
+    <div id="algolia-pagination" class="algolia-pagination"></div>
+  </div>
+
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
 </div>
 
 
@@ -1081,7 +1085,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-25 21:12:00" itemprop="dateModified" datetime="2019-12-25T21:12:00+08:00">2019-12-25</time>
+                <time title="Modified: 2019-12-27 10:52:15" itemprop="dateModified" datetime="2019-12-27T10:52:15+08:00">2019-12-27</time>
               </span>
             
           
@@ -1281,7 +1285,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-25 21:23:51" itemprop="dateModified" datetime="2019-12-25T21:23:51+08:00">2019-12-25</time>
+                <time title="Modified: 2019-12-27 10:53:44" itemprop="dateModified" datetime="2019-12-27T10:53:44+08:00">2019-12-27</time>
               </span>
             
           
@@ -2012,7 +2016,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/12/20/CSP-S2019游记/" class="post-title-link" itemprop="url">CSP-S2019游记</a>
+                <a href="/2019/12/20/CSP-S2019游记/" class="post-title-link" itemprop="url">【游记】CSP-S2019游记</a>
               
             
           </h1>
@@ -2052,7 +2056,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-24 18:40:15" itemprop="dateModified" datetime="2019-12-24T18:40:15+08:00">2019-12-24</time>
+                <time title="Modified: 2019-12-27 10:33:04" itemprop="dateModified" datetime="2019-12-27T10:33:04+08:00">2019-12-27</time>
               </span>
             
           
@@ -2965,7 +2969,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共162.8k字</span>
+  <span class="post-count">博客全站共162.7k字</span>
 </div>
 
         
@@ -3527,6 +3531,19 @@ if(canvas.getContext){
   </script>
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/algolia-search.js?v=7.2.0"></script>
 
 
 

@@ -379,19 +379,23 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+  <div class="algolia-popup popup search-popup">
+  <div class="algolia-search">
+    <div class="algolia-search-input-icon">
       <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
+    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-  <div id="local-search-result"></div>
+
+  <div class="algolia-results">
+    <div id="algolia-stats"></div>
+    <div id="algolia-hits"></div>
+    <div id="algolia-pagination" class="algolia-pagination"></div>
+  </div>
+
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
 </div>
 
 
@@ -568,16 +572,19 @@
       
         <p>两道小清新数学题，分别是[NOI2002]Savage和[Violet · 5]樱花</p>
 <a id="more"></a>
+
+
 <p><img src="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E6%8F%90%E9%AB%98-skyblue.svg" alt></p>
 <h2 id="rm-NOI2002-Savage"><a href="#rm-NOI2002-Savage" class="headerlink" title="$\rm{[NOI2002]}$ Savage"></a>$\rm{[NOI2002]}$ Savage</h2><p>链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1407" target="_blank" rel="noopener">$\color{violet}{Link}$</a> </p>
 <h3 id="rm-Sol"><a href="#rm-Sol" class="headerlink" title="$\rm{Sol}$"></a>$\rm{Sol}$</h3><p>不算特别难…其实就是求方程$$C_{i}+P_{i}x \equiv C_j+P_jx ~(\bmod ~M)$$不存在一个解使得$x \leq min(L_i,L_j)$时，$M$的最小值。然后因为题目中的数据，假设我们令每个野人都只是绕着圈走而不重复经过对方的路径——即$M$的最大值，也不过是$100\times 106\times 100 = O(1e6)$的级别，于是考虑直接枚举$M$, 然后check。由于最多共有$15$个野人，且单次exgcd是$\log n $级别的，所以复杂度上限是$O (Mn^2 \log C_{max}) &lt; \Omega(1e8)$级别的。如果不是精心构造数据的话，可以直接艹过去。</p>
 <p>喜闻乐见的是……我的exgcd似乎一开始有问题？我一开始是这么写的：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">check</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i)</span><br><span class="line">        <span class="keyword">for</span>(j = i + <span class="number">1</span> ; j &lt;= N ; ++ j)&#123;</span><br><span class="line">            <span class="keyword">int</span> a = P[i] - P[j], b = M, x, y, w = C[j] - C[i] ;</span><br><span class="line">            <span class="keyword">int</span> qwq = exgcd(x, y, a, b) ; <span class="keyword">if</span> (w % qwq) <span class="keyword">continue</span> ;</span><br><span class="line">            x = x * w / qwq ; <span class="keyword">while</span> (x &lt;= <span class="number">0</span>) x += M ; <span class="keyword">if</span> (x &lt;= min(L[i], L[j])) <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>然后觉得一点问题都没有，$40pts$之后愣了大半天。</p>
 <p>而事实上这个地方$x$应该是一个特解，而不是最小解。换句话说我为了求出准确的$x$，应该不断取模$b/ \gcd(a,b)$</p>
 <p>为什么？至于为什么，一开始我也懵的很。直到我翻出来很久之前我的一篇题解：</p>
 <blockquote>
-<p>_这是上面这个式子为什么可以这么做的证明：_</p>
+<p><em>这是上面这个式子为什么可以这么做的证明：</em></p>
 <p>若有$ax+by=c$且$a_0x+b_0y=c$</p>
 <p>那么便有$a(x-x_0)+b(y-y_0)=0$<br>两边同时除以$gcd(a,b)$可得：<br>$\frac{a}{gcd(a,b)}(x-x_0)=-\frac{b}{gcd(a,b)}(y-y_0)$ $ \quad$ $(1)$</p>
 <p>而因为</p>
@@ -591,11 +598,12 @@
 <p>这就是我整理这道题的原因……还有，上面$P_i-P_j$似乎需要取模并使其变成正的，因为好像我的$exgcd$里面限制了$A&gt;0$的缘故。</p>
 <p>心得：我退役吧嘤。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i, j, N, M, C[MAXN], P[MAXN], L[MAXN] ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">exgcd</span><span class="params">(<span class="keyword">int</span> &amp;x, <span class="keyword">int</span> &amp;y, <span class="keyword">int</span> A, <span class="keyword">int</span> B)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!B) &#123; x = <span class="number">1</span>, y = <span class="number">0</span> ; <span class="keyword">return</span> A ;&#125;</span><br><span class="line">    <span class="keyword">int</span> t = exgcd(y, x, B, A % B) ; y -= A / B * x ; <span class="keyword">return</span> t ; </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">check</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i)</span><br><span class="line">        <span class="keyword">for</span>(j = i + <span class="number">1</span> ; j &lt;= N ; ++ j)&#123;</span><br><span class="line">            <span class="keyword">int</span> a = (P[i] - P[j] + M) % M + M, b = M, x, y, w = C[j] - C[i], qwq = exgcd(x, y, a, b) ; <span class="keyword">if</span> (w % qwq) <span class="keyword">continue</span> ; </span><br><span class="line">            x = x * w / qwq ; x = (x % (M / qwq) + (M / qwq)) % (M / qwq) ; <span class="keyword">if</span> (!x) x += (M / qwq) ; <span class="keyword">if</span> (x &lt;= min(L[i], L[j])) <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; N ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i) </span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;C[i], &amp;P[i], &amp;L[i]), M = max(M, C[i]) ;</span><br><span class="line">    <span class="keyword">for</span> ( M ; ; ++ M) <span class="keyword">if</span> (check()) &#123; <span class="built_in">cout</span> &lt;&lt; M &lt;&lt; <span class="built_in">endl</span> ; <span class="keyword">return</span> <span class="number">0</span> ; &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="rm-Violet～5-樱花"><a href="#rm-Violet～5-樱花" class="headerlink" title="$\rm{[Violet～5]}$ 樱花"></a>$\rm{[Violet～5]}$ 樱花</h2><p>链接：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=2721" target="_blank" rel="noopener">$\color{violet}{Link}$</a> </p>
 <p>这是好久之前做的一道题，突然被我发现了。大概就是求方程$$\frac{1}{x}+\frac{1}{y} = \frac{1}{n!}\quad (n \leq 1e6)$$的解的组数。</p>
 <h3 id="rm-Sol-1"><a href="#rm-Sol-1" class="headerlink" title="$\rm{Sol}$"></a>$\rm{Sol}$</h3><p>不想思考系列问题，我这么懒还是退役吧。(sigh)</p>
-<p>我们将柿子变个形：<br>$$<br>\frac{x+y}{xy} = \frac{1}{n!} \\<br>n!x + n!y = xy<br>$$<br><del>然后我就不会了，此题完结</del></p>
-<p>然后有一步很妙的是两边同时$+(n!)^2$得到：<br>$$<br>(n!)^2 + n!(x+y) -n!(xy) = (n!)^2\\<br>(n!-x)(n!-y)=(n!)^2<br>$$<br>然后就会发现我们只需要找出$(n!)^2$的因子个数就好了…</p>
+<p>我们将柿子变个形：<br>$$<br>\frac{x+y}{xy} = \frac{1}{n!} \<br>n!x + n!y = xy<br>$$<br><del>然后我就不会了，此题完结</del></p>
+<p>然后有一步很妙的是两边同时$+(n!)^2$得到：<br>$$<br>(n!)^2 + n!(x+y) -n!(xy) = (n!)^2\<br>(n!-x)(n!-y)=(n!)^2<br>$$<br>然后就会发现我们只需要找出$(n!)^2$的因子个数就好了…</p>
 <p>好像我从来没有写过$\tau$的样子，既然这样我就顺便记一个算因子个数的公式吧（其实就是乘法原理啦）<br>$$<br>x = \prod p_ix^{a_i} \longleftrightarrow\tau(x) = \prod (a_i+1)<br>$$<br><del>其实就是为了水字数</del></p>
 <p>$\rm upd ~on ~6.13$ : 我发现自己似乎之前听过这个题的”另解”，以前自己整理过：</p>
 <blockquote>
@@ -612,6 +620,7 @@
 <p>我们每次遍历一遍，保证只加一次，譬如质数$3$，三的倍数的个数产生的贡献是一，三的平方的倍数产生的贡献是二，但是我们从前往后扫的话，每次就只要增长一个贡献即可（类似于去重操作$233$）</p>
 </blockquote>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bitset&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 10000100</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Mod 1000000007</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> Prime[MAXN] ;</span><br><span class="line"><span class="built_in">std</span> :: <span class="built_in">bitset</span> &lt;MAXN&gt; vis ; </span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> N, i, j, cnt, Ans, Cnt[MAXN] ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Ego</span><span class="params">()</span></span>&#123;</span><br><span class="line">	vis[<span class="number">1</span>] = vis[<span class="number">0</span>] = <span class="number">1</span> ;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">2</span> ; i &lt;= N ; ++ i)&#123;</span><br><span class="line">		<span class="keyword">if</span> (!vis[i]) Prime[++ cnt] = i ;</span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">1</span> ; j &lt;= cnt ; ++ j)&#123;</span><br><span class="line">			<span class="keyword">if</span> (i * Prime[j] &gt; N) <span class="keyword">break</span> ;</span><br><span class="line">			vis[i * Prime[j]] = <span class="number">1</span> ;</span><br><span class="line">			<span class="keyword">if</span> (!(i % Prime[j])) <span class="keyword">break</span> ;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= cnt ; ++ i)</span><br><span class="line">	    <span class="keyword">for</span> (j = Prime[i] ; j &lt;= N ; j *= Prime[i])</span><br><span class="line">	        ( Cnt[i] += (N / j) ) %= Mod ; </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">std</span> :: <span class="built_in">cin</span> &gt;&gt; N ; Ans = <span class="number">1l</span>l, Ego() ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= cnt ; ++ i) </span><br><span class="line">        (Ans *= (Cnt[i] &lt;&lt; <span class="number">1</span>) + <span class="number">1</span>) %= Mod ;</span><br><span class="line">    <span class="built_in">std</span> :: <span class="built_in">cout</span> &lt;&lt; Ans % Mod &lt;&lt; <span class="built_in">std</span> :: <span class="built_in">endl</span> ; <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -1306,7 +1315,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共162.8k字</span>
+  <span class="post-count">博客全站共162.7k字</span>
 </div>
 
         
@@ -1850,6 +1859,19 @@ if(canvas.getContext){
   </script>
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/algolia-search.js?v=7.2.0"></script>
 
 
 

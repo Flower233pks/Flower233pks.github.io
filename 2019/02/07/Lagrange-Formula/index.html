@@ -379,19 +379,23 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+  <div class="algolia-popup popup search-popup">
+  <div class="algolia-search">
+    <div class="algolia-search-input-icon">
       <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
+    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-  <div id="local-search-result"></div>
+
+  <div class="algolia-results">
+    <div id="algolia-stats"></div>
+    <div id="algolia-hits"></div>
+    <div id="algolia-pagination" class="algolia-pagination"></div>
+  </div>
+
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
 </div>
 
 
@@ -575,27 +579,30 @@
       
         <p>好像初三的时候看选修4-6的课本看的一脸懵，这东西似乎是为数不多印象深刻的233</p>
 <a id="more"></a>
+
 <p><img src="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E6%8F%90%E9%AB%98---9cf.svg" alt></p>
 <h2 id="rm-0x01-Preface"><a href="#rm-0x01-Preface" class="headerlink" title="$\rm{0x01~~} Preface$"></a>$\rm{0x01~~} Preface$</h2><p><strong>插值($Interpolaton$)</strong> 在多项式域中可以看做是<strong>求值$(Evaluation)$</strong>的逆运算，即给定$n$组确定的本质不同的二元组$(x_i, y_i)$，满足$F(x_i) = y_i$，可以逆向求出原$n$次多项式。</p>
 <p>而其实，拉格朗日插值公式本身是标准的$\Theta(n^2)$算法——或者不能称其为算法，运算过程$\Theta(n^2)$或许会更准确一些。$Indeed$，该公式是构造出来的，所以没有多么繁琐的证明——</p>
-<h2 id="rm-0x02-rm-Proof"><a href="#rm-0x02-rm-Proof" class="headerlink" title="$\rm{0x02}~~\rm{Proof}$"></a>$\rm{0x02}~~\rm{Proof}$</h2><h3 id="rm-Proof-of-Existence"><a href="#rm-Proof-of-Existence" class="headerlink" title="$\rm Proof ~of~Existence$"></a>$\rm Proof ~of~Existence$</h3><p>我们定义$F(x)$为一在实数域上的平凡$n-1$次多项式。</p>
+<h2 id="rm-0x02-rm-Proof"><a href="#rm-0x02-rm-Proof" class="headerlink" title="$\rm{0x02}~~\rm{Proof}$"></a>$\rm{0x02}~~\rm{Proof}$</h2><h3 id="rm-Proof-ofExistence"><a href="#rm-Proof-ofExistence" class="headerlink" title="$\rm Proof ofExistence$"></a>$\rm Proof <del>of</del>Existence$</h3><p>我们定义$F(x)$为一在实数域上的平凡$n-1$次多项式。</p>
 <p>首先我们需要构造一个对于第$i$个二元组的特殊多项式$L_i(x)$，满足$$L_i(x_j) = \begin{cases}1, &amp;\rm{i=j} \newline 0, &amp; \rm{i \neq j}\end{cases}$$</p>
 <p>那么我们所求的多项式$F(x)$就可以写作$$F(x)  = \sum L_i(x_i)\cdot y_i$$这个式子保证了我们对应的$n$个二元组，$F(x)=y$恒成立。</p>
 <p>那么对于$L_i(x)$，我们考虑由我们对$L_i(x)$的定义可以得出$$L_i(x) = k_i(x-x_1)(x-x_2)\cdots(x-x_n)$$其中不包含$x-x_i$这一因式。而由$L_i(x_i)=1$可知我们的比例系数$$k_i=\frac{1}{(x_i-x_1)(x_i-x_2)\cdots(x_i - x_{i-1})(x_i - x_{i+1})\cdots(x_i-x_n)}$$那么$$L_i(x) = \prod\limits_{i=1, i \neq j}^{n}\frac{x - x_j}{x_i-x_j}$$从而$$F(x)=\sum L_i(x)\cdot y_i(x) = \sum y_i \cdot \prod\limits_{i=1, i \neq j}^{n}\frac{x - x_j}{x_i-x_j}$$</p>
 <h3 id="mathcal-Q-E-D"><a href="#mathcal-Q-E-D" class="headerlink" title="$\mathcal{Q.E.D.}$"></a>$\mathcal{Q.E.D.}$</h3><hr>
-<h3 id="rm-Proof-of-Uniqueness-1"><a href="#rm-Proof-of-Uniqueness-1" class="headerlink" title="$\rm Proof~of~Uniqueness^{[1]}$"></a>$\rm Proof~of~Uniqueness^{[1]}$</h3><p>​    我们接下来要证明的是多项式$L_i(x)$的唯一性</p>
+<h3 id="rm-ProofofUniqueness-1"><a href="#rm-ProofofUniqueness-1" class="headerlink" title="$\rm ProofofUniqueness^{[1]}$"></a>$\rm Proof<del>of</del>Uniqueness^{[1]}$</h3><p>​    我们接下来要证明的是多项式$L_i(x)$的唯一性</p>
 <p>​    我们假设同时有两个实数域上的$n-1$次多项式$L_1(x),L_2(x)$满足$L_i(x_j) = \begin{cases}1, &amp;\rm{i=j} \ 0, &amp; \rm{i \neq j}\end{cases}$，那么我们由作差法可以得出多项式$L_{\Delta} = L_1 - L_2$在取所有的$x_i$时，其值均为$0$。那么一定会有多项式$$L’(x) = \prod\limits_{i=1}^{n}(x - x_i)$$满足$$L’|L_{\Delta}$$ 其中$|$表示多项式整除。但是我们知道，对于$L’$这个多项式，其次数为$n-1$；而对于我们所定义的$L_i(x)$，均为$(n-2)$次的，从而$L_{\Delta}$也是$n-2$次多项式。所以我们可以得出$$L_{\Delta} = 0$$从而有$$L_1=L_2$$</p>
 <h3 id="mathcal-Q-E-D-1"><a href="#mathcal-Q-E-D-1" class="headerlink" title="$\mathcal{Q.E.D.}$"></a>$\mathcal{Q.E.D.}$</h3><h2 id="rm-0x03-color-red-C-color-cyan-o-color-gold-d-color-green-e"><a href="#rm-0x03-color-red-C-color-cyan-o-color-gold-d-color-green-e" class="headerlink" title="$\rm{0x03~\color{red}{C}\color{cyan}{o}\color{gold}{d}\color{green}{e}}$"></a>$\rm{0x03~\color{red}{C}\color{cyan}{o}\color{gold}{d}\color{green}{e}}$</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">题号：Luogu4781</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 2020</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Mod 998244353</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ; LL Ans, xs ;</span><br><span class="line"><span class="keyword">int</span> N, i, j ; LL T, t, xv[MAXN], yv[MAXN] ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> LL <span class="title">expow</span><span class="params">(LL A, LL B)</span></span>&#123;</span><br><span class="line">    LL res = <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">while</span> (B)&#123;</span><br><span class="line">        <span class="keyword">if</span> (B &amp; <span class="number">1</span>) (res *= A) %= Mod ; </span><br><span class="line">        B &gt;&gt;= <span class="number">1</span>, (A *= A) %= Mod ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; N &gt;&gt; T ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i) <span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>, &amp;xv[i], &amp;yv[i]) ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i)&#123;</span><br><span class="line">        t = <span class="number">1</span> ;</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">1</span> ; j &lt;= N ; ++ j)&#123;</span><br><span class="line">            <span class="keyword">if</span> (i == j) <span class="keyword">continue</span> ;</span><br><span class="line">            (t *= (xv[i] - xv[j] + Mod)) %= Mod ;</span><br><span class="line">        &#125;</span><br><span class="line">        t = expow(t, Mod - <span class="number">2</span>) ;</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">1</span> ; j &lt;= N ; ++ j)&#123;</span><br><span class="line">            <span class="keyword">if</span> (i == j) <span class="keyword">continue</span> ;</span><br><span class="line">            (t *= (T - xv[j] + Mod)) %= Mod ;</span><br><span class="line">        &#125;</span><br><span class="line">        (t *= yv[i]) %= Mod, (Ans += t) %= Mod ;</span><br><span class="line"><span class="comment">//		cout &lt;&lt; Ans &lt;&lt; endl ;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld"</span>, Ans) ; <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="0x04-一道水题"><a href="#0x04-一道水题" class="headerlink" title="$0x04$ 一道水题"></a>$0x04$ 一道水题</h2><p>题意大概就是给出连续的一段$x_0$和$y_0$，算出多项式$F(x)$在一个特定值$x_0’$时的值。</p>
-<p>我们注意到$40 \%$的数据可以直接高消，列出$n+1$个方程。</p>
+<p>我们注意到$40 %$的数据可以直接高消，列出$n+1$个方程。</p>
 <p>同时，我们还可以用朴素的拉格朗日插值法插出$80pts$的好成绩。</p>
-<p>而对于$100 \%$的数据，$n$是$1e5$级别的，所以考虑预处理出一些东西。</p>
-<p>我们观察拉格朗日插值公式的一般形式：<br>$$<br>F(x) = \sum \limits _{i=0}^{N} y_i \cdot \prod \limits_{i \neq j} \frac{x -x_j}{x_i-x_j}<br>$$</p>
+<p>而对于$100 %$的数据，$n$是$1e5$级别的，所以考虑预处理出一些东西。</p>
+<p>我们观察拉格朗日插值公式的一般形式：<br>$$<br>F(x) = \sum \limits <em>{i=0}^{N} y_i \cdot \prod \limits</em>{i \neq j} \frac{x -x_j}{x_i-x_j}<br>$$</p>
 <p>我们发现首先分子可以$O(n)$预处理，而分母由于$x_j$是连续的，所以<br>$$<br>\rm{\prod \limits _{i \neq j} x_i  - x_j}= fac(i) \cdot fac(N-i) \cdot evenmark(N-i)<br>$$<br>其中$fac$表示求阶乘，$\rm{evenmark}$是符号函数，当$N-i$是偶数时返回$1$，否则返回$-1$。</p>
 <p>于是我们就可以得出一个式子：</p>
 <p>$$<br>\rm F(x) = \sum \limits_{i=0}^{N}{y_i \cdot}\frac{\frac{Pre}{x-i}}{fac(i) \cdot fac(N-i) \cdot evenmark(N-i)}<br>$$<br>其中$\frac{Pre}{x-i}$的缘由可以参考我的代码。</p>
 <p>取模啥的就小费马搞一搞即可，最终复杂度$\Theta(n \log n)$</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> LL <span class="title">expow</span><span class="params">(LL A, LL B)</span></span>&#123;</span><br><span class="line">	LL res = <span class="number">1</span> ;</span><br><span class="line">	<span class="keyword">while</span> (B)&#123;</span><br><span class="line">		<span class="keyword">if</span> (B &amp; <span class="number">1</span>) (res *= A) %= Mod ; </span><br><span class="line">		B &gt;&gt;= <span class="number">1</span>, (A *= A) %= Mod ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res % Mod ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> LL <span class="title">get_symbol</span><span class="params">(LL x)</span></span>&#123; <span class="keyword">return</span> (!x ? <span class="number">1</span> : Mod - <span class="number">1</span>) ; &#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; N ; Fac[<span class="number">0</span>] = qwq = <span class="number">1</span> ;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt;= N ; ++ i)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;base[i]), (Fac[i + <span class="number">1</span>] = Fac[i] * (i + <span class="number">1</span>)) %= Mod ;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; T ; Ans = <span class="number">0</span> ;</span><br><span class="line">	<span class="keyword">if</span> (T &lt;= N) <span class="keyword">return</span> <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, base[T]) ;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt;= N ; ++ i) (qwq *= (T - i + Mod)) %= Mod ;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt;= N ; ++ i)&#123;</span><br><span class="line">		M = (N - i) &amp; <span class="number">1</span>, _qwq = qwq * expow((T - i), Mod - <span class="number">2</span>) % Mod ;</span><br><span class="line">		t = expow(Fac[i] * Fac[N - i] % Mod, Mod - <span class="number">2</span>) % Mod ; </span><br><span class="line">		t = t * (get_symbol(M) * _qwq % Mod) % Mod, t = (t * base[i]) % Mod ;</span><br><span class="line">		(Ans += t)  %= Mod ;</span><br><span class="line"><span class="comment">//		cout &lt;&lt; Ans &lt;&lt; endl ;</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, Ans) ; <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="rm-Reference"><a href="#rm-Reference" class="headerlink" title="$\rm{Reference}$"></a>$\rm{Reference}$</h2><ul>
 <li>$[1] $:Angel_Kitty的$blog$《拉格朗日插值法》 <a href="https://www.cnblogs.com/ECJTUACM-873284962/p/6833391.html" target="_blank" rel="noopener">$^{^{[\nearrow ]}}$</a></li>
 </ul>
@@ -1235,7 +1242,7 @@ if(canvas.getContext){
             
     
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#rm-0x01-Preface"><span class="nav-number">1.</span> <span class="nav-text">$\rm{0x01~~} Preface$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm-0x02-rm-Proof"><span class="nav-number">2.</span> <span class="nav-text">$\rm{0x02}~~\rm{Proof}$</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#rm-Proof-of-Existence"><span class="nav-number">2.1.</span> <span class="nav-text">$\rm Proof ~of~Existence$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mathcal-Q-E-D"><span class="nav-number">2.2.</span> <span class="nav-text">$\mathcal{Q.E.D.}$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rm-Proof-of-Uniqueness-1"><span class="nav-number">2.3.</span> <span class="nav-text">$\rm Proof~of~Uniqueness^{[1]}$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mathcal-Q-E-D-1"><span class="nav-number">2.4.</span> <span class="nav-text">$\mathcal{Q.E.D.}$</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm-0x03-color-red-C-color-cyan-o-color-gold-d-color-green-e"><span class="nav-number">3.</span> <span class="nav-text">$\rm{0x03~\color{red}{C}\color{cyan}{o}\color{gold}{d}\color{green}{e}}$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04-一道水题"><span class="nav-number">4.</span> <span class="nav-text">$0x04$ 一道水题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm-Reference"><span class="nav-number">5.</span> <span class="nav-text">$\rm{Reference}$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mathfrak-writter-pks"><span class="nav-number">6.</span> <span class="nav-text">$\mathfrak{writter:pks}$</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#rm-0x01-Preface"><span class="nav-number">1.</span> <span class="nav-text">$\rm{0x01~~} Preface$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm-0x02-rm-Proof"><span class="nav-number">2.</span> <span class="nav-text">$\rm{0x02}~~\rm{Proof}$</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#rm-Proof-ofExistence"><span class="nav-number">2.1.</span> <span class="nav-text">$\rm Proof ofExistence$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mathcal-Q-E-D"><span class="nav-number">2.2.</span> <span class="nav-text">$\mathcal{Q.E.D.}$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rm-ProofofUniqueness-1"><span class="nav-number">2.3.</span> <span class="nav-text">$\rm ProofofUniqueness^{[1]}$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mathcal-Q-E-D-1"><span class="nav-number">2.4.</span> <span class="nav-text">$\mathcal{Q.E.D.}$</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm-0x03-color-red-C-color-cyan-o-color-gold-d-color-green-e"><span class="nav-number">3.</span> <span class="nav-text">$\rm{0x03~\color{red}{C}\color{cyan}{o}\color{gold}{d}\color{green}{e}}$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04-一道水题"><span class="nav-number">4.</span> <span class="nav-text">$0x04$ 一道水题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm-Reference"><span class="nav-number">5.</span> <span class="nav-text">$\rm{Reference}$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mathfrak-writter-pks"><span class="nav-number">6.</span> <span class="nav-text">$\mathfrak{writter:pks}$</span></a></li></ol></div>
             
     
           </div>
@@ -1291,7 +1298,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共162.8k字</span>
+  <span class="post-count">博客全站共162.7k字</span>
 </div>
 
         
@@ -1835,6 +1842,19 @@ if(canvas.getContext){
   </script>
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/algolia-search.js?v=7.2.0"></script>
 
 
 

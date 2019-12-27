@@ -379,19 +379,23 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+  <div class="algolia-popup popup search-popup">
+  <div class="algolia-search">
+    <div class="algolia-search-input-icon">
       <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
+    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-  <div id="local-search-result"></div>
+
+  <div class="algolia-results">
+    <div id="algolia-stats"></div>
+    <div id="algolia-hits"></div>
+    <div id="algolia-pagination" class="algolia-pagination"></div>
+  </div>
+
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
 </div>
 
 
@@ -554,10 +558,11 @@
         <p><strong>快速沃尔什变换(FWT)</strong>是一种广义上的<strong>傅里叶变换</strong>，可以解决<strong>子集并卷积</strong>、<strong>子集交卷积</strong>以及<strong>子集对称差卷积</strong>。</p>
 <p>而在OI中决定了FWT胜过FMT的一大原因就是他可以方便地解决<strong>子集对称差卷积</strong>，即：<br>$$<br>c_i=\sum_{j\oplus k=i} a_jb_k<br>$$<br>其中$\oplus$表示二进制数的异或运算、集合的对称差运算（虽然”对称差”听起来挺有道理，但是感觉“二进制非进位加法”更有趣）。</p>
 <a id="more"></a>
+
 <hr>
-<h1 id="再谈线性变换实质"><a href="#再谈线性变换实质" class="headerlink" title="再谈线性变换实质"></a>再谈线性变换实质</h1><p>首先是构造，我们考虑线性变换的本质，需要有:<br>$$<br>{\rm FWT(C)}_i={\rm FWT(B)}_i\cdot{\rm FWT(A)}_i<br>$$<br>那么一个思路就是先设一个辅助函数$\varphi(i,x)$出来：<br>$$<br>{\rm FWT(F)}_i=\sum_{j\geq 0}\varphi(j,i) \cdot f_j<br>$$<br>那么就会有：<br>$$<br>\sum_{j\geq 0}\varphi(j,i) \cdot c_j=\sum_{j\geq 0}\varphi(j,i) \cdot a_j\times \sum_{j\geq 0}\varphi(j,i) \cdot b_j<br>$$<br>然后把$c_i=\sum_{j\oplus k=i} a_jb_k$带进去并调整：<br>$$<br>\begin{aligned}<br>\sum_{j\geq 0}\varphi(j,i) \cdot \sum_{p\oplus q=j} a_pb_q &amp; =\sum_{j\geq 0}\varphi(j,i) \cdot a_j \times\sum_{j\geq 0}\varphi(j,i) \cdot b_j\\\<br>\sum_{p \geq 0} \sum_{q\geq 0}\varphi(p\oplus q,i)\cdot a_pb_q &amp; =\sum_{p\geq 0}\sum_{q\geq 0}\varphi(p,i) \cdot \varphi(q,i)\cdot a_pb_q\\\<br>\end{aligned}<br>$$<br>发现$\sum_{p\geq 0}\sum _{q\geq 0}a_pb_q$是可以消掉的，于是就有：<br>$$<br>\varphi(p\oplus q,i)=\varphi(p,i)\cdot \varphi(q,i)<br>$$</p>
+<h1 id="再谈线性变换实质"><a href="#再谈线性变换实质" class="headerlink" title="再谈线性变换实质"></a>再谈线性变换实质</h1><p>首先是构造，我们考虑线性变换的本质，需要有:<br>$$<br>{\rm FWT(C)}<em>i={\rm FWT(B)}_i\cdot{\rm FWT(A)}_i<br>$$<br>那么一个思路就是先设一个辅助函数$\varphi(i,x)$出来：<br>$$<br>{\rm FWT(F)}_i=\sum</em>{j\geq 0}\varphi(j,i) \cdot f_j<br>$$<br>那么就会有：<br>$$<br>\sum_{j\geq 0}\varphi(j,i) \cdot c_j=\sum_{j\geq 0}\varphi(j,i) \cdot a_j\times \sum_{j\geq 0}\varphi(j,i) \cdot b_j<br>$$<br>然后把$c_i=\sum_{j\oplus k=i} a_jb_k$带进去并调整：<br>$$<br>\begin{aligned}<br>\sum_{j\geq 0}\varphi(j,i) \cdot \sum_{p\oplus q=j} a_pb_q &amp; =\sum_{j\geq 0}\varphi(j,i) \cdot a_j \times\sum_{j\geq 0}\varphi(j,i) \cdot b_j\<br>\sum_{p \geq 0} \sum_{q\geq 0}\varphi(p\oplus q,i)\cdot a_pb_q &amp; =\sum_{p\geq 0}\sum_{q\geq 0}\varphi(p,i) \cdot \varphi(q,i)\cdot a_pb_q\<br>\end{aligned}<br>$$<br>发现$\sum_{p\geq 0}\sum _{q\geq 0}a_pb_q$是可以消掉的，于是就有：<br>$$<br>\varphi(p\oplus q,i)=\varphi(p,i)\cdot \varphi(q,i)<br>$$</p>
 <h1 id="构造-varphi"><a href="#构造-varphi" class="headerlink" title="构造$\varphi$"></a>构造$\varphi$</h1><p>对于异或操作来说，异或前后$1$的个数的奇偶性不会改变。即也就是说$i,j$中$1$的个数加起来和$i\oplus j$中1的个数的奇偶性是一样的。形式化地讲：</p>
-<p>$$<br>\rm bitcount(i)+bitcount(j)\equiv bitcount(i~\oplus ~j)~(\bmod 2)<br>$$</p>
+<p>$$<br>\rm bitcount(i)+bitcount(j)\equiv bitcount(i<del>\oplus ~j)</del>(\bmod 2)<br>$$</p>
 <p>证明：</p>
 <p>考虑$i \oplus j$的每一位：</p>
 <ul>
@@ -565,8 +570,8 @@
 <li>如不同，那么就一定是$(xx1xx)\oplus(xx0xx)=(xx1xx)$，$1$的个数还是不变。</li>
 </ul>
 <p>而我们发现这个引理解决的是相加不变的问题，而我们需要的$\varphi$函数需要满足相乘不变，于是自然而然地想到要放到幂上去。</p>
-<p>于是就定义了$\varphi$:<br>$$<br>\varphi(s,t)=(-1)^{|s\cap t|}<br>$$<br>换成数值的表示方法：<br>$$<br>\varphi(i,j)=(-1)^{\rm bitcount \mathcal{(i ~\rm{and}~ j)}}<br>$$<br>这么定义的原因是：<br>$$<br>(i \cap x) \oplus(j \cap x)=(i \oplus j) \cap x<br>$$<br>即<strong>异或对交有分配律</strong>，那么：</p>
-<p>$$<br>{\rm{FWT(F)}}_i=\sum_{j \geq 0}(-1)^{|i\cap j|}f_j<br>$$</p>
+<p>于是就定义了$\varphi$:<br>$$<br>\varphi(s,t)=(-1)^{|s\cap t|}<br>$$<br>换成数值的表示方法：<br>$$<br>\varphi(i,j)=(-1)^{\rm bitcount \mathcal{(i <del>\rm{and}</del> j)}}<br>$$<br>这么定义的原因是：<br>$$<br>(i \cap x) \oplus(j \cap x)=(i \oplus j) \cap x<br>$$<br>即<strong>异或对交有分配律</strong>，那么：</p>
+<p>$$<br>{\rm{FWT(F)}}<em>i=\sum</em>{j \geq 0}(-1)^{|i\cap j|}f_j<br>$$</p>
 <p><del>于是就喜提一个指数级算法</del></p>
 <h1 id="真正的-rm-FWT"><a href="#真正的-rm-FWT" class="headerlink" title="真正的$\rm{FWT}$"></a>真正的$\rm{FWT}$</h1><p>我们发现似乎这东西没有办法dp，于是考虑：</p>
 <blockquote>
@@ -578,9 +583,10 @@
 <p>总之就是个FFT🦋操作的思路啦。</p>
 <p>然后对于逆变换，因为我们刚才的结论有：<br>$$<br>\begin{aligned}{F[j+k] =F[j+k]+F[i+j+k]} \\ {F[i+j+k]=F[j+k]-F[i+j+k]}\end{aligned}<br>$$<br>所以我们现在为了得到原来的$F[i+j+k]$和$F[j+k]$，直接<br>$$<br>\begin{array}{c}{F[j+k]=\frac{F[j+k]+F[j+i+k]}{2}} \ {F[j+i+k]=\frac{F[j+k]-F[j+i+k]}{2}}\end{array}<br>$$</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fwt</span><span class="params">(<span class="keyword">int</span> *f, <span class="keyword">int</span> g)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, j, k, m = <span class="number">1</span> &lt;&lt; (N - <span class="number">1</span>), x, y ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= m ; i &lt;&lt;= <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">0</span> ; j &lt;= M ; j += (i &lt;&lt; <span class="number">1</span>))</span><br><span class="line">            <span class="keyword">for</span> (k = <span class="number">0</span> ; k &lt; i ; ++ k)&#123;</span><br><span class="line">                x = f[j + k], y = f[i + j + k] ;</span><br><span class="line">                f[j + k] = <span class="number">1l</span>l * (g ^ <span class="number">1</span> ? Inv2 : <span class="number">1</span>) * (x + y) % Mod ;</span><br><span class="line">                f[i + j + k] = <span class="number">1l</span>l * (g ^ <span class="number">1</span> ? Inv2 : <span class="number">1</span>) * (x + Mod - y) % Mod ;</span><br><span class="line">            &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>于是时间复杂度就是$n \log n$了。</p>
 <h1 id="rm-FWT-做or-and卷积"><a href="#rm-FWT-做or-and卷积" class="headerlink" title="$\rm FWT$做or/and卷积"></a>$\rm FWT$做or/and卷积</h1><p>艹，真是被血坑了。</p>
-<p>才发现原来FWT做or/and卷积就是跟FMT一个道理：<br>$$<br>\boldsymbol{or}: F[i+j+k]+=F[j+k]\\\<br>\boldsymbol{and}: F[j+k]+=F[i+j+k]<br>$$<br>然后逆变换就直接把加号改成减号就好了……原因就是“不取这个东西”一定是“取这个东西”的子集。</p>
+<p>才发现原来FWT做or/and卷积就是跟FMT一个道理：<br>$$<br>\boldsymbol{or}: F[i+j+k]+=F[j+k]\<br>\boldsymbol{and}: F[j+k]+=F[i+j+k]<br>$$<br>然后逆变换就直接把加号改成减号就好了……原因就是“不取这个东西”一定是“取这个东西”的子集。</p>
 <p>但是当时我认真学习FMT的时候，<code>Rockdu</code>博客里面FMT的代码是FWT的！！！然后再看别人的代码我就懵O了好久……</p>
 <p>真是zz</p>
 <p>但是终于理解了<code>JOHNKRAM</code>神仙的话：</p>
@@ -1283,7 +1289,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共162.8k字</span>
+  <span class="post-count">博客全站共162.7k字</span>
 </div>
 
         
@@ -1827,6 +1833,19 @@ if(canvas.getContext){
   </script>
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/algolia-search.js?v=7.2.0"></script>
 
 
 

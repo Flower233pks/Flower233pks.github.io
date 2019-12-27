@@ -377,19 +377,23 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+  <div class="algolia-popup popup search-popup">
+  <div class="algolia-search">
+    <div class="algolia-search-input-icon">
       <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
+    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-  <div id="local-search-result"></div>
+
+  <div class="algolia-results">
+    <div id="algolia-stats"></div>
+    <div id="algolia-hits"></div>
+    <div id="algolia-pagination" class="algolia-pagination"></div>
+  </div>
+
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
 </div>
 
 
@@ -573,6 +577,7 @@
       
         <p>主要是 <code>CSP-S 2019</code> 之前的杂题整理，天知道我为了整理这些东西要花费怎样漫长的时间去 read back 我的提交记录……</p>
 <a id="more"></a>
+
 <hr>
 <p>1、<a href="https://www.luogu.com.cn/problem/P1357" target="_blank" rel="noopener">LG5317 花园</a></p>
 <p>发现一共只有两种方格，并且转移只跟 $\rm M$ 有关，于是考虑状压。考虑 $g(s, t)$ 表示从状态 $s$ 转移到 $t$ 的方案数。其中转移指的是向右扩展一格。</p>
@@ -653,8 +658,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/20/CSP-S2019游记/" rel="next" title="CSP-S2019游记">
-                <i class="fa fa-chevron-left"></i> CSP-S2019游记
+              <a href="/2019/12/20/CSP-S2019游记/" rel="next" title="【游记】CSP-S2019游记">
+                <i class="fa fa-chevron-left"></i> 【游记】CSP-S2019游记
               </a>
             
           </div>
@@ -663,8 +668,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/12/24/构造2/" rel="prev" title="【泛做】构造题选做 · 2">
-                【泛做】构造题选做 · 2 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/12/24/构造1/" rel="prev" title="【泛做】构造题选做 · 1">
+                【泛做】构造题选做 · 1 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1276,7 +1281,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共162.8k字</span>
+  <span class="post-count">博客全站共162.7k字</span>
 </div>
 
         
@@ -1820,6 +1825,19 @@ if(canvas.getContext){
   </script>
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/algolia-search.js?v=7.2.0"></script>
 
 
 

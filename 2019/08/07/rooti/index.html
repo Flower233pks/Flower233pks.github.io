@@ -144,18 +144,18 @@
   };
 </script>
 
-  <meta name="description" content="形式化来讲，我们要解决这两个问题：$$\begin{aligned}G &amp;amp;= F^k  (\bmod  x^n)\\\G^k &amp;amp;= F  (\bmod  x^n)\end{aligned}$$然而实际上后一个咕了，我曾把这玩意儿当作多项式牛顿迭代的课后题来着……并且更重要的原因没人出这玩意儿的题，所以直接简化成$G^2\equiv F$好了。。。">
+  <meta name="description" content="形式化来讲，我们要解决这两个问题：$$\begin{aligned}G &amp;amp;= F^k \ (\bmod \ x^n)\G^k &amp;amp;= F \ (\bmod \ x^n)\end{aligned}$$然而实际上后一个咕了，我曾把这玩意儿当作多项式牛顿迭代的课后题来着……并且更重要的原因没人出这玩意儿的题，所以直接简化成$G^2\equiv F$好了。。。">
 <meta name="keywords" content="多项式基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【学习笔记】多项式求幂&#x2F;开根">
 <meta property="og:url" content="http://www.orchidany.cf/2019/08/07/rooti/index.html">
 <meta property="og:site_name" content="Orchidany&#39;w blog">
-<meta property="og:description" content="形式化来讲，我们要解决这两个问题：$$\begin{aligned}G &amp;amp;= F^k  (\bmod  x^n)\\\G^k &amp;amp;= F  (\bmod  x^n)\end{aligned}$$然而实际上后一个咕了，我曾把这玩意儿当作多项式牛顿迭代的课后题来着……并且更重要的原因没人出这玩意儿的题，所以直接简化成$G^2\equiv F$好了。。。">
+<meta property="og:description" content="形式化来讲，我们要解决这两个问题：$$\begin{aligned}G &amp;amp;= F^k \ (\bmod \ x^n)\G^k &amp;amp;= F \ (\bmod \ x^n)\end{aligned}$$然而实际上后一个咕了，我曾把这玩意儿当作多项式牛顿迭代的课后题来着……并且更重要的原因没人出这玩意儿的题，所以直接简化成$G^2\equiv F$好了。。。">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-12-17T01:33:59.956Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【学习笔记】多项式求幂&#x2F;开根">
-<meta name="twitter:description" content="形式化来讲，我们要解决这两个问题：$$\begin{aligned}G &amp;amp;= F^k  (\bmod  x^n)\\\G^k &amp;amp;= F  (\bmod  x^n)\end{aligned}$$然而实际上后一个咕了，我曾把这玩意儿当作多项式牛顿迭代的课后题来着……并且更重要的原因没人出这玩意儿的题，所以直接简化成$G^2\equiv F$好了。。。">
+<meta name="twitter:description" content="形式化来讲，我们要解决这两个问题：$$\begin{aligned}G &amp;amp;= F^k \ (\bmod \ x^n)\G^k &amp;amp;= F \ (\bmod \ x^n)\end{aligned}$$然而实际上后一个咕了，我曾把这玩意儿当作多项式牛顿迭代的课后题来着……并且更重要的原因没人出这玩意儿的题，所以直接简化成$G^2\equiv F$好了。。。">
 
 
 
@@ -377,19 +377,23 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
+  <div class="algolia-popup popup search-popup">
+  <div class="algolia-search">
+    <div class="algolia-search-input-icon">
       <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
+    <div class="algolia-search-input" id="algolia-search-input"></div>
   </div>
-  <div id="local-search-result"></div>
+
+  <div class="algolia-results">
+    <div id="algolia-stats"></div>
+    <div id="algolia-hits"></div>
+    <div id="algolia-pagination" class="algolia-pagination"></div>
+  </div>
+
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
 </div>
 
 
@@ -571,10 +575,12 @@
       
 
       
-        <p>形式化来讲，我们要解决这两个问题：<br>$$<br>\begin{aligned}<br>G &amp;= F^k  (\bmod  x^n)\\\<br>G^k &amp;= F  (\bmod  x^n)<br>\end{aligned}<br>$$<br>然而实际上后一个咕了，我曾把这玩意儿当作<code>多项式牛顿迭代</code>的课后题来着……并且更重要的原因没人出这玩意儿的题，所以直接简化成$G^2\equiv F$好了。。。</p>
+        <p>形式化来讲，我们要解决这两个问题：<br>$$<br>\begin{aligned}<br>G &amp;= F^k \ (\bmod \ x^n)\<br>G^k &amp;= F \ (\bmod \ x^n)<br>\end{aligned}<br>$$<br>然而实际上后一个咕了，我曾把这玩意儿当作<code>多项式牛顿迭代</code>的课后题来着……并且更重要的原因没人出这玩意儿的题，所以直接简化成$G^2\equiv F$好了。。。</p>
 <a id="more"></a>
-<h1 id="1-求幂"><a href="#1-求幂" class="headerlink" title="$1$ 求幂"></a>$1$ 求幂</h1><p>首先思考式子<br>$$<br>G=F^k(~\bmod~x^n)<br>$$<br>怎么化开。那么喜闻乐见的就是一步求对数然后exp回去：<br>$$<br>\ln G = k \ln F~(\bmod~x^n)\\\<br>\exp(k\ln F)=G~(\bmod ~x^n)<br>$$<br>对应的是<code>Luogu</code>的<a href="https://www.luogu.org/problem/P5245" target="_blank" rel="noopener"><code>P5245</code></a>:</p>
+
+<h1 id="1-求幂"><a href="#1-求幂" class="headerlink" title="$1$ 求幂"></a>$1$ 求幂</h1><p>首先思考式子<br>$$<br>G=F^k(<del>\bmod</del>x^n)<br>$$<br>怎么化开。那么喜闻乐见的就是一步求对数然后exp回去：<br>$$<br>\ln G = k \ln F<del>(\bmod</del>x^n)\<br>\exp(k\ln F)=G~(\bmod ~x^n)<br>$$<br>对应的是<code>Luogu</code>的<a href="https://www.luogu.org/problem/P5245" target="_blank" rel="noopener"><code>P5245</code></a>:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, y ;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; N, M = <span class="number">1</span> ;</span><br><span class="line">    Gi = expow(Gp, P - <span class="number">2</span>) ;</span><br><span class="line">    <span class="keyword">while</span> (M &lt;= N) M &lt;&lt;= <span class="number">1</span> ;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; In ; y = <span class="built_in">strlen</span>(In) ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; N ; ++ i) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;F[i]) ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; y ; ++ i) K = (K * <span class="number">10</span> + In[i] - <span class="string">'0'</span>) % P ;</span><br><span class="line">    _Ln(F, L, M) ; <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; N ; ++ i) L[i] = <span class="number">1l</span>l * L[i] * K % P ;</span><br><span class="line">    _Exp(L, G, M) ; <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; N ; ++ i) <span class="built_in">printf</span>(<span class="string">"%lld "</span>, G[i]) ; <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>但是这种方法只能应用于$a_0=1$的情况下，原因在写<code>exp</code>的时候整理过。</p>
 <p>但这东西显然是可以$\Theta(n\log^2n)$暴力ntt做的，我很快乐地水过了这道题的加强版<a href="https://www.luogu.org/problem/P5273" target="_blank" rel="noopener"><code>P5273</code></a>，即不保证$a_0=1$的版本：</p>
 <blockquote>
@@ -584,22 +590,26 @@
 <p>预处理原根的次幂——卡常利器。</p>
 </blockquote>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; <span class="number">19</span>  ;++ i)&#123;</span><br><span class="line">        rr <span class="keyword">int</span> *rua = gg[i] ; rua[<span class="number">0</span>] = <span class="number">1</span> ;</span><br><span class="line">        rr <span class="keyword">int</span> gi = rua[<span class="number">1</span>] = expow(<span class="number">3</span>, <span class="number">998244352</span>/(<span class="number">1</span> &lt;&lt; (i + <span class="number">1</span>))) ;</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">2</span> ; j &lt; (<span class="number">1</span> &lt;&lt; i) ; ++ j) rua[j] = <span class="number">1l</span>l * rua[j - <span class="number">1</span>] * gi % P ;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>然后每次NTT就不需要重新再计算了。</p>
 <p>$\#2$</p>
 <p>做快速幂的时候注意可以少几次<code>NTT</code>。这点常数优化也是需要的。</p>
 </blockquote>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (K)&#123;</span><br><span class="line">        NTT(F, M, <span class="number">1</span>) ;</span><br><span class="line">        <span class="keyword">if</span> (K &amp; <span class="number">1</span>)&#123;</span><br><span class="line">            NTT(A, M, <span class="number">1</span>) ;</span><br><span class="line">            <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; M ; ++ i) A[i] = <span class="number">1l</span>l * A[i] * F[i] % P ;</span><br><span class="line">            NTT(A, M, <span class="number">-1</span>) ; <span class="keyword">for</span> (i = N ; i &lt; M ; ++ i) A[i] = <span class="number">0</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; M ; ++ i)</span><br><span class="line">            F[i] = <span class="number">1l</span>l * F[i] * F[i] % P ; NTT(F, M, <span class="number">-1</span>) ;</span><br><span class="line">        <span class="keyword">for</span> (i = N ; i &lt; M ; ++ i) F[i] = <span class="number">0</span> ; K &gt;&gt;= <span class="number">1</span> ;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>$\#3$</p>
 <p>不用<code>long long</code>.</p>
 <p>这其实一个通用的技巧，因为long long一般都比int多好多常数。同时不要强制类型转换而选择<code>1ll*</code>这种形式。实测可以快许多。</p>
 </blockquote>
 <p>不得不说，这个预处理原根确实是一个卡常黑科技qwq</p>
-<h1 id="2-开根"><a href="#2-开根" class="headerlink" title="$2$ 开根"></a>$2$ 开根</h1><p>普通的开根还是<code>exp</code>和<code>ln</code>：<br>$$<br>G^2=F\\\<br>2 \ln G = \ln F\\\<br>G = \exp(\frac{\ln F}{2})<br>$$<br>然后就可以胡搞<a href="https://www.luogu.org/problem/P5205" target="_blank" rel="noopener">LuoguP5205</a>：</p>
+<h1 id="2-开根"><a href="#2-开根" class="headerlink" title="$2$ 开根"></a>$2$ 开根</h1><p>普通的开根还是<code>exp</code>和<code>ln</code>：<br>$$<br>G^2=F\<br>2 \ln G = \ln F\<br>G = \exp(\frac{\ln F}{2})<br>$$<br>然后就可以胡搞<a href="https://www.luogu.org/problem/P5205" target="_blank" rel="noopener">LuoguP5205</a>：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> _Invsqr(<span class="keyword">int</span> *f, <span class="keyword">int</span> *g, <span class="keyword">int</span> len)&#123;</span><br><span class="line">    <span class="keyword">int</span> Len = <span class="number">1</span>, l = <span class="number">0</span>, i, o ;</span><br><span class="line">    <span class="keyword">while</span> (Len &lt; (len &lt;&lt; <span class="number">1</span>)) Len &lt;&lt;= <span class="number">1</span>, ++ l ; o = expow(<span class="number">2l</span>l, P - <span class="number">2</span>) ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; Len ; ++ i) R[i] = (R[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; l - <span class="number">1</span>) ;</span><br><span class="line">    _Ln(f, E, M) ; <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; Len ; ++ i) E[i] = E[i] * o % P ; _Exp(E, g, M) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>但是还是有问题，就是因为需要$\exp$，上述也必须要$F_0=1$。于是当$F_0\neq 1$时，我们可以直接暴力求<strong>二次剩余</strong>，注意这种方法就需要用牛迭来实现开根</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> solveroot&#123;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> fr first</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> sc second</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> pint pair<span class="meta-string">&lt;int, int&gt;</span></span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> mp(a, b) make_pair(a, b)</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">complex</span>&#123;</span> <span class="keyword">int</span> x, y ; &#125; ;</span><br><span class="line">    <span class="function"><span class="keyword">complex</span> <span class="title">mul</span><span class="params">(<span class="keyword">complex</span> a, <span class="keyword">complex</span> b, <span class="keyword">int</span> p, <span class="keyword">int</span> rt)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> nx = (<span class="number">1l</span>l * a.x * b.x % p + <span class="number">1l</span>l * a.y * b.y % p * rt % p) ;</span><br><span class="line">        <span class="keyword">int</span> ny = (<span class="number">1l</span>l * a.x * b.y % p + <span class="number">1l</span>l * a.y * b.x % p) ;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">complex</span>)&#123;nx % p, ny % p&#125; ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">complex</span> <span class="title">expow</span><span class="params">(<span class="keyword">complex</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> p, <span class="keyword">int</span> z)</span></span>&#123;</span><br><span class="line">        <span class="keyword">complex</span> res = (<span class="keyword">complex</span>)&#123;<span class="number">1</span>, <span class="number">0</span>&#125; ;</span><br><span class="line">        <span class="keyword">while</span> (b)&#123;</span><br><span class="line">            <span class="keyword">if</span> (b &amp; <span class="number">1</span>)</span><br><span class="line">                res = mul(res, a, p, z), b -- ;</span><br><span class="line">            a = mul(a, a, p, z), b &gt;&gt;= <span class="number">1</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">expow</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">1</span> ;</span><br><span class="line">        <span class="keyword">while</span> (b)&#123;</span><br><span class="line">            <span class="keyword">if</span> (b &amp; <span class="number">1</span>)</span><br><span class="line">                res = <span class="number">1l</span>l * a * res % p ;</span><br><span class="line">            a = <span class="number">1l</span>l * a * a % p ; b &gt;&gt;= <span class="number">1</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">seed</span><span class="params">()</span></span>&#123;</span><br><span class="line">        srand((<span class="keyword">int</span>)<span class="string">'x'</span>+<span class="string">'q'</span>+<span class="string">'I'</span>+<span class="string">'L'</span>+<span class="string">'o'</span>+<span class="string">'v'</span>+<span class="string">'e'</span>+<span class="string">'u'</span>) ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">pint <span class="title">solve</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">        seed() ;</span><br><span class="line">        <span class="keyword">if</span> (!n) <span class="keyword">return</span> mp(<span class="number">0</span>, <span class="number">0</span>) ;</span><br><span class="line">        <span class="keyword">int</span> x, y ;</span><br><span class="line">        <span class="keyword">while</span> (<span class="number">1</span>)&#123;</span><br><span class="line">            x = rand() % p ;</span><br><span class="line">            y = (<span class="number">1l</span>l * x * x + (p - n)) % p ;</span><br><span class="line">            <span class="keyword">if</span> (expow(y, (p - <span class="number">1</span>) &gt;&gt; <span class="number">1</span>, p) == p - <span class="number">1</span>) <span class="keyword">break</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">complex</span> now = (<span class="keyword">complex</span>)&#123;x, <span class="number">1</span>&#125;, ansp, ansn ;</span><br><span class="line">        ansp = expow(now, (p + <span class="number">1</span>) &gt;&gt; <span class="number">1</span>, p, y),</span><br><span class="line">        ansn = (<span class="keyword">complex</span>)&#123;p - ansp.x, ansp.y&#125; ;</span><br><span class="line">        <span class="keyword">if</span> (ansp.x &gt; ansn.x) swap(ansp, ansn) ;</span><br><span class="line">        <span class="keyword">return</span> mp(ansp.x, ansn.x) ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">。。。。。</span><br><span class="line">LL Ig[MAXN], pf[MAXN] ;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> solveroot ;</span><br><span class="line"><span class="keyword">void</span> _sqr(LL *f, LL *g, <span class="keyword">int</span> len)&#123;</span><br><span class="line">    <span class="keyword">if</span> (len &lt;= <span class="number">1</span>)&#123;</span><br><span class="line">        g[<span class="number">0</span>] = solve(f[<span class="number">0</span>], P).fr ;</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    rr <span class="keyword">int</span> i, l = <span class="number">0</span>, Len = <span class="number">1</span> ;</span><br><span class="line">    _sqr(f, g, (len + <span class="number">1</span>) &gt;&gt; <span class="number">1</span>) ;</span><br><span class="line">    <span class="keyword">while</span> (Len &lt; (len &lt;&lt; <span class="number">1</span>)) Len &lt;&lt;= <span class="number">1</span>, ++ l ;</span><br><span class="line">    <span class="keyword">for</span> (i = len ; i &lt; Len ; ++ i) pf[i] = Ig[i] = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; len ; ++ i) Ig[i] = <span class="number">0</span>, pf[i] = <span class="number">2</span> * g[i] % P ;</span><br><span class="line">    _Inv(pf, Ig, len) ; <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; Len ; ++ i) <span class="comment">/* */</span> t[i] = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt; Len ; ++ i) R[i] = (R[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; ( l - <span class="number">1</span> )) ;</span><br><span class="line">    NTT(g, Len, <span class="number">1</span>) ; <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; Len ; ++ i) g[i] = g[i] * g[i] % P ;</span><br><span class="line">    NTT(g, Len, <span class="number">-1</span>) ; <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; len ; ++ i) g[i] = (g[i] + f[i]) % P ;</span><br><span class="line">    NTT(g, Len, <span class="number">1</span>) ; NTT(Ig, Len, <span class="number">1</span>) ; <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; Len ; ++ i) g[i] = g[i] * Ig[i] % P ;</span><br><span class="line">    NTT(g, Len, <span class="number">-1</span>) ; <span class="keyword">for</span> (i = len ; i &lt; Len ; ++ i) g[i] = <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>然后为了做这道题还去学了<code>Cipolla</code>，然后还顺便发现luogu上少一道二次剩余的板子就顺手出了道题2333</p>
 
       
@@ -1293,7 +1303,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共162.8k字</span>
+  <span class="post-count">博客全站共162.7k字</span>
 </div>
 
         
@@ -1837,6 +1847,19 @@ if(canvas.getContext){
   </script>
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/algolia-search.js?v=7.2.0"></script>
 
 
 
