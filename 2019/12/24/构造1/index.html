@@ -152,7 +152,7 @@
 <meta property="og:site_name" content="Orchidany&#39;w blog">
 <meta property="og:description" content="从网课和 uoj 群里的课件扒出来的构造题，都挺(不)好(会)的(做)。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-27T02:53:44.635Z">
+<meta property="og:updated_time" content="2019-12-27T03:46:00.363Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【泛做】构造题选做 · 1">
 <meta name="twitter:description" content="从网课和 uoj 群里的课件扒出来的构造题，都挺(不)好(会)的(做)。">
@@ -494,7 +494,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-27 10:53:44" itemprop="dateModified" datetime="2019-12-27T10:53:44+08:00">2019-12-27</time>
+                <time title="Modified: 2019-12-27 11:46:00" itemprop="dateModified" datetime="2019-12-27T11:46:00+08:00">2019-12-27</time>
               </span>
             
           
@@ -669,10 +669,8 @@
 <h3 id="13-Loj-525"><a href="#13-Loj-525" class="headerlink" title="$13$ Loj #525"></a>$13$ Loj #525</h3><blockquote>
 <p>给定一个正整数 $k$，你需要寻找一个系数均为 $0$ 到 $k−1$ 之间的非零多项式 $f(x)$，满足对于任意整数 $x$ 均有 $f(x)≡0~(\bmod k)$</p>
 <p>要求 $\deg(f)\leq 60000$</p>
-<p>$k\leq 30000$</p>
+<p>$k\leq 30000$<br>首先发现只要对 $0\sim k-1$ 成立那么就满足条件。 <del>然后就变成傻题了，分治FFT！分治FFT！</del></p>
 </blockquote>
-<p>首先发现只要对 $0\sim k-1$ 成立那么就满足条件。</p>
-<p><del>然后就变成傻题了，分治FFT！分治FFT！</del></p>
 <p>然而分治FFT会T。不妨令 $q\geq \varphi(k)$，则由于扩展欧拉定理有：<br>$$<br>x^q\equiv x^{q\bmod \varphi(k)+\varphi(k)}(\mod k)<br>$$<br>那么如果令 $v=q+\varphi(k)$，就会有</p>
 <p>$$<br>\begin{aligned}<br>x^v &amp; \equiv x^{v\bmod \varphi(k)+\varphi(k)} (\bmod k) \\ &amp;\equiv x^{(q\bmod \varphi(k)+\varphi(k) \bmod \varphi(k))\bmod \varphi(k) +\varphi(k)} (\bmod k)\\ &amp; \equiv x^{q\bmod \varphi(k)+\varphi(k)}(\bmod k)\\ &amp; \equiv x^q(\bmod k)<br>\end{aligned}<br>$$<br>然后就构造第 $\varphi(k)$ 项系数为 $k-1$，第 $2\cdot \varphi(k)$ 项系数为 $1$ 即可。</p>
 

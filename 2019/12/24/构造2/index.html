@@ -154,7 +154,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://www.orchidany.cf/2019/12/24/构造2/qwq.png">
 <meta property="og:image" content="http://img.uoj.ac/utility/bear-thinking.gif">
-<meta property="og:updated_time" content="2019-12-27T02:52:15.483Z">
+<meta property="og:updated_time" content="2019-12-27T03:45:29.305Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【泛做】构造题选做 · 2">
 <meta name="twitter:description" content="没啥特别原因，就是底下那篇文章题太多了就分流出一部分。">
@@ -497,7 +497,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-27 10:52:15" itemprop="dateModified" datetime="2019-12-27T10:52:15+08:00">2019-12-27</time>
+                <time title="Modified: 2019-12-27 11:45:29" itemprop="dateModified" datetime="2019-12-27T11:45:29+08:00">2019-12-27</time>
               </span>
             
           
@@ -582,9 +582,9 @@
 <a id="more"></a>
 
 <h3 id="1-UVa1697"><a href="#1-UVa1697" class="headerlink" title="$1$ UVa1697"></a>$1$ UVa1697</h3><blockquote>
-<p>给定一排长度为 $4n$ 的格子，编号从 $-2n+1$ 到 $2n$ 每个编号为正的格子中有一个物品，其中每个编号为奇数的格子中有一个 $B$ 类物品，编号为偶数的格子中有一个 $A$ 类物品。</p>
+<p>给定一排长度为 $4n$ 的格子，编号从 $-2n+1$ 到 $2n$ 每个编号为正的格子中有一个物品，其中每个编号为奇数的格子中有一个 $B$ 类物品，编号为偶数的格子中有一个 $A$ 类物品。</p>
 <p>你只能进行一种操作：选择某两个相邻的都有物品的格子，移动到另外两个相邻的空格子中，同时不能改变两个格子的相对位置。</p>
-<p>要求进行最少的操作使得所有物品以 <code>AAA…ABBB…B</code> ($n$ 个 $A$ 和 $n$ 个 $B$) 的形式排列在一起 输出一种可行方案 </p>
+<p>要求进行最少的操作使得所有物品以 <code>AAA…ABBB…B</code> ($n$ 个 $A$ 和 $n$ 个 $B$) 的形式排列在一起 输出一种可行方案 </p>
 <p>$3\leq n \leq 100$</p>
 </blockquote>
 <p>人类智慧学不来了orz</p>
@@ -634,8 +634,7 @@
 <p>你可以进行最多 $400$ 次操作，每次选择集合中满足 $i&gt;j$ 的 $i$ 和 $j$，把 $i-j$ 加入集合中，使得最后 $c$ 在这个集合中。</p>
 <p>$a,b,c\leq 10^{18}$</p>
 </blockquote>
-<p>考虑构造中间状态。发现可以用 $a-(a-b-c)$ 构造 $b+c$， 可以用 $a-(a-b-b)$ 构造倍增，于是考虑先辗转相除得到 $1$，然后倍增，然后就没了。注意，如果一开始 $(a,b) \not|~c$ 的话是无解的。那么考虑同除 $(a,b)$ 就可以快乐地更相减损得到 $1$ 了。</p>
-<p>代码先鸽着…</p>
+<p>考虑构造中间状态。发现可以用 $a-(a-b-c)$ 构造 $b+c$， 可以用 $a-(a-b-b)$ 构造倍增，于是考虑先辗转相除得到 $1$，然后倍增，然后就没了。注意，如果一开始 $(a,b) \not|~c$ 的话是无解的。那么考虑同除<br>$(a,b)$ 就可以快乐地更相减损得到 $1$ 了。</p>
 
       
     </div>

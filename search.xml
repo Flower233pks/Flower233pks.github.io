@@ -10,12 +10,12 @@
 <p>在这些文章里，你会看到一个迷茫的青年如何满怀热血与绝望，眼里闪烁着沧桑与希望，怀里揣着坏掉的粮食和崭新的论文，脚下踏着崎岖不平的路，向明天走去。</p>
 <p>是的，我是花，来自山东，你直接叫我花这个ID或许我会很高兴，但是如果你认识我也可以不这么拘束。</p>
 
-        <div id="aplayer-sFWYHLmo" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-AFVMUqcz" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-sFWYHLmo"),
+            element: document.getElementById("aplayer-AFVMUqcz"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -185,10 +185,8 @@
 <h3 id="13-Loj-525"><a href="#13-Loj-525" class="headerlink" title="$13$ Loj #525"></a>$13$ Loj #525</h3><blockquote>
 <p>给定一个正整数 $k$，你需要寻找一个系数均为 $0$ 到 $k−1$ 之间的非零多项式 $f(x)$，满足对于任意整数 $x$ 均有 $f(x)≡0~(\bmod k)$</p>
 <p>要求 $\deg(f)\leq 60000$</p>
-<p>$k\leq 30000$</p>
+<p>$k\leq 30000$<br>首先发现只要对 $0\sim k-1$ 成立那么就满足条件。 <del>然后就变成傻题了，分治FFT！分治FFT！</del></p>
 </blockquote>
-<p>首先发现只要对 $0\sim k-1$ 成立那么就满足条件。</p>
-<p><del>然后就变成傻题了，分治FFT！分治FFT！</del></p>
 <p>然而分治FFT会T。不妨令 $q\geq \varphi(k)$，则由于扩展欧拉定理有：<br>$$<br>x^q\equiv x^{q\bmod \varphi(k)+\varphi(k)}(\mod k)<br>$$<br>那么如果令 $v=q+\varphi(k)$，就会有</p>
 <p>$$<br>\begin{aligned}<br>x^v &amp; \equiv x^{v\bmod \varphi(k)+\varphi(k)} (\bmod k) \\ &amp;\equiv x^{(q\bmod \varphi(k)+\varphi(k) \bmod \varphi(k))\bmod \varphi(k) +\varphi(k)} (\bmod k)\\ &amp; \equiv x^{q\bmod \varphi(k)+\varphi(k)}(\bmod k)\\ &amp; \equiv x^q(\bmod k)<br>\end{aligned}<br>$$<br>然后就构造第 $\varphi(k)$ 项系数为 $k-1$，第 $2\cdot \varphi(k)$ 项系数为 $1$ 即可。</p>
 ]]></content>
@@ -209,9 +207,9 @@
 <a id="more"></a>
 
 <h3 id="1-UVa1697"><a href="#1-UVa1697" class="headerlink" title="$1$ UVa1697"></a>$1$ UVa1697</h3><blockquote>
-<p>给定一排长度为 $4n$ 的格子，编号从 $-2n+1$ 到 $2n$ 每个编号为正的格子中有一个物品，其中每个编号为奇数的格子中有一个 $B$ 类物品，编号为偶数的格子中有一个 $A$ 类物品。</p>
+<p>给定一排长度为 $4n$ 的格子，编号从 $-2n+1$ 到 $2n$ 每个编号为正的格子中有一个物品，其中每个编号为奇数的格子中有一个 $B$ 类物品，编号为偶数的格子中有一个 $A$ 类物品。</p>
 <p>你只能进行一种操作：选择某两个相邻的都有物品的格子，移动到另外两个相邻的空格子中，同时不能改变两个格子的相对位置。</p>
-<p>要求进行最少的操作使得所有物品以 <code>AAA…ABBB…B</code> ($n$ 个 $A$ 和 $n$ 个 $B$) 的形式排列在一起 输出一种可行方案 </p>
+<p>要求进行最少的操作使得所有物品以 <code>AAA…ABBB…B</code> ($n$ 个 $A$ 和 $n$ 个 $B$) 的形式排列在一起 输出一种可行方案 </p>
 <p>$3\leq n \leq 100$</p>
 </blockquote>
 <p>人类智慧学不来了orz</p>
@@ -261,8 +259,7 @@
 <p>你可以进行最多 $400$ 次操作，每次选择集合中满足 $i&gt;j$ 的 $i$ 和 $j$，把 $i-j$ 加入集合中，使得最后 $c$ 在这个集合中。</p>
 <p>$a,b,c\leq 10^{18}$</p>
 </blockquote>
-<p>考虑构造中间状态。发现可以用 $a-(a-b-c)$ 构造 $b+c$， 可以用 $a-(a-b-b)$ 构造倍增，于是考虑先辗转相除得到 $1$，然后倍增，然后就没了。注意，如果一开始 $(a,b) \not|~c$ 的话是无解的。那么考虑同除 $(a,b)$ 就可以快乐地更相减损得到 $1$ 了。</p>
-<p>代码先鸽着…</p>
+<p>考虑构造中间状态。发现可以用 $a-(a-b-c)$ 构造 $b+c$， 可以用 $a-(a-b-b)$ 构造倍增，于是考虑先辗转相除得到 $1$，然后倍增，然后就没了。注意，如果一开始 $(a,b) \not|~c$ 的话是无解的。那么考虑同除<br>$(a,b)$ 就可以快乐地更相减损得到 $1$ 了。</p>
 ]]></content>
       <categories>
         <category>学习笔记</category>
@@ -1836,12 +1833,12 @@
 <p>Let’s say sunshine for everyone 人们说生活总是充满阳光<br>But as far as I can remember 但在我的记忆中<br>We’ve been migratory animals 我们一直只是如野兽般流浪<br>Living under changing weather 四季变换，我们如常<br>Someday we will foresee obstacles 总有一天，我们会看见那些困难阻碍<br>Through the blizzard through the blizzard 在那片风雪之中，在那片风雪之后<br>Today we will sell our uniform 如今我们将曾经的校服变卖<br>Live together live together 一同离去，一同启程</p>
 </blockquote>
 
-        <div id="aplayer-qRvVrfks" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-yWMHMzMl" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-qRvVrfks"),
+            element: document.getElementById("aplayer-yWMHMzMl"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -3721,12 +3718,12 @@
 <p>我大概在听这首歌之前，从来没有真正知道原来”喜欢“这个已经烂大街的词、这个现如今可以随便说出口又可以随便忘记的词、这个在我上过的所有学校里从来没有人敢光明正大说出来的词、这个现在在芸芸众生中已经被玷污的、被人们认为还没有一块钱来的实在的词，竟然如此的可爱，竟然如此的值得人们尊敬，竟然可以在冰冷的寒夜散发出如此耀眼的光芒。</p>
 <p>我喜欢你，你应该，也知道。</p>
 
-        <div id="aplayer-qQClpykl" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-tNFqUCkA" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-qQClpykl"),
+            element: document.getElementById("aplayer-tNFqUCkA"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -3758,12 +3755,12 @@
 <hr>
 <p>雪，终于停了啊。现在已经午夜了，街上一个人都没有，天空在积雪的映照下，是让人着迷的紫红色。</p>
 
-        <div id="aplayer-fNrIrCAb" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-bKaehYvl" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-fNrIrCAb"),
+            element: document.getElementById("aplayer-bKaehYvl"),
             narrow: false,
             autoplay: false,
             showlrc: false,
