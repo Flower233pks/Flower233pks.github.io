@@ -1798,7 +1798,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffff2f;
+  background: #2bfcf2;
 }
 .feed-link,
 .chat {
@@ -3042,5 +3042,5 @@ ul.breadcrumb li+li:last-child {
   }
 }
 body {
-  background-image: url("/images/background.png");
+  background-image: url("https://cdn.luogu.com.cn/upload/image_hosting/sw597ava.png");
 }
