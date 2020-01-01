@@ -144,14 +144,18 @@
   };
 </script>
 
-  <meta property="og:type" content="article">
-<meta property="og:title" content="李超树">
+  <meta name="description" content="李超树，一种奇怪的数据结构——然而其实是线段树，用于维护平面优势直线。 顺便学了学标记永久化。">
+<meta name="keywords" content="数据结构&#x2F;李超树,数据机构&#x2F;线段树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【学习笔记】李超树">
 <meta property="og:url" content="http://www.orchidany.cf/2019/12/28/李超树/index.html">
 <meta property="og:site_name" content="Orchidany&#39;w blog">
+<meta property="og:description" content="李超树，一种奇怪的数据结构——然而其实是线段树，用于维护平面优势直线。 顺便学了学标记永久化。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-28T08:53:30.839Z">
+<meta property="og:updated_time" content="2019-12-31T01:37:14.728Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="李超树">
+<meta name="twitter:title" content="【学习笔记】李超树">
+<meta name="twitter:description" content="李超树，一种奇怪的数据结构——然而其实是线段树，用于维护平面优势直线。 顺便学了学标记永久化。">
 
 
 
@@ -172,7 +176,7 @@
 </script>
 
   
-  <title>李超树 | Orchidany'w blog</title>
+  <title>【学习笔记】李超树 | Orchidany'w blog</title>
   
 
 
@@ -445,7 +449,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">李超树
+          <h1 class="post-title" itemprop="name headline">【学习笔记】李超树
 
               
             
@@ -476,7 +480,43 @@
           
 
           
+            
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-12-31 09:37:14" itemprop="dateModified" datetime="2019-12-31T09:37:14+08:00">2019-12-31</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/李超树/" itemprop="url" rel="index"><span itemprop="name">李超树</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -531,7 +571,50 @@
       
 
       
-        
+        <p>李超树，一种奇怪的数据结构——然而其实是线段树，用于维护平面优势直线。</p>
+<p>顺便学了学标记永久化。</p>
+<a id="more"></a>
+
+<p>虽然不知道是谁，但是先orz李超233</p>
+<h1 id="1-标记永久化"><a href="#1-标记永久化" class="headerlink" title="$1$ 标记永久化"></a>$1$ 标记永久化</h1><p>似乎李超树不是很好 <code>push_down</code> 的样子，于是去网上学了一发。大概思想就是，线段树区间维护时信息不再打标记，而是选择把标记打在自己身上不再下传。查询的时候一路查下去，记录覆盖在这条路径上的信息，然后基于修改的信息对整个区间的信息合并一下即可。</p>
+<p>然后是瞎写的伪代码？Sumblime 3 真好用，自创语法真有趣233</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//默认区间修改 = 区间的每个单点更新信息 </span></span><br><span class="line">Class Segment_Tree&#123;</span><br><span class="line">	Inform * Tag, Val ;</span><br><span class="line">	<span class="keyword">int</span> : L, R, Mid, Lson, Rson ;</span><br><span class="line">	<span class="function">Function <span class="title">Clear</span><span class="params">()</span> </span>&#123;....&#125; ;</span><br><span class="line">&#125;<span class="comment">//其中 *Tag 是当前点维护信息时打的标记，*Val 是当前节点的信息。</span></span><br><span class="line"></span><br><span class="line">Function[Inform] Merge(Inform * n, Inform * m) &#123;....&#125; ;</span><br><span class="line">Function[<span class="keyword">void</span>] Update(Segment_Tree *T, <span class="keyword">int</span> root, <span class="keyword">int</span> qL, <span class="keyword">int</span> qR, Inform *S)&#123;</span><br><span class="line">	Do_Some_Work(T[root], qL, qR, S) ;</span><br><span class="line">	<span class="keyword">if</span> (T[root] -&gt; L &gt;= qL &amp;&amp; T[root] -&gt; R &lt;= qR)</span><br><span class="line">		<span class="keyword">return</span> T[root].Tag = Merge(S, T[root].tag), <span class="keyword">void</span>() ;  </span><br><span class="line">	<span class="keyword">if</span> (qL &lt;= T[root] -&gt; Mid) </span><br><span class="line">		Update(T, T[root].Lson, qL, qR, S) ;</span><br><span class="line">	<span class="keyword">if</span> (qR &gt; T[root] -&gt; Mid) </span><br><span class="line">		Update(T, T[root].Rson, qL, qR, S) ;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">void</span>() ; </span><br><span class="line">&#125;</span><br><span class="line">Function[Inform] Query(Segment_Tree *T, <span class="keyword">int</span> root, <span class="keyword">int</span> qL, <span class="keyword">int</span> qR, Inform *S)&#123;</span><br><span class="line"><span class="comment">//询问操作，最后一个参数代表一路询问下来的合并标记</span></span><br><span class="line">	Inform * res ; res = EMPTY ; </span><br><span class="line">	<span class="keyword">if</span> (T[root] -&gt; L &gt;= qL &amp;&amp; T[root] -&gt; R &lt;= qR) </span><br><span class="line">		<span class="keyword">return</span> res = Merge(T[root].Val, S) ; </span><br><span class="line">	<span class="keyword">if</span> (qL &lt;= T[root] -&gt; Mid) </span><br><span class="line">		res = Merge(res, Query(T, T[root].Lson, qL, qR, Merge(S, T[root].tag))) ;</span><br><span class="line">	<span class="keyword">if</span> (qR &gt; T[root] -&gt; Mid) </span><br><span class="line">		res = Merge(res, Query(T, T[root].Rson, qL, qR, Merge(S, T[root].tag))) ;</span><br><span class="line">	<span class="keyword">return</span> res ; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-李超树"><a href="#2-李超树" class="headerlink" title="$2$ 李超树"></a>$2$ 李超树</h1><p>首先李超树的最简单操作就是：</p>
+<ul>
+<li>向平面内添加一条直线</li>
+<li>查询覆盖在某个坐标上的直线中，纵坐标值最大/最小值</li>
+<li>$n,m\leq 200,000$</li>
+</ul>
+<p>考虑如何维护这个东西，考虑维护每个点代表区间的<strong>优势直线</strong>，即在大多数区域内<strong>可能</strong>是最优解的那条线——或者，在代表区间的中点是最优解的直线。这么做采用了启发式的思想，保存了有限多的备选最优解。于是就可以保证最后询问的时候，采用标记永久化的思想，取所有覆盖在一个单点上的优势直线的最大值即可，复杂度 $\log n$ 。</p>
+<p>那么考虑怎么维护优势区间。假设区间 $\rm [L,R]$ 的优势直线为 $l$ ，现在插入一条直线 $l’$，开始分类讨论：</p>
+<ul>
+<li><p>如果当前区间的左端和右端都满足 $l’$ 更优，那么直接拿 $l’$ 替代。</p>
+</li>
+<li><p>如果当前取件的左端和右端都满足 $l’$ 更劣，那么 $l’$ 爱滚哪去滚哪去。</p>
+</li>
+<li><p>$\mathrm {slope}(l’)&gt;\mathrm{slope}(l)$</p>
+<ul>
+<li><p>当 $l$ 在中点处的值比 $l’$ 劣时，那么左区间可能要算一波，右区间就一定会是 $l’$ 更优。这个时候为了保证 $l$ 作为潜在的优选方案不丢失，就把 $l’$ 保存在当前区间，把 $l$ 送到自己的左儿子区间。</p>
+</li>
+<li><p>$l’$ 更劣时，那么右区间可能算一波，当前区间的优势直线也不会变，所以只去改右区间即可。</p>
+</li>
+</ul>
+</li>
+<li><p>$\mathrm {slope}(l’)&lt;\mathrm{slope}(l)$</p>
+<ul>
+<li>同理可证，显然，证毕（</li>
+</ul>
+</li>
+</ul>
+<p>于是就上代码，模板题 <code>LG4254 JSOI2008 BlueMarry开公司</code>。注意本题给的直线需要平移一下再用。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> b[N &lt;&lt; <span class="number">2</span>], k[N &lt;&lt; <span class="number">2</span>] ;</span><br><span class="line"><span class="keyword">char</span> s[N] ; <span class="keyword">int</span> m, n, v[N &lt;&lt; <span class="number">2</span>], x, cnt ;</span><br><span class="line"></span><br><span class="line"><span class="function">il <span class="keyword">double</span> <span class="title">val</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> k[id] * (x - <span class="number">1</span>) + b[id] ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> rt, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">double</span> o, p, q, u, s, t ;</span><br><span class="line">    o = val(l, id), p = val(l, v[rt]) ;</span><br><span class="line">    q = val(r, id), u = val(r, v[rt]) ;</span><br><span class="line">    s = val(mid, id), t = val(mid, v[rt]) ;</span><br><span class="line">    <span class="keyword">if</span> (o &lt;= p &amp;&amp; q &lt;= u) <span class="keyword">return</span> <span class="keyword">void</span>() ;</span><br><span class="line">    <span class="keyword">if</span> (o &gt; p &amp;&amp; q &gt; u) <span class="keyword">return</span> v[rt] = id, <span class="keyword">void</span>() ;</span><br><span class="line">    <span class="keyword">if</span> (k[v[rt]] &gt; k[id20])</span><br><span class="line">        <span class="keyword">if</span> (s &lt; t) update(rt &lt;&lt; <span class="number">1</span>, l, mid, id) ;</span><br><span class="line">        <span class="keyword">else</span> update(rt &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, mid + <span class="number">1</span>, r, v[rt]), v[rt] = id ;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">if</span> (s &lt; t) update(rt &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, mid + <span class="number">1</span>, r, id) ;</span><br><span class="line">        <span class="keyword">else</span> update(rt &lt;&lt; <span class="number">1</span>, l, mid, v[rt]), v[rt] = id ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> rt, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">if</span> (l == r) <span class="keyword">return</span> val(x, v[rt]) ;</span><br><span class="line">    <span class="keyword">if</span> (x &lt;= mid)</span><br><span class="line">        <span class="keyword">return</span> max(val(x, v[rt]), query(rt &lt;&lt; <span class="number">1</span>, l, mid, x)) ;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> max(val(x, v[rt]), query(rt &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, mid + <span class="number">1</span>, r, x)) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; m, n = <span class="number">50001</span> ;</span><br><span class="line">    <span class="keyword">while</span> (m --)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>, s + <span class="number">1</span>) ;</span><br><span class="line">        <span class="keyword">if</span> (s[<span class="number">1</span>] == <span class="string">'P'</span>)</span><br><span class="line">            ++ cnt,</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%lf%lf"</span>, &amp;b[cnt], &amp;k[cnt]),</span><br><span class="line">            update(<span class="number">1</span>, <span class="number">1</span>, n, cnt) ;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x),</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, (<span class="keyword">int</span>)query(<span class="number">1</span>, <span class="number">1</span>, n, x) / <span class="number">100</span>) ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-一道例题"><a href="#3-一道例题" class="headerlink" title="$3$ 一道例题"></a>$3$ 一道例题</h1><p>例题就是 <code>HEOI2013 Segment</code> 。插入一条<strong>线段</strong>，维护每个横坐标的优势线段编号。</p>
+<p>发现魔改一下就可以。然后一个坑点就是斜率为 $\inf$ 的线段要特殊处理一下，然而一开始自己直接把这种线段的 $\max val$ 当作 $\inf$ 算了也是很降智。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> il inline</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Inf 19260817.0</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M1 39989</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M2 1000000000</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">double</span> b[N &lt;&lt; <span class="number">2</span>], k[N &lt;&lt; <span class="number">2</span>] ;</span><br><span class="line"><span class="keyword">int</span> L, m, mk, n, v[N &lt;&lt; <span class="number">2</span>], x, cnt ;</span><br><span class="line"></span><br><span class="line"><span class="function">il <span class="keyword">double</span> <span class="title">val</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1.0</span> * x * k[id] + b[id] ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> rt, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> ul, <span class="keyword">int</span> ur, <span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">if</span> (l &gt;= ul &amp;&amp; r &lt;= ur)&#123;</span><br><span class="line">        <span class="keyword">double</span> o, p, q, u, s, t ;</span><br><span class="line">        o = val(l, id), p = val(l, v[rt]) ;</span><br><span class="line">        q = val(r, id), u = val(r, v[rt]) ;</span><br><span class="line">        s = val(mid, id), t = val(mid, v[rt]) ;</span><br><span class="line">        <span class="keyword">if</span> (o &lt;= p &amp;&amp; q &lt;= u) <span class="keyword">return</span> <span class="keyword">void</span>() ;</span><br><span class="line">        <span class="keyword">if</span> (o &gt; p &amp;&amp; q &gt; u) <span class="keyword">return</span> v[rt] = id, <span class="keyword">void</span>() ;</span><br><span class="line">        <span class="keyword">if</span> (k[v[rt]] &gt; k[cnt])</span><br><span class="line">            <span class="keyword">if</span> (s &lt; t) update(rt &lt;&lt; <span class="number">1</span>, l, mid, ul, ur, id) ;</span><br><span class="line">            <span class="keyword">else</span> update(rt &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, mid + <span class="number">1</span>, r, ul, ur, v[rt]), v[rt] = id ;</span><br><span class="line">	    <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">if</span> (s &lt; t) update(rt &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, mid + <span class="number">1</span>, r, ul, ur, id) ;</span><br><span class="line">            <span class="keyword">else</span> update(rt &lt;&lt; <span class="number">1</span>, l, mid, ul, ur, v[rt]), v[rt] = id ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (ul &lt;= mid) update(rt &lt;&lt; <span class="number">1</span>, l, mid, ul, ur, id) ;</span><br><span class="line">    <span class="keyword">if</span> (ur &gt; mid) update(rt &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, mid + <span class="number">1</span>, r, ul, ur, id) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> rt, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line"><span class="comment">//    cout &lt;&lt; l &lt;&lt; " " &lt;&lt; r &lt;&lt; endl ;</span></span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">if</span> (l == r) <span class="keyword">return</span> v[rt] ;</span><br><span class="line">    <span class="keyword">if</span> (x &lt;= mid)&#123;</span><br><span class="line">        <span class="keyword">int</span> id = query(rt &lt;&lt; <span class="number">1</span>, l, mid, x) ;</span><br><span class="line">        <span class="keyword">if</span> (val(x, id) &gt; val(x, v[rt])) <span class="keyword">return</span> id ; <span class="keyword">else</span> <span class="keyword">return</span> v[rt] ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> id = query(rt &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, mid + <span class="number">1</span>, r, x) ;</span><br><span class="line">        <span class="keyword">if</span> (val(x, id) &gt; val(x, v[rt])) <span class="keyword">return</span> id ; <span class="keyword">else</span> <span class="keyword">return</span> v[rt] ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">w</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123; <span class="keyword">return</span> (x + L - <span class="number">1</span>) % M1 + <span class="number">1</span> ; &#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">g</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123; <span class="keyword">return</span> (x + L - <span class="number">1</span>) % M2 + <span class="number">1</span> ; &#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a, e, c, d ;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; m, n = <span class="number">50001</span> ;</span><br><span class="line">    <span class="keyword">while</span> (m --)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;mk) ;</span><br><span class="line">        <span class="keyword">if</span> (mk)&#123;</span><br><span class="line">            ++ cnt ;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d%d%d"</span>, &amp;a, &amp;e, &amp;c, &amp;d) ;</span><br><span class="line">            a = w(a), e = g(e), c = w(c), d = g(d) ;</span><br><span class="line"><span class="comment">//            cout &lt;&lt; a &lt;&lt; " " &lt;&lt; e &lt;&lt; " " &lt;&lt; c &lt;&lt; " " &lt;&lt; d &lt;&lt; endl ;</span></span><br><span class="line">            <span class="keyword">if</span> (a &gt; c) swap(a, c), swap(d, e) ;</span><br><span class="line">            <span class="keyword">if</span> (c == a) k[cnt] = <span class="number">0</span>, b[cnt] = max(d, e) ;</span><br><span class="line">            <span class="keyword">else</span> k[cnt] = (<span class="keyword">double</span>)(d - e) / (<span class="keyword">double</span>)(c - a),</span><br><span class="line">                 b[cnt] = <span class="number">1.0</span> * d - <span class="number">1.0</span> * c * k[cnt] ;</span><br><span class="line"><span class="comment">//            cout &lt;&lt; k[cnt] &lt;&lt; " " &lt;&lt; b[cnt] &lt;&lt; endl ;</span></span><br><span class="line">            update(<span class="number">1</span>, <span class="number">1</span>, n, a, c, cnt) ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x), x = w(x),</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, L = query(<span class="number">1</span>, <span class="number">1</span>, n, x)) ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
 
@@ -556,6 +639,17 @@
 
     <footer class="post-footer">
       
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构-李超树/" rel="tag"><i class="fa fa-tag"></i> 数据结构/李超树</a>
+          
+            <a href="/tags/数据机构-线段树/" rel="tag"><i class="fa fa-tag"></i> 数据机构/线段树</a>
+          
+        </div>
+      
 
       
       
@@ -565,8 +659,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/28/对抗搜索/" rel="next" title="对抗搜索">
-                <i class="fa fa-chevron-left"></i> 对抗搜索
+              <a href="/2019/12/28/对抗搜索/" rel="next" title="【学习笔记】对抗搜索与Alpha-Beta剪枝">
+                <i class="fa fa-chevron-left"></i> 【学习笔记】对抗搜索与Alpha-Beta剪枝
               </a>
             
           </div>
@@ -575,8 +669,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2050/12/31/随想·目次表/" rel="prev" title="随想 · 目次表">
-                随想 · 目次表 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/12/30/CFR250/" rel="prev" title="【题解】Cf Round 250">
+                【题解】Cf Round 250 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -889,8 +983,17 @@ if(canvas.getContext){
       
     
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
     
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
     
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -908,7 +1011,7 @@ if(canvas.getContext){
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-count">77</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -975,7 +1078,13 @@ if(canvas.getContext){
         
           
         
-        <span class="site-state-item-count">25</span>
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">categories</span>
         </a>
       </div>
@@ -1108,7 +1217,19 @@ if(canvas.getContext){
         
           
         
-        <span class="site-state-item-count">58</span>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">tags</span>
         </a>
       </div>
@@ -1139,6 +1260,23 @@ if(canvas.getContext){
       </div>
     
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+    
+            
+            
+            
+            
+    
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-标记永久化"><span class="nav-number">1.</span> <span class="nav-text">$1$ 标记永久化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-李超树"><span class="nav-number">2.</span> <span class="nav-text">$2$ 李超树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-一道例题"><span class="nav-number">3.</span> <span class="nav-text">$3$ 一道例题</span></a></li></ol></div>
+            
+    
+          </div>
+        </div>
+      <!--/noindex-->
+      
     
       
         <div class="back-to-top motion-element">
@@ -1159,7 +1297,7 @@ if(canvas.getContext){
     
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -1188,7 +1326,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共162.7k字</span>
+  <span class="post-count">博客全站共174.9k字</span>
 </div>
 
         
