@@ -573,7 +573,6 @@
       
         <p>主要是 <code>CSP-S 2019</code> 之前的杂题整理，天知道我为了整理这些东西要花费怎样漫长的时间去 read back 我的提交记录……</p>
 <a id="more"></a>
-
 <hr>
 <p>1、<a href="https://www.luogu.com.cn/problem/P1357" target="_blank" rel="noopener">LG5317 花园</a></p>
 <p>发现一共只有两种方格，并且转移只跟 $\rm M$ 有关，于是考虑状压。考虑 $g(s, t)$ 表示从状态 $s$ 转移到 $t$ 的方案数。其中转移指的是向右扩展一格。</p>
@@ -584,7 +583,8 @@
 <li><p>$\rm Algorithm~1$</p>
 <ul>
 <li>发现可以容斥，且 $\mu$ 函数的性质在于，$\mu (x) = (-1)^k$，当且仅当 $x$ 不含平方因子且 $x$ 的不同素因子个数为 $k$。所以就考虑先二分，二分完了求一下 </li>
-<li>$$<br>\sum _{i=1}^{\sqrt n} \mu(i)\lfloor \frac{n}{i^2}\rfloor<br>$$<ul>
+<li><script type="math/tex; mode=display">
+\sum _{i=1}^{\sqrt n} \mu(i)\lfloor \frac{n}{i^2}\rfloor</script><ul>
 <li>就变成傻题了。复杂度 $T \cdot \sqrt n \log n$</li>
 </ul>
 </li>
@@ -597,8 +597,8 @@
 <ul>
 <li><p>根据 $\mu$ 的性质，发现似乎只有 $\mu(x) = 0$ 时，$x$ 才会被讨厌。所以其实二分求的就是 </p>
 <ul>
-<li><p>$$<br>\sum _{i=1}^{x}\mu^2(x)\leq K<br>$$</p>
-<p>然后我们发现这东西可以直接杜教筛。于是复杂度就变成了 $T\cdot n^{\frac{2}{3}} \log n$。然而实际记忆化了会更快。</p>
+<li><script type="math/tex; mode=display">
+\sum _{i=1}^{x}\mu^2(x)\leq K</script><p>然后我们发现这东西可以直接杜教筛。于是复杂度就变成了 $T\cdot n^{\frac{2}{3}} \log n$。然而实际记忆化了会更快。</p>
 </li>
 </ul>
 </li>
@@ -1291,7 +1291,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共176.8k字</span>
+  <span class="post-count">博客全站共169.2k字</span>
 </div>
 
         

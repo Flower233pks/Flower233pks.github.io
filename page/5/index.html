@@ -951,7 +951,9 @@
 
       
         
-          <p><strong>Berlekamp-Massey</strong>算法用于在$O(n^2)$的时间内求解数列的递推式。形式化地讲，给定$a_i(i=0,1,2,3…n-1)$，求一组$b_j(j=0,1,2,3…m)$，满足：<br>$$<br>\forall i\geq m, a_i=\sum <em>{j=0}^{m} a</em>{i-j}b_i<br>$$<br>其中或许会有条件限制$m$最小。</p>
+          <p><strong>Berlekamp-Massey</strong>算法用于在$O(n^2)$的时间内求解数列的递推式。形式化地讲，给定$a_i(i=0,1,2,3…n-1)$，求一组$b_j(j=0,1,2,3…m)$，满足：</p>
+<script type="math/tex; mode=display">
+\forall i\geq m, a_i=\sum _{j=0}^{m} a_{i-j}b_i</script><p>其中或许会有条件限制$m$最小。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1153,10 +1155,14 @@
         
           <p>给定$F(x)$，求$G(x)$满足$G(x)\cdot F(x) \equiv1~(\bmod x^n)$.</p>
 <p>不妨考虑$G’(x)\cdot F(x) =1~(\bmod x^{\frac{n}{2}})$</p>
-<p>则有如下：<br>$$<br>\because G’\cdot F =1<del>(\bmod x^{\frac{n}{2}})\\ ~G\cdot F \equiv1</del>(\bmod x^{\frac{n}{2}})\<br>\therefore G’ -G\equiv0<del>(\bmod x^{\frac{n}{2}})\\<br>\Longrightarrow G’^2+G^2-2G’G\equiv0</del>(\bmod x^{n})<br>$$</p>
-<p>两端同时卷上一个$F(x)$则有：</p>
-<p>$$<br>\because F\cdot G\equiv1<del>(\bmod x^n)\<br>\therefore G\equiv 2G’-FG’^2</del>(\bmod x^n)<br>$$</p>
-<p>以此为递推式即可递推出$G(x)$的值，时间复杂度$O(n\log^2 n)$.</p>
+<p>则有如下：</p>
+<script type="math/tex; mode=display">
+\because G'\cdot F =1~(\bmod x^{\frac{n}{2}})\\\ ~G\cdot F \equiv1~(\bmod x^{\frac{n}{2}})\\\
+\therefore G' -G\equiv0~(\bmod x^{\frac{n}{2}})\\\ 
+\Longrightarrow G'^2+G^2-2G'G\equiv0~(\bmod x^{n})</script><p>两端同时卷上一个$F(x)$则有：</p>
+<script type="math/tex; mode=display">
+\because F\cdot G\equiv1~(\bmod x^n)\\\
+\therefore G\equiv 2G'-FG'^2~(\bmod x^n)</script><p>以此为递推式即可递推出$G(x)$的值，时间复杂度$O(n\log^2 n)$.</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -2263,7 +2269,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-15 15:04:28" itemprop="dateModified" datetime="2019-12-15T15:04:28+08:00">2019-12-15</time>
+                <time title="Modified: 2020-01-02 18:59:23" itemprop="dateModified" datetime="2020-01-02T18:59:23+08:00">2020-01-02</time>
               </span>
             
           
@@ -2995,7 +3001,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共176.8k字</span>
+  <span class="post-count">博客全站共169.2k字</span>
 </div>
 
         

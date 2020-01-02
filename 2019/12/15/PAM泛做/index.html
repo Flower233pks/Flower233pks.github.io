@@ -563,22 +563,24 @@
       
         <p>都是简单的PAM习题</p>
 <a id="more"></a>
-
 <h1 id="1-LG5496-【模板】回文自动机"><a href="#1-LG5496-【模板】回文自动机" class="headerlink" title="$1$ LG5496 【模板】回文自动机"></a>$1$ LG5496 【模板】回文自动机</h1><blockquote>
 <p>对于 $s$ 的每个位置，请求出以该位置结尾的回文子串个数。</p>
 <p>$|s|\leq 1e6$</p>
 </blockquote>
 <p>然后就是PAM的板子题<del>咋感觉好像没有不是很板的PAM题呢</del></p>
-<p>考虑对自动机上每个点维护一个出现次数$cnt$，那么考虑串里面的任何一个前缀的回文后缀都是其最长回文后缀的回文后缀，所以就可以有转移<br>$$<br>cnt_{p}=cnt_{fail_p}+1<br>$$<br>然后就没有然后了。</p>
+<p>考虑对自动机上每个点维护一个出现次数$cnt$，那么考虑串里面的任何一个前缀的回文后缀都是其最长回文后缀的回文后缀，所以就可以有转移</p>
+<script type="math/tex; mode=display">
+cnt_{p}=cnt_{fail_p}+1</script><p>然后就没有然后了。</p>
 <h1 id="2-APIO2014-回文串"><a href="#2-APIO2014-回文串" class="headerlink" title="$2$ [APIO2014]回文串"></a>$2$ [APIO2014]回文串</h1><blockquote>
 <p>给你一个由小写拉丁字母组成的字符串$s$。我们定义$s$的一个子串的存在值为这个子串在 $s$中出现的次数乘以这个子串的长度。</p>
 <p>对于给你的这个字符串$s$，求所有回文子串中的最大存在值。</p>
 <p>$|s|\leq 1e6$</p>
 </blockquote>
-<p>感觉还是比较妙的……或许也算是PAM的基本操作，就是求出每个回文子串的出现次数。考虑一个子串出现第$t$次的时候（$t&gt;1$），一定是作为其他串的回文后缀出现，而显然<strong>“串的最长回文后缀唯一”</strong>的逆命题<strong>“任何串会唯一作为其他串的最长回文后缀”</strong>也是成立的。故若记录以$u$为$fail$的所有子串集合为$\rm S(u)$，那可以直接用<br>$$<br>\rm f_u=ctn_u+\sum_{v\in S(u)}f_v<br>$$<br>其中ctn为单独出现的次数，因为可能有多个子串$s$都不作为其他串的最长回文后缀。</p>
+<p>感觉还是比较妙的……或许也算是PAM的基本操作，就是求出每个回文子串的出现次数。考虑一个子串出现第$t$次的时候（$t&gt;1$），一定是作为其他串的回文后缀出现，而显然<strong>“串的最长回文后缀唯一”</strong>的逆命题<strong>“任何串会唯一作为其他串的最长回文后缀”</strong>也是成立的。故若记录以$u$为$fail$的所有子串集合为$\rm S(u)$，那可以直接用</p>
+<script type="math/tex; mode=display">
+\rm f_u=ctn_u+\sum_{v\in S(u)}f_v</script><p>其中ctn为单独出现的次数，因为可能有多个子串$s$都不作为其他串的最长回文后缀。</p>
 <p>emmm一句话概括，PAM处理子串问题的时候有个特性，就是由于是递减式查询，所以一个回文串不会同时作为回文串和其他串的最长回文后缀出现。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = P.sz ; i ; i --) </span><br><span class="line">    P.f[P.pre[i]] += P.f[i], ans = max(ans, <span class="number">1l</span>l * P.len[i] * P.f[i]) ;</span><br></pre></td></tr></table></figure>
-
 <p><del>哪那么多P话，就是背啊</del></p>
 <h1 id="3-LG5555-秩序魔咒"><a href="#3-LG5555-秩序魔咒" class="headerlink" title="$3$ LG5555 秩序魔咒"></a>$3$ LG5555 秩序魔咒</h1><blockquote>
 <p>求两个串的最长公共回文子串以及该长度的出现次数。</p>
@@ -587,7 +589,6 @@
 <p><del>恭喜发现一个新套路</del></p>
 <p>观察起始$\rm PAM$本身是一棵树，添上了一堆奇奇怪怪的$fail$边才变成有向图。所以考虑，如果从奇根或者偶根同时向下dfs，走同样的转移边，那么一定可以到达同样的状态。所以考虑建两个$\rm PAM$，一起dfs，然后算个答案即可。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (ans == P.len[x]) res ++ ;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (ans &lt; P.len[x]) res = <span class="number">1</span>, ans = P.len[x] ; </span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= <span class="number">26</span> ; ++ i)</span><br><span class="line">		<span class="keyword">if</span> (P.trie[x][i] &amp;&amp; Q.trie[y][i]) </span><br><span class="line">            dfs(P.trie[x][i], Q.trie[y][i]) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>By the way，奇根/偶根都要$dp$一次。</p>
 <h1 id="4-JSOI2013-快乐的-JYY"><a href="#4-JSOI2013-快乐的-JYY" class="headerlink" title="$4$ [JSOI2013]快乐的 JYY"></a>$4$ [JSOI2013]快乐的 JYY</h1><blockquote>
 <p>求两个串的不同公共回文串的个数，其中不同意思是下标不同。</p>
@@ -595,7 +596,6 @@
 </blockquote>
 <p>……然而这就是前两个题结合起来。考虑先$dp$一遍算出来每个回文子串的出现次数，然后dfs，乘法原理计数，然后就做完了。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (x + y &gt; <span class="number">2</span>) ans += <span class="number">1l</span>l * P.f[x] * Q.f[y] ; </span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= <span class="number">26</span> ; ++ i)</span><br><span class="line">		<span class="keyword">if</span> (P.trie[x][i] &amp;&amp; Q.trie[y][i]) </span><br><span class="line">            dfs(P.trie[x][i], Q.trie[y][i]) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	P.Init(), Q.Init() ;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; (S + <span class="number">1</span>) &gt;&gt; (T + <span class="number">1</span>) ; </span><br><span class="line">	N = <span class="built_in">strlen</span>(S + <span class="number">1</span>), M = <span class="built_in">strlen</span>(T + <span class="number">1</span>) ;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= N ; ++ i) P.Insert(S[i] - <span class="string">'A'</span> + <span class="number">1</span>, i, S) ;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= M ; ++ i) Q.Insert(T[i] - <span class="string">'A'</span> + <span class="number">1</span>, i, T) ;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = P.sz ; i ; -- i) P.f[P.pre[i]] += P.f[i] ; </span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = Q.sz ; i ; -- i) Q.f[Q.pre[i]] += Q.f[i] ; </span><br><span class="line">	dfs(<span class="number">1</span>, <span class="number">1</span>) ; dfs(<span class="number">0</span>, <span class="number">0</span>) ; <span class="built_in">cout</span> &lt;&lt; ans&lt;&lt; <span class="built_in">endl</span> ; <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h1 id="5-闲扯"><a href="#5-闲扯" class="headerlink" title="$5$ 闲扯"></a>$5$ 闲扯</h1><p>写模板题真是让人感到空虚……</p>
 
       
@@ -1303,7 +1303,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共176.8k字</span>
+  <span class="post-count">博客全站共169.2k字</span>
 </div>
 
         

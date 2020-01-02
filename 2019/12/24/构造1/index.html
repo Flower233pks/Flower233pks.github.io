@@ -573,22 +573,26 @@
       
         <p>从网课和 <code>uoj</code> 群里的课件扒出来的构造题，都挺(不)好(会)的(做)。</p>
 <a id="more"></a>
-
-
 <h3 id="1-神秘的题目"><a href="#1-神秘的题目" class="headerlink" title="1 神秘的题目"></a>1 神秘的题目</h3><p>设 $f_A$ 表示 $A$ 的本质不同子串个数<br>给出 $x, y$，要求构造出两个字符串 $A, B$<br>满足：<br>$f_A = x , f_B = y , f_{A+B} = x + y$</p>
 <p>$x, y ≤ 5000$</p>
 <hr>
 <p>考虑 $x$ 个 $a$，$y$ 个 $a$ ，然后拼起来就好……</p>
 <h3 id="2-CF743C"><a href="#2-CF743C" class="headerlink" title="2 CF743C"></a>2 CF743C</h3><p>给出 n，构造出 x, y, z，满足：</p>
-<p>$$<br>\frac{2}{n} = \frac{1}{x}+\frac{1}{y}+\frac{1}{z}\<br>x\not= y, x\not= z, y\not= z<br>$$<br>无解输出 −1<br>$n ≤ 10^4$</p>
+<script type="math/tex; mode=display">
+\frac{2}{n} = \frac{1}{x}+\frac{1}{y}+\frac{1}{z}\\\
+x\not= y, x\not= z, y\not= z</script><p>无解输出 −1<br>$n ≤ 10^4$</p>
 <hr>
-<p>考虑通分（分时裂项），即<br>$$<br>\frac{1}{n}-\frac{1}{n+1}=\frac{1}{n(n+1)}\<br>\frac{1}{n}=\frac{1}{n+1}+ \frac{1}{n(n+1)}\<br>\frac{2}{n}=\frac{1}{n} + \frac{1}{n+1}+ \frac{1}{n(n+1)}<br>$$<br>然后就做完了。</p>
+<p>考虑通分（分时裂项），即</p>
+<script type="math/tex; mode=display">
+\frac{1}{n}-\frac{1}{n+1}=\frac{1}{n(n+1)}\\\
+\frac{1}{n}=\frac{1}{n+1}+ \frac{1}{n(n+1)}\\\
+\frac{2}{n}=\frac{1}{n} + \frac{1}{n+1}+ \frac{1}{n(n+1)}</script><p>然后就做完了。</p>
 <p>注意1要特判。</p>
 <h3 id="3-CF359B"><a href="#3-CF359B" class="headerlink" title="3 CF359B"></a>3 CF359B</h3><p>给出 $n, k , 2k ≤ n$，构造出 $2n$ 的一个排列，满足：</p>
-<p>$$<br>∑^n_{i=1} |a_{2i−1} − a_{2i}| − |∑^n_{i=1}(a_{2i−1} − a_{2i})| = 2k<br>$$</p>
-<p>$n ≤ 50000$</p>
+<script type="math/tex; mode=display">
+∑^n_{i=1} |a_{2i−1} − a_{2i}| − |∑^n_{i=1}(a_{2i−1} − a_{2i})| = 2k</script><p>$n ≤ 50000$</p>
 <hr>
-<p>寄几想了一种构造，就是$a_{i+1} = a_i+k,<del>i=2p,</del>p \in \mathbb{N+}$，然后随便两次交换两项就好了。然而并不对，因为这样构造出的结果并不合法；于是遂决定改成$a_{i+1} = a_i+2k,<del>i=2p,</del>p \in \mathbb{N+}$，但也不对，单次交换的步长太长了，是$4k$。于是我又想能否有什么诡异的交换方法可以补救回来$2k$……失败了qaq</p>
+<p>寄几想了一种构造，就是$a_{i+1} = a_i+k,~i=2p,~p \in \mathbb{N+}$，然后随便两次交换两项就好了。然而并不对，因为这样构造出的结果并不合法；于是遂决定改成$a_{i+1} = a_i+2k,~i=2p,~p \in \mathbb{N+}$，但也不对，单次交换的步长太长了，是$4k$。于是我又想能否有什么诡异的交换方法可以补救回来$2k$……失败了qaq</p>
 <p>然而其实很简单，我们只要把步长控制为$1$就一定能凑出来。所以一开始先令$a_i=a_{i+1}+1$这种感觉，然后交换$k$次即可。</p>
 <h3 id="color-violet-4-rm-CF-it-512E"><a href="#color-violet-4-rm-CF-it-512E" class="headerlink" title="$\color{violet}{4~ \rm{CF}\it{512E}}$"></a>$\color{violet}{4~ \rm{CF}\it{512E}}$</h3><p>对于一个正 n 边形，可以用 n − 3 条边分成 n − 2 个三角形<br>给出两种划分，你需要进行若干次操作把第一种划分变成第二种划分<br>每次操作选择一个四边形删去它的对角线，连另外一条对角线<br>n ≤ 1000，操作次数不超过 20000</p>
 <hr>
@@ -609,7 +613,13 @@
 <p>构造这张图，使之点数 $&lt;300$，无自环和重边，每条边的权值 $\leq 100$， 权值可以是数也可以是 $\rm X,Y$，并给出 $\rm S,T$ 。</p>
 </blockquote>
 <p>设 $g_{i,j}$ 表示从 $\rm S$ 到 $\rm T$ ，经过了包含 $i$ 条 $\rm X$ 边， $j$ 条 $\rm Y$ 边的路径，其它边的边权最小和。</p>
-<p>那么发现这东西可以这么转移出 $[d_{i,j}]$来<br>$$<br>d_{i,j}= \min_{p,q}{(p\cdot i+q\cdot j + g_{p,q})}<br>$$<br>然后可以得到松弛条件<br>$$<br>\forall p,q, \quad \exists~ d_{i,j}\leq p\cdot i+q\cdot j+g_{p,q}<br>$$<br>移项可以得到<br>$$<br>g_{p,q}=\max_{i,j}{(d_{i,j}-p\cdot i - q\cdot j)}<br>$$<br>于是考虑求出 $g $ ，之后反推出 $[d_{i,j}]’$ 观察是否吻合。吻合则考虑根据经过的 $\rm X,Y$ 连边即可。</p>
+<p>那么发现这东西可以这么转移出 $[d_{i,j}]$来</p>
+<script type="math/tex; mode=display">
+d_{i,j}= \min_{p,q}{(p\cdot i+q\cdot j + g_{p,q})}</script><p>然后可以得到松弛条件</p>
+<script type="math/tex; mode=display">
+\forall p,q, \quad \exists~ d_{i,j}\leq p\cdot i+q\cdot j+g_{p,q}</script><p>移项可以得到</p>
+<script type="math/tex; mode=display">
+g_{p,q}=\max_{i,j}{(d_{i,j}-p\cdot i - q\cdot j)}</script><p>于是考虑求出 $g $ ，之后反推出 $[d_{i,j}]’$ 观察是否吻合。吻合则考虑根据经过的 $\rm X,Y$ 连边即可。</p>
 <h3 id="7-ARC-095F"><a href="#7-ARC-095F" class="headerlink" title="$7$ ARC 095F"></a>$7$ ARC 095F</h3><blockquote>
 <p>给定一棵树 $\rm T$, 要求构造一个排列 $p$ .</p>
 <p>对于每一个 $p_i$ ，找到最大的 $j$ 使得 $p_j&lt;p_i$，然后在 $i,j$ 间连边。</p>
@@ -636,7 +646,9 @@
 <p>$1\leq n\leq 10000$</p>
 </blockquote>
 <p>发现可以同除以 $k$ ，于是就变成两两互质了，于是 $4$ 个数中至多 $1$ 个偶数。</p>
-<p>同时发现一个<del>鬼能发现的</del>性质，就是相邻两个奇数一定互质，那么就构造<br>$$<br>\mathrm{S}:{6i-1,6i-3,6i-5,6i-4 }<br>$$<br>可知它们互质。然后就没了。</p>
+<p>同时发现一个<del>鬼能发现的</del>性质，就是相邻两个奇数一定互质，那么就构造 </p>
+<script type="math/tex; mode=display">
+\mathrm{S}:\{6i-1,6i-3,6i-5,6i-4 \}</script><p>可知它们互质。然后就没了。</p>
 <h3 id="9-CF-527D"><a href="#9-CF-527D" class="headerlink" title="$9$ CF 527D"></a>$9$ CF 527D</h3><blockquote>
 <p>每个元素有一个 $a_i$ 一个 $b_i$ .</p>
 <p>求一个最大的点集使得 $\forall p,q\in \mathrm{S},\quad |a_p-a_q|\geq b_p+b_q$</p>
@@ -667,8 +679,13 @@
 <p>要求 $\deg(f)\leq 60000$</p>
 <p>$k\leq 30000$<br>首先发现只要对 $0\sim k-1$ 成立那么就满足条件。 <del>然后就变成傻题了，分治FFT！分治FFT！</del></p>
 </blockquote>
-<p>然而分治FFT会T。不妨令 $q\geq \varphi(k)$，则由于扩展欧拉定理有：<br>$$<br>x^q\equiv x^{q\bmod \varphi(k)+\varphi(k)}(\mod k)<br>$$<br>那么如果令 $v=q+\varphi(k)$，就会有</p>
-<p>$$<br>\begin{aligned}<br>x^v &amp; \equiv x^{v\bmod \varphi(k)+\varphi(k)} (\bmod k) \\ &amp;\equiv x^{(q\bmod \varphi(k)+\varphi(k) \bmod \varphi(k))\bmod \varphi(k) +\varphi(k)} (\bmod k)\\ &amp; \equiv x^{q\bmod \varphi(k)+\varphi(k)}(\bmod k)\\ &amp; \equiv x^q(\bmod k)<br>\end{aligned}<br>$$<br>然后就构造第 $\varphi(k)$ 项系数为 $k-1$，第 $2\cdot \varphi(k)$ 项系数为 $1$ 即可。</p>
+<p>然而分治FFT会T。不妨令 $q\geq \varphi(k)$，则由于扩展欧拉定理有：</p>
+<script type="math/tex; mode=display">
+x^q\equiv x^{q\bmod \varphi(k)+\varphi(k)}(\mod k)</script><p>那么如果令 $v=q+\varphi(k)$，就会有</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+x^v & \equiv x^{v\bmod \varphi(k)+\varphi(k)} (\bmod k) \\\ &\equiv x^{(q\bmod \varphi(k)+\varphi(k) \bmod \varphi(k))\bmod \varphi(k) +\varphi(k)} (\bmod k)\\\ & \equiv x^{q\bmod \varphi(k)+\varphi(k)}(\bmod k)\\\ & \equiv x^q(\bmod k)
+\end{aligned}</script><p>然后就构造第 $\varphi(k)$ 项系数为 $k-1$，第 $2\cdot \varphi(k)$ 项系数为 $1$ 即可。</p>
 
       
     </div>
@@ -1379,7 +1396,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共176.8k字</span>
+  <span class="post-count">博客全站共169.2k字</span>
 </div>
 
         

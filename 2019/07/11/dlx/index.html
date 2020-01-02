@@ -573,7 +573,6 @@
       
         <p>“<br>在一个全集$X$中若干子集的集合为$S$，精确覆盖（$\boldsymbol{Exact~Cover}$）是指，$S$的子集$S*$，满足$X$中的每一个元素在$S*$中恰好出现一次。在计算机科学中，精确覆盖问题指找出这样的一种覆盖，或证明其不存在。<br>”</p>
 <a id="more"></a>
-
 <h1 id="0x01-精准覆盖问题"><a href="#0x01-精准覆盖问题" class="headerlink" title="$0x01$ 精准覆盖问题"></a>$0x01$ 精准覆盖问题</h1><p>……其实是一种决策问题，给定$n$行长度为$m$的$0,1$序列，要求选出一些行，使得每一列有且仅有一个$1$，这就是精准覆盖问题。</p>
 <p>诚然，我搜索贼菜，所以暂且不考虑爆搜，引进一种叫做“X算法”的东西，其本质上是每次选取一行，之后删掉所有与这行冲突的行，同时删掉与这行冲突的列，成为一个更小的矩阵，迭代下去。如果什么时候删没了，就说明是一种可行解；否则恢复原来的状态。</p>
 <p>我们思考这种简洁做法的流程，发现朴素的删除与恢复无非就是将矩阵的这一个元素由$0$或$1$赋值成$-1$，记录一下状态回溯的时候再赋值回去，整个过程十分地漫长且繁复。而所谓所谓的”<strong>舞蹈链算法</strong>$\rm{DLX~(Dancing-Links ~X ~Algorithm)}$“算法则是专门用来加速这一过程。</p>
@@ -583,21 +582,16 @@
 <p>前$\text{m+1}$个元素，大概就是列标元素（$m$个）左右连成一片，最左边的$0$号元素用来判断是否$\text{worked-out}$整个矩阵，和所有列标元素串成一条左右连通的链表。然后剩下的的元素就是真实存在的元素…该怎么连怎么连那种感觉…</p>
 <p>那么每个元素记录$6$个值，上下左右和行标列标。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> l, r, u, d, co, ro ;</span><br><span class="line">&#125;B[MAX &lt;&lt; <span class="number">1</span>] ;</span><br></pre></td></tr></table></figure>
-
 <p>初始化</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; N &gt;&gt; M ; </span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt;= M ; ++ i) B[i].l = i - <span class="number">1</span>, B[i].r = i + <span class="number">1</span>, B[i].u = B[i].d = i ;</span><br><span class="line">	B[M].r = <span class="number">0</span>, B[<span class="number">0</span>].l = M, cnt = M, <span class="built_in">memset</span>(Ro, <span class="number">-1</span>, <span class="keyword">sizeof</span>(Ro))  ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>其中$R_o[]$数组记录每一行的第一个元素（第一个加进来的元素</p>
 <p>然后<code>Insert</code>函数用于插入……毕竟是链表嘛<del>，就要有个链表的样子</del></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Insert</span><span class="params">(<span class="keyword">int</span> R, <span class="keyword">int</span> C)</span></span>&#123;</span><br><span class="line">	Cs[C] ++, B[++ cnt].ro = R, B[cnt].co = C ;</span><br><span class="line">	B[cnt].u = C, B[cnt].d = B[C].d, B[C].d = B[B[C].d].u = cnt ; </span><br><span class="line">	<span class="keyword">if</span> (Ro[R] &lt; <span class="number">0</span>) Ro[R] = B[cnt].l = B[cnt].r = cnt ; </span><br><span class="line">	<span class="keyword">else</span> B[cnt].l = B[Ro[R]].l, B[cnt].r = Ro[R], B[Ro[R]].l = B[B[Ro[R]].l].r = cnt ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>然后$C_s[]$数组用来记录每一列的元素个数，用来剪枝。</p>
 <p>然后就是删除和恢复，都是以列为参数的函数，也都是很平凡的操作。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Del</span><span class="params">(<span class="keyword">int</span> C)</span></span>&#123;</span><br><span class="line">	B[B[C].l].r = B[C].r, B[B[C].r].l = B[C].l ; </span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = B[C].d ; i != C ; i = B[i].d)  </span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = B[i].r ; j != i ; j = B[j].r)</span><br><span class="line">			B[B[j].d].u = B[j].u, B[B[j].u].d = B[j].d, Cs[B[j].co] -- ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Back</span><span class="params">(<span class="keyword">int</span> C)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = B[C].u ; i != C ; i = B[i].u)  </span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = B[i].l ; j != i ; j = B[j].l)</span><br><span class="line">			B[B[j].d].u = j, B[B[j].u].d = j, Cs[B[j].co] ++ ;</span><br><span class="line">	B[B[C].l].r = C, B[B[C].r].l = C ;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>然后是主函数</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">dance</span><span class="params">(<span class="keyword">int</span> step)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (!B[<span class="number">0</span>].r)&#123; <span class="keyword">return</span> (<span class="keyword">bool</span>)(ans = step) ; &#125; <span class="keyword">int</span> now_c = B[<span class="number">0</span>].r ; </span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = B[<span class="number">0</span>].r ; i ; i = B[i].r) </span><br><span class="line">		now_c = Cs[i] &lt; Cs[now_c] ? i : now_c ; </span><br><span class="line">	Del(now_c) ; </span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = B[now_c].d ; i != now_c ; i = B[i].d) &#123;</span><br><span class="line">		Ans[step] = B[i].ro ; <span class="keyword">for</span>(<span class="keyword">int</span> j = B[i].r ; j != i ; j = B[j].r) Del(B[j].co) ;</span><br><span class="line">		<span class="keyword">if</span> (dance(step + <span class="number">1</span>)) <span class="keyword">return</span> <span class="number">1</span> ;  <span class="keyword">for</span>(<span class="keyword">int</span> j = B[i].l ; j != i ; j = B[j].l) Back(B[j].co) ;</span><br><span class="line"> 	&#125;</span><br><span class="line"> 	Back(now_c) ; <span class="keyword">return</span> <span class="number">0</span> ; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>有个小剪枝，就是刚才说的$C_s[]$。如果每次从含有最少$1$的那一列开始删，似乎可以快好几倍。</p>
 <p>我发现整理算法的文章写起来真是难受啊，还是意识流比较管用。</p>
 <p>最后是全部的程序（<a href="https://www.luogu.org/problemnew/show/P4929" target="_blank" rel="noopener">$Luogu4929$</a>）：</p>
@@ -644,8 +638,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/11/8/" rel="next" title="随想八 · 逃吧">
-                <i class="fa fa-chevron-left"></i> 随想八 · 逃吧
+              <a href="/2019/07/11/dlx2/" rel="next" title="【学习笔记】用舞蹈链(DLX)解决一类数独问题">
+                <i class="fa fa-chevron-left"></i> 【学习笔记】用舞蹈链(DLX)解决一类数独问题
               </a>
             
           </div>
@@ -654,8 +648,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/11/dlx2/" rel="prev" title="【学习笔记】用舞蹈链(DLX)解决一类数独问题">
-                【学习笔记】用舞蹈链(DLX)解决一类数独问题 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/11/NOIP2017/" rel="prev" title="【赛题整理】NOIP2017泛做">
+                【赛题整理】NOIP2017泛做 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1307,7 +1301,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共176.8k字</span>
+  <span class="post-count">博客全站共169.2k字</span>
 </div>
 
         

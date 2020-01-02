@@ -576,13 +576,14 @@
         <p>校内模拟赛选整</p>
 <p>大概难度都是TG里面$2$~$3$左右的。</p>
 <a id="more"></a>
-
 <h2 id="A"><a href="#A" class="headerlink" title="$A$"></a>$A$</h2><blockquote>
 <p>给定直线上$n\leq 2000$个建筑的坐标，两种覆盖方式，$A:$覆盖长度为$L$，可以用$p$次；$B$：覆盖长度为$2L$，可以用$q$次。求最小的$L$.</p>
 </blockquote>
 <hr>
 <p>首先就是可以知道$p,q$可以缩到$p+q\leq n$，否则答案就是$1$。</p>
-<p>之后考虑二分一个$L$，$check$其正确性。$check$时感觉贪心并不是很好贪，可能会有比较妙的贪心，但这个地方选择一种更加稳妥的$dp$。考虑$f_{i,j}$表示两种覆盖分别用了$i,j$个最多能覆盖到哪个建筑，则<br>$$<br>f_{i,j}=\max(go_p[f_{i-1,j}+1], go_q[f_{i,j-1}+1])<br>$$<br>其中$go_x[P]$表示在位置$P$使用第$x$种覆盖能够覆盖多少建筑。于是最后复杂度$O(n^2\log n)$.</p>
+<p>之后考虑二分一个$L$，$check$其正确性。$check$时感觉贪心并不是很好贪，可能会有比较妙的贪心，但这个地方选择一种更加稳妥的$dp$。考虑$f_{i,j}$表示两种覆盖分别用了$i,j$个最多能覆盖到哪个建筑，则</p>
+<script type="math/tex; mode=display">
+f_{i,j}=\max(go_p[f_{i-1,j}+1], go_q[f_{i,j-1}+1])</script><p>其中$go_x[P]$表示在位置$P$使用第$x$种覆盖能够覆盖多少建筑。于是最后复杂度$O(n^2\log n)$.</p>
 <h2 id="B"><a href="#B" class="headerlink" title="$B$"></a>$B$</h2><blockquote>
 <p>定义<code>string</code>类型的递推$f_0=’0’$，$f_1=’1’$，$f_i=f_{i-2}+f_{i-1}$，其中$+$表示<code>string</code>类型的连接。多组询问，询问$f_n$中区间$\rm [L,R]$内的串。$n\leq 1e9,~\rm L\leq R\leq 2e9,\sum (R-L)\leq 1e7$</p>
 </blockquote>
@@ -591,7 +592,6 @@
 <p>发现$f_i.size()$就是斐波那切数列的第$i$项，并且序号奇偶性相同的两项$f_i,f_j$，当$j&lt;i$时满足$f_j$是$f_i$的前缀，这东西可以数学归纳出来<del>并且肉眼看不出来</del>。</p>
 <p>之后可以发现$\rm L,R\leq 2e9$，而斐波那切数列的第$50$项已经超过了这个范围。于是考虑对于一个询问$f_n[L,R]$，先把$n$缩到$50$以内，然后分奇偶性赋值为$48/49$，然后每次考虑把$f_n$分成$f_{n-2}+f_{n-1}$，分治下去。注意到其实是可以预处理一些状态来提速，于是选择预处理前$20$项左右。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> L, <span class="keyword">int</span> R)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (n &lt;= <span class="number">20</span>) <span class="keyword">return</span> <span class="built_in">cout</span> &lt;&lt; f[n].substr(L, R - L + <span class="number">1</span>), <span class="keyword">void</span>() ;</span><br><span class="line">	<span class="keyword">if</span> (L &lt; fib[n - <span class="number">2</span>]) solve(n - <span class="number">2</span>, L, min(R, fib[n - <span class="number">2</span>])) ; </span><br><span class="line">	<span class="keyword">if</span> (R &gt;= fib[n - <span class="number">2</span>]) solve(n - <span class="number">1</span>, max(<span class="number">0l</span>l, L - fib[n - <span class="number">2</span>]), R - fib[n - <span class="number">2</span>]) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h2 id="C"><a href="#C" class="headerlink" title="$C$"></a>$C$</h2><blockquote>
 <p>我们有一张方格纸，他大概长这样：</p>
 <p><img src="https://cdn.luogu.com.cn/upload/image_hosting/g7908v9b.png" alt></p>
@@ -617,12 +617,15 @@
 </li>
 <li><p>基于前两条，我们会有一个比较平凡的结论：对于某一段$i$，当$\lfloor \frac{i}{n} \rfloor + \lfloor \frac{i}{m} \rfloor$为偶数的时候，这一段在黑色的格子上；是奇数的时候，这一段在白色格子上。</p>
 </li>
-<li><p>我们可以考虑对$\lfloor \frac{i}{n} \rfloor + \lfloor \frac{i}{m} \rfloor$搞一些事情：<br>$$<br>\lfloor \frac{i}{n} \rfloor + \lfloor \frac{i}{m} \rfloor\begin{align} \ \&amp;\equiv\frac{i - i \mod n}{n}+\frac{i - i \mod m}{m} \pmod 2\ &amp;\equiv 2i - i \mod n - i \mod m \pmod 2\  &amp; \equiv i \mod n  + i  \mod m \pmod 2\end{align}<br>$$</p>
-</li>
+<li><p>我们可以考虑对$\lfloor \frac{i}{n} \rfloor + \lfloor \frac{i}{m} \rfloor$搞一些事情：</p>
+<script type="math/tex; mode=display">
+\lfloor \frac{i}{n} \rfloor + \lfloor \frac{i}{m} \rfloor\begin{align} \\ \\&\equiv\frac{i - i \mod n}{n}+\frac{i - i \mod m}{m} \pmod 2\\ &\equiv 2i - i \mod n - i \mod m \pmod 2\\  & \equiv i \mod n  + i  \mod m \pmod 2\end{align}</script></li>
 </ul>
-<p>上式的目的其实就是通过对$2$取模建立同余式，由于$n,m$均为奇数，所以在$\mod 2$意义下都是$1$，可以直接除掉。那么接下来我们考虑，这样的$i$有多少个呢？很显然的，在$0 \to n - 1$中，共有$\frac {n-1}{2}$个奇数,$\frac{n+1}{2}$个偶数；在$0 \to m-1$中，共有$\frac {m-1}{2}$个奇数，$\frac {m+1}{2}$个偶数。因为只有奇偶性相同时，才属于黑色格子，所以由中国剩余定理得<br>$$<br>\begin{aligned}\sum check(i) &amp;= \frac{n-1}{2} \cdot \frac{m-1}{2} + \frac{n+1}{2} \cdot \frac{m+1}{2} \&amp; = \frac{2nm + 2}{4}\end{aligned}<br>$$</p>
-<p>那么最终答案就是<br>$$<br>\frac {\sum check(i)}{n \cdot m} = \frac{n \cdot m+1}{2n \cdot m}<br>$$</p>
-</blockquote>
+<p>上式的目的其实就是通过对$2$取模建立同余式，由于$n,m$均为奇数，所以在$\mod 2$意义下都是$1$，可以直接除掉。那么接下来我们考虑，这样的$i$有多少个呢？很显然的，在$0 \to n - 1$中，共有$\frac {n-1}{2}$个奇数,$\frac{n+1}{2}$个偶数；在$0 \to m-1$中，共有$\frac {m-1}{2}$个奇数，$\frac {m+1}{2}$个偶数。因为只有奇偶性相同时，才属于黑色格子，所以由中国剩余定理得</p>
+<script type="math/tex; mode=display">
+\begin{aligned}\sum check(i) &= \frac{n-1}{2} \cdot \frac{m-1}{2} + \frac{n+1}{2} \cdot \frac{m+1}{2} \\& = \frac{2nm + 2}{4}\end{aligned}</script><p>那么最终答案就是</p>
+<script type="math/tex; mode=display">
+\frac {\sum check(i)}{n \cdot m} = \frac{n \cdot m+1}{2n \cdot m}</script></blockquote>
 <h1 id="D"><a href="#D" class="headerlink" title="$D$"></a>$D$</h1><blockquote>
 <p>给定一棵树，某些点是关键点。每条边有代价，每次可以删掉一条边并且获得这条边的代价。求最少的代价，使得所有关键点不连通。$n\leq 300,000$</p>
 </blockquote>
@@ -630,10 +633,16 @@
 <p>直观的想法是$dp$，即记$f_x$表示处理完以$x$为根的子树内的关键点（不互相连通）的最少代价。但是发现这样似乎很难转移，因为转移时要考虑子树之间的关键点是否连通。于是考虑再记$g_x$表示处理完以$x$为根的子树内关键点互相不连通，且不与外界连通的最小代价。</p>
 <p>那么考虑转移，记$x$为当前节点，$y$为$x$的子节点：</p>
 <ul>
-<li><p>当$x$为关键点时，有：<br>$$<br>\begin{align<em>}<br>f_x&amp;=\sum g_y \<br>g_x&amp;=f_x+pre_x<br>\end{align</em>}<br>$$</p>
-</li>
-<li><p>当$x$不为关键点时，有<br>$$<br>f_x=\min(\sum f_y-f_{y’}+g_{y’})\<br>g_x=\min(f_x+pre_x, \sum g_y)<br>$$</p>
-</li>
+<li><p>当$x$为关键点时，有：</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+f_x&=\sum g_y \\
+g_x&=f_x+pre_x
+\end{align*}</script></li>
+<li><p>当$x$不为关键点时，有</p>
+<script type="math/tex; mode=display">
+f_x=\min(\sum f_y-f_{y'}+g_{y'})\\
+g_x=\min(f_x+pre_x, \sum g_y)</script></li>
 </ul>
 <p>唔，这个第二个转移的$f_x$还是需要编一编的，大概就是考虑现在只需要不让子树内部连通，那么就可以选出一棵子树来内部不连通，其他子树都不和外部连通，可知这样是最优的（因为天选之子不需要“不和外部连通”）。</p>
 <p>学习了，学习了。</p>
@@ -1356,7 +1365,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共176.8k字</span>
+  <span class="post-count">博客全站共169.2k字</span>
 </div>
 
         

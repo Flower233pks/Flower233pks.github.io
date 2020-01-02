@@ -491,7 +491,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-15 14:34:13" itemprop="dateModified" datetime="2019-12-15T14:34:13+08:00">2019-12-15</time>
+                <time title="Modified: 2020-01-02 18:44:43" itemprop="dateModified" datetime="2020-01-02T18:44:43+08:00">2020-01-02</time>
               </span>
             
           
@@ -544,7 +544,9 @@
       
         
           <p><strong>快速沃尔什变换(FWT)</strong>是一种广义上的<strong>傅里叶变换</strong>，可以解决<strong>子集并卷积</strong>、<strong>子集交卷积</strong>以及<strong>子集对称差卷积</strong>。</p>
-<p>而在OI中决定了FWT胜过FMT的一大原因就是他可以方便地解决<strong>子集对称差卷积</strong>，即：<br>$$<br>c_i=\sum_{j\oplus k=i} a_jb_k<br>$$<br>其中$\oplus$表示二进制数的异或运算、集合的对称差运算（虽然”对称差”听起来挺有道理，但是感觉“二进制非进位加法”更有趣）。</p>
+<p>而在OI中决定了FWT胜过FMT的一大原因就是他可以方便地解决<strong>子集对称差卷积</strong>，即：</p>
+<script type="math/tex; mode=display">
+c_i=\sum_{j\oplus k=i} a_jb_k</script><p>其中$\oplus$表示二进制数的异或运算、集合的对称差运算（虽然”对称差”听起来挺有道理，但是感觉“二进制非进位加法”更有趣）。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1144,7 +1146,14 @@
 
       
         
-          <p><strong>快速莫比乌斯变换(FMT)</strong>可以方便地解决<strong>子集交卷积</strong>和<strong>子集并卷积</strong>，形式化地讲就是求一个$\rm C$：<br>$$<br>c_i=\sum_{k\cup j=i} a_kb_j\<br>c_i=\sum_{k\cap j=i} a_kb_j<br>$$<br>而<strong>快速子集变换(FST)</strong>则是在FMT基础上的扩展，解决的也是子集交卷积，但是限制了<strong>状态不重复</strong>，即<br>$$<br>c_i=\sum_{\substack{~k\cup j=i\\ k \cap j= \emptyset }}a_kb_j<br>$$<br>换个写法：<br>$$<br>c_s=\sum_{t\subseteq s}a_sb_{s-t}<br>$$<br>同时，以上两种变换所涉及的交集、并集和差集的对象都是集合（也就是$c_i$的下角标$i$指代的是集合），其二进制表示能更好地展示这一点。</p>
+          <p><strong>快速莫比乌斯变换(FMT)</strong>可以方便地解决<strong>子集交卷积</strong>和<strong>子集并卷积</strong>，形式化地讲就是求一个$\rm C$：</p>
+<script type="math/tex; mode=display">
+c_i=\sum_{k\cup j=i} a_kb_j\\\
+c_i=\sum_{k\cap j=i} a_kb_j</script><p>而<strong>快速子集变换(FST)</strong>则是在FMT基础上的扩展，解决的也是子集交卷积，但是限制了<strong>状态不重复</strong>，即</p>
+<script type="math/tex; mode=display">
+c_i=\sum_{\substack{~k\cup j=i\\\ k \cap j= \emptyset }}a_kb_j</script><p>换个写法：</p>
+<script type="math/tex; mode=display">
+c_s=\sum_{t\subseteq s}a_sb_{s-t}</script><p>同时，以上两种变换所涉及的交集、并集和差集的对象都是集合（也就是$c_i$的下角标$i$指代的是集合），其二进制表示能更好地展示这一点。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1727,7 +1736,9 @@
         
           <p>其实就是cdq分治+FFT。</p>
 <p>分治FFT解决的问题的一般形式：</p>
-<p>给出$g_1,g_2,g_3\cdots g_{n-1},f_0=1$，且<br>$$<br>f_i=\sum_{j=1}^{i} f_{i-j} g_j<br>$$<br>求$f_1,f_2\cdots f_{n-1}$</p>
+<p>给出$g_1,g_2,g_3\cdots g_{n-1},f_0=1$，且</p>
+<script type="math/tex; mode=display">
+f_i=\sum_{j=1}^{i} f_{i-j} g_j</script><p>求$f_1,f_2\cdots f_{n-1}$</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1929,7 +1940,9 @@
         
           <p><strong>$\boldsymbol{k}$阶常系数齐次线性递推</strong>指的是以下问题：</p>
 <blockquote>
-<p>给出$k$阶线性递推式$\boldsymbol{f}$以及初始项$\boldsymbol{a_0,a_1…a_{k-1}}$，并满足：<br>$$<br>a_{n}=\sum_{i=1}^{k} f_{i} \times a_{n-i}<br>$$<br>对于某个$o$，求解$f_o$在某个固定模数下的值。</p>
+<p>给出$k$阶线性递推式$\boldsymbol{f}$以及初始项$\boldsymbol{a_0,a_1…a_{k-1}}$，并满足：</p>
+<script type="math/tex; mode=display">
+a_{n}=\sum_{i=1}^{k} f_{i} \times a_{n-i}</script><p>对于某个$o$，求解$f_o$在某个固定模数下的值。</p>
 </blockquote>
 <p>然后以下是<code>shadowice1984</code>的人话版本：</p>
 <blockquote>
@@ -2138,7 +2151,12 @@
 
       
         
-          <p>形式化来讲，我们要解决这两个问题：<br>$$<br>\begin{aligned}<br>G &amp;= F^k \ (\bmod \ x^n)\<br>G^k &amp;= F \ (\bmod \ x^n)<br>\end{aligned}<br>$$<br>然而实际上后一个咕了，我曾把这玩意儿当作<code>多项式牛顿迭代</code>的课后题来着……并且更重要的原因没人出这玩意儿的题，所以直接简化成$G^2\equiv F$好了。。。</p>
+          <p>形式化来讲，我们要解决这两个问题：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+G &= F^k \ (\bmod \ x^n)\\\
+G^k &= F \ (\bmod \ x^n)
+\end{aligned}</script><p>然而实际上后一个咕了，我曾把这玩意儿当作<code>多项式牛顿迭代</code>的课后题来着……并且更重要的原因没人出这玩意儿的题，所以直接简化成$G^2\equiv F$好了。。。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -2339,7 +2357,12 @@
       
         
           <p>其实这两个东西只是一个拓展，思想也是简单的思想，只不过由于$\ln$运算的乘方转乘法很好用，所以大部分套路都是<strong>先多项式$\ln$乱搞一通再多项式$\exp$回去</strong>。</p>
-<p>形式化地讲，我们就是要解决以下两个问题：<br>$$<br>\begin{aligned}<br>1)\quad G&amp;= \ln F \ (\bmod \ p)\<br>2)\quad G&amp;= e^{F} \ (\bmod \ p)<br>\end{aligned}<br>$$</p>
+<p>形式化地讲，我们就是要解决以下两个问题：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+1)\quad G&= \ln F \ (\bmod \ p)\\\
+2)\quad G&= e^{F} \ (\bmod \ p)
+\end{aligned}</script>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -2997,7 +3020,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共176.8k字</span>
+  <span class="post-count">博客全站共169.2k字</span>
 </div>
 
         
@@ -3129,6 +3152,8 @@ if(canvas.getContext){
   
   
     
+      
+        
       
     
       

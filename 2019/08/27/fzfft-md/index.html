@@ -144,18 +144,18 @@
   };
 </script>
 
-  <meta name="description" content="其实就是cdq分治+FFT。 分治FFT解决的问题的一般形式： 给出$g_1,g_2,g_3\cdots g_{n-1},f_0=1$，且$$f_i=\sum_{j=1}^{i} f_{i-j} g_j$$求$f_1,f_2\cdots f_{n-1}$">
+  <meta name="description" content="其实就是cdq分治+FFT。 分治FFT解决的问题的一般形式： 给出$g_1,g_2,g_3\cdots g_{n-1},f_0=1$，且  f_i=\sum_{j=1}^{i} f_{i-j} g_j求$f_1,f_2\cdots f_{n-1}$">
 <meta name="keywords" content="分治,多项式的应用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【学习笔记】分治在FFT上的应用">
 <meta property="og:url" content="http://www.orchidany.cf/2019/08/27/fzfft-md/index.html">
 <meta property="og:site_name" content="Orchidany&#39;w blog">
-<meta property="og:description" content="其实就是cdq分治+FFT。 分治FFT解决的问题的一般形式： 给出$g_1,g_2,g_3\cdots g_{n-1},f_0=1$，且$$f_i=\sum_{j=1}^{i} f_{i-j} g_j$$求$f_1,f_2\cdots f_{n-1}$">
+<meta property="og:description" content="其实就是cdq分治+FFT。 分治FFT解决的问题的一般形式： 给出$g_1,g_2,g_3\cdots g_{n-1},f_0=1$，且  f_i=\sum_{j=1}^{i} f_{i-j} g_j求$f_1,f_2\cdots f_{n-1}$">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-12-15T06:33:59.944Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【学习笔记】分治在FFT上的应用">
-<meta name="twitter:description" content="其实就是cdq分治+FFT。 分治FFT解决的问题的一般形式： 给出$g_1,g_2,g_3\cdots g_{n-1},f_0=1$，且$$f_i=\sum_{j=1}^{i} f_{i-j} g_j$$求$f_1,f_2\cdots f_{n-1}$">
+<meta name="twitter:description" content="其实就是cdq分治+FFT。 分治FFT解决的问题的一般形式： 给出$g_1,g_2,g_3\cdots g_{n-1},f_0=1$，且  f_i=\sum_{j=1}^{i} f_{i-j} g_j求$f_1,f_2\cdots f_{n-1}$">
 
 
 
@@ -573,15 +573,36 @@
       
         <p>其实就是cdq分治+FFT。</p>
 <p>分治FFT解决的问题的一般形式：</p>
-<p>给出$g_1,g_2,g_3\cdots g_{n-1},f_0=1$，且<br>$$<br>f_i=\sum_{j=1}^{i} f_{i-j} g_j<br>$$<br>求$f_1,f_2\cdots f_{n-1}$</p>
+<p>给出$g_1,g_2,g_3\cdots g_{n-1},f_0=1$，且</p>
+<script type="math/tex; mode=display">
+f_i=\sum_{j=1}^{i} f_{i-j} g_j</script><p>求$f_1,f_2\cdots f_{n-1}$</p>
 <a id="more"></a>
-
-<p>先展开观察性质<br>$$<br>\begin{aligned}f_1&amp;=g_1f_0,\\ f_2&amp;=g_1f_1+g_2f_0,<br>\\ f_3&amp;=g_1f_2+g_2f_1+g_3f_0\\ f_4&amp;=g_1f_3+g_2f_2+g_3f_1+g_4f_0=g_1^4\end{aligned}<br>$$<br>我们发现如果将整个序列分成两半，前一半对后一半的贡献是：<br>$$<br>o_p=\sum_{i=l}^{\rm{mid}}f_ig_{p-i}<br>$$<br>其中$p\in(\rm{mid},r]$，$o$是额外的贡献。</p>
-<p>我们发现，其实这是个卷积的形式，毕竟对于普通的卷积定义是：<br>$$<br>c_i=\sum_{j\leq i} a_jb_{i-j}<br>$$<br>于是我们就可以通过分治，每次暴力NTT计算前一半对后一半的贡献，类似于cdq分治的操作，复杂度$n\log ^2n$。</p>
+<p>先展开观察性质</p>
+<script type="math/tex; mode=display">
+\begin{aligned}f_1&=g_1f_0,\\\ f_2&=g_1f_1+g_2f_0,
+\\\ f_3&=g_1f_2+g_2f_1+g_3f_0\\\ f_4&=g_1f_3+g_2f_2+g_3f_1+g_4f_0=g_1^4\end{aligned}</script><p>我们发现如果将整个序列分成两半，前一半对后一半的贡献是：</p>
+<script type="math/tex; mode=display">
+o_p=\sum_{i=l}^{\rm{mid}}f_ig_{p-i}</script><p>其中$p\in(\rm{mid},r]$，$o$是额外的贡献。</p>
+<p>我们发现，其实这是个卷积的形式，毕竟对于普通的卷积定义是：</p>
+<script type="math/tex; mode=display">
+c_i=\sum_{j\leq i} a_jb_{i-j}</script><p>于是我们就可以通过分治，每次暴力NTT计算前一半对后一半的贡献，类似于cdq分治的操作，复杂度$n\log ^2n$。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cdqNTT</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l == r) &#123;<span class="keyword">if</span> (!l) F[l] = <span class="number">1</span> ; <span class="keyword">return</span> ;&#125; <span class="keyword">int</span> i ;</span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>, L = r - l + <span class="number">1</span>, Len = <span class="number">1</span>, l1 = <span class="number">0</span> ;</span><br><span class="line">    cdqNTT(l, mid) ;</span><br><span class="line">    <span class="keyword">while</span> (Len &lt;= L) Len &lt;&lt;= <span class="number">1</span>, ++ l1 ;</span><br><span class="line">    <span class="built_in">memcpy</span> (P, G, <span class="keyword">sizeof</span>(LL) * (r - l + <span class="number">1</span>)) ;</span><br><span class="line">    <span class="built_in">memcpy</span> (Q, F + l, <span class="keyword">sizeof</span>(LL)*(mid - l + <span class="number">1</span>)) ;</span><br><span class="line">    <span class="built_in">memset</span> (P + r - l + <span class="number">1</span>, <span class="number">0</span>, <span class="keyword">sizeof</span> (LL) * (Len - r + l)) ;</span><br><span class="line">    <span class="built_in">memset</span> (Q + mid - l + <span class="number">1</span>, <span class="number">0</span>, <span class="keyword">sizeof</span> (LL) * (Len - mid + l)) ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; Len ; ++ i) R[i] = (R[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; (l1 - <span class="number">1</span>)) ;</span><br><span class="line">    NTT(P, Len, <span class="number">1</span>), NTT(Q, Len, <span class="number">1</span>) ; <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; Len ; ++ i) P[i] = P[i] * Q[i] % Mod ;</span><br><span class="line">    NTT(P, Len, <span class="number">-1</span>) ; <span class="keyword">for</span> (i = mid + <span class="number">1</span> ; i &lt;= r ; ++ i) (F[i] += P[i - l]) %= Mod ; cdqNTT(mid + <span class="number">1</span>, r) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; N ; <span class="keyword">int</span> i ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt; N ; ++ i) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;G[i]) ;</span><br><span class="line">    cdqNTT(<span class="number">0</span>, N - <span class="number">1</span>) ; <span class="keyword">for</span> (i = <span class="number">0</span> ; i &lt; N ; ++ i) <span class="built_in">printf</span>(<span class="string">"%lld "</span>, F[i]) ; <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>嗯，得出结论我的分治没学好qaq</p>
-<p>但是如果换一个角度观察，设出两个形式幂级数，即令<br>$$<br>\begin{aligned}<br>\rm{F}&amp;=\sum f_ix^i\<br>\rm{G}&amp;=\sum g_ix^i<br>\end{aligned}<br>$$<br>然后我们把他俩卷起来，且因为F本身就是卷积的形式，即有：<br>$$<br>\begin{aligned}<br>\rm{F} *\rm{G} &amp; =\sum x^i\sum_{j\leq i} f_ig_j<br>\<br>&amp;= \sum x_i f_{i+1}\<br>&amp;= \rm{F}-f_0<br>\end{aligned}<br>$$<br>那么先移项，之后两边同时卷一个$\rm{G}-1$ 的逆就可以得到：<br>$$<br>\rm{F}= \frac{1}{1-G}<br>$$<br>于是直接求一个逆就完了，复杂度$n\log n$。</p>
+<p>但是如果换一个角度观察，设出两个形式幂级数，即令</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\rm{F}&=\sum f_ix^i\\\
+\rm{G}&=\sum g_ix^i
+\end{aligned}</script><p>然后我们把他俩卷起来，且因为F本身就是卷积的形式，即有：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\rm{F} *\rm{G} & =\sum x^i\sum_{j\leq i} f_ig_j
+\\\
+&= \sum x_i f_{i+1}\\\
+&= \rm{F}-f_0
+\end{aligned}</script><p>那么先移项，之后两边同时卷一个$\rm{G}-1$ 的逆就可以得到：</p>
+<script type="math/tex; mode=display">
+\rm{F}= \frac{1}{1-G}</script><p>于是直接求一个逆就完了，复杂度$n\log n$。</p>
 <p>不得不说这也算是一个小技巧了qwq</p>
 
       
@@ -1265,7 +1286,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共176.8k字</span>
+  <span class="post-count">博客全站共169.2k字</span>
 </div>
 
         

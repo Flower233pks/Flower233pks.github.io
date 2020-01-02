@@ -144,18 +144,18 @@
   };
 </script>
 
-  <meta name="description" content="Berlekamp-Massey算法用于在$O(n^2)$的时间内求解数列的递推式。形式化地讲，给定$a_i(i=0,1,2,3…n-1)$，求一组$b_j(j=0,1,2,3…m)$，满足：$$\forall i\geq m, a_i=\sum {j=0}^{m} a{i-j}b_i$$其中或许会有条件限制$m$最小。">
+  <meta name="description" content="Berlekamp-Massey算法用于在$O(n^2)$的时间内求解数列的递推式。形式化地讲，给定$a_i(i=0,1,2,3…n-1)$，求一组$b_j(j=0,1,2,3…m)$，满足：  \forall i\geq m, a_i=\sum _{j=0}^{m} a_{i-j}b_i其中或许会有条件限制$m$最小。">
 <meta name="keywords" content="Berlekamp-Massey,数学&#x2F;常系数齐次线性递推">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Berlekamp-Massey算法">
 <meta property="og:url" content="http://www.orchidany.cf/2019/08/26/BM/index.html">
 <meta property="og:site_name" content="Orchidany&#39;w blog">
-<meta property="og:description" content="Berlekamp-Massey算法用于在$O(n^2)$的时间内求解数列的递推式。形式化地讲，给定$a_i(i=0,1,2,3…n-1)$，求一组$b_j(j=0,1,2,3…m)$，满足：$$\forall i\geq m, a_i=\sum {j=0}^{m} a{i-j}b_i$$其中或许会有条件限制$m$最小。">
+<meta property="og:description" content="Berlekamp-Massey算法用于在$O(n^2)$的时间内求解数列的递推式。形式化地讲，给定$a_i(i=0,1,2,3…n-1)$，求一组$b_j(j=0,1,2,3…m)$，满足：  \forall i\geq m, a_i=\sum _{j=0}^{m} a_{i-j}b_i其中或许会有条件限制$m$最小。">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-12-16T00:12:07.759Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Berlekamp-Massey算法">
-<meta name="twitter:description" content="Berlekamp-Massey算法用于在$O(n^2)$的时间内求解数列的递推式。形式化地讲，给定$a_i(i=0,1,2,3…n-1)$，求一组$b_j(j=0,1,2,3…m)$，满足：$$\forall i\geq m, a_i=\sum {j=0}^{m} a{i-j}b_i$$其中或许会有条件限制$m$最小。">
+<meta name="twitter:description" content="Berlekamp-Massey算法用于在$O(n^2)$的时间内求解数列的递推式。形式化地讲，给定$a_i(i=0,1,2,3…n-1)$，求一组$b_j(j=0,1,2,3…m)$，满足：  \forall i\geq m, a_i=\sum _{j=0}^{m} a_{i-j}b_i其中或许会有条件限制$m$最小。">
 
 
 
@@ -571,9 +571,10 @@
       
 
       
-        <p><strong>Berlekamp-Massey</strong>算法用于在$O(n^2)$的时间内求解数列的递推式。形式化地讲，给定$a_i(i=0,1,2,3…n-1)$，求一组$b_j(j=0,1,2,3…m)$，满足：<br>$$<br>\forall i\geq m, a_i=\sum <em>{j=0}^{m} a</em>{i-j}b_i<br>$$<br>其中或许会有条件限制$m$最小。</p>
+        <p><strong>Berlekamp-Massey</strong>算法用于在$O(n^2)$的时间内求解数列的递推式。形式化地讲，给定$a_i(i=0,1,2,3…n-1)$，求一组$b_j(j=0,1,2,3…m)$，满足：</p>
+<script type="math/tex; mode=display">
+\forall i\geq m, a_i=\sum _{j=0}^{m} a_{i-j}b_i</script><p>其中或许会有条件限制$m$最小。</p>
 <a id="more"></a>
-
 <h1 id="构造"><a href="#构造" class="headerlink" title="构造"></a>构造</h1><p>考虑现在我们已经有了一个递推式$[f]$且满足了前$k$项</p>
 
       
@@ -1283,7 +1284,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共176.8k字</span>
+  <span class="post-count">博客全站共169.2k字</span>
 </div>
 
         

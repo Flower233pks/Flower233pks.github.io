@@ -153,7 +153,7 @@
 <meta property="og:description" content="通常的线性规划用于求解一类满足正向约束的最大值问题，但是通过对偶可以将其转化成一类求解满足逆向约束的最小值问题。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89---purple.svg">
-<meta property="og:updated_time" content="2019-12-15T07:04:28.891Z">
+<meta property="og:updated_time" content="2020-01-02T10:59:23.215Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【学习笔记】线性规划对偶定理">
 <meta name="twitter:description" content="通常的线性规划用于求解一类满足正向约束的最大值问题，但是通过对偶可以将其转化成一类求解满足逆向约束的最小值问题。">
@@ -492,7 +492,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-15 15:04:28" itemprop="dateModified" datetime="2019-12-15T15:04:28+08:00">2019-12-15</time>
+                <time title="Modified: 2020-01-02 18:59:23" itemprop="dateModified" datetime="2020-01-02T18:59:23+08:00">2020-01-02</time>
               </span>
             
           
@@ -576,21 +576,54 @@
 
       
         <p><img src="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89---purple.svg" alt></p>
-<h1 id="rm-Preface-AboutDualityTheorm"><a href="#rm-Preface-AboutDualityTheorm" class="headerlink" title="$\rm{Preface:} AboutDualityTheorm$"></a>$\rm{Preface:} About<del>Duality</del>Theorm$</h1><p><strong>线性规划对偶定理</strong>：我们朴素的线性规划大致如下：<br>$$<br>\text{最大化}\quad \sum c_ix_i \quad(i = 1, 2,3 \cdots n) \<br>\text{满足约束} \quad \sum \limits_{j=1}^{n} a_{i,j}x_{j} \leq b_i\quad (i = 1,2,3\cdots m) \\ \qquad \qquad \qquad \quad x_j \geq 0\quad (j=1,2,3\cdots n)<br>$$<br>那么我们称它的<strong>对偶</strong>为形如下的线性规划：<br>$$<br>\text{最小化}\quad \sum b_iy_i \quad(i = 1, 2,3 \cdots m) \<br>\text{满足约束} \quad \sum \limits_{j=1}^{m} a_{i,j}y_{j} \geq c_i\quad (i = 1,2,3\cdots n) \\ \qquad \qquad \qquad \quad y_j \geq 0\quad (j=1,2,3\cdots m)<br>$$</p>
-<a id="more"></a>
-
-<p>换做矩阵表示就会是这样：<br>$$<br>\text{最小化}\quad \boldsymbol{b^Ty} \<br>\text{满足约束} \quad A^T\boldsymbol{y\geq c} \<br>\it{\qquad \qquad \quad} \boldsymbol {y} \geq 0<br>$$<br>那其实比较显然的是，我们原来线性规划中的约束向量与目标函数里的系数向量交换，目标函数的最大化变成了最小化。现在我们思考对偶的意义。</p>
-<p>首先假设我们有这么一个线性规划：<br>$$<br>\text{最小化}\quad \sum b_iy_i \quad(i = 1, 2,3 \cdots m) \<br>\text{满足约束} \quad \sum \limits_{j=1}^{m} a_{i,j}y_{j} \geq c_i\quad (i = 1,2,3\cdots n) \\ \qquad \qquad \qquad \quad y_j \geq 0\quad (j=1,2,3\cdots m)<br>$$<br><del>其实就是上面那个</del></p>
-<p>我们的目的其实等价于确定目标函数的下界。我们观察每一组约束，假设有一组约束是<br>$$<br>\quad \sum \limits_{j=1}^{m} a_{p,j}y_{j} \geq c_p\quad (i = 1,2,3\cdots n)<br>$$<br>并且我们保证有：<br>$$<br>\forall a_{p,j} \in \boldsymbol{a_p},\forall b_i \in{\boldsymbol{b}},\quad i=j \Longrightarrow b_i\geq a_{p,j}<br>$$<br>好像写的很不规矩……意思就是对应项的系数，目标函数都比这个约束里的大。</p>
+<h1 id="rm-Preface-About-Duality-Theorm"><a href="#rm-Preface-About-Duality-Theorm" class="headerlink" title="$\rm{Preface:} About~Duality~Theorm$"></a>$\rm{Preface:} About~Duality~Theorm$</h1><p><strong>线性规划对偶定理</strong>：我们朴素的线性规划大致如下：</p>
+<script type="math/tex; mode=display">
+\text{最大化}\quad \sum c_ix_i \quad(i = 1, 2,3 \cdots n) \\
+\text{满足约束} \quad \sum \limits_{j=1}^{n} a_{i,j}x_{j} \leq b_i\quad (i = 1,2,3\cdots m) \\\ \qquad \qquad \qquad \quad x_j \geq 0\quad (j=1,2,3\cdots n)</script><p>那么我们称它的<strong>对偶</strong>为形如下的线性规划：</p>
+<script type="math/tex; mode=display">
+\text{最小化}\quad \sum b_iy_i \quad(i = 1, 2,3 \cdots m) \\
+\text{满足约束} \quad \sum \limits_{j=1}^{m} a_{i,j}y_{j} \geq c_i\quad (i = 1,2,3\cdots n) \\\ \qquad \qquad \qquad \quad y_j \geq 0\quad (j=1,2,3\cdots m)</script><a id="more"></a>
+<p>换做矩阵表示就会是这样：</p>
+<script type="math/tex; mode=display">
+\text{最小化}\quad \boldsymbol{b^Ty} \\
+\text{满足约束} \quad A^T\boldsymbol{y\geq c} \\\
+\it{\qquad \qquad \quad} \boldsymbol {y} \geq 0</script><p>那其实比较显然的是，我们原来线性规划中的约束向量与目标函数里的系数向量交换，目标函数的最大化变成了最小化。现在我们思考对偶的意义。</p>
+<p>首先假设我们有这么一个线性规划：</p>
+<script type="math/tex; mode=display">
+\text{最小化}\quad \sum b_iy_i \quad(i = 1, 2,3 \cdots m) \\
+\text{满足约束} \quad \sum \limits_{j=1}^{m} a_{i,j}y_{j} \geq c_i\quad (i = 1,2,3\cdots n) \\\ \qquad \qquad \qquad \quad y_j \geq 0\quad (j=1,2,3\cdots m)</script><p><del>其实就是上面那个</del></p>
+<p>我们的目的其实等价于确定目标函数的下界。我们观察每一组约束，假设有一组约束是</p>
+<script type="math/tex; mode=display">
+\quad \sum \limits_{j=1}^{m} a_{p,j}y_{j} \geq c_p\quad (i = 1,2,3\cdots n)</script><p>并且我们保证有：</p>
+<script type="math/tex; mode=display">
+\forall a_{p,j} \in \boldsymbol{a_p},\forall b_i \in{\boldsymbol{b}},\quad i=j \Longrightarrow b_i\geq a_{p,j}</script><p>好像写的很不规矩……意思就是对应项的系数，目标函数都比这个约束里的大。</p>
 <p>那么因为$\forall x\geq 0$，所以我们可以保证目标函数的最小值一定会是$c_p$。这个结论是显然的。</p>
-<p>更进一步，那么我们最后确定的下界一定会是这样的（此处一点也不严谨地使用了$\Omega$符号）：<br>$$<br>\Omega(\rm{Aim}) = \it{\sum \limits_{j = 1}^{n}t_j\cdot\sum\limits_{i=1}^{n}\sum \limits_{k=1}^{m}a_{i,k}y_k}\<br>\forall t_j \geq 0<br>$$</p>
-<p>而因为我们对于原来的约束有<br>$$<br>\quad \sum \limits_{j=1}^{m} a_{i,j}y_{j} \geq c_i\quad (i = 1,2,3\cdots n)<br>$$<br>所以我们将其代回我们画好的式子里面：<br>$$<br>\Omega(\rm{Aim}) \geq \it{\sum\limits_{j=1}^{n}t_jc_j}<br>$$<br>那么……目标函数的下界就变成了一个和式的上界——又变成了一个求解目标函数最大值的问题。</p>
+<p>更进一步，那么我们最后确定的下界一定会是这样的（此处一点也不严谨地使用了$\Omega$符号）：</p>
+<script type="math/tex; mode=display">
+\Omega(\rm{Aim}) = \it{\sum \limits_{j = 1}^{n}t_j\cdot\sum\limits_{i=1}^{n}\sum \limits_{k=1}^{m}a_{i,k}y_k}\\\
+\forall t_j \geq 0</script><p>而因为我们对于原来的约束有</p>
+<script type="math/tex; mode=display">
+\quad \sum \limits_{j=1}^{m} a_{i,j}y_{j} \geq c_i\quad (i = 1,2,3\cdots n)</script><p>所以我们将其代回我们画好的式子里面：</p>
+<script type="math/tex; mode=display">
+\Omega(\rm{Aim}) \geq \it{\sum\limits_{j=1}^{n}t_jc_j}</script><p>那么……目标函数的下界就变成了一个和式的上界——又变成了一个求解目标函数最大值的问题。</p>
 <p>那么这或许感性证明了对偶定理的正确性？</p>
-<h1 id="rm-Afterword-SomeTypicalProblem"><a href="#rm-Afterword-SomeTypicalProblem" class="headerlink" title="$\rm{Afterword:}SomeTypicalProblem$"></a>$\rm{Afterword:}Some<del>Typical</del>Problem$</h1><p><del>没见过吧，一篇文章只有前言和总结</del></p>
+<h1 id="rm-Afterword-Some-Typical-Problem"><a href="#rm-Afterword-Some-Typical-Problem" class="headerlink" title="$\rm{Afterword:}Some~Typical~Problem$"></a>$\rm{Afterword:}Some~Typical~Problem$</h1><p><del>没见过吧，一篇文章只有前言和总结</del></p>
 <p><del>其实博主就是在疯狂划水/摸鱼</del></p>
 <p>其实常见的对偶问题有很多，博主功力不够，于是只能整理一个比较形式化的结论：</p>
-<h2 id="最大流问题"><a href="#最大流问题" class="headerlink" title="$~$最大流问题"></a>$~$最大流问题</h2><p>形式化的最大流问题的线性规划如下：<br>$$<br>\text{最大化}\quad \quad \quad <del>f_{s\to t} \quad ~ \quad \quad \quad \quad \quad \quad \<br>\text{满足约束} \quad \quad f_{u\to v} \leq L_{u \to v}\qquad (u,v) \in E \\<br>\qquad \quad \quad ~\sum\limits_{u}f_{u \to v} = \sum\limits_{v}f_{v \to u}\qquad u\in V<br> \\ \qquad \qquad \qquad ~</del>\quad f_{u\to v} \geq 0 \qquad (u,v) \in E ~\cup \text{e(s,t)}<br>$$<br>其中$e(u,v)$表示链接$u,v$的路径集合，$f$表示流量，$L$表示容量(Limit)。</p>
-<p>其对偶过去就会是：<br>$$<br>\text{最小化}\quad \quad \quad \sum_{(u,v)\in E}L_{u\to v}d_{u \to v} \quad ~ \quad \quad \quad\<br>\text{满足约束} \quad \quad d_{u\to v}-p_u+p_v \geq 0\qquad (u,v) \in E \\<br>\qquad \quad \quad \quad \quad \quad ~~p_s - p_t \geq 1\qquad u\in V<br> \\ \qquad \qquad \qquad \quad  p_i,d_{i\to j}\in\{0,1\} ~\qquad<br>$$<br>里面$d_{i\to j}$表示$i \to j$这条边有没有被割，同时假设我们割完之后，原来的图分成了两部分$S$和$T$,那么会有$p_i = [i \in S]$。这个限制是为了保证割的逻辑性——所有的割边都连接着$S,T$两个集合，且源点和汇点在不同的集合。</p>
+<h2 id="最大流问题"><a href="#最大流问题" class="headerlink" title="$~$最大流问题"></a>$~$最大流问题</h2><p>形式化的最大流问题的线性规划如下：</p>
+<script type="math/tex; mode=display">
+\text{最大化}\quad \quad \quad ~f_{s\to t} \quad ~ \quad \quad \quad \quad \quad \quad \\
+\text{满足约束} \quad \quad f_{u\to v} \leq L_{u \to v}\qquad (u,v) \in E \\\ 
+\qquad \quad \quad ~\sum\limits_{u}f_{u \to v} = \sum\limits_{v}f_{v \to u}\qquad u\in V
+ \\\ \qquad \qquad \qquad ~~\quad f_{u\to v} \geq 0 \qquad (u,v) \in E ~\cup \text{e(s,t)}</script><p>其中$e(u,v)$表示链接$u,v$的路径集合，$f$表示流量，$L$表示容量(Limit)。</p>
+<p>其对偶过去就会是：</p>
+<script type="math/tex; mode=display">
+\text{最小化}\quad \quad \quad \sum_{(u,v)\in E}L_{u\to v}d_{u \to v} \quad ~ \quad \quad \quad \\
+\begin{aligned}
+\text{满足约束} \quad \quad d_{u\to v}-p_u+p_v &\geq 0\qquad (u,v) \in E \\\ 
+\qquad \quad \quad \quad \quad \quad ~~p_s - p_t & \geq 1\qquad u\in V
+ \\\ \qquad \qquad \qquad \quad  p_i,d_{i\to j} & \in \{0,1\} ~\qquad
+\end{aligned}</script><p>里面$d_{i\to j}$表示$i \to j$这条边有没有被割，同时假设我们割完之后，原来的图分成了两部分$S$和$T$,那么会有$p_i = [i \in S]$。这个限制是为了保证割的逻辑性——所有的割边都连接着$S,T$两个集合，且源点和汇点在不同的集合。</p>
 <p>emmm我实在不想再整理了(写式子太麻烦)，等什么时候我退完役闲下来再说吧233</p>
 <h2 id="rm-Reference"><a href="#rm-Reference" class="headerlink" title="$\rm{Reference}$"></a>$\rm{Reference}$</h2><ul>
 <li>$[1]$ :2016国家集训队论文《浅谈线性规划与对偶问题》董克凡· <a href="https://pan.baidu.com/s/1aN2L7DAm_RY2GeN5Snxj1A" target="_blank" rel="noopener">$^{^{[\nearrow]}}$</a> 提取码：vua4</li>
@@ -1247,7 +1280,7 @@ if(canvas.getContext){
             
     
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#rm-Preface-AboutDualityTheorm"><span class="nav-number">1.</span> <span class="nav-text">$\rm{Preface:} AboutDualityTheorm$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rm-Afterword-SomeTypicalProblem"><span class="nav-number">2.</span> <span class="nav-text">$\rm{Afterword:}SomeTypicalProblem$</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#最大流问题"><span class="nav-number">2.1.</span> <span class="nav-text">$~$最大流问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm-Reference"><span class="nav-number">2.2.</span> <span class="nav-text">$\rm{Reference}$</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#rm-Preface-About-Duality-Theorm"><span class="nav-number">1.</span> <span class="nav-text">$\rm{Preface:} About~Duality~Theorm$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rm-Afterword-Some-Typical-Problem"><span class="nav-number">2.</span> <span class="nav-text">$\rm{Afterword:}Some~Typical~Problem$</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#最大流问题"><span class="nav-number">2.1.</span> <span class="nav-text">$~$最大流问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm-Reference"><span class="nav-number">2.2.</span> <span class="nav-text">$\rm{Reference}$</span></a></li></ol></li></ol></div>
             
     
           </div>
@@ -1303,7 +1336,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共176.8k字</span>
+  <span class="post-count">博客全站共169.2k字</span>
 </div>
 
         
