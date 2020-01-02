@@ -9,12 +9,12 @@
 <p>在这些文章里，你会看到一个迷茫的青年如何满怀热血与绝望，眼里闪烁着沧桑与希望，怀里揣着坏掉的粮食和崭新的论文，脚下踏着崎岖不平的路，向明天走去。</p>
 <p>是的，我是花，来自山东，你直接叫我花这个ID或许我会很高兴，但是如果你认识我也可以不这么拘束。</p>
 
-        <div id="aplayer-BITJAjOh" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-KvjLlVWb" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-BITJAjOh"),
+            element: document.getElementById("aplayer-KvjLlVWb"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -300,8 +300,8 @@ f_n=[n=0]+\sum_{p=1}^{m}[p\in c] \sum_{q=0}^{m-p}f_{q}f_{m-p-q}</script><p>发�
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>思维题/计数</tag>
         <tag>动态规划-普通DP</tag>
+        <tag>思维题/计数</tag>
         <tag>奇怪的技巧</tag>
         <tag>多项式的应用</tag>
         <tag>贪心</tag>
@@ -759,6 +759,16 @@ x^v & \equiv x^{v\bmod \varphi(k)+\varphi(k)} (\bmod k) \\\ &\equiv x^{(q\bmod \
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><del>别名：一句话日记</del></p>
 <p>可能就是用来随时记录自己感悟的东西？</p>
 <a id="more"></a>
+<h3 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h3><p>…上午写完鸽了的题解，然后几乎啥都没干……原因是本来打算学整体二分，结果看到动态图连通性这东西觉得可以学一下，就去学了学ETT——然而其实就是大略地看了那么几眼，明白原理就不看了，回过头来发现这东西好像不是给正常人写的……并且跑的似乎也没有暴力快……于是就又回去学整体二分了。</p>
+<p>于是就二分了一下午，我是憨憨。</p>
+<p>晚上本来打算很有心劲，结果看起了《进击的巨人》，最终漫画从 $55$ 话看到了第 $70$ 话。本来可以看更多，但是中途有 <code>slyz</code> 的神仙组团来精（教）准（我）扶（做）贫（人），比如我被怒斥：</p>
+<p><img src="1.png" alt></p>
+<p>然后就不敢颓了，就去做题了…</p>
+<p>结果写了个整体二分套树剖的题，临走也只拿了 $10$ 分，整个人都不好了……</p>
+<p>不过还是很开心的，我也是有小伙伴的人了（嚣张.yml）</p>
+<p>然后下午发现了一个很秀的表情：</p>
+<p><img src="2.gif" alt></p>
+<p>感觉整个人都朋克起来了233</p>
 <h3 id="1-1"><a href="#1-1" class="headerlink" title="1.1"></a>1.1</h3><p>颓了一天，下午就返校了。上午主要是看了看B站跨年的回放。⑧说了，邓紫棋天下第一（</p>
 <p>晚上突然很难受。还是关于妹子的事，可能我真的需要一段时间才能缓过来吧？感觉自己的祝福，每一句话、每一个字都在痛击自己的心。但是我能怎么样呢？我又能怎么样呢？</p>
 <p>又是CSP考完那种无力感：就这样了吗？就这样了吧。</p>
@@ -1254,8 +1264,8 @@ f_{i,j+cnt_i-k-o}=f_{i-1,j}\times \sum\limits_{k\leq cnt_i,l\leq j} (cnt_i!)\cdo
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>数学/观察性质,结论与构造</tag>
         <tag>动态规划-普通DP</tag>
+        <tag>数学/观察性质,结论与构造</tag>
       </tags>
   </entry>
   <entry>
@@ -1324,8 +1334,8 @@ y \cdot A_r-x \cdot B_r=y \cdot A_{l-1}-x \cdot B_{l-1}</script><p>然后如果�
         <category>校内模拟赛</category>
       </categories>
       <tags>
-        <tag>数学/观察性质,结论与构造</tag>
         <tag>动态规划-普通DP</tag>
+        <tag>数学/观察性质,结论与构造</tag>
         <tag>数据结构/线段树</tag>
         <tag>动态规划-状压DP</tag>
         <tag>数据结构/数据结构方法/莫队</tag>
@@ -1504,9 +1514,9 @@ ans =\sum_{j=1}^{n}f_{n,j}\cdot g_{0,c_1,c_2}</script><p>其中$c_1$和$c_2$表�
         <category>Codeforces</category>
       </categories>
       <tags>
+        <tag>动态规划-普通DP</tag>
         <tag>思维题/构造</tag>
         <tag>思维题/计数</tag>
-        <tag>动态规划-普通DP</tag>
         <tag>贪心</tag>
       </tags>
   </entry>
@@ -2386,12 +2396,12 @@ G &= G_h - \frac{T(G_h)}{T'(G_h)}\\\
 <p>Let’s say sunshine for everyone 人们说生活总是充满阳光<br>But as far as I can remember 但在我的记忆中<br>We’ve been migratory animals 我们一直只是如野兽般流浪<br>Living under changing weather 四季变换，我们如常<br>Someday we will foresee obstacles 总有一天，我们会看见那些困难阻碍<br>Through the blizzard through the blizzard 在那片风雪之中，在那片风雪之后<br>Today we will sell our uniform 如今我们将曾经的校服变卖<br>Live together live together 一同离去，一同启程</p>
 </blockquote>
 
-        <div id="aplayer-KYipmKbr" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-bHaHjGNM" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-KYipmKbr"),
+            element: document.getElementById("aplayer-bHaHjGNM"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -3056,8 +3066,8 @@ c_{i+1}-c_i' = d_1\\\ c_i'-c_{i-1} = d_2</script><p>换句话说，其实就是�
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>思维题/构造</tag>
         <tag>动态规划-普通DP</tag>
+        <tag>思维题/构造</tag>
         <tag>树模型</tag>
       </tags>
   </entry>
@@ -3167,8 +3177,8 @@ S\stackrel{f = a_i,c = 0}{\longrightarrow}i \stackrel{f = Inf,c = c_{i,j}}{\long
         <category>网络流二十四题</category>
       </categories>
       <tags>
-        <tag>网络流24题</tag>
         <tag>网络流/费用流</tag>
+        <tag>网络流24题</tag>
       </tags>
   </entry>
   <entry>
@@ -4266,12 +4276,12 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
 <p>我大概在听这首歌之前，从来没有真正知道原来”喜欢“这个已经烂大街的词、这个现如今可以随便说出口又可以随便忘记的词、这个在我上过的所有学校里从来没有人敢光明正大说出来的词、这个现在在芸芸众生中已经被玷污的、被人们认为还没有一块钱来的实在的词，竟然如此的可爱，竟然如此的值得人们尊敬，竟然可以在冰冷的寒夜散发出如此耀眼的光芒。</p>
 <p>我喜欢你，你应该，也知道。</p>
 
-        <div id="aplayer-JBXxZtoD" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-CqmLXAvB" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-JBXxZtoD"),
+            element: document.getElementById("aplayer-CqmLXAvB"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -4302,12 +4312,12 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
 <hr>
 <p>雪，终于停了啊。现在已经午夜了，街上一个人都没有，天空在积雪的映照下，是让人着迷的紫红色。</p>
 
-        <div id="aplayer-cSTXOYOL" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-vgUkYUdu" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-cSTXOYOL"),
+            element: document.getElementById("aplayer-vgUkYUdu"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -4999,8 +5009,8 @@ n \geq 2^{k+1}-1\\\ \log_2{(n+1)} \geq k+1\\\ \log_2{(n+1)}-1 \geq k</script><sc
         <category>网络流</category>
       </categories>
       <tags>
-        <tag>网络流/费用流</tag>
         <tag>网络流/最大流</tag>
+        <tag>网络流/费用流</tag>
       </tags>
   </entry>
   <entry>
