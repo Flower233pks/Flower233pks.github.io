@@ -156,7 +156,7 @@
 <meta property="og:site_name" content="Orchidany&#39;w blog">
 <meta property="og:description" content="首先呢，做这一场的原因是看了 vfk 的 blog（戳我）感觉很有趣，并且似乎以前的 CF 的 div1 难度比现在低一点，于是就打算做一下。 嗯，是一场 CNround，可能会更贴合国内的出题氛围？感觉质量还是很好的233. 题号是 $\rm CF437/438$。 向前辈们致敬！">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-02T05:59:33.306Z">
+<meta property="og:updated_time" content="2020-01-03T00:57:19.798Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【题解】Cf Round 250">
 <meta name="twitter:description" content="首先呢，做这一场的原因是看了 vfk 的 blog（戳我）感觉很有趣，并且似乎以前的 CF 的 div1 难度比现在低一点，于是就打算做一下。 嗯，是一场 CNround，可能会更贴合国内的出题氛围？感觉质量还是很好的233. 题号是 $\rm CF437/438$。 向前辈们致敬！">
@@ -494,7 +494,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-01-02 13:59:33" itemprop="dateModified" datetime="2020-01-02T13:59:33+08:00">2020-01-02</time>
+                <time title="Modified: 2020-01-03 08:57:19" itemprop="dateModified" datetime="2020-01-03T08:57:19+08:00">2020-01-03</time>
               </span>
             
           
@@ -616,7 +616,7 @@
 f_{l,r}=\sum_{k=l}^{r} [\mathrm{convex}(l\to k\to r)]\cdot (f_{l,k}\times f_{k,r})</script><p>其中 $[]$ 还是艾佛森括号，$\rm convex$ 函数为一个 $0/1$ 函数，返回给定的三个点对于整个多边形是否是凸的。</p>
 <p>然后为了快速判断这个东西，可以先把所有点按照一个方向排一圈，然后叉积求出是否在外侧。</p>
 <p>以下是如何用叉积去判:</p>
-<p>如果 $a\times b &lt; 0$ 说明 $a$ 在 $b$ 的逆时针方向， $=0$ 说明通向， $&gt;0$ 说明 $a$ 在 $b$ 的顺时针方向。</p>
+<p>如果 $a\times b &lt; 0$ 说明 $a$ 在 $b$ 的逆时针方向， $=0$ 说明同向， $&gt;0$ 说明 $a$ 在 $b$ 的顺时针方向。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> N ;</span><br><span class="line"><span class="keyword">double</span> s ;</span><br><span class="line">LL f[MAXN][MAXN] ;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">nodes</span>&#123;</span></span><br><span class="line">    <span class="keyword">double</span> x, y ;</span><br><span class="line">    nodes <span class="keyword">friend</span> <span class="keyword">operator</span> - (<span class="keyword">const</span> nodes &amp;a, <span class="keyword">const</span> nodes &amp;b)&#123;</span><br><span class="line">        <span class="keyword">return</span> (nodes)&#123;a.x - b.x, a.y - b.y&#125; ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">double</span> <span class="keyword">friend</span> <span class="keyword">operator</span> * (<span class="keyword">const</span> nodes &amp;a, <span class="keyword">const</span> nodes &amp;b)&#123;</span><br><span class="line">        <span class="keyword">return</span> a.x * b.y - a.y * b.x ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;base[MAXN] ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; N ; <span class="keyword">int</span> i, j, k ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lf%lf"</span>, &amp;base[i].x, &amp;base[i].y) ;</span><br><span class="line">    s += base[N] * base[<span class="number">1</span>] ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt; N ; ++ i)</span><br><span class="line">        s += base[i] * base[i + <span class="number">1</span>], f[i][i + <span class="number">1</span>] = <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">if</span> (s &gt; <span class="number">0</span>) reverse(base + <span class="number">1</span>, base + N + <span class="number">1</span>) ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i)</span><br><span class="line">        <span class="keyword">for</span> (j = i - <span class="number">2</span> ; j &gt;= <span class="number">1</span> ; -- j)</span><br><span class="line">            <span class="keyword">for</span> (k = j ; k &lt;= i ; ++ k)</span><br><span class="line">                <span class="keyword">if</span> ((base[i] - base[j]) * (base[k] - base[j]) &gt; <span class="number">0</span>)</span><br><span class="line">                    (f[j][i] += f[j][k] * f[k][i]) %= Mod ;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; f[<span class="number">1</span>][N] &lt;&lt; <span class="built_in">endl</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="F"><a href="#F" class="headerlink" title="$F$"></a>$F$</h1><blockquote>
 <p>给定数列，区间查询和，区间取模，单点修改。</p>
@@ -1046,7 +1046,7 @@ if(canvas.getContext){
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-count">80</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1119,7 +1119,13 @@ if(canvas.getContext){
         
           
         
-        <span class="site-state-item-count">28</span>
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">31</span>
         <span class="site-state-item-name">categories</span>
         </a>
       </div>
@@ -1260,7 +1266,9 @@ if(canvas.getContext){
         
           
         
-        <span class="site-state-item-count">62</span>
+          
+        
+        <span class="site-state-item-count">63</span>
         <span class="site-state-item-name">tags</span>
         </a>
       </div>
@@ -1357,7 +1365,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共169.5k字</span>
+  <span class="post-count">博客全站共173.4k字</span>
 </div>
 
         
