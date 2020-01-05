@@ -9,12 +9,12 @@
 <p>在这些文章里，你会看到一个迷茫的青年如何满怀热血与绝望，眼里闪烁着沧桑与希望，怀里揣着坏掉的粮食和崭新的论文，脚下踏着崎岖不平的路，向明天走去。</p>
 <p>是的，我是花，来自山东，你直接叫我花这个ID或许我会很高兴，但是如果你认识我也可以不这么拘束。</p>
 
-        <div id="aplayer-umJThjqw" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-RMSQnWDp" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-umJThjqw"),
+            element: document.getElementById("aplayer-RMSQnWDp"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -101,7 +101,7 @@
 <p>提交链接 ：</p>
 <p>1 <a href="http://www.spoj.com/problems/DIVCNTK2/" target="_blank" rel="noopener">$k=2$  DIVCNTK2</a><br>2 <a href="http://www.spoj.com/problems/DIVCNTK3/" target="_blank" rel="noopener">$k=3$  DIVCNTK3</a><br>3 <a href="http://www.spoj.com/problems/DIVCNTK/" target="_blank" rel="noopener">$\mathrm{input} ~k$  DIVTNK(general)</a></p>
 <a id="more"></a>
-<h2 id="正经题解"><a href="#正经题解" class="headerlink" title="正经题解"></a>正经题解</h2><p>其实很水的，对吧？毕竟已知 $\forall p\in \mathbb{P,}~\sigma_0(p^k)=k+1$，所以有 $f(p)=k+1,f(p^j)=jk+1$ 。于是这东西看起来可以效仿原来的思路直接设一个 $f(p)=1,f(p)=k$ 来做，然后就。。。就不对了！</p>
+<h2 id="正经题解"><a href="#正经题解" class="headerlink" title="正经题解"></a>正经题解</h2><p>其实很水的，对吧？已知 $\forall p\in \mathbb{P,}~\sigma_0(p^k)=k+1$，所以有 $f(p)=k+1,f(p^j)=jk+1$ 于是这东西看起来可以效仿原来的思路直接设一个 $f(p)=1,f(p)=k$ 来做，然后就。。。就不对了！</p>
 <p>然后我就很奇怪啊，为啥按照公式推，$g$ 应该没推错，但是结果不对？迷惑了大半个上午。</p>
 <p>…到最后这个题纠结了半天，原因是我忘了 $f(p)=k$ 这东西 <strong>不是积性函数</strong> ，所以不能去推 $f(k)$，也就是说<strong>不能直接拆</strong>。</p>
 <p>然后为了这个事儿还去 uoj 群丢了一上午人，Life so hard ….</p>
@@ -437,8 +437,8 @@ f_n=[n=0]+\sum_{p=1}^{m}[p\in c] \sum_{q=0}^{m-p}f_{q}f_{m-p-q}</script><p>发�
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>动态规划-普通DP</tag>
         <tag>思维题/计数</tag>
+        <tag>动态规划-普通DP</tag>
         <tag>奇怪的技巧</tag>
         <tag>多项式的应用</tag>
         <tag>贪心</tag>
@@ -896,6 +896,22 @@ x^v & \equiv x^{v\bmod \varphi(k)+\varphi(k)} (\bmod k) \\\ &\equiv x^{(q\bmod \
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><del>别名：一句话日记</del></p>
 <p>可能就是用来随时记录自己感悟的东西？</p>
 <a id="more"></a>
+<h3 id="1-4"><a href="#1-4" class="headerlink" title="1.4"></a>1.4</h3><p>今天决定有心劲一点，结果在机房从 $7：30$ 睡到 $8:30$……可海星</p>
+<p>嗯，其实是在学 Min_25筛，学了一上午也没太整明白，就比着题解写了写板子，感觉不太好，那种囫囵吞枣的感觉又涌了上来。不过大致是懂了？</p>
+<p>下午继续Min25，顺便写了一下笔记。在看过大多数人让人迷惑的blog之后，发现HN-001神仙 <code>xzz</code> 讲的最清楚明白。于是把大部分知识点给扣清楚了，剩下的小块可能还需要继续追索。</p>
+<p>晚上不知道为啥开始一直看《巨人》，从 $90+$ 一直看到了 $123$ 话，期间用 $\rm Min25$ 过掉了杜教筛的板板，觉得自己啥都不会智障的很。</p>
+<p>不过好在巨人快看完了？说实话我《巨人》看的没有当年补《海贼》看的详细，因为《海贼》是我去一本一本买的单行本，许多本反复看了好多遍，而巨人甚至连比较长的对白都跳过了。加上作者诡异的紧凑的画风导致观感极差。</p>
+<p>不过要说剧情，我比较深的感觉就是，艾伦和三爷，以及他的小伙伴们都回不到原来了。从什么时候开始的呢？大概是从马莱对艾尔迪亚人派出那四个智慧巨人开始的吧，家不家矣，国不国矣。但是你能说出到底是谁错了吗？每个人都坚持着自己心中的正义而已吧……</p>
+<p>感觉巨人的思想内核还是很现实的，再加上作者没有尾田那种浪漫主义情怀——毕竟说到底，海贼和巨人的思想内核都很沉重，探索的人性也很复杂，但是尾田却能把海贼画的很浪漫。每次结束战斗都要庆祝，都会看到笑容。我想，其实两部动漫都是在解剖这个社会，但是一个是笑着解剖，一个是哭着解剖吧。</p>
+<p>最近感觉很困。听说下周二周三由于高考听力占考场，所以放假。不知道我们放不放。但我觉得不放的可能性更大吧…</p>
+<h3 id="1-3"><a href="#1-3" class="headerlink" title="1.3"></a>1.3</h3><p>今天准备学最短路树，但是中途穿插着一直在看《进击的巨人》，所以效率不高。</p>
+<p>结果发现最短路树其实不难，难的是有一堆十分诡异的题目…比如随手套个点分治之类的233</p>
+<p>结果下午就自闭了，自闭在 $\rm TJOI$ 的一道题上，大概就是每次询问删一条边之后 $\rm S\to T$ 的最短路是多少，询问之间独立。看题解看了好久也没整明白…菜死我算了。</p>
+<p>然后下午明白之后晚上就写啊，写了好久才写对。然后就蒙逼了。</p>
+<p>不知道什么，感觉最近不是那么有心劲了…可能是停课必经的一个阶段吧？我不是很想把这个当做自己在一段卑微的感情中受挫的副产物，那也太惨了吧？</p>
+<p>不过很自闭就是了……</p>
+<p>我一直在想，或许我就是因为不喜欢文化课才学的奥赛吧？从理智还是从情感上来说，我都更应该去学文化课。所以，我在做什么呢？真的是在追梦吗？每天就这么低下的学习紧张度能做成什么呢？</p>
+<p>我找了好久，本来以为找到了自己的路，后来才发现原来自己只是兜了个大圈，又回到原地了而已。</p>
 <h3 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h3><p>…上午写完鸽了的题解，然后几乎啥都没干……原因是本来打算学整体二分，结果看到动态图连通性这东西觉得可以学一下，就去学了学ETT——然而其实就是大略地看了那么几眼，明白原理就不看了，回过头来发现这东西好像不是给正常人写的……并且跑的似乎也没有暴力快……于是就又回去学整体二分了。</p>
 <p>于是就二分了一下午，我是憨憨。</p>
 <p>晚上本来打算很有心劲，结果看起了《进击的巨人》，最终漫画从 $55$ 话看到了第 $70$ 话。本来可以看更多，但是中途有 <code>slyz</code> 的神仙组团来精（教）准（我）扶（做）贫（人），比如我被怒斥：</p>
@@ -1350,8 +1366,8 @@ d(x)=\left\{\begin{array}{ll}{x \bmod 9,} & {x \bmod 9 \neq 0} \\ {9,} & {x \bmo
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>动态规划-普通DP</tag>
         <tag>数学/观察性质,结论与构造</tag>
+        <tag>动态规划-普通DP</tag>
       </tags>
   </entry>
   <entry>
@@ -1471,8 +1487,8 @@ y \cdot A_r-x \cdot B_r=y \cdot A_{l-1}-x \cdot B_{l-1}</script><p>然后如果�
         <category>校内模拟赛</category>
       </categories>
       <tags>
-        <tag>动态规划-普通DP</tag>
         <tag>数学/观察性质,结论与构造</tag>
+        <tag>动态规划-普通DP</tag>
         <tag>数据结构/线段树</tag>
         <tag>动态规划-状压DP</tag>
         <tag>数据结构/数据结构方法/莫队</tag>
@@ -1651,9 +1667,9 @@ ans =\sum_{j=1}^{n}f_{n,j}\cdot g_{0,c_1,c_2}</script><p>其中$c_1$和$c_2$表�
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>动态规划-普通DP</tag>
         <tag>思维题/构造</tag>
         <tag>思维题/计数</tag>
+        <tag>动态规划-普通DP</tag>
         <tag>贪心</tag>
       </tags>
   </entry>
@@ -2533,12 +2549,12 @@ G &= G_h - \frac{T(G_h)}{T'(G_h)}\\\
 <p>Let’s say sunshine for everyone 人们说生活总是充满阳光<br>But as far as I can remember 但在我的记忆中<br>We’ve been migratory animals 我们一直只是如野兽般流浪<br>Living under changing weather 四季变换，我们如常<br>Someday we will foresee obstacles 总有一天，我们会看见那些困难阻碍<br>Through the blizzard through the blizzard 在那片风雪之中，在那片风雪之后<br>Today we will sell our uniform 如今我们将曾经的校服变卖<br>Live together live together 一同离去，一同启程</p>
 </blockquote>
 
-        <div id="aplayer-wgWvWJDV" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-ZHiAPQFq" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-wgWvWJDV"),
+            element: document.getElementById("aplayer-ZHiAPQFq"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -3203,8 +3219,8 @@ c_{i+1}-c_i' = d_1\\\ c_i'-c_{i-1} = d_2</script><p>换句话说，其实就是�
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>动态规划-普通DP</tag>
         <tag>思维题/构造</tag>
+        <tag>动态规划-普通DP</tag>
         <tag>树模型</tag>
       </tags>
   </entry>
@@ -4413,12 +4429,12 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
 <p>我大概在听这首歌之前，从来没有真正知道原来”喜欢“这个已经烂大街的词、这个现如今可以随便说出口又可以随便忘记的词、这个在我上过的所有学校里从来没有人敢光明正大说出来的词、这个现在在芸芸众生中已经被玷污的、被人们认为还没有一块钱来的实在的词，竟然如此的可爱，竟然如此的值得人们尊敬，竟然可以在冰冷的寒夜散发出如此耀眼的光芒。</p>
 <p>我喜欢你，你应该，也知道。</p>
 
-        <div id="aplayer-bGzJgNnn" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-igWgqHiy" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-bGzJgNnn"),
+            element: document.getElementById("aplayer-igWgqHiy"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -4449,12 +4465,12 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
 <hr>
 <p>雪，终于停了啊。现在已经午夜了，街上一个人都没有，天空在积雪的映照下，是让人着迷的紫红色。</p>
 
-        <div id="aplayer-UDyYcKUa" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-JpYLjLfp" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-UDyYcKUa"),
+            element: document.getElementById("aplayer-JpYLjLfp"),
             narrow: false,
             autoplay: false,
             showlrc: false,

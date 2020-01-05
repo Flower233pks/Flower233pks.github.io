@@ -156,7 +156,7 @@
 <meta property="og:site_name" content="Orchidany&#39;w blog">
 <meta property="og:description" content="题目名称是我瞎写的233 事实上是 $\rm SPOJ$ 的三倍经验道题，解决的是以下问题：  \sum _{i=1}^{n}\sigma_0(i^k)其中 $n,k$ 给定，$n\leq 10^{10},\quad k\leq2^{64}$  我也忘了是不是这个数据范围反正能过就对了 提交链接 ： 1 $k=2$  DIVCNTK22 $k=3$  DIVCNTK33 $\mathrm{inpu">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-05T04:00:05.066Z">
+<meta property="og:updated_time" content="2020-01-05T05:55:41.812Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【题解】SPOJ数个数">
 <meta name="twitter:description" content="题目名称是我瞎写的233 事实上是 $\rm SPOJ$ 的三倍经验道题，解决的是以下问题：  \sum _{i=1}^{n}\sigma_0(i^k)其中 $n,k$ 给定，$n\leq 10^{10},\quad k\leq2^{64}$  我也忘了是不是这个数据范围反正能过就对了 提交链接 ： 1 $k=2$  DIVCNTK22 $k=3$  DIVCNTK33 $\mathrm{inpu">
@@ -479,7 +479,7 @@
                 
               
 
-              <time title="Created: 2020-01-05 11:35:54 / Modified: 12:00:05" itemprop="dateCreated datePublished" datetime="2020-01-05T11:35:54+08:00">2020-01-05</time>
+              <time title="Created: 2020-01-05 11:35:54 / Modified: 13:55:41" itemprop="dateCreated datePublished" datetime="2020-01-05T11:35:54+08:00">2020-01-05</time>
             </span>
           
 
@@ -573,7 +573,7 @@
 <p>提交链接 ：</p>
 <p>1 <a href="http://www.spoj.com/problems/DIVCNTK2/" target="_blank" rel="noopener">$k=2$  DIVCNTK2</a><br>2 <a href="http://www.spoj.com/problems/DIVCNTK3/" target="_blank" rel="noopener">$k=3$  DIVCNTK3</a><br>3 <a href="http://www.spoj.com/problems/DIVCNTK/" target="_blank" rel="noopener">$\mathrm{input} ~k$  DIVTNK(general)</a></p>
 <a id="more"></a>
-<h2 id="正经题解"><a href="#正经题解" class="headerlink" title="正经题解"></a>正经题解</h2><p>其实很水的，对吧？毕竟已知 $\forall p\in \mathbb{P,}~\sigma_0(p^k)=k+1$，所以有 $f(p)=k+1,f(p^j)=jk+1$ 。于是这东西看起来可以效仿原来的思路直接设一个 $f(p)=1,f(p)=k$ 来做，然后就。。。就不对了！</p>
+<h2 id="正经题解"><a href="#正经题解" class="headerlink" title="正经题解"></a>正经题解</h2><p>其实很水的，对吧？已知 $\forall p\in \mathbb{P,}~\sigma_0(p^k)=k+1$，所以有 $f(p)=k+1,f(p^j)=jk+1$ 于是这东西看起来可以效仿原来的思路直接设一个 $f(p)=1,f(p)=k$ 来做，然后就。。。就不对了！</p>
 <p>然后我就很奇怪啊，为啥按照公式推，$g$ 应该没推错，但是结果不对？迷惑了大半个上午。</p>
 <p>…到最后这个题纠结了半天，原因是我忘了 $f(p)=k$ 这东西 <strong>不是积性函数</strong> ，所以不能去推 $f(k)$，也就是说<strong>不能直接拆</strong>。</p>
 <p>然后为了这个事儿还去 uoj 群丢了一上午人，Life so hard ….</p>
@@ -1302,7 +1302,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共173.4k字</span>
+  <span class="post-count">博客全站共174.4k字</span>
 </div>
 
         
