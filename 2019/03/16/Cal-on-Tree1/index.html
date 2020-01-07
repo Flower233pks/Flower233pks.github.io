@@ -157,7 +157,7 @@
 <meta property="og:description" content="一类比较简单的树上路径统计问题">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E6%8F%90%E9%AB%98%2B-blue.svg">
-<meta property="og:updated_time" content="2019-12-15T06:49:10.776Z">
+<meta property="og:updated_time" content="2020-01-07T23:32:54.779Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【题解】一类树上距离的计算">
 <meta name="twitter:description" content="一类比较简单的树上路径统计问题">
@@ -496,7 +496,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-15 14:49:10" itemprop="dateModified" datetime="2019-12-15T14:49:10+08:00">2019-12-15</time>
+                <time title="Modified: 2020-01-08 07:32:54" itemprop="dateModified" datetime="2020-01-08T07:32:54+08:00">2020-01-08</time>
               </span>
             
           
@@ -637,7 +637,8 @@ dp_v = dp_u - 2 \cdot pre_v \cdot  subsize_v + N \cdot pre_v</script><p>其中$p
 dp[to(k)][0] = dp[now][1] - Sub[to(k)][0] * Pre[to(k)] \\ dp[to(k)][1] = dp[now][0] - Sub[to(k)][1] * Pre[to(k)] ，\\ dp[to(k)][0] += S0 * Pre[to(k)] , \\ dp[to(k)][1] += S1 * Pre[to(k)] ;</script><p>其中$to(k) \in son_{now}$</p>
 <p>而偶数的时候，显然不是交叉转移的（奇数状态转移给奇数状态）：</p>
 <script type="math/tex; mode=display">dp[to(k)][1] = dp[now][1] - Sub[to(k)][1] * Pre[to(k)] ;\\ dp[to(k)][0] = dp[now][0] - Sub[to(k)][0] * Pre[to(k)] ;\\        dp[to(k)][1] += S1 * Pre[to(k)],\\         dp[to(k)][0] += S0 * Pre[to(k)] ;</script><p>于是就结束了。其实这个地方转移方式十分的多，但是关键的装套转移方程其实就是一句：</p>
-<h3 id="dp-v-dp-u-2-cdot-pre-v-cdot-subsize-v-Count-cdot-pre-v"><a href="#dp-v-dp-u-2-cdot-pre-v-cdot-subsize-v-Count-cdot-pre-v" class="headerlink" title="$dp_v = dp_u - 2 \cdot pre_v \cdot  subsize_v + Count \cdot pre_v$"></a>$dp_v = dp_u - 2 \cdot pre_v \cdot  subsize_v + Count \cdot pre_v$</h3><p>其中$Count$表示某种神秘的计数。。。。</p>
+<script type="math/tex; mode=display">
+dp_v = dp_u - 2 \cdot pre_v \cdot  subsize_v + Count \cdot pre_vs</script><p>其中$Count$表示某种神秘的计数。。。。</p>
 <p>那么其实这种问题还可以拓展到“求对于每一个点$u$，$dist(u,v) \mod n =k$的点的个数，其中$k \in [0,k-1]$，我感觉做法应该会类似吧<del>（但是我肯定不会做因为根本不可能调的出来）</del></p>
 <h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><ul>
 <li>没啥好说的，只觉得第三模块的例题十分难调！十分难调！！！并且……我一开始没用$S0$或者$S1$，直接用的根节点的$sub_0$和$sub_1$，最后才法案根本不和逻辑。。。但他居然过样例了。。。</li>
@@ -1306,7 +1307,7 @@ if(canvas.getContext){
             
     
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mathscr-Task1-普通的查询问题"><span class="nav-number">1.</span> <span class="nav-text">$\mathscr{Task1}$普通的查询问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mathscr-Task-2-带有修改的查询问题："><span class="nav-number">2.</span> <span class="nav-text">$\mathscr{Task~2}$带有修改的查询问题：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与树形-mathbb-DP-的巧妙结合"><span class="nav-number">3.</span> <span class="nav-text">与树形$\mathbb{DP}$ 的巧妙结合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dp-v-dp-u-2-cdot-pre-v-cdot-subsize-v-Count-cdot-pre-v"><span class="nav-number">3.1.</span> <span class="nav-text">$dp_v = dp_u - 2 \cdot pre_v \cdot  subsize_v + Count \cdot pre_v$</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#结语"><span class="nav-number"></span> <span class="nav-text">结语</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mathscr-Task1-普通的查询问题"><span class="nav-number">1.</span> <span class="nav-text">$\mathscr{Task1}$普通的查询问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mathscr-Task-2-带有修改的查询问题："><span class="nav-number">2.</span> <span class="nav-text">$\mathscr{Task~2}$带有修改的查询问题：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与树形-mathbb-DP-的巧妙结合"><span class="nav-number">3.</span> <span class="nav-text">与树形$\mathbb{DP}$ 的巧妙结合</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#结语"><span class="nav-number"></span> <span class="nav-text">结语</span></a></li></div>
             
     
           </div>

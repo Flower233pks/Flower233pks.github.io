@@ -9,12 +9,12 @@
 <p>在这些文章里，你会看到一个迷茫的青年如何满怀热血与绝望，眼里闪烁着沧桑与希望，怀里揣着坏掉的粮食和崭新的论文，脚下踏着崎岖不平的路，向明天走去。</p>
 <p>是的，我是花，来自山东，你直接叫我花这个ID或许我会很高兴，但是如果你认识我也可以不这么拘束。</p>
 
-        <div id="aplayer-RMSQnWDp" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-gJBCrypa" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-RMSQnWDp"),
+            element: document.getElementById("aplayer-gJBCrypa"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -131,7 +131,7 @@
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
 <p>给定函数 $f(x)$ 满足：</p>
 <script type="math/tex; mode=display">
-\begin{array}{l}{\text { 1. } f(1)=1} \\ {\text { 2. } f\left(p^{c}\right)=p \oplus c} \qquad \oplus\text{代表异或运算}\\ {\text { 3. } f(a b)=f(a) f(b) \qquad (a,b)=1}\end{array}</script><p>求 $\sum f(x)$, $n\leq 10^{10}$</p>
+\begin{array}{l}{\text { 1. } f \left (1\right) =1} \\ {\text { 2. } f\left(p^{c}\right)=p \oplus c} \qquad \oplus\text{代表异或运算}\\ {\text { 3. } f\left(a b\right)=f\left(a\right) f\left(b\right) \qquad (a,b)=1}\end{array}</script><p>求 $\sum f(x)$, $n\leq 10^{10}$</p>
 </blockquote>
 <p>单独拿出一道题来整理一下，也算是理一下用 Min_25 解题的一点思路吧。</p>
 <a id="more"></a>
@@ -437,8 +437,8 @@ f_n=[n=0]+\sum_{p=1}^{m}[p\in c] \sum_{q=0}^{m-p}f_{q}f_{m-p-q}</script><p>发�
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>思维题/计数</tag>
         <tag>动态规划-普通DP</tag>
+        <tag>思维题/计数</tag>
         <tag>奇怪的技巧</tag>
         <tag>多项式的应用</tag>
         <tag>贪心</tag>
@@ -1366,8 +1366,8 @@ d(x)=\left\{\begin{array}{ll}{x \bmod 9,} & {x \bmod 9 \neq 0} \\ {9,} & {x \bmo
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>数学/观察性质,结论与构造</tag>
         <tag>动态规划-普通DP</tag>
+        <tag>数学/观察性质,结论与构造</tag>
       </tags>
   </entry>
   <entry>
@@ -1487,8 +1487,8 @@ y \cdot A_r-x \cdot B_r=y \cdot A_{l-1}-x \cdot B_{l-1}</script><p>然后如果�
         <category>校内模拟赛</category>
       </categories>
       <tags>
-        <tag>数学/观察性质,结论与构造</tag>
         <tag>动态规划-普通DP</tag>
+        <tag>数学/观察性质,结论与构造</tag>
         <tag>数据结构/线段树</tag>
         <tag>动态规划-状压DP</tag>
         <tag>数据结构/数据结构方法/莫队</tag>
@@ -1667,9 +1667,9 @@ ans =\sum_{j=1}^{n}f_{n,j}\cdot g_{0,c_1,c_2}</script><p>其中$c_1$和$c_2$表�
         <category>Codeforces</category>
       </categories>
       <tags>
+        <tag>动态规划-普通DP</tag>
         <tag>思维题/构造</tag>
         <tag>思维题/计数</tag>
-        <tag>动态规划-普通DP</tag>
         <tag>贪心</tag>
       </tags>
   </entry>
@@ -2549,12 +2549,12 @@ G &= G_h - \frac{T(G_h)}{T'(G_h)}\\\
 <p>Let’s say sunshine for everyone 人们说生活总是充满阳光<br>But as far as I can remember 但在我的记忆中<br>We’ve been migratory animals 我们一直只是如野兽般流浪<br>Living under changing weather 四季变换，我们如常<br>Someday we will foresee obstacles 总有一天，我们会看见那些困难阻碍<br>Through the blizzard through the blizzard 在那片风雪之中，在那片风雪之后<br>Today we will sell our uniform 如今我们将曾经的校服变卖<br>Live together live together 一同离去，一同启程</p>
 </blockquote>
 
-        <div id="aplayer-ZHiAPQFq" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-cZSxKGuw" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-ZHiAPQFq"),
+            element: document.getElementById("aplayer-cZSxKGuw"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -3219,8 +3219,8 @@ c_{i+1}-c_i' = d_1\\\ c_i'-c_{i-1} = d_2</script><p>换句话说，其实就是�
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>思维题/构造</tag>
         <tag>动态规划-普通DP</tag>
+        <tag>思维题/构造</tag>
         <tag>树模型</tag>
       </tags>
   </entry>
@@ -3330,8 +3330,8 @@ S\stackrel{f = a_i,c = 0}{\longrightarrow}i \stackrel{f = Inf,c = c_{i,j}}{\long
         <category>网络流二十四题</category>
       </categories>
       <tags>
-        <tag>网络流/费用流</tag>
         <tag>网络流24题</tag>
+        <tag>网络流/费用流</tag>
       </tags>
   </entry>
   <entry>
@@ -3524,11 +3524,11 @@ g^{p-1} \equiv1(\bmod~p) \\ \omega_n^n=1</script><p>而已。于是就满足性�
 <p>  至于性质四，证明的大体相似于单位单位复根。即：</p>
 <script type="math/tex; mode=display">
   \sum\limits_{j =0}^{n-1}{(g_n^k)^j} \equiv \frac{(g_n^k)^n -1}{g_n^k -1} \Longrightarrow  \frac{(g_n^n)^k -1}{g_n^k -1} \equiv  \frac{(1)^k -1}{g_n^k -1} = 0</script><p>  而对于$n=k$的情况，不适用于普通的几何级数求和，所以直接就是$\sum 1 =n$ 。</p>
-<h1 id="0x02-quad-rm-Codes"><a href="#0x02-quad-rm-Codes" class="headerlink" title="$0x02\quad \rm{Codes}$"></a>$0x02\quad \rm{Codes}$</h1><p>呃，于是NTT就完了。注意因为要保证$N | (p-1)$，且$N$是$2$的幂次，所以素数$p$一定要是$2^j+1$的形式。</p>
+<h1 id="0x02-quad-rm-Codes"><a href="#0x02-quad-rm-Codes" class="headerlink" title="$0x02\quad \rm{Codes}$"></a>$0x02\quad \rm{Codes}$</h1><p>呃，于是NTT就完了。注意因为要保证$N | (p-1)$，且 $N$ 是 $2$ 的幂次，所以素数 $p$ 一定要是 $k\cdot 2^j+1$ 的形式。</p>
 <p>至于求原根，不是本界探讨的内容。普通的NTT模数，原根可以背过；其余情况暴力求+验证即可。</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> N, M, K, qaq ;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">3000010</span> ;</span><br><span class="line">LL A[MAXN], B[MAXN], Inv ;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> Pi = <span class="built_in">acos</span>(<span class="number">-1.0</span>) ;</span><br><span class="line"><span class="keyword">int</span> i, j, k, l, Lim = <span class="number">1</span>, L, R[MAXN] ; </span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> P = <span class="number">998244353</span>, G = <span class="number">3</span>, Gi = <span class="number">332748118</span> ; </span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> IO&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> ch_top=<span class="number">4e7</span>+<span class="number">3</span>;</span><br><span class="line">    <span class="keyword">char</span> ch[ch_top],*now_r=ch<span class="number">-1</span>,*now_w=ch<span class="number">-1</span>;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">    	<span class="keyword">while</span>(*++now_r&lt;<span class="string">'0'</span>);</span><br><span class="line">    	<span class="keyword">register</span> <span class="keyword">int</span> x=*now_r-<span class="string">'0'</span>;</span><br><span class="line">    	<span class="keyword">while</span>(*++now_r&gt;=<span class="string">'0'</span>)x=x*<span class="number">10</span>+*now_r-<span class="string">'0'</span>;</span><br><span class="line">    	<span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">   		<span class="keyword">static</span> <span class="keyword">char</span> st[<span class="number">20</span>];<span class="keyword">static</span> <span class="keyword">int</span> top;</span><br><span class="line">    	<span class="keyword">while</span>(st[++top]=<span class="string">'0'</span>+x%<span class="number">10</span>,x/=<span class="number">10</span>);</span><br><span class="line">    	<span class="keyword">while</span>(*++now_w=st[top],--top);</span><br><span class="line">    	*++now_w=<span class="string">' '</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> LL <span class="title">expow</span><span class="params">(LL a, LL b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">register</span> LL res = <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">while</span> (b)&#123;</span><br><span class="line">        <span class="keyword">if</span> (b &amp; <span class="number">1</span>) (res *= a) %= P ;</span><br><span class="line">        (a *= a) %= P, b &gt;&gt;= <span class="number">1</span> ; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">NTT</span><span class="params">(LL *J, <span class="keyword">int</span> flag)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; Lim; i ++)</span><br><span class="line">        <span class="keyword">if</span>(i &lt; R[i]) swap(J[i], J[R[i]]) ;</span><br><span class="line">    <span class="keyword">for</span>(j = <span class="number">1</span>; j &lt; Lim; j &lt;&lt;= <span class="number">1</span>)&#123;</span><br><span class="line">    	LL Gn = expow(flag == <span class="number">1</span> ? G : Gi, (P - <span class="number">1</span>) / (j &lt;&lt; <span class="number">1</span>)) ;</span><br><span class="line">        <span class="keyword">for</span>(k = <span class="number">0</span>; k &lt; Lim; k += (j &lt;&lt; <span class="number">1</span>) )&#123;</span><br><span class="line">        	LL g = <span class="number">1</span> ;</span><br><span class="line">            <span class="keyword">for</span>(l = <span class="number">0</span> ; l &lt; j ; l ++, g = (g * Gn) % P)&#123;</span><br><span class="line">                LL Nx = J[k + l], Ny = g * J[k + j + l] % P ;</span><br><span class="line">                J[k + l] = (Nx + Ny) % P, J[k + j + l] = (Nx - Ny + P) % P ;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> IO ;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    fread(ch,<span class="number">1</span>,ch_top,<span class="built_in">stdin</span>); </span><br><span class="line">    N = read(), M = read() ;</span><br><span class="line">    <span class="keyword">while</span>(Lim &lt;= N + M) Lim &lt;&lt;= <span class="number">1</span>, L ++ ;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt;= N; i ++) A[i] = (read() + P) % P ;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt;= M; i ++) B[i] = (read() + P) % P ;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; Lim; i ++ ) R[i] = (R[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; (L - <span class="number">1</span>)) ;</span><br><span class="line">    NTT(A, <span class="number">1</span>), NTT(B, <span class="number">1</span>);</span><br><span class="line">  	<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt;= Lim; i ++) A[i] = (A[i] * B[i]) % P ; Inv = expow(Lim, P - <span class="number">2</span>) ;</span><br><span class="line">    NTT(A, <span class="number">-1</span>) ; </span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt;= N + M; i ++) write((<span class="keyword">long</span> <span class="keyword">long</span>) (A[i] * Inv + P) % P) ; 	 					fwrite(ch, <span class="number">1</span>, now_w - ch, <span class="built_in">stdout</span>) ; <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>其中<code>Gi</code>表示$998244353$的原根的逆元。</p>
-<h1 id="0x03-quad-rm-Extending"><a href="#0x03-quad-rm-Extending" class="headerlink" title="$0x03\quad \rm{Extending}$"></a>$0x03\quad \rm{Extending}$</h1><p>接上节内容，$NTT$本质上是只能处理“$NTT$模数（$p=2^k+1$）”。但是当我们需要对其进行任意模数取模时，就需要我们用$CRT$合并。</p>
+<h1 id="0x03-quad-rm-Extending"><a href="#0x03-quad-rm-Extending" class="headerlink" title="$0x03\quad \rm{Extending}$"></a>$0x03\quad \rm{Extending}$</h1><p>接上节内容，$NTT$本质上是只能处理“$NTT$模数（$p=\omega\cdot 2^k+1$）”。但是当我们需要对其进行任意模数取模时，就需要我们用$CRT$合并。</p>
 <p>然后…我也不知道从哪找到了一张比较浅显的图：<img src="1.png" alt> </p>
 <p>但是这个地方仍然会存在不少问题，巨佬<code>KsCla</code>如此解释：</p>
 <blockquote>
@@ -3863,7 +3863,8 @@ dp_v = dp_u - 2 \cdot pre_v \cdot  subsize_v + N \cdot pre_v</script><p>其中$p
 dp[to(k)][0] = dp[now][1] - Sub[to(k)][0] * Pre[to(k)] \\ dp[to(k)][1] = dp[now][0] - Sub[to(k)][1] * Pre[to(k)] ，\\ dp[to(k)][0] += S0 * Pre[to(k)] , \\ dp[to(k)][1] += S1 * Pre[to(k)] ;</script><p>其中$to(k) \in son_{now}$</p>
 <p>而偶数的时候，显然不是交叉转移的（奇数状态转移给奇数状态）：</p>
 <script type="math/tex; mode=display">dp[to(k)][1] = dp[now][1] - Sub[to(k)][1] * Pre[to(k)] ;\\ dp[to(k)][0] = dp[now][0] - Sub[to(k)][0] * Pre[to(k)] ;\\        dp[to(k)][1] += S1 * Pre[to(k)],\\         dp[to(k)][0] += S0 * Pre[to(k)] ;</script><p>于是就结束了。其实这个地方转移方式十分的多，但是关键的装套转移方程其实就是一句：</p>
-<h3 id="dp-v-dp-u-2-cdot-pre-v-cdot-subsize-v-Count-cdot-pre-v"><a href="#dp-v-dp-u-2-cdot-pre-v-cdot-subsize-v-Count-cdot-pre-v" class="headerlink" title="$dp_v = dp_u - 2 \cdot pre_v \cdot  subsize_v + Count \cdot pre_v$"></a>$dp_v = dp_u - 2 \cdot pre_v \cdot  subsize_v + Count \cdot pre_v$</h3><p>其中$Count$表示某种神秘的计数。。。。</p>
+<script type="math/tex; mode=display">
+dp_v = dp_u - 2 \cdot pre_v \cdot  subsize_v + Count \cdot pre_vs</script><p>其中$Count$表示某种神秘的计数。。。。</p>
 <p>那么其实这种问题还可以拓展到“求对于每一个点$u$，$dist(u,v) \mod n =k$的点的个数，其中$k \in [0,k-1]$，我感觉做法应该会类似吧<del>（但是我肯定不会做因为根本不可能调的出来）</del></p>
 <h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><ul>
 <li>没啥好说的，只觉得第三模块的例题十分难调！十分难调！！！并且……我一开始没用$S0$或者$S1$，直接用的根节点的$sub_0$和$sub_1$，最后才法案根本不和逻辑。。。但他居然过样例了。。。</li>
@@ -3887,7 +3888,7 @@ dp[to(k)][0] = dp[now][1] - Sub[to(k)][0] * Pre[to(k)] \\ dp[to(k)][1] = dp[now]
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89---purple.svg" alt></p>
 <p>许久之前开始学的算法了…今天终于学完了。主要参考的材料是董克凡的 $ 2016 $ 集训队论文和 $ \rm{Candy?} $ 的代码整理，在此处致以敬意。</p>
 <hr>
-<h1 id="rm-0x01-quad-Preface"><a href="#rm-0x01-quad-Preface" class="headerlink" title="$ \rm{0x01\quad Preface} $"></a>$ \rm{0x01\quad Preface} $</h1><p>线性规划主要解决的问题是：</p>
+<h1 id="rm-0x01-Preface"><a href="#rm-0x01-Preface" class="headerlink" title="$ \rm{0x01~ Preface} $"></a>$ \rm{0x01~ Preface} $</h1><p>线性规划主要解决的问题是：</p>
 <script type="math/tex; mode=display">
 \text{最大化}\quad \sum c_ix_i \quad(i = 1, 2,3 \cdots n) \\
 \text{满足约束} \quad \sum \limits_{j=1}^{n} a_{i,j}x_{j} \leq b_i\quad (i = 1,2,3\cdots m) \\\ \qquad \qquad \qquad \quad x_j \geq 0\quad (j=1,2,3\cdots n)</script><p>不失一般性的，我们定义最大化的函数为<strong>目标函数( $ \rm{Aim-Func} $ )</strong> ，定义约束函数的集合为<strong>约束函数集( $ \rm{Constraint-Set} $ )</strong>。那么朴素的线性规划可以看求一组向量{ $ x_1,x_2\cdots x_n $ }，使之既可以做约束函数的因变量，又满足其目标函数的值为 $ max $ 。</p>
@@ -3899,7 +3900,7 @@ dp[to(k)][0] = dp[now][1] - Sub[to(k)][0] * Pre[to(k)] \\ dp[to(k)][1] = dp[now]
 \text{满足约束} \quad A\boldsymbol{x\leq b} \\\
 \it{\qquad \qquad \quad} \boldsymbol {x} \geq 0</script><p>其中 $ \boldsymbol{c,x,b} $ 均为一维向量， $ A $ 为系数矩阵。</p>
 <p>那么我们在高中数学必修五里面运用的智障做法是，通过每个约束确定一个凸包，再用目标函数不断平移以求得与凸包的切点/切线来达到最大值，但是这样的做法通常不具有一般性。所以需要引入一种更常用的方法来解决这类问题。</p>
-<h1 id="rm-0x02-quad-松弛型矩阵与-rm-Pivot-操作"><a href="#rm-0x02-quad-松弛型矩阵与-rm-Pivot-操作" class="headerlink" title="$ \rm{0x02\quad} $  松弛型矩阵与 $ \rm{Pivot} $ 操作"></a>$ \rm{0x02\quad} $  松弛型矩阵与 $ \rm{Pivot} $ 操作</h1><p>我们考虑一种更加友好的线性规划方式——<strong>松弛型矩阵</strong>，即将原来的矩阵添加几个无实际作用的新变量 $ x_i $ ，使之换一个样子：</p>
+<h1 id="rm-0x02-松弛型矩阵与-rm-Pivot-操作"><a href="#rm-0x02-松弛型矩阵与-rm-Pivot-操作" class="headerlink" title="$ \rm{0x02} $  松弛型矩阵与 $ \rm{Pivot} $ 操作"></a>$ \rm{0x02} $  松弛型矩阵与 $ \rm{Pivot} $ 操作</h1><p>我们考虑一种更加友好的线性规划方式——<strong>松弛型矩阵</strong>，即将原来的矩阵添加几个无实际作用的新变量 $ x_i $ ，使之换一个样子：</p>
 <script type="math/tex; mode=display">
 \text{最大化}\quad \sum c_ix_i \quad(i = 1, 2,3 \cdots n) \\
 \text{满足约束} \quad x_{n+i} = b_i - \sum \limits_{j=1}^{n} a_{i,j}x_{j} \quad (i = 1,2,3\cdots m) \\\ \qquad\quad  x_j \geq 0\quad (j=1,2,3\cdots n+m)</script><p>两种表示是等价的，但是我们更倾向于松弛型这种简洁的表述方式。</p>
@@ -3914,15 +3915,13 @@ x_k= b_i -\sum \limits_{j=1}^{n} a_{i,j}x_{j}</script><p>变成</p>
 x_p = \frac{b_i - \sum \limits_{j\neq p}a_{i,j}x_j -x_k}{a_{i,p}}</script><p>而单纯性做法的本质就是通过不断转轴，实现目标函数不断变大。</p>
 <p>看上去似乎比较抽象？我们考虑对一次转轴操作，我们需要在转轴之后将原来目标函数里的非基变量代入，即用 $ (b_i - \sum _{j\neq p}a_{i,j}x_j -x_k)/a_{i,p} $ 这个东西去替换掉 $ x_p $ ，那么其中的常数项 $ \frac{b_i}{a_{i,p}} $ 就可以作为目标函数中的一个常数值，当 $ x_i~(i=1,2,3\cdots n) $ 均为 $ 0 $ 时，目标函数的值即为此。那么转轴操作就是通过这样的操作使得目标函数里的常数值不断增大，达到最优解。</p>
 <p>注意，转轴之后的得到的 $ x_p $ 的表达式，不仅要代入目标函数，也要代入其余的约束。</p>
-<h1 id="rm-0x03-quad-rm-Simplex"><a href="#rm-0x03-quad-rm-Simplex" class="headerlink" title="$ \rm{0x03}\quad \rm{Simplex} $"></a>$ \rm{0x03}\quad \rm{Simplex} $</h1><p>那么接下来，我们考虑单纯性做法的完整过程。</p>
+<h1 id="rm-0x03-rm-Simplex"><a href="#rm-0x03-rm-Simplex" class="headerlink" title="$ \rm{0x03}~ \rm{Simplex} $"></a>$ \rm{0x03}~ \rm{Simplex} $</h1><p>那么接下来，我们考虑单纯性做法的完整过程。</p>
 <p>不失一般性的，我们假设所有 $ b_i\geq 0 $ </p>
 <p>首先，我们对于转轴操作结束，回代一次之后，会发现目标函数中肯定会有至少一项系数变为负值，即转进来的前·基变量 $ x_k $ ，那么增大 $ x_k $ 一定会让结果目标函数变小。所以我们可以断言，<strong>当目标函数里的所有变量系数均为负值时，目标函数的最优值就会是现在目标函数中的常数值</strong>——因为我们在前文已经假定 $ x_i\geq 0 $ 了。</p>
 <p>同样，我们每次转轴操作需要保持原来线性规划的不变性，换句话说就是我们每次转轴时<strong>都需要找一个对与某个非基变量限制最紧的约束，将其换出</strong>。原因是我们考虑目标函数中的 $ x_i $ ，当其系数 $ \geq 0 $ 时， $ \rm{Aim  }\propto x_i $ ，所以我们需要找一个最紧的约束<strong>遏止</strong> $ x_i $ 的增长(即使我们不想)。</p>
 <p>那么伪代码如下， $ A,\boldsymbol{b,c} $ 的定义一开始已给出：</p>
 <hr>
-<p>Simplex(A, b, c){<br> $ \qquad $  initialization(A,b,c)  ;<br>  $ \qquad $  while  $ ∃e $  that  $ c_e&gt;0 $ {<br> $ \qquad <script type="math/tex">\qquad $ find the index  $ l $  that  $ A_{l,e} $   $ > 0 $  and minimizes  $ b_l/A_{l,e} $  
- $ \qquad</script> \qquad $ if  $ ∀l, A_{l,e} ≤ 0 $<br> $ \qquad <script type="math/tex">\qquad</script> \qquad $ return Unbounded ;<br> $ \qquad <script type="math/tex">\qquad $ else
- $ \qquad</script> \qquad $$ \qquad $ pivot(A, b, c, l, e)；<br>}</p>
+<p>Simplex(A, b, c){<br> $ \qquad $  initialization(A,b,c)  ;<br> $ \qquad $  while  $ ∃e $  that  $ c_e&gt;0 $ {<br> $ \qquad  \qquad $ find the index  $ l $  that  $ A_{l,e} $   $ &gt; 0 $  and minimizes  $ b_l/A_{l,e} $<br> $ \qquad \qquad $ if  $ ∀l, A_{l,e} ≤ 0 $<br> $ \qquad \qquad \qquad $ return Unbounded ;<br> $ \qquad \qquad $ else<br> $ \qquad \qquad \qquad $ pivot(A, b, c, l, e)；<br>}</p>
 <hr>
 <p>值得注意的是，如果在寻找完最紧约束后，存在一个 $ A_{l,e} \leq 0 $ ，那么我们在这组约束里无论怎么增大 $ x_e $ 都会使得目标函数增大，所以直接<code>return Unbounded</code>。</p>
 <p>此时我们还需要进行额外的操作，即初始化。因为我们转轴操作的目的是使目标函数增大，所以我们需要保证所有的 $ b_i\geq 0 $ ，但一开始给定的 $ b_i $ 很可能不满足这一约束，所以我们需要进行一次初始化。那么对于初始化，我们的思想是做另一次线性规划。<del>鬼知道那些发明这玩意儿的神仙怎么构造出的这个线性规划。</del></p>
@@ -3941,7 +3940,7 @@ x_{n+k}= b_k-b_i+\sum\limits_{j=1}^{n}(a_{k,j}-a_{i,j})x_j+x_{i+n}</script><p>�
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 1010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps = <span class="number">1e-8</span>, INF = <span class="number">1e15</span> ;</span><br><span class="line"><span class="keyword">int</span> N, M, T, Id[MAXN], i, j ; <span class="keyword">double</span> A[MAXN][MAXN], Get[MAXN] ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Pivot</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> e)</span></span>&#123;</span><br><span class="line">    swap(Id[N + l], Id[e]) ;<span class="comment">//交换两个变量</span></span><br><span class="line">    <span class="keyword">double</span> t = A[l][e] ; A[l][e] = <span class="number">1.0</span> ;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span> ; i &lt;= N ; ++ i) A[l][i] /= t ;<span class="comment">//类似于高斯消元的第一步，把这一项挪到等式右边，所以要先都除以系数</span></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span> ; i &lt;= M ; ++ i) </span><br><span class="line">        <span class="keyword">if</span>(i != l &amp;&amp; <span class="built_in">fabs</span>(A[i][e]) &gt; eps)</span><br><span class="line">            <span class="keyword">for</span>(t = A[i][e], A[i][e] = j = <span class="number">0</span> ; j &lt;= N ; ++ j) </span><br><span class="line">              A[i][j] -= A[l][j] * t ;<span class="comment">//此处则是代换。而由于代数式中肯定不会出现我们的A_&#123;i,e&#125;(毕竟是换到了等式右边)，所以对于这一项的系数要特殊处理成0</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">int</span> e = <span class="number">0</span>, l = <span class="number">0</span> ; <span class="keyword">double</span> t = -eps ;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= M ; ++ i) <span class="keyword">if</span> (A[i][<span class="number">0</span>] &lt; t) l = i, t = A[i][<span class="number">0</span>] ; <span class="keyword">if</span>(!l) <span class="keyword">return</span> <span class="number">1</span> ;<span class="comment">//找系数最小的负值项</span></span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">1</span> ; j &lt;= N ; ++ j) <span class="keyword">if</span> (A[l][j] &lt; -eps &amp;&amp; (!e || (rand() &amp; <span class="number">1</span>))) e = j ;</span><br><span class="line">        <span class="keyword">if</span> (!e) <span class="keyword">return</span> <span class="built_in">puts</span>(<span class="string">"Infeasible"</span>), <span class="literal">false</span> ;  Pivot(l, e) ;</span><br><span class="line">    &#125;<span class="comment">//不合法的线性规划，因为我们假设全部的系数都为正，且我们前面已经假定了全部x_i为正，那么不可能满足标准型里面的小于b_l——此时b_l为负值。</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Simplex</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, e = <span class="number">0</span> ; <span class="keyword">double</span> MAX = INF ;</span><br><span class="line">        <span class="keyword">for</span>(j = <span class="number">1</span> ; j &lt;= N ; ++ j) <span class="keyword">if</span> (A[<span class="number">0</span>][j] &gt; eps) &#123; e = j ; <span class="keyword">break</span> ; &#125; <span class="keyword">if</span>(!e) <span class="keyword">break</span> ;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">1</span> ; i &lt;= M ; ++ i) <span class="keyword">if</span> (A[i][e] &gt; eps &amp;&amp; A[i][<span class="number">0</span>] / A[i][e] &lt; MAX) MAX = A[i][<span class="number">0</span>] / A[i][e], l = i ;<span class="comment">//选个最紧的约束</span></span><br><span class="line">        <span class="keyword">if</span> (!l) <span class="keyword">return</span> <span class="built_in">puts</span>(<span class="string">"Unbounded"</span>), <span class="literal">false</span> ; Pivot(l,e) ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; N &gt;&gt; M &gt;&gt; T ; srand(<span class="number">19260817</span>) ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i) Id[i] = i ; </span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i) <span class="built_in">cin</span> &gt;&gt; A[<span class="number">0</span>][i] ; </span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= M ; <span class="built_in">cin</span> &gt;&gt; A[i ++][<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">1</span> ; j &lt;= N ; ++ j) <span class="built_in">cin</span> &gt;&gt; A[i][j] ; </span><br><span class="line">    <span class="keyword">if</span> (!(Init() &amp;&amp; Simplex())) <span class="keyword">return</span> <span class="number">0</span> ; <span class="built_in">printf</span>(<span class="string">"%.8lf\n"</span>, -A[<span class="number">0</span>][<span class="number">0</span>]) ;</span><br><span class="line">    <span class="keyword">if</span>(T)&#123;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">1</span> ; i &lt;= M ; ++ i) Get[Id[N + i]] = A[i][<span class="number">0</span>] ; </span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">1</span> ; i &lt;= N ; ++ i) <span class="built_in">printf</span>(<span class="string">"%.8lf "</span>,Get[i]) ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p> 然鹅事实上这份代码只有 $ 97pts $ …好像剩下3分就几乎没有人得过，除了kcz和std……</p>
 <p>至于中间的<code>srand</code>，是由于我们随便 $ pivot $ 一个 $ e $ 就好，于是就<del>听长者的</del>。</p>
-<h1 id="rm-0x04-quad-Afterwords"><a href="#rm-0x04-quad-Afterwords" class="headerlink" title="$ \rm{0x04}\quad Afterwords $"></a>$ \rm{0x04}\quad Afterwords $</h1><p>一直想学，一直没有机会学。</p>
+<h1 id="rm-0x04-Afterwords"><a href="#rm-0x04-Afterwords" class="headerlink" title="$ \rm{0x04}~ Afterwords $"></a>$ \rm{0x04}~ Afterwords $</h1><p>一直想学，一直没有机会学。</p>
 <p>说起来确实有点儿小激动。第一次写单纯型的代码是前不久的一次周末，早上点起来之后头昏脑涨地扑向Candy?的博客，学了起来。在那之后才发现原来线性规划并不常考，甚至说，不考。但是我挺喜欢这种感觉，<del>感觉自己仿佛比出题人会的还多</del></p>
 <h2 id="rm-Reference"><a href="#rm-Reference" class="headerlink" title="$ \rm{Reference} $"></a>$ \rm{Reference} $</h2><ul>
 <li>$ [1] $  : $ Candy? $ 的 $ blog $  <a href="https://www.cnblogs.com/candy99/" target="_blank" rel="noopener"> $ ^{^{[\nearrow ]}} $ </a></li>
@@ -4429,12 +4428,12 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
 <p>我大概在听这首歌之前，从来没有真正知道原来”喜欢“这个已经烂大街的词、这个现如今可以随便说出口又可以随便忘记的词、这个在我上过的所有学校里从来没有人敢光明正大说出来的词、这个现在在芸芸众生中已经被玷污的、被人们认为还没有一块钱来的实在的词，竟然如此的可爱，竟然如此的值得人们尊敬，竟然可以在冰冷的寒夜散发出如此耀眼的光芒。</p>
 <p>我喜欢你，你应该，也知道。</p>
 
-        <div id="aplayer-igWgqHiy" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-IPXavrGC" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-igWgqHiy"),
+            element: document.getElementById("aplayer-IPXavrGC"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -4465,12 +4464,12 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
 <hr>
 <p>雪，终于停了啊。现在已经午夜了，街上一个人都没有，天空在积雪的映照下，是让人着迷的紫红色。</p>
 
-        <div id="aplayer-JpYLjLfp" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-voYUkVyW" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-JpYLjLfp"),
+            element: document.getElementById("aplayer-voYUkVyW"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -5162,8 +5161,8 @@ n \geq 2^{k+1}-1\\\ \log_2{(n+1)} \geq k+1\\\ \log_2{(n+1)}-1 \geq k</script><sc
         <category>网络流</category>
       </categories>
       <tags>
-        <tag>网络流/最大流</tag>
         <tag>网络流/费用流</tag>
+        <tag>网络流/最大流</tag>
       </tags>
   </entry>
   <entry>
