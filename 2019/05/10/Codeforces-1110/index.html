@@ -165,7 +165,7 @@
 <meta property="og:image" content="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89-darkviolet.svg">
 <meta property="og:image" content="http://www.orchidany.cf/2019/05/10/Codeforces-1110/1.png">
 <meta property="og:image" content="http://www.orchidany.cf/2019/05/10/Codeforces-1110/2.png">
-<meta property="og:updated_time" content="2019-12-15T12:46:10.216Z">
+<meta property="og:updated_time" content="2020-01-12T23:54:18.773Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【赛题整理】CF#Global Round 1の题解(A $\to$ G)">
 <meta name="twitter:description" content="2019年2月7日举办的一场CF，$\text{div1+div2}$，题目质量较高。">
@@ -504,7 +504,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-15 20:46:10" itemprop="dateModified" datetime="2019-12-15T20:46:10+08:00">2019-12-15</time>
+                <time title="Modified: 2020-01-13 07:54:18" itemprop="dateModified" datetime="2020-01-13T07:54:18+08:00">2020-01-13</time>
               </span>
             
           
@@ -595,7 +595,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cin</span> &gt;&gt; b &gt;&gt; k ;</span><br><span class="line">   <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= k ; ++ i) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;base[i]) ;</span><br><span class="line">   reverse (base + <span class="number">1</span>, base + k + <span class="number">1</span>) ;</span><br><span class="line">   <span class="keyword">for</span> (i = k ; i &gt;= <span class="number">1</span> ; -- i) Sum = Sum * b + base[i], Sum %= <span class="number">10</span> ;</span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; (Sum &amp; <span class="number">1</span> ? <span class="string">"odd"</span> : <span class="string">"even"</span>) &lt;&lt; <span class="built_in">endl</span> ; <span class="keyword">return</span> <span class="number">0</span> ;</span><br></pre></td></tr></table></figure>
 <p><del>其实就是在水字数</del></p>
 <h1 id="B"><a href="#B" class="headerlink" title="$B$"></a>$B$</h1><p><img src="https://img.shields.io/badge/难度-普及%2B-red.svg" alt></p>
-<p>题意： 给定一条网格纸，$n, m, k$,分别表示点数，总长度，胶带的数量。对于输入的$n$个点，保证位置递增， 求覆盖所有的点所需的最小胶带长度（胶带数量$\leq k$）。</p>
+<p>题意：给定一条网格纸，$n, m, k$, 分别表示点数，总长度，胶带的数量。对于输入的$n$个点，保证位置递增， 求覆盖所有的点所需的最小胶带长度（胶带数量$\leq k$）。</p>
 <p>其实是个制杖题。我们考虑如果$k$是无限大，那么最优的方式一定是单点覆盖。所以如果胶带不够的话，就是要去额外多粘$N-k$个空白的区间。所以我们就可以排个序，求出$N-k$个空白区间的长度，再加上单点的长度和$n$，得到答案。注意空白区间的两头开的。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cin</span> &gt;&gt; N &gt;&gt; M &gt;&gt; K ;</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i)</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;now), (i &gt; <span class="number">1</span> ? (d[i - <span class="number">1</span>] = now - Last - <span class="number">1</span>) : <span class="number">1</span>), Last = now ;</span><br><span class="line">nth_element(d + <span class="number">1</span>, d + N - K + <span class="number">1</span>, d + N) ; <span class="comment">//Last row, now - Last + 1 -&gt; now - Last</span></span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N - K ; ++ i) Ans += d[i] ; Ans += N ; <span class="built_in">cout</span> &lt;&lt; Ans &lt;&lt; <span class="built_in">endl</span> ; <span class="keyword">return</span> <span class="number">0</span> ;</span><br></pre></td></tr></table></figure>
 <p>emmm怎么说呢，是个显然又不显然的贪心，大概还是跟<code>OI素养</code>直接挂钩的吧（sigh</p>
@@ -1379,7 +1379,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共174.4k字</span>
+  <span class="post-count">博客全站共175.7k字</span>
 </div>
 
         

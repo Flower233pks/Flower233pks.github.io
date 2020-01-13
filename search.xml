@@ -9,12 +9,12 @@
 <p>在这些文章里，你会看到一个迷茫的青年如何满怀热血与绝望，眼里闪烁着沧桑与希望，怀里揣着坏掉的粮食和崭新的论文，脚下踏着崎岖不平的路，向明天走去。</p>
 <p>是的，我是花，来自山东，你直接叫我花这个ID或许我会很高兴，但是如果你认识我也可以不这么拘束。</p>
 
-        <div id="aplayer-gJBCrypa" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-bRycQioj" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-gJBCrypa"),
+            element: document.getElementById("aplayer-bRycQioj"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -1403,7 +1403,7 @@ F(n,k)&=\frac{\binom{n-1}{k-1}+2 \cdot \binom{n-2}{k-1}+3 \cdot \binom{n-3}{k-1}
 <h1 id="C"><a href="#C" class="headerlink" title="$C$"></a>$C$</h1><blockquote>
 <p>给定$n(1≤n≤300)$个数，求问有多少种排列方案使得任意两个相邻的数之积都不是完全平方数。由于方案数可能很大，输出方案数$\bmod 10^9+7$的值。</p>
 </blockquote>
-<p>考虑相邻两个数之积是完全平方数的充要条件，当且仅当将两个数的所有质因子次数$\bmod ~2$后，两个数相同时，其乘积才会为完全平方数。</p>
+<p>考虑相邻两个数之积是完全平方数的充要条件，当且仅当将两个数的所有质因子次数$\bmod ~2$ 后，两个数相同时，其乘积才会为完全平方数。</p>
 <p>那么也就是说，这种性质可以传递，即$a\cdot b$为完全平方数，$b\cdot c$为完全平方数，那么$a\cdot c$也是。于是可以对所有的数暴力分组，每个组找一个代表元来记录。设每一组中有$cnt_i$个数，前$i$个组的$cnt$前缀和为$s_i$。</p>
 <p>那么问题转化成了给定$n$个数，同一组的元素不能放在一起，求排列数。那么就是$f_{i,j}$表示前$i$个组，有$j$对相邻元素的乘积为完全平方数的排列数，转移时考虑，枚举当前这一组被分成了$k$块，插板法插出来的方案数为$\binom{cnt_i-1}{k-1}$，并且会多加上$cnt_i-k$个不合法的位置；然后考虑这$k$块插到了上一个状态中，$j$对不合法相邻的数中，$o$对不合法的数之间（即有$o$对数被拆开了），那么就会少$o$对非法数对。然后就是$\binom{j}{o}$。考虑剩下的了$k-o$块，这$k-o$块可以放到$s_i-j+1$个正常的空隙里面，于是再乘一个$\binom{s_i-j+1}{k-o}$</p>
 <script type="math/tex; mode=display">
@@ -1679,7 +1679,7 @@ ans =\sum_{j=1}^{n}f_{n,j}\cdot g_{0,c_1,c_2}</script><p>其中$c_1$和$c_2$表�
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>校内模拟赛选整</p>
 <p>大概难度都是TG里面$2$~$3$左右的。</p>
 <a id="more"></a>
-<h2 id="A"><a href="#A" class="headerlink" title="$A$"></a>$A$</h2><blockquote>
+<h1 id="A"><a href="#A" class="headerlink" title="$A$"></a>$A$</h1><blockquote>
 <p>给定直线上$n\leq 2000$个建筑的坐标，两种覆盖方式，$A:$覆盖长度为$L$，可以用$p$次；$B$：覆盖长度为$2L$，可以用$q$次。求最小的$L$.</p>
 </blockquote>
 <hr>
@@ -1687,7 +1687,7 @@ ans =\sum_{j=1}^{n}f_{n,j}\cdot g_{0,c_1,c_2}</script><p>其中$c_1$和$c_2$表�
 <p>之后考虑二分一个$L$，$check$其正确性。$check$时感觉贪心并不是很好贪，可能会有比较妙的贪心，但这个地方选择一种更加稳妥的$dp$。考虑$f_{i,j}$表示两种覆盖分别用了$i,j$个最多能覆盖到哪个建筑，则</p>
 <script type="math/tex; mode=display">
 f_{i,j}=\max(go_p[f_{i-1,j}+1], go_q[f_{i,j-1}+1])</script><p>其中$go_x[P]$表示在位置$P$使用第$x$种覆盖能够覆盖多少建筑。于是最后复杂度$O(n^2\log n)$.</p>
-<h2 id="B"><a href="#B" class="headerlink" title="$B$"></a>$B$</h2><blockquote>
+<h1 id="B"><a href="#B" class="headerlink" title="$B$"></a>$B$</h1><blockquote>
 <p>定义<code>string</code>类型的递推$f_0=’0’$，$f_1=’1’$，$f_i=f_{i-2}+f_{i-1}$，其中$+$表示<code>string</code>类型的连接。多组询问，询问$f_n$中区间$\rm [L,R]$内的串。$n\leq 1e9,~\rm L\leq R\leq 2e9,\sum (R-L)\leq 1e7$</p>
 </blockquote>
 <hr>
@@ -1695,9 +1695,9 @@ f_{i,j}=\max(go_p[f_{i-1,j}+1], go_q[f_{i,j-1}+1])</script><p>其中$go_x[P]$表
 <p>发现$f_i.size()$就是斐波那切数列的第$i$项，并且序号奇偶性相同的两项$f_i,f_j$，当$j&lt;i$时满足$f_j$是$f_i$的前缀，这东西可以数学归纳出来<del>并且肉眼看不出来</del>。</p>
 <p>之后可以发现$\rm L,R\leq 2e9$，而斐波那切数列的第$50$项已经超过了这个范围。于是考虑对于一个询问$f_n[L,R]$，先把$n$缩到$50$以内，然后分奇偶性赋值为$48/49$，然后每次考虑把$f_n$分成$f_{n-2}+f_{n-1}$，分治下去。注意到其实是可以预处理一些状态来提速，于是选择预处理前$20$项左右。</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> L, <span class="keyword">int</span> R)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (n &lt;= <span class="number">20</span>) <span class="keyword">return</span> <span class="built_in">cout</span> &lt;&lt; f[n].substr(L, R - L + <span class="number">1</span>), <span class="keyword">void</span>() ;</span><br><span class="line">	<span class="keyword">if</span> (L &lt; fib[n - <span class="number">2</span>]) solve(n - <span class="number">2</span>, L, min(R, fib[n - <span class="number">2</span>])) ; </span><br><span class="line">	<span class="keyword">if</span> (R &gt;= fib[n - <span class="number">2</span>]) solve(n - <span class="number">1</span>, max(<span class="number">0l</span>l, L - fib[n - <span class="number">2</span>]), R - fib[n - <span class="number">2</span>]) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="C"><a href="#C" class="headerlink" title="$C$"></a>$C$</h2><blockquote>
+<h1 id="C"><a href="#C" class="headerlink" title="$C$"></a>$C$</h1><blockquote>
 <p>我们有一张方格纸，他大概长这样：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/g7908v9b.png" alt></p>
+<p><img src="https://s2.ax1x.com/2020/01/09/lfSP0I.jpg" alt></p>
 <p>我们现在要从左上角$(0,0)$到右下角$(n,m)$画一条直线，然后询问它经过黑格子的长度与总长度的比值，并输出一个互质分数的形式。</p>
 </blockquote>
 <p>sb结论题，以下是结论，觉得证的挺好的（</p>
@@ -2549,12 +2549,12 @@ G &= G_h - \frac{T(G_h)}{T'(G_h)}\\\
 <p>Let’s say sunshine for everyone 人们说生活总是充满阳光<br>But as far as I can remember 但在我的记忆中<br>We’ve been migratory animals 我们一直只是如野兽般流浪<br>Living under changing weather 四季变换，我们如常<br>Someday we will foresee obstacles 总有一天，我们会看见那些困难阻碍<br>Through the blizzard through the blizzard 在那片风雪之中，在那片风雪之后<br>Today we will sell our uniform 如今我们将曾经的校服变卖<br>Live together live together 一同离去，一同启程</p>
 </blockquote>
 
-        <div id="aplayer-cZSxKGuw" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-UfhdynoB" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-cZSxKGuw"),
+            element: document.getElementById("aplayer-UfhdynoB"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -3147,7 +3147,7 @@ g_{s,h} = \sum_{t\in s}g_{s-t, h-1}+h\cdot f_{s-t,t}</script><p>同样是显然�
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cin</span> &gt;&gt; b &gt;&gt; k ;</span><br><span class="line">   <span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= k ; ++ i) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;base[i]) ;</span><br><span class="line">   reverse (base + <span class="number">1</span>, base + k + <span class="number">1</span>) ;</span><br><span class="line">   <span class="keyword">for</span> (i = k ; i &gt;= <span class="number">1</span> ; -- i) Sum = Sum * b + base[i], Sum %= <span class="number">10</span> ;</span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; (Sum &amp; <span class="number">1</span> ? <span class="string">"odd"</span> : <span class="string">"even"</span>) &lt;&lt; <span class="built_in">endl</span> ; <span class="keyword">return</span> <span class="number">0</span> ;</span><br></pre></td></tr></table></figure>
 <p><del>其实就是在水字数</del></p>
 <h1 id="B"><a href="#B" class="headerlink" title="$B$"></a>$B$</h1><p><img src="https://img.shields.io/badge/难度-普及%2B-red.svg" alt></p>
-<p>题意： 给定一条网格纸，$n, m, k$,分别表示点数，总长度，胶带的数量。对于输入的$n$个点，保证位置递增， 求覆盖所有的点所需的最小胶带长度（胶带数量$\leq k$）。</p>
+<p>题意：给定一条网格纸，$n, m, k$, 分别表示点数，总长度，胶带的数量。对于输入的$n$个点，保证位置递增， 求覆盖所有的点所需的最小胶带长度（胶带数量$\leq k$）。</p>
 <p>其实是个制杖题。我们考虑如果$k$是无限大，那么最优的方式一定是单点覆盖。所以如果胶带不够的话，就是要去额外多粘$N-k$个空白的区间。所以我们就可以排个序，求出$N-k$个空白区间的长度，再加上单点的长度和$n$，得到答案。注意空白区间的两头开的。</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cin</span> &gt;&gt; N &gt;&gt; M &gt;&gt; K ;</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i)</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;now), (i &gt; <span class="number">1</span> ? (d[i - <span class="number">1</span>] = now - Last - <span class="number">1</span>) : <span class="number">1</span>), Last = now ;</span><br><span class="line">nth_element(d + <span class="number">1</span>, d + N - K + <span class="number">1</span>, d + N) ; <span class="comment">//Last row, now - Last + 1 -&gt; now - Last</span></span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N - K ; ++ i) Ans += d[i] ; Ans += N ; <span class="built_in">cout</span> &lt;&lt; Ans &lt;&lt; <span class="built_in">endl</span> ; <span class="keyword">return</span> <span class="number">0</span> ;</span><br></pre></td></tr></table></figure>
 <p>emmm怎么说呢，是个显然又不显然的贪心，大概还是跟<code>OI素养</code>直接挂钩的吧（sigh</p>
@@ -4019,33 +4019,46 @@ x_{n+k}= b_k-b_i+\sum\limits_{j=1}^{n}(a_{k,j}-a_{i,j})x_j+x_{i+n}</script><p>�
       </tags>
   </entry>
   <entry>
-    <title>随想四 · 故人</title>
+    <title>随想四 · 故人故事</title>
     <url>/2019/03/01/%E9%9A%8F%E6%83%B3%E5%9B%9B%C2%B7%E6%95%85%E4%BA%BA/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>“随想”系列索引：<a href="http://www.orchidany.cf/2050/12/31/%E9%9A%8F%E6%83%B3%C2%B7%E7%9B%AE%E6%AC%A1%E8%A1%A8/">戳我</a></p>
-<hr>
-<p>最近初三的小朋友们生龙活虎地来了，虽然没有什么深入的交流，但是其身上洋溢着的青春，确是我辈所比不了的。</p>
-<p>是啊，一年了啊。</p>
-<p>去年这个时候，我们也是这样意气风发的吧？听说今年的“小班”（初三来的实验班），信竞有12个人，和去年一样。换句话说，和我们一样，只不过他们这一级女生有四个，我们只有一个而已。</p>
-<p>真像啊。</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>我一直在想，这篇到底该怎么写，到底该写什么。</p>
+<p>但才发现，想要回忆的太多了啊。</p>
+<p>但既然是讲故人故事的，那就讲好了。</p>
+<p>这是段什么故事呢？这是段我不想讲也不会讲的故事吧。</p>
 <a id="more"></a>
-<h1 id="0"><a href="#0" class="headerlink" title="$0$"></a>$0$</h1><p>其实这一篇很早很早就有了，但当时感触也并不多么深刻，或许也就只是黛玉葬花的那种梨花带雨一场罢了。以下是以前写的：</p>
+<h1 id="0"><a href="#0" class="headerlink" title="$0$"></a>$0$</h1><p>说实在的，这篇文章我写了好多好多不同的版本，但都是写了一两段不想写了，感觉越写越智障。今天是 <code>11/1/2020</code> ，不知道为啥突然就啥都不想干了，于是就来补一下。</p>
+<p>我们这一级，应该是最特殊的吧？我们来的前一年9月实验部成立，来的第一年10月因为高三太菜了，实验部解散；我们的学长是rqy，这份奇怪的缘分奇怪在，我们些人连续参加了 $4$ 年的 $noip$，每次都和 $rqy$ 一起参加——就算是和他同级的人也没有这种缘分。同样，我们也是老校最后一批初三，新校第一批高一</p>
+<p>总之呢，这让我想起一句话：</p>
 <blockquote>
-<p>$\rm{0x01}$  结束</p>
-<p>比我想象的要早，早好多，好多好多。</p>
-<p>我退役了，虽然是本赛季退役。</p>
-<p>我仿佛从来没有考虑过这件事情，18年的2月、3月、4月……甚至一直到8月，我都一直以我仍然初三、仍然未升上高中而自豪。我们是有生力量里面最年轻的一代，我们开口$Splay$、网络流、$Tarjan$，闭口莫队、$A-star$、替罪羊，我们研究各种奇妙的算法，我们刷各种三倍经验，我们酒入豪肠酿成三分月光，我们春风得意马蹄疾——</p>
-<p>我们年轻啊。</p>
-<p>恍如隔世，考完$Noip$或许才真正知道自己几斤几两。</p>
-<p>我悔恨，我懊恼，我痛苦，我不甘。我终于也变成了只能孤注一掷在高二出成绩的老年人。我或许什么都没少，只不过少了一次计划；但我或许已经一无所有——我的时间没有了。</p>
-<p>我曾经认为考省一应该不算多难，结果现实重重地给了我一闷棍，厉喝道：这就是现实的力量。</p>
-<p>或许几个月之前，或者说，从考完Noip到现在，我的所有负面情绪表现出来的都是消极、沉默、颓废，而直到今天，我看着窗外空旷的操场、不燥的微风，我看着天边徘徊的流云——我只想哭，声嘶力竭地、歇斯底里地哭。</p>
-<p>我只想哭。</p>
+<p>过去与未来的交叉点就是当下,而我正站在这个点上。 ——梭罗《瓦尔登湖》</p>
 </blockquote>
-<p>现在看来不禁感慨当时自己的脆弱，唏嘘当时的迷茫。现在已是八月的尾巴了，又拿出这篇文章来——经历了这么多有的没的，会不会有什么新的感慨呢？</p>
-<p>外面依稀的是看不清的星点，屏幕右上角的时间已是<code>02:03</code>，但我仍无倦意。</p>
-<h1 id="1"><a href="#1" class="headerlink" title="$1$"></a>$1$</h1><p>嗯，先从身边的人说起吧。掰着指头数一数，实验班刚入学时意气风发的12个人，现在只剩8+1个人了，8个人还是计划未变，还有1个人早已把精力集中在文化课上了。</p>
-<p>看一眼其他奥赛，境况也差不多。生物党们一开始是25人，从高一开学到今年联赛之后，陆陆续续的就变成了12个人；物理党只走了两三个吧，那也是因为他们一次联赛也没有考的原因——今年九月之后，或许就真的没有多少人了，估计会比生物的还少。一直被嘲讽人少的信息学竞赛之CSP（大雾）看起来终于缩小了差距。</p>
-<p>说到底，现在我最担心的还是自己，不知道这个赛季自己能不能更好一些，达到自己的预期，所以也没有什么很闲的心思去操其他人的闲心。</p>
+<h1 id="1-老校-·-衔接班"><a href="#1-老校-·-衔接班" class="headerlink" title="$1$ 老校 · 衔接班"></a>$1$ 老校 · 衔接班</h1><p>还在老校的时候，每天最烦的就是考试，因为我老是垫底。</p>
+<p>我 $2019$ 年一月份来的实验部，直到现在也一直觉得自己是混上来的，因为我觉得我考的很差，可能只是因为初三提高组写了个小凯的疑惑水到了省三而被潜规则上来的。当时刚来的时候十分愉快，每天 $5:30$ 起，太新奇了。高中部四处都是新鲜的环境，种类繁多的动物小卖部，再加上我初三一直很稳地霸占着全班第一，觉得自己人生到达了一个小顶点。</p>
+<p>刚来的时候，是 $12$ 个人。我在其中的实力不算高。只记得刚来的时候，由于大家初中是就挺熟，所以也了解彼此的八卦。在阿淳帮獴哥给他的大番薯女神用qq表（机）完白（惨）之后（至于为什么叫大番薯…我承认这是我起的绰号，因为他女神和《老夫子》里面的大番薯一样可爱233），獴哥被无情拒绝，之后这就变成了我们机房初来实验班的第一个梗。嗯，其实我并没有多老实，因为接下来两天，我外放了两天的《好日子》来庆祝獴哥表白失败，233.</p>
+<p>不过之后可能是遭报应了，由于在高中部食堂吃了一碗烤鸡心，肠胃发炎在学校高烧了两天——当时我说什么都不会请假的。所以现在我在打出「烤鸡心」这三个字的任意一个组合或者某个后缀的时候都会感到恶心。</p>
+<p>之后呢？之后我不知道为什么就被选成了队长。然后大家就开始在高中部吹水，每天去洛谷做题，从上到下挨着刷，不过我大多数都是在抄题解。</p>
+<p>渐渐地，我的缺点终于暴露了——我很偏执。这就直接导致了我的领导十分「黑暗」，也可能是因为大家都太有个性了，初中的时候都是班里叱咤风云的人物，所以都不是很服。当然了，矛盾啥的最后也都不了了之，大多数时候大家还是很和睦的。</p>
+<p>衔接班，也就是实验班被选出来提前在高中部学习的那半年，挺快乐的。但就是考试自己老是不会，然而自己当时唯一找出的原因就是「别人经验丰富」，233。</p>
+<p>期间经历过什么呢？经历过最难忘的一次培训，那是在二月。年前刚来实验部的愉悦加上马上过年的期盼，每天和lzr&amp;qcr吃鸡吃到凌晨三四点，四点多开始写博客，8点多起床直奔讲课地点也来不及吃早饭，于是饭票几乎就没用过；自我感觉是收获比较多的一次培训。因为在那之后，经过一位HB巨佬的指正，我学会了线段树（之后才发现原来跟线段没有关系），再之后我就写出了洛谷上「线段树」的题解——当时的洛谷还不是这么热闹。</p>
+<p>现在回想起来，真幸福啊。</p>
+<p>比较悲伤的几件事，就是来的前几天就被主任给抓了晚上在宿舍说话（8个人有7哥在闲扯），被罚干一学期的值日并且挂名「物业公司」；四月底又因为在奥赛室里开qq群吹水+换了一张sexy Miku的高清图做桌面而被赶回家过了个黄金周……</p>
+<p>然后就是无止尽的失恋，如果我可以这么说的话。因为毕竟妹子都没喜欢过我qaq。</p>
+<p>记得当时的大家：</p>
+<p>dyz作为我们之中唯一的女选手，很要强很认真，会自己申请不放假留校学习；</p>
+<p>ljp每天和wx黏在一起并伙同我们一起给wx起名为「王强」，毕竟wx确实很强；</p>
+<p>yjk由于每次考试都rank1深受金牌教练喜爱被我们称为「干儿子」，是个骚包；</p>
+<p>lwy做题速度总是很快，我也不知道「影流殿」是个什么梗（一直到去年年底「影流之主」的爆火我才知道）；</p>
+<p>wxl一直被我们怂恿去跟他暗恋的妹子表白，直到拍毕业照那天他才真敢去表白；</p>
+<p>獴哥一直很稳，由于和别人水群被组cp，同时由于我们的宿舍和初三宿舍以及买学习用品的小卖部面对面，导致每次他的「大番薯女神」经过旁边的商店都被我们起哄；</p>
+<p>qcr给自己起了个Id叫做「邱城锐大神」，在明白OI的生存法则之后感到失去梦想，然而他经常因为看小说被抓，因此也掌握了各种「装作自己不在看小说但实际上就是在看」的看小说方法（比如复制进luogu的剪贴板）；</p>
+<p>lzr十分颓，经常和qcr被成对抓包，但他主要是在搓游戏；由于初中的时候同班，所以我有什么事儿都会先同他讲——他也很仗义，在我们的水群被抓包、我要被赶回家的时候，他站出来跟主任解释不全是我的锅（虽然最后还是因为我身为队长也在水群被赶回去黄金周了）；</p>
+<p>阿淳作为唯一有女票的，被我们整天起哄——我们用「大河」代指他的女票，你没猜错这也是我起的绰号（文学带师.jpg）；同时后期的他也是html（读作『喝特么了』）带师，博客园美化小能手，甚至真的拿了奥赛室的一本html教材开始学orz；</p>
+<p>ZZH一度是我们中做题做的最多的，也是八卦八的很频繁的：他自诩为钢铁直男（虽然，indeed），同时一直暗恋着一个妹子但是一直不表白（因为那个妹子也来了实验班，不过不是我们班的233）——还有，我自诩为全奥赛模仿ZZH模仿的最像的，我把他回答问题/说话时的「慢<del>~</del><del>~</del>~~条斯理」模仿的淋漓尽致。</p>
+<p>嗯，那我呢？似乎因为我写的博客都很详细，所以获得了一堆赞，自己也很开心；至于组织学习方面，我组织大家每个人都去学不同的新算法然后互相教给对方，学了一堆比如网络流、splay、莫队、treap之类的新奇东西，也补了一下dp、搜索之类的基本功。</p>
+<p>关于这个活动…评价几点吧：</p>
+<ul>
+<li>我主张的学splay——当时仿佛大家都觉得splay，名字简短但是总感觉蕴含着复杂有趣的道理，于是决定wx讲二叉搜索木和treap，我讲splay——犹记得当时</li>
+</ul>
 ]]></content>
       <categories>
         <category>Life</category>
@@ -4428,12 +4441,12 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
 <p>我大概在听这首歌之前，从来没有真正知道原来”喜欢“这个已经烂大街的词、这个现如今可以随便说出口又可以随便忘记的词、这个在我上过的所有学校里从来没有人敢光明正大说出来的词、这个现在在芸芸众生中已经被玷污的、被人们认为还没有一块钱来的实在的词，竟然如此的可爱，竟然如此的值得人们尊敬，竟然可以在冰冷的寒夜散发出如此耀眼的光芒。</p>
 <p>我喜欢你，你应该，也知道。</p>
 
-        <div id="aplayer-IPXavrGC" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-afmFCWWr" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-IPXavrGC"),
+            element: document.getElementById("aplayer-afmFCWWr"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -4464,12 +4477,12 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
 <hr>
 <p>雪，终于停了啊。现在已经午夜了，街上一个人都没有，天空在积雪的映照下，是让人着迷的紫红色。</p>
 
-        <div id="aplayer-voYUkVyW" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-bISuSqvR" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-voYUkVyW"),
+            element: document.getElementById("aplayer-bISuSqvR"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -4850,101 +4863,106 @@ F(x) = \sum \limits _{i=0}^{N} y_i \cdot \prod \limits_{i \neq j} \frac{x -x_j}{
   <entry>
     <title>【学习笔记】LCT初步</title>
     <url>/2019/02/04/LCT-s-Junior-Intro/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>一种以$\rm Splay$作为辅助树的、动态维护连通性的算法。</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>一种以 $ \rm Splay $ 作为辅助树的、动态维护森林连通性的算法。</p>
 <a id="more"></a>
 <p><img src="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89---purple.svg" alt></p>
-<h1 id="rm-0x01-闲话-·-LCT-的用途以及具体思路"><a href="#rm-0x01-闲话-·-LCT-的用途以及具体思路" class="headerlink" title="$\rm{0x01}$ 闲话 · $LCT$的用途以及具体思路"></a>$\rm{0x01}$ 闲话 · $LCT$的用途以及具体思路</h1><p>咳，其实在我最近只是浅浅地学了一部分的基础上，窝觉得$LCT$其实就是一个用来维护<strong>森林连通性</strong>的。</p>
-<p>嗯……因为其独特的性质所以也可以顺便维护好多东西，什么链上的最大值啊，链上的权值和啊……都可以维护——或者说，LCT是更加全能的树剖。</p>
-<p>但其实吧……$LCT$打板子是很简单的，但是真正理解却一点儿也不简单。因为本身$splay$就很麻烦了，况且$splay$之前一直用于维护数列。要知道，此处的$splay$可是作为<strong>辅助树</strong>，维护一整个森林，并且可以支持序列中几乎全部操作——这就大大增高了理解难度。举个例子，你曾经认为已经难以理解、或者说不可以做的、比较复杂的区间翻转<a href="https://www.luogu.org/problemnew/show/P3391" target="_blank" rel="noopener">$Luogu3391$</a>，在$LCT$里面有十分全面的涉及，但是被精简到了只有两行是用来描述这个内容的。显而易见的是，$LCT$虽然常数十分的大，但代码十分的短，比一棵完整的平衡树短了不少（实测50+行），与$FFT$一样具有着华丽的可观赏性，但是隐藏在之后的思维难度同样不可小觑。</p>
-<p>也就是说我们是不是学的太草率、太浮躁了呢？快餐式地学完$LCT$，网上的每一篇博客都包教包会。但是我今天要整理的，是对于$LCT$真正的理解。希望各位看到这篇拙作的人可以获得一些什么。</p>
-<h1 id="rm-0x02-闲话-·-关于-rm-splay"><a href="#rm-0x02-闲话-·-关于-rm-splay" class="headerlink" title="$\rm{0x02}$ 闲话 · 关于$\rm{splay}$"></a>$\rm{0x02}$ 闲话 · 关于$\rm{splay}$</h1><p>道理我都懂，要想动态拆删一些东西，辅助树的形态可以改变是先决条件。看上去平衡树好像是个不错的选择，但是，选哪个作为辅助树呢？<del>后宫佳丽三千我该翻谁的牌子呢</del></p>
-<p>历史的重任最后落到了$\rm{splay}$的身上。然后$\rm{splay}$他居然：</p>
+<h1 id="rm-0x01-闲话-·-rm-LCT-的用途以及具体思路"><a href="#rm-0x01-闲话-·-rm-LCT-的用途以及具体思路" class="headerlink" title="$ \rm{0x01} $  闲话 ·  $\rm LCT$ 的用途以及具体思路"></a>$ \rm{0x01} $  闲话 ·  $\rm LCT$ 的用途以及具体思路</h1><p>咳，其实在我最近只是浅浅地学了一部分的基础上，窝觉得 $\rm LCT$ 其实就是一个用来维护<strong>森林连通性</strong>的。</p>
+<p>嗯……因为其独特的性质所以也可以顺便维护好多东西，什么链上的最大值啊，链上的权值和啊……都可以维护——或者说，$\rm LCT$ 是更加全能的树剖。</p>
+<p>但其实吧…… $ \rm LCT $ 打板子是很简单的，但是真正理解却一点儿也不简单。因为本身 $\rm splay$ 就很麻烦了，况且 $\rm splay$ 之前一直用于维护数列。要知道，此处的 $\rm splay$ 可是作为<strong>辅助树</strong>，维护一整个森林，并且可以支持序列中几乎全部操作——这就大大增高了理解难度。举个例子，你曾经认为已经难以理解、或者说不可以做的、比较复杂的区间翻转<a href="https://www.luogu.org/problemnew/show/P3391" target="_blank" rel="noopener"> $\rm Luogu3391 $ </a>，在 $\rm LCT$ 里面有十分全面的涉及，但是被精简到了只有两行是用来描述这个内容的。显而易见的是， $\rm LCT $ 虽然常数十分的大，但代码十分的短，比一棵完整的平衡树短了不少（实测50+行），与 $ \rm FFT $ 一样具有着华丽的可观赏性，但是隐藏在之后的思维难度同样不可小觑。</p>
+<p>也就是说我们是不是学的太草率、太浮躁了呢？快餐式地学完 $\rm LCT$ ，网上的每一篇博客都包教包会。但是我今天要整理的，是对于 $ \rm LCT $ 真正的理解。希望各位看到这篇拙作的人可以获得一些什么。</p>
+<h1 id="rm-0x02-闲话-·-关于-rm-splay"><a href="#rm-0x02-闲话-·-关于-rm-splay" class="headerlink" title="$ \rm{0x02} $  闲话 · 关于 $ \rm{splay} $"></a>$ \rm{0x02} $  闲话 · 关于 $ \rm{splay} $</h1><p>道理我都懂，要想动态拆删一些东西，辅助树的形态可以改变是先决条件。看上去平衡树好像是个不错的选择，但是，选哪个作为辅助树呢？<del>后宫佳丽三千我该翻谁的牌子呢</del></p>
+<p>历史的重任最后落到了 $ \rm{splay} $ 的身上。然后 $ \rm{splay} $ 他居然：</p>
 <p><img src="t1.jpg" alt></p>
 <p>他甚至还：</p>
 <p><img src="t2.png" alt></p>
 <p>……</p>
-<p>好吧，由于某些<del>rqy也不知道的</del>原因，如果不用$\rm{splay}$的话，复杂度是均摊$\Theta(\rm{nlog^2n})$, 而用$\rm{splay}$就可以做到均摊$\Theta(\rm{nlogn})$ ……但事实上，splay确实有他独特的性质，比如旋转到根啊之类的，比起其他种类的平衡树而言，更加适合$LCT$</p>
-<h1 id="rm-0x03-LCT-的思路和基础操作"><a href="#rm-0x03-LCT-的思路和基础操作" class="headerlink" title="$\rm{0x03}$   $LCT$的思路和基础操作"></a>$\rm{0x03}$   $LCT$的思路和基础操作</h1><h2 id="一-主要思路"><a href="#一-主要思路" class="headerlink" title="一 主要思路"></a>一 主要思路</h2><p>主要思路嘛……大概是基于<strong>实链剖分</strong>的操作。</p>
-<p><strong>朴素的树剖是重链剖分</strong>，大体上就是将整棵树的链划分为轻边和重链，运用巧妙的性质做到$log$级别。而遗憾的是$LCT$维护的是森林的连通性，所以只能采用实链剖分。</p>
-<p>而实链剖分大体上就是把边分为<strong>虚边</strong>和<strong>实边</strong>。其中实边串联起一个联通块，同一组实边存在、且仅存在于一棵$\rm{splay}$中。$\rm{splay}$和$\rm{splay}$之间由虚边相连。</p>
+<p>好吧，由于某些<del>rqy也不知道的</del>原因，如果不用 $ \rm{splay} $ 的话，复杂度是均摊 $ \Theta(\rm{nlog^2n}) $ , 而用 $ \rm{splay} $ 就可以做到均摊 $ \Theta(\rm{nlogn}) $  ……但事实上，splay确实有他独特的性质，比如旋转到根啊之类的，比起其他种类的平衡树而言，更加适合 $\rm LCT$ </p>
+<h1 id="rm-0x03-rm-LCT-的思路和基础操作"><a href="#rm-0x03-rm-LCT-的思路和基础操作" class="headerlink" title="$ \rm{0x03} $     $\rm LCT$ 的思路和基础操作"></a>$ \rm{0x03} $     $\rm LCT$ 的思路和基础操作</h1><h2 id="一-主要思路"><a href="#一-主要思路" class="headerlink" title="一 主要思路"></a>一 主要思路</h2><p>主要思路嘛……大概是基于<strong>实链剖分</strong>的操作。</p>
+<p><strong>朴素的树剖是重链剖分</strong>，大体上就是将整棵树的链划分为轻边和重链，运用巧妙的性质做到 $ log $ 级别。而遗憾的是 $\rm LCT$ 维护的是森林的连通性，所以只能采用实链剖分。</p>
+<p>而实链剖分大体上就是把边分为<strong>虚边</strong>和<strong>实边</strong>。其中实边串联起一个联通块，同一组实边存在、且仅存在于一棵 $ \rm{splay} $ 中。 $ \rm{splay} $ 和 $ \rm{splay} $ 之间由虚边相连。</p>
 <p>实链剖分的好处呢？在于<strong>实链剖分是一种动态剖分</strong>，他可以<strong>随意改变边的虚实属性</strong>。而显然，重链剖分由于有着足够的理论依据和逻辑推演，所以轻重链是难以更改，或者说，不可更改的。So，实链剖分为动态树的动态打下了基础。</p>
-<p>那么接下来我们来看一个$LCT$是如何定义的:</p>
+<p>那么接下来我们来看一个 $\rm LCT$ 是如何定义的:</p>
 <ul>
-<li><p>1、首先，一棵$LCT$管控的是一对分散的点，点以几棵分散的$splay$的形式聚集。起初整棵$LCT$是没有任何联系的，各自为战，各自为根。我们接下来会看到的$access$、$makeroot$等操作，都是在自己的联通块儿内部进行的操作。换句话讲，$LCT$维护的是有根森林，即组成森林的每个联通块都有其唯一的根。</p>
+<li><p>0、本质上， $\rm LCT$  是一堆树，正如它的全称「$\rm Link-Cut~Trees$」，里面充斥着实边和虚边。每一棵单独的 $\rm Link-Cut ~Tree$ 用来维护一个连通块（原图中连通）。</p>
 </li>
-<li><p>2、实边串联起一个联通块，同一组实边存在、且仅存在于一棵$\rm{splay}$中。$\rm{splay}$和$\rm{splay}$之间由虚边相连。只有实边是有效的，虚边可以被认为不存在。<strong>但是两种边都没有用到显式存储</strong>，都是通过splay中的$Son$数组和$Fa$数组访问的。但虚边和实边的存储有区别：</p>
+<li><p>1、首先，一棵  $\rm LCT$  管控的是一堆分散的点，点以几棵分散的 $\rm splay$ 的形式聚集。起初整棵 $\rm LCT$ 是没有任何联系的，各自为战，各自为根。接下来看到的 $ access $ 、 $ makeroot $ 等操作，都是在自己的联通块儿内部进行的操作。换句话讲， $\rm LCT$ 维护的是有根森林，即组成森林的每个联通块都有其唯一的根。</p>
 </li>
-<li><p>3、虚边是认父不认子，即如果$Fa[x]==y$，那么$y$不存$x$这个儿子，但是$x$存$y$这个父亲。这样做是为了可以$Access$——因为其实在$Access$的子函数$splay$里，发挥作用的实际上是$Fa$指针。</p>
+<li><p>2、实边串联起一个联通块，同一组实边存在、且仅存在于一棵 $ \rm{splay} $ 中。 $ \rm{splay} $ 和 $ \rm{splay} $ 之间由虚边相连。只有实边是有效的，虚边可以被认为不存在。<strong>但是两种边都没有用到显式存储</strong>，都是通过splay中的 $ Son $ 数组和 $ Fa $ 数组访问的。但虚边和实边的存储有区别：</p>
+</li>
+<li><p>3、虚边是认父不认子，即如果 $ Fa[x]==y $ ，那么 $ y $ 不存 $ x $ 这个儿子，但是 $ x $ 存 $ y $ 这个父亲。这样做是为了可以 $ Access $ ——因为其实在 $ Access $ 的子函数 $\rm splay$ 里，发挥作用的实际上是 $ Fa $ 指针。</p>
 </li>
 <li><p>4、实边是完整的双向存储。</p>
 </li>
-<li><p>5、显然的是，$\rm{splay}$中维护的是一条从存储上到下按在原树中深度严格递增的路径，且中序遍历$\rm{splay}$得到的每个点的深度序列严格递增。换句话讲，一个$\rm{splay}$里面不会出现在原联通块儿（树）中深度相同的两个点。在一棵$\rm{splay}$中，键值就是原树中的深度。</p>
+<li><p>5、显然的是， $ \rm{splay} $ 中维护的是一条从上到下按在原树中深度严格递增的路径，且中序遍历 $ \rm{splay} $ 得到的每个点的深度序列严格递增。换句话讲，一个 $ \rm{splay} $ 里面不会出现在原联通块儿（树）中深度相同的两个点。在一棵 $ \rm{splay} $ 中，键值就是原树中的深度。</p>
 </li>
-<li><p>6、如果$x$是它所在$splay$的最左边的点，那么它在原森林里的父亲是$x$所在$splay$的根的$fa$, 否则就是$x$在$splay$上的前驱.</p>
+<li><p>6、如果  $ x $  是它所在  $\rm splay$  的最左边的点，那么它在原森林里的父亲是  $ x $  所在  $\rm splay$  的根的  $ fa $ , 否则就是  $ x $  在  $\rm splay$  上的前驱。</p>
 </li>
 </ul>
-<h2 id="二-基础操作"><a href="#二-基础操作" class="headerlink" title="二 基础操作"></a>二 基础操作</h2><p>$emm$所谓基础操作大概就是每个用到$LCT$的题几乎都要用到的操作。我们把$n$以实边相连的儿子记作实儿子。而由于<strong>只考虑实边不考虑虚边是一坨森林</strong>，<strong>算上虚边之后就成为了一棵树</strong>，所以我们把这棵实虚相见的树的根记为$root$</p>
+<h2 id="二-基础操作"><a href="#二-基础操作" class="headerlink" title="二 基础操作"></a>二 基础操作</h2><p> $ emm $ 所谓基础操作大概就是每个用到 $\rm LCT$ 的题几乎都要用到的操作。我们把  $ n $  以实边相连的儿子记作实儿子，否则记为虚儿子。</p>
+<p>同时值得注意的是，$\rm Access$、$\rm Make~Root$ 、$\rm Find~Root$ 和 $\rm Merge$ 操作都是针对<strong>一棵</strong> $lct$ 的操作，而 $\rm Link$ 和 $\rm Cut$ 则是针对一整片 $lct$ 森林，可以看做“分裂/合并两个 $\rm LCT$”。    </p>
+<p>至于连通块的根，可以看做是给无根树强行钦定的一个根，即原图里的根（似乎可以结合并查集理解？</p>
 <ul>
-<li><h2 id="rm-1-Access"><a href="#rm-1-Access" class="headerlink" title="$\rm{1}$  $Access$"></a>$\rm{1}$  $Access$</h2></li>
+<li><h2 id="rm-1-rm-Access"><a href="#rm-1-rm-Access" class="headerlink" title="$ \rm{1} $ $\rm Access $"></a>$ \rm{1} $ $\rm Access $</h2></li>
 </ul>
-<p>这个操作有着很迷的性质，其时间复杂度是均摊$\log n$的。而这个操作的目的是<strong>$Access(n)$表示从$root$向$n$打通一条实链，并以$n$点为最深度最大的点、$root$为深度最小的点形成一棵$\rm{splay}$</strong>。</p>
-<p>不难看出，这个操作其实就是把原来$splay$的割据给改变了。</p>
-<p>我们思考，如果此时我们$Access$完点$n$之后，理论上来讲，$n$点应该不再有实儿子了——显然，如果有实儿子的话，$splay$中是应该包含这个实儿子的——而这就不符合$n$是$\rm{splay}$中深度最大的点的性质了。而因为在splay中，点是以深度为键值的，所以我们要每次砍掉$\rm{splay}$中的右儿子——即砍掉原来的实儿子，并把刚刚诞生的$\rm{splay}$连上。</p>
+<p>这个操作有着很迷的性质，其时间复杂度是均摊  $ \log n $  的。而这个操作的目的是 <strong>$ Access(n) $  表示从  $ root $  向  $ n $  打通一条实链，并以  $ n $  点为最深度最大的点、 $ root $  为深度最小的点形成一棵 $ \rm{splay} $ </strong>。</p>
+<p>不难看出，这个操作其实就是把原来  $\rm splay$  的割据给改变了。</p>
+<p>我们思考，如果此时我们  $ Access $  完点  $ n $  之后，理论上来讲， $ n $  点应该不再有实儿子了——显然，如果有实儿子的话， $\rm splay$  中是应该包含这个实儿子的——而这就不符合  $ n $  是  $ \rm{splay} $  中深度最大的点的性质了。而因为在  $ \rm splay $  中，点是以深度为键值的，所以我们要每次砍掉 $ \rm{splay} $ 中的右儿子——即砍掉原来的实儿子，并把刚刚诞生的  $ \rm{splay} $  连上。</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Access</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; </span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> qwq = <span class="number">0</span> ; x ; x = T[qwq = x].F) </span><br><span class="line">		splay(x), rc = qwq, update(x) ; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后这就是$Access$了。</p>
+<p>然后这就是 $\rm Access $ 了。</p>
 <ul>
-<li><h2 id="2-Make-Root"><a href="#2-Make-Root" class="headerlink" title="$2 ~~Make~ Root~$"></a>$2 ~~Make~ Root~$</h2></li>
+<li><h2 id="rm-2-Make-Root"><a href="#rm-2-Make-Root" class="headerlink" title="$\rm 2 ~Make~ Root~ $"></a>$\rm 2 ~Make~ Root~ $</h2></li>
 </ul>
-<p>$make\text{_}root$先从$root$向$n$打通一条路径，然后$splay$上去，最后$reverse$一下。此处由于一开始$n$的深度最大，$splay$之后深度依旧最大，但此时$n$是$splay$的根，所以$reverse(n)$就相当于翻转了整条树上的链，那么翻转之后，$n$的深度就变成了最小，于是就是这个联通块儿的根节点了。</p>
+<p>这个操作的目的是把一个节点变成  $ lct$  的根节点。</p>
+<p>先从  $ root $  向  $ n $  打通一条路径，然后  $\rm splay$  上去，最后  $ reverse $  一下。此处由于一开始  $ n $  的深度最大， $\rm splay$  之后深度依旧最大，但此时  $ n $  是  $\rm splay$  的根，所以  $ reverse(n) $  就相当于翻转了整条树上的链，那么翻转之后， $ n $  的深度就变成了最小，于是就是这个联通块儿的根节点了。</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lc T[x].Son[0]</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rc T[x].Son[1]</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">LCT</span>&#123;</span></span><br><span class="line"><span class="keyword">int</span> F, Son[<span class="number">2</span>], R, S ;</span><br><span class="line">&#125;T[MAXN] ; </span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">int</span> x)</span> </span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; lc ^= rc ^= lc ^= rc, T[x].R ^= <span class="number">1</span> ;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">push_down</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; <span class="keyword">if</span> (!T[x].R) <span class="keyword">return</span> ; T[x].R = <span class="number">0</span> ; <span class="keyword">if</span> (lc) reverse(lc) ; <span class="keyword">if</span> (rc) reverse(rc) ; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Rooten</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; Access(x), splay(x), reverse(x) ; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> qwq = x ; stk.push(qwq) ;</span><br><span class="line">	<span class="keyword">while</span>(check(qwq)) qwq = T[qwq].F, stk.push(qwq) ;</span><br><span class="line">	<span class="keyword">while</span>(!stk.empty()) push_down(stk.top()), stk.pop() ;</span><br><span class="line">	<span class="keyword">while</span>(check(x))&#123;</span><br><span class="line">	<span class="keyword">int</span> fa = T[x].F, g_fa = T[fa].F ;</span><br><span class="line">	<span class="keyword">if</span> (check(fa)) rotate((T[g_fa].Son[<span class="number">1</span>] == fa) == (T[fa].Son[<span class="number">1</span>] == x) ? fa : x) ; rotate(x) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>此处$splay$中由于<strong>要下放标记，需要保证树的形态是正确</strong>的，所以我们用一个$stack$存一下，顺序下放标记。</p>
+<p>此处 $\rm splay$ 中由于<strong>要下放标记，需要保证树的形态是正确</strong>的，所以我们用一个 $ stack $ 存一下，顺序下放标记。</p>
 <ul>
-<li><h2 id="3-Merge"><a href="#3-Merge" class="headerlink" title="$3 ~Merge~$"></a>$3 ~Merge~$</h2></li>
+<li><h2 id="rm-3-Merge"><a href="#rm-3-Merge" class="headerlink" title="$\rm 3 ~Merge~ $"></a>$\rm 3 ~Merge~ $</h2></li>
 </ul>
-<p>此处的$Merge(x, y)$的意义是，拉起$x,y$中间的链，形成一个$splay$。这里就直接$Mkroot$一遍，然后$Access$即可。让哪个点当根应该都可以，只不过多$splay$几次可以保证优（毒）秀（瘤）的复（大）杂（常）度（数）。</p>
-<p>upd：此处$splay$还有深层次的意图，就是可以保证现在$x$和$y$是相邻的，这样在cut的时候就会很方便了。</p>
+<p>此处的 $\rm Merge(x, y) $ 的意义是，拉起 $ x,y $ 中间的链，形成一个 $\rm splay$ 。这里就直接 $ Mkroot $ 一遍，然后 $ Access $ 即可。让哪个点当根应该都可以，只不过多 $\rm splay$ 几次可以保证优（毒）秀（瘤）的复（大）杂（常）度（数）。</p>
+<p>upd：此处 $\rm splay$ 还有深层次的意图，就是可以保证现在 $ x $ 和 $ y $ 是相邻的，这样在cut的时候就会很方便了。</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Merge</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123; Rooten(x), Access(y), splay(y) ; &#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><h2 id="4-Link-amp-Cut"><a href="#4-Link-amp-Cut" class="headerlink" title="$4~~Link~\&amp;~Cut$"></a>$4~~Link~\&amp;~Cut$</h2></li>
+<li><h2 id="rm-4-Link-amp-Cut"><a href="#rm-4-Link-amp-Cut" class="headerlink" title="$\rm 4~Link~\&amp;~Cut $"></a>$\rm 4~Link~\&amp;~Cut $</h2></li>
 </ul>
-<p>如果保证$Link$和$Cut$都是合法的操作的话，$Link$直接连，$Cut$直接删即可。</p>
+<p>如果保证 $ \rm Link $ 和 $ \rm Cut $ 都是合法的操作的话， $ \rm Link $ 直接连， $ \rm Cut $ 直接删即可。</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Link</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123; Rooten(x) ; T[x].F = y ;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Cut</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123; Merge(x, y) ; T[x].F = T[y].Son[<span class="number">0</span>] = <span class="number">0</span> ;&#125;</span><br></pre></td></tr></table></figure>
-<p>此处$Link$必须先$Mkroot$一下，否则树链就断了。连的是虚边（因为连实边就会改变原来$splay$的割据）；$Cut$必须先$split$一下，保证两个点之间在同一棵$splay$中，加之我们的$Merge$操作中，一开始把$x$给$mkroot$了，再把$y$点$splay$上去，直接导致了现在$x$应该是$y$的孩子——于是就很开心的，可以直接$cut$了。        </p>
-<p>但事实上，天不遂人意……有时候这条边并不存在，盲目删除的话会导致$GG$，盲目连边的话也会导致树的形态爆炸，所以我们要进行一波操作……</p>
+<p>此处 $\rm Link$ 必须先 $ \rm Mkroot $ 一下，否则树链就断了。连的是虚边（因为连实边就会改变原来 $\rm splay$ 的割据）； $ \rm Cut $ 必须先 $\rm Merge$ 一下，保证两个点之间在同一棵 $\rm splay$ 中，加之我们的 $ Merge $ 操作中，一开始把 $ x $ 给 $ mkroot $ 了，再把 $ y $ 点 $\rm splay$ 上去，直接导致了现在 $ x $ 应该是 $ y $ 的孩子——于是就很开心的，可以直接 $\rm Cut$ 了。       </p>
+<p>但事实上，天不遂人意……有时候这条边并不存在，盲目删除的话会导致 $ GG $ ，盲目连边的话也会导致树的形态爆炸，所以我们要进行一波操作……</p>
 <ul>
-<li>1、$New-Link$ </li>
+<li>1、 $\text{ New-Link }$  </li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Link</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123; Rooten(x) ; <span class="keyword">if</span>(Find(y) != x) T[x].F = y ;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123; Access(x), splay(x) ; <span class="keyword">while</span>(lc) push_down(x), x = lc ; splay(x) ; <span class="keyword">return</span> x ;&#125;</span><br></pre></td></tr></table></figure>
-<p>此处的意义在于，如果我们发现两个点在一个子树里面，连接它们就破坏了树的性质。$Find$就是无比普通的$Find$。。。。233</p>
-<p>但要注意啊，$Find$找的是原树中的根，不是$splay$。由于原树中根的深度一定最小，所以应该是$splay$中最靠左的点……所以不断找左儿子。</p>
-<p>多$BB$一句，这个地方一定注意啊！$Find$只改变了$splay$的形态，$mkroot$改变的是原树中的根</p>
+<p>此处的意义在于，如果我们发现两个点在一个子树里面，连接它们就破坏了树的性质。 $ \rm Find $ 则是找到这个 $lct$ 维护的连通块内的根。 </p>
+<p>但要注意啊， $ Find $ 找的是原树中的根，不是 $\rm splay$ 。由于原树中根的深度一定最小，所以应该是 $\rm splay$ 中最靠左的点……所以不断找左儿子。</p>
+<p>多 $ BB $ 一句，这个地方一定注意啊！ $ Find $ 只改变了 $\rm splay$ 的形态， $ mkroot $ 改变的是原树中的根</p>
 <ul>
-<li>2、$New-Cut$</li>
+<li>2、 $\text{New-Cut}$ </li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Cut</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123; </span><br><span class="line">	Rooten(x) ; </span><br><span class="line">	<span class="keyword">if</span> (Find(y) != x || T[y].Son[<span class="number">0</span>] || T[y].F != x) <span class="keyword">return</span> ; </span><br><span class="line">	T[y].F = T[x].Son[<span class="number">1</span>] = <span class="number">0</span>, update(x) ; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>此处首先我们要判一下这两个点是不是直接相连。是否直接相连……在一棵$splay$中的体现，要克服两个问题，第一是要判断是否连通，还是$Find$操作。</p>
-<p>之后我们需要判断是否满足恰好相隔一条边——注意，首先因为代码中的$x$比$y$在原树位置靠上（$Rooten$了$x$），在$splay$中靠左，那么如果$y$有左儿子的话，说明一定有</p>
+<p>此处首先我们要判一下这两个点是不是直接相连。是否直接相连……在一棵 $\rm splay$ 中的体现，要克服两个问题，第一是要判断是否连通，还是 $ Find $ 操作。</p>
+<p>之后我们需要判断是否满足恰好相隔一条边——注意，首先因为代码中的 $ x $ 比 $ y $ 在原树位置靠上（ $ Rooten $ 了 $ x $ ），在 $\rm splay$ 中靠左，那么如果 $ y $ 有左儿子的话，说明一定有</p>
 <script type="math/tex; mode=display">
-Depth(x) < Depth(y\text{的左儿子们})  < Depth(y)</script><p>其中$Depth$表示原树深度。那么此时原树中$x$和$y$之间，一定隔着一些节点。考虑树的性质，两点之间有且仅有一条简单路径——所以当$T[y].Son[0]$不指向$Null$时，$x$和$y$之间没有一条边，不能直接$Cut$。</p>
-<p>剩下的就很简单了，$T[y].F$应该是$x$，否则也不是直接相连。</p>
+\rm Depth(x) < Depth(y\text{的左儿子们})  < Depth(y)</script><p>其中 $\rm depth$ 表示原树深度。那么此时原树中 $ x $ 和 $ y $ 之间，一定隔着一些节点。考虑树的性质，两点之间有且仅有一条简单路径——所以当 $\rm T[y].son[0] $ 不指向 $ Null $ 时， $ x $ 和 $ y $ 之间没有一条边，不能直接 $\rm Cut$ 。</p>
+<p>剩下的就很简单了， $\rm T[y].F $ 应该是 $ x $ ，否则也不是直接相连。</p>
 <ul>
-<li><h2 id="5-Rotate-中的坑点"><a href="#5-Rotate-中的坑点" class="headerlink" title="5 $~Rotate$中的坑点"></a>5 $~Rotate$中的坑点</h2></li>
+<li><h2 id="5-rm-Rotate-中的坑点"><a href="#5-rm-Rotate-中的坑点" class="headerlink" title="5  $\rm ~Rotate $ 中的坑点"></a>5  $\rm ~Rotate $ 中的坑点</h2></li>
 </ul>
 <p>呃……其实就一处而已。就是：</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123; <span class="keyword">return</span> T[T[x].F].Son[<span class="number">0</span>] == x || T[T[x].F].Son[<span class="number">1</span>] == x ;  &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> fa = T[x].F, g_fa = T[fa].F, W = x == T[fa].Son[<span class="number">1</span>] ;</span><br><span class="line">	<span class="keyword">if</span> (check(fa)) T[g_fa].Son[T[g_fa].Son[<span class="number">1</span>] == fa] = x ; T[x].F = g_fa ;</span><br><span class="line">	T[fa].Son[W] = T[x].Son[W ^ <span class="number">1</span>], T[T[x].Son[W ^ <span class="number">1</span>]].F = fa, T[fa].F = x, </span><br><span class="line">  T[x].Son[W ^ <span class="number">1</span>] = fa, update(fa), update(x) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这个地方$splay$双旋判断祖父的时候，不再用$\rm{if(g\text{_}fa)}$，而是用$\rm{if(check(fa))}$。原因很简单，我们的虚边也是有指向父亲的指针的，但是连接两个不同的$splay$</p>
+<p>这个地方 $\rm splay$ 双旋判断祖父的时候，不再用 $ \rm{if(g\text{_}fa)} $ ，而是用 $ \rm{if(check(fa))} $ 。原因很简单，我们的虚边也是有指向父亲的指针的，但是连接两个不同的 $\rm splay$ </p>
 <p>剩下的……大概就没了吧……</p>
 <p>于是——</p>
-<h1 id="color-red-C-color-cyan-o-color-gold-d-color-green-e"><a href="#color-red-C-color-cyan-o-color-gold-d-color-green-e" class="headerlink" title="$\color{red}{C}\color{cyan}{o}\color{gold}{d}\color{green}{e}$"></a>$\color{red}{C}\color{cyan}{o}\color{gold}{d}\color{green}{e}$</h1><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 300233</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lc T[x].Son[0]</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rc T[x].Son[1]</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(a, b, c) for(a = b ; a &lt;= c ; ++ a)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">LCT</span>&#123;</span></span><br><span class="line"><span class="keyword">int</span> F, Son[<span class="number">2</span>], R, S ;</span><br><span class="line">&#125;T[MAXN] ; <span class="built_in">stack</span> &lt;<span class="keyword">int</span>&gt; stk ;</span><br><span class="line"><span class="keyword">int</span> base[MAXN], N, M, A, B, C, i ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> x)</span> </span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">int</span> x)</span> </span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">push_down</span><span class="params">(<span class="keyword">int</span> x)</span> </span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; T[x].S = T[lc].S ^ T[rc].S ^ base[x] ;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; lc ^= rc ^= lc ^= rc, T[x].R ^= <span class="number">1</span> ;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123; <span class="keyword">return</span> T[T[x].F].Son[<span class="number">0</span>] == x || T[T[x].F].Son[<span class="number">1</span>] == x ;  &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Access</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; <span class="keyword">for</span> (<span class="keyword">int</span> qwq = <span class="number">0</span> ; x ; x = T[qwq = x].F) splay(x), rc = qwq, update(x) ; &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> fa = T[x].F, g_fa = T[fa].F, W = x == T[fa].Son[<span class="number">1</span>] ;</span><br><span class="line">	<span class="keyword">if</span> (check(fa)) T[g_fa].Son[T[g_fa].Son[<span class="number">1</span>] == fa] = x ; T[x].F = g_fa ;</span><br><span class="line">	T[fa].Son[W] = T[x].Son[W ^ <span class="number">1</span>], T[T[x].Son[W ^ <span class="number">1</span>]].F = fa, T[fa].F = x, T[x].Son[W ^ <span class="number">1</span>] = fa, update(fa), update(x) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> qwq = x ; stk.push(qwq) ;</span><br><span class="line">	<span class="keyword">while</span>(check(qwq)) qwq = T[qwq].F, stk.push(qwq) ;</span><br><span class="line">	<span class="keyword">while</span>(!stk.empty()) push_down(stk.top()), stk.pop() ;</span><br><span class="line">	<span class="keyword">while</span>(check(x))&#123;</span><br><span class="line">	<span class="keyword">int</span> fa = T[x].F, g_fa = T[fa].F ;</span><br><span class="line">	<span class="keyword">if</span> (check(fa)) &#123;</span><br><span class="line">        rotate((T[g_fa].Son[<span class="number">1</span>] == fa) == (T[fa].Son[<span class="number">1</span>] == x) ? fa : x) ; 						rotate(x) ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Rooten</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; Access(x), splay(x), reverse(x) ; &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">split</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123; Rooten(x), Access(y), splay(y) ; &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Link</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123; Rooten(x) ; <span class="keyword">if</span>(Find(y) != x) T[x].F = y ;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123; Access(x), splay(x) ; <span class="keyword">while</span>(lc) push_down(x), x = lc ; splay(x) ; <span class="keyword">return</span> x ;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">push_down</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; <span class="keyword">if</span> (!T[x].R) <span class="keyword">return</span> ; T[x].R = <span class="number">0</span> ; <span class="keyword">if</span> (lc) reverse(lc) ; <span class="keyword">if</span> (rc) reverse(rc) ; &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Cut</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123; Rooten(x) ; <span class="keyword">if</span> (Find(y) != x || T[y].Son[<span class="number">0</span>] || T[y].F != x) <span class="keyword">return</span> ; T[y].F = T[x].Son[<span class="number">1</span>] = <span class="number">0</span>, update(x) ; &#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; N &gt;&gt; M ;</span><br><span class="line">	rep(i, <span class="number">1</span>, N) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;base[i]) ;</span><br><span class="line">	rep(i, <span class="number">1</span>, M)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;A, &amp;B, &amp;C) ;</span><br><span class="line">		<span class="keyword">if</span> (A == <span class="number">0</span>) split(B, C), <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, T[C].S) ;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (A == <span class="number">1</span>) Link(B, C) ; <span class="keyword">else</span> <span class="keyword">if</span> (A == <span class="number">2</span>) Cut(B, C) ; <span class="keyword">else</span> splay(B), base[B] = C 		;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="rm-0x00-后记和参考"><a href="#rm-0x00-后记和参考" class="headerlink" title="$\rm{0x00}$   后记和参考"></a>$\rm{0x00}$   后记和参考</h1><p>可写完了……嗝……<del>打个肥宅嗝犒劳犒劳自己</del></p>
-<p>怎么说呢，自从我开始学$LCT$到我写完这篇$blog$为止，是我十分难熬的时间，总时长接近一周。一开始看别人写的$LCT$，想当然地、草率地理解了理解，就开始打板子，对$LCT$一直是极为肤浅的认识。直到开始写，才发现自己哪个地方都不会，理解的半生不熟，总之很惨……</p>
+<h1 id="color-red-C-color-cyan-o-color-gold-d-color-green-e"><a href="#color-red-C-color-cyan-o-color-gold-d-color-green-e" class="headerlink" title="$ \color{red}{C}\color{cyan}{o}\color{gold}{d}\color{green}{e} $"></a>$ \color{red}{C}\color{cyan}{o}\color{gold}{d}\color{green}{e} $</h1><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 300233</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lc T[x].Son[0]</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rc T[x].Son[1]</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(a, b, c) for(a = b ; a &lt;= c ; ++ a)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">LCT</span>&#123;</span></span><br><span class="line"><span class="keyword">int</span> F, Son[<span class="number">2</span>], R, S ;</span><br><span class="line">&#125;T[MAXN] ; <span class="built_in">stack</span> &lt;<span class="keyword">int</span>&gt; stk ;</span><br><span class="line"><span class="keyword">int</span> base[MAXN], N, M, A, B, C, i ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> x)</span> </span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">int</span> x)</span> </span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">push_down</span><span class="params">(<span class="keyword">int</span> x)</span> </span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; T[x].S = T[lc].S ^ T[rc].S ^ base[x] ;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; lc ^= rc ^= lc ^= rc, T[x].R ^= <span class="number">1</span> ;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123; <span class="keyword">return</span> T[T[x].F].Son[<span class="number">0</span>] == x || T[T[x].F].Son[<span class="number">1</span>] == x ;  &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Access</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; <span class="keyword">for</span> (<span class="keyword">int</span> qwq = <span class="number">0</span> ; x ; x = T[qwq = x].F) splay(x), rc = qwq, update(x) ; &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> fa = T[x].F, g_fa = T[fa].F, W = x == T[fa].Son[<span class="number">1</span>] ;</span><br><span class="line">	<span class="keyword">if</span> (check(fa)) T[g_fa].Son[T[g_fa].Son[<span class="number">1</span>] == fa] = x ; T[x].F = g_fa ;</span><br><span class="line">	T[fa].Son[W] = T[x].Son[W ^ <span class="number">1</span>], T[T[x].Son[W ^ <span class="number">1</span>]].F = fa, T[fa].F = x, T[x].Son[W ^ <span class="number">1</span>] = fa, update(fa), update(x) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> qwq = x ; stk.push(qwq) ;</span><br><span class="line">	<span class="keyword">while</span>(check(qwq)) qwq = T[qwq].F, stk.push(qwq) ;</span><br><span class="line">	<span class="keyword">while</span>(!stk.empty()) push_down(stk.top()), stk.pop() ;</span><br><span class="line">	<span class="keyword">while</span>(check(x))&#123;</span><br><span class="line">	<span class="keyword">int</span> fa = T[x].F, g_fa = T[fa].F ;</span><br><span class="line">	<span class="keyword">if</span> (check(fa)) &#123;</span><br><span class="line">        rotate((T[g_fa].Son[<span class="number">1</span>] == fa) == (T[fa].Son[<span class="number">1</span>] == x) ? fa : x) ; 						rotate(x) ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Rooten</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; Access(x), splay(x), reverse(x) ; &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">split</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123; Rooten(x), Access(y), splay(y) ; &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Link</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123; Rooten(x) ; <span class="keyword">if</span>(Find(y) != x) T[x].F = y ;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123; Access(x), splay(x) ; <span class="keyword">while</span>(lc) push_down(x), x = lc ; splay(x) ; <span class="keyword">return</span> x ;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">push_down</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; <span class="keyword">if</span> (!T[x].R) <span class="keyword">return</span> ; T[x].R = <span class="number">0</span> ; <span class="keyword">if</span> (lc) reverse(lc) ; <span class="keyword">if</span> (rc) reverse(rc) ; &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Cut</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123; Rooten(x) ; <span class="keyword">if</span> (Find(y) != x || T[y].Son[<span class="number">0</span>] || T[y].F != x) <span class="keyword">return</span> ; T[y].F = T[x].Son[<span class="number">1</span>] = <span class="number">0</span>, update(x) ; &#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; N &gt;&gt; M ;</span><br><span class="line">	rep(i, <span class="number">1</span>, N) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;base[i]) ;</span><br><span class="line">	rep(i, <span class="number">1</span>, M)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;A, &amp;B, &amp;C) ;</span><br><span class="line">		<span class="keyword">if</span> (A == <span class="number">0</span>) split(B, C), <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, T[C].S) ;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (A == <span class="number">1</span>) Link(B, C) ; <span class="keyword">else</span> <span class="keyword">if</span> (A == <span class="number">2</span>) Cut(B, C) ; <span class="keyword">else</span> splay(B), base[B] = C 		;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="rm-0x00-后记和参考"><a href="#rm-0x00-后记和参考" class="headerlink" title="$ \rm{0x00} $    后记和参考"></a>$ \rm{0x00} $    后记和参考</h1><p>可写完了……嗝……<del>打个肥宅嗝犒劳犒劳自己</del></p>
+<p>怎么说呢，自从我开始学 $\rm LCT$ 到我写完这篇 $ blog $ 为止，是我十分难熬的时间，总时长接近一周。一开始看别人写的 $\rm LCT$ ，想当然地、草率地理解了理解，就开始打板子，对 $\rm LCT$ 一直是极为肤浅的认识。直到开始写，才发现自己哪个地方都不会，理解的半生不熟，总之很惨……</p>
 <p>写博客真是一个陶冶情操的过程啊……<del>包括做表情包</del></p>
-<p>加油吧，$pks$！</p>
-<h2 id="rm-Reference"><a href="#rm-Reference" class="headerlink" title="$\rm{Reference}$"></a>$\rm{Reference}$</h2><ul>
-<li>$[1]$ :$Flash\text{_}Hu$的$blog$ <a href="http://www.cnblogs.com/flashhu/p/8324551.html" target="_blank" rel="noopener">$^{^{[\nearrow ]}}$</a></li>
-<li>$[2]$ :某篇论文，结合食用效果显著 <a href="https://wenku.baidu.com/view/75906f160b4e767f5acfcedb.html" target="_blank" rel="noopener">$^{^{[\nearrow]}}$</a></li>
+<p>加油吧， $ pks $ ！</p>
+<h2 id="rm-Reference"><a href="#rm-Reference" class="headerlink" title="$ \rm{Reference} $"></a>$ \rm{Reference} $</h2><ul>
+<li>$ [1] $  : $\rm Flash\text{_}Hu $ 的 $ blog $  <a href="http://www.cnblogs.com/flashhu/p/8324551.html" target="_blank" rel="noopener"> $ ^{^{[\nearrow ]}} $ </a></li>
+<li>$ [2] $  :某篇论文，结合食用效果显著 <a href="https://wenku.baidu.com/view/75906f160b4e767f5acfcedb.html" target="_blank" rel="noopener"> $ ^{^{[\nearrow]}} $ </a></li>
 </ul>
-<h2 id="mathfrak-writter-pks"><a href="#mathfrak-writter-pks" class="headerlink" title="$\mathfrak{writter:pks}$"></a>$\mathfrak{writter:pks}$</h2>]]></content>
+<h2 id="mathfrak-writter-pks"><a href="#mathfrak-writter-pks" class="headerlink" title="$ \mathfrak{writter:pks} $"></a>$ \mathfrak{writter:pks} $</h2>]]></content>
       <categories>
         <category>学习笔记</category>
       </categories>
