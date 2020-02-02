@@ -9,12 +9,12 @@
 <p>在这些文章里，你会看到一个迷茫的青年如何满怀热血与绝望，眼里闪烁着沧桑与希望，怀里揣着坏掉的粮食和崭新的论文，脚下踏着崎岖不平的路，向明天走去。</p>
 <p>是的，我是花，来自山东，你直接叫我花这个ID或许我会很高兴，但是如果你认识我也可以不这么拘束。</p>
 
-        <div id="aplayer-xPqdvOdA" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-mugNLhdO" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-xPqdvOdA"),
+            element: document.getElementById("aplayer-mugNLhdO"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -760,7 +760,7 @@ f(n)=n</script><p>是不是比上一个证明清真了很多！</p>
 </ol>
 </blockquote>
 <p>发现插入很简单，但是由于求的是 $\max$，所以朴素地删除会让答案难以统计。</p>
-<p>考虑不同于 </p>
+<p>考虑不同于普通莫队的另一种做法。首先还是将所有询问排序，那么 </p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">qs</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> l, r, id ;</span><br><span class="line">&#125;q[M] ;</span><br><span class="line">LL res ;</span><br><span class="line"><span class="keyword">int</span> g[N] ;</span><br><span class="line">LL ans[M] ;</span><br><span class="line"><span class="keyword">int</span> buc[M] ;</span><br><span class="line"><span class="keyword">int</span> blg[N] ;</span><br><span class="line"><span class="keyword">int</span> L[N], R[N] ;</span><br><span class="line"><span class="keyword">int</span> base[N], t[N] ;</span><br><span class="line"><span class="keyword">int</span> n, w, m, b, bnum ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">comp</span><span class="params">(qs p1,qs p2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (blg[p1.l] ^ blg[p2.l] )</span><br><span class="line">        <span class="keyword">return</span> blg[p1.l] &lt; blg[p2.l];</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> p1.r &lt; p2.r ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> p)</span></span>&#123; buc[base[p]] -- ; &#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> p, LL &amp; ret)</span></span>&#123;</span><br><span class="line">    buc[base[p]] ++ ;</span><br><span class="line">    ret = max(ret, <span class="number">1l</span>l * buc[base[p]] * g[p]) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> bucc[N] ;</span><br><span class="line"><span class="function">LL <span class="title">brute_force</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    LL ret ; ret = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = l ; i &lt;= r ; ++ i) bucc[base[i]] ++ ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = l ; i &lt;= r ; ++ i)</span><br><span class="line">        ret = max(ret, <span class="number">1l</span>l * bucc[base[i]] * g[i]) ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = l ; i &lt;= r ; ++ i) bucc[base[i]] -- ;</span><br><span class="line">    <span class="keyword">return</span> ret ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m ; <span class="keyword">int</span> l, r, lb ;</span><br><span class="line">    b = <span class="built_in">sqrt</span>(<span class="number">1.0</span> * n) ; bnum = n / b + <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; ++ i)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;g[i]), t[i] = g[i] ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= bnum ; ++ i)</span><br><span class="line">        L[i] = (i - <span class="number">1</span>) * b + <span class="number">1</span>, R[i] = i * b ;</span><br><span class="line">    R[bnum] = min(R[bnum], n) ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= bnum ; ++ i)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = L[i] ; j &lt;= R[i] ; ++ j)</span><br><span class="line">            blg[j] = i ; sort(t + <span class="number">1</span>, t + n + <span class="number">1</span>) ;</span><br><span class="line">    w = unique(t + <span class="number">1</span>, t + n + <span class="number">1</span>) - t - <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; ++ i)</span><br><span class="line">        base[i] = lower_bound(t + <span class="number">1</span>, t + w + <span class="number">1</span>, g[i]) - t ;</span><br><span class="line"><span class="comment">//    for (int i = 1 ; i &lt;= n ; ++ i) cout &lt;&lt; base[i] &lt;&lt; '\n' ;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= m ; ++ i)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;q[i].l, &amp;q[i].r), q[i].id = i ;</span><br><span class="line">    sort(q + <span class="number">1</span>, q + m + <span class="number">1</span>, comp), l = <span class="number">1</span>, r = <span class="number">0</span>, lb = <span class="number">0</span> ;</span><br><span class="line"><span class="comment">//    cout &lt;&lt; 233 &lt;&lt; endl ;</span></span><br><span class="line"><span class="comment">//    for (int i = 1 ; i &lt;= n ; ++ i) cout &lt;&lt; blg[i] &lt;&lt; " " ;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= m ; ++ i)&#123;</span><br><span class="line">        <span class="keyword">if</span> (blg[q[i].l] == blg[q[i].r])&#123;</span><br><span class="line"><span class="comment">//            cout &lt;&lt; q[i].l &lt;&lt; " " &lt;&lt; q[i].r &lt;&lt; endl ;</span></span><br><span class="line">            ans[q[i].id] = brute_force(q[i].l, q[i].r) ;</span><br><span class="line">            <span class="keyword">continue</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (blg[q[i].l] ^ lb)&#123;</span><br><span class="line">            <span class="keyword">while</span> (r &gt; R[blg[q[i].l]]) del(r --) ;</span><br><span class="line">            <span class="keyword">while</span> (l &lt; R[blg[q[i].l]] + <span class="number">1</span>) del(l ++) ;</span><br><span class="line">            res = <span class="number">0</span> ; lb = blg[q[i].l] ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> ul = l ; LL anss = res ;</span><br><span class="line">        <span class="keyword">while</span> (r &lt; q[i].r) add(++ r, res) ;</span><br><span class="line">        anss = res ; <span class="keyword">while</span> (ul &gt; q[i].l) add(-- ul, anss) ;</span><br><span class="line">        <span class="keyword">while</span> (ul &lt; l) del(ul ++) ; ans[q[i].id] = anss ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= m ; ++ i)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans[i]) ; <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
@@ -1198,8 +1198,8 @@ p(u,v)~\mathrm{xor}~ p(x,y)&=p(x, u) \text { xor } p(v, y)\\
         <category>整体二分</category>
       </categories>
       <tags>
-        <tag>离线算法/整体二分</tag>
         <tag>数据结构/树状数组</tag>
+        <tag>离线算法/整体二分</tag>
       </tags>
   </entry>
   <entry>
@@ -3993,12 +3993,12 @@ G &= G_h - \frac{T(G_h)}{T'(G_h)}\\\
 <p>Let’s say sunshine for everyone 人们说生活总是充满阳光<br>But as far as I can remember 但在我的记忆中<br>We’ve been migratory animals 我们一直只是如野兽般流浪<br>Living under changing weather 四季变换，我们如常<br>Someday we will foresee obstacles 总有一天，我们会看见那些困难阻碍<br>Through the blizzard through the blizzard 在那片风雪之中，在那片风雪之后<br>Today we will sell our uniform 如今我们将曾经的校服变卖<br>Live together live together 一同离去，一同启程</p>
 </blockquote>
 
-        <div id="aplayer-xZzDfFfu" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-jZBAqSXA" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-xZzDfFfu"),
+            element: document.getElementById("aplayer-jZBAqSXA"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -4517,12 +4517,12 @@ g_{s,h} = \sum_{t\in s}g_{s-t, h-1}+h\cdot f_{s-t,t}</script><p>同样是显然�
 <p>你确定要看吗？或许也没有想象的那么丧。可能今天我是这么写的，后天我就不这么认为了。毕竟本质上，这只是一篇闲扯的文章。</p>
 <a id="more"></a>
 
-        <div id="aplayer-NomNrRsk" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-oIRQpXvV" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-NomNrRsk"),
+            element: document.getElementById("aplayer-oIRQpXvV"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -4819,8 +4819,8 @@ S\stackrel{f = a_i,c = 0}{\longrightarrow}i \stackrel{f = Inf,c = c_{i,j}}{\long
         <category>网络流二十四题</category>
       </categories>
       <tags>
-        <tag>网络流/费用流</tag>
         <tag>网络流24题</tag>
+        <tag>网络流/费用流</tag>
       </tags>
   </entry>
   <entry>
@@ -5940,12 +5940,12 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
 <p>我大概在听这首歌之前，从来没有真正知道原来”喜欢“这个已经烂大街的词、这个现如今可以随便说出口又可以随便忘记的词、这个在我上过的所有学校里从来没有人敢光明正大说出来的词、这个现在在芸芸众生中已经被玷污的、被人们认为还没有一块钱来的实在的词，竟然如此的可爱，竟然如此的值得人们尊敬，竟然可以在冰冷的寒夜散发出如此耀眼的光芒。</p>
 <p>我喜欢你，你应该，也知道。</p>
 
-        <div id="aplayer-gazbLmfa" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-yAwjwqxI" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-gazbLmfa"),
+            element: document.getElementById("aplayer-yAwjwqxI"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -5976,12 +5976,12 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
 <hr>
 <p>雪，终于停了啊。现在已经午夜了，街上一个人都没有，天空在积雪的映照下，是让人着迷的紫红色。</p>
 
-        <div id="aplayer-ppVRVtEk" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-hXGNWfcm" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-ppVRVtEk"),
+            element: document.getElementById("aplayer-hXGNWfcm"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -6679,8 +6679,8 @@ n \geq 2^{k+1}-1\\\ \log_2{(n+1)} \geq k+1\\\ \log_2{(n+1)}-1 \geq k</script><sc
         <category>网络流</category>
       </categories>
       <tags>
-        <tag>网络流/最大流</tag>
         <tag>网络流/费用流</tag>
+        <tag>网络流/最大流</tag>
       </tags>
   </entry>
   <entry>
