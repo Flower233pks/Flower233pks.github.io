@@ -9,12 +9,12 @@
 <p>在这些文章里，你会看到一个迷茫的青年如何满怀热血与绝望，眼里闪烁着沧桑与希望，怀里揣着坏掉的粮食和崭新的论文，脚下踏着崎岖不平的路，向明天走去。</p>
 <p>是的，我是花，来自山东，你直接叫我花这个ID或许我会很高兴，但是如果你认识我也可以不这么拘束。</p>
 
-        <div id="aplayer-mugNLhdO" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-Buarvqlr" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-mugNLhdO"),
+            element: document.getElementById("aplayer-Buarvqlr"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -41,15 +41,15 @@
 <tbody>
 <tr>
 <td style="text-align:center">随想一 · 山丘</td>
-<td style="text-align:center"><a href="http://www.orchidany.cf/2018/08/02/%E9%9A%8F%E6%83%B3%E4%B8%80/">$Link$</a></td>
+<td style="text-align:center"><a href="http://www.orchidany.cf/2018/08/02/%E9%9A%8F%E6%83%B3%E4%B8%80/" target="_blank" rel="noopener">$Link$</a></td>
 </tr>
 <tr>
 <td style="text-align:center">随想二 · 丘吉尔</td>
-<td style="text-align:center"><a href="http://www.orchidany.cf/2018/08/08/%E9%9A%8F%E6%83%B3%E4%BA%8C/">$Link$</a></td>
+<td style="text-align:center"><a href="http://www.orchidany.cf/2018/08/08/%E9%9A%8F%E6%83%B3%E4%BA%8C/" target="_blank" rel="noopener">$Link$</a></td>
 </tr>
 <tr>
 <td style="text-align:center">随想三 · 本赛季最后的随想/启示录</td>
-<td style="text-align:center"><a href="http://www.orchidany.cf/2019/02/14/%E9%9A%8F%E6%83%B3%E4%B8%89%C2%B7NOIP/">$Link$</a></td>
+<td style="text-align:center"><a href="http://www.orchidany.cf/2019/02/14/%E9%9A%8F%E6%83%B3%E4%B8%89%C2%B7NOIP/" target="_blank" rel="noopener">$Link$</a></td>
 </tr>
 <tr>
 <td style="text-align:center">随想四 · 故人</td>
@@ -57,15 +57,15 @@
 </tr>
 <tr>
 <td style="text-align:center">随想五 · 手中没有红玫瑰</td>
-<td style="text-align:center"><a href="http://www.orchidany.cf/2019/02/14/%E9%9A%8F%E6%83%B3%E4%BA%94%C2%B7%E6%83%85%E4%BA%BA%E8%8A%82/">$Link$</a></td>
+<td style="text-align:center"><a href="http://www.orchidany.cf/2019/02/14/%E9%9A%8F%E6%83%B3%E4%BA%94%C2%B7%E6%83%85%E4%BA%BA%E8%8A%82/" target="_blank" rel="noopener">$Link$</a></td>
 </tr>
 <tr>
 <td style="text-align:center">随想六 · 难</td>
-<td style="text-align:center"><a href="http://www.orchidany.cf/2019/03/10/%E9%9A%8F%E6%83%B3%E5%85%AD%C2%B7Hard/">$Link$</a></td>
+<td style="text-align:center"><a href="http://www.orchidany.cf/2019/03/10/%E9%9A%8F%E6%83%B3%E5%85%AD%C2%B7Hard/" target="_blank" rel="noopener">$Link$</a></td>
 </tr>
 <tr>
 <td style="text-align:center">随想七 · 言叶之庭</td>
-<td style="text-align:center"><a href="http://www.orchidany.cf/2019/03/28/%E9%9A%8F%E6%83%B3%E4%B8%83%C2%B7%E8%A8%80%E5%8F%B6%E4%B9%8B%E5%BA%AD/">$Link$</a></td>
+<td style="text-align:center"><a href="http://www.orchidany.cf/2019/03/28/%E9%9A%8F%E6%83%B3%E4%B8%83%C2%B7%E8%A8%80%E5%8F%B6%E4%B9%8B%E5%BA%AD/" target="_blank" rel="noopener">$Link$</a></td>
 </tr>
 <tr>
 <td style="text-align:center">随想八 · 逃吧</td>
@@ -73,7 +73,7 @@
 </tr>
 <tr>
 <td style="text-align:center">随想九 · 意义</td>
-<td style="text-align:center"><a href="http://www.orchidany.cf/2019/07/18/Nine/">$Link$</a></td>
+<td style="text-align:center"><a href="http://www.orchidany.cf/2019/07/18/Nine/" target="_blank" rel="noopener">$Link$</a></td>
 </tr>
 <tr>
 <td style="text-align:center">随想十 · 繁星</td>
@@ -1858,8 +1858,8 @@ f_n=[n=0]+\sum_{p=1}^{m}[p\in c] \sum_{q=0}^{m-p}f_{q}f_{m-p-q}</script><p>发�
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>动态规划/普通DP</tag>
         <tag>思维题/计数</tag>
+        <tag>动态规划/普通DP</tag>
         <tag>奇怪的技巧</tag>
         <tag>多项式的应用</tag>
         <tag>贪心</tag>
@@ -2809,8 +2809,8 @@ d(x)=\left\{\begin{array}{ll}{x \bmod 9,} & {x \bmod 9 \neq 0} \\ {9,} & {x \bmo
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>动态规划/普通DP</tag>
         <tag>数学/观察性质,结论与构造</tag>
+        <tag>动态规划/普通DP</tag>
       </tags>
   </entry>
   <entry>
@@ -2851,7 +2851,7 @@ F(n,k)&=\frac{\binom{n-1}{k-1}+2 \cdot \binom{n-2}{k-1}+3 \cdot \binom{n-3}{k-1}
 <p>那么问题转化成了给定$n$个数，同一组的元素不能放在一起，求排列数。那么就是$f_{i,j}$表示前$i$个组，有$j$对相邻元素的乘积为完全平方数的排列数，转移时考虑，枚举当前这一组被分成了$k$块，插板法插出来的方案数为$\binom{cnt_i-1}{k-1}$，并且会多加上$cnt_i-k$个不合法的位置；然后考虑这$k$块插到了上一个状态中，$j$对不合法相邻的数中，$o$对不合法的数之间（即有$o$对数被拆开了），那么就会少$o$对非法数对。然后就是$\binom{j}{o}$。考虑剩下的了$k-o$块，这$k-o$块可以放到$s_i-j+1$个正常的空隙里面，于是再乘一个$\binom{s_i-j+1}{k-o}$</p>
 <script type="math/tex; mode=display">
 f_{i,j+cnt_i-k-o}=f_{i-1,j}\times \sum\limits_{k\leq cnt_i,l\leq j} (cnt_i!)\cdot \binom{cnt_i-1}{k-1} \cdot \binom{s_i-j+1}{k-o}\cdot \binom{j}{o}</script><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">expow</span><span class="params">(ll d, ll z)</span></span>&#123;</span><br><span class="line">	ll res = <span class="number">1</span> ;</span><br><span class="line">	<span class="keyword">if</span> (d == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span> ;</span><br><span class="line">	<span class="keyword">while</span> (z)&#123;</span><br><span class="line">		<span class="keyword">if</span> (z &amp; <span class="number">1</span>) (res *= d) %= Mod ;</span><br><span class="line">		( d *= d ) %= Mod, z &gt;&gt;= <span class="number">1</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; N, dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span> ;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i)&#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; base[i] ; <span class="keyword">bool</span> mk = <span class="number">0</span> ;</span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">1</span> ; j &lt;= cnt ; ++ j)&#123;</span><br><span class="line">			ll p = trunc(<span class="built_in">sqrt</span>(base[i] * grp[j])) ;</span><br><span class="line">			<span class="keyword">if</span> (p * p == base[i] * grp[j])&#123;++ tm[j], mk = <span class="number">1</span> ; <span class="keyword">break</span> ; &#125; </span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (!mk) grp[++ cnt] = base[i], tm[cnt] = <span class="number">1</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">  <span class="keyword">for</span> (Cm[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>, i = <span class="number">1</span> ; i &lt;= N ; ++ i) Cm[i][<span class="number">0</span>] = <span class="number">1</span> ;</span><br><span class="line">	<span class="keyword">for</span> (Frac[<span class="number">0</span>] = <span class="number">1</span>, i = <span class="number">1</span> ; i &lt;= N ; ++ i) Frac[i] = Frac[i - <span class="number">1</span>] * i % Mod ;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i)</span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">1</span> ; j &lt;= i ; ++ j)</span><br><span class="line">			Cm[i][j] = (Cm[i - <span class="number">1</span>][j] + Cm[i - <span class="number">1</span>][j - <span class="number">1</span>]) % Mod ;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= cnt ; tot += tm[i], ++ i)</span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">0</span> ; j &lt;= tot ; ++ j) </span><br><span class="line">			<span class="keyword">for</span> (k = <span class="number">1</span> ; k &lt;= tm[i] ; ++ k)	</span><br><span class="line">				<span class="keyword">for</span> (l = <span class="number">0</span>, t = tm[i] - k + j ; l &lt;= j ; ++ l, t --)</span><br><span class="line">					<span class="keyword">if</span>(t &gt;= <span class="number">0</span> &amp;&amp; t &lt; N) </span><br><span class="line">            (dp[i][t] += </span><br><span class="line">             Frac[tm[i]] * Cm[tm[i] - <span class="number">1</span>][k - <span class="number">1</span>] % Mod </span><br><span class="line">           * Cm[j][l] % Mod * Cm[tot - j + <span class="number">1</span>][k - l] % Mod </span><br><span class="line">           * dp[i - <span class="number">1</span>][j] % Mod) %= Mod ;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; dp[cnt][<span class="number">0</span>] &lt;&lt; <span class="built_in">endl</span> ; <span class="keyword">return</span> <span class="number">0</span> ; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="D"><a href="#D" class="headerlink" title="$D$"></a>$D$</h1><p>这个D曾经单独写过：<a href="http://www.orchidany.cf/2019/04/05/可持久化数据结构·不靠谱的做法——主席树上二分/">Link</a></p>
+<h1 id="D"><a href="#D" class="headerlink" title="$D$"></a>$D$</h1><p>这个D曾经单独写过：<a href="http://www.orchidany.cf/2019/04/05/可持久化数据结构·不靠谱的做法——主席树上二分/" target="_blank" rel="noopener">Link</a></p>
 <p>233反正就是乱搞就对了</p>
 ]]></content>
       <categories>
@@ -2930,8 +2930,8 @@ y \cdot A_r-x \cdot B_r=y \cdot A_{l-1}-x \cdot B_{l-1}</script><p>然后如果�
         <category>校内模拟赛</category>
       </categories>
       <tags>
-        <tag>动态规划/普通DP</tag>
         <tag>数学/观察性质,结论与构造</tag>
+        <tag>动态规划/普通DP</tag>
         <tag>数据结构/数据结构方法/莫队</tag>
         <tag>数据结构/线段树</tag>
         <tag>动态规划/状压DP</tag>
@@ -3111,9 +3111,9 @@ ans =\sum_{j=1}^{n}f_{n,j}\cdot g_{0,c_1,c_2}</script><p>其中$c_1$和$c_2$表�
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>动态规划/普通DP</tag>
         <tag>思维题/构造</tag>
         <tag>思维题/计数</tag>
+        <tag>动态规划/普通DP</tag>
         <tag>贪心</tag>
       </tags>
   </entry>
@@ -3993,12 +3993,12 @@ G &= G_h - \frac{T(G_h)}{T'(G_h)}\\\
 <p>Let’s say sunshine for everyone 人们说生活总是充满阳光<br>But as far as I can remember 但在我的记忆中<br>We’ve been migratory animals 我们一直只是如野兽般流浪<br>Living under changing weather 四季变换，我们如常<br>Someday we will foresee obstacles 总有一天，我们会看见那些困难阻碍<br>Through the blizzard through the blizzard 在那片风雪之中，在那片风雪之后<br>Today we will sell our uniform 如今我们将曾经的校服变卖<br>Live together live together 一同离去，一同启程</p>
 </blockquote>
 
-        <div id="aplayer-jZBAqSXA" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-NDxMAdgi" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-jZBAqSXA"),
+            element: document.getElementById("aplayer-NDxMAdgi"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -4052,7 +4052,7 @@ G &= G_h - \frac{T(G_h)}{T'(G_h)}\\\
 <p>明日是否如同今日一样沉沦？我不知道。我只知道把握住下一秒就足够了。之前的生活的每一帧仿佛都像是飘在空中的泡影而已，洗刷着存在于虚妄中的记忆，一次一次，如同枷锁一样阻遏着我的前进。</p>
 <p>所以，请君勿言什么明天更好之类的P话了，在绝望中求生才是人生的常态。就如同从峭壁中生出的兰花，挤落一捻石尘都是成功。</p>
 <hr>
-<p>《随想》系列目次表：<a href="http://www.orchidany.cf/2050/12/31/%E9%9A%8F%E6%83%B3%C2%B7%E7%9B%AE%E6%AC%A1%E8%A1%A8/">$Link$</a></p>
+<p>《随想》系列目次表：<a href="http://www.orchidany.cf/2050/12/31/%E9%9A%8F%E6%83%B3%C2%B7%E7%9B%AE%E6%AC%A1%E8%A1%A8/" target="_blank" rel="noopener">$Link$</a></p>
 ]]></content>
       <categories>
         <category>Life</category>
@@ -4517,12 +4517,12 @@ g_{s,h} = \sum_{t\in s}g_{s-t, h-1}+h\cdot f_{s-t,t}</script><p>同样是显然�
 <p>你确定要看吗？或许也没有想象的那么丧。可能今天我是这么写的，后天我就不这么认为了。毕竟本质上，这只是一篇闲扯的文章。</p>
 <a id="more"></a>
 
-        <div id="aplayer-oIRQpXvV" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-FlBqhQNF" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-oIRQpXvV"),
+            element: document.getElementById("aplayer-FlBqhQNF"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -4708,8 +4708,8 @@ c_{i+1}-c_i' = d_1\\\ c_i'-c_{i-1} = d_2</script><p>换句话说，其实就是�
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>动态规划/普通DP</tag>
         <tag>思维题/构造</tag>
+        <tag>动态规划/普通DP</tag>
         <tag>树模型</tag>
       </tags>
   </entry>
@@ -4819,8 +4819,8 @@ S\stackrel{f = a_i,c = 0}{\longrightarrow}i \stackrel{f = Inf,c = c_{i,j}}{\long
         <category>网络流二十四题</category>
       </categories>
       <tags>
-        <tag>网络流24题</tag>
         <tag>网络流/费用流</tag>
+        <tag>网络流24题</tag>
       </tags>
   </entry>
   <entry>
@@ -4830,7 +4830,7 @@ S\stackrel{f = a_i,c = 0}{\longrightarrow}i \stackrel{f = Inf,c = c_{i,j}}{\long
 <p>​    Hello darkness my old friend. 黯淡如旧，今时重逢。<br>​    I’ve come to talk with you again. 阔别久日，可赴低叙？<br>​    Because a vision softly creeping. 如梦如幻，于我心萦。<br>​    Left its seeds while I was sleeping. 遗之入梦，齐我心同。<br>​    And the vision that was planted in my brain. 不知归处，不知归处。<br>​    Still remains with the sound of silence. 行舟如风，遣舟迟暮。<br>​    In restless dreams I walk alone. 吾心独行，兰皋止息。<br>​    Narrow streets of cobble stone. 越陌度阡，可有一醉？<br>​    Beneath the hallo of a street lamp’, 如光化影，于我心寂。<br>​    I turned my collar to the cold and damp. 浊寒入襟，刺我心底。<br>​    When my eyes were stabbled. 所见皆幻，所见皆明。<br>​    By the flash of a neon light. 万物皆虚，万物皆允。<br>​    That split the night. 不知归处，不知归处。<br>​    And touched the sound of silence 星瀚灿漫，行人慢走。</p>
 <p>​    ——『$\rm{The ~Sound~of~Silence}$』寂静之声</p>
 </blockquote>
-<p>随想系列目次表：<a href="http://www.orchidany.cf/2050/12/31/%E9%9A%8F%E6%83%B3%C2%B7%E7%9B%AE%E6%AC%A1%E8%A1%A8/">戳我</a></p>
+<p>随想系列目次表：<a href="http://www.orchidany.cf/2050/12/31/%E9%9A%8F%E6%83%B3%C2%B7%E7%9B%AE%E6%AC%A1%E8%A1%A8/" target="_blank" rel="noopener">戳我</a></p>
 <p>这次大概会写的时间线很跳跃，但我真的是被这个故事叩击了心脏最深处的地方。</p>
 <hr>
 <h1 id="rm-Part-1"><a href="#rm-Part-1" class="headerlink" title="$\rm{Part~1}$"></a>$\rm{Part~1}$</h1><p>月考结束了。我终于有时间把这本书读完。</p>
@@ -5450,7 +5450,7 @@ x_{n+k}= b_k-b_i+\sum\limits_{j=1}^{n}(a_{k,j}-a_{i,j})x_j+x_{i+n}</script><p>�
     <url>/2019/03/10/%E9%9A%8F%E6%83%B3%E5%85%AD%C2%B7Hard/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>最近心绪颇不宁静。</p>
 <a id="more"></a>
-<p>《随想》系列目次表：<a href="http://www.orchidany.cf/2050/12/31/%E9%9A%8F%E6%83%B3%C2%B7%E7%9B%AE%E6%AC%A1%E8%A1%A8/">$Link$</a></p>
+<p>《随想》系列目次表：<a href="http://www.orchidany.cf/2050/12/31/%E9%9A%8F%E6%83%B3%C2%B7%E7%9B%AE%E6%AC%A1%E8%A1%A8/" target="_blank" rel="noopener">$Link$</a></p>
 <h2 id="text-Part0"><a href="#text-Part0" class="headerlink" title="$\text{Part0}$"></a>$\text{Part0}$</h2><p>不知道为什么，最近的心绪颇不宁静。</p>
 <p>那是一种说不出来的痛苦与寂寞，或许夹杂着一些爽快。省选将近，我不知道自己会有什么样的下场。我只知道自己码力依旧很弱、脑子依旧很笨。比起几个月之前退役之后萎靡不振的自己，没有什么长进。</p>
 <p>我更是知道，我原本的想法是多么的幼稚。或许我一直在骗自己吧，骗自己“省选之前的一两个月，拼一拼、挤一挤时间，或许就能怎样怎样”——原来$\rm{NOIP}$爆锤我的人，不止比我聪明，还比我勤奋，还比我认真，还比我努力。我有什么资本去同台竞技呢？到最后，省选对我来说，也不过只是个笑话吧。</p>
@@ -5607,7 +5607,7 @@ a^{x-1}\equiv \frac{\frac{b}{(a,p)}} {\frac{a}{(a,p)} } \equiv1(\bmod \frac{p}{(
     <title>【学习笔记】拆系数FFT</title>
     <url>/2019/02/19/FFT2/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89-darkviolet.svg" alt></p>
-<p>上一篇多项式：<a href="http://www.orchidany.cf/2019/02/19/FFT1/">多项式1·普通的FFT</a></p>
+<p>上一篇多项式：<a href="http://www.orchidany.cf/2019/02/19/FFT1/" target="_blank" rel="noopener">多项式1·普通的FFT</a></p>
 <hr>
 <h1 id="rm-0x01-quad-Preface"><a href="#rm-0x01-quad-Preface" class="headerlink" title="$\rm{0x01\quad Preface}$"></a>$\rm{0x01\quad Preface}$</h1><p>今天是$Feb.19^{th}$，开学前一天，现在是北京时间下午$10:05$，我还剩除了英语物理的所有作业没做 … 耶，真开心。</p>
 <p>由于特殊原因嘛，我暂时不会写的特别详细——毕竟还有作业没有做<del>抄</del>完，所以就先整理地仓促一点。</p>
@@ -5872,7 +5872,7 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
   <entry>
     <title>随想五 · 手中没有红玫瑰</title>
     <url>/2019/02/14/%E9%9A%8F%E6%83%B3%E4%BA%94%C2%B7%E6%83%85%E4%BA%BA%E8%8A%82/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>“随想”系列索引：<a href="http://www.orchidany.cf/2050/12/31/%E9%9A%8F%E6%83%B3%C2%B7%E7%9B%AE%E6%AC%A1%E8%A1%A8/">戳我</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>“随想”系列索引：<a href="http://www.orchidany.cf/2050/12/31/%E9%9A%8F%E6%83%B3%C2%B7%E7%9B%AE%E6%AC%A1%E8%A1%A8/" target="_blank" rel="noopener">戳我</a></p>
 <hr>
 <p>今天下了一天的雪。</p>
 <p>我是隔着窗户望的，直到现在我还没有真正触摸到久违的雪花。一年多了？或许吧。我轻度近视，但是白天在窗边的书桌旁习作时，不戴眼镜的，还是能看到纷飞的白絮——虽然有些模糊。它们经常想我挥手致意，我也满足了。</p>
@@ -5940,12 +5940,12 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
 <p>我大概在听这首歌之前，从来没有真正知道原来”喜欢“这个已经烂大街的词、这个现如今可以随便说出口又可以随便忘记的词、这个在我上过的所有学校里从来没有人敢光明正大说出来的词、这个现在在芸芸众生中已经被玷污的、被人们认为还没有一块钱来的实在的词，竟然如此的可爱，竟然如此的值得人们尊敬，竟然可以在冰冷的寒夜散发出如此耀眼的光芒。</p>
 <p>我喜欢你，你应该，也知道。</p>
 
-        <div id="aplayer-yAwjwqxI" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-QuWiDtWL" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-yAwjwqxI"),
+            element: document.getElementById("aplayer-QuWiDtWL"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -5976,12 +5976,12 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
 <hr>
 <p>雪，终于停了啊。现在已经午夜了，街上一个人都没有，天空在积雪的映照下，是让人着迷的紫红色。</p>
 
-        <div id="aplayer-hXGNWfcm" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-NZcSrJfM" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-hXGNWfcm"),
+            element: document.getElementById("aplayer-NZcSrJfM"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -6008,7 +6008,7 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
     <url>/2019/02/14/%E9%9A%8F%E6%83%B3%E4%B8%89%C2%B7NOIP/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>我不想退役。</p>
 <a id="more"></a>
-<p>“随想”系列索引：<a href="http://www.orchidany.cf/2050/12/31/%E9%9A%8F%E6%83%B3%C2%B7%E7%9B%AE%E6%AC%A1%E8%A1%A8/">戳我</a></p>
+<p>“随想”系列索引：<a href="http://www.orchidany.cf/2050/12/31/%E9%9A%8F%E6%83%B3%C2%B7%E7%9B%AE%E6%AC%A1%E8%A1%A8/" target="_blank" rel="noopener">戳我</a></p>
 <hr>
 <p>他看着眼前的屏幕，静静地发呆。</p>
 <p>他不知道迎接他的将会是什么，后天的$\rm{NOIp}$终究是个谜。</p>
@@ -6679,8 +6679,8 @@ n \geq 2^{k+1}-1\\\ \log_2{(n+1)} \geq k+1\\\ \log_2{(n+1)}-1 \geq k</script><sc
         <category>网络流</category>
       </categories>
       <tags>
-        <tag>网络流/费用流</tag>
         <tag>网络流/最大流</tag>
+        <tag>网络流/费用流</tag>
       </tags>
   </entry>
   <entry>
@@ -6689,7 +6689,7 @@ n \geq 2^{k+1}-1\\\ \log_2{(n+1)} \geq k+1\\\ \log_2{(n+1)}-1 \geq k</script><sc
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>一点功利的遐想？</p>
 <a id="more"></a>
 <hr>
-<p>“随想”系列索引：<a href="http://www.orchidany.cf/2050/12/31/%E9%9A%8F%E6%83%B3%C2%B7%E7%9B%AE%E6%AC%A1%E8%A1%A8/">戳我</a></p>
+<p>“随想”系列索引：<a href="http://www.orchidany.cf/2050/12/31/%E9%9A%8F%E6%83%B3%C2%B7%E7%9B%AE%E6%AC%A1%E8%A1%A8/" target="_blank" rel="noopener">戳我</a></p>
 <hr>
 <p>啊……还有几十天就$NOIp$了啊……</p>
 <p>现在是下午四点，机房。</p>
@@ -6737,7 +6737,7 @@ n \geq 2^{k+1}-1\\\ \log_2{(n+1)} \geq k+1\\\ \log_2{(n+1)}-1 \geq k</script><sc
     <url>/2018/08/02/%E9%9A%8F%E6%83%B3%E4%B8%80/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Hello，World！</p>
 <a id="more"></a>
-<p>“随想”系列索引：<a href="http://www.orchidany.cf/2050/12/31/%E9%9A%8F%E6%83%B3%C2%B7%E7%9B%AE%E6%AC%A1%E8%A1%A8/">戳我</a></p>
+<p>“随想”系列索引：<a href="http://www.orchidany.cf/2050/12/31/%E9%9A%8F%E6%83%B3%C2%B7%E7%9B%AE%E6%AC%A1%E8%A1%A8/" target="_blank" rel="noopener">戳我</a></p>
 <hr>
 <p>我是花，来自山东，今时今日写下这一篇，只是为了给并肩的$Oiers$一个不算多美的故事，为了给后来的$Oiers$一个对未来有所期望的愿景。</p>
 <p>看着眼前发黄的电脑屏幕，不知道该说些什么。</p>
