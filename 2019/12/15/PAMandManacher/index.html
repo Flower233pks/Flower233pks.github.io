@@ -156,7 +156,7 @@
 <meta property="og:site_name" content="Orchidany&#39;w blog">
 <meta property="og:description" content="PAM &amp;amp; Manacher，两种用来处理回文串的玩意儿。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-15T06:18:31.182Z">
+<meta property="og:updated_time" content="2020-01-16T12:48:42.285Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【学习笔记】PAM &amp; Manacher">
 <meta name="twitter:description" content="PAM &amp;amp; Manacher，两种用来处理回文串的玩意儿。">
@@ -479,13 +479,23 @@
                 
               
 
-              <time title="Created: 2019-12-15 14:05:19 / Modified: 14:18:31" itemprop="dateCreated datePublished" datetime="2019-12-15T14:05:19+08:00">2019-12-15</time>
+              <time title="Created: 2019-12-15 14:05:19" itemprop="dateCreated datePublished" datetime="2019-12-15T14:05:19+08:00">2019-12-15</time>
             </span>
           
 
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-01-16 20:48:42" itemprop="dateModified" datetime="2020-01-16T20:48:42+08:00">2020-01-16</time>
+              </span>
             
           
 
@@ -571,7 +581,7 @@
 <p>Manacher用于求回文串长度。思想大概就是：</p>
 <p>1、加入字符集之外的识别字符（比如<code>#</code>）分隔开原来相邻的字母，这样所有的回文串都变成了以某个字符为中心的（否则如果是偶数长度的回文串还要特判）。</p>
 <p>2、考虑借由以前的信息求出新的回文串长度。记录到现在为止最靠右的回文串中最右侧的字符下标&amp;其对称轴的下标，不妨记这个最靠右的串为$\rm S$。那么考虑以当前位置作为对称轴的答案，一定<strong>至少是$\min${隔着$\rm S$的对称轴与其对称的另一个位置ans，$|S|-i+1$}</strong> 。然后就不断扩展即可。</p>
-<p>3、关于复杂度证明。我们记<strong>一次帅气的操作</strong>的意义是<strong>成功让$ans_i$的初始值继承了与之对称的点的答案和边界的取$\min$</strong>，记以当前点为轴的最长回文子串为$\rm T$，$T$的右端点为$q$。可以知道</p>
+<p>3、关于复杂度证明。我们记<strong>一次帅气的操作</strong>的意义是<strong>成功让$ans_i$的初始值继承了与之对称的点的答案和边界的取$\min$</strong>，记以当前点为轴的最长回文子串为 $\rm T$，$ \rm T$ 的右端点为 $q$。可以知道 .</p>
 <ul>
 <li>（1）$\rm S$的右端点是单增的；</li>
 <li>（2）如果当前旧的$maxlen&lt;i$，即未成功进行一次帅气的操作，那么显然<code>while</code>1次，$maxlen$增大一次；</li>
@@ -581,18 +591,18 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Manacher</span><span class="params">(<span class="keyword">char</span> *s)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> id, fars, i ; </span><br><span class="line">	id = <span class="number">0</span>, fars = <span class="number">0</span> ;</span><br><span class="line">	<span class="comment">//id : 最靠右的回文串的中心位置 </span></span><br><span class="line">	<span class="comment">//fars : 迄今为止最靠右的回文串的最右侧 </span></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i)</span><br><span class="line">		ns[++ L] = (<span class="keyword">int</span>)In[i], ns[++ L] = <span class="string">'#'</span> ;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= L ; ++ i)&#123;</span><br><span class="line">		<span class="keyword">if</span> (fars &lt;= i) base[i] = <span class="number">1</span> ; </span><br><span class="line">		<span class="keyword">else</span> base[i] = min(fars - i + <span class="number">1</span>, base[id * <span class="number">2</span> - i]) ;</span><br><span class="line">		<span class="keyword">while</span> (ns[i + base[i]] == ns[i - base[i]]) base[i] ++ ;</span><br><span class="line"> 		<span class="keyword">if</span> (i + base[i] &gt; fars) id = i, fars = i + base[i] - <span class="number">1</span> ;	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>, In + <span class="number">1</span>), </span><br><span class="line">	L = <span class="number">-1</span>, N = <span class="built_in">strlen</span>(In + <span class="number">1</span>) ;</span><br><span class="line">	ns[++ L] = <span class="string">'$'</span>, ns[++ L] = <span class="string">'#'</span> ; Manacher(In) ;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= <span class="number">2</span> * N + <span class="number">2</span> ; ++ i) ans = max(ans, base[i] - <span class="number">1</span>) ; </span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span> ; <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="2-PAM"><a href="#2-PAM" class="headerlink" title="$2$ PAM"></a>$2$ PAM</h1><p>学了PAM，不知道为啥感觉比SAM简单？</p>
 <p>其实就是一种自动机，以回文串为状态，左右各添加一个字符为转移的自动机。要点如下：</p>
-<p>0、一个串的回文子串至多有$O(n)$个。</p>
+<p>0、一个串的回文子串至多有 $O(n)$ 个。</p>
 <p>1、首先每个节点需要保存这个节点中回文串的长度。</p>
-<p>2、显然始状态需要有两个，即奇数长度的$s$和偶数长度的$s$，称作<strong>“奇根”</strong>和<strong>“偶根”</strong>。那么为了方便呢，奇根的长度设置为$-1$，偶根长度设置为$0$。</p>
-<p>3、考虑要从$last$指针扩展当前状态，假设当前需要<code>insert</code>的字母是$c$，是这个串里面的第$p$个字符，那我们需要找到一个后缀$s[j…p-1]\quad s.t.\quad s[j…p-1]$本身回文且$s[j-1]=c$，那么就可以向下扩展。</p>
-<p>4、考虑怎么找这个后缀，显然对于一个串$S$，他的所有回文后缀都是其最长回文后缀的回文后缀。所以考虑$fail$指针，应当从当前状态连向它的<strong>最长回文后缀</strong>。</p>
-<p>5、插入新节点时，考虑跳完$fail$后如果没有相应的转移边，就要新建一个状态然后连$fail$.</p>
+<p>2、显然始状态需要有两个，即奇数长度的 $s_1$ 和偶数长度的 $s_0$ ，称作<strong>“奇根”</strong>和<strong>“偶根”</strong>。那么为了方便呢，奇根的长度设置为 $-1$，偶根长度设置为 $0$。</p>
+<p>3、考虑要从 $last$ 指针扩展当前状态，假设当前需要 <code>insert</code> 的字母是 $c$，是这个串里面的第 $p$ 个字符，那我们需要找到一个后缀 $s[j…p-1]\quad s.t.\quad s[j…p-1]$ 本身回文且 $s[j-1]=c$，那么就可以向下扩展。</p>
+<p>4、考虑怎么找这个后缀，显然对于一个串 $\rm S$，他的所有回文后缀都是其最长回文后缀的回文后缀。所以考虑$fail$指针，应当从当前状态连向它的<strong>最长回文后缀</strong>。</p>
+<p>5、插入新节点时，考虑跳完 $fail$ 后如果没有相应的转移边，就要新建一个状态然后连$fail$.</p>
 <p>然后是代码和一点注意：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">PAM</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> trie[MAXN][Sigma] ;</span><br><span class="line">	<span class="keyword">int</span> rt0, rt1, last, sz ;</span><br><span class="line">	<span class="keyword">int</span> len[MAXN], fail[MAXN] ;</span><br><span class="line">&#125;P ;</span><br><span class="line"><span class="keyword">void</span> _init(PAM &amp;p)&#123;</span><br><span class="line">	p.sz = <span class="number">-1</span>, </span><br><span class="line">	p.rt0 = ++ p.sz, p.rt1 = ++ p.sz ;</span><br><span class="line">	p.fail[p.rt0] = p.fail[p.rt1] = p.rt1 ;</span><br><span class="line">	p.last = p.rt0, p.len[p.rt0] = <span class="number">0</span>, p.len[p.rt1] = <span class="number">-1</span> ; </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> _insert(PAM &amp;p, <span class="keyword">int</span> x, <span class="keyword">int</span> pos, <span class="keyword">char</span> *s)&#123;</span><br><span class="line">	<span class="keyword">int</span> u = p.last ; </span><br><span class="line">	<span class="keyword">while</span> (s[pos - p.len[u] - <span class="number">1</span>] != s[pos]) u = p.fail[u] ; </span><br><span class="line">	<span class="keyword">if</span> (!p.trie[u][x])&#123;</span><br><span class="line">		<span class="keyword">int</span> fa = p.fail[u] ;</span><br><span class="line">		<span class="keyword">int</span> newn = ++ p.sz ; </span><br><span class="line">		p.len[newn] = p.len[u] + <span class="number">2</span> ; </span><br><span class="line">		<span class="keyword">while</span> (s[pos - p.len[fa] - <span class="number">1</span>] != s[pos]) fa = p.fail[fa] ; </span><br><span class="line">		p.fail[newn] = p.trie[fa][x], p.trie[u][x] = newn, </span><br><span class="line">	&#125;</span><br><span class="line">	p.last = p.trie[u][x] ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>6、$\rm \color{red}{WARNING}$，以下两句顺序不要写反：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p.fail[newn] = p.trie[fa][x], p.trie[u][x] = newn,</span><br></pre></td></tr></table></figure>
-<p>原因是当$fa=u$时就出现环了。</p>
-<h1 id="3-闲扯"><a href="#3-闲扯" class="headerlink" title="$3$ 闲扯"></a>$3$ 闲扯</h1><p>学完才知道，$\rm PAM$又简单又好背功能又多……Manacher被打爆了啊喂qwq。</p>
+<p>原因是当 $fa=u$ 时就出现环了。</p>
+<h1 id="3-闲扯"><a href="#3-闲扯" class="headerlink" title="$3$ 闲扯"></a>$3$ 闲扯</h1><p>学完才知道，$\rm PAM$ 又简单又好背功能又多……Manacher被打爆了啊喂qwq。</p>
 
       
     </div>
@@ -990,7 +1000,7 @@ if(canvas.getContext){
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">110</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1071,7 +1081,29 @@ if(canvas.getContext){
         
           
         
-        <span class="site-state-item-count">32</span>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">43</span>
         <span class="site-state-item-name">categories</span>
         </a>
       </div>
@@ -1214,7 +1246,45 @@ if(canvas.getContext){
         
           
         
-        <span class="site-state-item-count">63</span>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">82</span>
         <span class="site-state-item-name">tags</span>
         </a>
       </div>
@@ -1311,7 +1381,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共176k字</span>
+  <span class="post-count">博客全站共225.1k字</span>
 </div>
 
         

@@ -149,7 +149,7 @@
 </script>
 
   <meta name="description" content="一种以 $ \rm Splay $ 作为辅助树的、动态维护森林连通性的算法。">
-<meta name="keywords" content="LCT">
+<meta name="keywords" content="数据结构&#x2F;LCT">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【学习笔记】LCT初步">
 <meta property="og:url" content="http://www.orchidany.cf/2019/02/04/LCT-s-Junior-Intro/index.html">
@@ -159,7 +159,7 @@
 <meta property="og:image" content="https://img.shields.io/badge/%E9%9A%BE%E5%BA%A6-%E7%9C%81%E9%80%89---purple.svg">
 <meta property="og:image" content="http://www.orchidany.cf/2019/02/04/LCT-s-Junior-Intro/t1.jpg">
 <meta property="og:image" content="http://www.orchidany.cf/2019/02/04/LCT-s-Junior-Intro/t2.png">
-<meta property="og:updated_time" content="2020-01-14T13:45:08.010Z">
+<meta property="og:updated_time" content="2020-01-17T02:45:27.970Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【学习笔记】LCT初步">
 <meta name="twitter:description" content="一种以 $ \rm Splay $ 作为辅助树的、动态维护森林连通性的算法。">
@@ -498,7 +498,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-01-14 21:45:08" itemprop="dateModified" datetime="2020-01-14T21:45:08+08:00">2020-01-14</time>
+                <time title="Modified: 2020-01-17 10:45:27" itemprop="dateModified" datetime="2020-01-17T10:45:27+08:00">2020-01-17</time>
               </span>
             
           
@@ -665,7 +665,7 @@
 <li><h2 id="5-rm-Rotate-中的坑点"><a href="#5-rm-Rotate-中的坑点" class="headerlink" title="5  $\rm ~Rotate $ 中的坑点"></a>5  $\rm ~Rotate $ 中的坑点</h2></li>
 </ul>
 <p>呃……其实就一处而已。就是：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123; <span class="keyword">return</span> T[T[x].F].Son[<span class="number">0</span>] == x || T[T[x].F].Son[<span class="number">1</span>] == x ;  &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> fa = T[x].F, g_fa = T[fa].F, W = x == T[fa].Son[<span class="number">1</span>] ;</span><br><span class="line">	<span class="keyword">if</span> (check(fa)) T[g_fa].Son[T[g_fa].Son[<span class="number">1</span>] == fa] = x ; T[x].F = g_fa ;</span><br><span class="line">	T[fa].Son[W] = T[x].Son[W ^ <span class="number">1</span>], T[T[x].Son[W ^ <span class="number">1</span>]].F = fa, T[fa].F = x, </span><br><span class="line">  T[x].Son[W ^ <span class="number">1</span>] = fa, update(fa), update(x) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123; <span class="keyword">return</span> T[T[x].F].Son[<span class="number">0</span>] == x || T[T[x].F].Son[<span class="number">1</span>] == x ;  &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> fa = T[x].F, g_fa = T[fa].F, W = x == T[fa].Son[<span class="number">1</span>] ;</span><br><span class="line">	<span class="keyword">if</span> (check(fa)) T[g_fa].Son[T[g_fa].Son[<span class="number">1</span>] == fa] = x ; T[x].F = g_fa ;</span><br><span class="line">	T[fa].Son[W] = T[x].Son[W ^ <span class="number">1</span>], T[T[x].Son[W ^ <span class="number">1</span>]].F = fa, T[fa].F = x</span><br><span class="line">  T[x].Son[W ^ <span class="number">1</span>] = fa, update(fa), update(x) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这个地方 $\rm splay$ 双旋判断祖父的时候，不再用 $ \rm{if(g\text{_}fa)} $ ，而是用 $ \rm{if(check(fa))} $ 。原因很简单，我们的虚边也是有指向父亲的指针的，但是连接两个不同的 $\rm splay$ </p>
 <p>剩下的……大概就没了吧……</p>
 <p>于是——</p>
@@ -708,7 +708,7 @@
         
         <div class="post-tags">
           
-            <a href="/tags/LCT/" rel="tag"><i class="fa fa-tag"></i> LCT</a>
+            <a href="/tags/数据结构-LCT/" rel="tag"><i class="fa fa-tag"></i> 数据结构/LCT</a>
           
         </div>
       
@@ -1073,7 +1073,7 @@ if(canvas.getContext){
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">110</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1154,7 +1154,29 @@ if(canvas.getContext){
         
           
         
-        <span class="site-state-item-count">32</span>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">43</span>
         <span class="site-state-item-name">categories</span>
         </a>
       </div>
@@ -1297,7 +1319,45 @@ if(canvas.getContext){
         
           
         
-        <span class="site-state-item-count">63</span>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">82</span>
         <span class="site-state-item-name">tags</span>
         </a>
       </div>
@@ -1394,7 +1454,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共176k字</span>
+  <span class="post-count">博客全站共225.1k字</span>
 </div>
 
         
