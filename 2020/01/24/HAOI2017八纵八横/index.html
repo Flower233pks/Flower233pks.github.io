@@ -148,18 +148,18 @@
   };
 </script>
 
-  <meta name="description" content="Anihc 国有 $n$ 个城市，这 $n$ 个城市从 $1$ 编号，$1$ 号城市为首都。城市间初始时有 $m$ 条高速公路，每条高速公路都有一个非负整数的经济影响因子，每条高速公路的两端都是城市（可能两端是同一个城市)，保证任意两个城市都可以通过高速公路互达。 Anihc 国正在筹划「八纵八横」的高铁建设计划，计划要修建一些高速铁路，每条高速铁路两端也都是城市（可能两端是同一个城市)，也都有一">
+  <meta name="description" content="其实不是什么难题，只是因为「写起来很麻烦」+「单独拿出来方便记忆」所以单独开一篇。">
 <meta name="keywords" content="离线算法&#x2F;线段树分治,线性代数&#x2F;线性空间&#x2F;线性基">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【题解】loj#2312 [HAOI2017]八纵八横">
 <meta property="og:url" content="https://www.orchidany.cn/2020/01/24/HAOI2017八纵八横/index.html">
 <meta property="og:site_name" content="Orchidany&#39;w blog">
-<meta property="og:description" content="Anihc 国有 $n$ 个城市，这 $n$ 个城市从 $1$ 编号，$1$ 号城市为首都。城市间初始时有 $m$ 条高速公路，每条高速公路都有一个非负整数的经济影响因子，每条高速公路的两端都是城市（可能两端是同一个城市)，保证任意两个城市都可以通过高速公路互达。 Anihc 国正在筹划「八纵八横」的高铁建设计划，计划要修建一些高速铁路，每条高速铁路两端也都是城市（可能两端是同一个城市)，也都有一">
+<meta property="og:description" content="其实不是什么难题，只是因为「写起来很麻烦」+「单独拿出来方便记忆」所以单独开一篇。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-31T09:15:42.133Z">
+<meta property="og:updated_time" content="2020-02-03T15:30:13.242Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【题解】loj#2312 [HAOI2017]八纵八横">
-<meta name="twitter:description" content="Anihc 国有 $n$ 个城市，这 $n$ 个城市从 $1$ 编号，$1$ 号城市为首都。城市间初始时有 $m$ 条高速公路，每条高速公路都有一个非负整数的经济影响因子，每条高速公路的两端都是城市（可能两端是同一个城市)，保证任意两个城市都可以通过高速公路互达。 Anihc 国正在筹划「八纵八横」的高铁建设计划，计划要修建一些高速铁路，每条高速铁路两端也都是城市（可能两端是同一个城市)，也都有一">
+<meta name="twitter:description" content="其实不是什么难题，只是因为「写起来很麻烦」+「单独拿出来方便记忆」所以单独开一篇。">
 
 
 
@@ -494,7 +494,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-01-31 17:15:42" itemprop="dateModified" datetime="2020-01-31T17:15:42+08:00">2020-01-31</time>
+                <time title="Modified: 2020-02-03 23:30:13" itemprop="dateModified" datetime="2020-02-03T23:30:13+08:00">2020-02-03</time>
               </span>
             
           
@@ -575,14 +575,15 @@
       
 
       
-        <p>Anihc 国有 $n$ 个城市，这 $n$ 个城市从 $1$ 编号，$1$ 号城市为首都。城市间初始时有 $m$ 条高速公路，每条高速公路都有一个非负整数的经济影响因子，每条高速公路的两端都是城市（可能两端是同一个城市)，保证任意两个城市都可以通过高速公路互达。</p>
+        <p>其实不是什么难题，只是因为「写起来很麻烦」+「单独拿出来方便记忆」所以单独开一篇。</p>
+<a id="more"></a>
+<p>Anihc 国有 $n$ 个城市，这 $n$ 个城市从 $1$ 编号，$1$ 号城市为首都。城市间初始时有 $m$ 条高速公路，每条高速公路都有一个非负整数的经济影响因子，每条高速公路的两端都是城市（可能两端是同一个城市)，保证任意两个城市都可以通过高速公路互达。</p>
 <p>Anihc 国正在筹划「八纵八横」的高铁建设计划，计划要修建一些高速铁路，每条高速铁路两端也都是城市（可能两端是同一个城市)，也都有一个非负整数的经济影响因子。国家还计划在「八纵八横」计划建成之后，将「一带一路」扩展为「一带一路一环」，增加「内陆城市经济环」即选择一条从首都出发沿若一系列高铁与高速公路走的路径，每条高铁或高速公路可以经过多次，每座城市也可以经过多次，最后路径又在首都结束。令「内陆城市经济环」的 $\rm GDP$ 为依次将这条路径上所经过的高铁或高速公路的经济影响因子异或起来（一条路经过多次则会被计算多次）。</p>
 <p>现在 Anihc 在会议上讨论「八纵八横」的建设计划方案，他们会不断地修改计划方案，希望你能实时反馈对于当前的「八纵八横」的建设计划的方案「内陆城市经济环」的最大是多少。</p>
 <p>初始时，八纵八横计划中不包含任何—条高铁，有以下三种操作：</p>
 <p><code>Add x y z</code>  在计划中给在城市 $x$ 和城市 $y$ 之间建设一条高铁，其经济影响因子为 $z$，如果这是第 $k$ 个 <code>Add</code> 操作，则将这条高铁命名为 $k$ 号高铁。</p>
 <p><code>Cancel k</code>  将计划中的 $k$ 号高铁取消掉，保证此时 $k$ 号高铁一定存在。</p>
-<p><code>Change k z</code>  表示将第 $k$ 号高铁的经济影响因子更改为 $z$，保证此时 $k$ 号高铁一定存在。</p>
-<a id="more"></a>
+<p><code>Change k z</code>  表示将第 $k$ 号高铁的经济影响因子更改为 $z$，保证此时 $k$ 号高铁一定存在.</p>
 <h2 id="rm-Sol"><a href="#rm-Sol" class="headerlink" title="$\rm Sol$"></a>$\rm Sol$</h2><p>不得不说这题有点恶心…因为他需要 <code>bitset</code>，于是各种操作就很不优美。</p>
 <p>大概就是考虑用线段树分治去维护边的存在性。那么接下来就是一开始随便 $dfs$ 出一个生成树来，然后每次询问时，发现对于每个合法的方案都是从 $1$ 开始的一个环。 那么考虑最后一定是一些环套起来，所以可以直接在线性基里面查询。</p>
 <p>做这题时发现，这么做的正确性在于，可以随便生成一棵树。同时生成出来的环也具有「生成子集」的性质，也就是说可以据此生成所有 <strong>剩下未被统计的环</strong>。要证明其实也不难。</p>
@@ -1366,7 +1367,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共225.1k字</span>
+  <span class="post-count">博客全站共225.4k字</span>
 </div>
 
         

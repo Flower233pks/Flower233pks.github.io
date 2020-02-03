@@ -157,7 +157,7 @@
 <meta property="og:description" content="另一种神奇的多项式卷积求法，比FFT应用要广泛。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://www.orchidany.cn/2019/03/17/NTT1-2/1.png">
-<meta property="og:updated_time" content="2020-01-07T23:43:27.865Z">
+<meta property="og:updated_time" content="2020-02-03T03:37:26.156Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【学习笔记】NTT和任意模数NTT">
 <meta name="twitter:description" content="另一种神奇的多项式卷积求法，比FFT应用要广泛。">
@@ -496,7 +496,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-01-08 07:43:27" itemprop="dateModified" datetime="2020-01-08T07:43:27+08:00">2020-01-08</time>
+                <time title="Modified: 2020-02-03 11:37:26" itemprop="dateModified" datetime="2020-02-03T11:37:26+08:00">2020-02-03</time>
               </span>
             
           
@@ -617,7 +617,7 @@ g^{p-1} \equiv1(\bmod~p) \\ \omega_n^n=1</script><p>而已。于是就满足性�
 <p>然后…我也不知道从哪找到了一张比较浅显的图：<img src="1.png" alt> </p>
 <p>但是这个地方仍然会存在不少问题，巨佬<code>KsCla</code>如此解释：</p>
 <blockquote>
-<p>具体做法是这样：先选取三个乘积在$10^{23 }$以上的便于使用NTT的模数。在这里我选的是$m_1=998244353=223∗119+1$，$m_2=1004535809=221∗479+1$，$m_3=469762049=226∗7+1$。选这三个模数的好处在于它们的原根都是3。<br>然后用这三个模数做NTT，可以得到以下三条式子：</p>
+<p>具体做法是这样：先选取三个乘积在$10^{23 }$以上的便于使用NTT的模数。在这里我选的是$m_1=998244353=2^{23}∗119+1$，$m_2=1004535809=2^{21}∗479+1$，$m_3=469762049=2^{26}∗7+1$。选这三个模数的好处在于它们的原根都是3。<br>然后用这三个模数做NTT，可以得到以下三条式子：</p>
 <script type="math/tex; mode=display">
 ~ans≡c_1~(\bmod m_1)\\\
 ans≡c_2~(\bmod m_2)\\\
@@ -1428,7 +1428,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共225.1k字</span>
+  <span class="post-count">博客全站共225.4k字</span>
 </div>
 
         

@@ -148,18 +148,18 @@
   };
 </script>
 
-  <meta name="description" content="小Y最近在一家金券交易所工作。该金券交易所只发行交易两种金券：$A$ 纪念券（以下简称 $A$ 券）和 $B$ 纪念券（以下简称 $B$ 券）。每个持有金券的顾客都有一个自己的帐户。金券的数目可以是一个实数。 每天随着市场的起伏波动，两种金券都有自己当时的价值，即每一单位金券当天可以兑换的人民币数目。我们记录第 $K$ 天中 $A$ 券和 $B$ 券的价值分别为 $A_K$ 和 $B_K$ （元/">
+  <meta name="description" content="某CDQ好题. 没人看出上面这句话是有俩含义吗">
 <meta name="keywords" content="动态规划&#x2F;普通DP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【题解】loj#2353 [NOI2007]货币兑换">
 <meta property="og:url" content="https://www.orchidany.cn/2020/01/24/货币兑换/index.html">
 <meta property="og:site_name" content="Orchidany&#39;w blog">
-<meta property="og:description" content="小Y最近在一家金券交易所工作。该金券交易所只发行交易两种金券：$A$ 纪念券（以下简称 $A$ 券）和 $B$ 纪念券（以下简称 $B$ 券）。每个持有金券的顾客都有一个自己的帐户。金券的数目可以是一个实数。 每天随着市场的起伏波动，两种金券都有自己当时的价值，即每一单位金券当天可以兑换的人民币数目。我们记录第 $K$ 天中 $A$ 券和 $B$ 券的价值分别为 $A_K$ 和 $B_K$ （元/">
+<meta property="og:description" content="某CDQ好题. 没人看出上面这句话是有俩含义吗">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-02-02T01:07:01.016Z">
+<meta property="og:updated_time" content="2020-02-03T15:27:10.630Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【题解】loj#2353 [NOI2007]货币兑换">
-<meta name="twitter:description" content="小Y最近在一家金券交易所工作。该金券交易所只发行交易两种金券：$A$ 纪念券（以下简称 $A$ 券）和 $B$ 纪念券（以下简称 $B$ 券）。每个持有金券的顾客都有一个自己的帐户。金券的数目可以是一个实数。 每天随着市场的起伏波动，两种金券都有自己当时的价值，即每一单位金券当天可以兑换的人民币数目。我们记录第 $K$ 天中 $A$ 券和 $B$ 券的价值分别为 $A_K$ 和 $B_K$ （元/">
+<meta name="twitter:description" content="某CDQ好题. 没人看出上面这句话是有俩含义吗">
 
 
 
@@ -494,7 +494,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-02-02 09:07:01" itemprop="dateModified" datetime="2020-02-02T09:07:01+08:00">2020-02-02</time>
+                <time title="Modified: 2020-02-03 23:27:10" itemprop="dateModified" datetime="2020-02-03T23:27:10+08:00">2020-02-03</time>
               </span>
             
           
@@ -575,7 +575,10 @@
       
 
       
-        <p>小Y最近在一家金券交易所工作。该金券交易所只发行交易两种金券：$A$ 纪念券（以下简称 $A$ 券）和 $B$ 纪念券（以下简称 $B$ 券）。每个持有金券的顾客都有一个自己的帐户。金券的数目可以是一个实数。</p>
+        <p>某CDQ好题.</p>
+<p><del>没人看出上面这句话是有俩含义吗</del></p>
+<a id="more"></a>
+<p>小Y最近在一家金券交易所工作。该金券交易所只发行交易两种金券：$A$ 纪念券（以下简称 $A$ 券）和 $B$ 纪念券（以下简称 $B$ 券）。每个持有金券的顾客都有一个自己的帐户。金券的数目可以是一个实数。</p>
 <p>每天随着市场的起伏波动，两种金券都有自己当时的价值，即每一单位金券当天可以兑换的人民币数目。我们记录第 $K$ 天中 $A$ 券和 $B$ 券的价值分别为 $A_K$ 和 $B_K$ （元/单位金券）。</p>
 <p>为了方便顾客，金券交易所提供了一种非常方便的交易方式：比例交易法。</p>
 <p>比例交易法分为两个方面：</p>
@@ -583,7 +586,6 @@
 <p>b) 买入金券：顾客支付 $\rm IP$ 元人民币，交易所将会兑换给用户总价值为 $\rm IP$ 的金券，并且，满足提供给顾客的 $A$ 券和 $B$ 券的比例在第 $K$ 天恰好为 $\rm Rate_K$ ；</p>
 <p>小 Y 是一个很有经济头脑的员工，通过较长时间的运作和行情测算，他已经知道了未来 $\rm N$ 天内的 $A$ 券和 $B$ 券的价值以及 $\rm Rate$。他还希望能够计算出来，如果开始时拥有 $\rm S$ 元钱，那么 $\rm N$ 天后最多能够获得多少元钱。</p>
 <p>其中 $\rm N\leq 10^5$.</p>
-<a id="more"></a>
 <p>首先想到 $dp$ 。这个地方设计的 $dp$ 个人感觉还是比较 $\rm tricky$ 的。发现本质上最大化 $A$ 券或者 $B$ 券的数量和最大化手里拿到的rmb都是某些最优决策，所以不能一起维护。</p>
 <p>发现通过券来维护rmb比较方便，于是考虑设 $f_i$ 表示在第 $i$ 天把rmb都花完能得到多少 $A$ 券。初值显然是</p>
 <script type="math/tex; mode=display">
@@ -1349,7 +1351,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共225.1k字</span>
+  <span class="post-count">博客全站共225.4k字</span>
 </div>
 
         
