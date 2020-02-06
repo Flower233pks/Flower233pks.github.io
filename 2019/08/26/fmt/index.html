@@ -148,19 +148,19 @@
   };
 </script>
 
-  <meta name="description" content="快速莫比乌斯变换(FMT)可以方便地解决子集交卷积和子集并卷积，形式化地讲就是求一个$\rm C$：  c_i=\sum_{k\cup j=i} a_kb_j\\\ c_i=\sum_{k\cap j=i} a_kb_j而快速子集变换(FST)则是在FMT基础上的扩展，解决的也是子集交卷积，但是限制了状态不重复，即  c_i=\sum_{\substack{~k\cup j=i\\\ k \cap">
-<meta name="keywords" content="快速莫比乌斯变换(FMT),快速沃尔什变换(FWT),快速子集变换(FST)">
+  <meta name="description" content="快速莫比乌斯变换(FMT)可以方便地解决子集交卷积和子集并卷积，形式化地讲就是求一个$\rm C$：  c_i=\sum_{k\cup j=i} a_kb_j\\ c_i=\sum_{k\cap j=i} a_kb_j而快速子集变换(FST)则是在FMT基础上的扩展，解决的也是子集交卷积，但是限制了状态不重复，即  c_i=\sum_{\substack{\begin{aligned}~k &amp;\c">
+<meta name="keywords" content="快速沃尔什变换(FWT),快速莫比乌斯变换(FMT),快速子集变换(FST)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【学习笔记】快速莫比乌斯变换&amp;子集卷积">
 <meta property="og:url" content="https://www.orchidany.cn/2019/08/26/fmt/index.html">
 <meta property="og:site_name" content="Orchidany&#39;w blog">
-<meta property="og:description" content="快速莫比乌斯变换(FMT)可以方便地解决子集交卷积和子集并卷积，形式化地讲就是求一个$\rm C$：  c_i=\sum_{k\cup j=i} a_kb_j\\\ c_i=\sum_{k\cap j=i} a_kb_j而快速子集变换(FST)则是在FMT基础上的扩展，解决的也是子集交卷积，但是限制了状态不重复，即  c_i=\sum_{\substack{~k\cup j=i\\\ k \cap">
+<meta property="og:description" content="快速莫比乌斯变换(FMT)可以方便地解决子集交卷积和子集并卷积，形式化地讲就是求一个$\rm C$：  c_i=\sum_{k\cup j=i} a_kb_j\\ c_i=\sum_{k\cap j=i} a_kb_j而快速子集变换(FST)则是在FMT基础上的扩展，解决的也是子集交卷积，但是限制了状态不重复，即  c_i=\sum_{\substack{\begin{aligned}~k &amp;\c">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://s2.ax1x.com/2019/08/29/mbfpBq.png">
-<meta property="og:updated_time" content="2019-12-15T06:34:22.685Z">
+<meta property="og:updated_time" content="2020-02-05T18:34:44.377Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【学习笔记】快速莫比乌斯变换&amp;子集卷积">
-<meta name="twitter:description" content="快速莫比乌斯变换(FMT)可以方便地解决子集交卷积和子集并卷积，形式化地讲就是求一个$\rm C$：  c_i=\sum_{k\cup j=i} a_kb_j\\\ c_i=\sum_{k\cap j=i} a_kb_j而快速子集变换(FST)则是在FMT基础上的扩展，解决的也是子集交卷积，但是限制了状态不重复，即  c_i=\sum_{\substack{~k\cup j=i\\\ k \cap">
+<meta name="twitter:description" content="快速莫比乌斯变换(FMT)可以方便地解决子集交卷积和子集并卷积，形式化地讲就是求一个$\rm C$：  c_i=\sum_{k\cup j=i} a_kb_j\\ c_i=\sum_{k\cap j=i} a_kb_j而快速子集变换(FST)则是在FMT基础上的扩展，解决的也是子集交卷积，但是限制了状态不重复，即  c_i=\sum_{\substack{\begin{aligned}~k &amp;\c">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/08/29/mbfpBq.png">
 
 
@@ -496,7 +496,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-15 14:34:22" itemprop="dateModified" datetime="2019-12-15T14:34:22+08:00">2019-12-15</time>
+                <time title="Modified: 2020-02-06 02:34:44" itemprop="dateModified" datetime="2020-02-06T02:34:44+08:00">2020-02-06</time>
               </span>
             
           
@@ -579,10 +579,10 @@
       
         <p><strong>快速莫比乌斯变换(FMT)</strong>可以方便地解决<strong>子集交卷积</strong>和<strong>子集并卷积</strong>，形式化地讲就是求一个$\rm C$：</p>
 <script type="math/tex; mode=display">
-c_i=\sum_{k\cup j=i} a_kb_j\\\
+c_i=\sum_{k\cup j=i} a_kb_j\\
 c_i=\sum_{k\cap j=i} a_kb_j</script><p>而<strong>快速子集变换(FST)</strong>则是在FMT基础上的扩展，解决的也是子集交卷积，但是限制了<strong>状态不重复</strong>，即</p>
 <script type="math/tex; mode=display">
-c_i=\sum_{\substack{~k\cup j=i\\\ k \cap j= \emptyset }}a_kb_j</script><p>换个写法：</p>
+c_i=\sum_{\substack{\begin{aligned}~k &\cup j=i\\ k &\cap j= \emptyset \end{aligned}}}a_kb_j</script><p>换个写法：</p>
 <script type="math/tex; mode=display">
 c_s=\sum_{t\subseteq s}a_sb_{s-t}</script><p>同时，以上两种变换所涉及的交集、并集和差集的对象都是集合（也就是$c_i$的下角标$i$指代的是集合），其二进制表示能更好地展示这一点。</p>
 <a id="more"></a>
@@ -677,9 +677,9 @@ P_{i, S}=\sum_{i=0}^{i} f_{j, S} * g_{i-j, S}</script><p>输出的时候只输�
         
         <div class="post-tags">
           
-            <a href="/tags/快速莫比乌斯变换-FMT/" rel="tag"><i class="fa fa-tag"></i> 快速莫比乌斯变换(FMT)</a>
-          
             <a href="/tags/快速沃尔什变换-FWT/" rel="tag"><i class="fa fa-tag"></i> 快速沃尔什变换(FWT)</a>
+          
+            <a href="/tags/快速莫比乌斯变换-FMT/" rel="tag"><i class="fa fa-tag"></i> 快速莫比乌斯变换(FMT)</a>
           
             <a href="/tags/快速子集变换-FST/" rel="tag"><i class="fa fa-tag"></i> 快速子集变换(FST)</a>
           
@@ -1427,7 +1427,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共227k字</span>
+  <span class="post-count">博客全站共227.8k字</span>
 </div>
 
         

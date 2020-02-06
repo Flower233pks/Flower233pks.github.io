@@ -156,7 +156,7 @@
 <meta property="og:site_name" content="Orchidany&#39;w blog">
 <meta property="og:description" content="众所周知 $\mu$ 函数具有如下性质：  \sum_{d|n} \mu(d)=[n=1]大部分有关于 $\gcd$ 、带有艾佛森括号的反演题目都可以用这个性质解决。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-02-05T09:49:32.531Z">
+<meta property="og:updated_time" content="2020-02-05T12:01:24.826Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【学习笔记】$\mu$ 函数的性质">
 <meta name="twitter:description" content="众所周知 $\mu$ 函数具有如下性质：  \sum_{d|n} \mu(d)=[n=1]大部分有关于 $\gcd$ 、带有艾佛森括号的反演题目都可以用这个性质解决。">
@@ -494,7 +494,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-02-05 17:49:32" itemprop="dateModified" datetime="2020-02-05T17:49:32+08:00">2020-02-05</time>
+                <time title="Modified: 2020-02-05 20:01:24" itemprop="dateModified" datetime="2020-02-05T20:01:24+08:00">2020-02-05</time>
               </span>
             
           
@@ -655,8 +655,9 @@
 =&\sum_{i=1}^n\sum_{j=1}^m\sum_{x | i} \sum_{y | j}[(x, y)=1]\\
 =&\sum_{i=1}^n\sum_{j=1}^m\sum_{x | i} \sum_{y | j}\sum_{d|x\operatorname{and} d|y} \mu(d)\\
 =&\sum_{x = 1}^n \sum_{y = 1}^m\lfloor\frac{n}{x}\rfloor\cdot \lfloor\frac{m}{y}\rfloor\cdot \sum_{d|x\operatorname{and} d|y} \mu(d)\\
-=&\sum_{d = 1}^n \mu(d) \sum_{x = 1}^{\lfloor\frac{n}{d}\rfloor}\sum_{y = 1}^{\lfloor\frac{m}{d}\rfloor}\lfloor\frac{n}{x}\rfloor\cdot \lfloor\frac{m}{y}\rfloor\\
-\end{aligned}</script><p>发现后面这东西可以很简单地预处理，所以复杂度 $O(q\cdot\sqrt n)$</p>
+=&\sum_{d = 1}^n \mu(d) \sum_{x = 1}^{\lfloor\frac{n}{d}\rfloor}\sum_{y = 1}^{\lfloor\frac{m}{d}\rfloor}\lfloor\frac{n}{dx}\rfloor\cdot \lfloor\frac{m}{dy}\rfloor\\
+\end{aligned}</script><p>发现后面这东西可以很简单地</p>
+<p>预处理，所以复杂度 $O(q\cdot\sqrt n)$</p>
 
       
     </div>
@@ -1433,7 +1434,7 @@ if(canvas.getContext){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共227k字</span>
+  <span class="post-count">博客全站共227.8k字</span>
 </div>
 
         
