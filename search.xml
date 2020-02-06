@@ -9,12 +9,12 @@
 <p>在这些文章里，你会看到一个迷茫的青年如何满怀热血与绝望，眼里闪烁着沧桑与希望，怀里揣着坏掉的粮食和崭新的论文，脚下踏着崎岖不平的路，向明天走去。</p>
 <p>是的，我是花，来自山东，你直接叫我花这个ID或许我会很高兴，但是如果你认识我也可以不这么拘束。</p>
 
-        <div id="aplayer-HteLWGaM" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-XNejPyHh" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-HteLWGaM"),
+            element: document.getElementById("aplayer-XNejPyHh"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -93,7 +93,7 @@
   <entry>
     <title>【公告】关于这个blog</title>
     <url>/2020/02/05/%E3%80%90%E5%85%AC%E5%91%8A%E3%80%91%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>最近刚换了域名，博客施工中，最近可能暂不活跃qwq</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Hey，</p>
 <a id="more"></a>]]></content>
       <categories>
         <category>Life</category>
@@ -1251,8 +1251,8 @@ p(u,v)~\mathrm{xor}~ p(x,y)&=p(x, u) \text { xor } p(v, y)\\
         <category>整体二分</category>
       </categories>
       <tags>
-        <tag>数据结构/树状数组</tag>
         <tag>离线算法/整体二分</tag>
+        <tag>数据结构/树状数组</tag>
       </tags>
   </entry>
   <entry>
@@ -1911,8 +1911,8 @@ f_n=[n=0]+\sum_{p=1}^{m}[p\in c] \sum_{q=0}^{m-p}f_{q}f_{m-p-q}</script><p>发�
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>动态规划/普通DP</tag>
         <tag>思维题/计数</tag>
+        <tag>动态规划/普通DP</tag>
         <tag>奇怪的技巧</tag>
         <tag>多项式的应用</tag>
         <tag>贪心</tag>
@@ -2862,8 +2862,8 @@ d(x)=\left\{\begin{array}{ll}{x \bmod 9,} & {x \bmod 9 \neq 0} \\ {9,} & {x \bmo
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>动态规划/普通DP</tag>
         <tag>数学/观察性质,结论与构造</tag>
+        <tag>动态规划/普通DP</tag>
       </tags>
   </entry>
   <entry>
@@ -2983,10 +2983,10 @@ y \cdot A_r-x \cdot B_r=y \cdot A_{l-1}-x \cdot B_{l-1}</script><p>然后如果�
         <category>校内模拟赛</category>
       </categories>
       <tags>
-        <tag>动态规划/普通DP</tag>
         <tag>数学/观察性质,结论与构造</tag>
-        <tag>数据结构/线段树</tag>
+        <tag>动态规划/普通DP</tag>
         <tag>数据结构/数据结构方法/莫队</tag>
+        <tag>数据结构/线段树</tag>
         <tag>动态规划/状压DP</tag>
       </tags>
   </entry>
@@ -3164,9 +3164,9 @@ ans =\sum_{j=1}^{n}f_{n,j}\cdot g_{0,c_1,c_2}</script><p>其中$c_1$和$c_2$表�
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>动态规划/普通DP</tag>
         <tag>思维题/构造</tag>
         <tag>思维题/计数</tag>
+        <tag>动态规划/普通DP</tag>
         <tag>贪心</tag>
       </tags>
   </entry>
@@ -4073,12 +4073,12 @@ G &= G_h - \frac{T(G_h)}{T'(G_h)}\\\
 <p>Let’s say sunshine for everyone 人们说生活总是充满阳光<br>But as far as I can remember 但在我的记忆中<br>We’ve been migratory animals 我们一直只是如野兽般流浪<br>Living under changing weather 四季变换，我们如常<br>Someday we will foresee obstacles 总有一天，我们会看见那些困难阻碍<br>Through the blizzard through the blizzard 在那片风雪之中，在那片风雪之后<br>Today we will sell our uniform 如今我们将曾经的校服变卖<br>Live together live together 一同离去，一同启程</p>
 </blockquote>
 
-        <div id="aplayer-tRtxkygX" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-YfMIlwup" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-tRtxkygX"),
+            element: document.getElementById("aplayer-YfMIlwup"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -4598,12 +4598,12 @@ g_{s,h} = \sum_{t\in s}g_{s-t, h-1}+h\cdot f_{s-t,t}</script><p>同样是显然�
 <p>正如，我一直以来认为的，「短暂的快乐只会带来空虚，无尽的悲伤才会带来充实」。</p>
 <hr>
 
-        <div id="aplayer-RCuSpHmV" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-fFMYgVUq" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-RCuSpHmV"),
+            element: document.getElementById("aplayer-fFMYgVUq"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -4789,8 +4789,8 @@ c_{i+1}-c_i' = d_1\\\ c_i'-c_{i-1} = d_2</script><p>换句话说，其实就是�
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>动态规划/普通DP</tag>
         <tag>思维题/构造</tag>
+        <tag>动态规划/普通DP</tag>
         <tag>树模型</tag>
       </tags>
   </entry>
@@ -6024,12 +6024,12 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
 <p>我大概在听这首歌之前，从来没有真正知道原来”喜欢“这个已经烂大街的词、这个现如今可以随便说出口又可以随便忘记的词、这个在我上过的所有学校里从来没有人敢光明正大说出来的词、这个现在在芸芸众生中已经被玷污的、被人们认为还没有一块钱来的实在的词，竟然如此的可爱，竟然如此的值得人们尊敬，竟然可以在冰冷的寒夜散发出如此耀眼的光芒。</p>
 <p>我喜欢你，你应该，也知道。</p>
 
-        <div id="aplayer-MPQwDbwc" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-LxmZWMln" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-MPQwDbwc"),
+            element: document.getElementById("aplayer-LxmZWMln"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -6060,12 +6060,12 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
 <hr>
 <p>雪，终于停了啊。现在已经午夜了，街上一个人都没有，天空在积雪的映照下，是让人着迷的紫红色。</p>
 
-        <div id="aplayer-yQfcqQgU" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-ZmOGnDNJ" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-yQfcqQgU"),
+            element: document.getElementById("aplayer-ZmOGnDNJ"),
             narrow: false,
             autoplay: false,
             showlrc: false,
