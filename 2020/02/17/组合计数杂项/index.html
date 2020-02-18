@@ -1,0 +1,372 @@
+<!DOCTYPE html><html class="theme-next gemini use-motion" lang><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0"><link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png?v=7.2.0"><link rel="icon" type="image/png" sizes="16x16" href="/images/icon-32.png?v=7.2.0"><link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222"><link rel="stylesheet" href="/css/main.css?v=7.2.0"><link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Verdana:300,300italic,400,400italic,700,700italic|Verdana:300,300italic,400,400italic,700,700italic|Verdana:300,300italic,400,400italic,700,700italic|Verdana:300,300italic,400,400italic,700,700italic|Courier New:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"><link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"><link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css"><script id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Gemini",version:"7.2.0",sidebar:{position:"left","Pisces | Gemini":270,width:270,display:"post",offset:12,onmobile:!1},back2top:{enable:!0,sidebar:!0,scrollpercent:!0},copycode:{enable:!0,show_result:!0,style:"mac"},fancybox:!0,mediumzoom:!1,lazyload:!1,pangu:!1,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}},translation:{copy_button:"Copy",copy_success:"Copied",copy_failure:"Copy failed"}}</script><meta name="description" content="大概是听课听来的组合计数相关.jpg"><meta name="keywords" content="思维题&#x2F;计数,组合计数&#x2F;生成函数,组合计数&#x2F;有技巧的计数,组合计数&#x2F;斯特林数"><meta property="og:type" content="article"><meta property="og:title" content="【泛学笔记】组合计数杂项"><meta property="og:url" content="https://www.orchidany.cn/2020/02/17/组合计数杂项/index.html"><meta property="og:site_name" content="Orchidany&#39;w blog"><meta property="og:description" content="大概是听课听来的组合计数相关.jpg"><meta property="og:locale" content="default"><meta property="og:updated_time" content="2020-02-17T15:08:02.766Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="【泛学笔记】组合计数杂项"><meta name="twitter:description" content="大概是听课听来的组合计数相关.jpg"><link rel="alternate" href="/atom.xml" title="Orchidany'w blog" type="application/atom+xml"><link rel="canonical" href="https://www.orchidany.cn/2020/02/17/组合计数杂项/"><script id="page.configurations">CONFIG.page={sidebar:""}</script><title>【泛学笔记】组合计数杂项 | Orchidany'w blog</title><noscript><style>.sidebar-inner,.use-motion .brand,.use-motion .collection-title,.use-motion .comments,.use-motion .menu-item,.use-motion .motion-element,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .logo,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.use-motion .logo-line-before i{left:initial}.use-motion .logo-line-after i{right:initial}</style></noscript></head><body itemscope itemtype="http://schema.org/WebPage" lang="default"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">Orchidany'w blog</span><span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">A Soul Tune against Fate Should Be Played, now.</p></div><div class="site-nav-toggle"> <button aria-label="Toggle navigation bar"><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>Archives</a></li><li class="menu-item menu-item-friends"><a href="/Friends/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i><br>Friends</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>Search</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i></span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"> <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://www.orchidany.cn/2020/02/17/组合计数杂项/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Orchidany"><meta itemprop="description" content="For code, science, tech. and more"><meta itemprop="image" content="/images/avatar.png"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="Orchidany'w blog"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">【泛学笔记】组合计数杂项</h1><div class="post-meta"><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">Posted on</span> <time title="Created: 2020-02-17 17:34:17 / Modified: 23:08:02" itemprop="dateCreated datePublished" datetime="2020-02-17T17:34:17+08:00">2020-02-17</time></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">In</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span> , <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/泛学/" itemprop="url" rel="index"><span itemprop="name">泛学</span></a></span></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-comment-o"></i></span> <span class="post-meta-item-text">Comments:</span><a href="/2020/02/17/组合计数杂项/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/02/17/组合计数杂项/" itemprop="commentCount"></span></a></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-eye"></i> Views:<span class="busuanzi-value" id="busuanzi_value_page_pv"></span></span></span><br></div></header><div class="post-body" itemprop="articleBody"><p>大概是听课听来的组合计数相关.jpg</p><a id="more"></a><h2 id="广义二项式定理"><a href="#广义二项式定理" class="headerlink" title="广义二项式定理"></a>广义二项式定理</h2><p>$a\in \mathbb{R}$</p><script type="math/tex;mode=display">
+(x+y)^{a}=\sum_{k=0}^{\infty} \frac{a^{\underline k}}{k!} x^{k} y^{a-k}\\\</script><p>泰勒展开证明。</p><h2 id="抽屉原理一个比较有意思的表达"><a href="#抽屉原理一个比较有意思的表达" class="headerlink" title="抽屉原理一个比较有意思的表达"></a>抽屉原理一个比较有意思的表达</h2><p>把 $kx+b$ 个物品放进 $x$ 个盒子里 $(0&lt;b\leq k)$，必有 $1$ 个盒子里面至少有 $k+1$ 个物品。</p><h2 id="卡特兰数"><a href="#卡特兰数" class="headerlink" title="卡特兰数"></a>卡特兰数</h2><script type="math/tex;mode=display">
+h_n=\binom{2n}{n}-\binom{2n}{n-1}</script><p>方格行走数。</p><p>瞎jb走，从$0,0$到$n,0$，共$2n$次决策，选$n$次向下。</p><p>减去走错了的，考虑我们第一次走到 $y=-1$ 这条直线上，关于这条直线把 $(n,0)$ 对称下来，然后就变成了从 $(0,0)$ 走到 $(n,-2)$ 的问题，即选择 $n-1$ 步向上，$n+1$ 步向下。</p><p>然后，我sd了，原因在于我思考了半天为什么减去的贡献不用 $\times 2$，因为这不对称，结果发现原来走到 $y=1$ 是合法的，艹，脑袋莫得了。</p><h2 id="第一类斯特林数"><a href="#第一类斯特林数" class="headerlink" title="第一类斯特林数"></a>第一类斯特林数</h2><p>有符号的第一类斯特林数记作$\rm \mathrm{S}_s$，无符号记作$\rm \mathrm{S}_u$。</p><script type="math/tex;mode=display">
+\mathrm{S}_s(n,m)=(-1)^{n+m}\mathrm{S}_u(n,m)</script><p>圆排列方案数。</p><p>同时 $\rm \mathrm{S}_s$ 的生成函数是 $x^{\underline{n}}$，即固定 $n$ 不变时，$\rm \mathrm{S}_s$ 的 $m$ 在 $1\to \infty$ 时的生成函数是 $x$ 的 $n$ 次下降幂。</p><p>（$n$ 固定下来之后的某一行）</p><h2 id="第二类斯特林数："><a href="#第二类斯特林数：" class="headerlink" title="第二类斯特林数："></a>第二类斯特林数：</h2><script type="math/tex;mode=display">
+\begin{array}{l}{\mathrm{S}(n, m)=\mathrm{S}(n-1, m-1)+m * \mathrm{S}(n-1, m)} \\\ {\mathrm{S}(n, m)=\frac{1}{m !} \sum(-1)^{k}\left(\begin{array}{c}{m} \\ {k}\end{array}\right)(m-k)^{n}}\end{array}</script><p>贝尔数为第二类斯特林数之和，即把 $n$ 个数拆成 $k~(k\in \mathbb{N+})$ 集合的方案数之和。</p><p>ps：二斯都是不带标号的，似乎因为定义出来也没啥意义吧。</p><h2 id="拆分数的非OGF做法"><a href="#拆分数的非OGF做法" class="headerlink" title="拆分数的非OGF做法"></a>拆分数的非OGF做法</h2><p>第二类斯特林数实际上是<strong>$\boldsymbol{n}$带标号（n个不同物品），$\boldsymbol{m}$不带标号</strong>。</p><p>当$n,m$都无标号时，这个问题实际上就是<strong>拆分数</strong>问题，即$3=2+1$只代表一种情况，而如果有标号的话应该是三种情况（$C_3^2$）.</p><p>那么对于这个问题，考虑两种$dp$.</p><ul><li>1、令 $f_{i,j}$ 表示对于 $i$ 拆分成若干个不大于 $j$ 的数的方案数。则有转移：<script type="math/tex;mode=display">
+f_{i,j}=f_{i,j-1}+f_{i-j,j}</script>后面一项 $f_{i-j,j}$ 可以看成一个背包一样，后面的状态对前面的状态有天然的累加效应，所以只需要考虑丢到一个 $j$ 的情况；而前面一项则把我们转移从后一项的<strong>等于</strong> $j$ 升级成为<strong>不大于</strong> $j$ 。</li><li>2、令 $g_{i,j}$ 表示对于 $i$ 拆分成 $j$ 个数的方案数。则有转移：<script type="math/tex;mode=display">
+g_{i,j}=g_{i-1,j-1}+g_{i-j,j}</script>前面一项表示新拆出一个 $1$ 来，还是背包的那种“累加”思想，所以只需要考虑拆出一个 $1$ 的情况；后面一项则表示不拆，而是把拆出的数全体都 $+1$，即本来的 $5=3+1+1$ 转移到 $8=4+2+2$ 。注意此处不会存在“部分拆出来的数加了但是剩下的没加”或者“加的不一样”，因为这两个状态都是可以归约到 $i$ 较小的 $g$ 上去所以不需要额外转移。</li></ul><p>嗯，所以有时候状态的转移与设计存在“高阶状态对低阶状态有天然的累加效应”，换个不严谨的措辞就是<code>+</code>运算使得存在状态间的的相互归约。这是设计状态中需要考虑的一个新奇的东西。</p><p>ps：似乎某硬币xx的容斥题就用到了这个思想来着。。。实际上就是个背包吧qaq</p><h2 id="LOJ-6268-分拆数"><a href="#LOJ-6268-分拆数" class="headerlink" title="LOJ 6268 分拆数"></a>LOJ 6268 分拆数</h2><p>发现是 <code>#6</code> 的升级版。</p><p>考虑根号分治。先用 $f$ 求出来 $j\leq \sqrt n$ 的方案数，再魔改一下 $g$，让 $g$ 只转移那些 $\geq \sqrt n$ 的数字，具体就是第一维把 $\sqrt n$ 当作步长转移即可。</p><p>之后考虑合并这两个转移。发现最后转移完做一个累加，统计出两个多项式来，分别代表凑出体积 $i$ 的方案数。那么两个多项式的合并就是一个卷积的形式，就直接 $\rm NTT$ 做就完了。</p><h2 id="连通图计数"><a href="#连通图计数" class="headerlink" title="连通图计数"></a>连通图计数</h2><p>定义连通图的 $\rm EGF$ 为 $F(x)$，任意图的 $\rm EGF$ 为 $G(x)$ 。</p><p>考虑</p><script type="math/tex;mode=display">
+G(x)=\sum_{n \geq 0} \frac{2^{n(n-1) / 2}}{n !} x^{n}</script><p>那么考虑一定有 $G(x)=e(F(x))$ ，即 $F(x)=\ln G(x)$ 。</p><p>这是因为任意图本身由任意个连通图构成，即考虑 $G$ 的另一种组成方式，从分成的连通块个数进行讨论。那么由 $n$ 个连通块构成的图，应该至少有 $F^n$ ，并且由于带标号且无序，所以 $F$ 应该用指数生成函数来刻画。</p><p>也就是从连通块的角度来考虑：</p><script type="math/tex;mode=display">
+G=\sum\frac{F^n}{n!}</script><p>然后就可以肥宅快乐 $\exp$ 了。</p><p>大概类似于变换组合对象构造恒等式这种操作。</p><h2 id="Best-Theorem"><a href="#Best-Theorem" class="headerlink" title="Best Theorem"></a>Best Theorem</h2><p>一个有向图G，欧拉回路的数量是</p><script type="math/tex;mode=display">
+t_{1}(G) * \prod_{i=1}^{n}(\operatorname{deg}(i)-1) !</script><p>其中 $t_1(G)$ 表示 $G$ 中以 $1$ 为根的生成树的数量。</p><h2 id="杂题"><a href="#杂题" class="headerlink" title="杂题"></a>杂题</h2><h3 id="A"><a href="#A" class="headerlink" title="A"></a>A</h3><blockquote><p>给定一个 $n$ 个点 $m$ 条边的图，每条边有长度 $d_i$ 和价值 $v_i$。 随机选出一个长度和最小的生成树，求价值和的期望。</p><p>$n, m ≤ 50$</p></blockquote><p>考虑如果长度都是 $1$（或者所有边长度均相同，本质是一样的），那么可以很方便地从每条边的贡献入手。大致就是考虑删掉一条边，用剩下的求一遍生成树计数，那么就可以算出这条边被选上的概率，这样就可以一条边一条边的计算贡献。复杂度 $mn^3$。</p><p>如果不是，那么考虑按照权值递增的顺序做如下过程：把当前最小的边拿出来，这样会是多个联通块。考虑在最后的生成树中，这样的边的权值一定会体现在其中，所以相当于每个联通块内选出一棵树，由于现在边权相等所以做法可以先用上一段里的方法。之后考虑把这个联通块缩成一个点，继续做下去，直到边满了为止。</p><p>似乎这样做不是很需要注意细节。因为本质上就是在重复一个贪心MST的过程。</p><h3 id="B"><a href="#B" class="headerlink" title="B"></a>B</h3><blockquote><p>给定一张 $n$ 个点，$m$ 条边的无向图，每条边有红绿蓝三种颜色，要求绿边数量不超过 $g$, 蓝边不超过 $b$ 的生成树数量，答案对 $10^9 + 7$ 取模</p><p>$n ≤ 40$</p></blockquote><p>考虑给每条绿边一个权值变量 $x$, 每条蓝边一个权值变量 $y$，根据扩展 MT 定理，最终只需要对着 $xy$ 的次数找系数即可。</p><p>而问题在于如何求这样一个行列式。考虑带入 $n^2$ 对点值给 $x$ 和 $y$，最终使用这些点值进行二维插值，恢复出本来的多项式。复杂度似乎是 $O(n^5)+O(n^4\sim n^6)$ 。</p><p><del>二维插值怎么可能会的嘛，所以复杂度不重要，反正我也不会去写。</del></p><h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><blockquote><p>给定一个带权无向图，定义一棵生成树的权值是边权和的 $k$ 次方，求所有生成树的权值和，答案对 $10^9 + 7$ 取模。</p><p>$n, k ≤ 50$</p></blockquote><p>一步转化，考虑一堆数的 $k$ 次方等价于从这堆数里选出 $k$ 个可重复的数字的积 (考虑顺序)，再求和。</p><p>那么可以将每条边的边权重新定义一个多项式</p><script type="math/tex;mode=display">
+∑^k_{i=0}\frac{(vx)^i}{i!}</script><p>表示一条边所代表的权值具体被选了若干次的权值。对新的权值使用 <code>Matrix-tree</code>, 得到一个 $nk$ 次的多项式，$x_k$ 的系数乘上 $k!$ 就是答案。</p></div><footer class="post-footer"><div class="post-tags"><a href="/tags/思维题-计数/" rel="tag"><i class="fa fa-tag"></i> 思维题/计数</a><a href="/tags/组合计数-生成函数/" rel="tag"><i class="fa fa-tag"></i> 组合计数/生成函数</a><a href="/tags/组合计数-有技巧的计数/" rel="tag"><i class="fa fa-tag"></i> 组合计数/有技巧的计数</a><a href="/tags/组合计数-斯特林数/" rel="tag"><i class="fa fa-tag"></i> 组合计数/斯特林数</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2020/02/15/《母函数》学习笔记3/" rel="next" title="【学习笔记】母函数Part3"><i class="fa fa-chevron-left"></i> 【学习笔记】母函数Part3</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"> <a href="/2020/02/18/NOI2016循环之美/" rel="prev" title="【题解】uoj#221 [NOI2016]循环之美">【题解】uoj#221 [NOI2016]循环之美<i class="fa fa-chevron-right"></i></a></div></div></footer></div></article></div></div><div class="comments" id="comments"></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><div style><canvas id="canvas" style="width:60%">当前浏览器不支持canvas，请更换浏览器后再试</canvas></div><script>!function(){var t,o=[[[0,0,1,1,1,0,0],[0,1,1,0,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,0,1,1,0],[0,0,1,1,1,0,0]],[[0,0,0,1,1,0,0],[0,1,1,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[1,1,1,1,1,1,1]],[[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,0,1,1,0,0,0],[0,1,1,0,0,0,0],[1,1,0,0,0,0,0],[1,1,0,0,0,1,1],[1,1,1,1,1,1,1]],[[1,1,1,1,1,1,1],[0,0,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,0,1,1,1,0,0],[0,0,0,0,1,1,0],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[0,0,0,0,1,1,0],[0,0,0,1,1,1,0],[0,0,1,1,1,1,0],[0,1,1,0,1,1,0],[1,1,0,0,1,1,0],[1,1,1,1,1,1,1],[0,0,0,0,1,1,0],[0,0,0,0,1,1,0],[0,0,0,0,1,1,0],[0,0,0,1,1,1,1]],[[1,1,1,1,1,1,1],[1,1,0,0,0,0,0],[1,1,0,0,0,0,0],[1,1,1,1,1,1,0],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[0,0,0,0,1,1,0],[0,0,1,1,0,0,0],[0,1,1,0,0,0,0],[1,1,0,0,0,0,0],[1,1,0,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[1,1,1,1,1,1,1],[1,1,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,1,1,0,0,0],[0,0,1,1,0,0,0],[0,0,1,1,0,0,0],[0,0,1,1,0,0,0]],[[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,1,1,0,0,0,0]],[[0,0,0,0,0,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,0,0,0,0,0]]],e=document.getElementById("canvas");if(e.getContext){var l=e.getContext("2d");e.height=100,e.width=700,l.fillStyle="#f00",l.fillRect(10,10,50,50);var r=[],f=[],i=e.height/20-1;function n(t,e){for(var n=0;n<o[e].length;n++)for(var a=0;a<o[e][n].length;a++)1==o[e][n][a]&&(l.beginPath(),l.arc(14*(i+2)*t+2*a*(i+1)+(i+1),2*n*(i+1)+(i+1),i,0,2*Math.PI),l.closePath(),l.fill())}function h(t,e){for(var n=[1,2,3],a=["#3BE","#09C","#A6C","#93C","#9C0","#690","#FB3","#F80","#F44","#C00"],l=0;l<o[e].length;l++)for(var r=0;r<o[e][l].length;r++)if(1==o[e][l][r]){var h={x:14*(i+2)*t+2*r*(i+1)+(i+1),y:2*l*(i+1)+(i+1),stepX:Math.floor(4*Math.random()-2),stepY:-2*n[Math.floor(Math.random()*n.length)],color:a[Math.floor(Math.random()*a.length)],disY:1};f.push(h)}}t=/(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date),r.push(t[1],t[2],10,t[3],t[4],10,t[5],t[6]),clearInterval(a);var a=setInterval(function(){!function(){var t=[],e=/(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date),n=[];n.push(e[1],e[2],10,e[3],e[4],10,e[5],e[6]);for(var a=r.length-1;0<=a;a--)n[a]!==r[a]&&t.push(a+"_"+(Number(r[a])+1)%10);for(a=0;a<t.length;a++)h.apply(this,t[a].split("_"));r=n.concat()}(),function(){for(var t=0;t<f.length;t++)f[t].stepY+=f[t].disY,f[t].x+=f[t].stepX,f[t].y+=f[t].stepY,(f[t].x>700+i||f[t].y>100+i)&&(f.splice(t,1),t--)}(),function(){e.height=100;for(var t=0;t<r.length;t++)n(t,r[t]);for(t=0;t<f.length;t++)l.beginPath(),l.arc(f[t].x,f[t].y,i,0,2*Math.PI),l.fillStyle=f[t].color,l.closePath(),l.fill()}()},50)}}()</script><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> Table of Contents</li><li class="sidebar-nav-overview" data-target="site-overview-wrap"> Overview</li></ul><div class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"> <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Orchidany"><p class="site-author-name" itemprop="name">Orchidany</p><div class="site-description motion-element" itemprop="description">For code, science, tech. and more</div></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/"><span class="site-state-item-count">119</span> <span class="site-state-item-name">posts</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/"><span class="site-state-item-count">47</span> <span class="site-state-item-name">categories</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/"><span class="site-state-item-count">89</span> <span class="site-state-item-name">tags</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div></div></div><div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#广义二项式定理"><span class="nav-number">1.</span> <span class="nav-text">广义二项式定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽屉原理一个比较有意思的表达"><span class="nav-number">2.</span> <span class="nav-text">抽屉原理一个比较有意思的表达</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卡特兰数"><span class="nav-number">3.</span> <span class="nav-text">卡特兰数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一类斯特林数"><span class="nav-number">4.</span> <span class="nav-text">第一类斯特林数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二类斯特林数："><span class="nav-number">5.</span> <span class="nav-text">第二类斯特林数：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拆分数的非OGF做法"><span class="nav-number">6.</span> <span class="nav-text">拆分数的非OGF做法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LOJ-6268-分拆数"><span class="nav-number">7.</span> <span class="nav-text">LOJ 6268 分拆数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连通图计数"><span class="nav-number">8.</span> <span class="nav-text">连通图计数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Best-Theorem"><span class="nav-number">9.</span> <span class="nav-text">Best Theorem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#杂题"><span class="nav-number">10.</span> <span class="nav-text">杂题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A"><span class="nav-number">10.1.</span> <span class="nav-text">A</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B"><span class="nav-number">10.2.</span> <span class="nav-text">B</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C"><span class="nav-number">10.3.</span> <span class="nav-text">C</span></a></li></ol></li></ol></div></div></div><div class="back-to-top motion-element"><i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; <span itemprop="copyrightYear">2020</span><span class="with-love" id="animate"><i class="fa fa-user"></i></span> <span class="author" itemprop="copyrightHolder">Orchidany</span></div><div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div> <span class="post-meta-divider">|</span><div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.2.0</div><div class="theme-info"><div class="powered-by"></div> <span class="post-count">博客全站共242k字</span></div><div class="busuanzi-count"><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span class="post-meta-item-icon"><i class="fa fa-user"></i></span><span class="site-uv" title="Total Visitors"><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-eye"></i></span><span class="site-pv" title="Total Views"><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span></div></div></footer></div><script>"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script src="/lib/jquery/index.js?v=3.4.1"></script><script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script><script src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script src="/js/utils.js?v=7.2.0"></script><script src="/js/motion.js?v=7.2.0"></script><script src="/js/affix.js?v=7.2.0"></script><script src="/js/schemes/pisces.js?v=7.2.0"></script><script src="/js/scrollspy.js?v=7.2.0"></script><script src="/js/post-details.js?v=7.2.0"></script><script src="/js/next-boot.js?v=7.2.0"></script><script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script><script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>var GUEST=["nick","mail","link"],guest="nick,mail,link";guest=guest.split(",").filter(function(e){return-1<GUEST.indexOf(e)}),new Valine({el:"#comments",verify:!1,notify:!1,appId:"V95HMkHzC6J9NvdCNbpg3A3E-gzGzoHsz",appKey:"gyf1NbCMlYbPnqykkSe7KuYC",placeholder:"ヾﾉ≧∀≦)o来啊，快活啊!",avatar:"mm",meta:guest,pageSize:"10",visitor:!1,lang:"zh-cn"})</script><script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script><script>$("body").find("div.pdf").length&&$.ajax({type:"GET",url:"//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js",dataType:"script",cache:!0,success:function(){$("body").find("div.pdf").each(function(e,t){PDFObject.embed($(t).attr("target"),$(t),{pdfOpenParams:{navpanes:0,toolbar:0,statusbar:0,pagemode:"thumbs",view:"FitH"},PDFJS_URL:"/lib/pdf/web/viewer.html",height:$(t).attr("height")||"500px"})})}})</script><script>
+// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
+
+window.addEventListener("message", function(e) {
+  var data = e.data;
+  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
+    var featureID = data.split(':')[1];
+    var height = data.split(':')[2];
+    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
+  }
+}, false);
+</script><canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:1;pointer-events:none"></canvas><script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script><script type="text/javascript" src="/js/src/fireworks.js"></script></body></html>
