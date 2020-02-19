@@ -9,12 +9,12 @@
 <p>在这些文章里，你会看到一个迷茫的青年如何满怀热血与绝望，眼里闪烁着沧桑与希望，怀里揣着坏掉的粮食和崭新的论文，脚下踏着崎岖不平的路，向明天走去。</p>
 <p>是的，我是花，来自山东，你直接叫我花这个ID或许我会很高兴，但是如果你认识我也可以不这么拘束。</p>
 
-        <div id="aplayer-gzZXNqqE" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-JzkOYTpb" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-gzZXNqqE"),
+            element: document.getElementById("aplayer-JzkOYTpb"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -719,8 +719,8 @@ f(x)=\frac{x}{1+x-16x^2+20x^3}</script><p>就完了。</p>
         <category>生成函数</category>
       </categories>
       <tags>
-        <tag>组合计数/二项式定理</tag>
         <tag>组合计数/生成函数</tag>
+        <tag>组合计数/二项式定理</tag>
       </tags>
   </entry>
   <entry>
@@ -781,8 +781,8 @@ f(x)=\frac{x}{1+x-16x^2+20x^3}</script><p>就完了。</p>
         <category>泛做</category>
       </categories>
       <tags>
-        <tag>数学/数论</tag>
         <tag>数学/素数/素数筛法</tag>
+        <tag>数学/数论</tag>
         <tag>多项式的应用</tag>
         <tag>有趣的二分答案</tag>
         <tag>数学/概率,期望</tag>
@@ -2202,16 +2202,14 @@ f_u=\min(f_{pre_u}+1,f_{fail'(u)}+(\frac{len_u}{2} - len_{fail'(u)}+1))</script>
 <p>似乎只是用到了一丢丢SAM的性质啊QAQ</p>
 <h1 id="2-SP7258-Lexicographical-Substring-Search"><a href="#2-SP7258-Lexicographical-Substring-Search" class="headerlink" title="$2$ [SP7258] Lexicographical Substring Search"></a>$2$ [SP7258] Lexicographical Substring Search</h1><p>题目名称…好长…</p>
 <blockquote>
-<p>给定一个字符串，求本质不同排名第k小的子串</p>
+<p>给定一个字符串，求本质不同排名第k小的子串。</p>
 </blockquote>
 <p>考虑首先在SAM上算出现次数，然后从 $1$ 开始走，类似于二叉搜索木找 $k-$极值 的方式。</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (vis[u]) <span class="keyword">return</span> ; vis[u] = <span class="number">1</span> ;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; <span class="number">26</span> ; ++ i) </span><br><span class="line">		<span class="keyword">if</span> (S.trans[u][i]) </span><br><span class="line">      dfs2(S.trans[u][i]), </span><br><span class="line">  		g[u] += g[S.trans[u][i]] ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">go_Out</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> s)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (s &lt;= f[p]) </span><br><span class="line">    	<span class="keyword">return</span> ; </span><br><span class="line">  <span class="keyword">else</span> s -= f[p] ; </span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; <span class="number">26</span> ; ++ i)</span><br><span class="line">		<span class="keyword">if</span> (!S.trans[p][i]) <span class="keyword">continue</span> ;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (s &gt; g[S.trans[p][i]]) s -= g[S.trans[p][i]] ;</span><br><span class="line">		<span class="keyword">else</span> &#123; <span class="built_in">printf</span>(<span class="string">"%c"</span>, i + <span class="string">'a'</span>), go_Out(S.trans[p][i], s) ; <span class="keyword">return</span> ; &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; (In + <span class="number">1</span>) &gt;&gt; T ; </span><br><span class="line">	N = <span class="built_in">strlen</span>(In + <span class="number">1</span>) ; S.Init() ;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= N ; ++ i) S.Ins(In[i] - <span class="string">'a'</span>) ; </span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span> ; i &lt;= S.sz ; ++ i) add(S.fa[i], i) ; </span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span> ; i &lt;= S.sz ; ++ i) g[i] = f[i] = <span class="number">1</span> ; dfs2(<span class="number">1</span>) ;</span><br><span class="line">	dfs2(<span class="number">1</span>) ; <span class="keyword">while</span> (T --) K = qr(), go_Out(<span class="number">1</span>, K), <span class="built_in">puts</span>(<span class="string">""</span>) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="3-TJOI2015-弦论"><a href="#3-TJOI2015-弦论" class="headerlink" title="$3$ [TJOI2015]弦论"></a>$3$ [TJOI2015]弦论</h1><blockquote>
 <p>求：</p>
-<ul>
-<li>本质不同的第 $k$ 小子串</li>
-<li>第 $k$ 小子串</li>
-</ul>
+<p>1、本质不同的第 $k$ 小子串。</p>
+<p>2、第 $k$ 小子串。</p>
 </blockquote>
 <p>发现第一问就是上面那一道，但是第二问里面，本质不同的串要算多次。</p>
 <p>然而其实并没有什么变化，$dfs$ 一遍顺便算个出现次数就好了。</p>
@@ -2283,28 +2281,24 @@ f_u=\min(f_{pre_u}+1,f_{fail'(u)}+(\frac{len_u}{2} - len_{fail'(u)}+1))</script>
 <p>0、一个子串的 $endpos$ 集合指的是它在原串内出现的所有的右端点下标组成的集合。显然有这么一个性质，对于两个子串，它们的 $endpos$ 集合要么存在包含关系，要么没有交集。 </p>
 <p>1、首先，SAM是个自动机。转移是字母，状态是 <strong>$endpos$ 集合相同的子串</strong>。有一个其实状态，一堆终止状态，每个终止状态是原串的一个后缀。</p>
 <p>2、如果记每个状态里面最长的子串的长度为 $L_{\max}$，最短的子串长度为 $L_{\min}$ ，那么这个状态承载的子串长度覆盖 $[L_{\min},L_{\max}]$.</p>
-<p>3、考虑后缀链接 $\rm link$ 。$\mathrm{link}(v)$ 指向的是 $L_{\max}(u)+1=L_{\min}(v)$ 且 $endpos(v)\sub endpos(u)$ 的这么一个节点 $u$ . 可以看出，其实 $u$ 里面的子串就是 $v$ 中的子串的某些更短的后缀。</p>
-<p>4、发现后缀链接 $\rm link$ 联系期的每个状态之间，长度单调且前驱唯一，再加上显然连通，所以 $\{\rm S,link\}$ 本质上是一棵树。</p>
+<p>3、考虑后缀链接 $\rm link$ 。$\mathrm{link}(v)$ 指向的是 $L_{\max}(u)+1=L_{\min}(v)$ 且 $endpos(v)\subset endpos(u)$ 的这么一个节点 $u$ . 可以看出，其实 $u$ 里面的子串就是 $v$ 中的子串的某些更短的后缀。</p>
+<p>4、发现后缀链接 $\rm link$ 联系起来的每个状态之间，长度单调且前驱唯一，再加上显然连通，所以 $\{\rm S,link\}$ 本质上是一棵树。</p>
 <p>5、于是考虑怎么构造。大概就是增量构造法。</p>
-<ul>
-<li><p>每次加入一个新的状态 $np$ 时，考虑上一个转移到的状态 $p$ ，把 $L_{max}(np)$ 设置为 $L_{\max}(p) + 1$ （显然）。一直沿着后缀链接向上跳，并且把途中的转移都连向 $np$，因为原来不存在当前字母 $c_{now}$ 的转移，所以加入一个字母之后要一起改</p>
-</li>
-<li><p>考虑不断跳 $p$ ，直到跳到一个 $p$ 具有 $c_{now}$ 的转移，把这个转移到的状态称之为 $q$。那么此时 $endpos(q)$ 会多出一个元素，长度为 $L_{\max}+1$。此时由于 $L_{\max}(p)&lt;q$ 有两种情况需要考虑：</p>
+<p>（1）每次加入一个新的状态 $np$ 时，考虑上一个转移到的状态 $p$ ，把 $L_{max}(np)$ 设置为 $L_{\max}(p) + 1$ （显然）。一直沿着后缀链接向上跳，并且把途中的转移都连向 $np$，因为原来不存在当前字母 $c_{now}$ 的转移，所以加入一个字母之后要一起改。</p>
+<p>（2）考虑不断跳 $p$ ，直到跳到一个 $p$ 具有 $c_{now}$ 的转移，把这个转移到的状态称之为 $q$。那么此时 $endpos(q)$ 会多出一个元素，长度为 $L_{\max}+1$。此时由于 $L_{\max}(p)&lt;q$ 有两种情况需要考虑：</p>
 <ul>
 <li><ol>
-<li>$L_{\max}(q)=L_{\max}(p)+1$，这时 $q$ 代表的所有串的 $endpos$ 不变。考虑 $np$ 具有至少一个不同于 $q$ 的状态，即 $[1…now]$ ，现在插入的最长前缀。所以此时令 $\mathrm{link}(np)=q$ ，而不是合并。</li>
+<li>$L_{\max}(q)=L_{\max}(p)+1$，这时 $q$ 代表的所有串的 $endpos$ 不变。考虑 $np$ 具有至少一个不同于 $q$ 的状态，即 $[1…now]$ ，现在插入的最长前缀。所以此时令 $\mathrm{link}(np)=q$ 而不是合并。</li>
 </ol>
-<ul>
+</li>
 <li><ol>
-<li>$L_\max(q)&gt;L_\max(p)+1$，这时 $q$ 中的串，长度不超过 $L_\max$ 的串会多一个 $endpos$，即 $now$；但是大于 $L_{\max}$ 的串则不会。所以此时需要 <strong>拆开状态</strong> 。考虑为了维护一个状态里面所有点的 $endpos$ 相同，需要新建一个状态 $nq$，代表原来串中所有长度不超过 $L_\max(p)+1$ 的串。发现这么拆分的话，有 <script type="math/tex; mode=display">
-\mathrm{link}(q)=\mathrm{link}(np) = nq</script></li>
+<li>$L_\max(q)&gt;L_\max(p)+1$，这时 $q$ 中的串，长度不超过 $L_\max(p)+1$ 的串会多一个 $endpos$，即 $now$；但是大于 $L_{\max}(p)+1$ 的串则不会。所以此时需要<strong>拆开状态</strong> 。考虑为了维护一个状态里面所有点的 $endpos$ 相同，需要新建一个状态 $nq$，代表原来串中所有长度不超过 $L_\max(p)+1$ 的串。发现这么拆分的话，有 </li>
 </ol>
 </li>
 </ul>
-</li>
-</ul>
-</li>
-<li>对于第二种情况，发现就类似于扣掉一个点，换进去一颗子树。于是乎从 $p$ 开始又要不断向上跳，把 所有 $trans=q$ 的点都改成 $nq$。</li>
+<script type="math/tex; mode=display">
+\mathrm{link}(q)=\mathrm{link}(np) = nq</script><ul>
+<li>3、对于第二种情况，发现就类似抠掉一个点，换进去一颗子树。于是乎从 $p$ 开始又要不断向上跳，把所有 $trans=q$ 的点都改成 $nq$。</li>
 </ul>
 <p>哦，对，树 $\{\rm S,link\}$ 有个学名叫做 $parent$ 树来着。</p>
 <p>然后就完了，就完了……</p>
@@ -2332,7 +2326,7 @@ f_u=\min(f_{pre_u}+1,f_{fail'(u)}+(\frac{len_u}{2} - len_{fail'(u)}+1))</script>
 </blockquote>
 <p>还是 $dp$ 一遍，然后就没有然后了。</p>
 <p><del>我在干什么？</del></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">svoid <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> k = head[u] ; k ; k = next(k))</span><br><span class="line">		dfs(to(k)), f[u] += f[to(k)] ; </span><br><span class="line">	<span class="keyword">if</span> (f[u] &gt;= K) ans = max(S.len[u], ans) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> k = head[u] ; k ; k = next(k))</span><br><span class="line">		dfs(to(k)), f[u] += f[to(k)] ; </span><br><span class="line">	<span class="keyword">if</span> (f[u] &gt;= K) ans = max(S.len[u], ans) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>学习笔记</category>
@@ -2689,8 +2683,8 @@ f_n=[n=0]+\sum_{p=1}^{m}[p\in c] \sum_{q=0}^{m-p}f_{q}f_{m-p-q}</script><p>发�
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>思维题/计数</tag>
         <tag>动态规划/普通DP</tag>
+        <tag>思维题/计数</tag>
         <tag>奇怪的技巧</tag>
         <tag>多项式的应用</tag>
         <tag>组合计数/生成函数</tag>
@@ -3645,8 +3639,8 @@ d(x)=\left\{\begin{array}{ll}{x \bmod 9,} & {x \bmod 9 \neq 0} \\ {9,} & {x \bmo
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>数学/观察性质,结论与构造</tag>
         <tag>动态规划/普通DP</tag>
+        <tag>数学/观察性质,结论与构造</tag>
       </tags>
   </entry>
   <entry>
@@ -3766,8 +3760,8 @@ y \cdot A_r-x \cdot B_r=y \cdot A_{l-1}-x \cdot B_{l-1}</script><p>然后如果�
         <category>校内模拟赛</category>
       </categories>
       <tags>
-        <tag>数学/观察性质,结论与构造</tag>
         <tag>动态规划/普通DP</tag>
+        <tag>数学/观察性质,结论与构造</tag>
         <tag>数据结构/数据结构方法/莫队</tag>
         <tag>数据结构/线段树</tag>
         <tag>动态规划/状压DP</tag>
@@ -3947,9 +3941,9 @@ ans =\sum_{j=1}^{n}f_{n,j}\cdot g_{0,c_1,c_2}</script><p>其中$c_1$和$c_2$表�
         <category>Codeforces</category>
       </categories>
       <tags>
+        <tag>动态规划/普通DP</tag>
         <tag>思维题/构造</tag>
         <tag>思维题/计数</tag>
-        <tag>动态规划/普通DP</tag>
         <tag>组合计数/有技巧的计数</tag>
         <tag>贪心</tag>
       </tags>
@@ -4857,12 +4851,12 @@ G &= G_h - \frac{T(G_h)}{T'(G_h)}\\\
 <p>Let’s say sunshine for everyone 人们说生活总是充满阳光<br>But as far as I can remember 但在我的记忆中<br>We’ve been migratory animals 我们一直只是如野兽般流浪<br>Living under changing weather 四季变换，我们如常<br>Someday we will foresee obstacles 总有一天，我们会看见那些困难阻碍<br>Through the blizzard through the blizzard 在那片风雪之中，在那片风雪之后<br>Today we will sell our uniform 如今我们将曾经的校服变卖<br>Live together live together 一同离去，一同启程</p>
 </blockquote>
 
-        <div id="aplayer-omDJHwuh" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-KnHioBUy" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-omDJHwuh"),
+            element: document.getElementById("aplayer-KnHioBUy"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -5382,12 +5376,12 @@ g_{s,h} = \sum_{t\in s}g_{s-t, h-1}+h\cdot f_{s-t,t}</script><p>同样是显然�
 <p>正如，我一直以来认为的，「短暂的快乐只会带来空虚，无尽的悲伤才会带来充实」。</p>
 <hr>
 
-        <div id="aplayer-EdhymIzp" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-LwfRoMHA" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-EdhymIzp"),
+            element: document.getElementById("aplayer-LwfRoMHA"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -5573,8 +5567,8 @@ c_{i+1}-c_i' = d_1\\\ c_i'-c_{i-1} = d_2</script><p>换句话说，其实就是�
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>思维题/构造</tag>
         <tag>动态规划/普通DP</tag>
+        <tag>思维题/构造</tag>
         <tag>树模型</tag>
         <tag>有技巧的差分</tag>
         <tag>博弈论/组合游戏</tag>
@@ -6810,12 +6804,12 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
 <p>我大概在听这首歌之前，从来没有真正知道原来”喜欢“这个已经烂大街的词、这个现如今可以随便说出口又可以随便忘记的词、这个在我上过的所有学校里从来没有人敢光明正大说出来的词、这个现在在芸芸众生中已经被玷污的、被人们认为还没有一块钱来的实在的词，竟然如此的可爱，竟然如此的值得人们尊敬，竟然可以在冰冷的寒夜散发出如此耀眼的光芒。</p>
 <p>我喜欢你，你应该，也知道。</p>
 
-        <div id="aplayer-yTDbeQdA" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-SGcIYZoV" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-yTDbeQdA"),
+            element: document.getElementById("aplayer-SGcIYZoV"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -6846,12 +6840,12 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
 <hr>
 <p>雪，终于停了啊。现在已经午夜了，街上一个人都没有，天空在积雪的映照下，是让人着迷的紫红色。</p>
 
-        <div id="aplayer-iNibkBqB" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-gcNAIHNy" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-iNibkBqB"),
+            element: document.getElementById("aplayer-gcNAIHNy"),
             narrow: false,
             autoplay: false,
             showlrc: false,
