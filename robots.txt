@@ -12,5 +12,5 @@ Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
 
-Sitemap: http://www.orchidany.cf/sitemap.xml
-Sitemap: http://www.orchidany.cf/baidusitemap.xml
+Sitemap: https://www.orchidany.cn/sitemap.xml
+Sitemap: https://www.orchidany.cn/baidusitemap.xml
