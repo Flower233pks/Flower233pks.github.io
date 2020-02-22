@@ -9,12 +9,12 @@
 <p>在这些文章里，你会看到一个迷茫的青年如何满怀热血与绝望，眼里闪烁着沧桑与希望，怀里揣着坏掉的粮食和崭新的论文，脚下踏着崎岖不平的路，向明天走去。</p>
 <p>是的，我是花，来自山东，你直接叫我花这个ID或许我会很高兴，但是如果你认识我也可以不这么拘束。</p>
 
-        <div id="aplayer-lKTBETar" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-QtLHMuKZ" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-lKTBETar"),
+            element: document.getElementById("aplayer-QtLHMuKZ"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -133,6 +133,57 @@
       </tags>
   </entry>
   <entry>
+    <title>动态规划杂项</title>
+    <url>/2020/02/22/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%9D%82%E9%A1%B9/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>其实就是听课笔记。</p>
+<a id="more"></a>
+<h1 id="单调队列部分"><a href="#单调队列部分" class="headerlink" title="单调队列部分"></a>单调队列部分</h1><p>单调队列主要用来优化，对于状态 $\rm S$ 的某个后继状态 $\rm S’$，如果 $\rm S’$ 比 $\rm S$ 更优就可以舍弃掉 $\rm S$ 的转移。通常表现形式为会有限制，比如</p>
+<script type="math/tex; mode=display">
+f_{i}=\max\{f_j\}+w_i \quad(j\in[L_i,i-1]\cap\mathbb Z)</script><p>其中 $\{L\}$ 是一个给定常数，且 $\forall i, L_i\geq L_{i-1}$ 。那么可知对于后续状态 $s_i$ ，他的可转移范围一定更大，至少比 $s_j$ 大，所以可以删除 $s_j$.</p>
+<h2 id="多重背包"><a href="#多重背包" class="headerlink" title="多重背包"></a>多重背包</h2><p>考虑原本的转移</p>
+<script type="math/tex; mode=display">
+f_{i,j}=\max\{f_{i-1,j-k\cdot w_i}\}+k\cdot v_i\quad (1\leq k\leq c_i)</script><p>其中需要优化掉的是 $k$ 这一维，发现他原本并没有任何对于转移单调的限制，于是考虑变一下形。</p>
+<p>令 $d=j\bmod w_i$，$s=\lfloor\frac{j}{w_i}\rfloor$，那么转移就可以写作</p>
+<script type="math/tex; mode=display">
+f_{i,j}=\max\{f_{i-1,d+k\cdot w_i}-k\cdot v_i\}+s\cdot v_i \quad (s-k\leq c_i)</script><p>发现转移条件 $s-k\leq c_i\Longrightarrow k\geq s-c_i=\lfloor\frac{j}{w_i}\rfloor-c_i$ ，可知 $L_i$ 不降，于是就对每个 $d$ 用单调队列即可。</p>
+<h1 id="斜率优化部分"><a href="#斜率优化部分" class="headerlink" title="斜率优化部分"></a>斜率优化部分</h1><p>这部分虽然简单但是不熟，所以可能需要多做点题。</p>
+<h2 id="傻狗题"><a href="#傻狗题" class="headerlink" title="傻狗题"></a>傻狗题</h2><blockquote>
+<p>把一个长为 $n$ 的正整数序列划分成若干段，每一段的代价是内部元素和的平方加上一个定值 $m$。求划分整个序列的最小代价。</p>
+</blockquote>
+<p>可知转移</p>
+<script type="math/tex; mode=display">
+f_i=\min\{f_j+(s_i-s_j)^2\}+m</script><script type="math/tex; mode=display">
+f_j+s_j^2=2s_is_j+f_i-s_i^2-m</script><p>于是就变成了有一个以 $s_i$ 为斜率，$f_j+s_j^2$ 为纵坐标，$s_i$ 为横坐标的斜率优化。考虑横坐标和斜率都是单调的，就可以直接队尾删/队尾插入。</p>
+<h2 id="USACO08MAR-Land-Acquisition"><a href="#USACO08MAR-Land-Acquisition" class="headerlink" title="[USACO08MAR]Land Acquisition"></a>[USACO08MAR]Land Acquisition</h2><blockquote>
+<p>有 $n$ 块长方形的土地需要购买，你每次可以选择一组土地一起购买，价 格为这些土地中最大的长乘以最大的宽。求购买所有土地的最小费用。 </p>
+<p>$n ≤ 50000$</p>
+</blockquote>
+<p>考虑先排序，然后考虑如果直接 $dp$，那么本身需要枚举 $i\sim j$ 之间的元素取 $\max$，这样显然复杂度就多了一维 $n$。仔细思考后发现，如果对于一组 $(i,j)$，满足 $w_i\geq w_j$ 且 $h_i\geq j_j$ ，那么就可以删掉 $j$ 。具体的，考虑按照 $h$ 排序之后，用一个单调栈来维护这个东西。</p>
+<p>那么这样最后剩下的一定满足 $w$ 单调。所以就会得到类似</p>
+<script type="math/tex; mode=display">
+f_i=\min\{f_{j}+h_{j+1}\cdot w_i\}\\
+f_j=-h_{j+1}\cdot w_i+f_i</script><p>那么令 $h_{j+1}$ 作为横坐标，横坐标单调；$w_i$ 作为斜率，斜率单调。于是就变成了最 <code>general</code> 的斜率优化问题。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100010</span> ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n ;</span><br><span class="line"><span class="keyword">int</span> top ;</span><br><span class="line">LL f[N] ;</span><br><span class="line"><span class="built_in">deque</span> &lt;<span class="keyword">int</span>&gt; q ;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">grid</span>&#123;</span></span><br><span class="line">    LL x, y ;</span><br><span class="line">&#125;base[N], t[N] ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">comp</span><span class="params">(grid a, grid b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.x == b.x ? a.y &gt; b.y : a.x &gt; b.x ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; ++ i)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>, &amp;base[i].x, &amp;base[i].y) ;</span><br><span class="line">    sort(base + <span class="number">1</span>, base + n + <span class="number">1</span>, comp) ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; ++ i)</span><br><span class="line">        <span class="keyword">if</span> (!top || t[top].y &lt; base[i].y) t[++ top] = base[i] ;</span><br><span class="line"><span class="comment">//	for (int i = 1 ; i &lt;= 50 ; ++ i) cout &lt;&lt; t[i].x &lt;&lt; " " &lt;&lt; t[i].y &lt;&lt; endl ;</span></span><br><span class="line">    n = top ; q.push_back(<span class="number">0</span>) ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; ++ i)&#123;</span><br><span class="line">         <span class="keyword">while</span> (q.size() &gt; <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> o, p ; p = q.front() ; q.pop_front() ; o = q.front() ;</span><br><span class="line">            <span class="keyword">if</span> (f[p] - f[o] &lt;= t[i].y * (t[o + <span class="number">1</span>].x - t[p + <span class="number">1</span>].x))</span><br><span class="line">                &#123; q.push_front(p) ; <span class="keyword">break</span> ; &#125;</span><br><span class="line">         &#125;</span><br><span class="line">         f[i] = f[q.front()] + t[q.front() + <span class="number">1</span>].x * t[i].y ;</span><br><span class="line">         <span class="keyword">while</span> (q.size() &gt; <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> o, p ; p = q.back() ; q.pop_back() ; o = q.back() ;</span><br><span class="line">            <span class="keyword">if</span> ((f[p] - f[o]) * (t[p + <span class="number">1</span>].x - t[i + <span class="number">1</span>].x) &lt;= (f[i] - f[p]) * (t[o + <span class="number">1</span>].x - t[p + <span class="number">1</span>].x))</span><br><span class="line">                &#123; q.push_back(p) ; <span class="keyword">break</span> ; &#125;</span><br><span class="line">         &#125;</span><br><span class="line">         q.push_back(i) ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; f[n] &lt;&lt; <span class="built_in">endl</span> ; <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>BTW，如何推凸包的维护方式，可以考虑是维护下凸壳还是上凸壳，但是似乎又一种方式更简便：</p>
+<p>令 $0\leq k&lt;j&lt;i$ ，那么如果 $j$ 比 $k$ 好，那么需要满足</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f_{j}+w_{j+1} \times l_{i} & \leq f_{k}+w_{k+1} \times l_{i} \\
+f_{j}-f_{k} & \leq l_{i} \times\left(w_{k+1}-w_{j+1}\right)\\
+l_{i} &\geq \frac{f_{j}-f_{k}}{w_{k+1}-w_{j+1}}
+\end{aligned}</script><p>这么做就会比较直观？</p>
+<p>值得注意的是，斜率优化的时候很可能会因为移项的时候符号变错了而GG。</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+        <category>泛学</category>
+      </categories>
+      <tags>
+        <tag>动态规划/单调队列</tag>
+        <tag>动态规划/斜率优化</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【题解】bzoj1559 [JSOI2009]密码</title>
     <url>/2020/02/20/JSOI2009%E5%AF%86%E7%A0%81/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -189,7 +240,7 @@
     <url>/2020/02/20/HEOI-TJOI2016%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
 <p>给定一个串，每次给出区间 $[a,b]$ 和 $[c,d]$，询问 $[a,b]$ 中的子串与 $s[c…d]$ 的 $lcp$ 最大值。</p>
-<p>要求做法 $n~\mathrm{ploy}(\log)$，其中 $\deg(\mathrm{ploy}(\log))\leq 3$ 。 </p>
+<p>要求做法 $n~\mathrm{poly}(\log)$，其中 $\deg(\mathrm{poly}(\log))\leq 3$ 。 </p>
 </blockquote>
 <a id="more"></a>
 <p>考虑二分，那么就变成了一个判定性问题，即考虑 $s[c…c+mid-1]$ 在 $[a…b]$ 中是否出现过。那么考虑倍增，对于每个点可以倍增出 $s[1…c+mid-1]$ 的 $endpos$ 所在的那个节点，那么现在就是要求这个 $endpos$ 中是否存在某个元素 $\in$ $[a+mid-1,b]$ 。 那么这个东西就可以插入时维护每个点当前的 $endpos$，之后对当前的 $parent$ 树做一次线段树合并即可。</p>
@@ -929,6 +980,7 @@ f(x)=\frac{x}{1+x-16x^2+20x^3}</script><p>就完了。</p>
         <tag>多项式的应用</tag>
         <tag>有趣的二分答案</tag>
         <tag>数学/概率,期望</tag>
+        <tag>动态规划/斜率优化</tag>
         <tag>数据结构/可持久化/可持久化线段树</tag>
         <tag>数据结构/数据结构方法/莫队</tag>
         <tag>组合计数/有技巧的计数</tag>
@@ -1107,6 +1159,7 @@ g_i&=f_j\cdot A_i+f_j\cdot \frac{B_i}{\rm Rate_j}\\
       </categories>
       <tags>
         <tag>动态规划/普通DP</tag>
+        <tag>动态规划/斜率优化</tag>
       </tags>
   </entry>
   <entry>
@@ -1414,27 +1467,6 @@ x_i-x_j+y_i-y_j=(x_i+y_i)-(x_j+y_j)</script><p>这样转化出来的两部分即
       </tags>
   </entry>
   <entry>
-    <title>【题解】bzoj#3545 Peaks</title>
-    <url>/2020/01/24/Peaks/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>有 $n$ 座山峰，每座山峰有他的高度 $h_i$。</p>
-<p>有山峰之间有双向道路相连，共 $m$ 条路径，每条路径有一个困难值。</p>
-<p>现在有 $q$ 组询问，询问从点 $v$ 开始只经过困难值小于等于 $x$ 的路径所能到达的山峰中第 $k$ 高的山峰，如果无解输出 $-1$。</p>
-<a id="more"></a>
-<p>发现可以倍增，因为 $\leq x$ 的权在重构树上是一个子树。</p>
-<p>倍增完了就可以直接套主席树了。主席树可以比较简单的按照叶子的标号建，每个边结点维护一个 $\rm leftrange$ 和 $\rm rightrange$ 即可。</p>
-<p>等会儿，我就整理这么点儿东西为啥要新开这一篇blog啊？太浪费资源了吧QAQ。</p>
-<p><del>那看上去就只能用代码来占空间了</del></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> to(k) E[k].to</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fr(k) E[k].fr</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> val(k) E[k].val</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> next(k) E[k].next</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">500010</span> ;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">500010</span> ;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> V = <span class="number">5000010</span> ;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> fr, to ;</span><br><span class="line">    <span class="keyword">int</span> next, val ;</span><br><span class="line">&#125;E[N &lt;&lt; <span class="number">1</span>] ;</span><br><span class="line"><span class="keyword">int</span> head[N], cnt ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> len ;</span><br><span class="line"><span class="keyword">int</span> dad[N] ;</span><br><span class="line"><span class="keyword">int</span> wth[N] ;</span><br><span class="line"><span class="keyword">int</span> n, m, q ;</span><br><span class="line"><span class="keyword">int</span> rg[N][<span class="number">2</span>] ;</span><br><span class="line"><span class="keyword">int</span> fa[N][<span class="number">20</span>] ;</span><br><span class="line"><span class="keyword">int</span> base[N], t[N] ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> sum[V], res, sz ;</span><br><span class="line"><span class="keyword">int</span> rt[V], lc[V], rc[V] ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> now = ++ sz ;</span><br><span class="line">    <span class="keyword">if</span> (l == r) <span class="keyword">return</span> now ;</span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span> ;</span><br><span class="line">    lc[now] = build(l, mid) ;</span><br><span class="line">    rc[now] = build(mid + <span class="number">1</span>, r) ;</span><br><span class="line">    <span class="keyword">return</span> now ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> last, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> now = ++ sz ;</span><br><span class="line">    lc[now] = lc[last] ;</span><br><span class="line">    rc[now] = rc[last] ;</span><br><span class="line">    sum[now] = sum[last] + <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">if</span> (l == r) <span class="keyword">return</span> now ;</span><br><span class="line">    <span class="keyword">if</span> (v &lt;= mid)</span><br><span class="line">        lc[now] = update(lc[last], l, mid, v) ;</span><br><span class="line">    <span class="keyword">else</span> rc[now] = update(rc[last], mid + <span class="number">1</span>, r, v) ;</span><br><span class="line">    <span class="keyword">return</span> now ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> rtl, <span class="keyword">int</span> rtr, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l == r) <span class="keyword">return</span> l ;</span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">int</span> delta = sum[rc[rtr]] - sum[rc[rtl]] ;</span><br><span class="line">    <span class="keyword">if</span> (v &gt; delta)</span><br><span class="line">        <span class="keyword">return</span> query(lc[rtl], lc[rtr], l, mid, v - delta) ;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> query(rc[rtl], rc[rtr], mid + <span class="number">1</span>, r, v) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">    to(++ cnt) = v ;</span><br><span class="line">    val(cnt) = w, fr(cnt) = u ;</span><br><span class="line">    next(cnt) = head[u], head[u] = cnt ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x == dad[x] ? x : dad[x] = find(dad[x]) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">comp</span><span class="params">(Edge A, Edge B)</span></span>&#123; <span class="keyword">return</span> A.val &lt; B.val ; &#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    <span class="comment">//cout &lt;&lt; u &lt;&lt; endl ;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= <span class="number">18</span> ; ++ i)</span><br><span class="line">        fa[u][i] = fa[fa[u][i - <span class="number">1</span>]][i - <span class="number">1</span>] ;</span><br><span class="line">    rg[u][<span class="number">0</span>] = res ;</span><br><span class="line">    <span class="keyword">if</span> (!head[u])</span><br><span class="line">        rg[u][<span class="number">0</span>] = ++ res,</span><br><span class="line">        rt[res] = update(rt[res - <span class="number">1</span>], <span class="number">1</span>, len, base[u]) ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> k = head[u] ; k ; k = next(k)) dfs(to(k)) ;</span><br><span class="line">    rg[u][<span class="number">1</span>] = res ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m &gt;&gt; q ;</span><br><span class="line">    <span class="keyword">int</span> u, v, w, now, k, tot, op ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; ++ i)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;base[i]), t[i] = base[i] ;</span><br><span class="line">    sort(t + <span class="number">1</span>, t + n + <span class="number">1</span>) ;</span><br><span class="line">    len = unique(t + <span class="number">1</span>, t + n + <span class="number">1</span>) - t - <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; ++ i)</span><br><span class="line">        base[i] = lower_bound(t + <span class="number">1</span>, t + len + <span class="number">1</span>, base[i]) - t ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= m ; ++ i)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;u, &amp;v, &amp;w), add(u, v, w), add(v, u, w) ;</span><br><span class="line">    sort(E + <span class="number">1</span>, E + cnt + <span class="number">1</span>, comp) ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= <span class="number">2</span> * n ; ++ i) dad[i] = i ;</span><br><span class="line">    fill(head + <span class="number">1</span>, head + n + <span class="number">1</span>, <span class="number">0</span>), op = cnt, tot = n, cnt = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= op ; ++ i)&#123;</span><br><span class="line">        <span class="keyword">int</span> f1 = find(fr(i)) ;</span><br><span class="line">        <span class="keyword">int</span> f2 = find(to(i)) ;</span><br><span class="line">        <span class="keyword">if</span> (f1 != f2)&#123;</span><br><span class="line">            now = ++ tot ;</span><br><span class="line">            wth[now] = val(i) ;</span><br><span class="line">            dad[f1] = dad[f2] = now ;</span><br><span class="line">            fa[f1][<span class="number">0</span>] = fa[f2][<span class="number">0</span>] = now ;</span><br><span class="line">            add(now, f1, <span class="number">0</span>),add(now, f2, <span class="number">0</span>) ;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//cout &lt;&lt; tot &lt;&lt; endl ;</span></span><br><span class="line">    <span class="comment">//for (int i = 1 ; i &lt;= tot ; ++ i) cout &lt;&lt; fa[i][0] &lt;&lt; endl ;</span></span><br><span class="line">    rt[<span class="number">0</span>] = build(<span class="number">1</span>, len) ; dfs(now) ; <span class="comment">//cout &lt;&lt; res &lt;&lt; endl ;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= q ; ++ i)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;u, &amp;w, &amp;k) ;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">18</span> ; j &gt;= <span class="number">0</span> ; -- j)</span><br><span class="line">            <span class="keyword">if</span> (fa[u][j] &amp;&amp; wth[fa[u][j]] &lt;= w) u = fa[u][j] ;</span><br><span class="line">        <span class="comment">//cout &lt;&lt; u &lt;&lt; endl ;</span></span><br><span class="line">        <span class="keyword">if</span> (rg[u][<span class="number">1</span>] - rg[u][<span class="number">0</span>] &lt; k) <span class="built_in">puts</span>(<span class="string">"-1"</span>) ;</span><br><span class="line">        <span class="comment">//cout &lt;&lt; rg[u][0] &lt;&lt; " " &lt;&lt; rg[u][1] &lt;&lt; endl ;</span></span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, t[query(rt[rg[u][<span class="number">0</span>]], rt[rg[u][<span class="number">1</span>]], <span class="number">1</span>, len, k)]) ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>题解</category>
-        <category>BZOJ</category>
-      </categories>
-      <tags>
-        <tag>图论/Kruskal重构树</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【学习笔记】Kruskal重构树</title>
     <url>/2020/01/24/%E5%85%8B%E9%B2%81%E6%96%AF%E5%8D%A1%E5%B0%94%E9%87%8D%E6%9E%84%E6%A0%91/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>大概就是模拟 <code>Kruskal</code> 加边的过程，重构成一棵树。</p>
@@ -1458,6 +1490,27 @@ x_i-x_j+y_i-y_j=(x_i+y_i)-(x_j+y_j)</script><p>这样转化出来的两部分即
       <categories>
         <category>学习笔记</category>
         <category>Kruskal重构树</category>
+      </categories>
+      <tags>
+        <tag>图论/Kruskal重构树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【题解】bzoj#3545 Peaks</title>
+    <url>/2020/01/24/Peaks/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>有 $n$ 座山峰，每座山峰有他的高度 $h_i$。</p>
+<p>有山峰之间有双向道路相连，共 $m$ 条路径，每条路径有一个困难值。</p>
+<p>现在有 $q$ 组询问，询问从点 $v$ 开始只经过困难值小于等于 $x$ 的路径所能到达的山峰中第 $k$ 高的山峰，如果无解输出 $-1$。</p>
+<a id="more"></a>
+<p>发现可以倍增，因为 $\leq x$ 的权在重构树上是一个子树。</p>
+<p>倍增完了就可以直接套主席树了。主席树可以比较简单的按照叶子的标号建，每个边结点维护一个 $\rm leftrange$ 和 $\rm rightrange$ 即可。</p>
+<p>等会儿，我就整理这么点儿东西为啥要新开这一篇blog啊？太浪费资源了吧QAQ。</p>
+<p><del>那看上去就只能用代码来占空间了</del></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> to(k) E[k].to</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fr(k) E[k].fr</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> val(k) E[k].val</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> next(k) E[k].next</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">500010</span> ;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">500010</span> ;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> V = <span class="number">5000010</span> ;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> fr, to ;</span><br><span class="line">    <span class="keyword">int</span> next, val ;</span><br><span class="line">&#125;E[N &lt;&lt; <span class="number">1</span>] ;</span><br><span class="line"><span class="keyword">int</span> head[N], cnt ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> len ;</span><br><span class="line"><span class="keyword">int</span> dad[N] ;</span><br><span class="line"><span class="keyword">int</span> wth[N] ;</span><br><span class="line"><span class="keyword">int</span> n, m, q ;</span><br><span class="line"><span class="keyword">int</span> rg[N][<span class="number">2</span>] ;</span><br><span class="line"><span class="keyword">int</span> fa[N][<span class="number">20</span>] ;</span><br><span class="line"><span class="keyword">int</span> base[N], t[N] ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> sum[V], res, sz ;</span><br><span class="line"><span class="keyword">int</span> rt[V], lc[V], rc[V] ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> now = ++ sz ;</span><br><span class="line">    <span class="keyword">if</span> (l == r) <span class="keyword">return</span> now ;</span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span> ;</span><br><span class="line">    lc[now] = build(l, mid) ;</span><br><span class="line">    rc[now] = build(mid + <span class="number">1</span>, r) ;</span><br><span class="line">    <span class="keyword">return</span> now ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> last, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> now = ++ sz ;</span><br><span class="line">    lc[now] = lc[last] ;</span><br><span class="line">    rc[now] = rc[last] ;</span><br><span class="line">    sum[now] = sum[last] + <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">if</span> (l == r) <span class="keyword">return</span> now ;</span><br><span class="line">    <span class="keyword">if</span> (v &lt;= mid)</span><br><span class="line">        lc[now] = update(lc[last], l, mid, v) ;</span><br><span class="line">    <span class="keyword">else</span> rc[now] = update(rc[last], mid + <span class="number">1</span>, r, v) ;</span><br><span class="line">    <span class="keyword">return</span> now ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> rtl, <span class="keyword">int</span> rtr, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l == r) <span class="keyword">return</span> l ;</span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">int</span> delta = sum[rc[rtr]] - sum[rc[rtl]] ;</span><br><span class="line">    <span class="keyword">if</span> (v &gt; delta)</span><br><span class="line">        <span class="keyword">return</span> query(lc[rtl], lc[rtr], l, mid, v - delta) ;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> query(rc[rtl], rc[rtr], mid + <span class="number">1</span>, r, v) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">    to(++ cnt) = v ;</span><br><span class="line">    val(cnt) = w, fr(cnt) = u ;</span><br><span class="line">    next(cnt) = head[u], head[u] = cnt ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x == dad[x] ? x : dad[x] = find(dad[x]) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">comp</span><span class="params">(Edge A, Edge B)</span></span>&#123; <span class="keyword">return</span> A.val &lt; B.val ; &#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    <span class="comment">//cout &lt;&lt; u &lt;&lt; endl ;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= <span class="number">18</span> ; ++ i)</span><br><span class="line">        fa[u][i] = fa[fa[u][i - <span class="number">1</span>]][i - <span class="number">1</span>] ;</span><br><span class="line">    rg[u][<span class="number">0</span>] = res ;</span><br><span class="line">    <span class="keyword">if</span> (!head[u])</span><br><span class="line">        rg[u][<span class="number">0</span>] = ++ res,</span><br><span class="line">        rt[res] = update(rt[res - <span class="number">1</span>], <span class="number">1</span>, len, base[u]) ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> k = head[u] ; k ; k = next(k)) dfs(to(k)) ;</span><br><span class="line">    rg[u][<span class="number">1</span>] = res ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m &gt;&gt; q ;</span><br><span class="line">    <span class="keyword">int</span> u, v, w, now, k, tot, op ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; ++ i)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;base[i]), t[i] = base[i] ;</span><br><span class="line">    sort(t + <span class="number">1</span>, t + n + <span class="number">1</span>) ;</span><br><span class="line">    len = unique(t + <span class="number">1</span>, t + n + <span class="number">1</span>) - t - <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; ++ i)</span><br><span class="line">        base[i] = lower_bound(t + <span class="number">1</span>, t + len + <span class="number">1</span>, base[i]) - t ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= m ; ++ i)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;u, &amp;v, &amp;w), add(u, v, w), add(v, u, w) ;</span><br><span class="line">    sort(E + <span class="number">1</span>, E + cnt + <span class="number">1</span>, comp) ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= <span class="number">2</span> * n ; ++ i) dad[i] = i ;</span><br><span class="line">    fill(head + <span class="number">1</span>, head + n + <span class="number">1</span>, <span class="number">0</span>), op = cnt, tot = n, cnt = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= op ; ++ i)&#123;</span><br><span class="line">        <span class="keyword">int</span> f1 = find(fr(i)) ;</span><br><span class="line">        <span class="keyword">int</span> f2 = find(to(i)) ;</span><br><span class="line">        <span class="keyword">if</span> (f1 != f2)&#123;</span><br><span class="line">            now = ++ tot ;</span><br><span class="line">            wth[now] = val(i) ;</span><br><span class="line">            dad[f1] = dad[f2] = now ;</span><br><span class="line">            fa[f1][<span class="number">0</span>] = fa[f2][<span class="number">0</span>] = now ;</span><br><span class="line">            add(now, f1, <span class="number">0</span>),add(now, f2, <span class="number">0</span>) ;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//cout &lt;&lt; tot &lt;&lt; endl ;</span></span><br><span class="line">    <span class="comment">//for (int i = 1 ; i &lt;= tot ; ++ i) cout &lt;&lt; fa[i][0] &lt;&lt; endl ;</span></span><br><span class="line">    rt[<span class="number">0</span>] = build(<span class="number">1</span>, len) ; dfs(now) ; <span class="comment">//cout &lt;&lt; res &lt;&lt; endl ;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= q ; ++ i)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;u, &amp;w, &amp;k) ;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">18</span> ; j &gt;= <span class="number">0</span> ; -- j)</span><br><span class="line">            <span class="keyword">if</span> (fa[u][j] &amp;&amp; wth[fa[u][j]] &lt;= w) u = fa[u][j] ;</span><br><span class="line">        <span class="comment">//cout &lt;&lt; u &lt;&lt; endl ;</span></span><br><span class="line">        <span class="keyword">if</span> (rg[u][<span class="number">1</span>] - rg[u][<span class="number">0</span>] &lt; k) <span class="built_in">puts</span>(<span class="string">"-1"</span>) ;</span><br><span class="line">        <span class="comment">//cout &lt;&lt; rg[u][0] &lt;&lt; " " &lt;&lt; rg[u][1] &lt;&lt; endl ;</span></span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, t[query(rt[rg[u][<span class="number">0</span>]], rt[rg[u][<span class="number">1</span>]], <span class="number">1</span>, len, k)]) ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>题解</category>
+        <category>BZOJ</category>
       </categories>
       <tags>
         <tag>图论/Kruskal重构树</tag>
@@ -2826,8 +2879,8 @@ f_n=[n=0]+\sum_{p=1}^{m}[p\in c] \sum_{q=0}^{m-p}f_{q}f_{m-p-q}</script><p>发�
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>思维题/计数</tag>
         <tag>动态规划/普通DP</tag>
+        <tag>思维题/计数</tag>
         <tag>奇怪的技巧</tag>
         <tag>多项式的应用</tag>
         <tag>组合计数/生成函数</tag>
@@ -3782,8 +3835,8 @@ d(x)=\left\{\begin{array}{ll}{x \bmod 9,} & {x \bmod 9 \neq 0} \\ {9,} & {x \bmo
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>数学/观察性质,结论与构造</tag>
         <tag>动态规划/普通DP</tag>
+        <tag>数学/观察性质,结论与构造</tag>
       </tags>
   </entry>
   <entry>
@@ -3903,8 +3956,8 @@ y \cdot A_r-x \cdot B_r=y \cdot A_{l-1}-x \cdot B_{l-1}</script><p>然后如果�
         <category>校内模拟赛</category>
       </categories>
       <tags>
-        <tag>数学/观察性质,结论与构造</tag>
         <tag>动态规划/普通DP</tag>
+        <tag>数学/观察性质,结论与构造</tag>
         <tag>动态规划/状压DP</tag>
         <tag>数据结构/数据结构方法/莫队</tag>
         <tag>数据结构/线段树</tag>
@@ -4084,9 +4137,9 @@ ans =\sum_{j=1}^{n}f_{n,j}\cdot g_{0,c_1,c_2}</script><p>其中$c_1$和$c_2$表�
         <category>Codeforces</category>
       </categories>
       <tags>
+        <tag>动态规划/普通DP</tag>
         <tag>思维题/构造</tag>
         <tag>思维题/计数</tag>
-        <tag>动态规划/普通DP</tag>
         <tag>组合计数/有技巧的计数</tag>
         <tag>贪心</tag>
       </tags>
@@ -4431,8 +4484,8 @@ P_{i, S}=\sum_{i=0}^{i} f_{j, S} * g_{i-j, S}</script><p>输出的时候只输�
         <category>奇怪的变换</category>
       </categories>
       <tags>
-        <tag>快速沃尔什变换(FWT)</tag>
         <tag>快速莫比乌斯变换(FMT)</tag>
+        <tag>快速沃尔什变换(FWT)</tag>
         <tag>快速子集变换(FST)</tag>
       </tags>
   </entry>
@@ -4994,12 +5047,12 @@ G &= G_h - \frac{T(G_h)}{T'(G_h)}\\\
 <p>Let’s say sunshine for everyone 人们说生活总是充满阳光<br>But as far as I can remember 但在我的记忆中<br>We’ve been migratory animals 我们一直只是如野兽般流浪<br>Living under changing weather 四季变换，我们如常<br>Someday we will foresee obstacles 总有一天，我们会看见那些困难阻碍<br>Through the blizzard through the blizzard 在那片风雪之中，在那片风雪之后<br>Today we will sell our uniform 如今我们将曾经的校服变卖<br>Live together live together 一同离去，一同启程</p>
 </blockquote>
 
-        <div id="aplayer-uJyefMXL" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-FGKzONKD" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-uJyefMXL"),
+            element: document.getElementById("aplayer-FGKzONKD"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -5519,12 +5572,12 @@ g_{s,h} = \sum_{t\in s}g_{s-t, h-1}+h\cdot f_{s-t,t}</script><p>同样是显然�
 <p>正如，我一直以来认为的，「短暂的快乐只会带来空虚，无尽的悲伤才会带来充实」。</p>
 <hr>
 
-        <div id="aplayer-NWbXhjxC" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-fzmdAmSs" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-NWbXhjxC"),
+            element: document.getElementById("aplayer-fzmdAmSs"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -5710,8 +5763,8 @@ c_{i+1}-c_i' = d_1\\\ c_i'-c_{i-1} = d_2</script><p>换句话说，其实就是�
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>思维题/构造</tag>
         <tag>动态规划/普通DP</tag>
+        <tag>思维题/构造</tag>
         <tag>树模型</tag>
         <tag>有技巧的差分</tag>
         <tag>博弈论/组合游戏</tag>
@@ -6947,12 +7000,12 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
 <p>我大概在听这首歌之前，从来没有真正知道原来”喜欢“这个已经烂大街的词、这个现如今可以随便说出口又可以随便忘记的词、这个在我上过的所有学校里从来没有人敢光明正大说出来的词、这个现在在芸芸众生中已经被玷污的、被人们认为还没有一块钱来的实在的词，竟然如此的可爱，竟然如此的值得人们尊敬，竟然可以在冰冷的寒夜散发出如此耀眼的光芒。</p>
 <p>我喜欢你，你应该，也知道。</p>
 
-        <div id="aplayer-qHGkswcJ" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-HLpkRztU" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-qHGkswcJ"),
+            element: document.getElementById("aplayer-HLpkRztU"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -6983,12 +7036,12 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
 <hr>
 <p>雪，终于停了啊。现在已经午夜了，街上一个人都没有，天空在积雪的映照下，是让人着迷的紫红色。</p>
 
-        <div id="aplayer-OmBpPrXR" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-KHLIbvKV" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-OmBpPrXR"),
+            element: document.getElementById("aplayer-KHLIbvKV"),
             narrow: false,
             autoplay: false,
             showlrc: false,
