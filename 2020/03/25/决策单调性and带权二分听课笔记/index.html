@@ -1,0 +1,375 @@
+<!DOCTYPE html><html class="theme-next gemini use-motion" lang><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0"><link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png?v=7.2.0"><link rel="icon" type="image/png" sizes="16x16" href="/images/icon-32.png?v=7.2.0"><link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222"><link rel="stylesheet" href="/css/main.css?v=7.2.0"><link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Verdana:300,300italic,400,400italic,700,700italic|Verdana:300,300italic,400,400italic,700,700italic|Verdana:300,300italic,400,400italic,700,700italic|Verdana:300,300italic,400,400italic,700,700italic|Courier New:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"><link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"><link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css"><script id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Gemini",version:"7.2.0",sidebar:{position:"left","Pisces | Gemini":270,width:270,display:"post",offset:12,onmobile:!1},back2top:{enable:!0,sidebar:!0,scrollpercent:!0},copycode:{enable:!0,show_result:!0,style:"mac"},fancybox:!0,mediumzoom:!1,lazyload:!1,pangu:!1,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}},translation:{copy_button:"Copy",copy_success:"Copied",copy_failure:"Copy failed"}}</script><meta name="description" content="决策单调性是老朋友了，这次稍微系统地重学了一次，顺便做了做之前没做的题。"><meta name="keywords" content="动态规划&#x2F;决策单调性"><meta property="og:type" content="article"><meta property="og:title" content="【听课笔记】决策单调性"><meta property="og:url" content="https://www.orchidany.cn/2020/03/25/决策单调性and带权二分听课笔记/index.html"><meta property="og:site_name" content="Orchidany&#39;w blog"><meta property="og:description" content="决策单调性是老朋友了，这次稍微系统地重学了一次，顺便做了做之前没做的题。"><meta property="og:locale" content="default"><meta property="og:updated_time" content="2020-03-26T16:32:40.502Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="【听课笔记】决策单调性"><meta name="twitter:description" content="决策单调性是老朋友了，这次稍微系统地重学了一次，顺便做了做之前没做的题。"><link rel="alternate" href="/atom.xml" title="Orchidany'w blog" type="application/atom+xml"><link rel="canonical" href="https://www.orchidany.cn/2020/03/25/决策单调性and带权二分听课笔记/"><script id="page.configurations">CONFIG.page={sidebar:""}</script><title>【听课笔记】决策单调性 | Orchidany'w blog</title><noscript><style>.sidebar-inner,.use-motion .brand,.use-motion .collection-title,.use-motion .comments,.use-motion .menu-item,.use-motion .motion-element,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .logo,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.use-motion .logo-line-before i{left:initial}.use-motion .logo-line-after i{right:initial}</style></noscript></head><body itemscope itemtype="http://schema.org/WebPage" lang="default"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">Orchidany'w blog</span><span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">A Soul Tune against Fate Should Be Played, now.</p></div><div class="site-nav-toggle"> <button aria-label="Toggle navigation bar"><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>Archives</a></li><li class="menu-item menu-item-friends"><a href="/Friends/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i><br>Friends</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>Search</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i></span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"> <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://www.orchidany.cn/2020/03/25/决策单调性and带权二分听课笔记/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Orchidany"><meta itemprop="description" content="For code, science, tech. and more"><meta itemprop="image" content="/images/avatar.png"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="Orchidany'w blog"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">【听课笔记】决策单调性</h1><div class="post-meta"><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">Posted on</span> <time title="Created: 2020-03-25 14:31:30" itemprop="dateCreated datePublished" datetime="2020-03-25T14:31:30+08:00">2020-03-25</time></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-check-o"></i></span> <span class="post-meta-item-text">Edited on</span> <time title="Modified: 2020-03-27 00:32:40" itemprop="dateModified" datetime="2020-03-27T00:32:40+08:00">2020-03-27</time></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">In</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span> , <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/决策单调性/" itemprop="url" rel="index"><span itemprop="name">决策单调性</span></a></span></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-comment-o"></i></span> <span class="post-meta-item-text">Comments:</span><a href="/2020/03/25/决策单调性and带权二分听课笔记/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/03/25/决策单调性and带权二分听课笔记/" itemprop="commentCount"></span></a></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-eye"></i> Views:<span class="busuanzi-value" id="busuanzi_value_page_pv"></span></span></span><br></div></header><div class="post-body" itemprop="articleBody"><p>决策单调性是老朋友了，这次稍微系统地重学了一次，顺便做了做之前没做的题。</p><a id="more"></a><h1 id="四边形不等式"><a href="#四边形不等式" class="headerlink" title="四边形不等式"></a>四边形不等式</h1><p>如果是最小值问题，那大概长这样：</p><script type="math/tex;mode=display">
+a\leq b<c\leq d\\
+w(a,c)+w(b,d)\le w(a,d)+w(b,c)</script><p>那么如果满足这个，就说明其满足最小值时的决策单调性。证明起来很简单，因为 $a\to d,b\to c$ 的转移的值要更大些，所以 $a\to c,b\to d$ 的转移会更优，据此可得 $f$ 有决策单调性。</p><p>除此之外，该不等式存在一个变形。考虑对于 $a&lt;b$ 的如下 $4$ 个量 $a,a+1,b,b+1$ ，如果满足下式：</p><script type="math/tex;mode=display">
+w(a,b)+w(a+1,b+1)\le w(a,b+1)+w(a+1,b)</script><p>那么也说明是满足四边形不等式的。证明的话可以考虑暴力归纳也好、换元消元也好，反正挺显然的。</p><h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="CF321E"><a href="#CF321E" class="headerlink" title="CF321E"></a>CF321E</h2><blockquote><p>你有⼀个 $n\times n$ 的对称矩阵表示不熟悉程度。</p><p>你要将它 $1\sim n$ 按顺序分成 $k$ 组，每组的代价为两两之间不熟悉程度的和。最小化这个东西。</p><p> $n \le 4000,k \le 800$</p></blockquote><p>考虑拿四边形不等式来证明。对于 $a\leq b&lt;c\leq d$ 而言，记 $s(a,c)$ 表示矩阵中左上角为 $(a,a)$ 右下角为 $(c,c)$ 的这么一个矩阵中元素的和，那么</p><script type="math/tex;mode=display">
+w(a,c)+w(b,d)=\frac{s(a,c)+s(b,d)}{2}\\
+w(a,d)+w(b,c)=\frac{s(a,d)+s(b,c)}{2}</script><p>注意到</p><script type="math/tex;mode=display">
+s(a,d) = s(a,c)+s(b,d)-s(b,c)+s(a,b)+s(c,d)</script><p>那么就显然</p><script type="math/tex;mode=display">
+w(a,c)+w(b,d)\le w(a,d)+w(b,c)</script><p>十分满足决策单调性（其实画出图来更显然，就是多了两块矩阵）。</p><p>这个东西可以用分治来做。因为每一层决策与本层无关，即 $k-1\to k$ 。于是就可以 <code>solve(l,r,ql,qr)</code> 表示 $l\sim r$ 是从区间 $(ql\sim qr)$ 转移过来的。那么每次取 $mid=\frac{l+r}{2}$，然后找出 $f_{mid}$ 对应的最优决策所在位置，这样就可以分治了。复杂度 $O(nk\log n)$ 。</p><p>这题居然卡cin，气死我了</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> p_b push_back </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> upb upper_bound</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x3f3f3f3f</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">debug</span><span class="params">(<span class="keyword">int</span> *tp, <span class="keyword">int</span> minn, <span class="keyword">int</span> maxn, <span class="keyword">char</span> c)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = minn ; i &lt;= maxn ; ++ i)</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; tp[i] &lt;&lt; <span class="string">" "</span> ; <span class="built_in">cout</span> &lt;&lt; c ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, k ;</span><br><span class="line"><span class="keyword">int</span> s[N][N] ;</span><br><span class="line"><span class="keyword">int</span> f[N][K] ; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">qr</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> res = <span class="number">0</span> ;</span><br><span class="line">	<span class="keyword">char</span> c = getchar() ;</span><br><span class="line">	<span class="keyword">while</span> (!<span class="built_in">isdigit</span>(c)) c = getchar() ;</span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">isdigit</span>(c)) </span><br><span class="line">		(res *= <span class="number">10</span>) += c - <span class="number">48</span>, c = getchar() ;</span><br><span class="line">	<span class="keyword">return</span> res ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">do_do</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (s[r][r] + s[l - <span class="number">1</span>][l - <span class="number">1</span>] - s[r][l - <span class="number">1</span>] - s[l - <span class="number">1</span>][r]) &gt;&gt; <span class="number">1</span> ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> ql, <span class="keyword">int</span> qr, <span class="keyword">int</span> g)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (l &gt; r) <span class="keyword">return</span> ; </span><br><span class="line">	<span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>, pos = ql ; </span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = ql ; i &lt;= qr &amp;&amp; i &lt;= mid ; ++ i)&#123;</span><br><span class="line">		<span class="keyword">if</span> (f[i][g - <span class="number">1</span>] + do_do(i + <span class="number">1</span>, mid) &lt; f[mid][g])</span><br><span class="line">			f[mid][g] = f[i][g - <span class="number">1</span>] + do_do(i + <span class="number">1</span>, mid), pos = i ; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//cout &lt;&lt; mid &lt;&lt; " " &lt;&lt; pos &lt;&lt; " " &lt;&lt; g &lt;&lt; endl ; </span></span><br><span class="line">	solve(l, mid - <span class="number">1</span>, ql, pos, g) ; </span><br><span class="line">	solve(mid + <span class="number">1</span>, r, pos, qr, g) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k ;</span><br><span class="line">	<span class="built_in">memset</span>(f, <span class="number">63</span>, <span class="keyword">sizeof</span>(f)) ;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; ++ i)</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span> ; j &lt;= n ; ++ j)</span><br><span class="line">			s[i][j] = qr() ; f[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span> ; </span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; ++ i)</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span> ; j &lt;= n ; ++ j)</span><br><span class="line">			s[i][j] += s[i - <span class="number">1</span>][j] + s[i][j - <span class="number">1</span>] - s[i - <span class="number">1</span>][j - <span class="number">1</span>] ;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= k ; ++ i) solve(<span class="number">1</span>, n, <span class="number">0</span>, n, i) ;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; f[n][k] &lt;&lt; <span class="built_in">endl</span> ; <span class="keyword">return</span> <span class="number">0</span> ; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="CF321E-的-O-n-2-做法"><a href="#CF321E-的-O-n-2-做法" class="headerlink" title="CF321E 的 $O(n^2)$ 做法"></a>CF321E 的 $O(n^2)$ 做法</h2><p>考虑记录一下每个点的决策范围。发现设状态 $(n,k)$ 最优决策位置记作 $opt(n,k)$ 的话，一定有</p><script type="math/tex;mode=display">
+opt(n,k-1)\leq opt(n,k)\leq opt(n+1,k)</script><p>那么可以这么写：</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> j : <span class="number">1</span> to k</span><br><span class="line">  <span class="keyword">for</span> i : n to <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> p : opt(i, j - <span class="number">1</span>) <span class="function">to <span class="title">opt</span><span class="params">(i + <span class="number">1</span>, j)</span></span></span><br><span class="line">      if [f(p, j - 1) &lt; f(i, j)] opt(i, j) = p, f(i, j) := f(p, j - 1) ;</span><br></pre></td></tr></table></figure><p>考虑这么做的时间复杂度。</p><p>发现对于这个决策矩阵的每一条穿过 $opt(i,j)$ 和 $opt(i+1,j+1)$ 的斜线，每条斜线的代价是 $O(n)$ 的，原因是考虑斜线 $opt(i,j),opt(i+1,j+1)$ 这条斜线的决策来自于 $opt(i,j-1),opt(i+1,j)$ 这条斜线。那么也就是说，每个斜线的转移都是 $O(n)$ 的，共有 $O(n+k)$ 条斜线，所以复杂度 $O(n^2)$ 。</p><h2 id="NOI2009-诗人小G"><a href="#NOI2009-诗人小G" class="headerlink" title="[NOI2009]诗人小G"></a>[NOI2009]诗人小G</h2><blockquote><p>有N个诗句需要被排版为若⼲⾏，顺序不能改变。⼀⾏内可以有若⼲个诗句，相邻诗句之间有⼀个空格。</p><p>定义⾏标准⻓度L，每⾏的不协调度为|实际⻓度-L|^P，整⾸诗的不协调度就是每⾏不协调度之和。</p><p>任务是安排⼀种排版⽅案，使得整⾸诗的不协调度最⼩。</p><p>$n\leq 10^5$ 。</p></blockquote><p>考虑还是 $dp$ 嘛。以下分析暂不考虑什么 $\pm1$ 的常数问题。</p><p>$f_{i} $ 表示考虑了前 $i$ 个句子的最小不协调度。那么就有 $f_{i}=\min\{f_{j-1}+|s(i,j)-L|^P\}$。</p><hr><p>考虑这个东西的性质。还是设 $a\leq b&lt;c\leq d$ ，那么可知 $|s(a,c)-L|^P+|s(b,d)-L|^P$</p><script type="math/tex;mode=display">
+|s(a,d)-L|^P+|s(b,c)-L|^P=|s(a,c)+s(c,d)-L|^P+|s(b,d)-s(c,d)-L|^P</script><p><del>草为什么我想直接打个表走人</del> 来让我瞎编一下。令 $x=s(a,c)-L,y=s(b,d)-L$。那么要证明</p><script type="math/tex;mode=display">
+|x+s(c,d)|^P+|y-s(c,d)|^P\geq |x|^P+|y|^P</script><p>考虑当 $|P|$ 为偶数的时候……</p><hr><p>好的，上面的证明崩掉了。考虑另一种证明方法。考虑对于 $a&lt;b$ 的如下 $4$ 个量 $a,a+1,b,b+1$ ，考虑去证明</p><script type="math/tex;mode=display">
+|s(a,b)-L|^P+|s(a+1,b+1)-L|^P\le |s(a,b+1)-L|^P+|s(a+1,b)-L|^P</script><p>发现令 $p = len_a,q=len_b,x=s(a,b)$本质上就是在证明</p><script type="math/tex;mode=display">
+|x|^P+|x-p+q|^P\le |x+q|^P+|x-p|^P</script><p>即</p><script type="math/tex;mode=display">
+|x|^P-|x-p|^P\le|x+q|^P-|x+q-p|^P</script><p>那么也就是要证明 $f(x)=|x|^z-|x-p|^z$ 这个函数是单调不降的。可知一定有 $s(a,b)&gt;p+q$ ，所以可知括号内均 $&gt;0$，换言之 $f(x)=x^z-(x-p)^z$ ，这显然是单调不降的。于是证毕。</p><p>但是这个地方存在一个问题，就是转移有着严格的顺序，不能像上一道题一样来分治，因为 $l$ 必须要先于 $mid$ 来转移。<del>于是这显然就需要CDQ分治了</del> 然而CDQ分治是 $\log ^2$ 的并不可以过得去(并且显然没人会这么写)。</p><p>所以此处就需要用二分+单调栈的方式来维护。这两个过程严格意义上是分开的。大概就是考虑对于每个转移完的 $i$ ，我们用这个去更新后面的点的决策区间，更新方法是：1、先不断比较当前的决策区间和之前每个数的决策区间哪个更优，维护一个从底部到顶部单调递减的栈，依次弹掉这些不优的；2、之后考虑二分栈顶的这一段，确定新一个决策点的左区间。</p><p>然后是实现细节方面。注意需要在维护单调栈的时候顺便维护每个元素的决策左区间，并且还要维护一个指针，用来寻找当前点的决策点。</p><p>然后还有十分神必的一点，就是要记得不将那些无有效决策区间的决策点入栈。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> T ;</span><br><span class="line"><span class="keyword">int</span> top ;</span><br><span class="line">ll f[N] ;</span><br><span class="line"><span class="keyword">int</span> kts[N] ;</span><br><span class="line"><span class="keyword">int</span> stk[N] ;</span><br><span class="line"><span class="keyword">int</span> pos[N] ;</span><br><span class="line"><span class="keyword">int</span> sum[N] ;</span><br><span class="line"><span class="keyword">int</span> base[N] ;</span><br><span class="line"><span class="keyword">int</span> n, p, k ;</span><br><span class="line"><span class="keyword">char</span> s[N][<span class="number">40</span>] ;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">expow</span><span class="params">(ll a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    ll ret = <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">while</span> (b)&#123;</span><br><span class="line">        <span class="keyword">if</span> (b &amp; <span class="number">1</span>)</span><br><span class="line">            ret *= a ;</span><br><span class="line">        a *= a ; b &gt;&gt;= <span class="number">1</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">mabs</span><span class="params">(ll x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x &gt; <span class="number">0</span> ? x : -x ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">calc</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> expow(mabs(sum[r] - sum[l - <span class="number">1</span>] - k), p) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">trans</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> calc(p + <span class="number">1</span>, x) + f[p] ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">debug</span><span class="params">(<span class="keyword">int</span> *tp, <span class="keyword">int</span> minn, <span class="keyword">int</span> maxn, <span class="keyword">char</span> c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = minn ; i &lt;= maxn ; ++ i)</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; tp[i] &lt;&lt; <span class="string">" "</span> ;  <span class="built_in">cout</span> &lt;&lt; c ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; T ;</span><br><span class="line">    <span class="keyword">while</span> (T --)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k &gt;&gt; p ;</span><br><span class="line">        stk[top = <span class="number">0</span>] = <span class="number">0</span> ; ++ k ;</span><br><span class="line">        <span class="built_in">memset</span>(f, <span class="number">0</span>, <span class="keyword">sizeof</span>(f)) ;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; ++ i)&#123;</span><br><span class="line">            pos[i] = <span class="number">0</span> ;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%s"</span>, s[i] + <span class="number">1</span>) ;</span><br><span class="line">            base[i] = <span class="built_in">strlen</span>(s[i] + <span class="number">1</span>) ;</span><br><span class="line">            sum[i] = sum[i - <span class="number">1</span>] + base[i] ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; ++ i) sum[i] += i ;</span><br><span class="line">        <span class="comment">//debug(sum, 1, n, '\n') ;</span></span><br><span class="line">        kts[<span class="number">0</span>] = <span class="number">1</span> ; <span class="keyword">int</span> h = <span class="number">0</span> ;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; ++ i)&#123;</span><br><span class="line">            <span class="keyword">while</span> (h &lt; top &amp;&amp; kts[h] &lt; i) ++ h ;</span><br><span class="line">            <span class="keyword">if</span> (kts[h] &gt; i) -- h ;</span><br><span class="line">            f[i] = trans(stk[h], i) ; pos[i] = stk[h] ;</span><br><span class="line">            <span class="keyword">while</span> (top &amp;&amp; trans(stk[top], kts[top]) &gt;= trans(i, kts[top]))</span><br><span class="line">                stk[top] = <span class="number">0</span>, kts[top] = n + <span class="number">1</span>, -- top ;</span><br><span class="line">            <span class="keyword">int</span> l = kts[top], r = n + <span class="number">1</span>, mid, ans = n + <span class="number">1</span> ;</span><br><span class="line">            <span class="keyword">while</span> (l &lt;= r)&#123;</span><br><span class="line">                <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span> ;</span><br><span class="line">                <span class="keyword">if</span> (trans(stk[top], mid) &gt;= trans(i, mid))</span><br><span class="line">                    ans = mid, r = mid - <span class="number">1</span> ; <span class="keyword">else</span> l = mid + <span class="number">1</span> ;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//cout &lt;&lt; ans &lt;&lt; " * " &lt;&lt; endl ;</span></span><br><span class="line">            <span class="keyword">if</span> (ans &lt;= n) stk[++ top] = i, kts[top] = ans ;</span><br><span class="line">            <span class="comment">//cout &lt;&lt; i &lt;&lt; " " &lt;&lt; ans &lt;&lt; endl ;</span></span><br><span class="line">            <span class="comment">//debug(stk, 1, top, '\n') ;</span></span><br><span class="line">            <span class="comment">//debug(kts, 1, top, '\n') ;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//debug(pos, 1, n, '\n') ;</span></span><br><span class="line">        <span class="keyword">if</span>(f[n] &gt; <span class="number">1e18</span>) &#123;</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">"Too hard to arrange"</span>) ;</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">"--------------------"</span>) ; <span class="keyword">continue</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; (<span class="keyword">long</span> <span class="keyword">long</span>)f[n] &lt;&lt; <span class="built_in">endl</span> ;</span><br><span class="line">        <span class="keyword">int</span> t ; stk[top = <span class="number">0</span>] = t = n ;</span><br><span class="line">        <span class="keyword">while</span> (t) stk[++ top] = t = pos[t] ;</span><br><span class="line">        <span class="keyword">while</span> (top)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = stk[top] + <span class="number">1</span> ; i &lt; stk[top - <span class="number">1</span>] ; ++ i)</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%s "</span>, s[i] + <span class="number">1</span>) ; <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, s[stk[top - <span class="number">1</span>]] + <span class="number">1</span>) ; -- top ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">"--------------------"</span>) ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>总之呢，单调栈+二分这个做法是比较普适的，但是有时候也可以写分治，因为分治比较好写。</p><h2 id="IOI2013-wombats"><a href="#IOI2013-wombats" class="headerlink" title="IOI2013 wombats"></a>IOI2013 wombats</h2><blockquote><p>题意⼤概是，有 $r\times c$ 的⽹格图，每次只能朝左右下三个⽅向。</p><p>操作包括修改⼀条边的边权，然后查询某两点之间最短路。</p><p>$r\leq 5000,c\leq 200,q\leq 200000,m\leq 500$ 其中 $m$ 是修改次数，$q$ 是询问次数。</p></blockquote><p>草，这题真是从一开始就不会qaq</p><p>大概就是考虑以列为标号建线段树，然后每个区间维护最左边的点到最右边的所有点的最短距离。然后合并显然就是 $c^3$ 的，总复杂度 $O(rc^3+q\log r+mc^3\log r)$ 。(好像杜爷写的是 $O(rc^3+q+mc^3\log r)$</p><p>然后考虑这东西由于只能向右和向下走，所以是有单调性的，也就是对于右侧的两个点 $(x,y)$ 和 $(x,y+1)$ ，他俩的决策路线一定是不相交的。这个好像还是比较显然的？然后就可以暴力 $O(rc^3+q+mc^2\log c\log r)$ 做了。</p><p>不过显然根据上面那个 trick ，二维的决策单调性是可以消掉 $\log $ 的，还是上面那种做法。仔细想了想，其实 $nk$ 应该算是两维的决策单调性，所以或许这确实是二维决策单调性的通用解决方法吧。</p><p>嗯，代码是不想写了，就这样吧。</p><h2 id="IOI2014-Holiday"><a href="#IOI2014-Holiday" class="headerlink" title="IOI2014 Holiday"></a>IOI2014 Holiday</h2><blockquote><p>有 n 个城市，每个城市有⼀个权值，起点在 s 。 每⼀天你可以往左或者往右⾛⼀步，或者选择游览这个城市。问 d 天能获得的最⼤权值和是多少？</p></blockquote><p>发现一共至多有四种走法，就是一直向右走、一直向左走、向左走折回起点然后向右走、向右走折回起点然后向左走。前两种就显然是枚举走了 $k$ 个城市，然后找其中的前 $d-k$ 大的城市游览即可。</p><p>考虑另外两种的做法。先给出结论，假设我向右走到了点 $i$ ，再向左走到点 $j$ ，那么随着 $i$ 增大，$j$ 是不降的。</p><p>但这个地方很迷，迷在网上很多题解写的是决策单调性不是这东西单调，是前两种那个走法单调，我寻思这不是显然…</p><p>哦，想了想，发现本质是一样的。就是向右走 $0$ 再向左右显然也有单调性。那么现在唯一的问题就在于这个单调性似乎不是那么显然…</p><p>好的，那看起来是，随着 $l$ 不断向右，$r$ 不会向左(鬼知道我刚才怎么理解的)。这样就非常合理了。于是就可以分治去做了。复杂度 $m \log n$ 。</p></div><footer class="post-footer"><div class="post-tags"><a href="/tags/动态规划-决策单调性/" rel="tag"><i class="fa fa-tag"></i> 动态规划/决策单调性</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2020/03/25/gym102354B/" rel="next" title="Codeforces [Gym 102354B] Yet Another Convolution"><i class="fa fa-chevron-left"></i> Codeforces [Gym 102354B] Yet Another Convolution</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"> <a href="/2020/03/25/带权二分/" rel="prev" title="【听课笔记】带权二分(wqs二分)">【听课笔记】带权二分(wqs二分)<i class="fa fa-chevron-right"></i></a></div></div></footer></div></article></div></div><div class="comments" id="comments"></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><div style><canvas id="canvas" style="width:60%">当前浏览器不支持canvas，请更换浏览器后再试</canvas></div><script>!function(){var t,o=[[[0,0,1,1,1,0,0],[0,1,1,0,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,0,1,1,0],[0,0,1,1,1,0,0]],[[0,0,0,1,1,0,0],[0,1,1,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[1,1,1,1,1,1,1]],[[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,0,1,1,0,0,0],[0,1,1,0,0,0,0],[1,1,0,0,0,0,0],[1,1,0,0,0,1,1],[1,1,1,1,1,1,1]],[[1,1,1,1,1,1,1],[0,0,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,0,1,1,1,0,0],[0,0,0,0,1,1,0],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[0,0,0,0,1,1,0],[0,0,0,1,1,1,0],[0,0,1,1,1,1,0],[0,1,1,0,1,1,0],[1,1,0,0,1,1,0],[1,1,1,1,1,1,1],[0,0,0,0,1,1,0],[0,0,0,0,1,1,0],[0,0,0,0,1,1,0],[0,0,0,1,1,1,1]],[[1,1,1,1,1,1,1],[1,1,0,0,0,0,0],[1,1,0,0,0,0,0],[1,1,1,1,1,1,0],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[0,0,0,0,1,1,0],[0,0,1,1,0,0,0],[0,1,1,0,0,0,0],[1,1,0,0,0,0,0],[1,1,0,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[1,1,1,1,1,1,1],[1,1,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,1,1,0,0,0],[0,0,1,1,0,0,0],[0,0,1,1,0,0,0],[0,0,1,1,0,0,0]],[[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,1,1,0,0,0,0]],[[0,0,0,0,0,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,0,0,0,0,0]]],e=document.getElementById("canvas");if(e.getContext){var l=e.getContext("2d");e.height=100,e.width=700,l.fillStyle="#f00",l.fillRect(10,10,50,50);var r=[],f=[],i=e.height/20-1;function n(t,e){for(var n=0;n<o[e].length;n++)for(var a=0;a<o[e][n].length;a++)1==o[e][n][a]&&(l.beginPath(),l.arc(14*(i+2)*t+2*a*(i+1)+(i+1),2*n*(i+1)+(i+1),i,0,2*Math.PI),l.closePath(),l.fill())}function h(t,e){for(var n=[1,2,3],a=["#3BE","#09C","#A6C","#93C","#9C0","#690","#FB3","#F80","#F44","#C00"],l=0;l<o[e].length;l++)for(var r=0;r<o[e][l].length;r++)if(1==o[e][l][r]){var h={x:14*(i+2)*t+2*r*(i+1)+(i+1),y:2*l*(i+1)+(i+1),stepX:Math.floor(4*Math.random()-2),stepY:-2*n[Math.floor(Math.random()*n.length)],color:a[Math.floor(Math.random()*a.length)],disY:1};f.push(h)}}t=/(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date),r.push(t[1],t[2],10,t[3],t[4],10,t[5],t[6]),clearInterval(a);var a=setInterval(function(){!function(){var t=[],e=/(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date),n=[];n.push(e[1],e[2],10,e[3],e[4],10,e[5],e[6]);for(var a=r.length-1;0<=a;a--)n[a]!==r[a]&&t.push(a+"_"+(Number(r[a])+1)%10);for(a=0;a<t.length;a++)h.apply(this,t[a].split("_"));r=n.concat()}(),function(){for(var t=0;t<f.length;t++)f[t].stepY+=f[t].disY,f[t].x+=f[t].stepX,f[t].y+=f[t].stepY,(f[t].x>700+i||f[t].y>100+i)&&(f.splice(t,1),t--)}(),function(){e.height=100;for(var t=0;t<r.length;t++)n(t,r[t]);for(t=0;t<f.length;t++)l.beginPath(),l.arc(f[t].x,f[t].y,i,0,2*Math.PI),l.fillStyle=f[t].color,l.closePath(),l.fill()}()},50)}}()</script><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> Table of Contents</li><li class="sidebar-nav-overview" data-target="site-overview-wrap"> Overview</li></ul><div class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"> <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Orchidany"><p class="site-author-name" itemprop="name">Orchidany</p><div class="site-description motion-element" itemprop="description">For code, science, tech. and more</div></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/"><span class="site-state-item-count">150</span> <span class="site-state-item-name">posts</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/"><span class="site-state-item-count">52</span> <span class="site-state-item-name">categories</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/"><span class="site-state-item-count">105</span> <span class="site-state-item-name">tags</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div></div></div><div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#四边形不等式"><span class="nav-number">1.</span> <span class="nav-text">四边形不等式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#例题"><span class="nav-number">2.</span> <span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CF321E"><span class="nav-number">2.1.</span> <span class="nav-text">CF321E</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CF321E-的-O-n-2-做法"><span class="nav-number">2.2.</span> <span class="nav-text">CF321E 的 $O(n^2)$ 做法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NOI2009-诗人小G"><span class="nav-number">2.3.</span> <span class="nav-text">[NOI2009]诗人小G</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IOI2013-wombats"><span class="nav-number">2.4.</span> <span class="nav-text">IOI2013 wombats</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IOI2014-Holiday"><span class="nav-number">2.5.</span> <span class="nav-text">IOI2014 Holiday</span></a></li></ol></li></ol></div></div></div><div class="back-to-top motion-element"><i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; <span itemprop="copyrightYear">2020</span><span class="with-love" id="animate"><i class="fa fa-user"></i></span> <span class="author" itemprop="copyrightHolder">Orchidany</span></div><div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div> <span class="post-meta-divider">|</span><div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.2.0</div><div class="theme-info"><div class="powered-by"></div> <span class="post-count">博客全站共295.2k字</span></div><div class="busuanzi-count"><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span class="post-meta-item-icon"><i class="fa fa-user"></i></span><span class="site-uv" title="Total Visitors"><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-eye"></i></span><span class="site-pv" title="Total Views"><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span></div></div></footer></div><script>"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script src="/lib/jquery/index.js?v=3.4.1"></script><script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script><script src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script src="/js/utils.js?v=7.2.0"></script><script src="/js/motion.js?v=7.2.0"></script><script src="/js/affix.js?v=7.2.0"></script><script src="/js/schemes/pisces.js?v=7.2.0"></script><script src="/js/scrollspy.js?v=7.2.0"></script><script src="/js/post-details.js?v=7.2.0"></script><script src="/js/next-boot.js?v=7.2.0"></script><script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script><script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>var GUEST=["nick","mail","link"],guest="nick,mail,link";guest=guest.split(",").filter(function(e){return-1<GUEST.indexOf(e)}),new Valine({el:"#comments",verify:!1,notify:!1,appId:"V95HMkHzC6J9NvdCNbpg3A3E-gzGzoHsz",appKey:"gyf1NbCMlYbPnqykkSe7KuYC",placeholder:"ヾﾉ≧∀≦)o来啊，快活啊!",avatar:"mm",meta:guest,pageSize:"10",visitor:!1,lang:"zh-cn"})</script><script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script><script>$("body").find("div.pdf").length&&$.ajax({type:"GET",url:"//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js",dataType:"script",cache:!0,success:function(){$("body").find("div.pdf").each(function(e,t){PDFObject.embed($(t).attr("target"),$(t),{pdfOpenParams:{navpanes:0,toolbar:0,statusbar:0,pagemode:"thumbs",view:"FitH"},PDFJS_URL:"/lib/pdf/web/viewer.html",height:$(t).attr("height")||"500px"})})}})</script><script>
+// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
+
+window.addEventListener("message", function(e) {
+  var data = e.data;
+  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
+    var featureID = data.split(':')[1];
+    var height = data.split(':')[2];
+    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
+  }
+}, false);
+</script><canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:1;pointer-events:none"></canvas><script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script><script type="text/javascript" src="/js/src/fireworks.js"></script></body></html>

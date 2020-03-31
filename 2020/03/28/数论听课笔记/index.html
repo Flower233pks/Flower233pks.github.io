@@ -1,0 +1,419 @@
+<!DOCTYPE html><html class="theme-next gemini use-motion" lang><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0"><link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png?v=7.2.0"><link rel="icon" type="image/png" sizes="16x16" href="/images/icon-32.png?v=7.2.0"><link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222"><link rel="stylesheet" href="/css/main.css?v=7.2.0"><link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Verdana:300,300italic,400,400italic,700,700italic|Verdana:300,300italic,400,400italic,700,700italic|Verdana:300,300italic,400,400italic,700,700italic|Verdana:300,300italic,400,400italic,700,700italic|Courier New:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"><link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"><link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css"><script id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Gemini",version:"7.2.0",sidebar:{position:"left","Pisces | Gemini":270,width:270,display:"post",offset:12,onmobile:!1},back2top:{enable:!0,sidebar:!0,scrollpercent:!0},copycode:{enable:!0,show_result:!0,style:"mac"},fancybox:!0,mediumzoom:!1,lazyload:!1,pangu:!1,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}},translation:{copy_button:"Copy",copy_success:"Copied",copy_failure:"Copy failed"}}</script><meta name="description" content="听斯给普讲的有趣的数论问题，感觉海星？ 顺便加上了一点自己之前随便整理的东西。"><meta name="keywords" content="数学&#x2F;扩展欧几里德,数学&#x2F;数论,数学&#x2F;阶与原根"><meta property="og:type" content="article"><meta property="og:title" content="【听课笔记】数论听课笔记"><meta property="og:url" content="https://www.orchidany.cn/2020/03/28/数论听课笔记/index.html"><meta property="og:site_name" content="Orchidany&#39;w blog"><meta property="og:description" content="听斯给普讲的有趣的数论问题，感觉海星？ 顺便加上了一点自己之前随便整理的东西。"><meta property="og:locale" content="default"><meta property="og:image" content="https://www.orchidany.cn/2020/03/28/数论听课笔记/1.png"><meta property="og:updated_time" content="2020-03-30T13:24:17.635Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="【听课笔记】数论听课笔记"><meta name="twitter:description" content="听斯给普讲的有趣的数论问题，感觉海星？ 顺便加上了一点自己之前随便整理的东西。"><meta name="twitter:image" content="https://www.orchidany.cn/2020/03/28/数论听课笔记/1.png"><link rel="alternate" href="/atom.xml" title="Orchidany'w blog" type="application/atom+xml"><link rel="canonical" href="https://www.orchidany.cn/2020/03/28/数论听课笔记/"><script id="page.configurations">CONFIG.page={sidebar:""}</script><title>【听课笔记】数论听课笔记 | Orchidany'w blog</title><noscript><style>.sidebar-inner,.use-motion .brand,.use-motion .collection-title,.use-motion .comments,.use-motion .menu-item,.use-motion .motion-element,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .logo,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.use-motion .logo-line-before i{left:initial}.use-motion .logo-line-after i{right:initial}</style></noscript></head><body itemscope itemtype="http://schema.org/WebPage" lang="default"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">Orchidany'w blog</span><span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">A Soul Tune against Fate Should Be Played, now.</p></div><div class="site-nav-toggle"> <button aria-label="Toggle navigation bar"><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>Archives</a></li><li class="menu-item menu-item-friends"><a href="/Friends/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i><br>Friends</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>Search</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i></span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"> <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://www.orchidany.cn/2020/03/28/数论听课笔记/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Orchidany"><meta itemprop="description" content="For code, science, tech. and more"><meta itemprop="image" content="/images/avatar.png"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="Orchidany'w blog"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">【听课笔记】数论听课笔记</h1><div class="post-meta"><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">Posted on</span> <time title="Created: 2020-03-28 22:29:00" itemprop="dateCreated datePublished" datetime="2020-03-28T22:29:00+08:00">2020-03-28</time></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-check-o"></i></span> <span class="post-meta-item-text">Edited on</span> <time title="Modified: 2020-03-30 21:24:17" itemprop="dateModified" datetime="2020-03-30T21:24:17+08:00">2020-03-30</time></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">In</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-comment-o"></i></span> <span class="post-meta-item-text">Comments:</span><a href="/2020/03/28/数论听课笔记/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/03/28/数论听课笔记/" itemprop="commentCount"></span></a></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-eye"></i> Views:<span class="busuanzi-value" id="busuanzi_value_page_pv"></span></span></span><br></div></header><div class="post-body" itemprop="articleBody"><p>听斯给普讲的有趣的数论问题，感觉海星？</p><p>顺便加上了一点自己之前随便整理的东西。</p><a id="more"></a><h1 id="瞎整理系列"><a href="#瞎整理系列" class="headerlink" title="瞎整理系列"></a>瞎整理系列</h1><h2 id="gcd-的实现"><a href="#gcd-的实现" class="headerlink" title="gcd 的实现"></a>gcd 的实现</h2><h3 id="一个必要的式子"><a href="#一个必要的式子" class="headerlink" title="一个必要的式子"></a>一个必要的式子</h3><blockquote><p> $a\geq b\to (a,b)=(b,a \bmod ~b)$</p></blockquote><p>令$a=bp+q~(0\leq 1&lt;b)$ 。若 $\exists d|a,d|b$，则有 $da’=db’p+q$，移项得 $q=d(a’-b’p)$，故$d|q\Longrightarrow d|(a\bmod~b)$。</p><p>考虑最后，$b’=0$，此时有$a’=q$，又因为 $\forall d$ 满足 $d|a,d|b$, $\exists d|q\to d|a’$，即此时$a’$是所有因子的倍数，故 $a’$ 为最大公因数。</p><h3 id="复杂度证明"><a href="#复杂度证明" class="headerlink" title="复杂度证明"></a>复杂度证明</h3><p>考虑分类讨论，不妨令 $a&gt;b$.</p><ul><li>当 $\frac{a}{2}&gt;b$ 时，有 $a\bmod b&lt;b&lt;\frac{a}{2}$</li><li>当 $\frac{a}{2}\leq b$ 时，有 $a\bmod ~b=a-b&lt;\frac{a}{2}$</li></ul><p>所以复杂度是 $\log(\max(a,b))$ 的。</p><h2 id="exgcd-的实现"><a href="#exgcd-的实现" class="headerlink" title="exgcd 的实现"></a>exgcd 的实现</h2><p>考虑丢番图方程 $ax+by=(a,b)$ 。</p><p>发现迭代到 $x=1,y=0$ 时，上式依旧成立。</p><p>同时，有 $bx+y\cdot (a\bmod ~b)=(a,b)$ ，化简：</p><script type="math/tex;mode=display">
+\begin{aligned}
+bx+y\cdot (a-b\cdot \lfloor \frac{a}{b}\rfloor)&= (a,b)\\
+ay+b(x-y\cdot \lfloor \frac{a}{b}\rfloor) &=(a,b)
+\end{aligned}</script><p>按照这种形式向上递归后，就会少一层$\bmod$ 然后就没有然后了。</p><h2 id="阶"><a href="#阶" class="headerlink" title="阶"></a>阶</h2><blockquote><p>使得</p><script type="math/tex;mode=display">
+a^x\equiv 1(\bmod p)</script><p>的最小的 $x$ 称为 $a$ 关于 $p$ 的<strong>阶</strong>。</p></blockquote><p>那么有结论 $x|\varphi(p)$ 。</p><p>考虑反证法。因为</p><script type="math/tex;mode=display">
+a^x\equiv 1(\bmod p)\\
+a^{\varphi(p)} \equiv 1(\bmod p)</script><p>且 $x$ 最小，又因为假设 $x$ 不是 $\varphi(p)$ 的约数，故 $x&lt;\varphi(p)$ 。</p><p>那么会有不妨令 $\varphi(p)\equiv kx+q(0\leq q&lt;x)$ ，则有</p><script type="math/tex;mode=display">
+\begin{aligned}
+\frac{a^{\varphi(p)}}{(a^{x})^k}& \equiv a^q\\&\equiv 1(\bmod p)
+\end{aligned}</script><p>但这显然不合理，因为 $x&gt;q$ 但根据定义 $x$ 应该是最小的满足 $a^o\equiv 1(\bmod p)$ 的数，QED。</p><h2 id="威尔逊定理"><a href="#威尔逊定理" class="headerlink" title="威尔逊定理"></a>威尔逊定理</h2><blockquote><p>对于素数 $p$，有</p><script type="math/tex;mode=display">
+(p-1)!\equiv -1 (\bmod p)</script></blockquote><p>证明大概就是考虑，在$2,3,…,n-3,n-2$中，每个数有且仅有一个逆元，不会 $\geq p$ 且唯一，所以会互相抵消。</p><h1 id="exgcd的应用"><a href="#exgcd的应用" class="headerlink" title="exgcd的应用"></a>exgcd的应用</h1><h2 id="类欧几里得问题"><a href="#类欧几里得问题" class="headerlink" title="类欧几里得问题"></a>类欧几里得问题</h2><script type="math/tex;mode=display">
+\sum_{x=1}^{n}\lfloor \frac{ax+b}{c}\rfloor</script><p>发现其实本质上求的是一条直线在 $x$ 正半轴和 $y$ 的正半轴的整点数量。那么考虑对于矩形区域可以随便求，对于三角形区域，可以让 $a$ 对 $c$ 取模之后依旧不影响结果，所以考虑沿着 $y=x$ 对称，那么会使得 $\frac{a}{c}$ 变成 $\frac{c}{a}$ ，这样就可以达到一个辗转相除的效果，复杂度 $\log n$ 。</p><h2 id="杂题1"><a href="#杂题1" class="headerlink" title="杂题1"></a>杂题1</h2><p>已知 $a_x=a_{x-1}+a_{x-2}$ ，给定 $a_1$, 求有多少个 $a_2\in[l,r]$ 使得 $a_k=b~(\bmod p)$. $k,p=O(10^9)$ 。</p><p>发现最后的 $a_k$ 一定可以写成 $ca_1+da_2=a_k=b(\mod p)$ ，然后就转化成一个瞎 $exgcd$ 问题了。</p><h1 id="多项式复合"><a href="#多项式复合" class="headerlink" title="多项式复合"></a>多项式复合</h1><blockquote><p> 已知 $f(x), g(x)$，求 $f(g(x))\mod x^n$ ，$1\leq n,m\leq 4000$。</p></blockquote><p>因为</p><script type="math/tex;mode=display">
+f(g(x))=\sum_{i=0}^{n} f_{i} g(x)^{i}</script><p>于是考虑预处理 $g(x),g^2(x)\cdots g^p(x)$ ，和 $g^{2p}(x),g^{3p}(x)\cdots$ 这样，每块先对 $f_{i+kp}g(x)^i$ 求和再做多项式乘法。</p><p>最后复杂度就是 $O(nm+\sqrt mn\log n)$</p><h1 id="Stern-brocot-Tree"><a href="#Stern-brocot-Tree" class="headerlink" title="Stern-brocot Tree"></a>Stern-brocot Tree</h1><p>大概是把 $\frac{0}{1}$ 和 $\frac{1}{0}$ 当做两个虚根。然后每次在两个点 $\frac{n}{m}$ 和 $\frac{n’}{m’}$ 中间插入一个 $\frac{n’+n}{m’+m}$ 。之后大概是这样的：</p><p><img src="1.png" alt></p><blockquote><p>bzoj 2852</p><p>给两个有理数 $a,b$，求最小的正整数 $k$, 使得 $(ak,bk)$ 里有整数。</p><p>$a$, $b$ 整数部分不超过 $2^{31}$ , 小数位数不超过 $300$ 位。</p></blockquote><p>发现 $(a,b)$ 的答案和 $(a-1,b-1)$ 的答案一样。所以考虑将 $(ak,bk)$ 移动到 $[0,1)$ 这个区间。此时如果 $b\geq 1$ 或者 $a=0$ 那么就可以找 $0/1$ 。否则就变成了解这样一个不等式：</p><script type="math/tex;mode=display">
+a \times k \leq t \leq b \times k</script><p>也就是</p><script type="math/tex;mode=display">
+a \leq \frac{t}{k} \leq b</script><p>那么就是找一个分母最小的夹在 $a,b$ 之间的分数。并且由于 $b&lt;1$ 所以一定是个真分数。那么就可以在stern-brocot Tree树上找LCA即可。</p><p>这个地方似乎是不用真的建出来树，因为存在某种神秘的树上二分方式，十分高妙。</p><h1 id="卢卡斯定理"><a href="#卢卡斯定理" class="headerlink" title="卢卡斯定理"></a>卢卡斯定理</h1><script type="math/tex;mode=display">
+\left(\begin{array}{l}
+n \\
+m
+\end{array}\right) \equiv\left(\begin{array}{l}
+n \bmod p \\
+m \bmod p
+\end{array}\right) \times\left(\begin{array}{l}
+\left\lfloor\frac{n}{p}\right\rfloor \\
+\left\lfloor\frac{m}{p}\right\rfloor
+\end{array}\right) \quad(\bmod p)</script><h2 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h2><p>今天重学了一遍，发现证明好简单？</p><p>对于 $p$ 是质数而言，根据费马小定理一定有</p><script type="math/tex;mode=display">
+(1+x)^p\equiv (1+x) \pmod p</script><p>和</p><script type="math/tex;mode=display">
+x\equiv x^p  \pmod p</script><p>所以有</p><script type="math/tex;mode=display">
+(1+x)^p\equiv 1+x^p \pmod p</script><p>如果设 $n=sp+t,~0\leq t&lt;p$ 。那么就有</p><script type="math/tex;mode=display">
+\begin{aligned}
+(1+x)^n\equiv &(1+x)^{sp+t}\\
+\equiv &(1+x)^{sp}\cdot (1+x)^t\\
+\equiv &(1+x^p)^s\cdot (1+x)^t\\
+\equiv &(1+x^p)^{\left\lfloor\frac{n}{p}\right\rfloor}\cdot (1+x)^{x\bmod p}
+\end{aligned}\pmod p</script><p>考虑两边都暴力二项式展开</p><script type="math/tex;mode=display">
+\sum_{i=0}^n\binom{n}{i}x^i=\left(\sum_{j=0}^{\left\lfloor\frac{n}{p}\right\rfloor}\binom{n}{j}x^{j\cdot p}\right)\times \left(\sum_{k=0}^{n\bmod p}\binom{n}{k}x^{k}\right)\pmod p</script><p>观察右边。发现因为后面那个括号里 $x$ 的次数 $&lt;p$，前面一个括号内 $x$ 的次数一定是 $p$ 的倍数 。所以对于每个 $i$ ，都有唯一的 $j\cdot p+k=i$ （带余除法的唯一性）。所以可知</p><script type="math/tex;mode=display">
+\left(\begin{array}{l}
+n\\
+m
+\end{array}\right) \equiv\left(\begin{array}{l}
+n \bmod p \\
+m \bmod p
+\end{array}\right) \times\left(\begin{array}{l}
+\left\lfloor\frac{n}{p}\right\rfloor \\
+\left\lfloor\frac{m}{p}\right\rfloor
+\end{array}\right) \quad(\bmod p)</script><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> Lucas_T&#123;</span><br><span class="line">	<span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll ;</span><br><span class="line">	ll ans, tn, tm, tp, fac[N], inv[N] ;</span><br><span class="line">	<span class="function">ll <span class="title">expow</span><span class="params">(ll a, ll b, ll mod)</span></span>&#123;</span><br><span class="line">		ll ret = <span class="number">1</span> ;</span><br><span class="line">		<span class="keyword">while</span> (b)&#123;</span><br><span class="line">			<span class="keyword">if</span> (b &amp; <span class="number">1</span>)</span><br><span class="line">				(ret *= a) %= mod ;</span><br><span class="line">			(a *= a) %= mod ; b &gt;&gt;= <span class="number">1</span> ;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> ret ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">my_assign</span><span class="params">(ll x, ll y, ll z)</span></span>&#123;</span><br><span class="line">		tn = x ; tm = y ; tp = z ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">pre_do</span><span class="params">(<span class="keyword">int</span> U)</span></span>&#123;</span><br><span class="line">		fac[<span class="number">0</span>] = <span class="number">1</span> ;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= U ; ++ i)</span><br><span class="line">			fac[i] = fac[i - <span class="number">1</span>] * (ll)i % tp ;</span><br><span class="line">		inv[U] = expow(fac[U], tp - <span class="number">2</span>, tp) ; </span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = U ; i &gt;= <span class="number">1</span> ; -- i)</span><br><span class="line">			inv[i - <span class="number">1</span>] = inv[i] * (ll)i % tp ;</span><br><span class="line">		<span class="comment">//debug(fac, 1, U, '\n') ;</span></span><br><span class="line">		<span class="comment">//debug(inv, 1, U, '\n') ;</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">ll <span class="title">comb</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> fac[a] * inv[b] % tp * inv[a - b] % tp ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">ll <span class="title">do_do</span><span class="params">(ll x, ll y)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (x &lt; y) <span class="keyword">return</span> <span class="number">0l</span>l ;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (x &lt; tp) <span class="keyword">return</span> comb(x, y) ; </span><br><span class="line">		<span class="keyword">return</span> do_do(x % tp, y % tp) * do_do(x / tp, y / tp) % tp ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Lucas</span><span class="params">()</span></span>&#123;</span><br><span class="line">		my_assign(n + m, n, p) ; </span><br><span class="line">		pre_do(tp - <span class="number">1</span>) ; ans = do_do(tn, tm) ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>可以知道的是，Lucas定理还有另一种表示方式。如果把 $m,n$ 都看作 $p$ 进制数的话，即</p><script type="math/tex;mode=display">
+m=(\overline{m_1m_2\cdots m_k})_p\\
+n=(\overline{n_1n_2n_3\cdots n_k})_p</script><p>那么有</p><script type="math/tex;mode=display">
+\binom{n}{m}\equiv\prod _{i=1}^k \binom{n_i}{m_i} \pmod p</script><p>其实不难理解，可以联想十进制数拆分出每一位的过程，也是 $\bmod 10$ 之后再除以 $10$ 。</p><h2 id="例题：古代猪文"><a href="#例题：古代猪文" class="headerlink" title="例题：古代猪文"></a>例题：古代猪文</h2><blockquote><p>求 $g^\sum\textstyle_{d|n}\binom{n}{d}\bmod 999911659$ 。</p></blockquote><p>发现 $999911658=2\times 3\times 4679\times 35617$ ，然后分别做 Lucas 再拿crt合并起来就好了。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> P = <span class="number">999911659</span> ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">debug</span><span class="params">(ll *tp, <span class="keyword">int</span> minn, <span class="keyword">int</span> maxn, <span class="keyword">char</span> c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = minn ; i &lt;= maxn ; ++ i)</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; tp[i] &lt;&lt; <span class="string">" "</span> ;  <span class="built_in">cout</span> &lt;&lt; c ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">debug</span><span class="params">(<span class="keyword">int</span> *tp, <span class="keyword">int</span> minn, <span class="keyword">int</span> maxn, <span class="keyword">char</span> c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = minn ; i &lt;= maxn ; ++ i)</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; tp[i] &lt;&lt; <span class="string">" "</span> ;  <span class="built_in">cout</span> &lt;&lt; c ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000110</span> ;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> Lucas_T&#123;</span><br><span class="line">	ll ans ;</span><br><span class="line">    ll tp, tn, tm ;</span><br><span class="line">    ll fac[N], inv[N] ;</span><br><span class="line">	<span class="function">ll <span class="title">expow</span><span class="params">(ll a, ll b, ll mod)</span></span>&#123;</span><br><span class="line">		ll ret = <span class="number">1</span> ;</span><br><span class="line">		<span class="keyword">while</span> (b)&#123;</span><br><span class="line">			<span class="keyword">if</span> (b &amp; <span class="number">1</span>)</span><br><span class="line">				(ret *= a) %= mod ;</span><br><span class="line">			(a *= a) %= mod ; b &gt;&gt;= <span class="number">1</span> ;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> ret ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">my_assign</span><span class="params">(ll x, ll y, ll z)</span></span>&#123;</span><br><span class="line">		tn = x ; tm = y ; tp = z ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">pre_do</span><span class="params">(<span class="keyword">int</span> U)</span></span>&#123;</span><br><span class="line">		fac[<span class="number">0</span>] = <span class="number">1</span> ;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= U ; ++ i)</span><br><span class="line">			fac[i] = fac[i - <span class="number">1</span>] * (ll)i % tp ;</span><br><span class="line">		inv[U] = expow(fac[U], tp - <span class="number">2</span>, tp) ;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = U ; i &gt;= <span class="number">1</span> ; -- i)</span><br><span class="line">			inv[i - <span class="number">1</span>] = inv[i] * (ll)i % tp ;</span><br><span class="line">		<span class="comment">//debug(fac, 1, U, '\n') ;</span></span><br><span class="line">		<span class="comment">//debug(inv, 1, U, '\n') ;</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">ll <span class="title">comb</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> fac[a] * inv[b] % tp * inv[a - b] % tp ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">ll <span class="title">do_do</span><span class="params">(ll x, ll y)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (x &lt; y) <span class="keyword">return</span> <span class="number">0l</span>l ;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (x &lt; tp) <span class="keyword">return</span> comb(x, y) ;</span><br><span class="line">		<span class="keyword">return</span> do_do(x % tp, y % tp) * do_do(x / tp, y / tp) % tp ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">ll <span class="title">Lucas</span><span class="params">(ll x, ll y, ll z)</span></span>&#123;</span><br><span class="line">        my_assign(x, y, z) ;</span><br><span class="line">        ans = do_do(tn, tm) ; <span class="keyword">return</span> ans ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">namespace</span> Sunzi&#123;</span><br><span class="line">    ll A[N], m[N] ;</span><br><span class="line">    <span class="function">ll <span class="title">exgcd</span><span class="params">(ll &amp;x, ll &amp;y, ll a, ll b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!b)&#123; x = <span class="number">1</span>, y = <span class="number">0</span> ; <span class="keyword">return</span> a ; &#125;</span><br><span class="line">        ll g = exgcd(x, y, b, a % b), tmp = x ;</span><br><span class="line">        x = y ; y = tmp - a / b * y ; <span class="keyword">return</span> g ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">ll <span class="title">exmul</span><span class="params">(ll a, ll b, ll mod)</span></span>&#123;</span><br><span class="line">	    ll res = <span class="number">0</span> ;</span><br><span class="line">	    <span class="keyword">while</span> (b)&#123;</span><br><span class="line">		    <span class="keyword">if</span> (b &amp; <span class="number">1</span>)</span><br><span class="line">			    (res += a) %= mod ;</span><br><span class="line">	    	(a += a) %= mod ; b &gt;&gt;= <span class="number">1</span> ;</span><br><span class="line">	    &#125;</span><br><span class="line">	    <span class="keyword">return</span> res ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">ll <span class="title">excrt</span><span class="params">(<span class="keyword">int</span> pn)</span></span>&#123;</span><br><span class="line">        ll res, mod ;</span><br><span class="line">        ll a, b, c, d, M ;</span><br><span class="line">        ll x, y, t0, t, g, z ;</span><br><span class="line">        res = A[<span class="number">1</span>] ; mod = m[<span class="number">1</span>] ;</span><br><span class="line">	    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span> ; i &lt;= pn ; ++ i)&#123;</span><br><span class="line">            a = res, b = mod ;</span><br><span class="line">            c = A[i], d = m[i] ;</span><br><span class="line">            g = exgcd(x, y, b, d) ;</span><br><span class="line">		    z = ((c - a) % d + d) % d ;</span><br><span class="line">		    M = d / g ; <span class="keyword">if</span> (z % g &gt; <span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span> ;</span><br><span class="line">            t = exmul(x, (z / g), M) ; mod = mod * M ;</span><br><span class="line">            res = ((res + exmul(t, b, mod)) % mod + mod) % mod ;</span><br><span class="line">        &#125;</span><br><span class="line">	    <span class="keyword">return</span> res ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> k ;</span><br><span class="line"><span class="keyword">int</span> cnt ;</span><br><span class="line">ll n, g ;</span><br><span class="line">ll res[N] ;</span><br><span class="line">ll base[N] ;</span><br><span class="line">ll p[<span class="number">4</span>] = &#123;<span class="number">2</span>, <span class="number">3</span>, <span class="number">4679</span>, <span class="number">35617</span>&#125; ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; g ;</span><br><span class="line">    <span class="keyword">if</span> (g % P == <span class="number">0</span>) <span class="keyword">return</span> <span class="built_in">puts</span>(<span class="string">"0"</span>), <span class="number">0</span> ; </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= <span class="built_in">sqrt</span>(n) ; ++ i)</span><br><span class="line">        <span class="keyword">if</span> (n % i == <span class="number">0</span>) base[++ cnt] = i ;</span><br><span class="line">    <span class="keyword">int</span> t = cnt ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= t ; ++ i)</span><br><span class="line">        <span class="keyword">if</span> (n / base[i] &gt; <span class="built_in">sqrt</span>(n))</span><br><span class="line">            base[++ cnt] = n / base[i] ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt;= <span class="number">3</span> ; ++ i)&#123;</span><br><span class="line">        Lucas_T :: tp = p[i] ;</span><br><span class="line">		Lucas_T :: pre_do(p[i] - <span class="number">1</span>) ;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span> ; j &lt;= cnt ; ++ j)</span><br><span class="line">            (res[i] += Lucas_T :: Lucas(n, base[j], p[i])) %= (P - <span class="number">1</span>) ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt;= <span class="number">3</span> ; ++ i)</span><br><span class="line">        Sunzi :: A[i + <span class="number">1</span>] = res[i], Sunzi :: m[i + <span class="number">1</span>] = p[i] ;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; Lucas_T :: expow(g, Sunzi :: excrt(<span class="number">4</span>), P) &lt;&lt; <span class="string">'\n'</span> ; <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="例题：组合数问题"><a href="#例题：组合数问题" class="headerlink" title="例题：组合数问题"></a>例题：组合数问题</h2><blockquote><p>求 $0≤j≤i≤n$ 且 $j≤m$ 的数对 $(i,j)$ 里有多少满足 $\binom{i}{j}≡0 \pmod p$</p><p>$T ≤ 100,n,m ≤ 10^{18},p ≤ 100$ 且是一个质数.</p></blockquote><p>根据上面那个性质，只要 $p$ 进制下 $i$ 的任何一位 $&lt;j$ 就 $\equiv 0$ 。然后就直接数位dp就完了。</p><h2 id="小-Q-的集合"><a href="#小-Q-的集合" class="headerlink" title="小 Q 的集合"></a>小 Q 的集合</h2><blockquote><p>求从 $n$ 元集合 $\rm S$ 中随机选择一个子集 $\rm T$ 。求 $|\mathrm{S−T}|^k −|\mathrm{T}|^k$ 的方差。</p><p>$n≤10^{10^6},k≤10$，答案对质数 $m≤10^6$ 取模。</p></blockquote><p>嗯，学习了一下方差的定义。记这个东西的期望是 $E(x)$ ，那么方差就是 $E([x-E(x)]^2)=E(x^2)-E^2(x)$。</p><p>嗯，得出结论，概率论这一套是学不懂的。</p><p>说做法吧。根据期望的线性性，可以得到这个东西的期望是</p><script type="math/tex;mode=display">
+E(|\mathrm{S−T}|^k −|\mathrm{T}|^k)= E(|\mathrm{S−T}|^k)-E(|\mathrm{T}|^k)</script><p>那么显然这两项是对称的，所以这个东西的期望就是 $0$ 。所以就只需要求 $|\mathrm{S−T}|^k −|\mathrm{T}|^k$ 的平方的期望就可以了。那么答案也就是</p><script type="math/tex;mode=display">
+\frac{\sum\limits_{i=0}^{n}\binom{n}{i}\left(i^{k}-(n-i)^{k}\right)^{2}}{2^n}</script><p>emmm然而并不可以直接做。然后有个很神仙的点就是考虑拿Lucas定理来展开一层得到：</p><script type="math/tex;mode=display">
+\sum_{i=0}^{\lfloor \frac{n}{m}\rfloor}\left(\begin{array}{c}
+\left\lfloor\frac{n}{m}\right\rfloor \\
+i
+\end{array}\right) \sum_{j=0}^{n \bmod m}\left(\begin{array}{c}
+n \bmod m \\
+j
+\end{array}\right)\left(j^{k}-(n-j)^{k}\right)^{2}</script><p>这么做是对的就在于每个 $\binom{n}{j}$ 都被分解成了唯一的 $\binom{\lfloor \frac{n}{m}\rfloor}{i}\cdot \binom{n\bmod m}{j}$ ，那么这两部分就可以<strong>分别算了</strong>。第一部分很显然就是 $2^n$ ，第二部分直接做就可以了。</p><p>嗯，这题真是十分高妙。</p><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>数论有意思！</p><p>exLucas是不可能学的…</p></div><footer class="post-footer"><div class="post-tags"><a href="/tags/数学-扩展欧几里德/" rel="tag"><i class="fa fa-tag"></i> 数学/扩展欧几里德</a><a href="/tags/数学-数论/" rel="tag"><i class="fa fa-tag"></i> 数学/数论</a><a href="/tags/数学-阶与原根/" rel="tag"><i class="fa fa-tag"></i> 数学/阶与原根</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2020/03/25/带权二分/" rel="next" title="【听课笔记】带权二分(wqs二分)"><i class="fa fa-chevron-left"></i> 【听课笔记】带权二分(wqs二分)</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"> <a href="/2020/03/29/数论同余学习笔记/" rel="prev" title="【学习笔记】同余">【学习笔记】同余<i class="fa fa-chevron-right"></i></a></div></div></footer></div></article></div></div><div class="comments" id="comments"></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><div style><canvas id="canvas" style="width:60%">当前浏览器不支持canvas，请更换浏览器后再试</canvas></div><script>!function(){var t,o=[[[0,0,1,1,1,0,0],[0,1,1,0,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,0,1,1,0],[0,0,1,1,1,0,0]],[[0,0,0,1,1,0,0],[0,1,1,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[1,1,1,1,1,1,1]],[[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,0,1,1,0,0,0],[0,1,1,0,0,0,0],[1,1,0,0,0,0,0],[1,1,0,0,0,1,1],[1,1,1,1,1,1,1]],[[1,1,1,1,1,1,1],[0,0,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,0,1,1,1,0,0],[0,0,0,0,1,1,0],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[0,0,0,0,1,1,0],[0,0,0,1,1,1,0],[0,0,1,1,1,1,0],[0,1,1,0,1,1,0],[1,1,0,0,1,1,0],[1,1,1,1,1,1,1],[0,0,0,0,1,1,0],[0,0,0,0,1,1,0],[0,0,0,0,1,1,0],[0,0,0,1,1,1,1]],[[1,1,1,1,1,1,1],[1,1,0,0,0,0,0],[1,1,0,0,0,0,0],[1,1,1,1,1,1,0],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[0,0,0,0,1,1,0],[0,0,1,1,0,0,0],[0,1,1,0,0,0,0],[1,1,0,0,0,0,0],[1,1,0,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[1,1,1,1,1,1,1],[1,1,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,1,1,0,0,0],[0,0,1,1,0,0,0],[0,0,1,1,0,0,0],[0,0,1,1,0,0,0]],[[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,1,1,0,0,0,0]],[[0,0,0,0,0,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,0,0,0,0,0]]],e=document.getElementById("canvas");if(e.getContext){var l=e.getContext("2d");e.height=100,e.width=700,l.fillStyle="#f00",l.fillRect(10,10,50,50);var r=[],f=[],i=e.height/20-1;function n(t,e){for(var n=0;n<o[e].length;n++)for(var a=0;a<o[e][n].length;a++)1==o[e][n][a]&&(l.beginPath(),l.arc(14*(i+2)*t+2*a*(i+1)+(i+1),2*n*(i+1)+(i+1),i,0,2*Math.PI),l.closePath(),l.fill())}function h(t,e){for(var n=[1,2,3],a=["#3BE","#09C","#A6C","#93C","#9C0","#690","#FB3","#F80","#F44","#C00"],l=0;l<o[e].length;l++)for(var r=0;r<o[e][l].length;r++)if(1==o[e][l][r]){var h={x:14*(i+2)*t+2*r*(i+1)+(i+1),y:2*l*(i+1)+(i+1),stepX:Math.floor(4*Math.random()-2),stepY:-2*n[Math.floor(Math.random()*n.length)],color:a[Math.floor(Math.random()*a.length)],disY:1};f.push(h)}}t=/(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date),r.push(t[1],t[2],10,t[3],t[4],10,t[5],t[6]),clearInterval(a);var a=setInterval(function(){!function(){var t=[],e=/(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date),n=[];n.push(e[1],e[2],10,e[3],e[4],10,e[5],e[6]);for(var a=r.length-1;0<=a;a--)n[a]!==r[a]&&t.push(a+"_"+(Number(r[a])+1)%10);for(a=0;a<t.length;a++)h.apply(this,t[a].split("_"));r=n.concat()}(),function(){for(var t=0;t<f.length;t++)f[t].stepY+=f[t].disY,f[t].x+=f[t].stepX,f[t].y+=f[t].stepY,(f[t].x>700+i||f[t].y>100+i)&&(f.splice(t,1),t--)}(),function(){e.height=100;for(var t=0;t<r.length;t++)n(t,r[t]);for(t=0;t<f.length;t++)l.beginPath(),l.arc(f[t].x,f[t].y,i,0,2*Math.PI),l.fillStyle=f[t].color,l.closePath(),l.fill()}()},50)}}()</script><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> Table of Contents</li><li class="sidebar-nav-overview" data-target="site-overview-wrap"> Overview</li></ul><div class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"> <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Orchidany"><p class="site-author-name" itemprop="name">Orchidany</p><div class="site-description motion-element" itemprop="description">For code, science, tech. and more</div></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/"><span class="site-state-item-count">150</span> <span class="site-state-item-name">posts</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/"><span class="site-state-item-count">52</span> <span class="site-state-item-name">categories</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/"><span class="site-state-item-count">105</span> <span class="site-state-item-name">tags</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div></div></div><div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#瞎整理系列"><span class="nav-number">1.</span> <span class="nav-text">瞎整理系列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gcd-的实现"><span class="nav-number">1.1.</span> <span class="nav-text">gcd 的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一个必要的式子"><span class="nav-number">1.1.1.</span> <span class="nav-text">一个必要的式子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复杂度证明"><span class="nav-number">1.1.2.</span> <span class="nav-text">复杂度证明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#exgcd-的实现"><span class="nav-number">1.2.</span> <span class="nav-text">exgcd 的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#阶"><span class="nav-number">1.3.</span> <span class="nav-text">阶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#威尔逊定理"><span class="nav-number">1.4.</span> <span class="nav-text">威尔逊定理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#exgcd的应用"><span class="nav-number">2.</span> <span class="nav-text">exgcd的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#类欧几里得问题"><span class="nav-number">2.1.</span> <span class="nav-text">类欧几里得问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#杂题1"><span class="nav-number">2.2.</span> <span class="nav-text">杂题1</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多项式复合"><span class="nav-number">3.</span> <span class="nav-text">多项式复合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Stern-brocot-Tree"><span class="nav-number">4.</span> <span class="nav-text">Stern-brocot Tree</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#卢卡斯定理"><span class="nav-number">5.</span> <span class="nav-text">卢卡斯定理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#证明"><span class="nav-number">5.1.</span> <span class="nav-text">证明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题：古代猪文"><span class="nav-number">5.2.</span> <span class="nav-text">例题：古代猪文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题：组合数问题"><span class="nav-number">5.3.</span> <span class="nav-text">例题：组合数问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小-Q-的集合"><span class="nav-number">5.4.</span> <span class="nav-text">小 Q 的集合</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div></div></div><div class="back-to-top motion-element"><i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; <span itemprop="copyrightYear">2020</span><span class="with-love" id="animate"><i class="fa fa-user"></i></span> <span class="author" itemprop="copyrightHolder">Orchidany</span></div><div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div> <span class="post-meta-divider">|</span><div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.2.0</div><div class="theme-info"><div class="powered-by"></div> <span class="post-count">博客全站共295.2k字</span></div><div class="busuanzi-count"><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span class="post-meta-item-icon"><i class="fa fa-user"></i></span><span class="site-uv" title="Total Visitors"><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-eye"></i></span><span class="site-pv" title="Total Views"><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span></div></div></footer></div><script>"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script src="/lib/jquery/index.js?v=3.4.1"></script><script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script><script src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script src="/js/utils.js?v=7.2.0"></script><script src="/js/motion.js?v=7.2.0"></script><script src="/js/affix.js?v=7.2.0"></script><script src="/js/schemes/pisces.js?v=7.2.0"></script><script src="/js/scrollspy.js?v=7.2.0"></script><script src="/js/post-details.js?v=7.2.0"></script><script src="/js/next-boot.js?v=7.2.0"></script><script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script><script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>var GUEST=["nick","mail","link"],guest="nick,mail,link";guest=guest.split(",").filter(function(e){return-1<GUEST.indexOf(e)}),new Valine({el:"#comments",verify:!1,notify:!1,appId:"V95HMkHzC6J9NvdCNbpg3A3E-gzGzoHsz",appKey:"gyf1NbCMlYbPnqykkSe7KuYC",placeholder:"ヾﾉ≧∀≦)o来啊，快活啊!",avatar:"mm",meta:guest,pageSize:"10",visitor:!1,lang:"zh-cn"})</script><script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script><script>$("body").find("div.pdf").length&&$.ajax({type:"GET",url:"//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js",dataType:"script",cache:!0,success:function(){$("body").find("div.pdf").each(function(e,t){PDFObject.embed($(t).attr("target"),$(t),{pdfOpenParams:{navpanes:0,toolbar:0,statusbar:0,pagemode:"thumbs",view:"FitH"},PDFJS_URL:"/lib/pdf/web/viewer.html",height:$(t).attr("height")||"500px"})})}})</script><script>
+// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
+
+window.addEventListener("message", function(e) {
+  var data = e.data;
+  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
+    var featureID = data.split(':')[1];
+    var height = data.split(':')[2];
+    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
+  }
+}, false);
+</script><canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:1;pointer-events:none"></canvas><script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script><script type="text/javascript" src="/js/src/fireworks.js"></script></body></html>
