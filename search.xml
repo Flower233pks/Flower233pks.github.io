@@ -9,12 +9,12 @@
 <p>在这些文章里，你会看到一个迷茫的青年如何满怀热血与绝望，眼里闪烁着沧桑与希望，怀里揣着坏掉的粮食和崭新的论文，脚下踏着崎岖不平的路，向明天走去。</p>
 <p>是的，我是花，来自山东，你直接叫我花这个ID或许我会很高兴，但是如果你认识我也可以不这么拘束。</p>
 
-        <div id="aplayer-sHLzLVBK" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-AgFpsmBh" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-sHLzLVBK"),
+            element: document.getElementById("aplayer-AgFpsmBh"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -135,6 +135,104 @@
       </tags>
   </entry>
   <entry>
+    <title>【学习笔记】从剩余类到欧拉定理</title>
+    <url>/2020/04/02/%E5%89%A9%E4%BD%99%E7%B1%BB%E7%9B%B8%E5%85%B3%E5%86%85%E5%AE%B9/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>「重学4-6」系列的最后一篇文章。</p>
+<p>感觉剩余类这部分内容，以纯数论的眼光去看待，是十分优美的。</p>
+<p>嗯，将来自己抽代真正入门之后，可能就会多一点别的角度了吧。</p>
+<a id="more"></a>
+<h1 id="剩余类相关定义"><a href="#剩余类相关定义" class="headerlink" title="剩余类相关定义"></a>剩余类相关定义</h1><h2 id="剩余类"><a href="#剩余类" class="headerlink" title="剩余类"></a>剩余类</h2><p>定义 1.1</p>
+<blockquote>
+<p>记在模 $m$ 意义下，全部对 $m$ 同余的整数组成的集合，叫做 $m$ 的一个剩余类。</p>
+</blockquote>
+<p>那么显然对于一个固定的模 $m$，有 $m$ 个剩余类，分别同余 $0,1,2\cdots m-1$，分别记作 $\mathrm{ Z}_{m,0},\mathrm{ Z}_{m,1},\mathrm{ Z}_{m,2}\cdots,\mathrm{ Z}_{m,m-1}$ 。记所以剩余类组成的集合是 $\mathrm{ Z}_{m}$ 。</p>
+<p>考虑定义剩余类之间的运算 $+$ 和 $\times $ ：</p>
+<script type="math/tex; mode=display">
+\mathrm{ Z}_{m,a}+\mathrm{ Z}_{m,b}=\mathrm{ Z}_{m,a+b}\\
+\mathrm{ Z}_{m,a}\times \mathrm{ Z}_{m,b}=\mathrm{ Z}_{m,a\times b}</script><p>其中 $a+b$ 和 $a\times b$ 是在模 $m$ 意义下的数加和数乘。并且可以知道，对于全体模 $m$ 意义下的剩余类 $\mathrm{ Z}_{m}$ 而言，$&lt;\mathrm{ Z}_{m},+,\times&gt;$ 本身是一个环。考虑如下：</p>
+<p>1、首先 $(\mathrm{ Z}_{m},+)$ 显然是一个阿贝尔群。</p>
+<p>2、其次 $(\mathrm{ Z}_{m},\times )$ 显然具有结合律，但是如果对于某个剩余类 $\mathrm{ Z}_{m,p}$ $(p,m)&gt;1$ ，就说明了 $\mathrm{ Z}_{m,p}$ 本身不存在逆元 ，所以可知道 $(\mathrm{ Z}_{m},\times )$ 是一个半群。</p>
+<p>3、同时可知在 $(\mathrm{ Z}_{m},\times )$ 中，高优先级运算 $\times $ 对低优先级运算 $+$ 有分配律。</p>
+<p>综上，$(\mathrm{ Z}_{m},+,\times )$ 是一个环。并且不难知道 $\mathrm{ Z}_{m,0}$ 就是这个环中的零元。</p>
+<p>但是这个环并不是正则环。考虑我们熟知的正则环 $&lt;\mathbb Z,+,\times&gt;$ 和 $&lt;\mathbb R,+,\times &gt;$ 内都不存在零因子 $a,b$ 使得 $a\not =0,b\not = 0$ 且 $a\times b=0$ 。但是在模运算下这是可能成立的，比如可以设 $m=pq$ ，其中 $p\not \equiv q\pmod m$，那么就有 $\mathrm{ Z}_{m,p} \times \mathrm{ Z}_{m,q}=\mathrm{ Z}_{m,0}$ ，此时 $p,q$ 就均为 $\mathrm{ Z}_{m}$ 的零因子。所以可知剩余类环并不是正则的。</p>
+<h2 id="互素剩余类"><a href="#互素剩余类" class="headerlink" title="互素剩余类"></a>互素剩余类</h2><h3 id="定义1-2"><a href="#定义1-2" class="headerlink" title="定义1.2"></a>定义1.2</h3><blockquote>
+<p>若对于一个模 $m$ 意义下的剩余类 $\mathrm{ Z}_{m,k}$ 满足 $(m,k)=1$ ，那么称 $\mathrm{ Z}_{m,k}$ 为模 $m$ 的一个互素剩余类。</p>
+</blockquote>
+<p>为了方便起见，记某个互素剩余类 $\mathrm{ Z}_{m,k}$ 为 $\mathrm{\zeta}_{m,k}$ 。同时可知这样的 $\mathrm{\zeta}_{m,k}$ 共有 $\varphi(m)$ 个。</p>
+<h1 id="剩余系"><a href="#剩余系" class="headerlink" title="剩余系"></a>剩余系</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><h3 id="定义2-1"><a href="#定义2-1" class="headerlink" title="定义2.1"></a>定义2.1</h3><blockquote>
+<p>如果对于一个集合 $\rm S$ ，满足 $\mathrm{|S|}=m$ 且 $\forall i\not=j,i\in \mathrm{S},j\in \mathrm{S}$ 有</p>
+<script type="math/tex; mode=display">
+i\in\mathrm{ Z}_{m,p}, j \in \mathrm{ Z}_{m,q}, \mathrm{ Z}_{m,p}\not=\mathrm{ Z}_{m,q}</script><p>那么记这个集合为模 $m$ 的一个完全剩余系。</p>
+</blockquote>
+<h3 id="定义2-2"><a href="#定义2-2" class="headerlink" title="定义2.2"></a>定义2.2</h3><blockquote>
+<p>如果对于一个集合 $\rm S$ ，满足 $\mathrm{|S|}=m$ 且 $\forall i\not=j,i\in \mathrm{S},j\in \mathrm{S}$ 有</p>
+<script type="math/tex; mode=display">
+i\in\mathrm{ \zeta}_{m,p}, j \in \mathrm{ \zeta}_{m,q}, \mathrm{ \zeta}_{m,p}\not=\mathrm{ \zeta}_{m,q}</script><p>那么记这个集合为模 $m$ 的一个简化剩余系。</p>
+</blockquote>
+<p>可知模 $m$ 的一个完全剩余系的大小是 $m$ ，一个简化剩余系的大小是 $\varphi(m)$ 。</p>
+<h2 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h2><h3 id="定理2-1"><a href="#定理2-1" class="headerlink" title="定理2.1"></a>定理2.1</h3><blockquote>
+<p>设 $m\in \mathbb Z_+$，$k,p\in \mathbb Z$ 且 $(k,m)=1$ ，则</p>
+<p>（1）当 $x$ 遍历模 $m$ 的一个完全剩余系 $\mathrm{S}$ 时，$kx+p$ 也遍历模 $m$ 的一个完全剩余系 $\mathrm{S’}$ 。</p>
+<p>（2）当 $x$ 遍历模 $m$ 的一个简化剩余系 $\mathrm{T}$ 时，$kx$ 也遍历模 $m$ 的一个简化剩余系 $\mathrm{T’}$ 。</p>
+</blockquote>
+<p>证：</p>
+<p>（1）考虑只需要证对于任意两个模 $m$ 下不同余的 $x_i,x_j$ ， $kx_i+p,kx_j+p$ 也是不同余的，那么就可以得证。</p>
+<p>考虑反证法。若 $kx_i+p\equiv kx_j+p\pmod m$，则有</p>
+<script type="math/tex; mode=display">
+kx_i\equiv kx_j\pmod m</script><p>那么由于 $(k,m)=1$ 且根据定理</p>
+<blockquote>
+<p>若 $ac\equiv bc\pmod m$，且 $(m,c)=d$，则 $a\equiv b \pmod{\frac{m}{d}}$ 。</p>
+</blockquote>
+<p>可知 $x_i\equiv x_j\pmod m$ 。矛盾。</p>
+<p>（2）由（1）可以知道 $kx_i$ 彼此之间不同余，且因为 $(k,x_i)=(k,m)=1$ ，所以可知遍历的是一个简化剩余系。</p>
+<h3 id="定理2-2"><a href="#定理2-2" class="headerlink" title="定理2.2"></a>定理2.2</h3><blockquote>
+<p>设 $(m_1,m_2)=1$ ，则：</p>
+<p>（1）当 $x,y$ 分别遍历模 $m_1,m_2$ 的一个完全剩余系时，$m_2x+m_1y$ 也遍历模 $m_1m_2$ 的一个完全剩余系。</p>
+<p>（2）当 $x,y$ 分别遍历模 $m_1,m_2$ 的一个简化剩余系时，$m_2x+m_1y$ 也遍历模 $m_1m_2$ 的一个简化剩余系。</p>
+</blockquote>
+<p>证：</p>
+<p>（1）</p>
+<p>还是从证明互不同余这方面来考虑。如果存在 $x_1,x_2,y_1,y_2$ 使得</p>
+<script type="math/tex; mode=display">
+m_{2} x_{1}+m_{1} y_{1} \equiv m_{2} x_{2}+m_{1} y_{2}\pmod {m_{1} m_{2}}</script><p>那么首先有</p>
+<script type="math/tex; mode=display">
+m_{2} x_{1}+m_{1} y_{1} \equiv m_{2} x_{2}+m_{1} y_{2}\pmod {m_{1}}</script><p>即</p>
+<script type="math/tex; mode=display">
+m_{2} x_{1} \equiv m_{2} x_{2}\pmod {m_{1}}</script><p>那么因为 $(m_1,m_2)=1$ ，所以有</p>
+<script type="math/tex; mode=display">
+x_{1} \equiv x_{2}\pmod {m_{1}}</script><p>同理可知</p>
+<script type="math/tex; mode=display">
+y_{1} \equiv y_{2}\pmod {m_{1}}</script><p>那么就可以知道，当 $x_1,x_2$ 不同余，$y_1,y_2$ 不同余的时候，$m_2x+m_1y$ 也是不同余的。</p>
+<p>（2）</p>
+<p>首先由于 $(x,m_1)=(y,m_2)=1$ ，所以 $(m_2x+m_1y,m_1)=1$ 且 $(m_2x+m_1y,m_2)=1$，所以可知 $m_2x+m_1y$ 一定会属于 $m_1m_2$ 的简化剩余系。同时由（1）中的结论可知这 $\varphi(n)\varphi(m)$ 个结果是两两不同余的。于是就只需要证明 $m_1m_2$ 的简化剩余系中，均属于这 $\varphi(n)\varphi(m)$ 个元素组成的集合即可。</p>
+<p>对于任意一个与 $m_1m_2$ 互质的元素 $q$，由（1）可知必定存在一组 $(s,t)$ 使得</p>
+<script type="math/tex; mode=display">
+q\equiv m_2s+m_1t\pmod {m_1m_2}</script><p>考虑若 $(s,m_1)&gt;1$ ，则有某个$d&gt;1,d|s$ 满足 $d|m_1\Longrightarrow d|m_1m_2$ 的同时 $d|q$ ，那么 $(m_1m_2,q)\geq d$ ，不符合互质的假设。故可知 $(s,m_1)=1$ ，同理 $(t,m_2)=1$ ，故证毕。</p>
+<h2 id="推论"><a href="#推论" class="headerlink" title="推论"></a>推论</h2><p>由定理 2.2(2) 可知，分别遍历模 $m_1$ 和 $m_2$ 的简化剩余系的 $x$ 和 $y$ ，在 $(m_1,m_2)=1$ 时，$m_1y+m_2x$ 遍历模 $m_1m_2$ 的一个简化剩余系。 根据乘法原理，可以得到 $\varphi(m_1)\cdot \varphi(m_2)=\varphi(m_1m_2)$ 。</p>
+<p>这也就证明了欧拉函数 $\varphi(x)$ 是积性函数。</p>
+<h1 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h1><blockquote>
+<p>若 $(a,m)=1$ ，则有 $a^{\varphi(m)}\equiv 1\pmod m$ .</p>
+</blockquote>
+<p>若设 $(x_1,x_2,x_3\cdots x_{\varphi(m)})$ 是模 $m$ 的一个简化剩余系，那么由定理2.1(2)可知 $(ax_1,ax_2,ax_3\cdots ax_{\varphi(m)})$ 也是模 $m$ 的一个简化剩余系。所以有</p>
+<script type="math/tex; mode=display">
+\prod_{i=1}^{\varphi(m)} x_i\equiv \prod_{i=1}^{\varphi(m)} ax_i\pmod m</script><p>那么由于 $\forall i,(x_i,m)=1$，所以 $(\prod x_i,m)=1$ 。于是消一下可以得到</p>
+<script type="math/tex; mode=display">
+1\equiv a^{\varphi(m)}\pmod m</script><p>证毕。</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>个人感觉剩余类这部分是很有趣的，虽然以上内容大部分都是4-6里面提炼出来的。对于欧拉定理，用群论知识证明同样十分简洁。</p>
+<p>总之，完结啦，撒花花。</p>
+<p>数论4-6，也算是我的一场持续了三年的春花旧梦了吧。</p>
+<p>不知道啥时候能和EI和rqy一样有对数学知识的深刻认识。慢慢来吧。只有站在越高处，才能看到越广的风景，不是吗？</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>数学/数论</tag>
+        <tag>数学/抽象代数/环论</tag>
+        <tag>数学/积性函数/欧拉反演</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【题解】[湖北省队互测2014week1 B] 一个人的数论</title>
     <url>/2020/04/01/%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E6%95%B0%E8%AE%BA/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -147,10 +245,10 @@
 \begin{aligned}
 &\sum_{i=1}^n[(i,n)=1]i^m\\
 =&\sum_{i=1}^ni^m\sum_{d|i,d|n}\mu(d)\\
-=&\sum_{d=1}^nd^m\mu(d)\sum_{i=1}^{\lfloor \frac{n}{d}\rfloor}  i^m
+=&\sum_{d|n}d^m\mu(d)\sum_{i=1}^{\lfloor \frac{n}{d}\rfloor}  i^m
 \end{aligned}</script><p>然后发现这东西好像不是容易提前预处理。根据伯努利数的推论，可以知道 $\sum i^m$ 这东西是一个关于上界 $n$ 的 $m+1$ 次多项式。发现 $m$ 并不大于是可以 $O(m^2)$ 插出来。 若记这个多项式是 $f$ ，那么原式就等价于</p>
 <script type="math/tex; mode=display">
-\sum_{d=1}^nd^m\mu(d)\sum_{i=1}^{m+1} f_i\left(\lfloor\frac{n}{d}\rfloor\right) ^ i</script><p>稍微化一下就是</p>
+\sum_{d|n}d^m\mu(d)\sum_{i=1}^{m+1} f_i\left(\lfloor\frac{n}{d}\rfloor\right) ^ i</script><p>稍微化一下就是</p>
 <script type="math/tex; mode=display">
 =\sum_{i=0}^{m+1} f_{i} \sum_{d | n} d^{m} \mu(d)\left(\frac{n}{d}\right)^{i}</script><p>发现对于后面的 $\sum $ 只需要求出每个 $p_i^{a_i}$ 处的值，然后每次 $O(k)$ 暴力合并，似乎也没啥问题。考虑对于每个 $p_i^{a_{i}}$ 怎么求。这个地方大概需要涨个经验，就是 $\mu(d)$ 这东西只有当 $d=1$ 和 $d=p_i$ 的时候才有值(无平方因子,剩下的因子都是 $p_i$ 的某个次数 $&gt;2$ 的幂)，所以每个只需要算两次，是 $O(1)$ 的。于是最后的复杂度 $O(m(m+k))$ 。</p>
 <p>好神啊好神啊。</p>
@@ -328,6 +426,44 @@ n\sum_{i=1}^n\frac{i}{\gcd(i,n)}=n\cdot \frac{1}{2}\left(\sum_{i=1}^n\frac{i}{\g
 <p>嗯，寓快于慢，藏巧于拙。</p>
 <a id="more"></a>
 <p>先定义一下解的「本质相同」：通常认为在模 $m$ 意义下的同余方程中 $x$ 和 $x+km(k\in\mathbb{Z_+})$ 是本质相同的。 </p>
+<h1 id="同余的基本性质"><a href="#同余的基本性质" class="headerlink" title="同余的基本性质"></a>同余的基本性质</h1><p>1.</p>
+<blockquote>
+<p>若 $ac\equiv bc\pmod m$，且 $(m,c)=d$，则 $a\equiv b \pmod{\frac{m}{d}}$ 。</p>
+</blockquote>
+<script type="math/tex; mode=display">
+ac\equiv bc\pmod m\Longrightarrow m|c(a-b)\Longrightarrow \frac{m}{d}|\frac{c}{d}(a-b)</script><p>因为 $(\frac{m}{d},\frac{c}{d})=1$ ，所以 $\frac{m}{d}|(a-b)$ 。</p>
+<p>2、</p>
+<blockquote>
+<p>若给定 $m_i(i=1,2,3\cdots)$ ，且 $\forall i$ 有 $a\equiv b\pmod {m_i}$，则有</p>
+<script type="math/tex; mode=display">
+a\equiv b\pmod {[m_1,m_2,m_3\cdots ]}</script></blockquote>
+<p>由 $\forall i,m_i|(a-b)$ 可知 $(a-b)$ 是 $m_1,m_2,m_3\cdots$ 的一个公倍数。所以 ${[m_1,m_2,m_3\cdots ]} |(a-b)$ 。</p>
+<h2 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h2><p>1、证明</p>
+<blockquote>
+<p> $11$ 整除 $a$ 的充分必要条件是 $a$ 写成十进制表示后，从低位到高位，奇数位数字和减去偶数位数字和内被 $11$ 整除。</p>
+</blockquote>
+<p>我也不知道有啥好方法，编了一会儿觉得似乎 $100$ 进制的证法比较简单。就是考虑写成百进制的话会是这样：</p>
+<script type="math/tex; mode=display">
+\sum _{i=1}^ka_{i}100^{k-1}\equiv 0\pmod {11}</script><p>发现 $100 \bmod 11$ 是 $1$ ，就很快乐：</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^ka_i\equiv 0\pmod {11}</script><p>然后考虑百进制转10进制，发现有</p>
+<script type="math/tex; mode=display">
+a_{i}=b^{2i-1}+10\cdot b^{2i}</script><p>那么考虑 $10$ 在 $\pmod {11}$ 时等价于 $-1$ ，于是就可以知道</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^ka_i=\sum_{i=1}^k(b^{2i-1}- b^{2i})\equiv 0 \pmod {11}</script><p>于是得证。</p>
+<p>2、证明</p>
+<blockquote>
+<p>$7/11/13$ 整除 $a$ 的充分必要条件是，最后三位数字与删去最后三位以后组成的数，所作之差被 $7/11/13$ 整除。</p>
+</blockquote>
+<p>证明方法差不多？设后三位组成的数是 $b$ ，删去最后三位以后组成的数是 $c$ ，那么有</p>
+<script type="math/tex; mode=display">
+a=b+c\times 1000</script><p>若</p>
+<script type="math/tex; mode=display">
+a\equiv 0\pmod k</script><p>那么一定有</p>
+<script type="math/tex; mode=display">
+b+c\times (1000\bmod k)\equiv 0\pmod k</script><p>考虑 $1001=7\times 11\times 13$ ，所以可以知道 $1000 \bmod k\equiv -1 \pmod k$ 。于是得证。</p>
+<h1 id="剩余类相关理论"><a href="#剩余类相关理论" class="headerlink" title="剩余类相关理论"></a>剩余类相关理论</h1><p>草，我是真觉得抽代入完门再来学这个比较合适。</p>
+<p>于是因为内容太多了我就另开了一篇，想不到了吧？<del>机智如我</del></p>
 <h1 id="一次同余方程"><a href="#一次同余方程" class="headerlink" title="一次同余方程"></a>一次同余方程</h1><blockquote>
 <p>形如</p>
 <script type="math/tex; mode=display">
@@ -800,8 +936,8 @@ b_k,b_{2k},b_{3k}\cdots b_{pk}</script><p>于是直接把这些拿出来重编�
         <category>gym</category>
       </categories>
       <tags>
-        <tag>数学/积性函数/莫比乌斯反演</tag>
         <tag>好多好多细节</tag>
+        <tag>数学/积性函数/莫比乌斯反演</tag>
         <tag>数学/数值分析/调和级数</tag>
         <tag>离线算法/整体二分</tag>
       </tags>
@@ -915,8 +1051,8 @@ f_{n}&=\frac{1}{n} \sum_{0 \leq i+j \leq n-1} f_{i} \cdot f_{j} \cdot p_{n-1-i-j
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>思维题/计数</tag>
         <tag>动态规划/状压DP</tag>
+        <tag>思维题/计数</tag>
         <tag>好多好多细节</tag>
         <tag>快速莫比乌斯变换(FMT)</tag>
         <tag>快速沃尔什变换(FWT)</tag>
@@ -5516,8 +5652,8 @@ d(x)=\left\{\begin{array}{ll}{x \bmod 9,} & {x \bmod 9 \neq 0} \\ {9,} & {x \bmo
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>数学/观察性质,结论与构造</tag>
         <tag>动态规划/普通DP</tag>
+        <tag>数学/观察性质,结论与构造</tag>
       </tags>
   </entry>
   <entry>
@@ -5638,8 +5774,8 @@ y \cdot A_r-x \cdot B_r=y \cdot A_{l-1}-x \cdot B_{l-1}</script><p>然后如果�
       </categories>
       <tags>
         <tag>动态规划/状压DP</tag>
-        <tag>数学/观察性质,结论与构造</tag>
         <tag>动态规划/普通DP</tag>
+        <tag>数学/观察性质,结论与构造</tag>
         <tag>数据结构/数据结构方法/莫队</tag>
         <tag>数据结构/线段树</tag>
       </tags>
@@ -5819,8 +5955,8 @@ ans =\sum_{j=1}^{n}f_{n,j}\cdot g_{0,c_1,c_2}</script><p>其中$c_1$和$c_2$表�
       </categories>
       <tags>
         <tag>思维题/计数</tag>
-        <tag>思维题/构造</tag>
         <tag>动态规划/普通DP</tag>
+        <tag>思维题/构造</tag>
         <tag>贪心</tag>
         <tag>组合计数/有技巧的计数</tag>
       </tags>
@@ -6728,12 +6864,12 @@ G &= G_h - \frac{T(G_h)}{T'(G_h)}\\\
 <p>Let’s say sunshine for everyone 人们说生活总是充满阳光<br>But as far as I can remember 但在我的记忆中<br>We’ve been migratory animals 我们一直只是如野兽般流浪<br>Living under changing weather 四季变换，我们如常<br>Someday we will foresee obstacles 总有一天，我们会看见那些困难阻碍<br>Through the blizzard through the blizzard 在那片风雪之中，在那片风雪之后<br>Today we will sell our uniform 如今我们将曾经的校服变卖<br>Live together live together 一同离去，一同启程</p>
 </blockquote>
 
-        <div id="aplayer-WqhwlwcD" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-YPDPiMIq" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-WqhwlwcD"),
+            element: document.getElementById("aplayer-YPDPiMIq"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -7253,12 +7389,12 @@ g_{s,h} = \sum_{t\in s}g_{s-t, h-1}+h\cdot f_{s-t,t}</script><p>同样是显然�
 <p>正如，我一直以来认为的，「短暂的快乐只会带来空虚，无尽的悲伤才会带来充实」。</p>
 <hr>
 
-        <div id="aplayer-txFKIfEv" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-EApQGlxy" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-txFKIfEv"),
+            element: document.getElementById("aplayer-EApQGlxy"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -7444,8 +7580,8 @@ c_{i+1}-c_i' = d_1\\\ c_i'-c_{i-1} = d_2</script><p>换句话说，其实就是�
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>思维题/构造</tag>
         <tag>动态规划/普通DP</tag>
+        <tag>思维题/构造</tag>
         <tag>树模型</tag>
         <tag>有技巧的差分</tag>
         <tag>博弈论/组合游戏</tag>
@@ -8695,12 +8831,12 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
 <p>我大概在听这首歌之前，从来没有真正知道原来”喜欢“这个已经烂大街的词、这个现如今可以随便说出口又可以随便忘记的词、这个在我上过的所有学校里从来没有人敢光明正大说出来的词、这个现在在芸芸众生中已经被玷污的、被人们认为还没有一块钱来的实在的词，竟然如此的可爱，竟然如此的值得人们尊敬，竟然可以在冰冷的寒夜散发出如此耀眼的光芒。</p>
 <p>我喜欢你，你应该，也知道。</p>
 
-        <div id="aplayer-OmfEvqiV" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-qKWLZgLr" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-OmfEvqiV"),
+            element: document.getElementById("aplayer-qKWLZgLr"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -8731,12 +8867,12 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
 <hr>
 <p>雪，终于停了啊。现在已经午夜了，街上一个人都没有，天空在积雪的映照下，是让人着迷的紫红色。</p>
 
-        <div id="aplayer-wtMBGGwW" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-SLjFukgh" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-wtMBGGwW"),
+            element: document.getElementById("aplayer-SLjFukgh"),
             narrow: false,
             autoplay: false,
             showlrc: false,
