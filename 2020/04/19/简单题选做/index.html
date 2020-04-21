@@ -1,0 +1,368 @@
+<!DOCTYPE html><html class="theme-next gemini use-motion" lang><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0"><link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png?v=7.2.0"><link rel="icon" type="image/png" sizes="16x16" href="/images/icon-32.png?v=7.2.0"><link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222"><link rel="stylesheet" href="/css/main.css?v=7.2.0"><link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Verdana:300,300italic,400,400italic,700,700italic|Verdana:300,300italic,400,400italic,700,700italic|Verdana:300,300italic,400,400italic,700,700italic|Verdana:300,300italic,400,400italic,700,700italic|Courier New:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"><link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"><link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css"><script id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Gemini",version:"7.2.0",sidebar:{position:"left","Pisces | Gemini":270,width:270,display:"post",offset:12,onmobile:!1},back2top:{enable:!0,sidebar:!0,scrollpercent:!0},copycode:{enable:!0,show_result:!0,style:"mac"},fancybox:!0,mediumzoom:!1,lazyload:!1,pangu:!1,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}},translation:{copy_button:"Copy",copy_success:"Copied",copy_failure:"Copy failed"}}</script><meta name="description" content="大概是由于基础太差了，然后打算去做点题补一下基础和脑子… 这个故事告诉我们，永远不要偷懒，有些力气，早晚是要出的。 如果来看我 blog 的你有什么好题推荐，欢迎评论，其他博客也是可以评论的（疯狂暗示 对了，像我这种明明要准备省选却在刷简单题补基础的人，是不是应该发一个「年度最佳人才」奖？ 争取一句话题解…先整理十道题吧…因为奇奇怪怪的事情浪费了不少时间。"><meta name="keywords" content="动态规划&#x2F;状压DP,动态规划&#x2F;有技巧的DP,思维题&#x2F;计数,动态规划&#x2F;普通DP,思维题&#x2F;构造,贪心,有趣的二分答案,单调队列&#x2F;单调栈,思维题&#x2F;对应与转化,动态规划&#x2F;状态合并,博弈论&#x2F;对称博弈,图论&#x2F;并查集"><meta property="og:type" content="article"><meta property="og:title" content="【泛做】简单题选做"><meta property="og:url" content="https://www.orchidany.cn/2020/04/19/简单题选做/index.html"><meta property="og:site_name" content="𝓞𝓻𝓬𝓱𝓲𝓭𝓪𝓷𝔂&#39;𝔀 𝓫𝓵𝓸𝓰"><meta property="og:description" content="大概是由于基础太差了，然后打算去做点题补一下基础和脑子… 这个故事告诉我们，永远不要偷懒，有些力气，早晚是要出的。 如果来看我 blog 的你有什么好题推荐，欢迎评论，其他博客也是可以评论的（疯狂暗示 对了，像我这种明明要准备省选却在刷简单题补基础的人，是不是应该发一个「年度最佳人才」奖？ 争取一句话题解…先整理十道题吧…因为奇奇怪怪的事情浪费了不少时间。"><meta property="og:locale" content="default"><meta property="og:updated_time" content="2020-04-21T03:39:50.421Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="【泛做】简单题选做"><meta name="twitter:description" content="大概是由于基础太差了，然后打算去做点题补一下基础和脑子… 这个故事告诉我们，永远不要偷懒，有些力气，早晚是要出的。 如果来看我 blog 的你有什么好题推荐，欢迎评论，其他博客也是可以评论的（疯狂暗示 对了，像我这种明明要准备省选却在刷简单题补基础的人，是不是应该发一个「年度最佳人才」奖？ 争取一句话题解…先整理十道题吧…因为奇奇怪怪的事情浪费了不少时间。"><link rel="alternate" href="/atom.xml" title="𝓞𝓻𝓬𝓱𝓲𝓭𝓪𝓷𝔂'𝔀 𝓫𝓵𝓸𝓰" type="application/atom+xml"><link rel="canonical" href="https://www.orchidany.cn/2020/04/19/简单题选做/"><script id="page.configurations">CONFIG.page={sidebar:""}</script><title>【泛做】简单题选做 | 𝓞𝓻𝓬𝓱𝓲𝓭𝓪𝓷𝔂'𝔀 𝓫𝓵𝓸𝓰</title><noscript><style>.sidebar-inner,.use-motion .brand,.use-motion .collection-title,.use-motion .comments,.use-motion .menu-item,.use-motion .motion-element,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .logo,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.use-motion .logo-line-before i{left:initial}.use-motion .logo-line-after i{right:initial}</style></noscript></head><body itemscope itemtype="http://schema.org/WebPage" lang="default"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">𝓞𝓻𝓬𝓱𝓲𝓭𝓪𝓷𝔂'𝔀 𝓫𝓵𝓸𝓰</span><span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">A Soul Tune against Fate Should Be Played, now.</p></div><div class="site-nav-toggle"> <button aria-label="Toggle navigation bar"><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>Archives</a></li><li class="menu-item menu-item-friends"><a href="/Friends/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i><br>Friends</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>Search</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i></span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"> <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://www.orchidany.cn/2020/04/19/简单题选做/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Orchidany"><meta itemprop="description" content="For code, science, tech. and more"><meta itemprop="image" content="/images/avatar.png"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="𝓞𝓻𝓬𝓱𝓲𝓭𝓪𝓷𝔂'𝔀 𝓫𝓵𝓸𝓰"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">【泛做】简单题选做</h1><div class="post-meta"><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">Posted on</span> <time title="Created: 2020-04-19 09:07:23" itemprop="dateCreated datePublished" datetime="2020-04-19T09:07:23+08:00">2020-04-19</time></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-check-o"></i></span> <span class="post-meta-item-text">Edited on</span> <time title="Modified: 2020-04-21 11:39:50" itemprop="dateModified" datetime="2020-04-21T11:39:50+08:00">2020-04-21</time></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">In</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-comment-o"></i></span> <span class="post-meta-item-text">Comments:</span><a href="/2020/04/19/简单题选做/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/04/19/简单题选做/" itemprop="commentCount"></span></a></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-eye"></i> Views:<span class="busuanzi-value" id="busuanzi_value_page_pv"></span></span></span><br></div></header><div class="post-body" itemprop="articleBody"><p>大概是由于基础太差了，然后打算去做点题补一下基础和脑子…</p><p>这个故事告诉我们，永远不要偷懒，有些力气，早晚是要出的。</p><p>如果来看我 blog 的你有什么好题推荐，欢迎评论，其他博客也是可以评论的（疯狂暗示</p><p>对了，像我这种明明要准备省选却在刷简单题补基础的人，是不是应该发一个「年度最佳人才」奖？</p><p>争取一句话题解…先整理十道题吧…因为奇奇怪怪的事情浪费了不少时间。</p><a id="more"></a><h1 id="UVA10891-Game-of-Sum"><a href="#UVA10891-Game-of-Sum" class="headerlink" title="UVA10891 Game of Sum"></a><a href="https://www.luogu.com.cn/problem/UVA10891" target="_blank" rel="noopener">UVA10891 Game of Sum</a></h1><blockquote><p>有一个长度为 $n$ 的整数序列，两个游戏者 $A$ 和 $B$ 轮流取数，$A$ 先取。每次玩家只能从左端或者右端取任意数量的数，但不能两边都取。所有数都被取走视为游戏结束，然后统计每个人取走的数之和，作为各自的得分。两个人采取的策略都是让自己得分尽可能高，并且两个人都很机智，求 $A$ 得分 - $B$ 得分后的结果。</p></blockquote><p>自己一开始想的 $dp$ 是要 $f_{i,j,0/1}$ ，并且转移有点复杂，结果发现根本不需要…考虑在博弈树上 dp，每个 $max$ 局面接下来一定是一个 $min$ 局面，所以有</p><script type="math/tex;mode=display">
+f_{i,j}=sum(i,j)-\min\{\min_{k\in[i+1,j]}\{f_{k,j}\},\min_{k\in[i,j-1]}\{f_{i,k}\}\}</script><p>也就是找到与一端边界相邻，且最小的那个对方的决策（$min$ 局面）。发现前后缀 $min/max$ 维护一下就可以 $O(n^2)$ 了。</p><h1 id="CF493D-Vasya-and-Chess"><a href="#CF493D-Vasya-and-Chess" class="headerlink" title="CF493D Vasya and Chess"></a><a href="https://www.luogu.com.cn/problem/CF493D" target="_blank" rel="noopener">CF493D Vasya and Chess</a></h1><blockquote><p>有一个 $n\times n$ 的国际象棋棋盘。将白后放在 $(1,1)$ ，黑后放在 $(1,n)$ ，其余位置全都是中立的卒。<br>双方交替移动。白方先手。 每次移动，后（Queen）可以朝八个方向（上下左右对角线）之一移动任意格，直到碰到另外一个棋子，然后吃掉这个棋子。注意，在本题中，每次移动必须吃掉一个棋子。<br>当你的皇后被吃了或者你没有棋子可以吃了，就输了。 给出棋盘大小，请问哪方会赢。</p></blockquote><p><del>发现这种对称位置决策的…一般后手都比较神必，拖，就硬拖。</del></p><p>考虑后手模仿先手的动作，那么如果两者之前相隔为奇数，后手可以模仿先手，发现这么做一定可以吃掉先手。如果相隔为偶数，那先手就要学聪明，移动到 $(1,2)$ ，然后成为上一种情况的后手…</p><h1 id="UVA1099-Sharing-Chocolate"><a href="#UVA1099-Sharing-Chocolate" class="headerlink" title="UVA1099 Sharing Chocolate"></a><a href="https://www.luogu.com.cn/problem/UVA1099" target="_blank" rel="noopener">UVA1099 Sharing Chocolate</a></h1><blockquote><p>给出一块长为 $x$, 宽为 $y$ 的矩形巧克力，每次操作可以沿一条直线把一块巧克力切割成两块长宽均为整数的巧克力（一次不能同时切割多块巧克力）。</p><p>问：是否可以经过若干次操作得到 $n$ 块面积分别为 $a_1, a_2, …, a_n$ 的巧克力。</p><p>$n\leq 15,1\leq x,y\leq 100$ 。</p></blockquote><p>大力状压，$f_{s,x,y}$ 表示 $s$ 这个集合内的巧克力是否可以被 $x,y$ 给切出来。考虑这样转移存在问题。因为必须要枚举子集来转移，所以最后时间复杂度 $O(3^nxy)$，空间复杂度 $O(2^nxy)$ 。有点爆炸。</p><p>考虑化简状态。发现固定了巧克力集合 $s$ ，那么对于一个固定的 $x$ ，$y$ 要么不存在要么同样被固定。所以状态就可以简化成 $f_{s,\min\{x,y\}}$ 。转移时依旧要判断两个状态是否都可行。注意转移来的状态 $f_{s’,x’}$ 也需要保证信息是落在较短边上的。复杂度 $O(x3^n)$。</p><p>神必 uva 卡我常数。不过也需要记得，对于这种信息 $01$ 且求并的转移，一旦某个状态确定为 $1$ 了就可以 <code>break</code>。这个技巧确实要记住。</p><h1 id="LA4725-Airport"><a href="#LA4725-Airport" class="headerlink" title="LA4725 Airport"></a><a href="https://www.luogu.com.cn/problem/UVA1450" target="_blank" rel="noopener">LA4725 Airport</a></h1><blockquote><p>机场上有两个跑道，分别为 W 和 E，每个时刻 $i$，W和E都分别有 $a_i,b_i$ 架飞机进入跑道。每个跑道的飞机都按顺序从 0 开始排序，每个时刻都允许一架飞机起飞，现要求你安排起飞的飞机，使得任意时刻的飞机的最大编号最小。</p><p>$1\leq n\leq 5000$ 。</p></blockquote><p>这题能比较自然地想到要二分。但是问题在于二分了之后并不知道要怎么去 check。这个地方有个很妙的 idea。就是如果之前有机会要飞，可以不飞，等到什么时候攒到了 $mid$ 号再飞。这样就不需要再考虑这东西的后效性了。但是有一点需要注意，就是攒着一起飞的话，在第 $i$ 个时刻只能选择飞之前的，因为这个决策本质上等价于在 $i-1$ 时刻飞。所以也要分别统计 $W$ 和 $E$ 的可飞量。</p><h1 id="LA4094-Wonder-Team"><a href="#LA4094-Wonder-Team" class="headerlink" title="LA4094 Wonder Team"></a><a href="https://vjudge.net/problem/UVALive-4094" target="_blank" rel="noopener">LA4094 Wonder Team</a></h1><blockquote><p>There are $n$ football teams participating in the competitions, each team plays twice (home and away) against each other team. Each team receives three points for a win and one point for a draw. No point is awarded for a loss.</p><p>When the games are finished, teams are ranked by numbers from $1$ to $n$ according to the total points. The rank of each team $t$ having $p$ points is one plus the number of teams having more than $p$ points. It is possible that more than one team have the same ranks. In addition to the Champion (the first ranked team or teams), the <strong>Wonder Team</strong> is also awarded, if there exists one. The team that has absolutely <strong>the highest number of wins</strong> (absolutely means no other teams has the same number of wins), absolutely <strong>the highest number of goals scored</strong>, and absolutely <strong>the lowest number of goals</strong> conceded, is called the WonderTeam. (WonderTeam should have all these properties.)</p><p>Your task is to find out the worst possible rank for the <strong>Wonder Team</strong>.</p><p>$1\leq n\leq 50$ 。</p></blockquote><p>English problem, English solution!</p><p>First of all, I’d like to claim that the 2nd Constraint and 3rd Constraint is no-use, becauce we always can let WT won another team with $10^9:1$.</p><p>Let’s assume $a_1,b_1$ means the WonderTeam’s wins and draws, $a_2,b_2$ means an arbitrary team’s wins and draws, whose rank is higher than WT. After a series of easy inference, if one team has higher rank than WT, the equation below should be satisfied:</p><script type="math/tex;mode=display">
+b_2-b_1>3(a_1-a_2)\qquad (1)</script><p><del>Then my train of thought ended up with this:(</del></p><p>Thinking more carefully, if we want to maxmize WT’s rank, we have to get other teams’ score as high as we can. So we can use a greedy way to construct it : Just let WT’s wins actually one more than others. At the same time let WT lose its other games. Also we let other teams won WT one time, and draw with each other.</p><p>Then we can find that $\forall a_2$ ，there is $a_1-a_2=1$, which means $(1)$ turned to be:</p><script type="math/tex;mode=display">
+b_2-b_1>3</script><p>And about $b_2$ , there will exists two teams who losed in the game with WT , which means the-two has exactly $1$ win and $2n-4$ draws, while the rest teams has exactly $1$ win and $2n-3$ draws.</p><p>So we can cliam that when $n&gt;4$ , WT’s lowest rank can be $n$ ; when $n=4$, it can be $2$ ; otherwise it can only be $1$ 。</p><h1 id="CCO-2017-Rainfall-Capture"><a href="#CCO-2017-Rainfall-Capture" class="headerlink" title="CCO 2017 Rainfall Capture"></a>CCO 2017 Rainfall Capture</h1><blockquote><p>Lucy 有 $n$ 个高度为 $h_1,h_2,…,h_n$ 的柱子。她想知道，在所有可能的摆放方案中，所有可能的雨滴量（以 $r$ 为单位）是多少。</p><p>柱子只能竖着摆。接雨滴的定义：满则溢。</p></blockquote><p>比较神仙的 dp，对着代码啃了很久…</p><p>考虑直接求雨滴量并不好求，因为要去考虑左右两边的柱子高度。考虑对于一个排布 $4,2,5$ ，那么中间 $=2$ 或者 $=1$ 时要分开考虑；但是我们发现无论怎样，中间在接完雨滴之后高度都会变成 $4$ ，所以考虑求<strong>所有可能的雨滴+柱子</strong>的体积和。由于每个柱子都要摆，所以最后只需要去 check 那些 $\sum h_i\sim max$ 的答案。</p><p>考虑定义 $f_{i,v}$ 表示用了 $i$ 个柱子之后能否凑出体积 $v$ 来。考虑一个比较常用的 trick，将所有 $h_i$ 从小到大排序之后，按顺序转移。这样就能保证每次加进来的柱子都是当前最高的(无中生有了一个很有用的性质)。考虑一个状态 $f_{i,v}$ ，他的转移应该为：</p><script type="math/tex;mode=display">
+f_{i,v}=\bigcup_{p_j\leq v} f_{i-1,v-p_j}</script><p>其中 $p_j$ 是每个柱子的高度，需要从小到大转移，且转移时需要严格按照先枚举 $p_j$ 再枚举 $1\sim i$ 的顺序。</p><p>考虑这个式子的意义。对于任何一个大小为 $i\in[1,n-1]\cap\mathbb{Z_+} $ 的柱子集合 $o$，按秩转移时每次加入一个 $\geq \max_{t\in o}p_t$ 的新柱子 $p’$，放在最左边（或者最右边），同时再加入一个按高度从小到大排序后，恰好排名比 $p’$ 大 $1$ 的柱子 $p’’$ 放在 $p’$ 的同侧（即，如果 $p’$ 放在了整个序列的左边，$p’’$ 应该被放在 $p’$ 的左边）。那么此时考虑，每当加进来一个元素 $p_0$，集合大小从 $i-1$ 变成 $i$ ，$p’$ 就向右交换一个，这样新加进来的这个柱子上方水位高度一定会是 $p’$ 的高度（因为最左边有 $p’’$）， 所以体积的变化量是 $\Delta v=(p’-p_0)+p_0$，前一半是水，后一半是新的柱子，所以可以从 $i-1,v-p’$ 转移过来。</p><p>需要注意的是，这样转移一定是不包含最高那个柱子的，因为当最高的柱子为 $p’$ 不存在一个更高的 $p’’$ 。</p><p>于是最后复杂度 $O(n^2\sum h)$ ，当然可以用 bitset 优化成 $O(\frac{n^2\sum h}{w})$ 。但其实在注意到本题只关注可达性判断之后，就可以发现等高的柱子不用重复转移，就可以优化成 $O((\sum h)\cdot n\cdot \max\{h\})$ 。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> s ; </span><br><span class="line"><span class="keyword">int</span> n, m ;</span><br><span class="line"><span class="keyword">int</span> base[N] ; </span><br><span class="line"><span class="comment">//bool f[N][M] ; </span></span><br><span class="line"><span class="built_in">bitset</span> &lt;M&gt; f[N] ; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n ; </span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; ++ i) </span><br><span class="line">		base[i] = qr(), m = max(m, base[i]) ;</span><br><span class="line">	sort(base + <span class="number">1</span>, base + n + <span class="number">1</span>) ;  </span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt; n ; ++ i)</span><br><span class="line">		s += base[i] ; f[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span> ; </span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt; n ; ++ i)&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span> ; j &lt;= i ; ++ j)</span><br><span class="line">			f[j] |= (f[j - <span class="number">1</span>] &lt;&lt; base[i]) ; </span><br><span class="line">			<span class="comment">//for (int k = base[i] ; k &lt;= n * m ; ++ k)</span></span><br><span class="line">			<span class="comment">//	f[j][k] |= f[j - 1][k - base[i]] ; </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = s ; i &lt;= n * m ; ++ i)</span><br><span class="line">		<span class="keyword">if</span> (f[n - <span class="number">1</span>][i]) <span class="built_in">printf</span>(<span class="string">"%d "</span>, i - s) ; <span class="keyword">return</span> <span class="number">0</span> ; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="UVA1073-Glenbow-Museum"><a href="#UVA1073-Glenbow-Museum" class="headerlink" title="UVA1073 Glenbow Museum"></a><a href="https://www.luogu.com.cn/problem/UVA1073" target="_blank" rel="noopener">UVA1073 Glenbow Museum</a></h1><blockquote><p>对于一个各边长度任意且都平行于坐标轴的多边形，我们可以用这样的方式描述它：考虑它的每一个内角，如果这个内角为 $90$ 度，那么用 $R$ 代表它；如果这个内角为 $270$ 度，那么用 $O$ 代表它。从某个点开始，按照逆时针的顺序读取 $R$ 和 $O$，最后得到一个由 $O,R$ 组成的字符串。</p><p>给定整数 $n$，问有多少个长度为 $n$ 的 $O,R$ 组成的字符串，使得有一个或以上与之对应的多边形，满足这个多边形内部有一点，可以看到这个多边形的所有内角（即，这个点与多边形所有内角顶点的连线都不与多边形的边相交）。</p></blockquote><p>显然最后一定是 $\frac{n}{2}-2$ 个 $O$ 和 $\frac{n}{2}+2$ 个 $R$。同时显然不会有相邻的 $O$，证明大概是需要拐回来之类的。那么问题就是给你固定数量的 R 和 O ，O 和 O 之间不相邻的方案数。</p><p>第一种 $dp$ 就是 $f_{k_1,k_2,l,r}$ 表示用了 $k_1$ 个 O 和 $k_2$ 个 R，最左端的字母是 $l$，最右端是 $r$ 的方案数。转移的时候考虑新加入一个 $R$ 还是 $O$ 即可。</p><p>第二种 $dp$ 则是一个改进，因为显然我们不关心 $O$ 的数量，因为最后是一定的；只关心如何排列。所以令 $f_{k_1,k_2,c}$ 表示有 $k_1$ 个 R ，$k_2$ 对相邻的 RR，第一个字母是 $c$ 的方案数。转移的时候考虑向后加一个 R​ 还是 OR 即可 。</p><p>然而显然这种 dp 是有组合意义的。所以我们分类讨论：</p><p>1、尾部不是 O 的方案数，显然就是前面 $\frac{n}{2}+2$ 个空填 $\frac{n}{2}-2$ 个O的方案数。</p><p>2、尾部是 O 的方案数，此时第一个位置不能放 O。类似的组合一下就完了。</p><p>于是就可以组合数做。处理的时候因为答案过大，所以可以考虑取对数<del>（学到许多）</del>。</p><h1 id="CF340E-Iahub-amp-Permutations"><a href="#CF340E-Iahub-amp-Permutations" class="headerlink" title="CF340E Iahub &amp; Permutations"></a><a href="https://www.luogu.com.cn/problem/CF340E" target="_blank" rel="noopener">CF340E Iahub &amp; Permutations</a></h1><blockquote><p>有一个长度为 $n$ 的排列 $a$，其中有一些位置被替换成了 <code>-1</code>。你需要尝试恢复这个排列，将 <code>-1</code> 替换回数字。<br>求多少种可行方案使得得到的是一个排列且不存在 $a_i=i$ 的位置。</p><p>$n\leq 5000$ 。</p></blockquote><p>orz 一个十分巧妙的转化，大概就是对于这种带有<strong>放置限制</strong>的排列问题，比如某个下标不能放置某个数，那么可以将这个排列对应到一个 $n$ 阶摆 $rook$ （即 $n\times n$ 的棋盘上放 $n$ 个互不攻击的车）问题上。这样一方面可以把「位置 x 不能放 y」约束展开，抽象成一个二维约束点 $(x,y)$ 上不能放车的约束；另一方面可以知道这个对应一定是完备的。</p><p>那么就转化成了，有些行和列已经放了车，整个棋盘对角线不能放车，有多少种本质不同的放车方案数。首先可以发现，如果某行某列有车，这一行一列就可以删掉；同时如果对于某个 $-1$ ，他所在的这个位置对应的行/列恰好被删了（同时存在位于下标 $k$ 的 $-1$ 和一个 $pos$ 使得 $a_{pos}=k$ ），那么对于这个 $-1$ 而言就没有限制了。</p><p>这样考虑 $dp$ 。$f_{i,j}$ 表示 $i\times i$ 的方格里考虑 $j$ 个限制的方案数。那么 $f_{i,0}=i!$。同时注意到 $f_{i,j-1}$ 到 $f_{i,j}$ 恰好多了一个限制，这个限制对应的应该是 $f_{i-1,j-1}$ 的方案数。所以有转移</p><script type="math/tex;mode=display">
+f_{i,j}=f_{i,j-1}-f_{i-1,j-1}</script><p>复杂度 $n^2$ 。</p><h1 id="CF212D-Cutting-Fence"><a href="#CF212D-Cutting-Fence" class="headerlink" title="CF212D Cutting Fence"></a>CF212D Cutting Fence</h1><blockquote><p>给出 $a[1…n]$ 。<br>定义 $f$ ：</p><script type="math/tex;mode=display">
+f(i,k)=\min_{i\leq j\leq i+k-1}\{a[j]\}</script><p>之后有 $m$ 个询问，每个询问给出一个数 $k$，问所有 $f(j,k) (1\leq j\leq n-k+1)$ 的平均值。<br>$1\leq n,m\leq 10^6$.</p></blockquote><p>首先不难知道要求出每个 $a_i$ 对包含其区间的贡献，然后对于长度为 $1\sim n$ 的区间分别计算其和，最终除以 $n-k+1$ 即为答案。</p><p>考虑两遍单调栈求出每个元素 $x$ 左/右边第一个比他小的元素下标 $l,r$，可知 $x$ 的贡献区间即为 $[l+1,r-1]$。枚举 $x$ ，那么区间 $l+1,r-1$ 的所有跨过 $x$ 的子区间都会存在贡献。此处假设 $x-l&lt;r-x$，考虑分类讨论子区间长度 $L$ ：</p><p>1、 $1\leq L\leq x-l$ ，这种区间每个元素都可以是 $x$ ，所以贡献为 $L\cdot a_x$ 。</p><p>2、$x-l+1\leq L\leq r-x$ ，这种区间最多只能取到 $x-l$ 次 $x$ ，所以贡献为 $(x-l)\cdot a_x$ 。</p><p>3、$r-x+1\leq L\leq r-l-1$ ，这种区间最多只能取到 $r-l-L$ 次，故贡献为 $(r-l-L)\cdot a_x$ 。</p><p>然后观察这些修改，发现 $L\cdot a_x$ 这东西，对于一个区间是在加一个等差数列的形式，$(x-l)\cdot a_x$ 和 $(r-l)\cdot a_x$ 都是区间加一个常数的形式。于是可以维护二阶差分。复杂度线性。</p><h1 id="USACO12-Bovine-Alliance-G"><a href="#USACO12-Bovine-Alliance-G" class="headerlink" title="USACO12 Bovine Alliance G"></a><a href="https://www.luogu.com.cn/problem/P3043" target="_blank" rel="noopener">USACO12 Bovine Alliance G</a></h1><blockquote><p><del>给出 $n$ 个点 $m$ 条边的图，现把点和边分组，每条边只能和相邻两点之一分在一组，点可以单独一组，问分组方案数</del>.</p><p>以上是错误的题意，以下是正确的题意：</p><blockquote><p>题意是给每条边找一个配对的点，要求边 $(u,v)$ 配对的点是 $u$ 或 $v$ ，且每个点最多只能被一条边配对，求不同方案数。</p></blockquote><p>$1\leq m\leq n\leq 10^5$ 。</p></blockquote><p>对着错误的题意思考了半天也不会…觉得首先对于点分组可以直接跑一个第二类斯特林数，但是这样边就没法分配了，因为可能存在边的两个端点在同一个点集内，所以可能需要套一个容斥什么的。推容斥系数可能会很高妙<del>反正我不会</del>。</p><p>然后正确的题面的话，考虑问题可以转化成给每条边定向，使得最后整张图每个点的度数都 $\leq 1$ 的方案数。然后…然后就是考察对于图论模型的洞见性有多强了：</p><p>1、不难发现一个简单环的定向方式总共是 $2$ 。</p><p>2、考虑去计算一棵树的定向方式。发现随便找一个根，显然哪个点当根对于整棵树的方案数没有影响。考虑如果将所有边都向儿子定向，那么这样一定合法，这是第一种方案。同时，单独把某一条边取反，假设这条边连接的儿子是 $x$ ，那么同时需要把 $x\to fa_x,fa_x\to fa_{fa_x}, fa_{fa_x}\to fa_{fa_{fa_x}}$ 全部取反，那么最终会取反到根，根的入度会变成 $1$ ，这也就说明不能有 $&gt;1$ 条边同时取反。所以可以知道一棵树的定向方式为 $1+(n-1)=n$ 。</p><p>发现对于无向图，本质上就是树插环的形态。所以拿一个带权并查集维护即可。有一个坑点，就是如果两个点不在同一个即集合里，边数也要++。</p></div><footer class="post-footer"><div class="post-tags"><a href="/tags/动态规划-状压DP/" rel="tag"><i class="fa fa-tag"></i> 动态规划/状压DP</a><a href="/tags/动态规划-有技巧的DP/" rel="tag"><i class="fa fa-tag"></i> 动态规划/有技巧的DP</a><a href="/tags/思维题-计数/" rel="tag"><i class="fa fa-tag"></i> 思维题/计数</a><a href="/tags/动态规划-普通DP/" rel="tag"><i class="fa fa-tag"></i> 动态规划/普通DP</a><a href="/tags/思维题-构造/" rel="tag"><i class="fa fa-tag"></i> 思维题/构造</a><a href="/tags/贪心/" rel="tag"><i class="fa fa-tag"></i> 贪心</a><a href="/tags/有趣的二分答案/" rel="tag"><i class="fa fa-tag"></i> 有趣的二分答案</a><a href="/tags/单调队列-单调栈/" rel="tag"><i class="fa fa-tag"></i> 单调队列/单调栈</a><a href="/tags/思维题-对应与转化/" rel="tag"><i class="fa fa-tag"></i> 思维题/对应与转化</a><a href="/tags/动态规划-状态合并/" rel="tag"><i class="fa fa-tag"></i> 动态规划/状态合并</a><a href="/tags/博弈论-对称博弈/" rel="tag"><i class="fa fa-tag"></i> 博弈论/对称博弈</a><a href="/tags/图论-并查集/" rel="tag"><i class="fa fa-tag"></i> 图论/并查集</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2020/04/17/CF671E/" rel="next" title="【题解】[CF671E] Organizing a Race"><i class="fa fa-chevron-left"></i> 【题解】[CF671E] Organizing a Race</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"> <a href="/2050/02/05/【公告】博客使用指南/" rel="prev" title="【公告】关于这个blog">【公告】关于这个blog<i class="fa fa-chevron-right"></i></a></div></div></footer></div></article></div></div><div class="comments" id="comments"></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><div style><canvas id="canvas" style="width:60%">当前浏览器不支持canvas，请更换浏览器后再试</canvas></div><script>!function(){var t,o=[[[0,0,1,1,1,0,0],[0,1,1,0,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,0,1,1,0],[0,0,1,1,1,0,0]],[[0,0,0,1,1,0,0],[0,1,1,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[1,1,1,1,1,1,1]],[[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,0,1,1,0,0,0],[0,1,1,0,0,0,0],[1,1,0,0,0,0,0],[1,1,0,0,0,1,1],[1,1,1,1,1,1,1]],[[1,1,1,1,1,1,1],[0,0,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,0,1,1,1,0,0],[0,0,0,0,1,1,0],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[0,0,0,0,1,1,0],[0,0,0,1,1,1,0],[0,0,1,1,1,1,0],[0,1,1,0,1,1,0],[1,1,0,0,1,1,0],[1,1,1,1,1,1,1],[0,0,0,0,1,1,0],[0,0,0,0,1,1,0],[0,0,0,0,1,1,0],[0,0,0,1,1,1,1]],[[1,1,1,1,1,1,1],[1,1,0,0,0,0,0],[1,1,0,0,0,0,0],[1,1,1,1,1,1,0],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[0,0,0,0,1,1,0],[0,0,1,1,0,0,0],[0,1,1,0,0,0,0],[1,1,0,0,0,0,0],[1,1,0,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[1,1,1,1,1,1,1],[1,1,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,1,1,0,0,0],[0,0,1,1,0,0,0],[0,0,1,1,0,0,0],[0,0,1,1,0,0,0]],[[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,1,1,0,0,0,0]],[[0,0,0,0,0,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,0,0,0,0,0]]],e=document.getElementById("canvas");if(e.getContext){var l=e.getContext("2d");e.height=100,e.width=700,l.fillStyle="#f00",l.fillRect(10,10,50,50);var r=[],f=[],i=e.height/20-1;function n(t,e){for(var n=0;n<o[e].length;n++)for(var a=0;a<o[e][n].length;a++)1==o[e][n][a]&&(l.beginPath(),l.arc(14*(i+2)*t+2*a*(i+1)+(i+1),2*n*(i+1)+(i+1),i,0,2*Math.PI),l.closePath(),l.fill())}function h(t,e){for(var n=[1,2,3],a=["#3BE","#09C","#A6C","#93C","#9C0","#690","#FB3","#F80","#F44","#C00"],l=0;l<o[e].length;l++)for(var r=0;r<o[e][l].length;r++)if(1==o[e][l][r]){var h={x:14*(i+2)*t+2*r*(i+1)+(i+1),y:2*l*(i+1)+(i+1),stepX:Math.floor(4*Math.random()-2),stepY:-2*n[Math.floor(Math.random()*n.length)],color:a[Math.floor(Math.random()*a.length)],disY:1};f.push(h)}}t=/(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date),r.push(t[1],t[2],10,t[3],t[4],10,t[5],t[6]),clearInterval(a);var a=setInterval(function(){!function(){var t=[],e=/(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date),n=[];n.push(e[1],e[2],10,e[3],e[4],10,e[5],e[6]);for(var a=r.length-1;0<=a;a--)n[a]!==r[a]&&t.push(a+"_"+(Number(r[a])+1)%10);for(a=0;a<t.length;a++)h.apply(this,t[a].split("_"));r=n.concat()}(),function(){for(var t=0;t<f.length;t++)f[t].stepY+=f[t].disY,f[t].x+=f[t].stepX,f[t].y+=f[t].stepY,(f[t].x>700+i||f[t].y>100+i)&&(f.splice(t,1),t--)}(),function(){e.height=100;for(var t=0;t<r.length;t++)n(t,r[t]);for(t=0;t<f.length;t++)l.beginPath(),l.arc(f[t].x,f[t].y,i,0,2*Math.PI),l.fillStyle=f[t].color,l.closePath(),l.fill()}()},50)}}()</script><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> Table of Contents</li><li class="sidebar-nav-overview" data-target="site-overview-wrap"> Overview</li></ul><div class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"> <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Orchidany"><p class="site-author-name" itemprop="name">Orchidany</p><div class="site-description motion-element" itemprop="description">For code, science, tech. and more</div></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/"><span class="site-state-item-count">163</span> <span class="site-state-item-name">posts</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/"><span class="site-state-item-count">54</span> <span class="site-state-item-name">categories</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/"><span class="site-state-item-count">116</span> <span class="site-state-item-name">tags</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div></div></div><div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#UVA10891-Game-of-Sum"><span class="nav-number">1.</span> <span class="nav-text">UVA10891 Game of Sum</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CF493D-Vasya-and-Chess"><span class="nav-number">2.</span> <span class="nav-text">CF493D Vasya and Chess</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UVA1099-Sharing-Chocolate"><span class="nav-number">3.</span> <span class="nav-text">UVA1099 Sharing Chocolate</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LA4725-Airport"><span class="nav-number">4.</span> <span class="nav-text">LA4725 Airport</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LA4094-Wonder-Team"><span class="nav-number">5.</span> <span class="nav-text">LA4094 Wonder Team</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CCO-2017-Rainfall-Capture"><span class="nav-number">6.</span> <span class="nav-text">CCO 2017 Rainfall Capture</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UVA1073-Glenbow-Museum"><span class="nav-number">7.</span> <span class="nav-text">UVA1073 Glenbow Museum</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CF340E-Iahub-amp-Permutations"><span class="nav-number">8.</span> <span class="nav-text">CF340E Iahub &amp; Permutations</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CF212D-Cutting-Fence"><span class="nav-number">9.</span> <span class="nav-text">CF212D Cutting Fence</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#USACO12-Bovine-Alliance-G"><span class="nav-number">10.</span> <span class="nav-text">USACO12 Bovine Alliance G</span></a></li></ol></div></div></div><div class="back-to-top motion-element"><i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; <span itemprop="copyrightYear">2020</span><span class="with-love" id="animate"><i class="fa fa-user"></i></span> <span class="author" itemprop="copyrightHolder">𝒪𝓇𝒸𝒽𝒾𝒹𝒶𝓃𝓎</span></div><div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div> <span class="post-meta-divider">|</span><div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.2.0</div><div class="theme-info"><div class="powered-by"></div> <span class="post-count">博客全站共326.9k字</span></div><div class="busuanzi-count"><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span class="post-meta-item-icon"><i class="fa fa-user"></i></span><span class="site-uv" title="Total Visitors"><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-eye"></i></span><span class="site-pv" title="Total Views"><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span></div></div></footer></div><script>"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script src="/lib/jquery/index.js?v=3.4.1"></script><script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script><script src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script src="/js/utils.js?v=7.2.0"></script><script src="/js/motion.js?v=7.2.0"></script><script src="/js/affix.js?v=7.2.0"></script><script src="/js/schemes/pisces.js?v=7.2.0"></script><script src="/js/scrollspy.js?v=7.2.0"></script><script src="/js/post-details.js?v=7.2.0"></script><script src="/js/next-boot.js?v=7.2.0"></script><script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script><script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>var GUEST=["nick","mail","link"],guest="nick,mail,link";guest=guest.split(",").filter(function(e){return-1<GUEST.indexOf(e)}),new Valine({el:"#comments",verify:!1,notify:!1,appId:"V95HMkHzC6J9NvdCNbpg3A3E-gzGzoHsz",appKey:"gyf1NbCMlYbPnqykkSe7KuYC",placeholder:"ヾﾉ≧∀≦)o来啊，快活啊!",avatar:"mm",meta:guest,pageSize:"10",visitor:!1,lang:"zh-cn"})</script><script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script><script>$("body").find("div.pdf").length&&$.ajax({type:"GET",url:"//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js",dataType:"script",cache:!0,success:function(){$("body").find("div.pdf").each(function(e,t){PDFObject.embed($(t).attr("target"),$(t),{pdfOpenParams:{navpanes:0,toolbar:0,statusbar:0,pagemode:"thumbs",view:"FitH"},PDFJS_URL:"/lib/pdf/web/viewer.html",height:$(t).attr("height")||"500px"})})}})</script><script>
+// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
+
+window.addEventListener("message", function(e) {
+  var data = e.data;
+  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
+    var featureID = data.split(':')[1];
+    var height = data.split(':')[2];
+    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
+  }
+}, false);
+</script><canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:1;pointer-events:none"></canvas><script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script><script type="text/javascript" src="/js/src/fireworks.js"></script></body></html>
