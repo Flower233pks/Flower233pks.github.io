@@ -9,12 +9,12 @@
 <p>在这些文章里，你会看到一个迷茫的青年如何满怀热血与绝望，眼里闪烁着沧桑与希望，怀里揣着坏掉的粮食和崭新的论文，脚下踏着崎岖不平的路，向明天走去。</p>
 <p>是的，我是花，来自山东，你直接叫我花这个ID或许我会很高兴，但是如果你认识我也可以不这么拘束。</p>
 
-        <div id="aplayer-gHMMDThZ" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-itoAHCUm" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-gHMMDThZ"),
+            element: document.getElementById("aplayer-itoAHCUm"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -409,8 +409,8 @@ f_{i,j,k,0}=\max_{l\leq i<j\leq r}\{f_{l,r,k - 1,0}+(v_l-k\times |p_l-p_i|),f_{l
         <tag>动态规划/有技巧的DP</tag>
         <tag>思维题/找性质</tag>
         <tag>动态规划/树形DP</tag>
-        <tag>数学/线性代数/矩阵</tag>
         <tag>动态规划/单调队列</tag>
+        <tag>数学/线性代数/矩阵</tag>
         <tag>图论/Dilworth定理</tag>
       </tags>
   </entry>
@@ -586,10 +586,10 @@ t_{j'}=q_{j'}-\min_{k=1}^{j'}\{\tau_k \}</script><p>这样做的正确性在于�
       </categories>
       <tags>
         <tag>思维题/找性质</tag>
-        <tag>贪心</tag>
         <tag>树模型</tag>
-        <tag>单调队列/单调栈</tag>
+        <tag>贪心</tag>
         <tag>数据结构/线段树</tag>
+        <tag>单调队列/单调栈</tag>
       </tags>
   </entry>
   <entry>
@@ -916,8 +916,8 @@ f_{i,j}=\max\{f_{i-1,d+k\cdot w_i}-k\cdot v_i\}+s\cdot v_i \quad (s-k\leq c_i)</
         <category>BZOJ</category>
       </categories>
       <tags>
-        <tag>动态规划/背包模型</tag>
         <tag>动态规划/单调队列</tag>
+        <tag>动态规划/背包模型</tag>
         <tag>数据结构/数据结构方法/点分治</tag>
       </tags>
   </entry>
@@ -1165,8 +1165,8 @@ T(n)=T(\frac{1}{3}n)+T(\frac{2}{3}n)+O(n)</script><p>算出来复杂度就是 $O
         <category>学习笔记</category>
       </categories>
       <tags>
-        <tag>数据结构/数据结构方法/点分治</tag>
         <tag>数据结构/点分树</tag>
+        <tag>数据结构/数据结构方法/点分治</tag>
       </tags>
   </entry>
   <entry>
@@ -2651,8 +2651,8 @@ f_{i,j}\to f_{i+1,p}\quad (p\leq j)
       <tags>
         <tag>思维题/找性质</tag>
         <tag>贪心</tag>
-        <tag>字符串/哈希</tag>
         <tag>数据结构/线段树</tag>
+        <tag>字符串/哈希</tag>
       </tags>
   </entry>
   <entry>
@@ -2704,8 +2704,8 @@ f_{i,j}\to f_{i+1,p}\quad (p\leq j)
         <category>网络流24题</category>
       </categories>
       <tags>
-        <tag>网络流/最大流</tag>
         <tag>网络流24题</tag>
+        <tag>网络流/最大流</tag>
       </tags>
   </entry>
   <entry>
@@ -2747,8 +2747,8 @@ f_{i,j}\to f_{i+1,p}\quad (p\leq j)
         <category>网络流24题</category>
       </categories>
       <tags>
-        <tag>网络流/最大流</tag>
         <tag>网络流24题</tag>
+        <tag>网络流/最大流</tag>
         <tag>网络流/最小割</tag>
       </tags>
   </entry>
@@ -2789,8 +2789,8 @@ f_{i,j}\to f_{i+1,p}\quad (p\leq j)
         <category>网络流24题</category>
       </categories>
       <tags>
-        <tag>网络流/最大流</tag>
         <tag>网络流24题</tag>
+        <tag>网络流/最大流</tag>
       </tags>
   </entry>
   <entry>
@@ -3034,8 +3034,8 @@ P_i=\sum_{j=1}^rf_{i,j}\cdot (1-(1-p_i)^j)</script><p>之后用线性性算一�
       </categories>
       <tags>
         <tag>数学/概率,期望</tag>
-        <tag>动态规划/斜率优化</tag>
         <tag>动态规划/单调队列</tag>
+        <tag>动态规划/斜率优化</tag>
       </tags>
   </entry>
   <entry>
@@ -3837,8 +3837,8 @@ f(x)=\frac{x}{1+x-16x^2+20x^3}</script><p>就完了。</p>
         <tag>多项式的应用</tag>
         <tag>有趣的二分答案</tag>
         <tag>动态规划/斜率优化</tag>
-        <tag>组合计数/有技巧的计数</tag>
         <tag>数据结构/可持久化/可持久化线段树</tag>
+        <tag>组合计数/有技巧的计数</tag>
         <tag>有技巧的差分</tag>
       </tags>
   </entry>
@@ -5746,8 +5746,8 @@ f_n=[n=0]+\sum_{p=1}^{m}[p\in c] \sum_{q=0}^{m-p}f_{q}f_{m-p-q}</script><p>发�
       <tags>
         <tag>思维题/计数</tag>
         <tag>动态规划/普通DP</tag>
-        <tag>贪心</tag>
         <tag>奇怪的技巧</tag>
+        <tag>贪心</tag>
         <tag>多项式的应用</tag>
         <tag>组合计数/生成函数</tag>
       </tags>
@@ -5799,8 +5799,8 @@ f_n=[n=0]+\sum_{p=1}^{m}[p\in c] \sum_{q=0}^{m-p}f_{q}f_{m-p-q}</script><p>发�
         <category>李超树</category>
       </categories>
       <tags>
-        <tag>数据结构/线段树</tag>
         <tag>数据结构/李超树</tag>
+        <tag>数据结构/线段树</tag>
       </tags>
   </entry>
   <entry>
@@ -7430,8 +7430,8 @@ q_a \leq \lfloor\frac{a}{p}\rfloor, q_b \leq \lfloor\frac{b}{p}\rfloor</script><
         <tag>动态规划/自动机上DP</tag>
         <tag>字符串/AC自动机</tag>
         <tag>思维题/构造</tag>
-        <tag>贪心</tag>
         <tag>奇怪的技巧</tag>
+        <tag>贪心</tag>
       </tags>
   </entry>
   <entry>
@@ -7912,12 +7912,12 @@ G &= G_h - \frac{T(G_h)}{T'(G_h)}\\\
 <p>Let’s say sunshine for everyone 人们说生活总是充满阳光<br>But as far as I can remember 但在我的记忆中<br>We’ve been migratory animals 我们一直只是如野兽般流浪<br>Living under changing weather 四季变换，我们如常<br>Someday we will foresee obstacles 总有一天，我们会看见那些困难阻碍<br>Through the blizzard through the blizzard 在那片风雪之中，在那片风雪之后<br>Today we will sell our uniform 如今我们将曾经的校服变卖<br>Live together live together 一同离去，一同启程</p>
 </blockquote>
 
-        <div id="aplayer-DMNruUjX" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-GXJnwbrg" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-DMNruUjX"),
+            element: document.getElementById("aplayer-GXJnwbrg"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -8124,11 +8124,11 @@ dep_v-dis_{u,v}=dep_i-base_i</script><pre><code> 那么也就是说我们可以�
         <category>Luogu</category>
       </categories>
       <tags>
-        <tag>贪心</tag>
         <tag>树模型</tag>
         <tag>奇怪的技巧</tag>
-        <tag>搜索/剪枝</tag>
+        <tag>贪心</tag>
         <tag>倍增</tag>
+        <tag>搜索/剪枝</tag>
       </tags>
   </entry>
   <entry>
@@ -8222,8 +8222,8 @@ dep_v-dis_{u,v}=dep_i-base_i</script><pre><code> 那么也就是说我们可以�
       </categories>
       <tags>
         <tag>动态规划/普通DP</tag>
-        <tag>贪心</tag>
         <tag>奇怪的技巧</tag>
+        <tag>贪心</tag>
         <tag>NOIP系列</tag>
         <tag>搜索/剪枝</tag>
       </tags>
@@ -8426,12 +8426,12 @@ g_{s,h} = \sum_{t\in s}g_{s-t, h-1}+h\cdot f_{s-t,t}</script><p>同样是显然�
 <p>正如，我一直以来认为的，「短暂的快乐只会带来空虚，无尽的悲伤才会带来充实」。</p>
 <hr>
 
-        <div id="aplayer-UQMpvjNy" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-eaYtQAPg" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-UQMpvjNy"),
+            element: document.getElementById("aplayer-eaYtQAPg"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -9864,12 +9864,12 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
 <p>我大概在听这首歌之前，从来没有真正知道原来”喜欢“这个已经烂大街的词、这个现如今可以随便说出口又可以随便忘记的词、这个在我上过的所有学校里从来没有人敢光明正大说出来的词、这个现在在芸芸众生中已经被玷污的、被人们认为还没有一块钱来的实在的词，竟然如此的可爱，竟然如此的值得人们尊敬，竟然可以在冰冷的寒夜散发出如此耀眼的光芒。</p>
 <p>我喜欢你，你应该，也知道。</p>
 
-        <div id="aplayer-OFIgEksd" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-nANPCndS" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-OFIgEksd"),
+            element: document.getElementById("aplayer-nANPCndS"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -9900,12 +9900,12 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
 <hr>
 <p>雪，终于停了啊。现在已经午夜了，街上一个人都没有，天空在积雪的映照下，是让人着迷的紫红色。</p>
 
-        <div id="aplayer-OkybMbjy" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-jkJwzSzG" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-OkybMbjy"),
+            element: document.getElementById("aplayer-jkJwzSzG"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -10120,8 +10120,8 @@ l_k \pi_n + t(p-1)= l_n</script><p>由于原题让求的是最小的正整数解
       <tags>
         <tag>BSGS/exBSGS</tag>
         <tag>动态规划/普通DP</tag>
-        <tag>数学/阶与原根</tag>
         <tag>数学/线性代数/矩阵</tag>
+        <tag>数学/阶与原根</tag>
       </tags>
   </entry>
   <entry>
