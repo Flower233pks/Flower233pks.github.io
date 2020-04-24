@@ -9,12 +9,12 @@
 <p>在这些文章里，你会看到一个迷茫的青年如何满怀热血与绝望，眼里闪烁着沧桑与希望，怀里揣着坏掉的粮食和崭新的论文，脚下踏着崎岖不平的路，向明天走去。</p>
 <p>是的，我是花，来自山东，你直接叫我花这个ID或许我会很高兴，但是如果你认识我也可以不这么拘束。</p>
 
-        <div id="aplayer-lNuOkcRE" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-oxeBynGy" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-lNuOkcRE"),
+            element: document.getElementById("aplayer-oxeBynGy"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -193,6 +193,7 @@
 <p>可能是人越缺少什么，就越向往什么吧？但是这怎么解释，我之前还不明白自己缺少什么的时候，怀抱着的对那片天空的无限憧憬呢？</p>
 <p>人总是喜欢问没有答案的问题。因为求索总是让人感觉自己还切切实实活着在这个世界上啊。</p>
 <p>Hide your skill from your clumsiness, make you fast in slowly.</p>
+<p>本文共计 15 道题。</p>
 <a id="more"></a>
 <h1 id="UVA1407-Caves"><a href="#UVA1407-Caves" class="headerlink" title="UVA1407 Caves"></a><a href="https://uva.onlinejudge.org/external/14/p1407.pdf" target="_blank" rel="noopener">UVA1407 Caves</a></h1><blockquote>
 <p>给定一棵 $n$ 个节点、边带权的树。$q$ 次询问，每次给定一个 $x$ ，询问从根出发走多少个点，满足走过的边权和 $&lt;x$ 且经过的点最多。点可以重复经过，但只会被计算一次。</p>
@@ -338,7 +339,7 @@ f_{i,j,k}=\min\{f_{i-1,j,k}~,~f_{i-1,j-w_{i},k}+[j-w_i=0]\cdot h_i~,~f_{i-1,j,k-
 <p>1、如果对于某个 $x$ ，该点与所有儿子的连边均为有向边，那么：</p>
 <p>那么就是比较朴素的转移。</p>
 <script type="math/tex; mode=display">
-f_{x}=1+\max_{y\in son(x)}\{f_{y}\cdot [\exist(x,y),x\to y]\}\\g_{x}=1+\max_{y\in son(x)}\{g_{y}\cdot [\exist(y,x),y\to x]\}\\</script><p>2、如果存在某个 $y\in son(x)$ ，$(x,y)$ 是无向边，那么： </p>
+f_{x}=1+\max_{y\in son(x)}\{f_{y}\cdot [\exists(x,y),x\to y]\}\\g_{x}=1+\max_{y\in son(x)}\{g_{y}\cdot [\exists(y,x),y\to x]\}\\</script><p>2、如果存在某个 $y\in son(x)$ ，$(x,y)$ 是无向边，那么： </p>
 <p>那自然是再分类讨论这条边重定向成 $x\to y$ 还是 $y\to x$ 。但…这样做毕竟是 $2^{\mathrm{count}(son(x))}$ 的，如果一棵树全都是无向边那人就没了。</p>
 <p>考虑观察一点更深刻的性质。发现如果对于某个 $y$ ，被定向成了 $y\to x$ ，那么考虑对于其他 $g_z&lt;g_y$ 的 $(x,z)$ 未定向的 $z\in son(x)$ ，一定是要定向成 $z\to x$ 的。原因是，定向成 $z\to x$ 对当前没有任何贡献，因为边不带权，且 $y$ 转移过来一定更优；同时 $z\to x$ 对另一边的 $f$ 的转移没有任何贡献。综上，这样做一定不会使得结果更劣。</p>
 <p>那么就可以考虑，一开始用 <code>vector&lt;int&gt;</code> 将所有无向边连接的儿子给 <code>push_back</code> 进来。对于 $f$ 和 $g$ 分别处理。这个地方需要注意到题目中有个定理：</p>
@@ -377,7 +378,7 @@ f_{i,x}=|x-h_i|+\min\{f_{i-1,y}\} \quad (x-d\leq y\leq x+d)</script><p>发现可
 <p>$n \leq 100$ 。</p>
 </blockquote>
 <p>考虑对于这种每秒代价递增的问题，一般都是代价提前计算。但是这题也不是最朴素的这类问题，因为存在可以放弃某些位置的情况。</p>
-<p>然后就是比(我)较(又)神(不)仙(会)的状态设计环节。首先是，根据题面可知不用全部送餐，所以要把「准备送餐给ta」的人数 $k$ 放到状态里面。同时如果定义「选了某个区间内的全部数」作为状态，显然是不合适的。于是设 $f_{i,j,k,0/1}$ 表示<strong>不考虑</strong>区间 $[i,j]\cap\Z_+$  内的元素，还要给 $k$ 个人送餐，当前位于 $i(0)$ 还是 $j(1)$  的最小代价。那么最后答案就是 </p>
+<p>然后就是比(我)较(又)神(不)仙(会)的状态设计环节。首先是，根据题面可知不用全部送餐，所以要把「准备送餐给ta」的人数 $k$ 放到状态里面。同时如果定义「选了某个区间内的全部数」作为状态，显然是不合适的。于是设 $f_{i,j,k,0/1}$ 表示<strong>不考虑</strong>区间 $[i,j]\cap\mathbb {Z_+}$  内的元素，还要给 $k$ 个人送餐，当前位于 $i(0)$ 还是 $j(1)$  的最小代价。那么最后答案就是 </p>
 <script type="math/tex; mode=display">
 \max_{k=0}^n\{\max_{i=1}^n\{f_{i,i,k-1,0/1}+(e_i-|p_i|)\times k\}\}</script><p>考虑转移。发现对于一个 $f_{i,j,k,0/1}$ 而言，必然是由一个包含 $[i,j]$ 的更大的区间 $[l,r]$ 通过切分得来的，同时为了每次只转移走一个子问题，需要 $r=j$ 或者 $l=i$ 的更大区间。于是考虑每次只转移一个点，故转移为：</p>
 <script type="math/tex; mode=display">
@@ -396,6 +397,9 @@ f_{i,j,k,0}=\max_{l\leq i<j\leq r}\{f_{l,r,k - 1,0}+(v_l-k\times |p_l-p_i|),f_{l
 <p>注意几个细节：</p>
 <p>1、最后数字的位数不具有可二分性，所以还是枚举吧。</p>
 <p>2、注意可能存在前导 $0$ ，需要删掉。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>其实学到了许多吧？自己基础一点也不好，所以其实是把别人很早之前付出的努力，再重新付出了一遍。很遗憾，这些题目里面还是有不少无不太会做的题目…</p>
+<p>感谢兔队的教导可以让我安心学下去：藏巧于拙，寓快于慢。只要努力，就一定会比昨天的我更优秀吧？</p>
+<p>不过，努力和选择同样重要。希望在接下来越来越紧张的时间里面，我可以想清楚自己到底要做些什么题、要学习一些什么知识吧。加油吧！</p>
 ]]></content>
       <categories>
         <category>题解</category>
@@ -524,8 +528,8 @@ f(i,k)=\min_{i\leq j\leq i+k-1}\{a[j]\}</script><p>之后有 $m$ 个询问，每
         <tag>动态规划/状压DP</tag>
         <tag>动态规划/有技巧的DP</tag>
         <tag>思维题/计数</tag>
-        <tag>动态规划/普通DP</tag>
         <tag>思维题/构造</tag>
+        <tag>动态规划/普通DP</tag>
         <tag>贪心</tag>
         <tag>有趣的二分答案</tag>
         <tag>单调队列/单调栈</tag>
@@ -6747,8 +6751,8 @@ f_{i,j+cnt_i-k-o}=f_{i-1,j}\times \sum\limits_{k\leq cnt_i,l\leq j} (cnt_i!)\cdo
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>动态规划/普通DP</tag>
         <tag>数学/观察性质,结论与构造</tag>
+        <tag>动态规划/普通DP</tag>
       </tags>
   </entry>
   <entry>
@@ -6818,8 +6822,8 @@ y \cdot A_r-x \cdot B_r=y \cdot A_{l-1}-x \cdot B_{l-1}</script><p>然后如果�
       </categories>
       <tags>
         <tag>动态规划/状压DP</tag>
-        <tag>动态规划/普通DP</tag>
         <tag>数学/观察性质,结论与构造</tag>
+        <tag>动态规划/普通DP</tag>
         <tag>数据结构/数据结构方法/莫队</tag>
         <tag>数据结构/线段树</tag>
       </tags>
@@ -6999,8 +7003,8 @@ ans =\sum_{j=1}^{n}f_{n,j}\cdot g_{0,c_1,c_2}</script><p>其中$c_1$和$c_2$表�
       </categories>
       <tags>
         <tag>思维题/计数</tag>
-        <tag>动态规划/普通DP</tag>
         <tag>思维题/构造</tag>
+        <tag>动态规划/普通DP</tag>
         <tag>贪心</tag>
         <tag>组合计数/有技巧的计数</tag>
       </tags>
@@ -7908,12 +7912,12 @@ G &= G_h - \frac{T(G_h)}{T'(G_h)}\\\
 <p>Let’s say sunshine for everyone 人们说生活总是充满阳光<br>But as far as I can remember 但在我的记忆中<br>We’ve been migratory animals 我们一直只是如野兽般流浪<br>Living under changing weather 四季变换，我们如常<br>Someday we will foresee obstacles 总有一天，我们会看见那些困难阻碍<br>Through the blizzard through the blizzard 在那片风雪之中，在那片风雪之后<br>Today we will sell our uniform 如今我们将曾经的校服变卖<br>Live together live together 一同离去，一同启程</p>
 </blockquote>
 
-        <div id="aplayer-IeJKATzv" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-NsijHdUM" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-IeJKATzv"),
+            element: document.getElementById("aplayer-NsijHdUM"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -8433,12 +8437,12 @@ g_{s,h} = \sum_{t\in s}g_{s-t, h-1}+h\cdot f_{s-t,t}</script><p>同样是显然�
 <p>正如，我一直以来认为的，「短暂的快乐只会带来空虚，无尽的悲伤才会带来充实」。</p>
 <hr>
 
-        <div id="aplayer-SnTWgQfv" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-kMliuMcR" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-SnTWgQfv"),
+            element: document.getElementById("aplayer-kMliuMcR"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -8624,8 +8628,8 @@ c_{i+1}-c_i' = d_1\\\ c_i'-c_{i-1} = d_2</script><p>换句话说，其实就是�
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>动态规划/普通DP</tag>
         <tag>思维题/构造</tag>
+        <tag>动态规划/普通DP</tag>
         <tag>树模型</tag>
         <tag>有技巧的差分</tag>
         <tag>博弈论/组合游戏</tag>
@@ -9874,12 +9878,12 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
 <p>我大概在听这首歌之前，从来没有真正知道原来”喜欢“这个已经烂大街的词、这个现如今可以随便说出口又可以随便忘记的词、这个在我上过的所有学校里从来没有人敢光明正大说出来的词、这个现在在芸芸众生中已经被玷污的、被人们认为还没有一块钱来的实在的词，竟然如此的可爱，竟然如此的值得人们尊敬，竟然可以在冰冷的寒夜散发出如此耀眼的光芒。</p>
 <p>我喜欢你，你应该，也知道。</p>
 
-        <div id="aplayer-XVCsvvFC" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-kwVjCpcD" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-XVCsvvFC"),
+            element: document.getElementById("aplayer-kwVjCpcD"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -9910,12 +9914,12 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
 <hr>
 <p>雪，终于停了啊。现在已经午夜了，街上一个人都没有，天空在积雪的映照下，是让人着迷的紫红色。</p>
 
-        <div id="aplayer-hYOkYleh" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-YGBrEtbi" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-hYOkYleh"),
+            element: document.getElementById("aplayer-YGBrEtbi"),
             narrow: false,
             autoplay: false,
             showlrc: false,
