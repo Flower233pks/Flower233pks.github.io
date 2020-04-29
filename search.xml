@@ -9,12 +9,12 @@
 <p>在这些文章里，你会看到一个迷茫的青年如何满怀热血与绝望，眼里闪烁着沧桑与希望，怀里揣着坏掉的粮食和崭新的论文，脚下踏着崎岖不平的路，向明天走去。</p>
 <p>是的，我是花，来自山东，你直接叫我花这个ID或许我会很高兴，但是如果你认识我也可以不这么拘束。</p>
 
-        <div id="aplayer-yVUqccdI" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-njkuWsZT" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-yVUqccdI"),
+            element: document.getElementById("aplayer-njkuWsZT"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -1202,8 +1202,8 @@ f(i,k)=\min_{i\leq j\leq i+k-1}\{a[j]\}</script><p>之后有 $m$ 个询问，每
         <tag>动态规划/状压DP</tag>
         <tag>动态规划/有技巧的DP</tag>
         <tag>思维题/计数</tag>
-        <tag>动态规划/普通DP</tag>
         <tag>思维题/构造</tag>
+        <tag>动态规划/普通DP</tag>
         <tag>贪心</tag>
         <tag>有趣的二分答案</tag>
         <tag>单调队列/单调栈</tag>
@@ -7432,8 +7432,8 @@ f_{i,j+cnt_i-k-o}=f_{i-1,j}\times \sum\limits_{k\leq cnt_i,l\leq j} (cnt_i!)\cdo
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>动态规划/普通DP</tag>
         <tag>数学/观察性质,结论与构造</tag>
+        <tag>动态规划/普通DP</tag>
       </tags>
   </entry>
   <entry>
@@ -7503,8 +7503,8 @@ y \cdot A_r-x \cdot B_r=y \cdot A_{l-1}-x \cdot B_{l-1}</script><p>然后如果�
       </categories>
       <tags>
         <tag>动态规划/状压DP</tag>
-        <tag>动态规划/普通DP</tag>
         <tag>数学/观察性质,结论与构造</tag>
+        <tag>动态规划/普通DP</tag>
         <tag>数据结构/数据结构方法/莫队</tag>
         <tag>数据结构/线段树</tag>
       </tags>
@@ -7684,8 +7684,8 @@ ans =\sum_{j=1}^{n}f_{n,j}\cdot g_{0,c_1,c_2}</script><p>其中$c_1$和$c_2$表�
       </categories>
       <tags>
         <tag>思维题/计数</tag>
-        <tag>动态规划/普通DP</tag>
         <tag>思维题/构造</tag>
+        <tag>动态规划/普通DP</tag>
         <tag>贪心</tag>
         <tag>组合计数/有技巧的计数</tag>
       </tags>
@@ -8593,12 +8593,12 @@ G &= G_h - \frac{T(G_h)}{T'(G_h)}\\\
 <p>Let’s say sunshine for everyone 人们说生活总是充满阳光<br>But as far as I can remember 但在我的记忆中<br>We’ve been migratory animals 我们一直只是如野兽般流浪<br>Living under changing weather 四季变换，我们如常<br>Someday we will foresee obstacles 总有一天，我们会看见那些困难阻碍<br>Through the blizzard through the blizzard 在那片风雪之中，在那片风雪之后<br>Today we will sell our uniform 如今我们将曾经的校服变卖<br>Live together live together 一同离去，一同启程</p>
 </blockquote>
 
-        <div id="aplayer-ZnoKwUDn" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-LUuPRXvW" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-ZnoKwUDn"),
+            element: document.getElementById("aplayer-LUuPRXvW"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -9107,12 +9107,12 @@ g_{s,h} = \sum_{t\in s}g_{s-t, h-1}+h\cdot f_{s-t,t}</script><p>同样是显然�
 <p>正如，我一直以来认为的，「短暂的快乐只会带来空虚，无尽的悲伤才会带来充实」。</p>
 <hr>
 
-        <div id="aplayer-yXOMZnXg" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-fDvpsnYz" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-yXOMZnXg"),
+            element: document.getElementById("aplayer-fDvpsnYz"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -9298,8 +9298,8 @@ c_{i+1}-c_i' = d_1\\\ c_i'-c_{i-1} = d_2</script><p>换句话说，其实就是�
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>动态规划/普通DP</tag>
         <tag>思维题/构造</tag>
+        <tag>动态规划/普通DP</tag>
         <tag>树模型</tag>
         <tag>有技巧的差分</tag>
         <tag>博弈论/组合游戏</tag>
@@ -10545,12 +10545,12 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
 <p>我大概在听这首歌之前，从来没有真正知道原来”喜欢“这个已经烂大街的词、这个现如今可以随便说出口又可以随便忘记的词、这个在我上过的所有学校里从来没有人敢光明正大说出来的词、这个现在在芸芸众生中已经被玷污的、被人们认为还没有一块钱来的实在的词，竟然如此的可爱，竟然如此的值得人们尊敬，竟然可以在冰冷的寒夜散发出如此耀眼的光芒。</p>
 <p>我喜欢你，你应该，也知道。</p>
 
-        <div id="aplayer-mhRVIMPD" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-mjsiRpQl" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-mhRVIMPD"),
+            element: document.getElementById("aplayer-mjsiRpQl"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -10581,12 +10581,12 @@ B'[k] = \frac{P'[k] - Q'[k]}{2i}</script><p>哦，对了，当$k=0$时，由于�
 <hr>
 <p>雪，终于停了啊。现在已经午夜了，街上一个人都没有，天空在积雪的映照下，是让人着迷的紫红色。</p>
 
-        <div id="aplayer-HBMKMXDo" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-GgKcBSCv" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-HBMKMXDo"),
+            element: document.getElementById("aplayer-GgKcBSCv"),
             narrow: false,
             autoplay: false,
             showlrc: false,
