@@ -1,0 +1,390 @@
+<!DOCTYPE html><html class="theme-next gemini use-motion" lang=""><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0"><link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png?v=7.2.0"><link rel="icon" type="image/png" sizes="16x16" href="/images/icon-32.png?v=7.2.0"><link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222"><link rel="stylesheet" href="/css/main.css?v=7.2.0"><link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Verdana:300,300italic,400,400italic,700,700italic|Verdana:300,300italic,400,400italic,700,700italic|Verdana:300,300italic,400,400italic,700,700italic|Verdana:300,300italic,400,400italic,700,700italic|Courier New:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"><link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"><link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css"><script id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Gemini",version:"7.2.0",sidebar:{position:"left","Pisces | Gemini":270,width:270,display:"post",offset:12,onmobile:!1},back2top:{enable:!0,sidebar:!0,scrollpercent:!0},copycode:{enable:!0,show_result:!0,style:"mac"},fancybox:!0,mediumzoom:!1,lazyload:!1,pangu:!1,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}},translation:{copy_button:"Copy",copy_success:"Copied",copy_failure:"Copy failed"}}</script><meta name="description" content="胡做八做了一点简单的期望题，算是练练手感吧。 一共是 $15$ 道题。"><meta property="og:type" content="article"><meta property="og:title" content="【复习】概率期望做题笔记"><meta property="og:url" content="https://www.orchidany.cn/2020/05/06/%E6%9C%9F%E6%9C%9B/index.html"><meta property="og:site_name" content="𝓞𝓻𝓬𝓱𝓲𝓭𝓪𝓷𝔂&#39;𝔀 𝓫𝓵𝓸𝓰"><meta property="og:description" content="胡做八做了一点简单的期望题，算是练练手感吧。 一共是 $15$ 道题。"><meta property="article:published_time" content="2020-05-06T09:26:20.000Z"><meta property="article:modified_time" content="2020-05-09T07:24:42.878Z"><meta property="article:author" content="Orchidany"><meta property="article:tag" content="好多好多细节"><meta property="article:tag" content="数学&#x2F;概率,期望"><meta property="article:tag" content="数学&#x2F;高斯消元"><meta property="article:tag" content="技巧&#x2F;按位操作"><meta name="twitter:card" content="summary"><link rel="alternate" href="/atom.xml" title="𝓞𝓻𝓬𝓱𝓲𝓭𝓪𝓷𝔂'𝔀 𝓫𝓵𝓸𝓰" type="application/atom+xml"><link rel="canonical" href="https://www.orchidany.cn/2020/05/06/%E6%9C%9F%E6%9C%9B/"><script id="page.configurations">CONFIG.page={sidebar:""}</script><title>【复习】概率期望做题笔记 | 𝓞𝓻𝓬𝓱𝓲𝓭𝓪𝓷𝔂'𝔀 𝓫𝓵𝓸𝓰</title><noscript><style>.sidebar-inner,.use-motion .brand,.use-motion .collection-title,.use-motion .comments,.use-motion .menu-item,.use-motion .motion-element,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .logo,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.use-motion .logo-line-before i{left:initial}.use-motion .logo-line-after i{right:initial}</style></noscript><meta name="generator" content="Hexo 4.2.0"></head><body itemscope itemtype="http://schema.org/WebPage" lang="default"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">𝓞𝓻𝓬𝓱𝓲𝓭𝓪𝓷𝔂'𝔀 𝓫𝓵𝓸𝓰</span><span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">A Soul Tune against Fate Should Be Played, now.</p></div><div class="site-nav-toggle"> <button aria-label="Toggle navigation bar"><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-navigation"><a href="/navigation/" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i><br>Navigation</a></li><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>Archives</a></li><li class="menu-item menu-item-friends"><a href="/Friends/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i><br>Friends</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>Search</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i></span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"> <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://www.orchidany.cn/2020/05/06/%E6%9C%9F%E6%9C%9B/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Orchidany"><meta itemprop="description" content="For code, science, tech. and more"><meta itemprop="image" content="/images/avatar.png"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="𝓞𝓻𝓬𝓱𝓲𝓭𝓪𝓷𝔂'𝔀 𝓫𝓵𝓸𝓰"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">【复习】概率期望做题笔记</h1><div class="post-meta"><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">Posted on</span> <time title="Created: 2020-05-06 17:26:20" itemprop="dateCreated datePublished" datetime="2020-05-06T17:26:20+08:00">2020-05-06</time></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-check-o"></i></span> <span class="post-meta-item-text">Edited on</span> <time title="Modified: 2020-05-09 15:24:42" itemprop="dateModified" datetime="2020-05-09T15:24:42+08:00">2020-05-09</time></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">In</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-comment-o"></i></span> <span class="post-meta-item-text">Comments:</span><a href="/2020/05/06/%E6%9C%9F%E6%9C%9B/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/05/06/%E6%9C%9F%E6%9C%9B/" itemprop="commentCount"></span></a></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-eye"></i> Views:<span class="busuanzi-value" id="busuanzi_value_page_pv"></span></span></span><br></div></header><div class="post-body" itemprop="articleBody"><p>胡做八做了一点简单的期望题，算是练练手感吧。</p><p>一共是 $15$ 道题。</p><a id="more"></a><h1 id="不太需要技巧的例题"><a href="#不太需要技巧的例题" class="headerlink" title="不太需要技巧的例题"></a>不太需要技巧的例题</h1><h2 id="Luogu3802-小魔女帕琪"><a href="#Luogu3802-小魔女帕琪" class="headerlink" title="Luogu3802 小魔女帕琪"></a><a href="https://www.luogu.org/problem/P3802" target="_blank" rel="noopener">Luogu3802 小魔女帕琪</a></h2><p>这东西我硬推推出来一个：</p><script type="math/tex;mode=display">
+\dfrac{\left(\begin{array}{c}{\mathrm{S}-6} \\ {1}\end{array}\right) \cdot 7 ! \cdot \prod_{\mathrm{i}=1}^{7} \mathrm{a}_{\mathrm{i}} \cdot(\mathrm{S}-7) !}{\mathrm{S} !}</script><p>的东西。感觉还可以？然后其实就是一种思想？此时总方案数$\rm S$这东西不应该除以某些奇怪的阶乘，或者说，不需要，因为样本空间可以理解为先发生了$A$和发生了$B$虽然局面一样但是概率独立（大概</p><h2 id="Luogu5489-LnOI2019-脸滚键盘"><a href="#Luogu5489-LnOI2019-脸滚键盘" class="headerlink" title="Luogu5489 [LnOI2019]脸滚键盘"></a><a href="https://www.luogu.org/problem/P5498" target="_blank" rel="noopener">Luogu5489 [LnOI2019]脸滚键盘</a></h2><p>这题写过题解，现在复习一遍。大概就是考虑维护一个前缀和，构造数列</p><script type="math/tex;mode=display">
+\rm F_i=F_{i-1}\cdot base_i+base_i</script><p>然后我们发现它的级数很美妙：</p><script type="math/tex;mode=display">
+{\sum_{i=1}^{n}F_i=base_1+base_2\cdots+base_n+base_1base_2+base_2base_3\cdots+\prod_{i=1}^{n}base_i}</script><p>正好就是我们要求的答案。</p><p>但此时直接前缀和会有问题，因为多余的实际上是$a_0\cdots a_n$那一堆项，所以需要像哈希一样左半边乘上</p><script type="math/tex;mode=display">
+\prod_{i=1}^{r}base_i+\prod_{i=1}^{r-1}base_i+\cdots +\prod_{i=1}^{l}base_i</script><h2 id="Luogu1297-国家集训队-单选错位"><a href="#Luogu1297-国家集训队-单选错位" class="headerlink" title="Luogu1297 [国家集训队]单选错位"></a><a href="https://www.luogu.org/problem/P1297" target="_blank" rel="noopener">Luogu1297 [国家集训队]单选错位</a></h2><p>然后其实，$\rm E_S=\mathbb{E}(1)+\mathbb{E}(2)+\mathbb{E}(3)\cdots$</p><p>观察 $ \mathbb{E}(i)$，实际上只与 $ base_i,base_{i+1}$ 有关，那么每一项的贡献就是 $\dfrac{1}{\max(base_i,base_{i+1})}$。加起来即可。</p><h2 id="Luogu3924-康娜的线段树"><a href="#Luogu3924-康娜的线段树" class="headerlink" title="Luogu3924 康娜的线段树"></a><a href="https://www.luogu.org/problem/P3924#submit" target="_blank" rel="noopener">Luogu3924 康娜的线段树</a></h2><blockquote><p>每次在线段树区间加操作做完后，从根节点开始等概率的选择一个子节点进入，直到进入叶子结点为止，将一路经过的节点权值累加，最后能得到的期望值是多少？</p><p>此处的区间加是这样的：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Segment_Tree</span>&#123;</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lson (o&lt;&lt;1)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rson (o&lt;&lt;1|1)</span></span><br><span class="line"> <span class="keyword">int</span> sumv[N&lt;&lt;<span class="number">2</span>],minv[N&lt;&lt;<span class="number">2</span>];</span><br><span class="line"> <span class="keyword">inline</span> <span class="keyword">void</span> pushu\Pr(<span class="keyword">int</span> o)&#123;sumv[o]=sumv[lson]+sumv[rson];&#125;</span><br><span class="line"> <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> o,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(l==r)&#123;sumv[o]=a[l];<span class="keyword">return</span>;&#125;</span><br><span class="line">     <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">     build(lson,l,mid);build(rson,mid+<span class="number">1</span>,r);</span><br><span class="line">     pushu\Pr(o);</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span> o,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> q,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(l==r)&#123;sumv[o]+=v;<span class="keyword">return</span>;&#125;</span><br><span class="line">     <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">     <span class="keyword">if</span>(q&lt;=mid)change(lson,l,mid,q,v);</span><br><span class="line">     <span class="keyword">else</span> change(rson,mid+<span class="number">1</span>,r,q,v);</span><br><span class="line">     pushu\Pr(o);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;T; </span><br><span class="line"><span class="comment">//区间加</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=l;i&lt;=r;i++)T.change(<span class="number">1</span>,<span class="number">1</span>,n,i,addv);</span><br></pre></td></tr></table></figure><p>$1\leq n,m\leq 10^6$ 。</p></blockquote><p>根据线性性显然可以知道维护的就是</p><script type="math/tex;mode=display">
+\sum_{i=1}^{n}\dfrac{val_i}{2^{depth_i}}</script><p>其中根节点的 $depth$ 默认为 $0$ 。考虑先把这个式子通分一下：</p><script type="math/tex;mode=display">
+\sum_{i=1}^{n}\dfrac{val_i\cdot 2^{maxL-depth_i}}{2^{maxL}}=\dfrac{1}{2^{maxL}}\sum_{i=1}^{n}val_i\cdot 2^{maxL-depth_i}</script><p>然后考虑，如果是区间修改，那么本质上只需要求出区间内所有点的线段树上子树内系数 $2^{maxL-depth_i}$ 的和。这一部分可以直接预处理得到。并且考虑只有区间加的操作，所以并不需要真正动态地去维护。直接维护一个全局 $ans$ 即可。</p><p>于是最后复杂度线性。</p><h1 id="考察期望线性性的题目"><a href="#考察期望线性性的题目" class="headerlink" title="考察期望线性性的题目"></a>考察期望线性性的题目</h1><h2 id="ZROI-1142-石子"><a href="#ZROI-1142-石子" class="headerlink" title="[ZROI 1142]石子"></a>[ZROI 1142]石子</h2><blockquote><p>小 D 正在玩取石子游戏。 小 D 共有 $n$ 堆石子，依次编号为 $1, 2, · · · , n$，其中第 $i$ 堆有 $a_i$ 颗石子。 小 D 每次会等概率随机选择一颗石子，并取完它所在的那一堆石子。 小 D 想要知道，第 $1$ 堆石子被取走的时间的期望。</p><p>$n=10^6$。</p></blockquote><p>根据期望的线性性，可以知道可以分别算每堆石子在第 $1$ 堆之前被取完的概率。所以就是</p><script type="math/tex;mode=display">
+\mathbb{E}(t)=P_{2}+P_{3}+\cdots+P_{n}+1</script><p>于是代码：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; N ; <span class="keyword">int</span> i ; ans = <span class="number">1</span> ;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i) <span class="built_in">cin</span> &gt;&gt; base[i] ; </span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">2</span> ; i &lt;= N ; ++ i) </span><br><span class="line">		ans += (<span class="keyword">double</span>)base[i] / (<span class="keyword">double</span>)(base[i] + base[<span class="number">1</span>]) ;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%.9lf"</span>, ans) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="BZOJ3036-绿豆蛙的归宿"><a href="#BZOJ3036-绿豆蛙的归宿" class="headerlink" title="[BZOJ3036]绿豆蛙的归宿"></a>[BZOJ3036]绿豆蛙的归宿</h2><blockquote><p>给出 $n$ 个点 $m$ 条边的有向无环图，起点为 $1$，终点为 $n$，每条边都有一个长度，并且从起点出发能够到达所有的点，所有的点也都能够到达终点。</p><p>绿豆蛙从起点出发，走向终点。 到达每一个顶点时，如果该节点有 $k$ 条出边，绿豆蛙可以选择任意一条边离开该点，并且走向每条边的概率为 $\dfrac{1}{k}$ 。现在绿豆蛙想知道，从起点走到终点的所经过的路径总长度期望是多少？</p></blockquote><p>发现路径可以拆分，于是根据期望的线性性有</p><script type="math/tex;mode=display">
+\mathbb{E}(L)=\sum_{e=(u,v)}\mathbb{E}(e) = \sum_{e=(u,v)}\Pr(e)\cdot val(e)</script><p>于是 <code>dfs</code> 一遍即可。</p><h2 id="CF280C-Game-On-Tree"><a href="#CF280C-Game-On-Tree" class="headerlink" title="CF280C Game On Tree"></a>CF280C Game On Tree</h2><blockquote><p>给出一棵树，每次随机等概率选择一未染黑的点，将它及其子树染黑。问期望多少次操作可以将树全部染黑。</p><p>$1\leq n\leq 10^5$ .</p></blockquote><p>草，我居然能把这题给秒掉，太可怕了。</p><p>考虑首先是期望的线性嘛，于是可以知道 $\mathbb{E}(T)$ 表示把树 $T$ 全部染黑的期望次数，那么可以知道有</p><script type="math/tex;mode=display">
+\mathbb{E}(T)=\sum_{u\in T} \mathbb{E}(u)</script><p>其中 $u$ 是那么考虑如果想要染黑一棵以 $u$ 为根的子树，可以采用的策略是把它到根的路径上任意一点染黑，但是只有在染黑他自己的时候才会对答案产生贡献。所以不难知道</p><script type="math/tex;mode=display">
+\mathbb{E}(u)=\dfrac{1}{depth_u}</script><h1 id="考察转移递推思想的期望题目"><a href="#考察转移递推思想的期望题目" class="headerlink" title="考察转移递推思想的期望题目"></a>考察转移递推思想的期望题目</h1><h2 id="NOI2005-聪聪与可可"><a href="#NOI2005-聪聪与可可" class="headerlink" title="[NOI2005]聪聪与可可"></a>[NOI2005]聪聪与可可</h2><blockquote><p>给定一张 $n,m$ 的无向图。两个人一开始分别在点 $A,B$。每次 $A$ 先走，$B$ 后走，$A$ 每次会选择一个离 $B$ 最近且编号最小的点走 $1\sim2$ 步，$B$ 随机游走(也可停在原地，概率平摊)，求期望多少步 $A$ 可以与 $B$ 相遇。</p><p>$1 \leq N, E \leq 1000$。</p></blockquote><p>emmm 要是化归子问题的话，一开始觉得应该算出在每个点相遇的期望步数，但想了想觉得这个并不可做…</p><p>于是考虑更暴力一点化归子问题： $f_{u,v}$ 表示 $A$ 在 $u$，$B$ 在 $v$ 时两者相遇的期望步数。那么考虑转移：</p><p>1、$u=v$ ，$f_{u,v}=0$ 。</p><p>2、$dis(u,v)=1$，$f_{u,v}=1$ （因为 $A$ 先走）。</p><p>3、$dis(u,v)&gt;1$，$f_{u,v}=\dfrac{\sum{f_{u’,v’}}}{\deg(v)+1}$ ，其中 $u’$ 是 $u$ 走两步可以到达的离 $v$ 最近的一个点，$v$ 是随便一个点。</p><p>然后就可以记搜了。我其实很迷惑为什么全员最短路的题要出 $1e3$ …除了强行丰富代码难度，有什么意义吗…</p><p>注意实现的一点小细节。如果 $x$ 走两步就可以走到 $y$，此时应该直接 <code>return 1.0</code> ，因为 $B$ 根本没有走的机会。</p><h2 id="LuoguP1365-OSU-Easy-Version"><a href="#LuoguP1365-OSU-Easy-Version" class="headerlink" title="[LuoguP1365]OSU!(Easy Version)"></a>[LuoguP1365]OSU!(Easy Version)</h2><blockquote><p>给定一个序列，某些位置是 $0$，某些位置是 $1$ ，某些位置分别有 $50\%$ 的概率变成 $0$ 或者 $1$ 。求极大连续纯 $1$ 段的长度的平方之和的期望。</p><p>$1\leq n\leq 10^6$ 。</p></blockquote><p>考虑分别记 $f_i,g_i$ 表示总期望/当前段的期望。那么可以分类讨论 $i$ 的类型：</p><p>1、$a_i=1,g_i=g_{i-1}+1,f_{i}=f_{i-1}+2\cdot g_{i-1}+1$ 。</p><p>2、$a_i=0,g_i=0,f_{i}=f_{i-1}$ 。</p><p>3、$a_i=?,g_{i}=g_{i-1}+0.5,f_{i}=f_{i-1}+g_{i-1}+0.5$ 。</p><p>还是比较简单的。注意一个点即可，根据期望的线性性，如果按照「前 $i$ 个」作为划分阶段的依据，需要把一个极长连续 $1$ 段的贡献摊到每个元素上面，摊的方法就是平方和公式。</p><h2 id="BZOJ4318-OSU-Hard-Version"><a href="#BZOJ4318-OSU-Hard-Version" class="headerlink" title="[BZOJ4318]OSU!(Hard Version)"></a>[BZOJ4318]OSU!(Hard Version)</h2><blockquote><p>我们可以把osu的规则简化与改编成以下的样子:</p><p>一共有 $n$ 次操作，每次操作只有成功与失败之分，成功对应1，失败对应0，$n$ 次操作对应为长度为 $n$ 的<code>01</code> 串。在这个串中连续的 $X$ 个 1 可以贡献 $X^3$ 的分数，这 $X$ 个 $1$ 不能被其他连续的 $1$ 所包含（也就是极长的一串1）</p><p>现在给出 $n$，以及每个操作的成功率，请你输出期望分数。</p><p>$1\leq n\leq 10^6$ 。</p></blockquote><p>跟上一题十分接近的思路。但是考虑立方和公式 $(x+1)^3=x^3+3x^2+3x+1$ ，由于 $\mathbb{E}^2(x)\neq \mathbb{E}(x^2)$，所以不能直接拿线性性拆。于是考虑分别维护极长段的平方和和长度即可。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i)&#123;</span><br><span class="line">	g[i] = (g[i - <span class="number">1</span>] + <span class="number">1</span>) * base[i], </span><br><span class="line">	p[i] = (p[i - <span class="number">1</span>] + <span class="number">2</span> * g[i - <span class="number">1</span>] + <span class="number">1</span>) * base[i],</span><br><span class="line">	f[i] = f[i - <span class="number">1</span>] + base[i] *  (<span class="number">3</span> * p[i - <span class="number">1</span>] + <span class="number">3</span> * g[i - <span class="number">1</span>] + <span class="number">1</span>) ;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure><h2 id="Luogu4550-收集邮票"><a href="#Luogu4550-收集邮票" class="headerlink" title="[Luogu4550]收集邮票"></a>[Luogu4550]收集邮票</h2><blockquote><p>有 $n$ 种不同的邮票，皮皮想收集所有种类的邮票。唯一的收集方法是到同学凡凡那里购买，每次只能买一张，并且买到的邮票究竟是 $n$ 种邮票中的哪一种是等概率的，概率均为 $\dfrac{1}{n}$。但是由于凡凡也很喜欢邮票，所以皮皮购买第 $k$ 张邮票需要支付 $k$ 元钱。</p><p>现在皮皮手中没有邮票，皮皮想知道自己得到所有种类的邮票需要花费的钱数目的期望。</p><p>$1\leq n\leq 10^6$ 。</p></blockquote><p>首先考虑一个简化版问题：</p><blockquote><p>每次随机一个$[1,n]$的整数，问期望几次能凑出所有数</p></blockquote><p>考虑期望的线性性，就是 $\mathbb{E}=\sum \mathbb{E}(i)$，其中 $\mathbb{E}$ 为所求，$\mathbb{E}(i)$ 为在已经取出 $i-1$ 个数字时，取到第 $i$ 个数字的期望次数。根据之前整理过的内容，“发生概率为 $p$ 的事件，在期望 $\dfrac{1}{p}$ 次之后会发生”，我们可以得到如下：</p><script type="math/tex;mode=display">
+\begin{aligned}
+\Pr(i)& =\dfrac{n-(i-1)}{n} \\
+\mathbb{E}(i)& =\dfrac{1}{\Pr(i)}=\dfrac{n}{n-i+1}
+\end{aligned}</script><p>然后把他们加起来就是</p><script type="math/tex;mode=display">
+\mathbb{E}(X)=\sum\dfrac{n}{n-i+1}=\sum\dfrac{n}{i}</script><p>思路是自然的。然后考虑本题，需要给每次操作附加一个权值。所以本质上我们可以分开计算，$g_i$表示已经取出 $i-1$ 个数字时，取到第 $i$ 个数字的期望步数，$ f_i$表示期望步数的<code>cost</code>。</p><p>考虑如何计算 $f_i$。假设之前拿数进行了 $p$ 次操作，这一次拿 $i$ 需要 $q$ 次操作，那么这 $q$ 次操作的 $\rm \sum cost$ 就是</p><script type="math/tex;mode=display">
+p\cdot q+q^2=(p+q)\cdot q</script><p>这个原理需要编一下。考虑前一半是之前拿数次数与当前拿数次数的乘积，可以知道此时的代价至少是这些；后一半在不考虑前面拿数的贡献后，可以考虑期望的意义，$q$ 既是期望次数，也是平均代价，所以可以知道当前的代价应该是 $q^2$ 。</p><p>然后就递推一下即可：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i)&#123;</span><br><span class="line">	n = <span class="number">1.0</span> * N / (N - i + <span class="number">1</span>), </span><br><span class="line">	g[i] = g[i - <span class="number">1</span>] + n, f[i] = f[i - <span class="number">1</span>] + g[i] * n ;</span><br><span class="line"> &#125; </span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%.2f"</span>, f[N])  ;</span><br></pre></td></tr></table></figure><h2 id="SHOI2014-概率充电器"><a href="#SHOI2014-概率充电器" class="headerlink" title="*[SHOI2014]概率充电器"></a>*[SHOI2014]概率充电器</h2><blockquote><p>SHOI 概率充电器由 $n-1$ 条导线连通了 $n$ 个充电元件。进行充电时，每条导线是否可以导电以概率决定(每条边有一个通电概率)，每一个充电元件自身是否直接进行充电也由概率决定(每个点也有一个通电概率)。随后电能可以从直接充电的元件经过通电的导线使得其他充电元件进行间接充电。</p><p>你突然想知道，进入充电状态的元件个数的期望是多少呢？</p><p>$1\leq n\leq 5\cdot 10^5$。</p></blockquote><p>比较有难度的题目。</p><p>根据期望的线性性，可以知道这题只需要求出每个点被点亮的概率即可。考虑设 $f_u$ 表示 $u$ 的子树对 $u$ 的贡献，$g_u$ 表示 $u$ 真正的贡献。不难知道 $f_u\leq g_u$ 。</p><p>那么考虑分别求这两部分。首先常规树形 $dp$ 求出 $f_{root}=g_{root}$ 来，转移大概是考虑依次把子树合并进来：</p><script type="math/tex;mode=display">
+f_{u}=(1-f_u)\cdot f_v\cdot e[u,v]</script><p>然后考虑如何将贡献 $down$ 下去。那么考虑设 $h_u$ 表示只考虑祖先的贡献时，$u$ 亮的概率。不难知道 $g_u=f_u+h_u$ 。那么考虑 $h$ 怎么求。发现一般这种 down 形态的 dp 都要减去当前子树的贡献。所以对于 $h_v$ 而言，有如下转移：</p><script type="math/tex;mode=display">
+h_v=\dfrac{(g_u-f_v\cdot e[u,v])\cdot (1-f_v)\cdot e[u,v]}{1-f_v\cdot e[u,v]}</script><p>考虑分子上是父亲传到儿子的概率，$h_v$ 是从父亲处导电的概率，那么可以知道如果想要父亲传到儿子，必须要使之互斥，即需要让 $h_v\times \Pr(\texttt{不通过儿子传到父亲})=\Pr(\texttt{父亲传到儿子})$ ，这是分母的来由。</p><p>考虑如果本身不能「不通过儿子传给父亲」，那么父亲的就不能传给儿子，此时 $h_v=0$，需要特判。</p><p>好绕啊好绕啊…</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">il <span class="keyword">void</span> <span class="title">dfs0</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">	f[u][<span class="number">0</span>] = base[u] ; </span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> k = head[u] ; k ; k = next(k))&#123;</span><br><span class="line">		<span class="keyword">if</span> (to(k) == fa) <span class="keyword">continue</span> ; </span><br><span class="line">		dfs0(to(k), u), f[u][<span class="number">0</span>] += (<span class="number">1</span> - f[u][<span class="number">0</span>]) * val(k) * f[to(k)][<span class="number">0</span>] ; </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> k = head[u] ; k ; k = next(k))&#123;</span><br><span class="line">		<span class="keyword">if</span> (to(k) == fa) <span class="keyword">continue</span> ;</span><br><span class="line">		<span class="keyword">double</span> p = f[to(k)][<span class="number">0</span>] * val(k) ; </span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">fabs</span>(<span class="number">1</span> - p) &lt;= eps) &#123;dfs1(to(k), u) ; <span class="keyword">continue</span> ;&#125;</span><br><span class="line">		<span class="keyword">double</span> q = f[u][<span class="number">0</span>] + f[u][<span class="number">1</span>] - f[to(k)][<span class="number">0</span>] * val(k) ; </span><br><span class="line">		f[to(k)][<span class="number">1</span>] = (<span class="number">1</span> - f[to(k)][<span class="number">0</span>]) * q / (<span class="number">1</span> - p) * val(k) ; </span><br><span class="line">		dfs1(to(k), u) ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; N ; </span><br><span class="line">	<span class="keyword">double</span> o ; <span class="keyword">int</span> i, u, v, w ;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt; N ; ++ i) </span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;u, &amp;v, &amp;w), o = w * <span class="number">0.01</span>, add(u, v, o) ;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;w), base[i] = w * <span class="number">0.01</span> ;</span><br><span class="line">	dfs0(<span class="number">1</span>, <span class="number">0</span>), dfs1(<span class="number">1</span>, <span class="number">0</span>) ; </span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span> ; i &lt;= N ; ++ i) </span><br><span class="line">		ans += (f[i][<span class="number">0</span>] + f[i][<span class="number">1</span>]) ;</span><br><span class="line">    <span class="keyword">return</span> !<span class="built_in">printf</span>(<span class="string">"%.6lf\n"</span>, ans) ; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="转移时有后效性的题目"><a href="#转移时有后效性的题目" class="headerlink" title="转移时有后效性的题目"></a>转移时有后效性的题目</h1><h2 id="HNOI2013-游走"><a href="#HNOI2013-游走" class="headerlink" title="[HNOI2013]游走"></a>[HNOI2013]游走</h2><blockquote><p>一个无向连通图，顶点从 $1$ 编号到 $n$ ，边从 $1$ 编号到 $m$。</p><p>小Z在该图上进行随机游走，初始时小Z在 $1$ 号顶点，每一步小Z以相等的概率随机选择当前顶点的某条边，沿着这条边走到下一个顶点，获得等于这条边的编号的分数。当小Z到达 $n$ 号顶点时游走结束，总分为所有获得的分数之和。</p><p>现在，请你对这 $m$ 条边进行编号，使得小Z获得的总分的期望值最小。</p><p>$n\leq 500,1\leq m\leq 1.2\times 10^5$ 。</p></blockquote><p>首先可以贪心地知道期望走过次数越多的边，自然希望他编号越小。</p><p>考虑由点推边。即设 $f_i$ 表示 $i$ 这个点经过的次数。那么可以知道有</p><script type="math/tex;mode=display">
+f_{i}=[i=1]+\sum_{(i,j)\in\mathbb E} f_j\times \dfrac{1}{\deg_j}</script><p>于是可以高斯消元求出每个 $f_i$ 。之后考虑一条边 $(u,v)$ 的期望经过次数就是</p><script type="math/tex;mode=display">
+\dfrac{f_u}{\deg_u}+\dfrac{f_v}{\deg_v}</script><p>注意以上所有的操作都不包括 $n$ 号点，因为到 $n$ 号点就不会再走了。</p><h2 id="CF24D-Broken-Robot"><a href="#CF24D-Broken-Robot" class="headerlink" title="CF24D Broken Robot"></a>CF24D Broken Robot</h2><blockquote><p>$n$ 行 $m$ 列的矩阵，一开始在点 $(x,y)$，每次等概率向左，右，下走或原地不动，但不能走出去，问走到最后一行期望的步数。</p><p>注意，$(1,1)$ 是木板的左上角，$(n,m)$ 是木板的右下角。</p></blockquote><p>首先是倒推的思想，从 $(x,y)$ 走到最后一行状态的过程不好描述，可以转化为从最后一行走到 $(x,y)$ 。</p><p>考虑转移</p><script type="math/tex;mode=display">
+f_{i,j}
+=
+\begin{cases}
+\frac{1}{3}(f_{i+1,j}+f_{i,j+1}+f_{i,j})&\left(j=1\right)\\
+\frac{1}{3}(f_{i+1,j}+f_{i,j-1}+f_{i,j})&\left(j=m\right)\\
+\frac{1}{4}(f_{i+1,j}+f_{i,j-1}+f_{i,j+1}+f_{i,j})&\mathrm{Otherwise}
+\end{cases}</script><p>发现具有后效性，于是考虑消元。个人认为至少有如下几档部分分：</p><h3 id="40-pts-max-n-m-leq-25"><a href="#40-pts-max-n-m-leq-25" class="headerlink" title="40 pts $\max\{n,m\}\leq 25$"></a>40 pts $\max\{n,m\}\leq 25$</h3><p>这个就可以把 $n \times m$ 个元素放在一起消元，复杂度是 $(n^3\cdot m^3)$ 的。</p><h3 id="70-pts-max-n-m-leq-100"><a href="#70-pts-max-n-m-leq-100" class="headerlink" title="70 pts $\max\{n,m\}\leq 100$"></a>70 pts $\max\{n,m\}\leq 100$</h3><p>发现每一行和其他行之间的关系只有 $f_{i+1,j}$ ，那么不难想到倒序枚举每一行，对这一行内的元素进行消元，此时 $f_{i+1}$ 的所有元素均已知。复杂度是 $O(n\cdot m^3)$ 的。</p><h3 id="85-pts-max-n-m-leq-500"><a href="#85-pts-max-n-m-leq-500" class="headerlink" title="85 pts $\max\{n,m\}\leq 500$"></a>85 pts $\max\{n,m\}\leq 500$</h3><p>发现对于要消元的矩阵，对于每一行只有 $i,i-1,i+1,n+1$ 四个列的位置是有元素的，所以每次对于一行而言，可以只进行 $O(1)$ 次消元。这样就是 $O(n\cdot m^2)$ 的了。</p><h3 id="100-pts-max-n-m-leq-3000"><a href="#100-pts-max-n-m-leq-3000" class="headerlink" title="100 pts $\max\{n,m\}\leq 3000$"></a>100 pts $\max\{n,m\}\leq 3000$</h3><p>发现不止横向有性质，纵向同样有性质。发现对于每一列，至多会有 $3$ 个元素。这样纵向也是 $O(1)$ 的了。于是总复杂度 $O(n\cdot m)$ 。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">db ans[N] ;</span><br><span class="line">db f[N][N] ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">gauss</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; ++ i)&#123;</span><br><span class="line">        <span class="keyword">if</span> (i &lt; n) f[i][i + <span class="number">1</span>] /= f[i][i] ;</span><br><span class="line">        f[i][n + <span class="number">1</span>] /= f[i][i] ; f[i][i] = <span class="number">1.0</span> ;</span><br><span class="line">        <span class="keyword">if</span> (i &lt; n) f[i + <span class="number">1</span>][i + <span class="number">1</span>] -= f[i + <span class="number">1</span>][i] * f[i][i + <span class="number">1</span>] ;</span><br><span class="line">        <span class="keyword">if</span> (i &lt; n) f[i + <span class="number">1</span>][n + <span class="number">1</span>] -= f[i + <span class="number">1</span>][i] * f[i][n + <span class="number">1</span>] ;</span><br><span class="line">        f[i + <span class="number">1</span>][i] = <span class="number">0</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    ans[n] = f[n][n + <span class="number">1</span>] ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span> ; i &gt;= <span class="number">1</span> ; -- i)</span><br><span class="line">        ans[i] = f[i][n + <span class="number">1</span>], ans[i] -= ans[i + <span class="number">1</span>] * f[i][i + <span class="number">1</span>] ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m ;</span><br><span class="line"><span class="keyword">int</span> x, y ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m &gt;&gt; x &gt;&gt; y ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span> ; i &gt;= x ; -- i)&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span> ; j &lt;= m ; ++ j)&#123;</span><br><span class="line">            <span class="keyword">if</span> (j == <span class="number">1</span> &amp;&amp; j == m)&#123;</span><br><span class="line">                f[j][m + <span class="number">1</span>] = <span class="number">1.0</span> + ans[j] * <span class="number">1.0</span> / <span class="number">2.0</span> ;</span><br><span class="line">                f[j][j] = <span class="number">1.0</span> / <span class="number">2.0</span> ; </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (j == <span class="number">1</span>)&#123;</span><br><span class="line">                f[j][m + <span class="number">1</span>] = <span class="number">1.0</span> + ans[j] * <span class="number">1.0</span> / <span class="number">3.0</span> ;</span><br><span class="line">                f[j][j] = <span class="number">2.0</span> / <span class="number">3.0</span>, f[j][j + <span class="number">1</span>] = - <span class="number">1.0</span> / <span class="number">3.0</span> ;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (j == m)&#123;</span><br><span class="line">                f[j][m + <span class="number">1</span>] = <span class="number">1.0</span> + ans[j] * <span class="number">1.0</span> / <span class="number">3.0</span> ;</span><br><span class="line">                f[j][j] = <span class="number">2.0</span> / <span class="number">3.0</span>, f[j][j - <span class="number">1</span>] = - <span class="number">1.0</span> / <span class="number">3.0</span> ;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                f[j][j] = <span class="number">3.0</span> / <span class="number">4.0</span> ;</span><br><span class="line">                f[j][j - <span class="number">1</span>] = - <span class="number">1.0</span> / <span class="number">4.0</span> ;</span><br><span class="line">                f[j][j + <span class="number">1</span>] = - <span class="number">1.0</span> / <span class="number">4.0</span> ;</span><br><span class="line">                f[j][m + <span class="number">1</span>] = <span class="number">1.0</span> + ans[j] * <span class="number">1.0</span> / <span class="number">4.0</span> ;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        gauss(m) ; <span class="comment">//debug(ans, 1, m) ;</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span> ; j &lt;= m ; ++ j)</span><br><span class="line">            f[j][j] = f[j][j - <span class="number">1</span>] = f[j][j + <span class="number">1</span>] = f[j][m + <span class="number">1</span>] = <span class="number">0</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%.8lf\n"</span>, ans[y]) ; <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="HNOI2011-XOR和路径"><a href="#HNOI2011-XOR和路径" class="headerlink" title="[HNOI2011]XOR和路径"></a>[HNOI2011]XOR和路径</h2><blockquote><p>给定一个无向连通图，其节点编号为 $1$ 到 $N$，其边的权值为非负整数。试求出一条从 $1$ 号节点到 $N$ 号节点的路径，使得该路径上经过的边的权值的 “XOR和”最大。该路径可以重复经过某些节点或边，当一条边在路径中出现多次时，其权值在计算“XOR 和”时也要被重复计算相应多的次数。</p><p>直接求解上述问题比较困难，于是你决定使用非完美算法。具体来说，从 $1$ 号节点开始，以相等的概率，随机选择与当前节点相关联的某条边，并沿这条边走到下一个节点，重复这个过程，直到走到 $N$ 号节点为止，便得到一条从 $1$ 号节点到 $N$ 号节点的路径。显然得到每条这样的路径的概率是不同的并且每条这样的路径的“XOR 和”也不一样。现在请你求出该算法得到的路径的“XOR 和”的期望值。</p><p>$2≤N≤100,1\leq M≤10000$ 。</p></blockquote><p><del>那必然是要先猜一波期望对xor运算也具有线性性，但实际上并没有。</del></p><p>感觉可能是需要记住的一个 $trick$ ，位运算时位与位之间是独立的，所以可以分别对每一位计算。那么对每一位计算就可以直接按 $0/1$ 分类讨论来转移。</p><p>具体的，还是考虑倒推。个人感觉这是因为最初的决策可能延伸出许多不同的决策，导致很难对这个过程进行统计。但是如果倒推的话，就相当于从一个已知结果出发走向另一端的已知开始。所以会相对容易一点？</p><p>于是考虑设状态 $f_x$ 表示当前二进制位下， 从 $x$ 走到 $n$ 这一位的期望，也就可以等价于这一位为 $1$ 的概率。于是有转移</p><script type="math/tex;mode=display">
+f_{u}=\frac{1}{\deg_u}\left(\sum_{(u,v,w)\in \mathbf{E},w=0} f_v+\sum_{(u,v,w)\in \mathbf{E},w=1}(1-f_v)\right)</script><p>然后就可以消元了，复杂度 $O(n^3\log V)$ 。注意自环只统计一次。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> maxv ;</span><br><span class="line"><span class="keyword">int</span> n, m ;</span><br><span class="line"><span class="keyword">int</span> deg[N] ;</span><br><span class="line"></span><br><span class="line">db res ;</span><br><span class="line">db ans[N] ;</span><br><span class="line">db f[N][N] ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">gauss</span><span class="params">(<span class="keyword">int</span> L)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= L ; ++ i)&#123;</span><br><span class="line">        <span class="keyword">int</span> r = i ; db t ;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span> ; j &lt;= L ; ++ j)</span><br><span class="line">            <span class="keyword">if</span> (f[r][i] &lt; f[j][i]) swap(f[r], f[j]) ;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = L + <span class="number">1</span> ; j &gt;= i ; -- j) f[r][j] /= f[r][i] ;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span> ; j &lt;= L ; ++ j)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = L + <span class="number">1</span> ; k &gt;= i ; -- k)</span><br><span class="line">                f[j][k] -= f[j][i] * f[r][k] ;</span><br><span class="line">    &#125;</span><br><span class="line">    ans[L] = f[L][L + <span class="number">1</span>] ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = L - <span class="number">1</span> ; i &gt;= <span class="number">1</span> ; -- i)&#123;</span><br><span class="line">        ans[i] = f[i][L + <span class="number">1</span>] ;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span> ; j &lt;= L ; ++ j)</span><br><span class="line">            ans[i] -= ans[j] * f[i][j] ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m ; <span class="keyword">int</span> u, v, w ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= m ; ++ i)&#123;</span><br><span class="line">        u = qr(), v = qr() ;</span><br><span class="line">        w = qr() ; chkmax(maxv, w) ;</span><br><span class="line">        add_e(u, v, w) ; <span class="keyword">if</span> (u != v) add_e(v, u, w) ;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//    debug(deg, 1, n) ; cout &lt;&lt; cnt &lt;&lt; '\n' ;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> v = <span class="number">1</span> ; v &lt;= maxv ; v &lt;&lt;= <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n + <span class="number">1</span> ; ++ i)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span> ; j &lt;= n + <span class="number">1</span> ; ++ j)</span><br><span class="line">                f[i][j] = <span class="number">0.0</span> ;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt; n ; ++ i)&#123;</span><br><span class="line">            f[i][i] = deg[i] ; <span class="keyword">int</span> xs = <span class="number">0</span> ;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = head[i] ; k ; k = next(k))&#123;</span><br><span class="line">                <span class="keyword">if</span> (!(val(k) &amp; v)) f[i][to(k)] -= <span class="number">1.0</span> ;</span><br><span class="line">                <span class="keyword">else</span> f[i][to(k)] += <span class="number">1.0</span>, xs += <span class="number">1</span> ;</span><br><span class="line">            &#125;</span><br><span class="line">            f[i][n + <span class="number">1</span>] = <span class="number">1.0</span> * xs ;</span><br><span class="line">        &#125;</span><br><span class="line">        f[n][n] = <span class="number">1.0</span> ;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        for (int i = 1 ; i &lt;= n + 1 ; ++ i)</span></span><br><span class="line"><span class="comment">            for (int j = 1 ; j &lt;= n + 1 ; ++ j)</span></span><br><span class="line"><span class="comment">                cout &lt;&lt; f[i][j] &lt;&lt; " \n"[j == n + 1] ;</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        gauss(n) ; res += ans[<span class="number">1</span>] * v ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%.3lf\n"</span>, res) ; <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><footer class="post-footer"><div class="post-tags"><a href="/tags/%E5%A5%BD%E5%A4%9A%E5%A5%BD%E5%A4%9A%E7%BB%86%E8%8A%82/" rel="tag"><i class="fa fa-tag"></i> 好多好多细节</a><a href="/tags/%E6%95%B0%E5%AD%A6-%E6%A6%82%E7%8E%87-%E6%9C%9F%E6%9C%9B/" rel="tag"><i class="fa fa-tag"></i> 数学/概率,期望</a><a href="/tags/%E6%95%B0%E5%AD%A6-%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/" rel="tag"><i class="fa fa-tag"></i> 数学/高斯消元</a><a href="/tags/%E6%8A%80%E5%B7%A7-%E6%8C%89%E4%BD%8D%E6%93%8D%E4%BD%9C/" rel="tag"><i class="fa fa-tag"></i> 技巧/按位操作</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2020/05/03/%E6%A6%82%E7%8E%87%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E5%85%A5%E9%97%A8/" rel="next" title="【探究向】用命分析概率型生成函数(PGF)"><i class="fa fa-chevron-left"></i> 【探究向】用命分析概率型生成函数(PGF)</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"> <a href="/2050/02/05/%E3%80%90%E5%85%AC%E5%91%8A%E3%80%91%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" rel="prev" title="【公告】关于这个blog">【公告】关于这个blog<i class="fa fa-chevron-right"></i></a></div></div></footer></div></article></div></div><div class="comments" id="comments"></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><div style=""><canvas id="canvas" style="width:60%">当前浏览器不支持canvas，请更换浏览器后再试</canvas></div><script>!function(){var t,o=[[[0,0,1,1,1,0,0],[0,1,1,0,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,0,1,1,0],[0,0,1,1,1,0,0]],[[0,0,0,1,1,0,0],[0,1,1,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[1,1,1,1,1,1,1]],[[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,0,1,1,0,0,0],[0,1,1,0,0,0,0],[1,1,0,0,0,0,0],[1,1,0,0,0,1,1],[1,1,1,1,1,1,1]],[[1,1,1,1,1,1,1],[0,0,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,0,1,1,1,0,0],[0,0,0,0,1,1,0],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[0,0,0,0,1,1,0],[0,0,0,1,1,1,0],[0,0,1,1,1,1,0],[0,1,1,0,1,1,0],[1,1,0,0,1,1,0],[1,1,1,1,1,1,1],[0,0,0,0,1,1,0],[0,0,0,0,1,1,0],[0,0,0,0,1,1,0],[0,0,0,1,1,1,1]],[[1,1,1,1,1,1,1],[1,1,0,0,0,0,0],[1,1,0,0,0,0,0],[1,1,1,1,1,1,0],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[0,0,0,0,1,1,0],[0,0,1,1,0,0,0],[0,1,1,0,0,0,0],[1,1,0,0,0,0,0],[1,1,0,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[1,1,1,1,1,1,1],[1,1,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,1,1,0,0,0],[0,0,1,1,0,0,0],[0,0,1,1,0,0,0],[0,0,1,1,0,0,0]],[[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,1,1,0,0,0,0]],[[0,0,0,0,0,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,0,0,0,0,0]]],e=document.getElementById("canvas");if(e.getContext){var l=e.getContext("2d");e.height=100,e.width=700,l.fillStyle="#f00",l.fillRect(10,10,50,50);var r=[],f=[],i=e.height/20-1;function n(t,e){for(var n=0;n<o[e].length;n++)for(var a=0;a<o[e][n].length;a++)1==o[e][n][a]&&(l.beginPath(),l.arc(14*(i+2)*t+2*a*(i+1)+(i+1),2*n*(i+1)+(i+1),i,0,2*Math.PI),l.closePath(),l.fill())}function h(t,e){for(var n=[1,2,3],a=["#3BE","#09C","#A6C","#93C","#9C0","#690","#FB3","#F80","#F44","#C00"],l=0;l<o[e].length;l++)for(var r=0;r<o[e][l].length;r++)if(1==o[e][l][r]){var h={x:14*(i+2)*t+2*r*(i+1)+(i+1),y:2*l*(i+1)+(i+1),stepX:Math.floor(4*Math.random()-2),stepY:-2*n[Math.floor(Math.random()*n.length)],color:a[Math.floor(Math.random()*a.length)],disY:1};f.push(h)}}t=/(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date),r.push(t[1],t[2],10,t[3],t[4],10,t[5],t[6]),clearInterval(a);var a=setInterval(function(){!function(){var t=[],e=/(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date),n=[];n.push(e[1],e[2],10,e[3],e[4],10,e[5],e[6]);for(var a=r.length-1;0<=a;a--)n[a]!==r[a]&&t.push(a+"_"+(Number(r[a])+1)%10);for(a=0;a<t.length;a++)h.apply(this,t[a].split("_"));r=n.concat()}(),function(){for(var t=0;t<f.length;t++)f[t].stepY+=f[t].disY,f[t].x+=f[t].stepX,f[t].y+=f[t].stepY,(f[t].x>700+i||f[t].y>100+i)&&(f.splice(t,1),t--)}(),function(){e.height=100;for(var t=0;t<r.length;t++)n(t,r[t]);for(t=0;t<f.length;t++)l.beginPath(),l.arc(f[t].x,f[t].y,i,0,2*Math.PI),l.fillStyle=f[t].color,l.closePath(),l.fill()}()},50)}}()</script><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> Table of Contents</li><li class="sidebar-nav-overview" data-target="site-overview-wrap"> Overview</li></ul><div class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"> <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Orchidany"><p class="site-author-name" itemprop="name">Orchidany</p><div class="site-description motion-element" itemprop="description">For code, science, tech. and more</div></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/%20%7C%7C%20archive"><span class="site-state-item-count">175</span> <span class="site-state-item-name">posts</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/%20%7C%7C%20th"><span class="site-state-item-count">54</span> <span class="site-state-item-name">categories</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/%20%7C%7C%20tags"><span class="site-state-item-count">126</span> <span class="site-state-item-name">tags</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div></div></div><div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#不太需要技巧的例题"><span class="nav-number">1.</span> <span class="nav-text">不太需要技巧的例题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Luogu3802-小魔女帕琪"><span class="nav-number">1.1.</span> <span class="nav-text">Luogu3802 小魔女帕琪</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Luogu5489-LnOI2019-脸滚键盘"><span class="nav-number">1.2.</span> <span class="nav-text">Luogu5489 [LnOI2019]脸滚键盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Luogu1297-国家集训队-单选错位"><span class="nav-number">1.3.</span> <span class="nav-text">Luogu1297 [国家集训队]单选错位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Luogu3924-康娜的线段树"><span class="nav-number">1.4.</span> <span class="nav-text">Luogu3924 康娜的线段树</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#考察期望线性性的题目"><span class="nav-number">2.</span> <span class="nav-text">考察期望线性性的题目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ZROI-1142-石子"><span class="nav-number">2.1.</span> <span class="nav-text">[ZROI 1142]石子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BZOJ3036-绿豆蛙的归宿"><span class="nav-number">2.2.</span> <span class="nav-text">[BZOJ3036]绿豆蛙的归宿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CF280C-Game-On-Tree"><span class="nav-number">2.3.</span> <span class="nav-text">CF280C Game On Tree</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#考察转移递推思想的期望题目"><span class="nav-number">3.</span> <span class="nav-text">考察转移递推思想的期望题目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NOI2005-聪聪与可可"><span class="nav-number">3.1.</span> <span class="nav-text">[NOI2005]聪聪与可可</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LuoguP1365-OSU-Easy-Version"><span class="nav-number">3.2.</span> <span class="nav-text">[LuoguP1365]OSU!(Easy Version)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BZOJ4318-OSU-Hard-Version"><span class="nav-number">3.3.</span> <span class="nav-text">[BZOJ4318]OSU!(Hard Version)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Luogu4550-收集邮票"><span class="nav-number">3.4.</span> <span class="nav-text">[Luogu4550]收集邮票</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SHOI2014-概率充电器"><span class="nav-number">3.5.</span> <span class="nav-text">*[SHOI2014]概率充电器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#转移时有后效性的题目"><span class="nav-number">4.</span> <span class="nav-text">转移时有后效性的题目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HNOI2013-游走"><span class="nav-number">4.1.</span> <span class="nav-text">[HNOI2013]游走</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CF24D-Broken-Robot"><span class="nav-number">4.2.</span> <span class="nav-text">CF24D Broken Robot</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#40-pts-max-n-m-leq-25"><span class="nav-number">4.2.1.</span> <span class="nav-text">40 pts $\max\{n,m\}\leq 25$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#70-pts-max-n-m-leq-100"><span class="nav-number">4.2.2.</span> <span class="nav-text">70 pts $\max\{n,m\}\leq 100$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#85-pts-max-n-m-leq-500"><span class="nav-number">4.2.3.</span> <span class="nav-text">85 pts $\max\{n,m\}\leq 500$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#100-pts-max-n-m-leq-3000"><span class="nav-number">4.2.4.</span> <span class="nav-text">100 pts $\max\{n,m\}\leq 3000$</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HNOI2011-XOR和路径"><span class="nav-number">4.3.</span> <span class="nav-text">[HNOI2011]XOR和路径</span></a></li></ol></li></ol></div></div></div><div class="back-to-top motion-element"><i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; <span itemprop="copyrightYear">2020</span><span class="with-love" id="animate"><i class="fa fa-user"></i></span> <span class="author" itemprop="copyrightHolder">𝒪𝓇𝒸𝒽𝒾𝒹𝒶𝓃𝓎</span></div><div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0</div> <span class="post-meta-divider">|</span><div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.2.0</div><div class="theme-info"><div class="powered-by"></div> <span class="post-count">博客全站共381k字</span></div><div class="busuanzi-count"><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span class="post-meta-item-icon"><i class="fa fa-user"></i></span><span class="site-uv" title="Total Visitors"><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-eye"></i></span><span class="site-pv" title="Total Views"><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span></div></div></footer></div><script>"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script src="/lib/jquery/index.js?v=3.4.1"></script><script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script><script src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script src="/js/utils.js?v=7.2.0"></script><script src="/js/motion.js?v=7.2.0"></script><script src="/js/affix.js?v=7.2.0"></script><script src="/js/schemes/pisces.js?v=7.2.0"></script><script src="/js/scrollspy.js?v=7.2.0"></script><script src="/js/post-details.js?v=7.2.0"></script><script src="/js/next-boot.js?v=7.2.0"></script><script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script><script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>var GUEST=["nick","mail","link"],guest="nick,mail,link";guest=guest.split(",").filter(function(e){return-1<GUEST.indexOf(e)}),new Valine({el:"#comments",verify:!1,notify:!1,appId:"V95HMkHzC6J9NvdCNbpg3A3E-gzGzoHsz",appKey:"gyf1NbCMlYbPnqykkSe7KuYC",placeholder:"ヾﾉ≧∀≦)o来啊，快活啊!",avatar:"mm",meta:guest,pageSize:"10",visitor:!1,lang:"zh-cn"})</script><script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script><script>$("body").find("div.pdf").length&&$.ajax({type:"GET",url:"//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js",dataType:"script",cache:!0,success:function(){$("body").find("div.pdf").each(function(e,t){PDFObject.embed($(t).attr("target"),$(t),{pdfOpenParams:{navpanes:0,toolbar:0,statusbar:0,pagemode:"thumbs",view:"FitH"},PDFJS_URL:"/lib/pdf/web/viewer.html",height:$(t).attr("height")||"500px"})})}})</script><script>
+// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
+
+window.addEventListener("message", function(e) {
+  var data = e.data;
+  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
+    var featureID = data.split(':')[1];
+    var height = data.split(':')[2];
+    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
+  }
+}, false);
+</script><canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:1;pointer-events:none"></canvas><script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script><script type="text/javascript" src="/js/src/fireworks.js"></script><script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)0<=(t=c[r].getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n()},e.src=i}();var t}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this)</script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})})</script></body></html>

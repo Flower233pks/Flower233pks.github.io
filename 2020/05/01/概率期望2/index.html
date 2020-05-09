@@ -1,0 +1,397 @@
+<!DOCTYPE html><html class="theme-next gemini use-motion" lang=""><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0"><link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png?v=7.2.0"><link rel="icon" type="image/png" sizes="16x16" href="/images/icon-32.png?v=7.2.0"><link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222"><link rel="stylesheet" href="/css/main.css?v=7.2.0"><link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Verdana:300,300italic,400,400italic,700,700italic|Verdana:300,300italic,400,400italic,700,700italic|Verdana:300,300italic,400,400italic,700,700italic|Verdana:300,300italic,400,400italic,700,700italic|Courier New:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"><link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"><link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css"><script id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Gemini",version:"7.2.0",sidebar:{position:"left","Pisces | Gemini":270,width:270,display:"post",offset:12,onmobile:!1},back2top:{enable:!0,sidebar:!0,scrollpercent:!0},copycode:{enable:!0,show_result:!0,style:"mac"},fancybox:!0,mediumzoom:!1,lazyload:!1,pangu:!1,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}},translation:{copy_button:"Copy",copy_success:"Copied",copy_failure:"Copy failed"}}</script><meta name="description" content="胡乱整理了有关期望的一些东西。 为什么自己老是学了就忘呢……"><meta property="og:type" content="article"><meta property="og:title" content="【复习】概率期望复习笔记"><meta property="og:url" content="https://www.orchidany.cn/2020/05/01/%E6%A6%82%E7%8E%87%E6%9C%9F%E6%9C%9B2/index.html"><meta property="og:site_name" content="𝓞𝓻𝓬𝓱𝓲𝓭𝓪𝓷𝔂&#39;𝔀 𝓫𝓵𝓸𝓰"><meta property="og:description" content="胡乱整理了有关期望的一些东西。 为什么自己老是学了就忘呢……"><meta property="article:published_time" content="2020-05-01T05:16:36.000Z"><meta property="article:modified_time" content="2020-05-07T07:56:27.793Z"><meta property="article:author" content="Orchidany"><meta property="article:tag" content="数学&#x2F;概率,期望"><meta name="twitter:card" content="summary"><link rel="alternate" href="/atom.xml" title="𝓞𝓻𝓬𝓱𝓲𝓭𝓪𝓷𝔂'𝔀 𝓫𝓵𝓸𝓰" type="application/atom+xml"><link rel="canonical" href="https://www.orchidany.cn/2020/05/01/%E6%A6%82%E7%8E%87%E6%9C%9F%E6%9C%9B2/"><script id="page.configurations">CONFIG.page={sidebar:""}</script><title>【复习】概率期望复习笔记 | 𝓞𝓻𝓬𝓱𝓲𝓭𝓪𝓷𝔂'𝔀 𝓫𝓵𝓸𝓰</title><noscript><style>.sidebar-inner,.use-motion .brand,.use-motion .collection-title,.use-motion .comments,.use-motion .menu-item,.use-motion .motion-element,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .logo,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.use-motion .logo-line-before i{left:initial}.use-motion .logo-line-after i{right:initial}</style></noscript><meta name="generator" content="Hexo 4.2.0"></head><body itemscope itemtype="http://schema.org/WebPage" lang="default"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">𝓞𝓻𝓬𝓱𝓲𝓭𝓪𝓷𝔂'𝔀 𝓫𝓵𝓸𝓰</span><span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">A Soul Tune against Fate Should Be Played, now.</p></div><div class="site-nav-toggle"> <button aria-label="Toggle navigation bar"><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-navigation"><a href="/navigation/" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i><br>Navigation</a></li><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>Archives</a></li><li class="menu-item menu-item-friends"><a href="/Friends/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i><br>Friends</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>Search</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i></span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"> <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://www.orchidany.cn/2020/05/01/%E6%A6%82%E7%8E%87%E6%9C%9F%E6%9C%9B2/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Orchidany"><meta itemprop="description" content="For code, science, tech. and more"><meta itemprop="image" content="/images/avatar.png"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="𝓞𝓻𝓬𝓱𝓲𝓭𝓪𝓷𝔂'𝔀 𝓫𝓵𝓸𝓰"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">【复习】概率期望复习笔记</h1><div class="post-meta"><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">Posted on</span> <time title="Created: 2020-05-01 13:16:36" itemprop="dateCreated datePublished" datetime="2020-05-01T13:16:36+08:00">2020-05-01</time></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-check-o"></i></span> <span class="post-meta-item-text">Edited on</span> <time title="Modified: 2020-05-07 15:56:27" itemprop="dateModified" datetime="2020-05-07T15:56:27+08:00">2020-05-07</time></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">In</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-comment-o"></i></span> <span class="post-meta-item-text">Comments:</span><a href="/2020/05/01/%E6%A6%82%E7%8E%87%E6%9C%9F%E6%9C%9B2/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/05/01/%E6%A6%82%E7%8E%87%E6%9C%9F%E6%9C%9B2/" itemprop="commentCount"></span></a></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-eye"></i> Views:<span class="busuanzi-value" id="busuanzi_value_page_pv"></span></span></span><br></div></header><div class="post-body" itemprop="articleBody"><p>胡乱整理了有关期望的一些东西。</p><p>为什么自己老是学了就忘呢……</p><a id="more"></a><h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>什么“所有情况的概率加权平均值blabla”，一般用处不大？</p><p>或者形式化一点，$ \rm \mathbb{E}(X)=\sum_i(~\Pr(X=i)\cdot i~) $</p><h1 id="期望的线性性"><a href="#期望的线性性" class="headerlink" title="期望的线性性"></a>期望的线性性</h1><p>唔，这个地方其实应用是很广泛的。大概就是对于两个事件 $\rm X,Y$，$\rm \mathbb{E}(aX+bY)=aE(X) +bE(Y)$ 。</p><p>对于这东西的证明大概如下：</p><script type="math/tex;mode=display">
+\begin{aligned}  \mathbb{E}(\mathrm{\mathrm{X}}+\mathrm{Y}) & {=  \sum_{i} \sum_{j} \Pr (\mathrm{\mathrm{X}}=i \& \& \mathrm{Y}=j)\cdot(i+j)} \\ & {  =\sum_{i} \sum_{j} \Pr (\mathrm{\mathrm{X}}=i \& \& \mathrm{Y}=j) \cdot i+\sum_{i} \sum_{j} \Pr (\mathrm{\mathrm{X}}=i \& \& \mathrm{Y}=j)  \cdot j} \\ &{ =\sum_{i} i \cdot  \sum_{j} \Pr (\mathrm{\mathrm{X}}=i \& \& \mathrm{Y}=j)  \cdot j+\sum_{i} j \cdot  \sum_{j} \Pr (\mathrm{\mathrm{X}}=i \& \& \mathrm{Y}=j) \cdot  i} \\ & { =\sum_{i} \Pr (\mathrm{X}=i) \cdot  i+\sum_{j} \Pr (\mathrm{Y}=j) \cdot  j} \\ & { =\mathbb{E}(\mathrm{\mathrm{X}})+\mathbb{E}(\mathrm{Y})}\end{aligned}</script><h1 id=""><a href="#" class="headerlink" title=" "></a></h1><h1 id="期望经典模型"><a href="#期望经典模型" class="headerlink" title="期望经典模型"></a>期望经典模型</h1><h2 id="容斥模型"><a href="#容斥模型" class="headerlink" title="容斥模型"></a>容斥模型</h2><blockquote><p>有 $n$ 个随机变量 $\rm X[1…n]$，每个随机变量都是从 $\rm 1…S$ 中 随机一个整数，求 $\rm max(X[1…n])$ 的期望。</p></blockquote><p>根据期望的线性性可以得到：</p><script type="math/tex;mode=display">
+\begin{aligned}\rm \mathbb{E}& =\sum _{i=1}^{\mathrm{S}}\Pr(\max=i)\times i\\\ & =\sum _{i=1}^{\mathrm{S}}i\cdot (\Pr(\max\leq i)-\Pr(\max\leq i-1))\\ &  = \sum_{i=1}^{\mathrm{S}}i\cdot \left(\left(\dfrac{i}{\mathrm{S}}\right)^n - \left(\dfrac{i-1}{\mathrm{S}}\right)^n\right)\end{aligned}</script><p>这个容斥技巧好像还是挺常见的吧？</p><h2 id="等价模型"><a href="#等价模型" class="headerlink" title="等价模型"></a>等价模型</h2><p>实际上是取球问题，大概思路就是取每一个球是<strong>独立</strong>的，这一点在期望的线性性上体现得比较明显：</p><h3 id="放球问题-I"><a href="#放球问题-I" class="headerlink" title="放球问题 I"></a>放球问题 I</h3><blockquote><p>箱中有 $n$ 个球 $1…n$，你要从中拿 $m$ 次球，拿了后<strong>不放回</strong>，求取出的数字之和的期望 。</p></blockquote><p>还是期望的线性性：</p><script type="math/tex;mode=display">
+\mathbb{E}\left(\sum_{i=1}^{n} X_{i}\right)=\sum_{i=1}^{n} \mathbb{E}\left(X_{i}\right)=\sum_{i=1}^{n} \Pr(X=i) \times i=\sum_{i=1}^{n} \dfrac{m}{n} \times i=\dfrac{m}{n} \sum_{i=1}^{n} i=\dfrac{m}{n} \times \dfrac{n(n+1)}{2}=\dfrac{m(n+1)}{2}</script><p>这个地方个人理解的为什么 $\Pr(X=i)=\dfrac{m}{n}$，是考虑首先显然每个球平等，且摸到之后贡献为 $1$，所以可以知道有 $\sum_{i=1}^{n}\mathbb{E}(X=i)=m$，那么由于每个球都一样，所以 $\Pr(X=i)=\mathbb{E}(X=i)=\dfrac{m}{n}$。</p><h3 id="放球问题-II"><a href="#放球问题-II" class="headerlink" title="放球问题 II"></a>放球问题 II</h3><blockquote><p>箱中有 $n$ 个球 $1…n$，你要从中拿 $m$ 次球，拿了后<strong>放回</strong>，求取出的数字之和的期望 。</p></blockquote><p>考虑无论放回不放回，拿到 $i$ 的概率都是 $\dfrac{1}{n}\times m$ ，所以和第一问结果一样。</p><h3 id="放球问题-III"><a href="#放球问题-III" class="headerlink" title="放球问题 III"></a>放球问题 III</h3><blockquote><p>箱中有 $n$ 个球 $1…n$，你要从中拿 $m$ 次球，拿了后以 $p_1$ 的概率放回，以 $p_2$ 的概率放回两个和这个相同的球，求取出的数字之和的期望。</p></blockquote><p>这个地方可能有点绕。但是就是“球球平等”的思想。虽然有点难理解，但是考虑 问题 I 中我们推导的过程只用了「球球平等」这一条，所以可知这样也是对的。</p><h2 id="随机游走"><a href="#随机游走" class="headerlink" title="随机游走"></a>随机游走</h2><p>…就是游走模型。大概就是说假设一个点的出度为 $k$，他么他有 $\dfrac{1}{k}$ 的概率走到周围其他点。</p><h3 id="链上游走"><a href="#链上游走" class="headerlink" title="链上游走"></a>链上游走</h3><blockquote><p>在一条 $n$ 个点的链上随机游走，求从一段端走到另一端的期望步数</p></blockquote><p>考虑分阶段进行。根据线性性，$ \mathbb{E}(T)=\sum_{i=1}^{n-1} \mathbb{E}(X_i)$。其中 $\mathbb{E}(X_i)$ 表示从 $i$ 第一次走到 $i+1$ 的期望步数。</p><p>然后我们列方程，考虑一步转移走到了 $ i+1$ 还是 $i-1$ ：</p><script type="math/tex;mode=display">
+\mathbb{E}(X_i)=\dfrac{1}{2}+\dfrac{1}{2}\cdot(1+\mathbb{E}(X_i)+\mathbb{E}(X_i-1))</script><p>解出来得</p><script type="math/tex;mode=display">
+\mathbb{E}(X_i)=2+\mathbb{E}(X_i-1)</script><h3 id="完全图游走"><a href="#完全图游走" class="headerlink" title="完全图游走"></a>完全图游走</h3><blockquote><p>在一个 $n$ 个点的完全图上游走，求从一个点到另一个点期望步数。</p></blockquote><p>完全图的话，每个点走到每个点的概率都是 $\dfrac{1}{n-1}$。于是这个题就有好多种不同的解法，比如用一个推论“概率为 $P$ 的事件期望 $\dfrac{1}{P}$ 次后发生”，就可以直接证明 $\mathbb{E}(t) = n-1$。</p><h3 id="完全二分图游走"><a href="#完全二分图游走" class="headerlink" title="完全二分图游走"></a>完全二分图游走</h3><blockquote><p>在一个 $2n$ 个点的完全二分图上游走，求一个点走到另一个点的期望步数。</p></blockquote><p>解方程的思想，分类讨论是在同侧还是异侧。</p><p>记 $\mathbb{E}_a$ 表示在同侧的期望步数， $\mathbb{E}_b$ 表示在异侧的期望步数。那么考虑有：</p><script type="math/tex;mode=display">
+\mathbb{E}_a=\mathbb{E}_b+1\\
+\mathbb{E}_b=\dfrac{1}{n}+\dfrac{n-1}{n}\cdot(\mathbb{E}_a+1)</script><p>然后解出来 $\mathbb{E}_b=2\cdot n-1,\mathbb{E}_a=2\cdot n$ …为什么感觉很不对的样子呢…但是这么列方程肯定是没错的。</p><h3 id="菊花图游走"><a href="#菊花图游走" class="headerlink" title="菊花图游走"></a>菊花图游走</h3><blockquote><p>在一张 $n$ 个点的菊花图上游走，求从根走到另一个点的期望步数。</p></blockquote><p>考虑一共有三种情况：</p><p>1、叶子走到根 $\mathbb{E}(a)=1$ 。</p><p>2、根走到叶子 $\mathbb{E}(b)=\dfrac{1}{n-1}+\dfrac{n-2}{n-1}\times (\mathbb{E}(c)+1)$。</p><p>3、叶子走到叶子 $\mathbb{E}(c)=1+\mathbb{E}(b)$。</p><p>解方程可以得到 $，$$\mathbb{E}(b)=2\cdot n-3,\mathbb{E}(c)=2\cdot 2-2$ 。</p><h3 id="树上游走"><a href="#树上游走" class="headerlink" title="树上游走"></a>树上游走</h3><blockquote><p>在一棵 $n$ 个点的树上游走，问从根走到 $x$ 的期望步数。</p></blockquote><p>唔，其实有好多不同版本，也可以就是从 $y$ 走到 $x$ 的期望步数，因为游走问题是不存在有根树的，所以直接把 $y$ 拽起来当根也没什么问题。然后就是考虑链做法里面的思想，设 $f_u$ 表示 $u$ 第一次走到他父亲的期望步数，然后就有方程</p><script type="math/tex;mode=display">
+f_u=\dfrac{1}{deg_u}+\dfrac{1}{deg_u}\sum_{v\in son _u}(1+f_u+f_x)</script><p>前者是走上去的，后者是不小心走下去的。然后期望的线性性加起来即可。</p><p><del>然后就是高消时间了</del></p><p>呃，或许这个是可以 up and down 的？好像不行，我傻了。</p><h1 id="期望思考题"><a href="#期望思考题" class="headerlink" title="期望思考题"></a>期望思考题</h1><h2 id="A"><a href="#A" class="headerlink" title="A"></a>A</h2><blockquote><p>构造一张 $200$ 个点的无向图，使得上面从 $\rm S$ 走到 $\rm T$ 的随机游走期望步数 $\geq 100,0000$。</p></blockquote><p>考虑是一条链的时候大概有 $O(n^2)$ 的期望步数，在一张完全图上有 $O(n)$ 的期望步数，于是就可以考虑在 $\rm S$ 上连出一张 $100$ 个点的完全图，然后在一条链连到 $T$，就是 $n^3$ 的期望步数。具体实现似乎需要微调的亚子233.</p><h2 id="B"><a href="#B" class="headerlink" title="B"></a>B</h2><p>（1）</p><blockquote><p>随机一个长度为 $n$ 的排列 $p$，问前 $i$ 个数字中 $p_i$ 是最大数字的概率。</p></blockquote><p>…算都不用算就知道是$\dfrac{1}{i}$ 。</p><p>（2）</p><blockquote><p>随机一个长度为 $n$ 的排列 $p$，问前 $i$ 个数字中 $p_i$ 是最大数字的 $i$ 的个数的平方的期望。</p></blockquote><p>首先设 $x_i$ 表示第 $i$ 个数是不是前 $i$ 个数中最大的数字，那么 $x_i=0/1$。那么总个数 $\rm S=\it\sum x_i$，总个数的平方的期望就是 $\mathrm{\mathbb{E}(S^2)}=\mathrm{ E}((\sum x_i)^2)$，之后就开始化式子：</p><script type="math/tex;mode=display">
+\begin{aligned}
+\mathrm{\mathbb{E}(S^2)}&= \mathrm{E}((\sum x_i)^2)\\ &=\mathrm{E}( \sum x_i^2+\sum_{i\neq j}x_ix_j)\\ &=\mathrm{E}(\sum x_i^2)+\mathrm{E}(\sum_{i\neq j}x_ix_j)
+\end{aligned}</script><p>以上用的都是期望的线性性。然后最后考虑用（1）中的结论，$\Pr(x_i=1)=\dfrac{1}{i}$，就可以得到：</p><script type="math/tex;mode=display">
+\mathrm{\mathbb{E}(S^2)}= \sum_{i\neq j}\dfrac{1}{ij}+\sum \dfrac{1}{i^2}</script><p>这东西显然是有平凡的通项公式，但是懒得推了233。</p><h2 id="C"><a href="#C" class="headerlink" title="C"></a>C</h2><blockquote><p>随机一个 $1\sim n$ 的排列，求 $i$ 在 $j$ 前面的概率。</p></blockquote><p>这显然是 $\dfrac{1}{2}$ 。</p><h2 id="D"><a href="#D" class="headerlink" title="D"></a>D</h2><p>（1）</p><blockquote><p>随机一个长度为 $n$ 的排列，求一个长为 $m$ 的 <strong>子序列</strong> $s[1…m]$ 在该排列中出现的概率。</p></blockquote><p>考虑对称性，$n$ 排列对 $m$ 序列随机，也可以看做 $m$ 序列对 $n$ 排列随机。其实怎么想无所谓——更直观的是考虑重排 $s$，对于每一个随机序列，都有且仅有一种 $s$ 的重排方式会在其中作为子序列。所以答案就是 $\dfrac{1}{m!}$ 。</p><p>（2）</p><blockquote><p>随机一个长度为 $n$ 的排列，求一个长为 $m$ 的<strong>连续子序列</strong> $s[1…m]$ 在该排列中出现的概率。</p></blockquote><p>思考同样的结论放在(2)里面到底多算了哪些情况。首先就是我们要乘上一个 $\dfrac{1}{\binom{n}{m}}$，因为现在不能从 $n$ 中随便选出 $m$ 个位置来放，只能选择相邻的 $m$ 项。但是这还不够，因为我们还少算了以每个元素开头的连续子序列情况，所以应该再乘上 $n-m+1$，于是答案就是</p><script type="math/tex;mode=display">
+\dfrac{n-m+1}{m!\binom{n}{m}}=\dfrac{n-m+1}{P_n^m}=\dfrac{(n-m+1)!}{n!}</script><p>说句题外话，从不等关系来讲，会有 $\dfrac{(n-m+1)!}{n!} \leq \dfrac{1}{m!}$，因为(2)的方案数一定小于等于(1)，那么(2)发生的概率一定小于等于(1)。然后移个项就会有 $(n-m+1)!m!\leq n!$ 这种东西；或者从组合意义上来讲，会有 $(n-m+1)!\leq \dfrac{n!}{m!}$，即“ $n-m+1$ 个不同元素的排列数小于等于从 $n$ 个不同元素里面选出 $n-m$ 个元素进行排列的方案数”。</p><p>By the way，当且仅当 $n=m$ 时等号成立。</p><p>呃，似乎并不是很有意思，我还以为能推出什么有意思的东西来着233</p><h2 id="E"><a href="#E" class="headerlink" title="E"></a>E</h2><blockquote><p>给一个序列，每次随机删一个元素，问第 $i$ 个元素和第 $j$ 个元素相邻的概率。</p></blockquote><p>然而是个组合题。</p><p>考虑每个数是什么时候被删除的，按删除顺序组成一个序列。因为是随机删除，所以删除序列也是随机的。接着考虑删除序列里面 $[i…j]$ 这段区间的排列总方案数是 $(j-i+1)!$，当且仅当 $[i+1…j-1]$ 都被删除且 $i,j$ 还没被删除时合法，这样的方案数是 $(j-i+1-2)!\cdot P_2^2$，于是概率就是</p><script type="math/tex;mode=display">
+\dfrac{2\cdot (j-i-1)!}{(j-i+1)!}</script><h2 id="F"><a href="#F" class="headerlink" title="F"></a>F</h2><blockquote><p>给定⼀棵树，将他的边随机⼀个顺序后依次插⼊，求 $u,v$ 期望什么时候连通。</p></blockquote><p>考虑两个点连通只与他们之间的边数有关。设这个数量为 $k$ ，可以知道答案为</p><script type="math/tex;mode=display">
+\mathbb{E}(X)=\sum_{i=k}^{n-1}i\cdot \dfrac{(n-1-k)!(k-1)!\binom{i-1}{k-1}}{(n-1)!}</script><p>即用线性性枚举「恰好第 $i$ 次连通」。</p><h2 id="G"><a href="#G" class="headerlink" title="G"></a>G</h2><blockquote><p>给 $1…n$ 这 n 个数，每次随机选择⼀个还在的数并且删掉他的所有约数，求期望⼏次删完</p></blockquote><p>跟 CF280C 那题本质上很相似。考虑一个数被删掉当且仅当他的倍数被删掉，同时只会有自己被删掉时产生 $1$ 的贡献，所以可以知道答案就是 $\mathbb{E}(X)=\sum \dfrac{1}{\lfloor\frac{n}{x}\rfloor}$ 。</p><h2 id="H"><a href="#H" class="headerlink" title="H"></a>H</h2><blockquote><p>给定 $n$ 个硬币，第 $i$ 个硬币的价值为 $w_i$，每次随机取⾛⼀个硬币，获得的收益是左右两个硬币的价值的乘积，求期望总价值。</p></blockquote><p>想了一会儿之后发现是个弱智题。</p><p>考虑这个问题里面的单位决策数应该是 $O(n^2)$ 级别的二元组 $(i,j)$，也就是考虑对每一组 $(i,j)$ 分别算概率，发现这个概率就是 $i,i+1,i+2\cdots j$ 中随机删数，$[i+1,j-1]$ 在 $i,j$ 之前被删掉的概率，于是就可以直接算了。</p><script type="math/tex;mode=display">
+\mathbb{E}(X)=\sum_{i,j} w_i\cdot w_j\cdot \Pr(i,j)=\sum_{i,j} w_i\cdot w_j\cdot \frac{(i-j-1)!}{(i-j+1)!}</script><h2 id="I"><a href="#I" class="headerlink" title="I"></a>I</h2><blockquote><p>有 $n$ 个数 $a[1…n]$，每次等概率选出两个数，然后合并成⼀个新的数放回来，得到的收益是新的数的值，求总收益的期望。</p></blockquote><p>自然是考虑分别计算每个数期望被选到的次数。然后对这个东西用线性性展开可以知道，可以分别求每个数在每一次合并中被选到的概率，那么就是</p><script type="math/tex;mode=display">
+\mathbb{E}(X)=\sum_{i=1}^{n}\frac{2}{n-i-1}\cdot 1=\sum_{i=2}^n \frac{2}{i}</script><p>即每次选择两个堆合并、选到 $x$ 那个堆的概率。</p><h2 id="J"><a href="#J" class="headerlink" title="J"></a>J</h2><blockquote><p>给定⼀个数列 $w[1…n]$，随机⼀个排列 $h$，如果 $h[i]$ ⽐ $h[i-1]$ 和 $h[i+1]$ 都⼤，就获得 $w[i]$ 的收益，求期望收益。</p></blockquote><p>自己想的方法是暴力组合，考虑用线性性展开之后，变成分别对每个数算自己成为最大值的概率，发现这个概率就是</p><script type="math/tex;mode=display">
+\Pr(X=\max)=\sum_{i=3}^n\frac{1}{n}\times \dfrac{\binom{i-1}{2}}{\binom{n-1}{2}}</script><p>然后可以展开得到</p><script type="math/tex;mode=display">
+\begin{aligned}
+\Pr(X=\max)
+&=\frac{1}{n\cdot (n-1)\cdot (n-2)}\cdot \sum_{i=3}^{n-1}(i-1) \cdot (i-2)\\
+&=\frac{1}{n\cdot (n-1)\cdot (n-2)}\cdot \sum_{i=1}^{n-3}i \cdot (i+1) 
+\end{aligned}</script><p>然后一个比较神奇的事情，后面那个 $\sum$ 是有闭形式的。即：</p><script type="math/tex;mode=display">
+\sum_{i=1}^n(i+1)\cdot i=\frac{(n+1)\cdot (n+2)\cdot (n+3)}{3}</script><p>然后相乘之后可知…$\Pr(X=\max)$ 就是 $\frac{1}{3}$ 。实际上也可以从更感性的角度来理解，三个数里面，成为最大的数概率自然是 $\frac{1}{3}$ 。</p><h2 id="K"><a href="#K" class="headerlink" title="K"></a>K</h2><blockquote><p>有 $n$ 个⿊球，$m$ 个⽩球，每次等概率取出⼀个球(不放回)，将取出来的球的颜⾊写成⼀个 $01$ 序列，求 <code>01</code> 的期望出现次数。</p><div class="table-container"><table><thead><tr><th style="text-align:center">子任务编号</th><th style="text-align:center">分值</th><th style="text-align:center">$\max\{n,m\}$</th><th style="text-align:center">特殊性质</th></tr></thead><tbody><tr><td style="text-align:center">$\rm Subtask1$</td><td style="text-align:center">$5$</td><td style="text-align:center">$\leqslant 20$</td><td style="text-align:center">\</td></tr><tr><td style="text-align:center">$\rm Subtask2$</td><td style="text-align:center">$30$</td><td style="text-align:center">$\leqslant 300$</td><td style="text-align:center">\</td></tr><tr><td style="text-align:center">$\rm Subtask3$</td><td style="text-align:center">$25$</td><td style="text-align:center">$\leqslant 5000$</td><td style="text-align:center">\</td></tr><tr><td style="text-align:center">$\rm Subtask4$</td><td style="text-align:center">$10$</td><td style="text-align:center">$\leqslant 5\cdot 10^6$</td><td style="text-align:center">$n=m$</td></tr><tr><td style="text-align:center">$\rm Subtask5$</td><td style="text-align:center">$15$</td><td style="text-align:center">$\leqslant 10^6$</td><td style="text-align:center">\</td></tr><tr><td style="text-align:center">$\rm Subtask5$</td><td style="text-align:center">$15$</td><td style="text-align:center">$\leqslant 10^{9}$</td><td style="text-align:center">\</td></tr></tbody></table></div></blockquote><h3 id="5pts-做法"><a href="#5pts-做法" class="headerlink" title="5pts 做法"></a>5pts 做法</h3><p>枚举所有可能的颜色排列，复杂度 $O(n\cdot 2^n)$。</p><h3 id="20pts-做法"><a href="#20pts-做法" class="headerlink" title="20pts 做法"></a>20pts 做法</h3><p>设 $X$ 表示出现次数，那么有</p><script type="math/tex;mode=display">
+\mathbb{E}(X)=\sum_{i=1}^{\min\{n,m\}}\Pr(X=i)\cdot i</script><p>考虑这个 $X=i$ 怎么算，本质上是求 $01$ 排列有多少种方案存在恰好 $i$ 个 <code>01</code>，也就只需要计算 $i$ 个相隔距离 $\geq 1$ 的 $0$ 的方案数。这个地方想了一会儿没找到什么闭形式，于是打算直接 $dp$ 。</p><p>设 $f_{i,j,k,0/1}$ 表示前 $i$ 位有 $j$ 个 $0$ ，其中有 $k$ 个 $01$ ，且第 $i$ 位放了 $0/1$ 的方案数，那么有转移</p><script type="math/tex;mode=display">
+f_{i+1,j,k+1,1}\leftarrow f_{i,j,k,0}\to f_{i+1,j+1,k,0}\\
+f_{i+1,j+1,k,0}\leftarrow f_{i,j,k,1}\to f_{i+1,j,k,1}\\</script><p>然后算就好了，时空复杂度均为 $O(n^3)$ 。</p><h3 id="60pts-做法"><a href="#60pts-做法" class="headerlink" title="60pts 做法"></a>60pts 做法</h3><p>发现继续沿用对着每个 $i$ 求贡献的做法。发现本质上就是从长为 $n+m$ 的序列里面选出 $i$ 个不相邻的 <code>0</code> 的方案数。考虑转化一下这个问题。首先可以转化成从 $1\sim n +m$ 里面选择 $i$ 个不相邻的数的方案数。之后考虑对于选出来的数 $a_1,a_2,a_3\cdots a_i$ ，从小到大排序后一定满足</p><script type="math/tex;mode=display">
+a_1<a_2-1<a_3-1<a_4-1< \cdots<a_{i}-1</script><p>考虑令</p><script type="math/tex;mode=display">
+b_1=a_1-1,b_2=a_2-2,b_3=a_3-3,b_4=a_4-4\cdots b_i=a_i-i</script><p>发现这样随便选择两个相邻的 $b_{k},b_{k+1}$ 都会有</p><script type="math/tex;mode=display">
+b_k=a_k-k<a_{k+1}-1-k=a_{k+1}-{k+1}=b_{k+1}</script><p>也就是从 $1\sim n+m-i$ 中选择可以相邻的 $\{b\}$ 的方案数等于在 $1\sim n+m$ 中选择不能相邻的 $\{a\}$ 的方案数。于是可以知道有 $i$ 个 $01$ 时的方案数就是</p><script type="math/tex;mode=display">
+f_i=\binom{n+m-i}{i}\cdot \binom{n+m-2\cdot i}{n-i}</script><p>注意到因为序列其他位置的方案数也要考虑，所以需要再乘上一个剩下未知的方案数。但是注意到，剩下位置可能还会存在 $01$ ，所以 $f_i$ 本质上算的是「至少 $i$ 个的方案数」。设 $g_i$ 表示「恰好 $i$ 个的方案数」，那么可知：</p><script type="math/tex;mode=display">
+g_i=\sum_{j\geq i} \binom{j}{i} \cdot (-1)^{j-i}f_j</script><p>因为有二项式反演：</p><script type="math/tex;mode=display">
+f(n)=\sum_{i=n}^{m}\left(\begin{array}{c}i \\ n\end{array}\right) g(i) \Leftrightarrow g(n)=\sum_{i=n}^{m}(-1)^{i-n}\left(\begin{array}{c}i \\ n\end{array}\right) f(i)</script><p>然后就可以获得一个时空复杂度均为 $O(n^2)$ 的做法。</p><h3 id="70pts-做法"><a href="#70pts-做法" class="headerlink" title="70pts 做法"></a>70pts 做法</h3><p>有特殊性质 $n=m$。可以通过进一步对上一个做法用组合恒等式来化简，或者直接找规律，可以发现当 $n=m$ 时，$g_i=\binom{n}{i}^2$。于是就可以线性做了。</p><h3 id="85pts-做法"><a href="#85pts-做法" class="headerlink" title="85pts 做法"></a>85pts 做法</h3><p>并不会，有人来教教我吗？不过似乎二项式反演是可以做到 $\log^2$ 的？这可能需要什么多项式科技。</p><h3 id="100pts-做法"><a href="#100pts-做法" class="headerlink" title="100pts 做法"></a>100pts 做法</h3><p>发现对于期望，只需要算出所有情况下 $01$ 数量的总和，除以全部的合法排列数即可。考虑这个总和也是可以分开算的，即可以算对于每个可能出现的 <code>01</code> 计算与之对应的有多少贡献。于是答案就是：</p><script type="math/tex;mode=display">
+\frac{(n+m-1)\cdot \binom{n+m-2}{m-1}}{\binom{n+m}{m}}</script><p>化简一下可以得到答案为</p><script type="math/tex;mode=display">
+\frac{n\times m}{n+m}</script><p>复杂度 $O(\log n)$ 。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> P1 = <span class="number">550</span> ;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> P2 = <span class="number">5050</span> ;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> P3 = <span class="number">100010</span> ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m ;</span><br><span class="line"><span class="keyword">int</span> ans1 ;</span><br><span class="line"><span class="keyword">int</span> ans2 ;</span><br><span class="line"><span class="keyword">int</span> ans3 ;</span><br><span class="line"><span class="keyword">int</span> fac[P3] ;</span><br><span class="line"><span class="keyword">int</span> inv[P3] ;</span><br><span class="line"><span class="keyword">int</span> comb[P2][P2] ;</span><br><span class="line"><span class="keyword">int</span> f[P3], g[P3], h[P3] ;</span><br><span class="line"><span class="keyword">int</span> dp[P1 * <span class="number">2</span>][P2][P2][<span class="number">2</span>] ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">expow</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">while</span> (b)&#123;</span><br><span class="line">        <span class="keyword">if</span> (b &amp; <span class="number">1</span>)</span><br><span class="line">            res = (ll)res * a % P ;</span><br><span class="line">        a = (ll)a * a % P ; b &gt;&gt;= <span class="number">1</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m ;</span><br><span class="line">    dp[<span class="number">1</span>][<span class="number">1</span>][<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span> ;</span><br><span class="line">    dp[<span class="number">1</span>][<span class="number">0</span>][<span class="number">0</span>][<span class="number">1</span>] = <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n + m ; ++ i)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span> ; j &lt;= m ; ++ j)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span> ; k &lt;= m ; ++ k)&#123;</span><br><span class="line">                add(dp[i + <span class="number">1</span>][j][k][<span class="number">1</span>], dp[i][j][k][<span class="number">1</span>]) ;</span><br><span class="line">                add(dp[i + <span class="number">1</span>][j][k + <span class="number">1</span>][<span class="number">1</span>], dp[i][j][k][<span class="number">0</span>]) ;</span><br><span class="line">                add(dp[i + <span class="number">1</span>][j + <span class="number">1</span>][k][<span class="number">0</span>], dp[i][j][k][<span class="number">0</span>]) ;</span><br><span class="line">                add(dp[i + <span class="number">1</span>][j + <span class="number">1</span>][k][<span class="number">0</span>], dp[i][j][k][<span class="number">1</span>]) ;</span><br><span class="line">            &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= m ; ++ i)</span><br><span class="line">        h[i] = addn(dp[n + m][m][i][<span class="number">0</span>], dp[n + m][m][i][<span class="number">1</span>]) ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt;= n + m ; ++ i) comb[i][<span class="number">0</span>] = <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n + m ; ++ i)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span> ; j &lt;= i ; ++ j)</span><br><span class="line">            comb[i][j] = addn(comb[i - <span class="number">1</span>][j - <span class="number">1</span>], comb[i - <span class="number">1</span>][j]) ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= m ; ++ i)</span><br><span class="line">        f[i] = (ll)comb[n + m - i][i] * comb[n + m - <span class="number">2</span> * i][m - i] % P ; <span class="comment">// comb[n + m][m] ;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= m ; ++ i)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i ; j &lt;= m ; ++ j)</span><br><span class="line">            (!(j - i &amp; <span class="number">1</span>)) ? add(g[i], (ll)f[j] * comb[j][i] % P) : dec(g[i], (ll)f[j] * comb[j][i] % P) ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= m ; ++ i) add(ans1, <span class="number">1l</span>l * h[i] * (ll)i % P) ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= m ; ++ i) add(ans2, <span class="number">1l</span>l * g[i] * (ll)i % P) ;</span><br><span class="line">    ans3 = (ll)n * m % P * expow(n + m, P - <span class="number">2</span>) % P ;</span><br><span class="line">    ans1 = (ll)ans1 * expow(comb[n + m][m], P - <span class="number">2</span>) % P ;</span><br><span class="line">    ans2 = (ll)ans2 * expow(comb[n + m][m], P - <span class="number">2</span>) % P ;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d %d %d\n"</span>, ans1, ans2, ans3) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><footer class="post-footer"><div class="post-tags"><a href="/tags/%E6%95%B0%E5%AD%A6-%E6%A6%82%E7%8E%87-%E6%9C%9F%E6%9C%9B/" rel="tag"><i class="fa fa-tag"></i> 数学/概率,期望</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2020/05/01/%E7%AE%80%E5%8D%95%E9%A2%98%E9%80%89%E5%81%9A%C2%B74/" rel="next" title="简单题选做·4"><i class="fa fa-chevron-left"></i> 简单题选做·4</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"> <a href="/2020/05/01/ZR5-1/" rel="prev" title="【赛题整理】正睿5.1省选集训">【赛题整理】正睿5.1省选集训<i class="fa fa-chevron-right"></i></a></div></div></footer></div></article></div></div><div class="comments" id="comments"></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><div style=""><canvas id="canvas" style="width:60%">当前浏览器不支持canvas，请更换浏览器后再试</canvas></div><script>!function(){var t,o=[[[0,0,1,1,1,0,0],[0,1,1,0,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,0,1,1,0],[0,0,1,1,1,0,0]],[[0,0,0,1,1,0,0],[0,1,1,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[1,1,1,1,1,1,1]],[[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,0,1,1,0,0,0],[0,1,1,0,0,0,0],[1,1,0,0,0,0,0],[1,1,0,0,0,1,1],[1,1,1,1,1,1,1]],[[1,1,1,1,1,1,1],[0,0,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,0,1,1,1,0,0],[0,0,0,0,1,1,0],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[0,0,0,0,1,1,0],[0,0,0,1,1,1,0],[0,0,1,1,1,1,0],[0,1,1,0,1,1,0],[1,1,0,0,1,1,0],[1,1,1,1,1,1,1],[0,0,0,0,1,1,0],[0,0,0,0,1,1,0],[0,0,0,0,1,1,0],[0,0,0,1,1,1,1]],[[1,1,1,1,1,1,1],[1,1,0,0,0,0,0],[1,1,0,0,0,0,0],[1,1,1,1,1,1,0],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[0,0,0,0,1,1,0],[0,0,1,1,0,0,0],[0,1,1,0,0,0,0],[1,1,0,0,0,0,0],[1,1,0,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[1,1,1,1,1,1,1],[1,1,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,1,1,0,0,0],[0,0,1,1,0,0,0],[0,0,1,1,0,0,0],[0,0,1,1,0,0,0]],[[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,1,1,0,0,0,0]],[[0,0,0,0,0,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,0,0,0,0,0]]],e=document.getElementById("canvas");if(e.getContext){var l=e.getContext("2d");e.height=100,e.width=700,l.fillStyle="#f00",l.fillRect(10,10,50,50);var r=[],f=[],i=e.height/20-1;function n(t,e){for(var n=0;n<o[e].length;n++)for(var a=0;a<o[e][n].length;a++)1==o[e][n][a]&&(l.beginPath(),l.arc(14*(i+2)*t+2*a*(i+1)+(i+1),2*n*(i+1)+(i+1),i,0,2*Math.PI),l.closePath(),l.fill())}function h(t,e){for(var n=[1,2,3],a=["#3BE","#09C","#A6C","#93C","#9C0","#690","#FB3","#F80","#F44","#C00"],l=0;l<o[e].length;l++)for(var r=0;r<o[e][l].length;r++)if(1==o[e][l][r]){var h={x:14*(i+2)*t+2*r*(i+1)+(i+1),y:2*l*(i+1)+(i+1),stepX:Math.floor(4*Math.random()-2),stepY:-2*n[Math.floor(Math.random()*n.length)],color:a[Math.floor(Math.random()*a.length)],disY:1};f.push(h)}}t=/(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date),r.push(t[1],t[2],10,t[3],t[4],10,t[5],t[6]),clearInterval(a);var a=setInterval(function(){!function(){var t=[],e=/(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date),n=[];n.push(e[1],e[2],10,e[3],e[4],10,e[5],e[6]);for(var a=r.length-1;0<=a;a--)n[a]!==r[a]&&t.push(a+"_"+(Number(r[a])+1)%10);for(a=0;a<t.length;a++)h.apply(this,t[a].split("_"));r=n.concat()}(),function(){for(var t=0;t<f.length;t++)f[t].stepY+=f[t].disY,f[t].x+=f[t].stepX,f[t].y+=f[t].stepY,(f[t].x>700+i||f[t].y>100+i)&&(f.splice(t,1),t--)}(),function(){e.height=100;for(var t=0;t<r.length;t++)n(t,r[t]);for(t=0;t<f.length;t++)l.beginPath(),l.arc(f[t].x,f[t].y,i,0,2*Math.PI),l.fillStyle=f[t].color,l.closePath(),l.fill()}()},50)}}()</script><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> Table of Contents</li><li class="sidebar-nav-overview" data-target="site-overview-wrap"> Overview</li></ul><div class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"> <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Orchidany"><p class="site-author-name" itemprop="name">Orchidany</p><div class="site-description motion-element" itemprop="description">For code, science, tech. and more</div></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/%20%7C%7C%20archive"><span class="site-state-item-count">175</span> <span class="site-state-item-name">posts</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/%20%7C%7C%20th"><span class="site-state-item-count">54</span> <span class="site-state-item-name">categories</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/%20%7C%7C%20tags"><span class="site-state-item-count">126</span> <span class="site-state-item-name">tags</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div></div></div><div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#期望的线性性"><span class="nav-number">2.</span> <span class="nav-text">期望的线性性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">3.</span><span class="nav-text"></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#期望经典模型"><span class="nav-number">4.</span> <span class="nav-text">期望经典模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#容斥模型"><span class="nav-number">4.1.</span> <span class="nav-text">容斥模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#等价模型"><span class="nav-number">4.2.</span> <span class="nav-text">等价模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#放球问题-I"><span class="nav-number">4.2.1.</span> <span class="nav-text">放球问题 I</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#放球问题-II"><span class="nav-number">4.2.2.</span> <span class="nav-text">放球问题 II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#放球问题-III"><span class="nav-number">4.2.3.</span> <span class="nav-text">放球问题 III</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#随机游走"><span class="nav-number">4.3.</span> <span class="nav-text">随机游走</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#链上游走"><span class="nav-number">4.3.1.</span> <span class="nav-text">链上游走</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完全图游走"><span class="nav-number">4.3.2.</span> <span class="nav-text">完全图游走</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完全二分图游走"><span class="nav-number">4.3.3.</span> <span class="nav-text">完全二分图游走</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#菊花图游走"><span class="nav-number">4.3.4.</span> <span class="nav-text">菊花图游走</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#树上游走"><span class="nav-number">4.3.5.</span> <span class="nav-text">树上游走</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#期望思考题"><span class="nav-number">5.</span> <span class="nav-text">期望思考题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#A"><span class="nav-number">5.1.</span> <span class="nav-text">A</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B"><span class="nav-number">5.2.</span> <span class="nav-text">B</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C"><span class="nav-number">5.3.</span> <span class="nav-text">C</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D"><span class="nav-number">5.4.</span> <span class="nav-text">D</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E"><span class="nav-number">5.5.</span> <span class="nav-text">E</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F"><span class="nav-number">5.6.</span> <span class="nav-text">F</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#G"><span class="nav-number">5.7.</span> <span class="nav-text">G</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#H"><span class="nav-number">5.8.</span> <span class="nav-text">H</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I"><span class="nav-number">5.9.</span> <span class="nav-text">I</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#J"><span class="nav-number">5.10.</span> <span class="nav-text">J</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#K"><span class="nav-number">5.11.</span> <span class="nav-text">K</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5pts-做法"><span class="nav-number">5.11.1.</span> <span class="nav-text">5pts 做法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#20pts-做法"><span class="nav-number">5.11.2.</span> <span class="nav-text">20pts 做法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#60pts-做法"><span class="nav-number">5.11.3.</span> <span class="nav-text">60pts 做法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#70pts-做法"><span class="nav-number">5.11.4.</span> <span class="nav-text">70pts 做法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#85pts-做法"><span class="nav-number">5.11.5.</span> <span class="nav-text">85pts 做法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#100pts-做法"><span class="nav-number">5.11.6.</span> <span class="nav-text">100pts 做法</span></a></li></ol></li></ol></li></ol></div></div></div><div class="back-to-top motion-element"><i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; <span itemprop="copyrightYear">2020</span><span class="with-love" id="animate"><i class="fa fa-user"></i></span> <span class="author" itemprop="copyrightHolder">𝒪𝓇𝒸𝒽𝒾𝒹𝒶𝓃𝓎</span></div><div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0</div> <span class="post-meta-divider">|</span><div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.2.0</div><div class="theme-info"><div class="powered-by"></div> <span class="post-count">博客全站共381k字</span></div><div class="busuanzi-count"><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span class="post-meta-item-icon"><i class="fa fa-user"></i></span><span class="site-uv" title="Total Visitors"><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-eye"></i></span><span class="site-pv" title="Total Views"><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span></div></div></footer></div><script>"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script src="/lib/jquery/index.js?v=3.4.1"></script><script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script><script src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script src="/js/utils.js?v=7.2.0"></script><script src="/js/motion.js?v=7.2.0"></script><script src="/js/affix.js?v=7.2.0"></script><script src="/js/schemes/pisces.js?v=7.2.0"></script><script src="/js/scrollspy.js?v=7.2.0"></script><script src="/js/post-details.js?v=7.2.0"></script><script src="/js/next-boot.js?v=7.2.0"></script><script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script><script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>var GUEST=["nick","mail","link"],guest="nick,mail,link";guest=guest.split(",").filter(function(e){return-1<GUEST.indexOf(e)}),new Valine({el:"#comments",verify:!1,notify:!1,appId:"V95HMkHzC6J9NvdCNbpg3A3E-gzGzoHsz",appKey:"gyf1NbCMlYbPnqykkSe7KuYC",placeholder:"ヾﾉ≧∀≦)o来啊，快活啊!",avatar:"mm",meta:guest,pageSize:"10",visitor:!1,lang:"zh-cn"})</script><script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script><script>$("body").find("div.pdf").length&&$.ajax({type:"GET",url:"//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js",dataType:"script",cache:!0,success:function(){$("body").find("div.pdf").each(function(e,t){PDFObject.embed($(t).attr("target"),$(t),{pdfOpenParams:{navpanes:0,toolbar:0,statusbar:0,pagemode:"thumbs",view:"FitH"},PDFJS_URL:"/lib/pdf/web/viewer.html",height:$(t).attr("height")||"500px"})})}})</script><script>
+// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
+
+window.addEventListener("message", function(e) {
+  var data = e.data;
+  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
+    var featureID = data.split(':')[1];
+    var height = data.split(':')[2];
+    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
+  }
+}, false);
+</script><canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:1;pointer-events:none"></canvas><script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script><script type="text/javascript" src="/js/src/fireworks.js"></script><script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)0<=(t=c[r].getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n()},e.src=i}();var t}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this)</script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})})</script></body></html>
