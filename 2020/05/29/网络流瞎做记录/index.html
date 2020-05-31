@@ -1,0 +1,363 @@
+<!DOCTYPE html><html class="theme-next gemini use-motion" lang=""><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0"><link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png?v=7.2.0"><link rel="icon" type="image/png" sizes="16x16" href="/images/icon-32.png?v=7.2.0"><link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222"><link rel="stylesheet" href="/css/main.css?v=7.2.0"><link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Verdana:300,300italic,400,400italic,700,700italic|Verdana:300,300italic,400,400italic,700,700italic|Verdana:300,300italic,400,400italic,700,700italic|Verdana:300,300italic,400,400italic,700,700italic|Courier New:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"><link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"><link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css"><script id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Gemini",version:"7.2.0",sidebar:{position:"left","Pisces | Gemini":270,width:270,display:"post",offset:12,onmobile:!1},back2top:{enable:!0,sidebar:!0,scrollpercent:!0},copycode:{enable:!0,show_result:!0,style:"mac"},fancybox:!0,mediumzoom:!1,lazyload:!1,pangu:!1,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}},translation:{copy_button:"Copy",copy_success:"Copied",copy_failure:"Copy failed"}}</script><meta name="description" content="做了点网络流题目，算是对网络流的一个复习吧。 感觉现在建起图来已经可以算是得心应手了.jpg 打星的题目都比较有趣。大部分题目可能没有数据范围，当作 O(网络流能过) 就好了。 虽然现在都考模拟费用流，建图费用流已经是历史的眼泪了。"><meta property="og:type" content="article"><meta property="og:title" content="【泛做】网络流乱搞记录"><meta property="og:url" content="https://www.orchidany.cn/2020/05/29/%E7%BD%91%E7%BB%9C%E6%B5%81%E7%9E%8E%E5%81%9A%E8%AE%B0%E5%BD%95/index.html"><meta property="og:site_name" content="𝓞𝓻𝓬𝓱𝓲𝓭𝓪𝓷𝔂&#39;𝔀 𝓫𝓵𝓸𝓰"><meta property="og:description" content="做了点网络流题目，算是对网络流的一个复习吧。 感觉现在建起图来已经可以算是得心应手了.jpg 打星的题目都比较有趣。大部分题目可能没有数据范围，当作 O(网络流能过) 就好了。 虽然现在都考模拟费用流，建图费用流已经是历史的眼泪了。"><meta property="article:published_time" content="2020-05-29T05:53:26.000Z"><meta property="article:modified_time" content="2020-05-31T13:31:42.264Z"><meta property="article:author" content="Orchidany"><meta property="article:tag" content="动态规划&#x2F;状压DP"><meta property="article:tag" content="思维题&#x2F;找性质"><meta property="article:tag" content="技巧&#x2F;分治"><meta property="article:tag" content="贪心"><meta property="article:tag" content="图论&#x2F;二分图"><meta property="article:tag" content="网络流&#x2F;最大流"><meta property="article:tag" content="网络流&#x2F;费用流"><meta property="article:tag" content="图论&#x2F;匹配"><meta property="article:tag" content="图论&#x2F;普通建图技巧"><meta property="article:tag" content="图论&#x2F;线段树优化建图"><meta property="article:tag" content="网络流&#x2F;带有上下界的网络流"><meta property="article:tag" content="图论&#x2F;匹配&#x2F;KM算法"><meta name="twitter:card" content="summary"><link rel="alternate" href="/atom.xml" title="𝓞𝓻𝓬𝓱𝓲𝓭𝓪𝓷𝔂'𝔀 𝓫𝓵𝓸𝓰" type="application/atom+xml"><link rel="canonical" href="https://www.orchidany.cn/2020/05/29/%E7%BD%91%E7%BB%9C%E6%B5%81%E7%9E%8E%E5%81%9A%E8%AE%B0%E5%BD%95/"><script id="page.configurations">CONFIG.page={sidebar:""}</script><title>【泛做】网络流乱搞记录 | 𝓞𝓻𝓬𝓱𝓲𝓭𝓪𝓷𝔂'𝔀 𝓫𝓵𝓸𝓰</title><noscript><style>.sidebar-inner,.use-motion .brand,.use-motion .collection-title,.use-motion .comments,.use-motion .menu-item,.use-motion .motion-element,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .logo,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.use-motion .logo-line-before i{left:initial}.use-motion .logo-line-after i{right:initial}</style></noscript><meta name="generator" content="Hexo 4.2.0"></head><body itemscope itemtype="http://schema.org/WebPage" lang="default"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">𝓞𝓻𝓬𝓱𝓲𝓭𝓪𝓷𝔂'𝔀 𝓫𝓵𝓸𝓰</span><span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">A Soul Tune against Fate Should Be Played, now.</p></div><div class="site-nav-toggle"> <button aria-label="Toggle navigation bar"><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-navigation"><a href="/navigation/" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i><br>Navigation</a></li><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>Archives</a></li><li class="menu-item menu-item-friends"><a href="/Friends/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i><br>Friends</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>Search</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i></span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"> <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://www.orchidany.cn/2020/05/29/%E7%BD%91%E7%BB%9C%E6%B5%81%E7%9E%8E%E5%81%9A%E8%AE%B0%E5%BD%95/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Orchidany"><meta itemprop="description" content="For code, science, tech. and more"><meta itemprop="image" content="/images/avatar.png"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="𝓞𝓻𝓬𝓱𝓲𝓭𝓪𝓷𝔂'𝔀 𝓫𝓵𝓸𝓰"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">【泛做】网络流乱搞记录</h1><div class="post-meta"><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">Posted on</span> <time title="Created: 2020-05-29 13:53:26" itemprop="dateCreated datePublished" datetime="2020-05-29T13:53:26+08:00">2020-05-29</time></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-check-o"></i></span> <span class="post-meta-item-text">Edited on</span> <time title="Modified: 2020-05-31 21:31:42" itemprop="dateModified" datetime="2020-05-31T21:31:42+08:00">2020-05-31</time></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">In</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-eye"></i> Views:<span class="busuanzi-value" id="busuanzi_value_page_pv"></span></span></span><br></div></header><div class="post-body" itemprop="articleBody"><p>做了点网络流题目，算是对网络流的一个复习吧。</p><p>感觉现在建起图来已经可以算是得心应手了.jpg</p><p>打星的题目都比较有趣。大部分题目可能没有数据范围，当作 O(网络流能过) 就好了。</p><p><del>虽然现在都考模拟费用流，建图费用流已经是历史的眼泪了。</del></p><a id="more"></a><h1 id="最大流"><a href="#最大流" class="headerlink" title="最大流"></a>最大流</h1><h2 id="UVA11167-Monkeys-in-the-Emei-Moutain"><a href="#UVA11167-Monkeys-in-the-Emei-Moutain" class="headerlink" title="*[UVA11167] Monkeys in the Emei Moutain"></a>*[UVA11167] Monkeys in the Emei Moutain</h2><blockquote><p>大概说有 $n$ 只猴子，猴子们在某个时间段需要喝 $v_i$ 时间的水，各个单位时间段最多允许 $m$ 只猴子同时喝水，问猴子们能否成功喝水并输出一个可行的方案，输出方案的时间段区间要从小到大排序并且合并连续的区间。</p><p>$1\leq l_i,r_i\leq 50000,n\leq 100$ 。</p></blockquote><p>考虑暴力建图，我一开始的思路是对于每个时间点拆成两个点 $t’,t$ 之间连 $f=m$ 的边，然后猴子 $i$ 向一个区间的点连 $f=+\infty$ 的边，源点向猴子连 $f=v_i$ 的边。这样边数可以通过线段树来搞成 $T\log T$ 的。</p><p>然而上面这个建图肉眼可见的不是正解。考虑向区间模型上靠，因为猴子数很少，最多有 $O(n)$ 个本质不同的区间端点。于是可以考虑把上面那种做法中没有用到的多个时间点合并成一个，并且把 $f=m$ 改成 $f=k\times m$ 。依旧做就好了。</p><h2 id="UVA11082-Matrix-Decompressing"><a href="#UVA11082-Matrix-Decompressing" class="headerlink" title="[UVA11082] Matrix Decompressing"></a>[UVA11082] Matrix Decompressing</h2><blockquote><p>给出一个 R 行C 列的正整数矩阵，设前 $A_i$ 项为其前 $i$ 行所有元素之和，$B_i$ 项为其前 i 列所有元素之和，已知 R,C,A,B，找出一个满足条件的矩阵。其中每个元素都是1~20 的正整数。</p></blockquote><p>sb 题。考虑源向每一行连 $f=r_i$ 的边，每一列向汇连 $f=c_i$ 的边，行列再向每个点连 $f=\infty$ 的边。同时给中间的每条边设置一个上下界 $1$ ，流就完了。</p><p>然后发现并不用建出中间的那一排点来。并且下界如果为 $1$ …就可以直接上下界各减 $1$ 然后跑普通的流即可。</p><h2 id="ACM-ICPC-NEERC2009-Inspection"><a href="#ACM-ICPC-NEERC2009-Inspection" class="headerlink" title="**[ACM/ICPC NEERC2009] Inspection"></a>**[ACM/ICPC NEERC2009] Inspection</h2><blockquote><p>求解无权 DAG 的最小路径<strong>边</strong>覆盖。特别的，路径可以重复走。</p></blockquote><p>很神奇一道题。神奇在我在 check 自己的 Sol 的时候发现了这么一回事：</p><blockquote><p>对于图中的每个点 $i$，设 $d_i$ 为( $i$ 的入度 - $i$ 的出度)的值，按照 $d_i$将图中的点分类：</p><p>$d_i\lt 0$ 的称为“入少出多”的点，$d_i\gt 0$ 的称为“出少入多”的点，$d_i=0$ 的称为“入出相等”的点。则有：</p><blockquote><p>定理：有向无环图中最小边路径覆盖的值等于图中所有“入少出多”的点的 $d_i$ 绝对值之和。</p></blockquote></blockquote><p>这还是比较显然的，注意到这个定理是在陈述「边覆盖」就不难理解了。 然后借此先说 Sol 1:</p><h3 id="Sol-1"><a href="#Sol-1" class="headerlink" title="Sol 1"></a>Sol 1</h3><p>考虑本题和不能重复走的最小路径覆盖有什么区别，那必然是存在一些路径可以重复经过。我断言，这样的路径必然满足起点 $d_i&gt;0$，终点的 $d_i\lt0$ ，否则没有必要重复经过。考虑某条这样的路径 $(s:t)$ 每被重复经过一次，就必然是为了将 $t$ 之后的某条路经和 $s$ 之前的某条路径拼插起来，这样原来需要 $2$ 次现在就只需要 $1$ 次。</p><p>于是考虑直接对着这个跑一次最大流即可，各个地方的流量都是 $1$ ，拿定理中的答案减去这个最大流就好了。</p><h3 id="Sol-2"><a href="#Sol-2" class="headerlink" title="Sol 2"></a>Sol 2</h3><p>…发现这题就是一个带下界的最小流。于是就跑一个带下界的最小流即可。</p><h2 id="ACM-ICPC-NWERC-2007-March-of-the-Penguins"><a href="#ACM-ICPC-NWERC-2007-March-of-the-Penguins" class="headerlink" title="[ACM/ICPC NWERC 2007] March of the Penguins"></a>[ACM/ICPC NWERC 2007] March of the Penguins</h2><blockquote><p>有一群企鹅，一些冰。企鹅们在快乐地玩耍。</p><p>给出每个企鹅的最大跳跃距离(大家都一样)，再给出冰的坐标和上面存在的企鹅个数和允许跳跃的次数，问有哪些冰是可以将所有的企鹅汇聚起来的。</p></blockquote><p>比较简单一题。之前的想法是这么建图(事实上就是这么建图)：源点向每块冰连 $n_i$ 的边代表原有企鹅，每块冰拆成俩点限制跳跃次数。然后冰之间根据跳跃距离连边就好了。</p><p>但是自己的处理方式不是很到位。我的想法是枚举每个点作为汇点跑一遍最大流再去 check 是否满流，后来发现其实并不需要，只需要一个跑一遍最大流就好了。因为如果对于某个 $i$ 满流，他要么可以将这一份满流输送给其他点，要么就是被其他点数输送过来的。</p><h2 id="ACM-ICPC-Hangzhou-2005-Duopoly"><a href="#ACM-ICPC-Hangzhou-2005-Duopoly" class="headerlink" title="*[ACM/ICPC Hangzhou 2005] Duopoly"></a>*[ACM/ICPC Hangzhou 2005] Duopoly</h2><blockquote><p>C公司有一些资源，每种只有1个，有A、B两个公司分别对其中一些资源进行分组竞标，每组竞标对一些资源出一个总价。问C公司的最大收益。</p></blockquote><p>谔谔，感觉有被降智到。</p><p>一开始想了很多奇奇怪怪的建图方式，都是错的。后来看了题解发现…其实本质上根本不关心每种资源到底是怎么分配的，只关心某些资源的组合能够带来多少收益。于是建图就不需要考虑每种资源了，直接对 A 和 B 的所有竞标分立两侧，有冲突的就连边，跑一个最小割就好了。</p><h2 id="经典题-二分图带权最大独立集"><a href="#经典题-二分图带权最大独立集" class="headerlink" title="[经典题] 二分图带权最大独立集"></a>[经典题] 二分图带权最大独立集</h2><blockquote><p>给定一张二分图，图里面每个点会带一个权。求权最大独立集。</p></blockquote><p>将权调整到 $\rm S\to …$ 和 $\rm …\to T$ 上 。就变成睿智最小割了。我为什么要整这个题！？</p><h2 id="经典题-最优调度-公平分配-LA3231-Fair-Share"><a href="#经典题-最优调度-公平分配-LA3231-Fair-Share" class="headerlink" title="[经典题]最优调度(公平分配) /LA3231 Fair Share"></a>[经典题]最优调度(公平分配) /LA3231 Fair Share</h2><blockquote><p>m个任务n个处理器，一个任务只能在可供运行的两个机器中的其中一个上运行，问怎样分配使得任务最多的机器尽量少。</p></blockquote><p>那必然是要二分答案。之后流一下看看与源点相连的每个任务那条边是否满流就好了。</p><h2 id="UVA11248-Frequency-Hopping"><a href="#UVA11248-Frequency-Hopping" class="headerlink" title="*[UVA11248] Frequency Hopping"></a>*[UVA11248] Frequency Hopping</h2><blockquote><p>给定一个有向网络，每条边均有一个容量。问是否存在一个从点1到点N，流量为C的流，如果不存在，是否可以恰好修改一条弧的容量，使得存在这样的流。</p></blockquote><p>比较有意思的题，考虑如果要修改，那必然是要修改最小割上的边。然后就把最小割求出来，再枚举每一条边。但是注意到不需要每次重新求一遍最大流，可以直接在原图上增广。这个技巧需要心领神会。</p><h2 id="ACM-ICPC-Taejon-2002-The-K-league"><a href="#ACM-ICPC-Taejon-2002-The-K-league" class="headerlink" title="*[ACM/ICPC Taejon 2002] The K-league"></a>*[ACM/ICPC Taejon 2002] The K-league</h2><p>Taejon：大田，似乎是韩国的某城市，长见识了。</p><blockquote><p>有n个队伍进行比赛，每场比赛，恰好有一支队伍取胜、一支队伍败。每个队伍需要打的比赛场数相同。</p><p>给你每个队伍目前已经赢得的场数 $done_i$，再给你一个矩阵，表示队伍 i 和队伍 j 还需要打的比赛数，问你哪些队伍有可能获得冠军（胜场最多的即为冠军，可以并列）。</p></blockquote><p>这题比较神。首先一个观察就是可以独立求出每个队伍是否可以夺冠。考虑首先要钦定当前队伍赢得所有未竟比赛，设这个数量为 $s$。之后考虑就是能否有一种安排策略使得其它的队伍获胜场数均 $\leq s$。</p><p>发现这就是一个上面提到过的公平分配模型。考虑将每一场比赛分配给每支队伍。把一支队伍的最多获胜场次设为 $s-done_u$ ，然后检查一下每个比赛的那条边是否满流就好了。</p><h2 id="UVA10779-Collector’s-Problem"><a href="#UVA10779-Collector’s-Problem" class="headerlink" title="**[UVA10779] Collector’s Problem"></a>**[UVA10779] Collector’s Problem</h2><blockquote><p>现在有包括了Bob在内的 n 个小朋友，m 种游戏卡片，Bob可以和其他人交换卡片，除了Bob，每个人的交换原则都是只给出自己的拥有多张卡片，接受自己没有的卡片。的问他最后有多少不同的卡片。</p><p>$n\leq 10, m\leq 25$ 。</p></blockquote><p>考虑如果 $m$ 稍微小一点，比如 $10$ 之类的就可以直接状压了。$f_{s_1,s_2}$ 表示现在考虑了 Bob 的朋友集合为 $s_1$ ，拥有的卡牌集合为 $s_2$ 是否可行。这样每次转移就可以刷个表。复杂度 $O(2^n\cdot n\cdot m\cdot 2^m)$ 。</p><p><del>m=10好像也不是很能过</del> 。</p><p>于是考虑正经建图，还是比较仙的。考虑怎么正确对待「只给出自己的拥有多张卡片，接受自己没有的卡片」这个限制，发现这个限制十分的强，限制了每个小朋友已经有的卡片数目在过程中也不能 $\lt1$ 。于是对于每个小朋友关心的就只在于其 $&gt;2$ 的数量的卡牌。</p><p>考虑怎么建图（好神啊）。 大概就是说小伙伴只是用来换的工具人，并不关心他们怎么分配，只关心最后每张牌是否可以拿到。于是就可以考虑从源点向每一张牌连一张 $f=a_i$ ，其中 $a_i$ 是 Bob 原有的卡的弧，每张牌向 $T$ 连 $f=1$ 的弧。考虑怎么于小伙伴们交互，如果小伙伴 $j$ 没有某张牌 $i$ ，就连 $i\to j$ 流量为 $1$ ；如果如果小伙伴 $j$ 的某张牌数量 $b_{j,i}&gt;1$ ，就向 $i$ 连 $f=b_{j,i}-1$ 的边。流一下就好了。</p><h2 id=""><a href="#" class="headerlink" title=" "></a></h2><h1 id="费用流"><a href="#费用流" class="headerlink" title="费用流"></a>费用流</h1><h2 id="ACM-ICPC-Taiwan-2005-Optimal-Bus-Route-Design"><a href="#ACM-ICPC-Taiwan-2005-Optimal-Bus-Route-Design" class="headerlink" title="*[ACM/ICPC Taiwan 2005] Optimal Bus Route Design"></a>*[ACM/ICPC Taiwan 2005] Optimal Bus Route Design</h2><blockquote><p> 给出一个有向图，你需要让每一个点都恰好在一个环中，并且边权和最小。</p></blockquote><p>…喜闻乐见的找性质题。</p><p>首先转化一下，「每个点恰好在一个环中」=「每个点后继的唯一」。因为每个点都显然会有一条出边一条入边，所以直接拆点跑一个 KM 或者费用流就一定是合法解。</p><p>……一开始的时候感觉是个裸匹配，然后回忆起曾经做过的无向图找非简单环的计数题似乎答案是个贼大的数，就十分懵逼。</p><h2 id="LA4043-Ants"><a href="#LA4043-Ants" class="headerlink" title="**[LA4043]  Ants"></a>**[LA4043] Ants</h2><blockquote><p>给定一些黑点白点，要求一个黑点连接一个白点，并且所有线段都不相交。</p><p>$n\leq 500$ 。</p></blockquote><p>感觉这题的俩做法都很经典有趣啊。</p><h3 id="Sol-1-1"><a href="#Sol-1-1" class="headerlink" title="Sol 1"></a>Sol 1</h3><p>大概是需要深刻地发现一些性质。考虑如果四个点连两条线段想要不交的话，那么感性理解一下要么并排着竖着连，要么并排着横着连，随便旋转一下坐标系可以知道两者是等价的。那么考虑如何横着选，发现如果对于第一列的点如果各自找与自己距离最小的点，就一定不会相交。进一步考虑全局，如果最后点对之间的总距离之和最小那么同样不会交。所以做一遍 KM 就好了。</p><h3 id="Sol-2-1"><a href="#Sol-2-1" class="headerlink" title="Sol 2"></a>Sol 2</h3><p>考虑暴力分治。感觉这个做法没点经验是想不出来的。考虑上面 KM 算法所找的最近点对完全可以分治做。具体的，先随机选一个点，然后让其他的点按照以当前点为坐标原点的极角排序，观察最小的那个：</p><p>1、如果颜色不同，那么就直接匹配。</p><p>2、如果颜色相同，就继续找更大的，直到找过的所有点中两种颜色数量相等且当前点与源点颜色不同。此时头尾匹配一下，就可以分治成两部分继续做了。</p><h2 id="ACM-ICPC-Harbin-2010-货物运输"><a href="#ACM-ICPC-Harbin-2010-货物运输" class="headerlink" title="[ACM/ICPC Harbin 2010] 货物运输"></a>[ACM/ICPC Harbin 2010] 货物运输</h2><blockquote><p>费用为 $af^2$ 的费用流。</p></blockquote><p>主要就是用了这个技巧。考虑常见的拆平方技巧</p><script type="math/tex;mode=display">
+f^2=1+3+5+7+\cdots</script><p>然后就可以根据值域拆成多个弧来做了。</p><h2 id="ACM-ICPC-Dhaka-2006-Paint-the-Roads"><a href="#ACM-ICPC-Dhaka-2006-Paint-the-Roads" class="headerlink" title="[ACM/ICPC Dhaka 2006] Paint the Roads"></a>[ACM/ICPC Dhaka 2006] Paint the Roads</h2><blockquote><p>一个 $n$ 个点 $m$ 条带权有向边的图，要给边染色，染色的边形成若干个回路且每个点都恰好属于其中 $k$ 个回路。问最少要染多少边权和的路。</p></blockquote><p>考虑有了前面的铺垫，属于 $k$ 个回路可以直接拆成 $k$ 组匹配。做就好了。</p><h2 id="ACM-ICPC-World-Final-2011-Chips-Challenge"><a href="#ACM-ICPC-World-Final-2011-Chips-Challenge" class="headerlink" title="*[ACM/ICPC World Final 2011] Chips Challenge"></a>*[ACM/ICPC World Final 2011] Chips Challenge</h2><blockquote><p>有一个芯片，芯片上有 $N*N(1≤N≤40)$ 个插槽，可以在里面装零件。<br>有些插槽不能装零件，有些插槽必须装零件，剩下的插槽随意。<br>要求装好之后满足如下两条要求：</p><p>1、第 i 行和第 i 列的零件数目必须一样多（$1≤i≤N$）。</p><p>2、第 i 行的零件数目不能超过总的零件数目的 $A/B$（$1≤i≤N$，$0≤A≤B≤1000$，$B≠0$）。</p><p>求最多可以另外放多少个零件（就是除掉必须放的）。如果无解输出impossible。</p></blockquote><p>学到了，大概是发现有些约束互相影响，或者是个变量不好处理的时候，可以考虑枚举这个约束。</p><p>大概就是考虑枚举零件总数 $s$ ，然后去check这个结果是否合理。考虑怎么 check，不难知道要行列二分图那种感觉，中间钦定为 $1$ 的就连上下界均为 $1$ 的边，钦定为 $0$ 的就不连边，没钦定的就连上界为 $1$ 的边。然后求出此时可以放的部件数。如果大于枚举的 $ans$ 就说明合法。</p><p>于是最后大概要跑一个有源汇上下界最大费用最大流？</p></div><footer class="post-footer"><div class="post-tags"><a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E7%8A%B6%E5%8E%8BDP/" rel="tag"><i class="fa fa-tag"></i> 动态规划/状压DP</a><a href="/tags/%E6%80%9D%E7%BB%B4%E9%A2%98-%E6%89%BE%E6%80%A7%E8%B4%A8/" rel="tag"><i class="fa fa-tag"></i> 思维题/找性质</a><a href="/tags/%E6%8A%80%E5%B7%A7-%E5%88%86%E6%B2%BB/" rel="tag"><i class="fa fa-tag"></i> 技巧/分治</a><a href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag"><i class="fa fa-tag"></i> 贪心</a><a href="/tags/%E5%9B%BE%E8%AE%BA-%E4%BA%8C%E5%88%86%E5%9B%BE/" rel="tag"><i class="fa fa-tag"></i> 图论/二分图</a><a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81-%E6%9C%80%E5%A4%A7%E6%B5%81/" rel="tag"><i class="fa fa-tag"></i> 网络流/最大流</a><a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81-%E8%B4%B9%E7%94%A8%E6%B5%81/" rel="tag"><i class="fa fa-tag"></i> 网络流/费用流</a><a href="/tags/%E5%9B%BE%E8%AE%BA-%E5%8C%B9%E9%85%8D/" rel="tag"><i class="fa fa-tag"></i> 图论/匹配</a><a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%99%AE%E9%80%9A%E5%BB%BA%E5%9B%BE%E6%8A%80%E5%B7%A7/" rel="tag"><i class="fa fa-tag"></i> 图论/普通建图技巧</a><a href="/tags/%E5%9B%BE%E8%AE%BA-%E7%BA%BF%E6%AE%B5%E6%A0%91%E4%BC%98%E5%8C%96%E5%BB%BA%E5%9B%BE/" rel="tag"><i class="fa fa-tag"></i> 图论/线段树优化建图</a><a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81-%E5%B8%A6%E6%9C%89%E4%B8%8A%E4%B8%8B%E7%95%8C%E7%9A%84%E7%BD%91%E7%BB%9C%E6%B5%81/" rel="tag"><i class="fa fa-tag"></i> 网络流/带有上下界的网络流</a><a href="/tags/%E5%9B%BE%E8%AE%BA-%E5%8C%B9%E9%85%8D-KM%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 图论/匹配/KM算法</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2020/05/27/%E7%AE%80%E5%8D%95%E6%95%B0%E5%AD%A6%E9%A2%98%E6%94%BE%E9%80%81/" rel="next" title="【题解】简单数学题放送"><i class="fa fa-chevron-left"></i> 【题解】简单数学题放送</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"> <a href="/2050/02/05/%E3%80%90%E5%85%AC%E5%91%8A%E3%80%91%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" rel="prev" title="【公告】关于这个blog">【公告】关于这个blog<i class="fa fa-chevron-right"></i></a></div></div></footer></div></article></div></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><div style=""><canvas id="canvas" style="width:60%">当前浏览器不支持canvas，请更换浏览器后再试</canvas></div><script>!function(){var t,o=[[[0,0,1,1,1,0,0],[0,1,1,0,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,0,1,1,0],[0,0,1,1,1,0,0]],[[0,0,0,1,1,0,0],[0,1,1,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[1,1,1,1,1,1,1]],[[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,0,1,1,0,0,0],[0,1,1,0,0,0,0],[1,1,0,0,0,0,0],[1,1,0,0,0,1,1],[1,1,1,1,1,1,1]],[[1,1,1,1,1,1,1],[0,0,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,0,1,1,1,0,0],[0,0,0,0,1,1,0],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[0,0,0,0,1,1,0],[0,0,0,1,1,1,0],[0,0,1,1,1,1,0],[0,1,1,0,1,1,0],[1,1,0,0,1,1,0],[1,1,1,1,1,1,1],[0,0,0,0,1,1,0],[0,0,0,0,1,1,0],[0,0,0,0,1,1,0],[0,0,0,1,1,1,1]],[[1,1,1,1,1,1,1],[1,1,0,0,0,0,0],[1,1,0,0,0,0,0],[1,1,1,1,1,1,0],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[0,0,0,0,1,1,0],[0,0,1,1,0,0,0],[0,1,1,0,0,0,0],[1,1,0,0,0,0,0],[1,1,0,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[1,1,1,1,1,1,1],[1,1,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,0,0,1,1,0,0],[0,0,1,1,0,0,0],[0,0,1,1,0,0,0],[0,0,1,1,0,0,0],[0,0,1,1,0,0,0]],[[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,1,1,0]],[[0,1,1,1,1,1,0],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[1,1,0,0,0,1,1],[0,1,1,1,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,0,1,1],[0,0,0,0,1,1,0],[0,0,0,1,1,0,0],[0,1,1,0,0,0,0]],[[0,0,0,0,0,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,1,1,1,0,0],[0,0,0,0,0,0,0]]],e=document.getElementById("canvas");if(e.getContext){var l=e.getContext("2d");e.height=100,e.width=700,l.fillStyle="#f00",l.fillRect(10,10,50,50);var r=[],f=[],i=e.height/20-1;function n(t,e){for(var n=0;n<o[e].length;n++)for(var a=0;a<o[e][n].length;a++)1==o[e][n][a]&&(l.beginPath(),l.arc(14*(i+2)*t+2*a*(i+1)+(i+1),2*n*(i+1)+(i+1),i,0,2*Math.PI),l.closePath(),l.fill())}function h(t,e){for(var n=[1,2,3],a=["#3BE","#09C","#A6C","#93C","#9C0","#690","#FB3","#F80","#F44","#C00"],l=0;l<o[e].length;l++)for(var r=0;r<o[e][l].length;r++)if(1==o[e][l][r]){var h={x:14*(i+2)*t+2*r*(i+1)+(i+1),y:2*l*(i+1)+(i+1),stepX:Math.floor(4*Math.random()-2),stepY:-2*n[Math.floor(Math.random()*n.length)],color:a[Math.floor(Math.random()*a.length)],disY:1};f.push(h)}}t=/(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date),r.push(t[1],t[2],10,t[3],t[4],10,t[5],t[6]),clearInterval(a);var a=setInterval(function(){!function(){var t=[],e=/(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date),n=[];n.push(e[1],e[2],10,e[3],e[4],10,e[5],e[6]);for(var a=r.length-1;0<=a;a--)n[a]!==r[a]&&t.push(a+"_"+(Number(r[a])+1)%10);for(a=0;a<t.length;a++)h.apply(this,t[a].split("_"));r=n.concat()}(),function(){for(var t=0;t<f.length;t++)f[t].stepY+=f[t].disY,f[t].x+=f[t].stepX,f[t].y+=f[t].stepY,(f[t].x>700+i||f[t].y>100+i)&&(f.splice(t,1),t--)}(),function(){e.height=100;for(var t=0;t<r.length;t++)n(t,r[t]);for(t=0;t<f.length;t++)l.beginPath(),l.arc(f[t].x,f[t].y,i,0,2*Math.PI),l.fillStyle=f[t].color,l.closePath(),l.fill()}()},50)}}()</script><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> Table of Contents</li><li class="sidebar-nav-overview" data-target="site-overview-wrap"> Overview</li></ul><div class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"> <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Orchidany"><p class="site-author-name" itemprop="name">Orchidany</p><div class="site-description motion-element" itemprop="description">For code, science, tech. and more</div></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/%20%7C%7C%20archive"><span class="site-state-item-count">182</span> <span class="site-state-item-name">posts</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/%20%7C%7C%20th"><span class="site-state-item-count">55</span> <span class="site-state-item-name">categories</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/%20%7C%7C%20tags"><span class="site-state-item-count">137</span> <span class="site-state-item-name">tags</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div></div></div><div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#最大流"><span class="nav-number">1.</span> <span class="nav-text">最大流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UVA11167-Monkeys-in-the-Emei-Moutain"><span class="nav-number">1.1.</span> <span class="nav-text">*[UVA11167] Monkeys in the Emei Moutain</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UVA11082-Matrix-Decompressing"><span class="nav-number">1.2.</span> <span class="nav-text">[UVA11082] Matrix Decompressing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ACM-ICPC-NEERC2009-Inspection"><span class="nav-number">1.3.</span> <span class="nav-text">**[ACM&#x2F;ICPC NEERC2009] Inspection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sol-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">Sol 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sol-2"><span class="nav-number">1.3.2.</span> <span class="nav-text">Sol 2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ACM-ICPC-NWERC-2007-March-of-the-Penguins"><span class="nav-number">1.4.</span> <span class="nav-text">[ACM&#x2F;ICPC NWERC 2007] March of the Penguins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ACM-ICPC-Hangzhou-2005-Duopoly"><span class="nav-number">1.5.</span> <span class="nav-text">*[ACM&#x2F;ICPC Hangzhou 2005] Duopoly</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#经典题-二分图带权最大独立集"><span class="nav-number">1.6.</span> <span class="nav-text">[经典题] 二分图带权最大独立集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#经典题-最优调度-公平分配-LA3231-Fair-Share"><span class="nav-number">1.7.</span> <span class="nav-text">[经典题]最优调度(公平分配) &#x2F;LA3231 Fair Share</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UVA11248-Frequency-Hopping"><span class="nav-number">1.8.</span> <span class="nav-text">*[UVA11248] Frequency Hopping</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ACM-ICPC-Taejon-2002-The-K-league"><span class="nav-number">1.9.</span> <span class="nav-text">*[ACM&#x2F;ICPC Taejon 2002] The K-league</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UVA10779-Collector’s-Problem"><span class="nav-number">1.10.</span> <span class="nav-text">**[UVA10779] Collector’s Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.11.</span><span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#费用流"><span class="nav-number">2.</span> <span class="nav-text">费用流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ACM-ICPC-Taiwan-2005-Optimal-Bus-Route-Design"><span class="nav-number">2.1.</span> <span class="nav-text">*[ACM&#x2F;ICPC Taiwan 2005] Optimal Bus Route Design</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LA4043-Ants"><span class="nav-number">2.2.</span> <span class="nav-text">**[LA4043] Ants</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sol-1-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">Sol 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sol-2-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">Sol 2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ACM-ICPC-Harbin-2010-货物运输"><span class="nav-number">2.3.</span> <span class="nav-text">[ACM&#x2F;ICPC Harbin 2010] 货物运输</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ACM-ICPC-Dhaka-2006-Paint-the-Roads"><span class="nav-number">2.4.</span> <span class="nav-text">[ACM&#x2F;ICPC Dhaka 2006] Paint the Roads</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ACM-ICPC-World-Final-2011-Chips-Challenge"><span class="nav-number">2.5.</span> <span class="nav-text">*[ACM&#x2F;ICPC World Final 2011] Chips Challenge</span></a></li></ol></li></ol></div></div></div><div class="back-to-top motion-element"><i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; <span itemprop="copyrightYear">2020</span><span class="with-love" id="animate"><i class="fa fa-user"></i></span> <span class="author" itemprop="copyrightHolder">𝒪𝓇𝒸𝒽𝒾𝒹𝒶𝓃𝓎</span></div><div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0</div> <span class="post-meta-divider">|</span><div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.2.0</div><div class="theme-info"><div class="powered-by"></div> <span class="post-count">博客全站共431.4k字</span></div><div class="busuanzi-count"><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span class="post-meta-item-icon"><i class="fa fa-user"></i></span><span class="site-uv" title="Total Visitors"><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-eye"></i></span><span class="site-pv" title="Total Views"><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span></div></div></footer></div><script>"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script src="/lib/jquery/index.js?v=3.4.1"></script><script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script><script src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script src="/js/utils.js?v=7.2.0"></script><script src="/js/motion.js?v=7.2.0"></script><script src="/js/affix.js?v=7.2.0"></script><script src="/js/schemes/pisces.js?v=7.2.0"></script><script src="/js/scrollspy.js?v=7.2.0"></script><script src="/js/post-details.js?v=7.2.0"></script><script src="/js/next-boot.js?v=7.2.0"></script><script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script><script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script><script>$("body").find("div.pdf").length&&$.ajax({type:"GET",url:"//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js",dataType:"script",cache:!0,success:function(){$("body").find("div.pdf").each(function(e,t){PDFObject.embed($(t).attr("target"),$(t),{pdfOpenParams:{navpanes:0,toolbar:0,statusbar:0,pagemode:"thumbs",view:"FitH"},PDFJS_URL:"/lib/pdf/web/viewer.html",height:$(t).attr("height")||"500px"})})}})</script><script>
+// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
+
+window.addEventListener("message", function(e) {
+  var data = e.data;
+  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
+    var featureID = data.split(':')[1];
+    var height = data.split(':')[2];
+    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
+  }
+}, false);
+</script><script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)0<=(t=c[r].getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n()},e.src=i}();var t}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this)</script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})})</script></body></html>
